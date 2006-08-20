@@ -18,8 +18,9 @@
 		DateCalc Common library is the library used by both JDK and JODA libraries.
 	</description>
 	<repository>
-                <connection>scm:cvs:pserver:xhensevalb@localhost:/home/cvsowner/cvsroot:objectlab-kit/datecalc-common</connection>
-	</repository>
+                <connection>scm:svn:https://svn.sourceforge.net/svnroot/objectlabkit/trunk/datecalc-common</connection>
+                <developerConnection>scm:svn:https://svn.sourceforge.net/svnroot/objectlabkit/trunk/datecalc-common</developerConnection>
+        </repository>
 	<dependencies>
 	</dependencies>
 

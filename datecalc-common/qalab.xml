@@ -73,14 +73,6 @@
         <result date="2006-08-20" statvalue="100" type="cobertura-line"/>
         <result date="2006-08-20" statvalue="100" type="cobertura-branch"/>
     </file>
-    <file
-        id="C:_project_objectlab-kit_datecalc-common_src_test_java_net_objectlab_kit_datecalc_common_TenorTest.java" path="C:/project/objectlab-kit/datecalc-common/src/test/java/net/objectlab/kit/datecalc/common/TenorTest.java">
-        <result date="2006-08-08" statvalue="2" type="pmd"/>
-    </file>
-    <file
-        id="C:_project_objectlab-kit_datecalc-common_src_test_java_net_objectlab_kit_datecalc_common_WorkingWeekTest.java" path="C:/project/objectlab-kit/datecalc-common/src/test/java/net/objectlab/kit/datecalc/common/WorkingWeekTest.java">
-        <result date="2006-08-08" statvalue="1" type="pmd"/>
-    </file>
     <file id="net_objectlab_kit_datecalc_common_TenorCode.java" path="net/objectlab/kit/datecalc/common/TenorCode.java">
         <result date="2006-08-08" statvalue="100" type="cobertura-line"/>
         <result date="2006-08-08" statvalue="100" type="cobertura-branch"/>
