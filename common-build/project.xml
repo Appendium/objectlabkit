@@ -11,7 +11,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/3.0.0 http://maven.apache.org/maven-v3_0_0.xsd">
 	<pomVersion>3</pomVersion>
-	<groupId>objectlab</groupId>
+	<groupId>net.objectlab</groupId>
 	<currentVersion>1.0</currentVersion>
 	<organization>
 		<name>ObjectLab Financial Ltd</name>
@@ -21,18 +21,19 @@
 		</logo>
 	</organization>
 	<inceptionYear>2006</inceptionYear>
-	<url>http://kit.objectlab.net</url>
-	<siteAddress>kit.objectlab.net</siteAddress>
+	<url>http://objectlabkit.sourceforge.net</url>
+	<siteAddress>objectlabkit.sourceforge.net</siteAddress>
 	<siteDirectory>
 		/var/www/solutions/website/objectlab.co.uk/
 	</siteDirectory>
 	<repository>
-                <connection>scm:cvs:pserver:xhensevalb@localhost:/home/cvsowner/cvsroot:xxxx/</connection>
+                <connection>scm:svn:https://svn.sourceforge.net/svnroot/objectlabkit/trunk</connection>
+                <developerConnection>scm:svn:https://svn.sourceforge.net/svnroot/objectlabkit/trunk</developerConnection>
         </repository>
 	<developers>
 		<developer>
 			<name>Benoit Xhenseval</name>
-			<id>xhensevalb</id>
+			<id>benoitx</id>
 			<email>kit AT objectlab DOT co dOt uk</email>
 			<organization>ObjectLab Financial Ltd</organization>
 			<roles>
@@ -44,7 +45,7 @@
 		</developer>
 		<developer>
 			<name>Marcin Jekot</name>
-			<id> </id>
+			<id>marchy</id>
 			<email>marcin at jekot DOt net</email>
 			<organization>ObjectLab Financial Ltd</organization>
 			<roles>
@@ -53,11 +54,42 @@
 			<timezone>+0</timezone>
 		</developer>
 	</developers>
+    <!-- any mailing lists for the project -->
+    <mailingLists>
+        <mailingList>
+            <name>Kit Announcements</name>
+            <subscribe>https://lists.sourceforge.net/lists/listinfo/objectlabkit-announce</subscribe>
+            <unsubscribe>https://lists.sourceforge.net/lists/listinfo/objectlabkit-announce</unsubscribe>
+            <archive>http://sourceforge.net/mailarchive/forum.php?forum=objectlabkit-announce</archive>
+            
+        </mailingList>
+        <mailingList>
+            <name>Kit User</name>
+            <subscribe>https://lists.sourceforge.net/lists/listinfo/objectlabkit-user</subscribe>
+            <unsubscribe>https://lists.sourceforge.net/lists/listinfo/objectlabkit-user</unsubscribe>
+            <archive>http://sourceforge.net/mailarchive/forum.php?forum=objectlabkit-user</archive>
+        </mailingList>
+        <mailingList>
+            <name>Kit Developers (SVN checkins)</name>
+            <subscribe>https://lists.sourceforge.net/lists/listinfo/objectlabkit-svn</subscribe>
+            <unsubscribe>https://lists.sourceforge.net/lists/listinfo/objectlabkit-svn</unsubscribe>
+            <archive>http://sourceforge.net/mailarchive/forum.php?forum=objectlabkit-svn</archive>
+        </mailingList>
+    </mailingLists>
+
 	<build>
 		<!-- We need to put here something other when we release it or I'll receive the emails from
 			everyone who tries to use the project... -->
 		<nagEmailAddress>kit@objectlab.co.uk</nagEmailAddress>
 		<defaultGoal>kit:build</defaultGoal>
 	</build>
+	
+    <versions>
+        <version>
+            <id>1.0</id>
+            <name>1.0</name>
+            <tag>KIT_1_0</tag>
+        </version>
+   </versions>	
 </project>
 
