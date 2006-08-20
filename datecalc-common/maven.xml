@@ -15,7 +15,7 @@
 	xmlns:log="jelly:log">
 	
 	<goal name="kit:build" prereqs="jar:install" />
-	<goal name="kit:rebuild" prereqs="troy:build" />
+	<goal name="kit:rebuild" prereqs="kit:build" />
 
 	<goal name="ydoc" prereqs="xdoc:init"
 		description="Generate API documentation">
