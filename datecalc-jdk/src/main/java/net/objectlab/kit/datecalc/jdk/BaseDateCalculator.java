@@ -243,23 +243,25 @@ public class BaseDateCalculator implements DateCalculator {
         
         Calendar cal = Utils.getCal(startDate);
 
-        if (isIMMMonth(cal.getTime())) {
-            Date date = calculateIMMDay(startDate);
-            if (date.after(startDate)) {
-                return date;
+        if (isIMMMonth(cal)) {
+            moveToIMMDay(cal);
+            //TODO simplify this if condition
+            if ((forward && cal.getTime().after(startDate)) ||
+                    (!forward && cal.getTime().before(startDate))) {
+                return cal.getTime();
             }
         }
         
         int delta = (forward ? 1 : -1);
         do {
             cal.add(Calendar.MONTH, delta);
-        } while (!isIMMMonth(cal.getTime()));
+        } while (!isIMMMonth(cal));
         
-        return calculateIMMDay(cal.getTime());
+        moveToIMMDay(cal);
+        return cal.getTime();
     }
 
-    private boolean isIMMMonth(final Date date) {
-        Calendar cal = Utils.getCal(date);
+    private boolean isIMMMonth(final Calendar cal) {
         int month = cal.get(Calendar.MONTH);
         return (month == Calendar.MARCH || month == Calendar.JUNE || 
                 month == Calendar.SEPTEMBER || month == Calendar.DECEMBER);
@@ -271,8 +273,7 @@ public class BaseDateCalculator implements DateCalculator {
      * @param first
      * @return
      */
-    private Date calculateIMMDay(final Date date) {
-        Calendar cal = Calendar.getInstance();
+    private void moveToIMMDay(final Calendar cal) {
         cal.set(Calendar.DAY_OF_MONTH, 1);
         
         // go to 1st wed
@@ -287,8 +288,6 @@ public class BaseDateCalculator implements DateCalculator {
         
         // go to 3rd wednesday - i.e. move 2 weeks forward
         cal.add(Calendar.DAY_OF_MONTH, 7 * 2);
-        
-        return cal.getTime();
     }
 
     /**
