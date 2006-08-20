@@ -1,0 +1,85 @@
+<document>
+  <properties>
+    <author email="Kit@objectlab.co.uk">Benoit Xhenseval</author>
+    <title>ObjectLab Kit - Introduction</title>
+  </properties>
+  <head>
+
+  </head>
+  <body>
+    <!-- The body of the document contains a number of sections -->
+    <section name="ObjectLab Kit Introduction">
+
+    <p>ObjectLab Kit came out of our frustration to have to re-do the same kind of code over and over each time we
+    joined a new company and Bank.  Most banks will require basic Date calculation, we did spot another open source
+    project for this but their licence forbids most financial institution from using it.  This one is released under
+    the business-friendly Apache 2.0 license.</p>
+
+    <subsection name="So, what do we provide?">
+    <p>The initial release provides 2 modules for Date calculations, both depend on the classes in common:</p>
+    <ul><li>one for the <a href="./multiproject/datecalc-jdk/index.html">datecalc-jdk.jar JDK</a> with no dependencies</li>
+    <li>and one is based on the powerful <a href="./multiproject/datecalc-joda/index.html">datecalc-joda.jar Joda-time</a> library (we recommend it!)</li>
+    </ul>
+    </subsection>
+    
+    <subsection name="Which JDK?">
+    <p>1.5+, get over it :-)</p>
+    </subsection>
+    
+    <subsection name ="Date Calculations? What is that?">
+    <p>Apart from the very basic "add days" features, most business have to deal with Holidays and what to do when a
+    calculated day falls on a holiday.  This library does <strong>not</strong> attempt to create or guess the holidays, we
+    all know that some bank holidays can be decided at a moment's notice in some markets.  All financial institutions or 
+    big business will have their own official list of 'holidays' anyway.</p>
+    <p>Furthermore, "weekends" also need to be handled and some market have a different week to the conventional Monday ->
+    Friday, our library provides you with full flexibility to design a Working Week.</p>
+    <p>As such a Non-working Day can be a holiday or a 'weekend'.</p>
+    </subsection>
+
+
+    <subsection name ="Ok, what algorithm for handling a holiday do you support?">
+    <p>At the moment, we support the following 5 algorithms:</p>
+    <ol>
+    	<li><strong>Do Nothing</strong>, i.e. leave the date as-is, even if it is a non-working day.</li>
+    	<li><strong>Forward</strong>, if the date is a non-working day, move forward to the next working day.</li>
+    	<li><strong>Backward</strong>, if the date is a non-working day, move backward to the previous working day.</li>
+    	<li><strong>Modified Following</strong>, if the date is a non-working day, move forward to the next working day, 
+    	UNLESS it crosses over a new month, in which case we revert to find the last working day of the current month.</li>
+    	<li><strong>Modified Preceeding</strong>, if the date is a non-working day, move backward to the previous working day, 
+    	UNLESS it crosses over a new month, in which case we revert to find the next working day of the current month.</li>
+    </ol>
+    </subsection>
+    
+    <subsection name="How do I use it?">
+    <p>There are several steps</p>
+    <ul>
+        <li>Register holidays in the factory by calling registerHolidays(final String name, Set&lt;Date> holidays)</li>
+    	<li>Use the factory to get a DateCalculator with a given Handler (forward/backward etc), it is a disposable object that should <strong>not</strong> be shared accross threads, each thread 
+    	should get its own!</li>
+    	<li>when you get a DateCalculator, you can set the startDate, this sets the currentDate too.  The startDate does not move.  The current date is
+    	the result of your calculations.  If the startDate is a non-working day, it may be moved automatically according to the HolidayHandler.</li>
+    	<li>when you call addDays(..), moveByBusinessDays(..) the currentDate is moved in the Calculator.</li>
+    </ul>
+    <pre>
+    	// create of get Holidays
+        final Set&lt;LocalDate> holidays = new HashSet&lt;LocalDate>();
+        holidays.add(new LocalDate("2006-08-28"));
+        
+        DefaultDateCalculatorFactory.getDefaultInstance().registerHolidays("UK", holidays);
+
+        DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);
+	cal.setStartDate(new LocalDate("2006-08-28));
+	
+	// the startDate stays 28 Aug 06 BUT the currentDate has moved, according
+	// to Forward handler to 29 Aug 2006.
+	cal.getStartDate();   // 28 Aug 06
+	cal.getCurrentDate(); // 29 Aug 06   
+    </pre>
+   
+    
+    </subsection>
+
+    </section>
+
+  </body>
+</document>
