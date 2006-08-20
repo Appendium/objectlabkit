@@ -24,7 +24,6 @@ import java.util.List;
 import java.util.Set;
 
 import net.objectlab.kit.datecalc.common.Tenor;
-import net.objectlab.kit.datecalc.common.TenorCode;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
 /**
@@ -35,6 +34,7 @@ import net.objectlab.kit.datecalc.common.WorkingWeek;
  * @author Benoit Xhenseval
  */
 public class BaseDateCalculator implements DateCalculator {
+    
     private String name;
 
     private Date startDate;
@@ -47,6 +47,8 @@ public class BaseDateCalculator implements DateCalculator {
 
     private HolidayHandler holidayHandler = null;
 
+    private final int DAYS_IN_WEEK = 7;
+    
     @SuppressWarnings("unchecked")
     public BaseDateCalculator() {
         this(null, null, Collections.EMPTY_SET, null);
@@ -145,7 +147,9 @@ public class BaseDateCalculator implements DateCalculator {
             initialise();
         }
         
-        holidayHandler.moveCurrentDate(this);
+        Calendar cal = Utils.getCal(currentDate);
+        cal.add(Calendar.DAY_OF_MONTH, days);
+        setCurrentBusinessDate(cal.getTime());
         
         return this;
     }
@@ -237,7 +241,7 @@ public class BaseDateCalculator implements DateCalculator {
 
     private Date getNextIMMDate(final boolean forward, final Date startDate) {
         
-        Calendar cal = getCal(startDate);
+        Calendar cal = Utils.getCal(startDate);
 
         if (isIMMMonth(cal.getTime())) {
             Date date = calculateIMMDay(startDate);
@@ -255,17 +259,10 @@ public class BaseDateCalculator implements DateCalculator {
     }
 
     private boolean isIMMMonth(final Date date) {
-        Calendar cal = getCal(date);
+        Calendar cal = Utils.getCal(date);
         int month = cal.get(Calendar.MONTH);
         return (month == Calendar.MARCH || month == Calendar.JUNE || 
                 month == Calendar.SEPTEMBER || month == Calendar.DECEMBER);
-    }
-
-    // TODO move to Util class
-    private static Calendar getCal(final Date date) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        return cal;
     }
     
     /**
@@ -307,10 +304,18 @@ public class BaseDateCalculator implements DateCalculator {
         if (tenor == null) {
             throw new IllegalArgumentException("Tenor cannot be null");
         }
-        if (tenor.getCode() == TenorCode.IMM) {
+        
+        switch (tenor.getCode()) {
+        case DAY:
+            return addDays(tenor.getUnits());
+        case WEEK:
+            return addDays(tenor.getUnits() * DAYS_IN_WEEK);
+        case IMM:
             setCurrentBusinessDate(getNextIMMDate());
             return this;
+        default:
+            throw new UnsupportedOperationException("Sorry not yet...");
         }
-        throw new UnsupportedOperationException("Sorry not yet...");
+        
     }
 }

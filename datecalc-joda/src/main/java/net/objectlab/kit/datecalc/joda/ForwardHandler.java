@@ -29,6 +29,8 @@ public class ForwardHandler implements HolidayHandler {
 
     public LocalDate moveCurrentDate(final BaseDateCalculator calendar) {
         LocalDate date = calendar.getCurrentDate();
+        //TODO should this not increment the date 1st before the check?
+        //i.e. should it be a do/while? take a look at JDK please
         while (calendar.isNonWorkingDay(date)) {
             date = date.plusDays(1);
         }
