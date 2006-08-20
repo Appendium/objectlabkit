@@ -20,6 +20,8 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+import net.objectlab.kit.datecalc.common.HolidayHandlerType;
+
 public class DefaultDateCalculatorFactory implements DateCalculatorFactory {
     private static final DateCalculatorFactory DEFAULT = new DefaultDateCalculatorFactory();
 
@@ -46,10 +48,15 @@ public class DefaultDateCalculatorFactory implements DateCalculatorFactory {
         if (holidays.containsKey(name)) {
             cal.setNonWorkingDays(holidays.get(name));
         }
-        throw new UnsupportedOperationException("Not yet implemented");
 
-        // if (HolidayHandlerType.FORWARD.equals(holidayHandlerType)) {
-        // cal.setHolidayHandler(new ForwardHandler());
+        if (HolidayHandlerType.FORWARD.equals(holidayHandlerType)) {
+            cal.setHolidayHandler(new ForwardHandler());
+        } else {
+            throw new UnsupportedOperationException("only forward supported");
+        }
+        
+        return cal;
+        
         // } else if (HolidayHandlerType.BACKWARD.equals(holidayHandlerType)) {
         // cal.setHolidayHandler(new BackwardHandler());
         // } else if
