@@ -31,9 +31,9 @@ public class ForwardHandler implements HolidayHandler {
         
         Calendar cal = Utils.getCal(calendar.getCurrentDate());
 
-        do {
+        while (calendar.isNonWorkingDay(cal.getTime())) {
             cal.add(Calendar.DAY_OF_MONTH, 1);
-        } while (calendar.isCurrentDateNonWorking());
+        }
         
         return cal.getTime();
     }
