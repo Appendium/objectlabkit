@@ -25,19 +25,19 @@ import java.util.Date;
  */
 public class WorkingWeek {
 
-    private static byte MONDAY = 1;
+    private static final byte MONDAY = 1;
 
-    private static byte TUESDAY = 2;
+    private static final byte TUESDAY = 2;
 
-    private static byte WEDNESDAY = 4;
+    private static final byte WEDNESDAY = 4;
 
-    private static byte THURSDAY = 8;
+    private static final byte THURSDAY = 8;
 
-    private static byte FRIDAY = 16;
+    private static final byte FRIDAY = 16;
 
-    private static byte SATURDAY = 32;
+    private static final byte SATURDAY = 32;
 
-    private static byte SUNDAY = 64;
+    private static final byte SUNDAY = 64;
 
     private static final byte DEFAULT_WORKING_DAYS = (byte) (MONDAY + TUESDAY
             + WEDNESDAY + THURSDAY + FRIDAY);
