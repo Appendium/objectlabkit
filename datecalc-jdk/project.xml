@@ -15,11 +15,10 @@
 	<package>net.objectlab.kit</package>
 	<shortDescription>DateCalc JDK library</shortDescription>
 	<description>This library provides pure JDK implementation of the Date Calculator.</description>
-	<!--
-		<repository>
-		<connection>scm:cvs:extssh:xhensevalb@62.190.238.107:/home/cvsowner/cvsroot/safemargin/persist</connection>
-		</repository>
-	-->
+	<repository>
+                <connection>scm:svn:https://svn.sourceforge.net/svnroot/objectlabkit/trunk/datecalc-jdk</connection>
+                <developerConnection>scm:svn:https://svn.sourceforge.net/svnroot/objectlabkit/trunk/datecalc-jdk</developerConnection>
+        </repository>
 	<dependencies>
 		<dependency>
 			<groupId>objectlab</groupId>
