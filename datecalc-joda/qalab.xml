@@ -36,12 +36,16 @@
         <summaryresult date="2006-08-19" filecount="3" statvalue="6" type="pmd"/>
         <summaryresult date="2006-08-19" filecount="12" statvalue="89" type="cobertura-line"/>
         <summaryresult date="2006-08-19" filecount="12" statvalue="92" type="cobertura-branch"/>
+        <summaryresult date="2006-08-20" filecount="13" statvalue="1" type="checkstyle"/>
+        <summaryresult date="2006-08-20" filecount="12" statvalue="86" type="cobertura-line"/>
+        <summaryresult date="2006-08-20" filecount="12" statvalue="88" type="cobertura-branch"/>
     </summary>
     <file id="net_objectlab_kit_datecalc_joda_package.html" path="net/objectlab/kit/datecalc/joda/package.html">
         <result date="2006-08-08" statvalue="1" type="checkstyle"/>
         <result date="2006-08-09" statvalue="1" type="checkstyle"/>
         <result date="2006-08-10" statvalue="1" type="checkstyle"/>
         <result date="2006-08-19" statvalue="1" type="checkstyle"/>
+        <result date="2006-08-20" statvalue="1" type="checkstyle"/>
     </file>
     <file id="net_objectlab_kit_datecalc_joda_BaseDateCalculator.java" path="net/objectlab/kit/datecalc/joda/BaseDateCalculator.java">
         <result date="2006-08-08" statvalue="9" type="checkstyle"/>
@@ -58,6 +62,8 @@
         <result date="2006-08-10" statvalue="100" type="cobertura-branch"/>
         <result date="2006-08-19" statvalue="98" type="cobertura-line"/>
         <result date="2006-08-19" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-08-20" statvalue="97" type="cobertura-line"/>
+        <result date="2006-08-20" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="net_objectlab_kit_datecalc_joda_DefaultDateCalculatorFactory.java" path="net/objectlab/kit/datecalc/joda/DefaultDateCalculatorFactory.java">
@@ -72,6 +78,8 @@
         <result date="2006-08-10" statvalue="100" type="cobertura-branch"/>
         <result date="2006-08-19" statvalue="100" type="cobertura-line"/>
         <result date="2006-08-19" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-08-20" statvalue="100" type="cobertura-line"/>
+        <result date="2006-08-20" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="net_objectlab_kit_datecalc_joda_DefaultPeriodCountCalculator.java" path="net/objectlab/kit/datecalc/joda/DefaultPeriodCountCalculator.java">
@@ -89,6 +97,8 @@
         <result date="2006-08-10" statvalue="84" type="cobertura-branch"/>
         <result date="2006-08-19" statvalue="84" type="cobertura-line"/>
         <result date="2006-08-19" statvalue="90" type="cobertura-branch"/>
+        <result date="2006-08-20" statvalue="81" type="cobertura-line"/>
+        <result date="2006-08-20" statvalue="84" type="cobertura-branch"/>
     </file>
     <file id="net_objectlab_kit_datecalc_joda_JodaWorkingWeek.java" path="net/objectlab/kit/datecalc/joda/JodaWorkingWeek.java">
         <result date="2006-08-08" statvalue="1" type="checkstyle"/>
@@ -102,42 +112,8 @@
         <result date="2006-08-10" statvalue="100" type="cobertura-branch"/>
         <result date="2006-08-19" statvalue="100" type="cobertura-line"/>
         <result date="2006-08-19" statvalue="100" type="cobertura-branch"/>
-    </file>
-    <file
-        id="C:_project_objectlab-kit_datecalc-joda_src_test_java_net_objectlab_kit_datecalc_joda_DateCalculatorCombinationTest.java" path="C:/project/objectlab-kit/datecalc-joda/src/test/java/net/objectlab/kit/datecalc/joda/DateCalculatorCombinationTest.java">
-        <result date="2006-08-08" statvalue="5" type="pmd"/>
-        <result date="2006-08-09" statvalue="5" type="pmd"/>
-        <result date="2006-08-10" statvalue="3" type="pmd"/>
-        <result date="2006-08-19" statvalue="3" type="pmd"/>
-    </file>
-    <file
-        id="C:_project_objectlab-kit_datecalc-joda_src_test_java_net_objectlab_kit_datecalc_joda_DateCalculatorFactoryTest.java" path="C:/project/objectlab-kit/datecalc-joda/src/test/java/net/objectlab/kit/datecalc/joda/DateCalculatorFactoryTest.java">
-        <result date="2006-08-08" statvalue="2" type="pmd"/>
-        <result date="2006-08-09" statvalue="2" type="pmd"/>
-    </file>
-    <file
-        id="C:_project_objectlab-kit_datecalc-joda_src_test_java_net_objectlab_kit_datecalc_joda_ForwardDateCalculatorTest.java" path="C:/project/objectlab-kit/datecalc-joda/src/test/java/net/objectlab/kit/datecalc/joda/ForwardDateCalculatorTest.java">
-        <result date="2006-08-08" statvalue="3" type="pmd"/>
-        <result date="2006-08-09" statvalue="3" type="pmd"/>
-    </file>
-    <file
-        id="C:_project_objectlab-kit_datecalc-joda_src_test_java_net_objectlab_kit_datecalc_joda_IMMDateTest.java" path="C:/project/objectlab-kit/datecalc-joda/src/test/java/net/objectlab/kit/datecalc/joda/IMMDateTest.java">
-        <result date="2006-08-08" statvalue="2" type="pmd"/>
-        <result date="2006-08-09" statvalue="2" type="pmd"/>
-        <result date="2006-08-10" statvalue="1" type="pmd"/>
-        <result date="2006-08-19" statvalue="1" type="pmd"/>
-    </file>
-    <file
-        id="C:_project_objectlab-kit_datecalc-joda_src_test_java_net_objectlab_kit_datecalc_joda_JodaWorkingWeekTest.java" path="C:/project/objectlab-kit/datecalc-joda/src/test/java/net/objectlab/kit/datecalc/joda/JodaWorkingWeekTest.java">
-        <result date="2006-08-08" statvalue="1" type="pmd"/>
-        <result date="2006-08-09" statvalue="4" type="pmd"/>
-    </file>
-    <file
-        id="C:_project_objectlab-kit_datecalc-joda_src_test_java_net_objectlab_kit_datecalc_joda_PeriodCountCalculatorTest.java" path="C:/project/objectlab-kit/datecalc-joda/src/test/java/net/objectlab/kit/datecalc/joda/PeriodCountCalculatorTest.java">
-        <result date="2006-08-08" statvalue="2" type="pmd"/>
-        <result date="2006-08-09" statvalue="2" type="pmd"/>
-        <result date="2006-08-10" statvalue="2" type="pmd"/>
-        <result date="2006-08-19" statvalue="2" type="pmd"/>
+        <result date="2006-08-20" statvalue="100" type="cobertura-line"/>
+        <result date="2006-08-20" statvalue="100" type="cobertura-branch"/>
     </file>
     <file id="net_objectlab_kit_datecalc_joda_BackwardHandler.java" path="net/objectlab/kit/datecalc/joda/BackwardHandler.java">
         <result date="2006-08-08" statvalue="28" type="cobertura-line"/>
@@ -145,6 +121,8 @@
         <result date="2006-08-10" statvalue="28" type="cobertura-line"/>
         <result date="2006-08-19" statvalue="85" type="cobertura-line"/>
         <result date="2006-08-19" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-08-20" statvalue="100" type="cobertura-line"/>
+        <result date="2006-08-20" statvalue="100" type="cobertura-branch"/>
     </file>
     <file id="net_objectlab_kit_datecalc_joda_DateCalculator.java" path="net/objectlab/kit/datecalc/joda/DateCalculator.java">
         <result date="2006-08-08" statvalue="100" type="cobertura-line"/>
@@ -155,6 +133,8 @@
         <result date="2006-08-10" statvalue="100" type="cobertura-branch"/>
         <result date="2006-08-19" statvalue="100" type="cobertura-line"/>
         <result date="2006-08-19" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-08-20" statvalue="100" type="cobertura-line"/>
+        <result date="2006-08-20" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="net_objectlab_kit_datecalc_joda_DateCalculatorFactory.java" path="net/objectlab/kit/datecalc/joda/DateCalculatorFactory.java">
@@ -166,6 +146,8 @@
         <result date="2006-08-10" statvalue="100" type="cobertura-branch"/>
         <result date="2006-08-19" statvalue="100" type="cobertura-line"/>
         <result date="2006-08-19" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-08-20" statvalue="100" type="cobertura-line"/>
+        <result date="2006-08-20" statvalue="100" type="cobertura-branch"/>
     </file>
     <file id="net_objectlab_kit_datecalc_joda_ForwardHandler.java" path="net/objectlab/kit/datecalc/joda/ForwardHandler.java">
         <result date="2006-08-08" statvalue="100" type="cobertura-line"/>
@@ -176,6 +158,8 @@
         <result date="2006-08-10" statvalue="100" type="cobertura-branch"/>
         <result date="2006-08-19" statvalue="100" type="cobertura-line"/>
         <result date="2006-08-19" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-08-20" statvalue="100" type="cobertura-line"/>
+        <result date="2006-08-20" statvalue="100" type="cobertura-branch"/>
     </file>
     <file id="net_objectlab_kit_datecalc_joda_HolidayHandler.java" path="net/objectlab/kit/datecalc/joda/HolidayHandler.java">
         <result date="2006-08-08" statvalue="100" type="cobertura-line"/>
@@ -186,6 +170,8 @@
         <result date="2006-08-10" statvalue="100" type="cobertura-branch"/>
         <result date="2006-08-19" statvalue="100" type="cobertura-line"/>
         <result date="2006-08-19" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-08-20" statvalue="100" type="cobertura-line"/>
+        <result date="2006-08-20" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="net_objectlab_kit_datecalc_joda_PeriodCountCalculator.java" path="net/objectlab/kit/datecalc/joda/PeriodCountCalculator.java">
@@ -197,17 +183,21 @@
         <result date="2006-08-10" statvalue="100" type="cobertura-branch"/>
         <result date="2006-08-19" statvalue="100" type="cobertura-line"/>
         <result date="2006-08-19" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-08-20" statvalue="100" type="cobertura-line"/>
+        <result date="2006-08-20" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="net_objectlab_kit_datecalc_joda_ModifiedFollowingHandler.java" path="net/objectlab/kit/datecalc/joda/ModifiedFollowingHandler.java">
         <result date="2006-08-09" statvalue="16" type="cobertura-line"/>
         <result date="2006-08-10" statvalue="16" type="cobertura-line"/>
         <result date="2006-08-19" statvalue="16" type="cobertura-line"/>
+        <result date="2006-08-20" statvalue="16" type="cobertura-line"/>
     </file>
     <file
         id="net_objectlab_kit_datecalc_joda_ModifiedPreceedingHandler.java" path="net/objectlab/kit/datecalc/joda/ModifiedPreceedingHandler.java">
         <result date="2006-08-09" statvalue="16" type="cobertura-line"/>
         <result date="2006-08-10" statvalue="16" type="cobertura-line"/>
         <result date="2006-08-19" statvalue="16" type="cobertura-line"/>
+        <result date="2006-08-20" statvalue="16" type="cobertura-line"/>
     </file>
 </qalab>
