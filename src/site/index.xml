@@ -70,8 +70,8 @@
         DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);
 	cal.setStartDate(new LocalDate("2006-08-28));
 	
-	// the startDate stays 28 Aug 06 BUT the currentDate has moved, according
-	// to Forward handler to 29 Aug 2006.
+	// the startDate stays 28 Aug 06 BUT the currentDate has moved, 
+	// according to Forward handler to 29 Aug 2006.
 	cal.getStartDate();   // 28 Aug 06
 	cal.getCurrentDate(); // 29 Aug 06   
     </pre>

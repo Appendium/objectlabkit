@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="QALab">
+  <title>ObjectLab Kit</title>
+  <body>
+    <links>
+      <item name="Kit Project Page on SourceForge.net" 
+            href="http://sourceforge.net/projects/objectlabkit" />
+    </links>
+
+    <menu name="Kit">
+      <item name="DateCalc Common" href="multiproject/datecalc-common/index.html"/>
+      <item name="DateCalc JDK" href="multiproject/datecalc-jdk/index.html"/>
+      <item name="DateCalc JODA" href="multiproject/datecalc-joda/index.html"/>
+    </menu>
+<!--
+    <menu name="Related Projects">
+      <item name="CheckStyle"  href="http://checkstyle.sourceforge.net/" />
+      <item name="PMD"  href="http://pmd.sourceforge.net/" />
+      <item name="FindBugs"  href="http://findbugs.sourceforge.net/" />
+      <item name="Cobertura"  href="http://cobertura.sourceforge.net/" />
+      <item name="Simian"  href="http://www.redhillconsulting.com.au/products/simian/" />
+      <item name="Hosted by SourceForge" href="http://sourceforge.net/projects/qalab"
+            img="http://sourceforge.net/sflogo.php?group_id=140880&amp;type=1"/>
+    </menu>
+    -->
+    </body>
+</project>  
