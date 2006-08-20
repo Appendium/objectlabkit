@@ -356,14 +356,17 @@ public class BaseDateCalculator implements DateCalculator {
         if (tenor == null) {
             throw new IllegalArgumentException("Tenor cannot be null");
         }
-        if (tenor.getCode() == TenorCode.IMM) {
+        
+        switch (tenor.getCode()) {
+        case IMM:
             setCurrentBusinessDate(getNextIMMDate());
             return this;
-        } else if (tenor.getCode() == TenorCode.DAY) {
+        case DAY:
             return addDays(tenor.getUnits());
-        } else if (tenor.getCode() == TenorCode.WEEK) {
+        case WEEK:
             return addDays(tenor.getUnits() * DAYS_IN_WEEK);
+        default:
+            throw new UnsupportedOperationException("Sorry not yet...");
         }
-        throw new UnsupportedOperationException("Sorry not yet...");
     }
 }
