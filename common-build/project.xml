@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	/*  
+	* ========================================================================
+	* 
+	* 
+	* ========================================================================
+	*/
+-->
+<project xmlns="http://maven.apache.org/POM/3.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/3.0.0 http://maven.apache.org/maven-v3_0_0.xsd">
+	<pomVersion>3</pomVersion>
+	<groupId>objectlab</groupId>
+	<currentVersion>1.0</currentVersion>
+	<organization>
+		<name>ObjectLab Financial Ltd</name>
+		<url>http://www.objectlab.co.uk</url>
+		<logo>
+			http://www.objectlab.co.uk/images/objectlab-web-noblue.gif
+		</logo>
+	</organization>
+	<inceptionYear>2006</inceptionYear>
+	<url>http://kit.objectlab.net</url>
+	<siteAddress>kit.objectlab.net</siteAddress>
+	<siteDirectory>
+		/var/www/solutions/website/objectlab.co.uk/
+	</siteDirectory>
+	<repository>
+                <connection>scm:cvs:pserver:xhensevalb@localhost:/home/cvsowner/cvsroot:xxxx/</connection>
+        </repository>
+	<developers>
+		<developer>
+			<name>Benoit Xhenseval</name>
+			<id>xhensevalb</id>
+			<email>kit AT objectlab DOT co dOt uk</email>
+			<organization>ObjectLab Financial Ltd</organization>
+			<roles>
+				<role>Team Leader</role>
+				<role>Developer</role>
+			</roles>
+			<url>http://www.xhenseval.com</url>
+			<timezone>+0</timezone>
+		</developer>
+		<developer>
+			<name>Marcin Jekot</name>
+			<id> </id>
+			<email>marcin at jekot DOt net</email>
+			<organization>ObjectLab Financial Ltd</organization>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<timezone>+0</timezone>
+		</developer>
+	</developers>
+	<build>
+		<!-- We need to put here something other when we release it or I'll receive the emails from
+			everyone who tries to use the project... -->
+		<nagEmailAddress>kit@objectlab.co.uk</nagEmailAddress>
+		<defaultGoal>kit:build</defaultGoal>
+	</build>
+</project>
+

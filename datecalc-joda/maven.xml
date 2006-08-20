@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<!--
+/*  
+ * ========================================================================
+ * 
+ * 
+ * ========================================================================
+ */
+-->
+
+<project xmlns:j="jelly:core" xmlns:ant="jelly:ant" xmlns:artifact="artifact" xmlns:maven="jelly:org.apache.maven.jelly.tags.project.MavenTagLibrary">
+	
+	<goal name="kit:rebuild" prereqs="kit:build" />
+
+	<goal name="kit:build" prereqs="jar:jar">
+     <echo>ADD Common to full JAR</echo>
+     <ant:jar 
+        basedir="target/classes"
+      	jarfile="${maven.build.dir}/${maven.final.name}-full.jar"
+     	update="yes"
+     >
+    	<fileset dir="${basedir}/../datecalc-common/target/classes"
+             	excludes="**/Test.class"
+             	includes="**/*.class"
+    	/>
+    </ant:jar>
+
+	</goal>
+
+</project>

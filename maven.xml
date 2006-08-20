@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+
+<!--
+/*  
+ * ========================================================================
+ * 
+ * Copyright 2005 ObjectLab Financial Ltd
+ * 
+ * ========================================================================
+ */
+-->
+
+<project xmlns:j="jelly:core" xmlns:ant="jelly:ant" xmlns:maven="jelly:maven" xmlns:x="jelly:xml">
+
+	<goal name="kit:build">
+		<j:set var="goal" value="kit:build" />
+		<j:set var="do.obfuscation" value="false" scope="parent"/>
+		<attainGoal name="multiproject:goal" />
+	</goal>
+
+	<goal name="kit:rebuild">
+		<attainGoal name="clean" />
+		<attainGoal name="multiproject:clean" />
+		<j:set var="goal" value="kit:rebuild" />
+		<j:set var="do.obfuscation" value="false"  scope="parent"/>
+		<attainGoal name="multiproject:goal" />
+	</goal>
+
+	<goal name="kit:releasebuild">
+		<j:set var="do.obfuscation" value="true" scope="parent"/>
+		<attainGoal name="clean" />
+		<attainGoal name="multiproject:clean" />
+		<j:set var="goal" value="kit:rebuild" />
+		<attainGoal name="multiproject:goal" />
+	</goal>
+
+	<goal name="kit:clean" prereqs="multiproject:clean,clean" />
+
+	<goal name="kit:generate" prereqs="multiproject:projects-init">
+		<ant:mkdir dir="${maven.build.dir}" />
+		<maven:get var="multiprojects" plugin="maven-multiproject-plugin" property="multiprojects" />
+		<j:file name="${maven.build.dir}/projects.xml" prettyPrint="true" xmlns="projects">
+			<projects>
+				<j:forEach var="project" items="${multiprojects}">
+					<x:element name="project">
+						<x:attribute name="name">${project.name}</x:attribute>
+						<x:attribute name="artifactId">${project.artifactId}</x:attribute>
+					</x:element>
+				</j:forEach>
+			</projects>
+		</j:file>
+	</goal>
+
+</project>
