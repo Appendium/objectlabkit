@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>net.objectlab.kit</groupId>
+    <artifactId>datecalc</artifactId>
+    <packaging>pom</packaging>
+    <name>ObjectLab Kit</name>
+    <version>1.0-SNAPSHOT</version>
+    <description>
+        ObjectLab Kit provides a generic Business Calendar for calculating dates given set(s) of holidays.
+        Why re-inventing the wheel???        
+    </description>
+
+    <issueManagement>
+        <system>jira</system>
+        <url>http://opensource2.atlassian.com/projects/spring/browse/RCP</url>
+    </issueManagement>
+    <ciManagement>
+        <system>continuum</system>
+        <notifiers>
+            <notifier>
+                <type>mail</type>
+                <configuration>
+                    <address>spring-rich-c-cvs@lists.sourceforge.net</address>
+                </configuration>
+            </notifier>
+        </notifiers>
+    </ciManagement>
+    <inceptionYear>2006</inceptionYear>
+    <mailingLists>
+        <mailingList>
+            <name>User list</name>
+            <subscribe>http://forum.springframework.org/forumdisplay.php?f=28</subscribe>
+            <unsubscribe>http://forum.springframework.org/forumdisplay.php?f=28</unsubscribe>
+            <post>http://forum.springframework.org/forumdisplay.php?f=28</post>
+            <archive>http://forum.springframework.org/forumdisplay.php?f=28</archive>
+        </mailingList>
+        <mailingList>
+            <name>Developer list</name>
+            <subscribe>http://lists.sourceforge.net/lists/listinfo/springframework-rcp-dev</subscribe>
+            <unsubscribe>http://lists.sourceforge.net/lists/listinfo/springframework-rcp-dev</unsubscribe>
+            <!-- This list is not part of the spring-rich-c SF project but of the springframework -->
+            <post>springframework-rcp-dev@lists.sourceforge.net</post>
+            <archive>http://sourceforge.net/mailarchive/forum.php?forum=springframework-rcp-dev</archive>
+            <otherArchives>
+                <otherArchive>http://news.gmane.org/gmane.comp.java.springframework.rcp.devel</otherArchive>
+            </otherArchives>
+        </mailingList>
+        <mailingList>
+            <name>Version control commits</name>
+            <subscribe>http://lists.sourceforge.net/lists/listinfo/spring-rich-c-cvs</subscribe>
+            <unsubscribe>http://lists.sourceforge.net/lists/listinfo/spring-rich-c-cvs</unsubscribe>
+            <post>spring-rich-c-cvs@lists.sourceforge.net</post>
+            <archive>http://sourceforge.net/mailarchive/forum.php?forum=spring-rich-c-cvs</archive>
+            <otherArchives>
+                <otherArchive>http://news.gmane.org/gmane.comp.java.springframework.rcp.commits</otherArchive>
+            </otherArchives>
+        </mailingList>
+    </mailingLists>
+    <developers>
+        <developer>
+            <id>benoitx</id>
+            <name>Benoit Xhenseval</name>
+            <email>kit AT objectlab DOT co DOT UK</email>
+            <roles>
+                <role>Project Leader</role>
+                <role>Java developer</role>
+            </roles>
+            <timezone/>
+        </developer>
+        <developer>
+            <id>mjekot</id>
+            <name>Marcin Jekot</name>
+            <email/>
+            <roles>
+                <role>Java developer</role>
+            </roles>
+            <timezone/>
+        </developer>
+    </developers>
+    <contributors/>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <connection>
+            scm:svn:https://svn.sourceforge.net/svnroot/spring-rich-c/trunk/spring-richclient/
+        </connection>
+        <developerConnection>
+            scm:svn:https://svn.sourceforge.net/svnroot/spring-rich-c/trunk/spring-richclient/
+        </developerConnection>
+        <url>
+            http://svn.sourceforge.net/viewcvs.cgi/spring-rich-c/trunk/spring-richclient/
+        </url>
+    </scm>
+    <organization>
+        <name>ObjectLab</name>
+        <url>http://www.objectlab.co.uk</url>
+    </organization>
+
+    <build>
+<!--        <pluginManagement> -->
+            <plugins>
+                <!--
+                    Last time synchronized with the latest plugin releases:
+                    2006-06-21
+                    See http://news.gmane.org/gmane.comp.apache.maven.announce
+                -->
+
+                <!-- Building -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-help-plugin</artifactId>
+                    <version>2.0.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>2.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>2.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>2.0.1</version>
+                    <configuration>
+                        <source>1.5</source>
+                        <target>1.5</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.2</version>
+                    <configuration>
+                        <testFailureIgnore>true</testFailureIgnore>
+                        <forkMode>never</forkMode>
+                        <includes>
+                            <include>**/*Test.java</include>
+                        </includes>
+                        <excludes>
+                            <exclude>**/*AbstractTests.java</exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
+
+                <!-- Packaging -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>2.0</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>test-jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>2.0.1</version>
+
+                </plugin>
+<!--
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>2.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>2.1</version>
+                </plugin>
+                -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>2.1</version>
+                </plugin>
+                
+                <!--
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>2.0-beta-4</version>
+                    <configuration>
+                        <tagBase>
+                            https://svn.sourceforge.net/svnroot/spring-rich-c/tags
+                        </tagBase>
+                    </configuration>
+                </plugin>
+-->
+                <!-- IDE -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-eclipse-plugin</artifactId>
+                    <version>2.2</version>
+                    <configuration>
+                        <downloadSources>true</downloadSources>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-idea-plugin</artifactId>
+                    <version>2.0</version>
+                    <configuration>
+                        <downloadSources>true</downloadSources>
+                        <downloadJavadocs>true</downloadJavadocs>
+                    </configuration>
+                </plugin>
+
+                <!--Site -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>2.0-beta-5</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-project-info-reports-plugin</artifactId>
+                    <version>2.0.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>2.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-report-plugin</artifactId>
+                    <version>2.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jxr-plugin</artifactId>
+                    <version>2.0</version>
+                </plugin>
+                <!--<plugin>-->
+                    <!--<groupId>org.codehaus.mojo</groupId>-->
+                    <!--<artifactId>taglist-maven-plugin</artifactId>-->
+                    <!--<version>???</version>-->
+                <!--</plugin>-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-pmd-plugin</artifactId>
+                    <version>2.0</version>
+                </plugin>
+                <plugin>
+                  <groupId>org.codehaus.mojo</groupId>
+                  <artifactId>jdepend-maven-plugin</artifactId>
+                  <version>2.0-beta-1-SNAPSHOT</version>
+                </plugin>
+                <!--
+                    TODO checkstyle rules must be configured so it no longer
+                    generates a 4 mb file which is hard to site-deploy...
+                -->
+                <!--<plugin>-->
+                    <!--<groupId>org.apache.maven.plugins</groupId>-->
+                    <!--<artifactId>maven-checkstyle-plugin</artifactId>-->
+                    <!--<version>2.1</version>-->
+                <!--</plugin>-->
+                <!--
+                    TODO Changelog is unfinished:
+                    - has also a problem with the netbeans (cvs)lib dependency
+                    - is moving from mojo.codehaus.org to maven.apache.org
+                -->
+                <!--<plugin>-->
+                    <!--<groupId>org.apache.maven.plugins</groupId>-->
+                    <!--<artifactId>maven-changelog-plugin</artifactId>-->
+                    <!--<version>???</version>-->
+                <!--</plugin>-->
+
+            </plugins>
+<!--        </pluginManagement> 
+        <plugins>
+        </plugins>-->
+    </build>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>taglist-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+		<configuration>
+		    <targetJdk>1.5</targetJdk>
+		</configuration>
+            </plugin>
+            <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-checkstyle-plugin</artifactId>
+            </plugin>
+	    <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-jxr-plugin</artifactId>
+            </plugin>
+              <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-changelog-plugin</artifactId>-->
+            <!--</plugin>-->
+        </plugins>
+    </reporting>
+
+    <profiles>
+        <profile>
+            <id>fast</id>
+            <properties>
+                <maven.test.skip>true</maven.test.skip>
+            </properties>
+        </profile>
+    </profiles>
+
+    <modules>
+        <module>datecalc-common</module>
+        <module>datecalc-jdk</module>
+        <module>datecalc-joda</module>
+    </modules>
+
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <id>springRichclientRepository</id>
+            <name>Spring rich client repository</name>
+            <url>http://spring-rich-c.sourceforge.net/maven2repository</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <!-- currently only needed to use jdepend report -->
+        <pluginRepository>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <id>codehaus-snapshots</id>
+            <name>Snapshot repository from codehaus</name>
+            <url>http://snapshots.maven.codehaus.org/maven2</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <!--
+        <dependency>
+            <groupId>org.easymock</groupId>
+            <artifactId>easymock</artifactId>
+        </dependency>
+        -->
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>net.objectlab.kit.datecalc</groupId>
+                <artifactId>datecalc-common</artifactId>
+                <version>${pom.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.objectlab.kit.datecalc</groupId>
+                <artifactId>datecalc-jdk</artifactId>
+                <version>${pom.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.objectlab.kit.</groupId>
+                <artifactId>datecalc-joda</artifactId>
+                <version>${pom.version}</version>
+            </dependency>
+            <!--
+                Declare all dependency versions and default scopes here, but not optional.
+                Each module should declare it's direct dependency and possibily overwrite scope/optional.
+            -->
+
+            <!-- Internal 
+            <dependency>
+                <groupId>org.springframework.richclient</groupId>
+                <artifactId>spring-richclient-resources</artifactId>
+                <version>${pom.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.richclient</groupId>
+                <artifactId>spring-richclient-resources</artifactId>
+                <type>test-jar</type>
+                <version>${pom.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.richclient</groupId>
+                <artifactId>spring-richclient-core</artifactId>
+                <version>${pom.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.richclient</groupId>
+                <artifactId>spring-richclient-core</artifactId>
+                <type>test-jar</type>
+                <version>${pom.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.richclient</groupId>
+                <artifactId>spring-richclient-binding</artifactId>
+                <version>${pom.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.richclient</groupId>
+                <artifactId>spring-richclient-binding</artifactId>
+                <type>test-jar</type>
+                <version>${pom.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.richclient</groupId>
+                <artifactId>spring-richclient-form</artifactId>
+                <version>${pom.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.richclient</groupId>
+                <artifactId>spring-richclient-form</artifactId>
+                <type>test-jar</type>
+                <version>${pom.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.richclient</groupId>
+                <artifactId>spring-richclient-support</artifactId>
+                <version>${pom.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.richclient</groupId>
+                <artifactId>spring-richclient-support</artifactId>
+                <type>test-jar</type>
+                <version>${pom.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.richclient</groupId>
+                <artifactId>spring-richclient-tiger</artifactId>
+                <version>${pom.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.richclient</groupId>
+                <artifactId>spring-richclient-tiger</artifactId>
+                <type>test-jar</type>
+                <version>${pom.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.richclient</groupId>
+                <artifactId>spring-richclient-sandbox</artifactId>
+                <version>${pom.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.richclient</groupId>
+                <artifactId>spring-richclient-sandbox</artifactId>
+                <type>test-jar</type>
+                <version>${pom.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.richclient</groupId>
+                <artifactId>spring-richclient-full</artifactId>
+                <version>${pom.version}</version>
+                <type>pom</type>
+            </dependency>
+-->
+            <!-- Testing -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>3.8.1</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>1.2.12</version>
+                <scope>runtime</scope>
+                <optional>true</optional>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <distributionManagement>
+        <repository>
+            <id>shell.sourceforge.net</id>
+            <url>
+                scp://shell.sourceforge.net/home/groups/s/sp/spring-rich-c/htdocs/maven2repository
+            </url>
+        </repository>
+        <site>
+            <id>shell.sourceforge.net</id>
+            <url>
+                scp://shell.sourceforge.net/home/groups/s/sp/spring-rich-c/htdocs/
+            </url>
+        </site>
+        <!-- Archive deployment -->
+        <!--<site>-->
+            <!--<id>shell.sourceforge.net</id>-->
+            <!--<url>-->
+                <!--scp://shell.sourceforge.net/home/groups/s/sp/spring-rich-c/htdocs/archive/${pom.version}/-->
+            <!--</url>-->
+        <!--</site>-->
+    </distributionManagement>
+
+</project>

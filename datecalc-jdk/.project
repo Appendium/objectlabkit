@@ -1,0 +1,16 @@
+<projectDescription>
+  <name>datecalc-jdk</name>
+  <comment>Date Calculator methods for JDK</comment>
+  <projects>
+    <project>datecalc-common</project>
+  </projects>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+      <arguments/>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
+</projectDescription>

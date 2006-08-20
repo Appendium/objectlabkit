@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+
+<!--
+	/*  
+	* ========================================================================
+	* 
+	* Copyright 2006 ObjectLab Financial Ltd
+	*
+	* ========================================================================
+	*/
+-->
+
+<project>
+	<extend>${basedir}/common-build/project.xml</extend>
+	<artifactId>objectlab-kit</artifactId>
+	<name>ObjectLab Kit</name>
+	<shortDescription>Useful Kit from your friendly ObjectLab people</shortDescription>
+	<repository>
+		<!--
+			
+			On Unix run:
+			cvs -d :pserver:xhensevalb@localhost/home/cvsowner/cvsroot login
+			In order to create the .cvspass file
+			
+		-->
+		<connection>scm:cvs:pserver:xhensevalb@localhost:/home/cvsowner/cvsroot:safemargin-proto</connection>
+	</repository>
+	<reports>
+		<report>maven-dashboard-plugin</report>
+<!--		<report>maven-statcvs-plugin</report>
+		<report>maven-changelog-plugin</report>
+		<report>maven-license-plugin</report>
+		<report>maven-file-activity-plugin</report>
+		<report>maven-developer-activity-plugin</report>-->
+		<report>maven-linkcheck-plugin</report>
+	</reports>
+
+	<dependencies>
+		<!-- For unit tests -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+		</dependency>
+
+		<!-- EXTERNAL DEPENDENCIES -->
+		<dependency>
+			<groupId>javax.j2ee</groupId>
+			<artifactId>j2ee</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<id>log4j</id>
+			<version>1.2.13</version>
+			<url>http://jakarta.apache.org/log4j/</url>
+		</dependency>
+	</dependencies>
+</project>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE qalab [<!ELEMENT qalab (summary,file*)>
+<!ATTLIST qalab version CDATA #REQUIRED>
+<!ELEMENT summary (summaryresult*)>
+<!ELEMENT file (result+)>
+<!ATTLIST file id ID #REQUIRED>
+<!ATTLIST file path CDATA #REQUIRED>
+<!ELEMENT result EMPTY>
+<!ATTLIST result date CDATA #REQUIRED>
+<!ATTLIST result statvalue CDATA #REQUIRED>
+<!ATTLIST result type CDATA #REQUIRED>
+<!ELEMENT summaryresult EMPTY>
+<!ATTLIST summaryresult date CDATA #REQUIRED>
+<!ATTLIST summaryresult statvalue CDATA #REQUIRED>
+<!ATTLIST summaryresult filecount CDATA #REQUIRED>
+<!ATTLIST summaryresult type CDATA #REQUIRED>
+]>
+<qalab version="1.1">
+    <summary>
+        <summaryresult date="2006-08-08" filecount="8" statvalue="3" type="checkstyle"/>
+        <summaryresult date="2006-08-08" filecount="2" statvalue="7" type="pmd"/>
+        <summaryresult date="2006-08-08" filecount="1" statvalue="1" type="findbugs"/>
+        <summaryresult date="2006-08-09" filecount="8" statvalue="3" type="checkstyle"/>
+        <summaryresult date="2006-08-09" filecount="2" statvalue="7" type="pmd"/>
+        <summaryresult date="2006-08-09" filecount="1" statvalue="1" type="findbugs"/>
+        <summaryresult date="2006-08-10" filecount="8" statvalue="3" type="checkstyle"/>
+        <summaryresult date="2006-08-10" filecount="2" statvalue="7" type="pmd"/>
+        <summaryresult date="2006-08-10" filecount="1" statvalue="1" type="findbugs"/>
+    </summary>
+    <file id="net_objectlab_kit_datecalc_jdk_package.html" path="net/objectlab/kit/datecalc/jdk/package.html">
+        <result date="2006-08-08" statvalue="1" type="checkstyle"/>
+        <result date="2006-08-09" statvalue="1" type="checkstyle"/>
+        <result date="2006-08-10" statvalue="1" type="checkstyle"/>
+    </file>
+    <file id="net_objectlab_kit_datecalc_jdk_BaseDateCalculator.java" path="net/objectlab/kit/datecalc/jdk/BaseDateCalculator.java">
+        <result date="2006-08-08" statvalue="1" type="checkstyle"/>
+        <result date="2006-08-08" statvalue="4" type="pmd"/>
+        <result date="2006-08-08" statvalue="1" type="findbugs"/>
+        <result date="2006-08-09" statvalue="1" type="checkstyle"/>
+        <result date="2006-08-09" statvalue="4" type="pmd"/>
+        <result date="2006-08-09" statvalue="1" type="findbugs"/>
+        <result date="2006-08-10" statvalue="1" type="checkstyle"/>
+        <result date="2006-08-10" statvalue="4" type="pmd"/>
+        <result date="2006-08-10" statvalue="1" type="findbugs"/>
+    </file>
+    <file
+        id="net_objectlab_kit_datecalc_jdk_DefaultDateCalculatorFactory.java" path="net/objectlab/kit/datecalc/jdk/DefaultDateCalculatorFactory.java">
+        <result date="2006-08-08" statvalue="1" type="checkstyle"/>
+        <result date="2006-08-09" statvalue="1" type="checkstyle"/>
+        <result date="2006-08-10" statvalue="1" type="checkstyle"/>
+    </file>
+    <file
+        id="C:_project_objectlab-kit_datecalc-jdk_src_test_java_net_objectlab_kit_datecalc_jdk_DateCalculatorCombinationTest.java" path="C:/project/objectlab-kit/datecalc-jdk/src/test/java/net/objectlab/kit/datecalc/jdk/DateCalculatorCombinationTest.java">
+        <result date="2006-08-08" statvalue="3" type="pmd"/>
+        <result date="2006-08-09" statvalue="3" type="pmd"/>
+        <result date="2006-08-10" statvalue="3" type="pmd"/>
+    </file>
+    <file id="net_objectlab_kit_datecalc_jdk_DateCalculator.java" path="net/objectlab/kit/datecalc/jdk/DateCalculator.java">
+        <result date="2006-08-08" statvalue="100" type="cobertura-line"/>
+        <result date="2006-08-08" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-08-09" statvalue="100" type="cobertura-line"/>
+        <result date="2006-08-09" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-08-10" statvalue="100" type="cobertura-line"/>
+        <result date="2006-08-10" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file id="net_objectlab_kit_datecalc_jdk_DateCalculatorFactory.java" path="net/objectlab/kit/datecalc/jdk/DateCalculatorFactory.java">
+        <result date="2006-08-08" statvalue="100" type="cobertura-line"/>
+        <result date="2006-08-08" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-08-09" statvalue="100" type="cobertura-line"/>
+        <result date="2006-08-09" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-08-10" statvalue="100" type="cobertura-line"/>
+        <result date="2006-08-10" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file id="net_objectlab_kit_datecalc_jdk_HolidayHandler.java" path="net/objectlab/kit/datecalc/jdk/HolidayHandler.java">
+        <result date="2006-08-08" statvalue="100" type="cobertura-line"/>
+        <result date="2006-08-08" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-08-09" statvalue="100" type="cobertura-line"/>
+        <result date="2006-08-09" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-08-10" statvalue="100" type="cobertura-line"/>
+        <result date="2006-08-10" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file id="net_objectlab_kit_datecalc_jdk_PeriodCountCalculator.java" path="net/objectlab/kit/datecalc/jdk/PeriodCountCalculator.java">
+        <result date="2006-08-08" statvalue="100" type="cobertura-line"/>
+        <result date="2006-08-08" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-08-09" statvalue="100" type="cobertura-line"/>
+        <result date="2006-08-09" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-08-10" statvalue="100" type="cobertura-line"/>
+        <result date="2006-08-10" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="net_objectlab_kit_datecalc_jdk_DefaultPeriodCountCalculator.java" path="net/objectlab/kit/datecalc/jdk/DefaultPeriodCountCalculator.java">
+        <result date="2006-08-08" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-08-09" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-08-10" statvalue="100" type="cobertura-branch"/>
+    </file>
+</qalab>

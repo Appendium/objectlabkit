@@ -1,0 +1,6 @@
+<!-- $Id$ -->
+<FindBugsFilter>
+  <Match classregex="net.*" >
+    <BugCode name="EI,EI2" />
+  </Match>
+</FindBugsFilter>
