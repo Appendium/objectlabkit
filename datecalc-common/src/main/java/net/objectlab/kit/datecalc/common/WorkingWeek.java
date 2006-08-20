@@ -24,9 +24,26 @@ import java.util.Date;
  * @author Benoit Xhenseval
  */
 public class WorkingWeek {
-    private static final int DEFAULT_WEEK = 31;
 
-    private static final byte[] CALENDAR_DAYS = new byte[] { 64, 1, 2, 4, 8, 16, 32 };
+    private static byte MONDAY = 1;
+
+    private static byte TUESDAY = 2;
+
+    private static byte WEDNESDAY = 4;
+
+    private static byte THURSDAY = 8;
+
+    private static byte FRIDAY = 16;
+
+    private static byte SATURDAY = 32;
+
+    private static byte SUNDAY = 64;
+
+    private static final byte DEFAULT_WORKING_DAYS = (byte) (MONDAY + TUESDAY
+            + WEDNESDAY + THURSDAY + FRIDAY);
+
+    private static final byte[] WORKING_WEEK_DAYS_OFFSET = new byte[] { SUNDAY,
+            MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY };
 
     public static final WorkingWeek DEFAULT = new WorkingWeek();
 
@@ -34,7 +51,7 @@ public class WorkingWeek {
      * Default Working Week Monday -> Friday.
      */
     public WorkingWeek() {
-        this((byte) DEFAULT_WEEK);
+        this((byte) DEFAULT_WORKING_DAYS);
     }
 
     private WorkingWeek(final byte workingDays) {
@@ -45,11 +62,11 @@ public class WorkingWeek {
      * working days: 1 Monday, 2 Tuesday, 4 Wednesday, 8 Thursday, 16 Friday, 32
      * Saturday, 64 Sunday So Monday-Friday= 1+2+4+8+16 = 31
      */
-    private byte workingDays = DEFAULT_WEEK;
+    private byte workingDays = DEFAULT_WORKING_DAYS;
 
     public boolean isWorkingDayFromCalendar(final int dayOfWeek) {
         final int day = adjustDay(dayOfWeek);
-        return (CALENDAR_DAYS[day] & workingDays) != 0;
+        return (WORKING_WEEK_DAYS_OFFSET[day] & workingDays) != 0;
     }
 
     public boolean isWorkingDay(final Date date) {
@@ -75,9 +92,9 @@ public class WorkingWeek {
         final int day = adjustDay(dayOfWeek);
         WorkingWeek ret = this;
         if (working && (!isWorkingDayFromCalendar(dayOfWeek))) {
-            ret = new WorkingWeek((byte) (workingDays + CALENDAR_DAYS[day]));
+            ret = new WorkingWeek((byte) (workingDays + WORKING_WEEK_DAYS_OFFSET[day]));
         } else if (!working && isWorkingDayFromCalendar(dayOfWeek)) {
-            ret = new WorkingWeek((byte) (workingDays - CALENDAR_DAYS[day]));
+            ret = new WorkingWeek((byte) (workingDays - WORKING_WEEK_DAYS_OFFSET[day]));
         }
         return ret;
     }
