@@ -15,6 +15,8 @@
  */
 package net.objectlab.kit.datecalc.jdk;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
@@ -142,14 +144,10 @@ public class BaseDateCalculator implements DateCalculator {
         if (currentDate == null) {
             initialise();
         }
-
-        throw new UnsupportedOperationException("Not yet implemented");
-
-        // if (holidayHandler != null) {
-        // currentDate = holidayHandler.moveCurrentDate(this);
-        // }
-        //
-        // return this;
+        
+        holidayHandler.moveCurrentDate(this);
+        
+        return this;
     }
 
     private void initialise() {
@@ -207,21 +205,26 @@ public class BaseDateCalculator implements DateCalculator {
         return cal;
     }
 
+    /**
+     * Calculates IMMDates between a start and end dates
+     * the 3rd wednesday of Mar/Jun/Sep/Dec
+     * when a lot of derivative contracts expire
+     * @return a List of Dates
+     */
     public List<Date> getIMMDates(final Date start, final Date end) {
-        // final List<Date> dates = new ArrayList<Date>();
-        throw new UnsupportedOperationException("Not yet implemented");
-
-        // Date date = start;
-        // while (true) {
-        // date = getNextIMMDate(true, date);
-        // if (!date.isAfter(end)) {
-        // dates.add(date);
-        // } else {
-        // break;
-        // }
-        // }
-        //
-        // return dates;
+        
+        List<Date> dates = new ArrayList<Date>();
+        Date date = start;
+        while (true) {
+            date = getNextIMMDate(true, date);
+            if (!date.after(end)) {
+                dates.add(date);
+            } else {
+                break;
+            }
+        }
+        
+         return dates;
     }
 
     public Date getNextIMMDate() {
@@ -233,17 +236,62 @@ public class BaseDateCalculator implements DateCalculator {
     }
 
     private Date getNextIMMDate(final boolean forward, final Date startDate) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        
+        Calendar cal = getCal(startDate);
+
+        if (isIMMMonth(cal.getTime())) {
+            Date date = calculateIMMDay(startDate);
+            if (date.after(startDate)) {
+                return date;
+            }
+        }
+        
+        int delta = (forward ? 1 : -1);
+        do {
+            cal.add(Calendar.MONTH, delta);
+        } while (!isIMMMonth(cal.getTime()));
+        
+        return calculateIMMDay(cal.getTime());
     }
 
+    private boolean isIMMMonth(final Date date) {
+        Calendar cal = getCal(date);
+        int month = cal.get(Calendar.MONTH);
+        return (month == Calendar.MARCH || month == Calendar.JUNE || 
+                month == Calendar.SEPTEMBER || month == Calendar.DECEMBER);
+    }
+
+    // TODO move to Util class
+    private static Calendar getCal(final Date date) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        return cal;
+    }
+    
     /**
-     * Assumes that the month is correct, get the day for the 2rd wednesday.
+     * Assumes that the month is correct, get the day for the 3rd wednesday.
      * 
      * @param first
      * @return
      */
-    private int calculateIMMDay(final Date date) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    private Date calculateIMMDay(final Date date) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.DAY_OF_MONTH, 1);
+        
+        // go to 1st wed
+        int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+        if (dayOfWeek < Calendar.WEDNESDAY) {
+            cal.add(Calendar.DAY_OF_MONTH, Calendar.WEDNESDAY - dayOfWeek);
+        } else if (dayOfWeek == Calendar.WEDNESDAY) {
+            // do nothing
+        } else {
+            cal.add(Calendar.DAY_OF_MONTH, (Calendar.WEDNESDAY + 7) - dayOfWeek);
+        }
+        
+        // go to 3rd wednesday - i.e. move 2 weeks forward
+        cal.add(Calendar.DAY_OF_MONTH, 7 * 2);
+        
+        return cal.getTime();
     }
 
     /**
