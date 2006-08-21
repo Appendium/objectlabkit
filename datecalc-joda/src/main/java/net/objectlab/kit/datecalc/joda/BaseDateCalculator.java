@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.Set;
 
 import net.objectlab.kit.datecalc.common.Tenor;
-import net.objectlab.kit.datecalc.common.TenorCode;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
 import org.joda.time.DateTimeConstants;
