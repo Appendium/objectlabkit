@@ -33,11 +33,11 @@ public class ModifiedFollowingHandler implements HolidayHandler {
         final int month = date.getMonthOfYear();
         int step = 1;
         while (calendar.isNonWorkingDay(date)) {
-            date = date.minusDays(step);
+            date = date.plusDays(step);
             if (date.getMonthOfYear() != month) {
                 // flick to backward
                 step = -1;
-                date = date.minusDays(step);
+                date = date.plusDays(step);
             }
         }
         return date;
