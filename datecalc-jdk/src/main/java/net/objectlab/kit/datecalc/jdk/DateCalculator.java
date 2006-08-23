@@ -16,11 +16,10 @@
 package net.objectlab.kit.datecalc.jdk;
 
 import java.util.Date;
-import java.util.List;
-import java.util.Set;
 
-import net.objectlab.kit.datecalc.common.Tenor;
-import net.objectlab.kit.datecalc.common.WorkingWeek;
+import net.objectlab.kit.datecalc.common.DateCalculatorGeneric;
+
+
 
 /**
  * A DateCalculator is a lightweight container with a reference(optional) to a
@@ -30,145 +29,5 @@ import net.objectlab.kit.datecalc.common.WorkingWeek;
  * 
  * @author Benoit Xhenseval
  */
-public interface DateCalculator {
-    /**
-     * @return Calendar name (Typically the name associated with the holiday
-     *         set).
-     */
-    String getName();
-
-    /**
-     * @param startDate
-     *            the reference date for this calendar, the current date is also
-     *            updated and may be moved if it falls on a non working day
-     *            (holiday/weekend).
-     */
-    void setStartDate(final Date startDate);
-
-    /**
-     * @return startDate the reference date for this calendar.
-     */
-    Date getStartDate();
-
-    /**
-     * @param current
-     *            Date held by the calendar.
-     */
-    Date getCurrentDate();
-
-    /**
-     * is the date a non-working day according to the WorkingWeek?
-     */
-    boolean isWeekend(final Date date);
-
-    /**
-     * is the given date a non working day, i.e. either a "weekend" or a
-     * holiday?
-     */
-    boolean isNonWorkingDay(final Date date);
-
-    /**
-     * @return true if the current date is either a weekend or a holiday.
-     */
-    boolean isCurrentDateNonWorking();
-
-    /**
-     * This is typically used at the construction of a DateCalculator.
-     * 
-     * @param holidays
-     *            the holiday (if null, an empty set will be put in place)
-     */
-    void setNonWorkingDays(final Set<Date> holidays);
-
-    /**
-     * @return an immutable copy of the holiday set.
-     */
-    Set<Date> getNonWorkingDays();
-
-    /**
-     * Allow user to define what their Working Week should be (default is
-     * Mon-Fri).
-     * 
-     * @param week
-     */
-    void setWorkingWeek(final WorkingWeek week);
-
-    /**
-     * give a current business date which may be moved if it falls on a non
-     * working day.
-     * 
-     * @param date
-     * @return new current date if moved.
-     */
-    Date setCurrentBusinessDate(final Date date);
-
-    /**
-     * @return the holiday handler type, can be null
-     */
-    String getHolidayHandlerType();
-
-    /**
-     * move the current date by the number of days and, if it falls on a weekend
-     * or holiday, move it according to the HolidayHandler given in this
-     * DateCalculator.
-     * 
-     * @param days
-     *            number of day
-     * @return the businessCalendar (so one can do
-     *         calendar.addDays(2).getCurrentBusinessDate();)
-     */
-    DateCalculator moveByDays(final int days);
-
-    /**
-     * move the current date by a number of business days, this means that if a
-     * date is either a 'weekend' or holiday, it will be skipped acording to the
-     * holiday handler and not count towards the number of days to move.
-     * 
-     * @param businessDays
-     * @return the current businessCalendar (so one can do
-     *         calendar.moveByBusinessDays(2).getCurrentBusinessDate();)
-     */
-    DateCalculator moveByBusinessDays(final int businessDays);
-
-    /**
-     * By combining several calendars, we take into account several set of
-     * holidays.
-     * 
-     * @param calendar
-     * @return a new DateCalculator
-     */
-    DateCalculator combine(DateCalculator calendar);
-
-    /**
-     * move the current date by a given tenor, this means that if a date is
-     * either a 'weekend' or holiday, it will be skipped acording to the holiday
-     * handler and not count towards the number of days to move.
-     * 
-     * @param businessDays
-     * @return the current businessCalendar (so one can do
-     *         calendar.moveByTenor(StandardTenor.T_2M).getCurrentBusinessDate();)
-     */
-    DateCalculator moveByTenor(final Tenor tenor);
-
-    /**
-     * @return the next IMMDate based on current date.
-     */
-    Date getNextIMMDate();
-
-    /**
-     * @return the previous IMMDate based on current date.
-     */
-    Date getPreviousIMMDate();
-
-    /**
-     * Returns a list of IMM dates between 2 dates, it will exclude the start
-     * date if it is an IMM date but would include the end date if it is an IMM.
-     * 
-     * @param start
-     *            start of the interval, excluded
-     * @param end
-     *            end of the interval, may be included.
-     * @return list of IMM dates
-     */
-    List<Date> getIMMDates(final Date start, final Date end);
+public interface DateCalculator extends DateCalculatorGeneric<Date> {
 }

@@ -1,6 +1,7 @@
 package net.objectlab.kit.datecalc.joda;
 
 import junit.framework.Assert;
+import net.objectlab.kit.datecalc.common.DateCalculatorGeneric;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
 import org.joda.time.LocalDate;
@@ -56,7 +57,7 @@ public class DateCalculatorCombinationTest extends AbstractDateCalculatorTest {
         final DateCalculator cal2 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK",
                 HolidayHandlerType.FORWARD);
 
-        final DateCalculator combo = cal1.combine(cal2);
+        final DateCalculatorGeneric combo = cal1.combine(cal2);
         Assert.assertEquals("Combo name", "bla/UK", combo.getName());
         Assert.assertEquals("Combo type", HolidayHandlerType.FORWARD, combo.getHolidayHandlerType());
         Assert.assertEquals("start", localDate, combo.getStartDate());
@@ -74,7 +75,7 @@ public class DateCalculatorCombinationTest extends AbstractDateCalculatorTest {
         final DateCalculator cal2 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK",
                 HolidayHandlerType.FORWARD);
 
-        final DateCalculator combo = cal1.combine(cal2);
+        final DateCalculatorGeneric combo = cal1.combine(cal2);
         Assert.assertEquals("Combo name", "UK/UK", combo.getName());
         Assert.assertEquals("Combo type", HolidayHandlerType.FORWARD, combo.getHolidayHandlerType());
         Assert.assertEquals("start", localDate, combo.getStartDate());
@@ -92,7 +93,7 @@ public class DateCalculatorCombinationTest extends AbstractDateCalculatorTest {
         final DateCalculator cal2 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK",
                 HolidayHandlerType.FORWARD);
 
-        final DateCalculator combo = cal1.combine(cal2);
+        final DateCalculatorGeneric combo = cal1.combine(cal2);
         Assert.assertEquals("Combo name", "US/UK", combo.getName());
         Assert.assertEquals("Combo type", HolidayHandlerType.FORWARD, combo.getHolidayHandlerType());
         Assert.assertEquals("start", localDate, combo.getStartDate());
@@ -107,7 +108,7 @@ public class DateCalculatorCombinationTest extends AbstractDateCalculatorTest {
         final LocalDate localDate = new LocalDate("2006-08-08");
         cal1.setStartDate(localDate);
 
-        final DateCalculator combo = cal1.combine(null);
+        final DateCalculatorGeneric combo = cal1.combine(null);
         Assert.assertSame("same", combo, cal1);
         Assert.assertEquals("Combo name", "US", combo.getName());
         Assert.assertEquals("Combo type", HolidayHandlerType.FORWARD, combo.getHolidayHandlerType());
@@ -123,7 +124,7 @@ public class DateCalculatorCombinationTest extends AbstractDateCalculatorTest {
         final LocalDate localDate = new LocalDate("2006-08-08");
         cal1.setStartDate(localDate);
 
-        final DateCalculator combo = cal1.combine(cal1);
+        final DateCalculatorGeneric combo = cal1.combine(cal1);
         Assert.assertSame("same", combo, cal1);
         Assert.assertEquals("Combo name", "US", combo.getName());
         Assert.assertEquals("Combo type", HolidayHandlerType.FORWARD, combo.getHolidayHandlerType());

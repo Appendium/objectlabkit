@@ -5,6 +5,7 @@ import java.util.Set;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;
+import net.objectlab.kit.datecalc.common.DateCalculatorGeneric;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 import net.objectlab.kit.datecalc.common.StandardTenor;
 import net.objectlab.kit.datecalc.common.Tenor;
@@ -23,11 +24,11 @@ public class ModifiedPreceedingDateCalculatorTest extends TestCase {
 
         final LocalDate startDate = new LocalDate("2006-08-01");
         cal.setStartDate(startDate);
-        checkDate("Move by 0 days", cal.addDays(0), "2006-08-01");
-        checkDate("Move by 1 days", cal.addDays(1), "2006-08-02");
-        checkDate("Move by 1 more days", cal.addDays(1), "2006-08-03");
-        checkDate("Move by 1 more more days", cal.addDays(1), "2006-08-04");
-        checkDate("Move by 1 more more more days (across weekend)", cal.addDays(1), "2006-08-04");
+        checkDate("Move by 0 days", cal.moveByDays(0), "2006-08-01");
+        checkDate("Move by 1 days", cal.moveByDays(1), "2006-08-02");
+        checkDate("Move by 1 more days", cal.moveByDays(1), "2006-08-03");
+        checkDate("Move by 1 more more days", cal.moveByDays(1), "2006-08-04");
+        checkDate("Move by 1 more more more days (across weekend)", cal.moveByDays(1), "2006-08-04");
     }
 
     public void testSimpleForwardStartDateWithWeekend() {
@@ -188,16 +189,16 @@ public class ModifiedPreceedingDateCalculatorTest extends TestCase {
         checkDate("Xmas Eve", cal, "2006-12-27");
 
         cal.setStartDate(new LocalDate("2006-12-21"));
-        checkDate("21/12 + 1", cal.addDays(1), "2006-12-22");
+        checkDate("21/12 + 1", cal.moveByDays(1), "2006-12-22");
 
         cal.setStartDate(new LocalDate("2006-12-21"));
-        checkDate("21/12 + 1", cal.addDays(2), "2006-12-27");
+        checkDate("21/12 + 1", cal.moveByDays(2), "2006-12-27");
 
         cal.setStartDate(new LocalDate("2006-12-22"));
-        checkDate("22/12 + 1", cal.addDays(1), "2006-12-27");
+        checkDate("22/12 + 1", cal.moveByDays(1), "2006-12-27");
 
         cal.setStartDate(new LocalDate("2006-12-23"));
-        checkDate("23/12 + 1", cal.addDays(1), "2006-12-28");
+        checkDate("23/12 + 1", cal.moveByDays(1), "2006-12-28");
     }
 
     public void testMoveByBusinessDays() {
@@ -216,7 +217,7 @@ public class ModifiedPreceedingDateCalculatorTest extends TestCase {
         checkDate("Move 1 BD", cal.moveByBusinessDays(1), "2006-08-25");
 
         cal.setStartDate(new LocalDate("2006-08-24"));
-        checkDate("Add 1 week", cal.addDays(7), "2006-08-31");
+        checkDate("Add 1 week", cal.moveByDays(7), "2006-08-31");
         cal.setStartDate(new LocalDate("2006-08-24"));
         checkDate("Move by 1W with 1 bank holiday", cal.moveByBusinessDays(7), "2006-09-05");
 
@@ -259,10 +260,10 @@ public class ModifiedPreceedingDateCalculatorTest extends TestCase {
                 HolidayHandlerType.MODIFIED_FOLLLOWING);
 
         cal.setStartDate(new LocalDate("2006-08-02"));
-        cal.addDays(-1);
+        cal.moveByDays(-1);
         checkDate("1/8", cal, "2006-08-01");
 
-        cal.addDays(-1);
+        cal.moveByDays(-1);
         checkDate("do move to next month", cal, "2006-07-31");
         
         // now if it due to roll over:
@@ -270,12 +271,12 @@ public class ModifiedPreceedingDateCalculatorTest extends TestCase {
         Set<LocalDate> hol = new HashSet<LocalDate>();
         hol.add(new LocalDate("2006-08-01"));
         cal.setNonWorkingDays(hol);
-        cal.addDays(-1);
+        cal.moveByDays(-1);
         
         checkDate("do NOT move to next month", cal, "2006-08-02");
     }
 
-    private void checkDate(final String string, final DateCalculator calendar, final String string2) {
+    private void checkDate(final String string, final DateCalculatorGeneric calendar, final String string2) {
         Assert.assertEquals(string, new LocalDate(string2), calendar.getCurrentDate());
     }
 }

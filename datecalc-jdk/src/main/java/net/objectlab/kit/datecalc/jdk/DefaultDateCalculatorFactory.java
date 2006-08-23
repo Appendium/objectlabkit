@@ -20,6 +20,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+import net.objectlab.kit.datecalc.common.DateCalculatorGeneric;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
 public class DefaultDateCalculatorFactory implements DateCalculatorFactory {
@@ -42,7 +43,7 @@ public class DefaultDateCalculatorFactory implements DateCalculatorFactory {
      *            typically one of the value of HolidayHandlerType
      * @return a new DateCalculator
      */
-    public DateCalculator getDateCalculator(final String name, final String holidayHandlerType) {
+    public DateCalculatorGeneric getDateCalculator(final String name, final String holidayHandlerType) {
         final BaseDateCalculator cal = new BaseDateCalculator();
         cal.setName(name);
         if (holidays.containsKey(name)) {
