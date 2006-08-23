@@ -40,9 +40,9 @@
         <summaryresult date="2006-08-20" filecount="1" statvalue="1" type="pmd"/>
         <summaryresult date="2006-08-20" filecount="12" statvalue="86" type="cobertura-line"/>
         <summaryresult date="2006-08-20" filecount="12" statvalue="88" type="cobertura-branch"/>
-        <summaryresult date="2006-08-23" filecount="13" statvalue="1" type="checkstyle"/>
-        <summaryresult date="2006-08-23" filecount="12" statvalue="93" type="cobertura-line"/>
-        <summaryresult date="2006-08-23" filecount="12" statvalue="95" type="cobertura-branch"/>
+        <summaryresult date="2006-08-23" filecount="11" statvalue="1" type="checkstyle"/>
+        <summaryresult date="2006-08-23" filecount="10" statvalue="93" type="cobertura-line"/>
+        <summaryresult date="2006-08-23" filecount="10" statvalue="95" type="cobertura-branch"/>
     </summary>
     <file id="net_objectlab_kit_datecalc_joda_package.html" path="net/objectlab/kit/datecalc/joda/package.html">
         <result date="2006-08-08" statvalue="1" type="checkstyle"/>
@@ -152,8 +152,6 @@
         <result date="2006-08-19" statvalue="100" type="cobertura-branch"/>
         <result date="2006-08-20" statvalue="100" type="cobertura-line"/>
         <result date="2006-08-20" statvalue="100" type="cobertura-branch"/>
-        <result date="2006-08-23" statvalue="100" type="cobertura-line"/>
-        <result date="2006-08-23" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="net_objectlab_kit_datecalc_joda_DateCalculatorFactory.java" path="net/objectlab/kit/datecalc/joda/DateCalculatorFactory.java">
@@ -195,8 +193,6 @@
         <result date="2006-08-19" statvalue="100" type="cobertura-branch"/>
         <result date="2006-08-20" statvalue="100" type="cobertura-line"/>
         <result date="2006-08-20" statvalue="100" type="cobertura-branch"/>
-        <result date="2006-08-23" statvalue="100" type="cobertura-line"/>
-        <result date="2006-08-23" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="net_objectlab_kit_datecalc_joda_PeriodCountCalculator.java" path="net/objectlab/kit/datecalc/joda/PeriodCountCalculator.java">
