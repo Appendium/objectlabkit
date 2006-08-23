@@ -31,11 +31,10 @@
         <summaryresult date="2006-08-20" filecount="1" statvalue="1" type="findbugs"/>
         <summaryresult date="2006-08-20" filecount="9" statvalue="77" type="cobertura-line"/>
         <summaryresult date="2006-08-20" filecount="9" statvalue="77" type="cobertura-branch"/>
-        <summaryresult date="2006-08-23" filecount="10" statvalue="8" type="checkstyle"/>
+        <summaryresult date="2006-08-23" filecount="8" statvalue="8" type="checkstyle"/>
         <summaryresult date="2006-08-23" filecount="1" statvalue="1" type="pmd"/>
-        <summaryresult date="2006-08-23" filecount="1" statvalue="1" type="findbugs"/>
-        <summaryresult date="2006-08-23" filecount="9" statvalue="82" type="cobertura-line"/>
-        <summaryresult date="2006-08-23" filecount="9" statvalue="80" type="cobertura-branch"/>
+        <summaryresult date="2006-08-23" filecount="7" statvalue="81" type="cobertura-line"/>
+        <summaryresult date="2006-08-23" filecount="7" statvalue="79" type="cobertura-branch"/>
     </summary>
     <file id="net_objectlab_kit_datecalc_jdk_package.html" path="net/objectlab/kit/datecalc/jdk/package.html">
         <result date="2006-08-08" statvalue="1" type="checkstyle"/>
@@ -61,9 +60,8 @@
         <result date="2006-08-20" statvalue="75" type="cobertura-branch"/>
         <result date="2006-08-23" statvalue="5" type="checkstyle"/>
         <result date="2006-08-23" statvalue="1" type="pmd"/>
-        <result date="2006-08-23" statvalue="1" type="findbugs"/>
-        <result date="2006-08-23" statvalue="79" type="cobertura-line"/>
-        <result date="2006-08-23" statvalue="77" type="cobertura-branch"/>
+        <result date="2006-08-23" statvalue="78" type="cobertura-line"/>
+        <result date="2006-08-23" statvalue="76" type="cobertura-branch"/>
     </file>
     <file
         id="net_objectlab_kit_datecalc_jdk_DefaultDateCalculatorFactory.java" path="net/objectlab/kit/datecalc/jdk/DefaultDateCalculatorFactory.java">
@@ -92,8 +90,6 @@
         <result date="2006-08-10" statvalue="100" type="cobertura-branch"/>
         <result date="2006-08-20" statvalue="100" type="cobertura-line"/>
         <result date="2006-08-20" statvalue="100" type="cobertura-branch"/>
-        <result date="2006-08-23" statvalue="100" type="cobertura-line"/>
-        <result date="2006-08-23" statvalue="100" type="cobertura-branch"/>
     </file>
     <file id="net_objectlab_kit_datecalc_jdk_DateCalculatorFactory.java" path="net/objectlab/kit/datecalc/jdk/DateCalculatorFactory.java">
         <result date="2006-08-08" statvalue="100" type="cobertura-line"/>
@@ -116,8 +112,6 @@
         <result date="2006-08-10" statvalue="100" type="cobertura-branch"/>
         <result date="2006-08-20" statvalue="100" type="cobertura-line"/>
         <result date="2006-08-20" statvalue="100" type="cobertura-branch"/>
-        <result date="2006-08-23" statvalue="100" type="cobertura-line"/>
-        <result date="2006-08-23" statvalue="100" type="cobertura-branch"/>
     </file>
     <file id="net_objectlab_kit_datecalc_jdk_PeriodCountCalculator.java" path="net/objectlab/kit/datecalc/jdk/PeriodCountCalculator.java">
         <result date="2006-08-08" statvalue="100" type="cobertura-line"/>

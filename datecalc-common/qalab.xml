@@ -34,9 +34,9 @@
         <summaryresult date="2006-08-20" filecount="7" statvalue="1" type="checkstyle"/>
         <summaryresult date="2006-08-20" filecount="6" statvalue="90" type="cobertura-line"/>
         <summaryresult date="2006-08-20" filecount="6" statvalue="100" type="cobertura-branch"/>
-        <summaryresult date="2006-08-23" filecount="9" statvalue="24" type="checkstyle"/>
-        <summaryresult date="2006-08-23" filecount="8" statvalue="75" type="cobertura-line"/>
-        <summaryresult date="2006-08-23" filecount="8" statvalue="91" type="cobertura-branch"/>
+        <summaryresult date="2006-08-23" filecount="10" statvalue="25" type="checkstyle"/>
+        <summaryresult date="2006-08-23" filecount="9" statvalue="74" type="cobertura-line"/>
+        <summaryresult date="2006-08-23" filecount="9" statvalue="87" type="cobertura-branch"/>
     </summary>
     <file id="net_objectlab_kit_datecalc_common_package.html" path="net/objectlab/kit/datecalc/common/package.html">
         <result date="2006-08-08" statvalue="1" type="checkstyle"/>
@@ -124,11 +124,16 @@
     </file>
     <file
         id="net_objectlab_kit_datecalc_common_AbstractDateCalculator.java" path="net/objectlab/kit/datecalc/common/AbstractDateCalculator.java">
-        <result date="2006-08-23" statvalue="4" type="checkstyle"/>
+        <result date="2006-08-23" statvalue="5" type="checkstyle"/>
     </file>
     <file
-        id="net_objectlab_kit_datecalc_common_DateCalculatorGeneric.java" path="net/objectlab/kit/datecalc/common/DateCalculatorGeneric.java">
+        id="net_objectlab_kit_datecalc_common_DateCalculatorGeneric.java" path="net/objectlab/kit/datecalc/common/DateCalculatorGeneric.java"/>
+    <file id="net_objectlab_kit_datecalc_common_DateCalculator.java" path="net/objectlab/kit/datecalc/common/DateCalculator.java">
         <result date="2006-08-23" statvalue="19" type="checkstyle"/>
+        <result date="2006-08-23" statvalue="100" type="cobertura-line"/>
+        <result date="2006-08-23" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file id="net_objectlab_kit_datecalc_common_HolidayHandler.java" path="net/objectlab/kit/datecalc/common/HolidayHandler.java">
         <result date="2006-08-23" statvalue="100" type="cobertura-line"/>
         <result date="2006-08-23" statvalue="100" type="cobertura-branch"/>
     </file>
