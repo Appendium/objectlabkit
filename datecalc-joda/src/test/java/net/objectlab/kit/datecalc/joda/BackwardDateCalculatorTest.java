@@ -23,11 +23,11 @@ public class BackwardDateCalculatorTest extends TestCase {
 
         final LocalDate startDate = new LocalDate("2006-08-01");
         cal.setStartDate(startDate);
-        checkDate("Move by 0 days", cal.addDays(0), "2006-08-01");
-        checkDate("Move by 1 days", cal.addDays(1), "2006-08-02");
-        checkDate("Move by 1 more days", cal.addDays(1), "2006-08-03");
-        checkDate("Move by 1 more more days", cal.addDays(1), "2006-08-04");
-        checkDate("Move by 1 more more more days (across weekend)", cal.addDays(1), "2006-08-04");
+        checkDate("Move by 0 days", cal.moveByDays(0), "2006-08-01");
+        checkDate("Move by 1 days", cal.moveByDays(1), "2006-08-02");
+        checkDate("Move by 1 more days", cal.moveByDays(1), "2006-08-03");
+        checkDate("Move by 1 more more days", cal.moveByDays(1), "2006-08-04");
+        checkDate("Move by 1 more more more days (across weekend)", cal.moveByDays(1), "2006-08-04");
     }
 
     public void testSimpleBackwardStartDateWithWeekend() {
@@ -188,16 +188,16 @@ public class BackwardDateCalculatorTest extends TestCase {
         checkDate("Xmas Eve", cal, "2006-12-22");
 
         cal.setStartDate(new LocalDate("2006-12-21"));
-        checkDate("21/12 + 1", cal.addDays(1), "2006-12-22");
+        checkDate("21/12 + 1", cal.moveByDays(1), "2006-12-22");
 
         cal.setStartDate(new LocalDate("2006-12-21"));
-        checkDate("21/12 + 1", cal.addDays(2), "2006-12-22");
+        checkDate("21/12 + 1", cal.moveByDays(2), "2006-12-22");
 
         cal.setStartDate(new LocalDate("2006-12-22"));
-        checkDate("22/12 + 1", cal.addDays(1), "2006-12-22");
+        checkDate("22/12 + 1", cal.moveByDays(1), "2006-12-22");
 
         cal.setStartDate(new LocalDate("2006-12-23"));
-        checkDate("23/12 + 1", cal.addDays(1), "2006-12-22");
+        checkDate("23/12 + 1", cal.moveByDays(1), "2006-12-22");
     }
 
     /**
@@ -219,7 +219,7 @@ public class BackwardDateCalculatorTest extends TestCase {
         checkDate("Move 1 BD", cal.moveByBusinessDays(1), "2006-08-25");
 
         cal.setStartDate(new LocalDate("2006-08-24"));
-        checkDate("Add 1 week", cal.addDays(7), "2006-08-31");
+        checkDate("Add 1 week", cal.moveByDays(7), "2006-08-31");
         cal.setStartDate(new LocalDate("2006-08-24"));
 //        checkDate("Move by 1W with 1 bank holiday", cal.moveByBusinessDays(7), "2006-09-05");
 
