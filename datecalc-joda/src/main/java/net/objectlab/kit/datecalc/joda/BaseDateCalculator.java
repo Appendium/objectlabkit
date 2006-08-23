@@ -21,7 +21,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import net.objectlab.kit.datecalc.common.Tenor;
+import net.objectlab.kit.datecalc.common.AbstractDateCalculator;
+import net.objectlab.kit.datecalc.common.DateCalculatorGeneric;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
 import org.joda.time.DateTimeConstants;
@@ -34,20 +35,7 @@ import org.joda.time.LocalDate;
  * 
  * @author Benoit Xhenseval
  */
-public class BaseDateCalculator implements DateCalculator {
-    private static final int MONTHS_IN_QUARTER = 3;
-
-    private static final int DAYS_IN_WEEK = 7;
-
-    private static final int MONTH_IN_YEAR = 12;
-
-    private String name;
-
-    private LocalDate startDate;
-
-    private LocalDate currentDate;
-
-    private Set<LocalDate> nonWorkingDays;
+public class BaseDateCalculator extends AbstractDateCalculator<LocalDate> implements DateCalculator {
 
     private JodaWorkingWeek workingWeek = JodaWorkingWeek.DEFAULT;
 
@@ -71,47 +59,10 @@ public class BaseDateCalculator implements DateCalculator {
         this.holidayHandler = holidayHandler;
     }
 
-    public LocalDate getCurrentDate() {
-        return currentDate;
-    }
-
-    /**
-     * @return an unmodifiable Set of non working days.
-     */
-    public Set<LocalDate> getNonWorkingDays() {
-        return Collections.unmodifiableSet(nonWorkingDays);
-    }
-
-    public LocalDate getStartDate() {
-        return startDate;
-    }
-
-    public void setNonWorkingDays(final Set<LocalDate> holidays) {
-        if (holidays == null) {
-            nonWorkingDays = Collections.emptySet();
-        } else {
-            nonWorkingDays = holidays;
-        }
-    }
-
-    /** Set both start date and current date */
-    public void setStartDate(final LocalDate startDate) {
-        this.startDate = startDate;
-        setCurrentBusinessDate(startDate);
-    }
-
     public void setWorkingWeek(final WorkingWeek week) {
         if (week instanceof JodaWorkingWeek) {
             workingWeek = (JodaWorkingWeek) week;
         }
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(final String name) {
-        this.name = name;
     }
 
     void setHolidayHandler(final HolidayHandler holidayHandler) {
@@ -195,7 +146,7 @@ public class BaseDateCalculator implements DateCalculator {
      *             if both calendars have different types of HolidayHandlers or
      *             WorkingWeek;
      */
-    public DateCalculator combine(final DateCalculator calendar) {
+    public DateCalculator combine(final DateCalculatorGeneric calendar) {
         if (calendar == null || calendar == this) {
             return this;
         }
@@ -324,48 +275,4 @@ public class BaseDateCalculator implements DateCalculator {
         return firstWed.plusWeeks(2);
     }
 
-    /**
-     * Assumes that the month is correct, get the day for the 2rd wednesday.
-     * 
-     * @param first
-     * @return
-     */
-    // @Deprecated
-    // private int calculateIMMDay(final LocalDate date) {
-    // final LocalDate first = date.dayOfMonth().setCopy(1);
-    // final int firstDayOfMonth = first.getDayOfWeek();
-    // int offset = 7 + DateTimeConstants.WEDNESDAY - firstDayOfMonth;
-    // if (offset >= 7) {
-    // offset -= 7;
-    // }
-    //
-    // offset += 14 + 1; // for 3rd of the month
-    // return offset;
-    // }
-    /**
-     * move the current date by a given tenor, this means that if a date is
-     * either a 'weekend' or holiday, it will be skipped acording to the holiday
-     * handler and not count towards the number of days to move.
-     * 
-     * @param businessDays
-     * @return the current businessCalendar (so one can do
-     *         calendar.moveByTenor(StandardTenor.T_2M).getCurrentBusinessDate();)
-     */
-    public DateCalculator moveByTenor(final Tenor tenor) {
-        if (tenor == null) {
-            throw new IllegalArgumentException("Tenor cannot be null");
-        }
-        
-        switch (tenor.getCode()) {
-        case IMM:
-            setCurrentBusinessDate(getNextIMMDate());
-            return this;
-        case DAY:
-            return moveByDays(tenor.getUnits());
-        case WEEK:
-            return moveByDays(tenor.getUnits() * DAYS_IN_WEEK);
-        default:
-            throw new UnsupportedOperationException("Sorry not yet...");
-        }
-    }
 }

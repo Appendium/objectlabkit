@@ -18,6 +18,8 @@ package net.objectlab.kit.datecalc.jdk;
 import java.util.Date;
 import java.util.Set;
 
+import net.objectlab.kit.datecalc.common.DateCalculatorGeneric;
+
 /**
  * Factory will create new instances of DateCalculator, these are lightweight,
  * each thread should use the factory as a given DateCalculator should NOT be
@@ -41,7 +43,7 @@ public interface DateCalculatorFactory {
      *            typically one of the value of HolidayHandlerType
      * @return a new DateCalculator
      */
-    DateCalculator getDateCalculator(final String name, final String holidayHandlerType);
+    DateCalculatorGeneric getDateCalculator(final String name, final String holidayHandlerType);
 
     /**
      * Use this method to register a set of holidays for a given calendar.
