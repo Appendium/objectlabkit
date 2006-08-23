@@ -21,8 +21,8 @@ package net.objectlab.kit.datecalc.common;
  * 
  * @author Benoit Xhenseval
  */
-public interface HolidayHandler<DateType> {
-    DateType moveCurrentDate(DateCalculator<DateType> calendar);
+public interface HolidayHandler<E> {
+    E moveCurrentDate(DateCalculator<E> calendar);
 
     String getType();
 }

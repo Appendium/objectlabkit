@@ -3,16 +3,16 @@ package net.objectlab.kit.datecalc.common;
 import java.util.Collections;
 import java.util.Set;
 
-public abstract class AbstractDateCalculator<DateType> implements DateCalculator<DateType> {
+public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
 
     protected static final int MONTHS_IN_QUARTER = 3;
     protected static final int MONTH_IN_YEAR = 12;
     protected static final int DAYS_IN_WEEK = 7;
     protected String name;
-    protected DateType startDate;
-    protected DateType currentDate;
-    protected Set<DateType> nonWorkingDays;
-    protected HolidayHandler<DateType> holidayHandler;
+    protected E startDate;
+    protected E currentDate;
+    protected Set<E> nonWorkingDays;
+    protected HolidayHandler<E> holidayHandler;
     
     public String getName() {
         return name;
@@ -22,25 +22,25 @@ public abstract class AbstractDateCalculator<DateType> implements DateCalculator
         this.name = name;
     }
 
-    public DateType getStartDate() {
+    public E getStartDate() {
         return startDate;
     }
 
     /** Set both start date and current date */
-    public void setStartDate(final DateType startDate) {
+    public void setStartDate(final E startDate) {
         this.startDate = startDate;
         setCurrentBusinessDate(startDate);
     }
 
-    public DateType getCurrentDate() {
+    public E getCurrentDate() {
         return currentDate;
     }
 
-    public Set<DateType> getNonWorkingDays() {
+    public Set<E> getNonWorkingDays() {
         return Collections.unmodifiableSet(nonWorkingDays);
     }
     
-    public void setNonWorkingDays(final Set<DateType> holidays) {
+    public void setNonWorkingDays(final Set<E> holidays) {
         if (holidays == null) {
             nonWorkingDays = Collections.emptySet();
         } else {
@@ -57,7 +57,7 @@ public abstract class AbstractDateCalculator<DateType> implements DateCalculator
      * @return the current businessCalendar (so one can do
      *         calendar.moveByTenor(StandardTenor.T_2M).getCurrentBusinessDate();)
      */
-    public DateCalculator<DateType> moveByTenor(final Tenor tenor) {
+    public DateCalculator<E> moveByTenor(final Tenor tenor) {
         if (tenor == null) {
             throw new IllegalArgumentException("Tenor cannot be null");
         }
@@ -76,7 +76,7 @@ public abstract class AbstractDateCalculator<DateType> implements DateCalculator
         
     }
 
-    public void setHolidayHandler(final HolidayHandler<DateType> holidayHandler) {
+    public void setHolidayHandler(final HolidayHandler<E> holidayHandler) {
         this.holidayHandler = holidayHandler;
     }
 
