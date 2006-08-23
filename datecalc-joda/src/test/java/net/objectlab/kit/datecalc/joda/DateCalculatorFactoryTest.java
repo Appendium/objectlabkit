@@ -75,16 +75,16 @@ public class DateCalculatorFactoryTest extends AbstractDateCalculatorTest {
         Assert.assertNotNull("No hol", cal1.getNonWorkingDays());
         Assert.assertTrue("empty hol", cal1.getNonWorkingDays().isEmpty());
 
-        LocalDate date = cal1.addDays(0).getCurrentDate();
+        LocalDate date = cal1.moveByDays(0).getCurrentDate();
         Assert.assertEquals("default today", new LocalDate(), date);
 
         cal1.setStartDate(null);
-        date = cal1.addDays(0).getCurrentDate();
+        date = cal1.moveByDays(0).getCurrentDate();
         Assert.assertEquals("default today", new LocalDate(), date);
 
         cal1.setStartDate(new LocalDate("2006-08-08"));
         cal1.setCurrentBusinessDate(null);
-        date = cal1.addDays(0).getCurrentDate();
+        date = cal1.moveByDays(0).getCurrentDate();
         Assert.assertEquals("default today", new LocalDate(), date);
     }
 

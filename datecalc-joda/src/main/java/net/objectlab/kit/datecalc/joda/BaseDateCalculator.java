@@ -151,7 +151,7 @@ public class BaseDateCalculator implements DateCalculator {
         return currentDate;
     }
 
-    public DateCalculator addDays(final int days) {
+    public DateCalculator moveByDays(final int days) {
         if (currentDate == null) {
             initialise();
         }
@@ -177,7 +177,7 @@ public class BaseDateCalculator implements DateCalculator {
         final int step = (businessDays < 0 ? -1 : 1);
 
         for (int i = 0; i < numberOfStepsLeft; i++) {
-            addDays(step);
+            moveByDays(step);
         }
 
         return this;
@@ -361,9 +361,9 @@ public class BaseDateCalculator implements DateCalculator {
             setCurrentBusinessDate(getNextIMMDate());
             return this;
         case DAY:
-            return addDays(tenor.getUnits());
+            return moveByDays(tenor.getUnits());
         case WEEK:
-            return addDays(tenor.getUnits() * DAYS_IN_WEEK);
+            return moveByDays(tenor.getUnits() * DAYS_IN_WEEK);
         default:
             throw new UnsupportedOperationException("Sorry not yet...");
         }

@@ -117,7 +117,7 @@ public interface DateCalculator {
      * @return the businessCalendar (so one can do
      *         calendar.addDays(2).getCurrentBusinessDate();)
      */
-    DateCalculator addDays(final int days);
+    DateCalculator moveByDays(final int days);
 
     /**
      * move the current date by a number of business days, this means that if a
