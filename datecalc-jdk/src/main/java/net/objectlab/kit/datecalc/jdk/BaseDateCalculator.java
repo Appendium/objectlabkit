@@ -24,7 +24,8 @@ import java.util.List;
 import java.util.Set;
 
 import net.objectlab.kit.datecalc.common.AbstractDateCalculator;
-import net.objectlab.kit.datecalc.common.DateCalculatorGeneric;
+import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
 /**
@@ -34,11 +35,9 @@ import net.objectlab.kit.datecalc.common.WorkingWeek;
  * 
  * @author Benoit Xhenseval
  */
-public class BaseDateCalculator extends AbstractDateCalculator<Date> implements DateCalculatorGeneric<Date>, DateCalculator {
+public class BaseDateCalculator extends AbstractDateCalculator<Date> {
     
     private WorkingWeek workingWeek = WorkingWeek.DEFAULT;
-
-    private HolidayHandler holidayHandler = null;
 
     @SuppressWarnings("unchecked")
     public BaseDateCalculator() {
@@ -61,16 +60,6 @@ public class BaseDateCalculator extends AbstractDateCalculator<Date> implements 
     public void setWorkingWeek(final WorkingWeek week) {
         workingWeek = week;
     }
-
-    void setHolidayHandler(final HolidayHandler holidayHandler) {
-        this.holidayHandler = holidayHandler;
-    }
-
-    public String getHolidayHandlerType() {
-        return (holidayHandler != null ? holidayHandler.getType() : null);
-    }
-
-    // -----------------------------------------------------------------
 
     /**
      * is the date a non-working day according to the WorkingWeek?
@@ -99,7 +88,7 @@ public class BaseDateCalculator extends AbstractDateCalculator<Date> implements 
         return currentDate;
     }
 
-    public DateCalculatorGeneric<Date> moveByDays(final int days) {
+    public DateCalculator<Date> moveByDays(final int days) {
         if (currentDate == null) {
             initialise();
         }
@@ -119,7 +108,7 @@ public class BaseDateCalculator extends AbstractDateCalculator<Date> implements 
         }
     }
 
-    public DateCalculator moveByBusinessDays(final int businessDays) {
+    public DateCalculator<Date> moveByBusinessDays(final int businessDays) {
         final int numberOfStepsLeft = Math.abs(businessDays);
         final int step = (businessDays < 0 ? -1 : 1);
 
@@ -142,7 +131,7 @@ public class BaseDateCalculator extends AbstractDateCalculator<Date> implements 
      *             if both calendars have different types of HolidayHandlers or
      *             WorkingWeek;
      */
-    public DateCalculatorGeneric<Date> combine(final DateCalculatorGeneric calendar) {
+    public DateCalculator<Date> combine(final DateCalculator calendar) {
         if (calendar == null || calendar == this) {
             return this;
         }
@@ -160,7 +149,7 @@ public class BaseDateCalculator extends AbstractDateCalculator<Date> implements 
             newSet.addAll(calendar.getNonWorkingDays());
         }
 
-        final DateCalculatorGeneric cal = new BaseDateCalculator(getName() + "/" + calendar.getName(), getStartDate(), newSet,
+        final DateCalculator cal = new BaseDateCalculator(getName() + "/" + calendar.getName(), getStartDate(), newSet,
                 holidayHandler);
 
         return cal;

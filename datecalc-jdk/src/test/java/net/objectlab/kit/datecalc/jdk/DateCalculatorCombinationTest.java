@@ -4,15 +4,15 @@ import java.util.Date;
 
 import junit.framework.Assert;
 
-import net.objectlab.kit.datecalc.common.DateCalculatorGeneric;
+import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
 public class DateCalculatorCombinationTest extends AbstractDateCalculatorTest {
 
     public void testInvalidCombinationDiffHandler() {
-        final DateCalculatorGeneric cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.BACKWARD);
-        final DateCalculatorGeneric cal2 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla2",
+        final DateCalculator cal2 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla2",
                 HolidayHandlerType.FORWARD);
 
         try {
@@ -24,8 +24,8 @@ public class DateCalculatorCombinationTest extends AbstractDateCalculatorTest {
     }
 
     public void testInvalidCombinationNullNotNullHandler() {
-        final DateCalculatorGeneric cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla", null);
-        final DateCalculatorGeneric cal2 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla2",
+        final DateCalculator cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla", null);
+        final DateCalculator cal2 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla2",
                 HolidayHandlerType.FORWARD);
 
         try {
@@ -37,9 +37,9 @@ public class DateCalculatorCombinationTest extends AbstractDateCalculatorTest {
     }
 
     public void testInvalidCombinationNotNullNullHandler() {
-        final DateCalculatorGeneric cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.FORWARD);
-        final DateCalculatorGeneric cal2 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla2", null);
+        final DateCalculator cal2 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla2", null);
 
         try {
             cal1.combine(cal2);
@@ -51,14 +51,14 @@ public class DateCalculatorCombinationTest extends AbstractDateCalculatorTest {
 
     public void testValidCombinationOneEmptySet() {
         DefaultDateCalculatorFactory.getDefaultInstance().registerHolidays("UK", createUKHolidays());
-        final DateCalculatorGeneric cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.FORWARD);
         final Date Date = createDate("2006-08-08");
         cal1.setStartDate(Date);
-        final DateCalculatorGeneric cal2 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK",
+        final DateCalculator cal2 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK",
                 HolidayHandlerType.FORWARD);
 
-        final DateCalculatorGeneric combo = cal1.combine(cal2);
+        final DateCalculator combo = cal1.combine(cal2);
         Assert.assertEquals("Combo name", "bla/UK", combo.getName());
         Assert.assertEquals("Combo type", HolidayHandlerType.FORWARD, combo.getHolidayHandlerType());
         Assert.assertEquals("start", Date, combo.getStartDate());
@@ -69,14 +69,14 @@ public class DateCalculatorCombinationTest extends AbstractDateCalculatorTest {
     public void testValidCombination() {
         DefaultDateCalculatorFactory.getDefaultInstance().registerHolidays("UK", createUKHolidays());
         DefaultDateCalculatorFactory.getDefaultInstance().registerHolidays("UK", createUKHolidays());
-        final DateCalculatorGeneric cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK",
+        final DateCalculator cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK",
                 HolidayHandlerType.FORWARD);
         final Date Date = createDate("2006-08-08");
         cal1.setStartDate(Date);
-        final DateCalculatorGeneric cal2 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK",
+        final DateCalculator cal2 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK",
                 HolidayHandlerType.FORWARD);
 
-        final DateCalculatorGeneric combo = cal1.combine(cal2);
+        final DateCalculator combo = cal1.combine(cal2);
         Assert.assertEquals("Combo name", "UK/UK", combo.getName());
         Assert.assertEquals("Combo type", HolidayHandlerType.FORWARD, combo.getHolidayHandlerType());
         Assert.assertEquals("start", Date, combo.getStartDate());
@@ -87,14 +87,14 @@ public class DateCalculatorCombinationTest extends AbstractDateCalculatorTest {
     public void testValidCombination2Sets() {
         DefaultDateCalculatorFactory.getDefaultInstance().registerHolidays("UK", createUKHolidays());
         DefaultDateCalculatorFactory.getDefaultInstance().registerHolidays("US", createUSHolidays());
-        final DateCalculatorGeneric cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("US",
+        final DateCalculator cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("US",
                 HolidayHandlerType.FORWARD);
         final Date Date = createDate("2006-08-08");
         cal1.setStartDate(Date);
-        final DateCalculatorGeneric cal2 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK",
+        final DateCalculator cal2 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK",
                 HolidayHandlerType.FORWARD);
 
-        final DateCalculatorGeneric combo = cal1.combine(cal2);
+        final DateCalculator combo = cal1.combine(cal2);
         Assert.assertEquals("Combo name", "US/UK", combo.getName());
         Assert.assertEquals("Combo type", HolidayHandlerType.FORWARD, combo.getHolidayHandlerType());
         Assert.assertEquals("start", Date, combo.getStartDate());
@@ -104,12 +104,12 @@ public class DateCalculatorCombinationTest extends AbstractDateCalculatorTest {
 
     public void testNullCombination() {
         DefaultDateCalculatorFactory.getDefaultInstance().registerHolidays("US", createUSHolidays());
-        final DateCalculatorGeneric cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("US",
+        final DateCalculator cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("US",
                 HolidayHandlerType.FORWARD);
         final Date Date = createDate("2006-08-08");
         cal1.setStartDate(Date);
 
-        final DateCalculatorGeneric combo = cal1.combine(null);
+        final DateCalculator combo = cal1.combine(null);
         Assert.assertSame("same", combo, cal1);
         Assert.assertEquals("Combo name", "US", combo.getName());
         Assert.assertEquals("Combo type", HolidayHandlerType.FORWARD, combo.getHolidayHandlerType());
@@ -120,12 +120,12 @@ public class DateCalculatorCombinationTest extends AbstractDateCalculatorTest {
 
     public void testSameCombination() {
         DefaultDateCalculatorFactory.getDefaultInstance().registerHolidays("US", createUSHolidays());
-        final DateCalculatorGeneric cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("US",
+        final DateCalculator cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("US",
                 HolidayHandlerType.FORWARD);
         final Date Date = createDate("2006-08-08");
         cal1.setStartDate(Date);
 
-        final DateCalculatorGeneric combo = cal1.combine(cal1);
+        final DateCalculator combo = cal1.combine(cal1);
         Assert.assertSame("same", combo, cal1);
         Assert.assertEquals("Combo name", "US", combo.getName());
         Assert.assertEquals("Combo type", HolidayHandlerType.FORWARD, combo.getHolidayHandlerType());

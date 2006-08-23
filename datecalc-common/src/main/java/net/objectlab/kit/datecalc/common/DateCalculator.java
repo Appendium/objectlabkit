@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 
-public interface DateCalculatorGeneric<DateType> {
+public interface DateCalculator<DateType> {
 
     /**
      * @return Calendar name (Typically the name associated with the holiday
@@ -91,7 +91,7 @@ public interface DateCalculatorGeneric<DateType> {
      * @return the businessCalendar (so one can do
      *         calendar.moveByDays(-2).getCurrentBusinessDate();)
      */
-    public DateCalculatorGeneric<DateType> moveByDays(final int days);
+    public DateCalculator<DateType> moveByDays(final int days);
 
     /**
      * move the current date by a number of business days, this means that if a
@@ -102,7 +102,7 @@ public interface DateCalculatorGeneric<DateType> {
      * @return the current businessCalendar (so one can do
      *         calendar.moveByBusinessDays(2).getCurrentBusinessDate();)
      */
-    public DateCalculatorGeneric<DateType> moveByBusinessDays(final int businessDays);
+    public DateCalculator<DateType> moveByBusinessDays(final int businessDays);
 
     /**
      * By combining several calendars, we take into account several set of
@@ -111,7 +111,7 @@ public interface DateCalculatorGeneric<DateType> {
      * @param calendar
      * @return a new DateCalculator
      */
-    public DateCalculatorGeneric<DateType> combine(DateCalculatorGeneric<DateType> calendar);
+    public DateCalculator<DateType> combine(DateCalculator<DateType> calendar);
 
     /**
      * move the current date by a given tenor, this means that if a date is
@@ -122,7 +122,7 @@ public interface DateCalculatorGeneric<DateType> {
      * @return the current businessCalendar (so one can do
      *         calendar.moveByTenor(StandardTenor.T_2M).getCurrentBusinessDate();)
      */
-    public DateCalculatorGeneric<DateType> moveByTenor(final Tenor tenor);
+    public DateCalculator<DateType> moveByTenor(final Tenor tenor);
 
     /**
      * @return the next IMMDate based on current date.

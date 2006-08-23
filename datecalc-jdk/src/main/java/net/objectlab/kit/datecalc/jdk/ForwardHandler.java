@@ -18,6 +18,8 @@ package net.objectlab.kit.datecalc.jdk;
 import java.util.Calendar;
 import java.util.Date;
 
+import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
 /**
@@ -25,9 +27,9 @@ import net.objectlab.kit.datecalc.common.HolidayHandlerType;
  * @author Marcin Jekot
  *
  */
-public class ForwardHandler implements HolidayHandler {
+public class ForwardHandler implements HolidayHandler<Date> {
 
-    public Date moveCurrentDate(DateCalculator calendar) {
+    public Date moveCurrentDate(DateCalculator<Date> calendar) {
         
         Calendar cal = Utils.getCal(calendar.getCurrentDate());
 

@@ -15,6 +15,8 @@
  */
 package net.objectlab.kit.datecalc.joda;
 
+import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
 import org.joda.time.LocalDate;
@@ -26,9 +28,9 @@ import org.joda.time.LocalDate;
  * 
  * @author Benoit Xhenseval
  */
-public class ModifiedFollowingHandler implements HolidayHandler {
+public class ModifiedFollowingHandler implements HolidayHandler<LocalDate> {
 
-    public LocalDate moveCurrentDate(final BaseDateCalculator calendar) {
+    public LocalDate moveCurrentDate(final DateCalculator<LocalDate> calendar) {
         LocalDate date = calendar.getCurrentDate();
         final int month = date.getMonthOfYear();
         int step = 1;

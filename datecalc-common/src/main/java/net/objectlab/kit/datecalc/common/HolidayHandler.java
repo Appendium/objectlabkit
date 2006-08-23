@@ -13,21 +13,16 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package net.objectlab.kit.datecalc.jdk;
-
-import java.util.Date;
-
-import net.objectlab.kit.datecalc.common.DateCalculatorGeneric;
-
-
+package net.objectlab.kit.datecalc.common;
 
 /**
- * A DateCalculator is a lightweight container with a reference(optional) to a
- * set of holidays, a WorkingWeek (Mon-Fri by default), a startDate and a
- * current date. The CurrentDate date is changed everytime that the addDays or
- * moveByBusinessDays methods are called.
+ * This will be called to determine whether the date should be moved according
+ * to the special algorithm used.
  * 
  * @author Benoit Xhenseval
  */
-public interface DateCalculator extends DateCalculatorGeneric<Date> {
+public interface HolidayHandler<DateType> {
+    DateType moveCurrentDate(DateCalculator<DateType> calendar);
+
+    String getType();
 }
