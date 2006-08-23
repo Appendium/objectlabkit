@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import junit.framework.Assert;
-import net.objectlab.kit.datecalc.common.DateCalculatorGeneric;
+import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
 public class IMMDateTest extends AbstractDateCalculatorTest {
@@ -12,7 +12,7 @@ public class IMMDateTest extends AbstractDateCalculatorTest {
     }
 
     public void testNextIMM() {
-        final DateCalculatorGeneric cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.FORWARD);
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
@@ -80,7 +80,7 @@ public class IMMDateTest extends AbstractDateCalculatorTest {
     }
 
     public void testPreviousIMM() {
-        final DateCalculatorGeneric cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.FORWARD);
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
@@ -150,7 +150,7 @@ public class IMMDateTest extends AbstractDateCalculatorTest {
     }
 
     public void testIMMLists() {
-        final DateCalculatorGeneric cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.FORWARD);
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
@@ -169,7 +169,7 @@ public class IMMDateTest extends AbstractDateCalculatorTest {
     }
 
     public void testEmptyIMMLists() {
-        final DateCalculatorGeneric cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.FORWARD);
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
@@ -182,7 +182,7 @@ public class IMMDateTest extends AbstractDateCalculatorTest {
     }
 
     public void testEndOnIMMDateIMMLists() {
-        final DateCalculatorGeneric cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.FORWARD);
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
@@ -197,7 +197,7 @@ public class IMMDateTest extends AbstractDateCalculatorTest {
     }
 
     public void testStartOnIMMDateIMMLists() {
-        final DateCalculatorGeneric cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.FORWARD);
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());

@@ -5,7 +5,7 @@ import java.util.Set;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;
-import net.objectlab.kit.datecalc.common.DateCalculatorGeneric;
+import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 import net.objectlab.kit.datecalc.common.StandardTenor;
 import net.objectlab.kit.datecalc.common.Tenor;
@@ -276,7 +276,7 @@ public class ModifiedPreceedingDateCalculatorTest extends TestCase {
         checkDate("do NOT move to next month", cal, "2006-08-02");
     }
 
-    private void checkDate(final String string, final DateCalculatorGeneric calendar, final String string2) {
+    private void checkDate(final String string, final DateCalculator calendar, final String string2) {
         Assert.assertEquals(string, new LocalDate(string2), calendar.getCurrentDate());
     }
 }

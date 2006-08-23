@@ -3,7 +3,7 @@ package net.objectlab.kit.datecalc.common;
 import java.util.Collections;
 import java.util.Set;
 
-public abstract class AbstractDateCalculator<DateType> implements DateCalculatorGeneric<DateType> {
+public abstract class AbstractDateCalculator<DateType> implements DateCalculator<DateType> {
 
     protected static final int MONTHS_IN_QUARTER = 3;
     protected static final int MONTH_IN_YEAR = 12;
@@ -12,7 +12,8 @@ public abstract class AbstractDateCalculator<DateType> implements DateCalculator
     protected DateType startDate;
     protected DateType currentDate;
     protected Set<DateType> nonWorkingDays;
-
+    protected HolidayHandler<DateType> holidayHandler;
+    
     public String getName() {
         return name;
     }
@@ -56,7 +57,7 @@ public abstract class AbstractDateCalculator<DateType> implements DateCalculator
      * @return the current businessCalendar (so one can do
      *         calendar.moveByTenor(StandardTenor.T_2M).getCurrentBusinessDate();)
      */
-    public DateCalculatorGeneric<DateType> moveByTenor(final Tenor tenor) {
+    public DateCalculator<DateType> moveByTenor(final Tenor tenor) {
         if (tenor == null) {
             throw new IllegalArgumentException("Tenor cannot be null");
         }
@@ -73,6 +74,14 @@ public abstract class AbstractDateCalculator<DateType> implements DateCalculator
             throw new UnsupportedOperationException("Sorry not yet...");
         }
         
+    }
+
+    public void setHolidayHandler(final HolidayHandler<DateType> holidayHandler) {
+        this.holidayHandler = holidayHandler;
+    }
+
+    public String getHolidayHandlerType() {
+        return (holidayHandler != null ? holidayHandler.getType() : null);
     }
 
 }

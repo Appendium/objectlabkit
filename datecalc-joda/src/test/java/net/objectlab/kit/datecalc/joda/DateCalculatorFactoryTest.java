@@ -3,6 +3,7 @@ package net.objectlab.kit.datecalc.joda;
 import java.util.Set;
 
 import junit.framework.Assert;
+import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
 import org.joda.time.LocalDate;
@@ -69,7 +70,7 @@ public class DateCalculatorFactoryTest extends AbstractDateCalculatorTest {
     }
 
     public void testUseDefault() {
-        final DateCalculator cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla", null);
+        final DateCalculator<LocalDate> cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla", null);
 
         Assert.assertNotNull("No algo", cal1);
         Assert.assertNotNull("No hol", cal1.getNonWorkingDays());

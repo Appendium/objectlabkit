@@ -17,6 +17,8 @@ package net.objectlab.kit.datecalc.joda;
 
 import java.util.Set;
 
+import net.objectlab.kit.datecalc.common.DateCalculator;
+
 import org.joda.time.LocalDate;
 
 /**
@@ -42,7 +44,7 @@ public interface DateCalculatorFactory {
      *            typically one of the value of HolidayHandlerType
      * @return a new DateCalculator
      */
-    DateCalculator getDateCalculator(final String name, final String holidayHandlerType);
+    DateCalculator<LocalDate> getDateCalculator(final String name, final String holidayHandlerType);
 
     /**
      * Use this method to register a set of holidays for a given calendar.

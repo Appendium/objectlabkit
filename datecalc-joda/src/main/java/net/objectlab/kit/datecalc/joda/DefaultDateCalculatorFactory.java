@@ -20,6 +20,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
 import org.joda.time.LocalDate;
@@ -44,7 +45,7 @@ public class DefaultDateCalculatorFactory implements DateCalculatorFactory {
      *            typically one of the value of HolidayHandlerType
      * @return a new DateCalculator
      */
-    public DateCalculator getDateCalculator(final String name, final String holidayHandlerType) {
+    public DateCalculator<LocalDate> getDateCalculator(final String name, final String holidayHandlerType) {
         final BaseDateCalculator cal = new BaseDateCalculator();
         cal.setName(name);
         if (holidays.containsKey(name)) {
