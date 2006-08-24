@@ -17,10 +17,9 @@ package net.objectlab.kit.datecalc.jdk;
 
 import java.util.Calendar;
 
-import net.objectlab.kit.datecalc.common.WorkingWeek;
-
 import junit.framework.Assert;
 import junit.framework.TestCase;
+import net.objectlab.kit.datecalc.common.WorkingWeek;
 
 /**
  * @author Benoit Xhenseval

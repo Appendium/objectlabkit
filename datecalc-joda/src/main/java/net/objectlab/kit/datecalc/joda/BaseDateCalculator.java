@@ -65,22 +65,22 @@ public class BaseDateCalculator extends AbstractDateCalculator<LocalDate> {
     }
 
     public DateCalculator<LocalDate> moveByDays(final int days) {
-        if (currentDate == null) {
+        if (getCurrentBusinessDate() == null) {
             initialise();
         }
-        currentDate = currentDate.plusDays(days);
+        setCurrentBusinessDate(getCurrentBusinessDate().plusDays(days));
 
-        if (holidayHandler != null) {
-            currentDate = holidayHandler.moveCurrentDate(this);
+        if (getHolidayHandler() != null) {
+            setCurrentBusinessDate(getHolidayHandler().moveCurrentDate(this));
         }
 
         return this;
     }
 
     private void initialise() {
-        if (startDate == null) {
+        if (getStartDate() == null) {
             setStartDate(new LocalDate());
-        } else if (currentDate == null) {
+        } else if (getCurrentBusinessDate() == null) {
             setCurrentBusinessDate(new LocalDate());
         }
     }

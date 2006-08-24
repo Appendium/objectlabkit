@@ -30,7 +30,7 @@ import org.joda.time.LocalDate;
 public class BackwardHandler implements HolidayHandler<LocalDate> {
 
     public LocalDate moveCurrentDate(final DateCalculator<LocalDate> calendar) {
-        LocalDate date = calendar.getCurrentDate();
+        LocalDate date = calendar.getCurrentBusinessDate();
         while (calendar.isNonWorkingDay(date)) {
             date = date.minusDays(1);
         }

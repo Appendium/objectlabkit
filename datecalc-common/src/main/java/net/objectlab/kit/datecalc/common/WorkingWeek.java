@@ -39,11 +39,10 @@ public class WorkingWeek {
 
     private static final byte SUNDAY = 64;
 
-    private static final byte DEFAULT_WORKING_DAYS = (byte) (MONDAY + TUESDAY
-            + WEDNESDAY + THURSDAY + FRIDAY);
+    private static final byte DEFAULT_WORKING_DAYS = (byte) (MONDAY + TUESDAY + WEDNESDAY + THURSDAY + FRIDAY);
 
-    private static final byte[] WORKING_WEEK_DAYS_OFFSET = new byte[] { SUNDAY,
-            MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY };
+    private static final byte[] WORKING_WEEK_DAYS_OFFSET = new byte[] { SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY,
+            SATURDAY };
 
     public static final WorkingWeek DEFAULT = new WorkingWeek();
 
@@ -51,7 +50,7 @@ public class WorkingWeek {
      * Default Working Week Monday -> Friday.
      */
     public WorkingWeek() {
-        this((byte) DEFAULT_WORKING_DAYS);
+        this(DEFAULT_WORKING_DAYS);
     }
 
     private WorkingWeek(final byte workingDays) {
