@@ -35,7 +35,7 @@ import net.objectlab.kit.datecalc.common.WorkingWeek;
  * @author Benoit Xhenseval
  */
 public class BaseDateCalculator extends AbstractDateCalculator<Date> {
-    
+
     private WorkingWeek workingWeek = WorkingWeek.DEFAULT;
 
     @SuppressWarnings("unchecked")
@@ -62,32 +62,31 @@ public class BaseDateCalculator extends AbstractDateCalculator<Date> {
     }
 
     public DateCalculator<Date> moveByDays(final int days) {
-        if (currentDate == null) {
+        if (getCurrentBusinessDate() == null) {
             initialise();
         }
-        
-        final Calendar cal = Utils.getCal(currentDate);
+
+        final Calendar cal = Utils.getCal(getCurrentBusinessDate());
         cal.add(Calendar.DAY_OF_MONTH, days);
         setCurrentBusinessDate(cal.getTime());
-        
+
         return this;
     }
 
     private void initialise() {
-        if (startDate == null) {
+        if (getStartDate() == null) {
             setStartDate(new Date());
-        } else if (currentDate == null) {
+        } else if (getCurrentBusinessDate() == null) {
             setCurrentBusinessDate(new Date());
         }
     }
 
     @Override
-    protected DateCalculator<Date> createNewCalcultaor(final String name, final Date startDate, final Set<Date> holidays, 
+    protected DateCalculator<Date> createNewCalcultaor(final String name, final Date startDate, final Set<Date> holidays,
             final HolidayHandler<Date> handler) {
         return new BaseDateCalculator(name, startDate, holidays, handler);
     }
-    
-    
+
     /**
      * Calculates IMMDates between a start and end dates the 3rd wednesday of
      * Mar/Jun/Sep/Dec when a lot of derivative contracts expire
@@ -95,7 +94,7 @@ public class BaseDateCalculator extends AbstractDateCalculator<Date> {
      * @return a List of Dates
      */
     public List<Date> getIMMDates(final Date start, final Date end) {
-        
+
         final List<Date> dates = new ArrayList<Date>();
         Date date = start;
         while (true) {
@@ -106,39 +105,37 @@ public class BaseDateCalculator extends AbstractDateCalculator<Date> {
                 break;
             }
         }
-        
-         return dates;
+
+        return dates;
     }
 
     @Override
     protected Date getNextIMMDate(final boolean forward, final Date startDate) {
-        
+
         final Calendar cal = Utils.getCal(startDate);
 
         if (isIMMMonth(cal)) {
             moveToIMMDay(cal);
             // TODO simplify this if condition
-            if ((forward && cal.getTime().after(startDate)) ||
-                    (!forward && cal.getTime().before(startDate))) {
+            if ((forward && cal.getTime().after(startDate)) || (!forward && cal.getTime().before(startDate))) {
                 return cal.getTime();
             }
         }
-        
+
         final int delta = (forward ? 1 : -1);
         do {
             cal.add(Calendar.MONTH, delta);
         } while (!isIMMMonth(cal));
-        
+
         moveToIMMDay(cal);
         return cal.getTime();
     }
 
     private boolean isIMMMonth(final Calendar cal) {
         final int month = cal.get(Calendar.MONTH);
-        return (month == Calendar.MARCH || month == Calendar.JUNE || 
-                month == Calendar.SEPTEMBER || month == Calendar.DECEMBER);
+        return (month == Calendar.MARCH || month == Calendar.JUNE || month == Calendar.SEPTEMBER || month == Calendar.DECEMBER);
     }
-    
+
     /**
      * Assumes that the month is correct, get the day for the 3rd wednesday.
      * 
@@ -147,7 +144,7 @@ public class BaseDateCalculator extends AbstractDateCalculator<Date> {
      */
     private void moveToIMMDay(final Calendar cal) {
         cal.set(Calendar.DAY_OF_MONTH, 1);
-        
+
         // go to 1st wed
         final int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
         if (dayOfWeek < Calendar.WEDNESDAY) {
@@ -157,7 +154,7 @@ public class BaseDateCalculator extends AbstractDateCalculator<Date> {
         } else {
             cal.add(Calendar.DAY_OF_MONTH, (Calendar.WEDNESDAY + 7) - dayOfWeek);
         }
-        
+
         // go to 3rd wednesday - i.e. move 2 weeks forward
         cal.add(Calendar.DAY_OF_MONTH, 7 * 2);
     }

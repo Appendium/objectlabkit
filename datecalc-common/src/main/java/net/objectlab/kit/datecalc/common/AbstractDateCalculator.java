@@ -14,13 +14,13 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
 
     private String name;
 
-    protected E startDate;
+    private E startDate;
 
-    protected E currentDate;
+    private E currentBusinessDate;
 
-    protected Set<E> nonWorkingDays;
+    private Set<E> nonWorkingDays;
 
-    protected HolidayHandler<E> holidayHandler;
+    private HolidayHandler<E> holidayHandler;
 
     protected AbstractDateCalculator(final String name, final Set<E> nonWorkingDays, final HolidayHandler<E> holidayHandler) {
         this.name = name;
@@ -46,8 +46,8 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         setCurrentBusinessDate(startDate);
     }
 
-    public E getCurrentDate() {
-        return currentDate;
+    public E getCurrentBusinessDate() {
+        return currentBusinessDate;
     }
 
     public Set<E> getNonWorkingDays() {
@@ -106,15 +106,15 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     }
 
     public boolean isCurrentDateNonWorking() {
-        return isNonWorkingDay(currentDate);
+        return isNonWorkingDay(currentBusinessDate);
     }
 
     public E setCurrentBusinessDate(final E date) {
-        currentDate = date;
+        currentBusinessDate = date;
         if (holidayHandler != null && date != null) {
-            currentDate = holidayHandler.moveCurrentDate(this);
+            currentBusinessDate = holidayHandler.moveCurrentDate(this);
         }
-        return currentDate;
+        return currentBusinessDate;
     }
 
     protected HolidayHandler<E> getHolidayHandler() {
@@ -134,7 +134,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
 
     /**
      * Allows DateCalculators to be combined into a new one, the startDate and
-     * currentDate will be the ones from the existing calendar (not the
+     * currentBusinessDate will be the ones from the existing calendar (not the
      * parameter one). The name will be combined name1+"/"+calendar.getName().
      * 
      * @param calendar,
@@ -172,17 +172,18 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
      * @return the next IMMDate based on current date.
      */
     public E getNextIMMDate() {
-        return getNextIMMDate(true, currentDate);
+        return getNextIMMDate(true, currentBusinessDate);
     }
 
     /**
      * @return the previous IMMDate based on current date.
      */
     public E getPreviousIMMDate() {
-        return getNextIMMDate(false, currentDate);
+        return getNextIMMDate(false, currentBusinessDate);
     }
 
-    protected abstract E getNextIMMDate(final boolean forward, final E startDate);
+    protected abstract E getNextIMMDate(final boolean forward, final E theStartDate);
 
-    protected abstract DateCalculator<E> createNewCalcultaor(String name, E startDate, Set<E> holidays, HolidayHandler<E> handler);
+    protected abstract DateCalculator<E> createNewCalcultaor(String calcName, E theStartDate, Set<E> holidays,
+            HolidayHandler<E> handler);
 }

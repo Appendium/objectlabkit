@@ -19,7 +19,6 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import junit.framework.Assert;
-
 import net.objectlab.kit.datecalc.common.PeriodCountBasis;
 
 public class PeriodCountCalculatorTest extends AbstractDateCalculatorTest {
@@ -278,8 +277,8 @@ public class PeriodCountCalculatorTest extends AbstractDateCalculatorTest {
         Assert.assertEquals(name + " Basis:" + pcount + " start:" + start + " dayDiff", dayDiff, cal.dayDiff(start, end, pcount));
 
         final BigDecimal yearDiff = new BigDecimal(cal.yearDiff(start, end, pcount)).setScale(6, BigDecimal.ROUND_HALF_UP);
-        Assert.assertTrue(name + " Basis:" + pcount + " yearDiff expected:" + test[5] + " got:" + yearDiff, (new BigDecimal(test[5]))
-                .compareTo(yearDiff) == 0);
+        Assert.assertTrue(name + " Basis:" + pcount + " yearDiff expected:" + test[5] + " got:" + yearDiff, (new BigDecimal(
+                test[5])).compareTo(yearDiff) == 0);
     }
 
 }

@@ -90,7 +90,7 @@ public class IMMDateTest extends TestCase {
         cal.setStartDate(startDate);
 
         Assert.assertEquals("From " + cal.getStartDate(), new LocalDate("2006-06-21"), cal.moveByTenor(StandardTenor.IMM)
-                .getCurrentDate());
+                .getCurrentBusinessDate());
 
     }
 

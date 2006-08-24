@@ -3,7 +3,6 @@ package net.objectlab.kit.datecalc.jdk;
 import java.util.Date;
 
 import junit.framework.Assert;
-
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
@@ -62,7 +61,7 @@ public class DateCalculatorCombinationTest extends AbstractDateCalculatorTest {
         Assert.assertEquals("Combo name", "bla/UK", combo.getName());
         Assert.assertEquals("Combo type", HolidayHandlerType.FORWARD, combo.getHolidayHandlerType());
         Assert.assertEquals("start", Date, combo.getStartDate());
-        Assert.assertEquals("currentDate", Date, combo.getCurrentDate());
+        Assert.assertEquals("currentDate", Date, combo.getCurrentBusinessDate());
         Assert.assertEquals("Holidays", 4, combo.getNonWorkingDays().size());
     }
 
@@ -80,7 +79,7 @@ public class DateCalculatorCombinationTest extends AbstractDateCalculatorTest {
         Assert.assertEquals("Combo name", "UK/UK", combo.getName());
         Assert.assertEquals("Combo type", HolidayHandlerType.FORWARD, combo.getHolidayHandlerType());
         Assert.assertEquals("start", Date, combo.getStartDate());
-        Assert.assertEquals("currentDate", Date, combo.getCurrentDate());
+        Assert.assertEquals("currentDate", Date, combo.getCurrentBusinessDate());
         Assert.assertEquals("Holidays", 4, combo.getNonWorkingDays().size());
     }
 
@@ -98,7 +97,7 @@ public class DateCalculatorCombinationTest extends AbstractDateCalculatorTest {
         Assert.assertEquals("Combo name", "US/UK", combo.getName());
         Assert.assertEquals("Combo type", HolidayHandlerType.FORWARD, combo.getHolidayHandlerType());
         Assert.assertEquals("start", Date, combo.getStartDate());
-        Assert.assertEquals("currentDate", Date, combo.getCurrentDate());
+        Assert.assertEquals("currentDate", Date, combo.getCurrentBusinessDate());
         Assert.assertEquals("Holidays", 6, combo.getNonWorkingDays().size());
     }
 
@@ -114,7 +113,7 @@ public class DateCalculatorCombinationTest extends AbstractDateCalculatorTest {
         Assert.assertEquals("Combo name", "US", combo.getName());
         Assert.assertEquals("Combo type", HolidayHandlerType.FORWARD, combo.getHolidayHandlerType());
         Assert.assertEquals("start", Date, combo.getStartDate());
-        Assert.assertEquals("currentDate", Date, combo.getCurrentDate());
+        Assert.assertEquals("currentDate", Date, combo.getCurrentBusinessDate());
         Assert.assertEquals("Holidays", 3, combo.getNonWorkingDays().size());
     }
 
@@ -130,7 +129,7 @@ public class DateCalculatorCombinationTest extends AbstractDateCalculatorTest {
         Assert.assertEquals("Combo name", "US", combo.getName());
         Assert.assertEquals("Combo type", HolidayHandlerType.FORWARD, combo.getHolidayHandlerType());
         Assert.assertEquals("start", Date, combo.getStartDate());
-        Assert.assertEquals("currentDate", Date, combo.getCurrentDate());
+        Assert.assertEquals("currentDate", Date, combo.getCurrentBusinessDate());
         Assert.assertEquals("Holidays", 3, combo.getNonWorkingDays().size());
     }
 }

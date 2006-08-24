@@ -254,7 +254,7 @@ public class ModifiedFollowingDateCalculatorTest extends TestCase {
         cal.setStartDate(new LocalDate("2006-08-08"));
         checkDate("Move 4W", cal.moveByTenor(new Tenor(4, TenorCode.WEEK)), "2006-09-05");
     }
-    
+
     public void testAddAcrossMonth() {
         final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.MODIFIED_FOLLLOWING);
@@ -265,18 +265,18 @@ public class ModifiedFollowingDateCalculatorTest extends TestCase {
 
         cal.moveByDays(1);
         checkDate("do move to next month", cal, "2006-08-01");
-        
+
         // now if it due to roll over:
         cal.setStartDate(new LocalDate("2006-07-28"));
-        Set<LocalDate> hol = new HashSet<LocalDate>();
+        final Set<LocalDate> hol = new HashSet<LocalDate>();
         hol.add(new LocalDate("2006-07-31"));
         cal.setNonWorkingDays(hol);
         cal.moveByDays(1);
-        
+
         checkDate("do NOT move to next month", cal, "2006-07-28");
     }
 
     private void checkDate(final String string, final DateCalculator calendar, final String string2) {
-        Assert.assertEquals(string, new LocalDate(string2), calendar.getCurrentDate());
+        Assert.assertEquals(string, new LocalDate(string2), calendar.getCurrentBusinessDate());
     }
 }

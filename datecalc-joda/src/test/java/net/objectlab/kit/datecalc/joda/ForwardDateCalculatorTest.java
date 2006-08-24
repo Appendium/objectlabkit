@@ -256,6 +256,6 @@ public class ForwardDateCalculatorTest extends TestCase {
     }
 
     private void checkDate(final String string, final DateCalculator calendar, final String string2) {
-        Assert.assertEquals(string, new LocalDate(string2), calendar.getCurrentDate());
+        Assert.assertEquals(string, new LocalDate(string2), calendar.getCurrentBusinessDate());
     }
 }

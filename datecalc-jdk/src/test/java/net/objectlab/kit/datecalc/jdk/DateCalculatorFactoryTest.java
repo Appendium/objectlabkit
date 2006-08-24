@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.Set;
 
 import junit.framework.Assert;
-
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 

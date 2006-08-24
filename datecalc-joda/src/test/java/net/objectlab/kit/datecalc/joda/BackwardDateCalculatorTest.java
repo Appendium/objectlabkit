@@ -222,7 +222,8 @@ public class BackwardDateCalculatorTest extends TestCase {
         cal.setStartDate(new LocalDate("2006-08-24"));
         checkDate("Add 1 week", cal.moveByDays(7), "2006-08-31");
         cal.setStartDate(new LocalDate("2006-08-24"));
-//        checkDate("Move by 1W with 1 bank holiday", cal.moveByBusinessDays(7), "2006-09-05");
+        // checkDate("Move by 1W with 1 bank holiday",
+        // cal.moveByBusinessDays(7), "2006-09-05");
 
     }
 
@@ -259,6 +260,6 @@ public class BackwardDateCalculatorTest extends TestCase {
     }
 
     private void checkDate(final String string, final DateCalculator calendar, final String string2) {
-        Assert.assertEquals(string, new LocalDate(string2), calendar.getCurrentDate());
+        Assert.assertEquals(string, new LocalDate(string2), calendar.getCurrentBusinessDate());
     }
 }

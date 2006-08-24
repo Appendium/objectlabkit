@@ -28,7 +28,7 @@ public interface DateCalculator<E> {
      * @param currentDate
      *            held by the calendar.
      */
-    E getCurrentDate();
+    E getCurrentBusinessDate();
 
     /**
      * is the given date on a weekend, according to the WorkingWeek

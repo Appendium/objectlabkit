@@ -1,12 +1,11 @@
 package net.objectlab.kit.datecalc.jdk;
 
 import java.util.Calendar;
-import java.util.HashSet;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import junit.framework.Assert;
-
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
@@ -199,6 +198,6 @@ public class ForwardDateCalculatorTest extends AbstractDateCalculatorTest {
     }
 
     private void checkDate(final String string, final DateCalculator calendar, final String string2) {
-        Assert.assertEquals(string, createDate(string2), calendar.getCurrentDate());
+        Assert.assertEquals(string, createDate(string2), calendar.getCurrentBusinessDate());
     }
 }
