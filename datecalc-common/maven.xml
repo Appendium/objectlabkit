@@ -1,65 +1,60 @@
 <?xml version="1.0"?>
 
 <!--
-	/*  
-	* ========================================================================
-	* 
-	* 
-	* ========================================================================
-	*/
+   /*  
+   * ========================================================================
+   * ObjectLab Financial Ltd, proud sponsor of The Kit.
+   * ========================================================================
+   */
 -->
 
 <project xmlns:j="jelly:core" xmlns:core="jelly:core"
-	xmlns:maven="jelly:maven" xmlns:ant="jelly:ant"
-	xmlns:define="jelly:define" xmlns:doc="doc" xmlns:util="jelly:util"
-	xmlns:log="jelly:log">
-	
-	<goal name="kit:build" prereqs="jar:install" />
-	<goal name="kit:rebuild" prereqs="kit:build" />
+   xmlns:maven="jelly:maven" xmlns:ant="jelly:ant"
+   xmlns:define="jelly:define" xmlns:doc="doc" xmlns:util="jelly:util"
+   xmlns:log="jelly:log">
 
-	<goal name="ydoc" prereqs="xdoc:init"
-		description="Generate API documentation">
-		<path id="maven.ydoc.path">
-			<path refid="maven.dependency.classpath" />
-			<path location="${maven.build.dest}" />
-			<path location="${basedir}/../common-build/ydoc.jar" />
-			<path location="${basedir}/../common-build/class2svg.jar" />
-			<path location="${basedir}/../common-build/styleed.jar" />
-			<path location="${maven.ydoc.resources}" />
-		</path>
-		<property name="maven.ydoc.path.property"
-			refid="maven.ydoc.path" />
-		<mkdir dir="${maven.build.dir}/docs/apidocs" />
-		<mkdir dir="${maven.build.dir}/ydoc/" />
-		<record name="${maven.build.dir}/ydoc/report.txt"
-			action="start" />
-		<echo
-			message="Generating API docs in ${maven.ydoc.destination}" />
-		<javadoc sourcepathref="maven.compile.src.set"
-			packagenames="net.objectlab.safemargin.*" maxmemory="255m"
-			destdir="${maven.build.dir}/docs/apidocs"
-			classpath="${maven.ydoc.path.property}" author="true"
-			additionalparam="-breakiterator">
-			<doclet name="ydoc.doclets.YStandard"
-				path="${maven.ydoc.path.property}">
-				<param name="-generic" />
-				<param name="-umlautogen" />
-				<param name="-ymode" value="LOG" />
-				<param name="-filterpath"
-					value="${maven.ydoc.path.property}" />
-				<param name="-filter"
-					value="ydoc.filters.ExcludeFilter" />
-				<param name="-tag" value="y.precondition" />
-				<param name="-tag" value="y.postcondition" />
-				<param name="-tag" value="y.complexity" />
-				<param name="-tag" value="param" />
-				<param name="-tag" value="return" />
-				<param name="-tag" value="see" />
-				<param name="-tag" value="y.uml" />
-			</doclet>
-		</javadoc>
-		<ant:record name="${maven.build.dir}/ydoc/report.txt"
-			action="stop" />
-	</goal>
+   <goal name="kit:build" prereqs="jar:install" />
+   <goal name="kit:rebuild" prereqs="clean,kit:build" />
+
+   <goal name="ydoc" prereqs="xdoc:init"
+      description="Generate API documentation">
+      <path id="maven.ydoc.path">
+         <path refid="maven.dependency.classpath" />
+         <path location="${maven.build.dest}" />
+         <path location="${basedir}/../common-build/ydoc.jar" />
+         <path location="${basedir}/../common-build/class2svg.jar" />
+         <path location="${basedir}/../common-build/styleed.jar" />
+         <path location="${maven.ydoc.resources}" />
+      </path>
+      <property name="maven.ydoc.path.property" refid="maven.ydoc.path" />
+      <mkdir dir="${maven.build.dir}/docs/apidocs" />
+      <mkdir dir="${maven.build.dir}/ydoc/" />
+      <record name="${maven.build.dir}/ydoc/report.txt" action="start" />
+      <echo message="Generating API docs in ${maven.ydoc.destination}" />
+      <javadoc sourcepathref="maven.compile.src.set"
+         packagenames="net.objectlab.safemargin.*" maxmemory="255m"
+         destdir="${maven.build.dir}/docs/apidocs"
+         classpath="${maven.ydoc.path.property}" author="true"
+         additionalparam="-breakiterator">
+         <doclet name="ydoc.doclets.YStandard"
+            path="${maven.ydoc.path.property}">
+            <param name="-generic" />
+            <param name="-umlautogen" />
+            <param name="-ymode" value="LOG" />
+            <param name="-filterpath"
+               value="${maven.ydoc.path.property}" />
+            <param name="-filter" value="ydoc.filters.ExcludeFilter" />
+            <param name="-tag" value="y.precondition" />
+            <param name="-tag" value="y.postcondition" />
+            <param name="-tag" value="y.complexity" />
+            <param name="-tag" value="param" />
+            <param name="-tag" value="return" />
+            <param name="-tag" value="see" />
+            <param name="-tag" value="y.uml" />
+         </doclet>
+      </javadoc>
+      <ant:record name="${maven.build.dir}/ydoc/report.txt"
+         action="stop" />
+   </goal>
 
 </project>
