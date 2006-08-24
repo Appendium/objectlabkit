@@ -25,18 +25,18 @@ import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 /**
  * 
  * @author Marcin Jekot
- *
+ * 
  */
 public class ForwardHandler implements HolidayHandler<Date> {
 
-    public Date moveCurrentDate(DateCalculator<Date> calendar) {
-        
-        Calendar cal = Utils.getCal(calendar.getCurrentDate());
+    public Date moveCurrentDate(final DateCalculator<Date> calendar) {
+
+        final Calendar cal = Utils.getCal(calendar.getCurrentDate());
 
         while (calendar.isNonWorkingDay(cal.getTime())) {
             cal.add(Calendar.DAY_OF_MONTH, 1);
         }
-        
+
         return cal.getTime();
     }
 

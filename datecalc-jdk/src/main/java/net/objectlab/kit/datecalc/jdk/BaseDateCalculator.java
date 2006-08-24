@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -44,17 +43,10 @@ public class BaseDateCalculator extends AbstractDateCalculator<Date> {
         this(null, null, Collections.EMPTY_SET, null);
     }
 
-    @SuppressWarnings("unchecked")
-    public BaseDateCalculator(final HolidayHandler holidayHandler) {
-        this(null, null, Collections.EMPTY_SET, holidayHandler);
-    }
-
     public BaseDateCalculator(final String name, final Date startDate, final Set<Date> nonWorkingDays,
-            final HolidayHandler holidayHandler) {
-        this.name = name;
+            final HolidayHandler<Date> holidayHandler) {
+        super(name, nonWorkingDays, holidayHandler);
         setStartDate(startDate);
-        this.nonWorkingDays = nonWorkingDays;
-        this.holidayHandler = holidayHandler;
     }
 
     public void setWorkingWeek(final WorkingWeek week) {
@@ -69,31 +61,12 @@ public class BaseDateCalculator extends AbstractDateCalculator<Date> {
         return !workingWeek.isWorkingDay(date);
     }
 
-    /**
-     * is the given date a non working day?
-     */
-    public boolean isNonWorkingDay(final Date date) {
-        return (isWeekend(date) || nonWorkingDays.contains(date));
-    }
-
-    public boolean isCurrentDateNonWorking() {
-        return isNonWorkingDay(currentDate);
-    }
-
-    public Date setCurrentBusinessDate(final Date date) {
-        currentDate = date;
-        if (holidayHandler != null && date != null) {
-            currentDate = holidayHandler.moveCurrentDate(this);
-        }
-        return currentDate;
-    }
-
     public DateCalculator<Date> moveByDays(final int days) {
         if (currentDate == null) {
             initialise();
         }
         
-        Calendar cal = Utils.getCal(currentDate);
+        final Calendar cal = Utils.getCal(currentDate);
         cal.add(Calendar.DAY_OF_MONTH, days);
         setCurrentBusinessDate(cal.getTime());
         
@@ -108,62 +81,22 @@ public class BaseDateCalculator extends AbstractDateCalculator<Date> {
         }
     }
 
-    public DateCalculator<Date> moveByBusinessDays(final int businessDays) {
-        final int numberOfStepsLeft = Math.abs(businessDays);
-        final int step = (businessDays < 0 ? -1 : 1);
-
-        for (int i = 0; i < numberOfStepsLeft; i++) {
-            moveByDays(step);
-        }
-
-        return this;
+    @Override
+    protected DateCalculator<Date> createNewCalcultaor(final String name, final Date startDate, final Set<Date> holidays, 
+            final HolidayHandler<Date> handler) {
+        return new BaseDateCalculator(name, startDate, holidays, handler);
     }
-
+    
+    
     /**
-     * Allows DateCalculators to be combined into a new one, the startDate and
-     * currentDate will be the ones from the existing calendar (not the
-     * parameter one). The name will be combined name1+"/"+calendar.getName().
+     * Calculates IMMDates between a start and end dates the 3rd wednesday of
+     * Mar/Jun/Sep/Dec when a lot of derivative contracts expire
      * 
-     * @param calendar,
-     *            return the same DateCalculator if calender is null or the
-     *            original calendar (but why would you want to do that?)
-     * @throws IllegalArgumentException
-     *             if both calendars have different types of HolidayHandlers or
-     *             WorkingWeek;
-     */
-    public DateCalculator<Date> combine(final DateCalculator calendar) {
-        if (calendar == null || calendar == this) {
-            return this;
-        }
-
-        if (holidayHandler == null && calendar.getHolidayHandlerType() != null || holidayHandler != null
-                && !holidayHandler.getType().equals(calendar.getHolidayHandlerType())) {
-            throw new IllegalArgumentException("Combined Calendars cannot have different handler types");
-        }
-
-        final Set<Date> newSet = new HashSet<Date>();
-        if (nonWorkingDays != null) {
-            newSet.addAll(nonWorkingDays);
-        }
-        if (calendar.getNonWorkingDays() != null) {
-            newSet.addAll(calendar.getNonWorkingDays());
-        }
-
-        final DateCalculator cal = new BaseDateCalculator(getName() + "/" + calendar.getName(), getStartDate(), newSet,
-                holidayHandler);
-
-        return cal;
-    }
-
-    /**
-     * Calculates IMMDates between a start and end dates
-     * the 3rd wednesday of Mar/Jun/Sep/Dec
-     * when a lot of derivative contracts expire
      * @return a List of Dates
      */
     public List<Date> getIMMDates(final Date start, final Date end) {
         
-        List<Date> dates = new ArrayList<Date>();
+        final List<Date> dates = new ArrayList<Date>();
         Date date = start;
         while (true) {
             date = getNextIMMDate(true, date);
@@ -177,28 +110,21 @@ public class BaseDateCalculator extends AbstractDateCalculator<Date> {
          return dates;
     }
 
-    public Date getNextIMMDate() {
-        return getNextIMMDate(true, currentDate);
-    }
-
-    public Date getPreviousIMMDate() {
-        return getNextIMMDate(false, currentDate);
-    }
-
-    private Date getNextIMMDate(final boolean forward, final Date startDate) {
+    @Override
+    protected Date getNextIMMDate(final boolean forward, final Date startDate) {
         
-        Calendar cal = Utils.getCal(startDate);
+        final Calendar cal = Utils.getCal(startDate);
 
         if (isIMMMonth(cal)) {
             moveToIMMDay(cal);
-            //TODO simplify this if condition
+            // TODO simplify this if condition
             if ((forward && cal.getTime().after(startDate)) ||
                     (!forward && cal.getTime().before(startDate))) {
                 return cal.getTime();
             }
         }
         
-        int delta = (forward ? 1 : -1);
+        final int delta = (forward ? 1 : -1);
         do {
             cal.add(Calendar.MONTH, delta);
         } while (!isIMMMonth(cal));
@@ -208,7 +134,7 @@ public class BaseDateCalculator extends AbstractDateCalculator<Date> {
     }
 
     private boolean isIMMMonth(final Calendar cal) {
-        int month = cal.get(Calendar.MONTH);
+        final int month = cal.get(Calendar.MONTH);
         return (month == Calendar.MARCH || month == Calendar.JUNE || 
                 month == Calendar.SEPTEMBER || month == Calendar.DECEMBER);
     }
@@ -223,7 +149,7 @@ public class BaseDateCalculator extends AbstractDateCalculator<Date> {
         cal.set(Calendar.DAY_OF_MONTH, 1);
         
         // go to 1st wed
-        int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+        final int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
         if (dayOfWeek < Calendar.WEDNESDAY) {
             cal.add(Calendar.DAY_OF_MONTH, Calendar.WEDNESDAY - dayOfWeek);
         } else if (dayOfWeek == Calendar.WEDNESDAY) {
@@ -235,5 +161,4 @@ public class BaseDateCalculator extends AbstractDateCalculator<Date> {
         // go to 3rd wednesday - i.e. move 2 weeks forward
         cal.add(Calendar.DAY_OF_MONTH, 7 * 2);
     }
-
 }

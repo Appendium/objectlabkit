@@ -1,19 +1,33 @@
 package net.objectlab.kit.datecalc.common;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
 
     protected static final int MONTHS_IN_QUARTER = 3;
+
     protected static final int MONTH_IN_YEAR = 12;
+
     protected static final int DAYS_IN_WEEK = 7;
-    protected String name;
+
+    private String name;
+
     protected E startDate;
+
     protected E currentDate;
+
     protected Set<E> nonWorkingDays;
+
     protected HolidayHandler<E> holidayHandler;
-    
+
+    protected AbstractDateCalculator(final String name, final Set<E> nonWorkingDays, final HolidayHandler<E> holidayHandler) {
+        this.name = name;
+        this.nonWorkingDays = nonWorkingDays;
+        this.holidayHandler = holidayHandler;
+    }
+
     public String getName() {
         return name;
     }
@@ -39,7 +53,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     public Set<E> getNonWorkingDays() {
         return Collections.unmodifiableSet(nonWorkingDays);
     }
-    
+
     public void setNonWorkingDays(final Set<E> holidays) {
         if (holidays == null) {
             nonWorkingDays = Collections.emptySet();
@@ -61,7 +75,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         if (tenor == null) {
             throw new IllegalArgumentException("Tenor cannot be null");
         }
-        
+
         switch (tenor.getCode()) {
         case DAY:
             return moveByDays(tenor.getUnits());
@@ -73,7 +87,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         default:
             throw new UnsupportedOperationException("Sorry not yet...");
         }
-        
+
     }
 
     public void setHolidayHandler(final HolidayHandler<E> holidayHandler) {
@@ -84,4 +98,91 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         return (holidayHandler != null ? holidayHandler.getType() : null);
     }
 
+    /**
+     * is the given date a non working day?
+     */
+    public boolean isNonWorkingDay(final E date) {
+        return (isWeekend(date) || nonWorkingDays.contains(date));
+    }
+
+    public boolean isCurrentDateNonWorking() {
+        return isNonWorkingDay(currentDate);
+    }
+
+    public E setCurrentBusinessDate(final E date) {
+        currentDate = date;
+        if (holidayHandler != null && date != null) {
+            currentDate = holidayHandler.moveCurrentDate(this);
+        }
+        return currentDate;
+    }
+
+    protected HolidayHandler<E> getHolidayHandler() {
+        return holidayHandler;
+    }
+
+    public DateCalculator<E> moveByBusinessDays(final int businessDays) {
+        final int numberOfStepsLeft = Math.abs(businessDays);
+        final int step = (businessDays < 0 ? -1 : 1);
+
+        for (int i = 0; i < numberOfStepsLeft; i++) {
+            moveByDays(step);
+        }
+
+        return this;
+    }
+
+    /**
+     * Allows DateCalculators to be combined into a new one, the startDate and
+     * currentDate will be the ones from the existing calendar (not the
+     * parameter one). The name will be combined name1+"/"+calendar.getName().
+     * 
+     * @param calendar,
+     *            return the same DateCalculator if calender is null or the
+     *            original calendar (but why would you want to do that?)
+     * @throws IllegalArgumentException
+     *             if both calendars have different types of HolidayHandlers or
+     *             WorkingWeek;
+     */
+    public DateCalculator<E> combine(final DateCalculator<E> calendar) {
+        if (calendar == null || calendar == this) {
+            return this;
+        }
+
+        if (holidayHandler == null && calendar.getHolidayHandlerType() != null || holidayHandler != null
+                && !holidayHandler.getType().equals(calendar.getHolidayHandlerType())) {
+            throw new IllegalArgumentException("Combined Calendars cannot have different handler types");
+        }
+
+        final Set<E> newSet = new HashSet<E>();
+        if (nonWorkingDays != null) {
+            newSet.addAll(nonWorkingDays);
+        }
+        if (calendar.getNonWorkingDays() != null) {
+            newSet.addAll(calendar.getNonWorkingDays());
+        }
+
+        final DateCalculator<E> cal = createNewCalcultaor(getName() + "/" + calendar.getName(), getStartDate(), newSet,
+                holidayHandler);
+
+        return cal;
+    }
+
+    /**
+     * @return the next IMMDate based on current date.
+     */
+    public E getNextIMMDate() {
+        return getNextIMMDate(true, currentDate);
+    }
+
+    /**
+     * @return the previous IMMDate based on current date.
+     */
+    public E getPreviousIMMDate() {
+        return getNextIMMDate(false, currentDate);
+    }
+
+    protected abstract E getNextIMMDate(final boolean forward, final E startDate);
+
+    protected abstract DateCalculator<E> createNewCalcultaor(String name, E startDate, Set<E> holidays, HolidayHandler<E> handler);
 }

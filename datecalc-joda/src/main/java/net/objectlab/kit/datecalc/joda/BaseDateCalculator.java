@@ -17,7 +17,6 @@ package net.objectlab.kit.datecalc.joda;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -45,17 +44,10 @@ public class BaseDateCalculator extends AbstractDateCalculator<LocalDate> {
         this(null, null, Collections.EMPTY_SET, null);
     }
 
-    @SuppressWarnings("unchecked")
-    public BaseDateCalculator(final HolidayHandler holidayHandler) {
-        this(null, null, Collections.EMPTY_SET, holidayHandler);
-    }
-
     public BaseDateCalculator(final String name, final LocalDate startDate, final Set<LocalDate> nonWorkingDays,
-            final HolidayHandler holidayHandler) {
-        this.name = name;
+            final HolidayHandler<LocalDate> holidayHandler) {
+        super(name, nonWorkingDays, holidayHandler);
         setStartDate(startDate);
-        this.nonWorkingDays = nonWorkingDays;
-        this.holidayHandler = holidayHandler;
     }
 
     public void setWorkingWeek(final WorkingWeek week) {
@@ -70,25 +62,6 @@ public class BaseDateCalculator extends AbstractDateCalculator<LocalDate> {
     public boolean isWeekend(final LocalDate date) {
         assert workingWeek != null;
         return !workingWeek.isWorkingDay(date);
-    }
-
-    /**
-     * is the given date a non working day?
-     */
-    public boolean isNonWorkingDay(final LocalDate date) {
-        return (isWeekend(date) || nonWorkingDays.contains(date));
-    }
-
-    public boolean isCurrentDateNonWorking() {
-        return isNonWorkingDay(currentDate);
-    }
-
-    public LocalDate setCurrentBusinessDate(final LocalDate date) {
-        currentDate = date;
-        if (holidayHandler != null && date != null) {
-            currentDate = holidayHandler.moveCurrentDate(this);
-        }
-        return currentDate;
     }
 
     public DateCalculator<LocalDate> moveByDays(final int days) {
@@ -112,53 +85,11 @@ public class BaseDateCalculator extends AbstractDateCalculator<LocalDate> {
         }
     }
 
-    public DateCalculator<LocalDate> moveByBusinessDays(final int businessDays) {
-        final int numberOfStepsLeft = Math.abs(businessDays);
-        final int step = (businessDays < 0 ? -1 : 1);
-
-        for (int i = 0; i < numberOfStepsLeft; i++) {
-            moveByDays(step);
-        }
-
-        return this;
+    @Override
+    protected DateCalculator<LocalDate> createNewCalcultaor(final String name, final LocalDate startDate,final Set<LocalDate> holidays,final HolidayHandler<LocalDate> handler) {
+        return new BaseDateCalculator(name, startDate, holidays, handler);
     }
-
-    /**
-     * Allows DateCalculators to be combined into a new one, the startDate and
-     * currentDate will be the ones from the existing calendar (not the
-     * parameter one). The name will be combined name1+"/"+calendar.getName().
-     * 
-     * @param calendar,
-     *            return the same DateCalculator if calender is null or the
-     *            original calendar (but why would you want to do that?)
-     * @throws IllegalArgumentException
-     *             if both calendars have different types of HolidayHandlers or
-     *             WorkingWeek;
-     */
-    public DateCalculator<LocalDate> combine(final DateCalculator calendar) {
-        if (calendar == null || calendar == this) {
-            return this;
-        }
-
-        if (holidayHandler == null && calendar.getHolidayHandlerType() != null || holidayHandler != null
-                && !holidayHandler.getType().equals(calendar.getHolidayHandlerType())) {
-            throw new IllegalArgumentException("Combined Calendars cannot have different handler types");
-        }
-
-        final Set<LocalDate> newSet = new HashSet<LocalDate>();
-        if (nonWorkingDays != null) {
-            newSet.addAll(nonWorkingDays);
-        }
-        if (calendar.getNonWorkingDays() != null) {
-            newSet.addAll(calendar.getNonWorkingDays());
-        }
-
-        final DateCalculator<LocalDate> cal = new BaseDateCalculator(getName() + "/" + calendar.getName(), getStartDate(), newSet,
-                holidayHandler);
-
-        return cal;
-    }
-
+        
     public List<LocalDate> getIMMDates(final LocalDate start, final LocalDate end) {
         final List<LocalDate> dates = new ArrayList<LocalDate>();
 
@@ -175,23 +106,9 @@ public class BaseDateCalculator extends AbstractDateCalculator<LocalDate> {
         return dates;
     }
 
-    public LocalDate getNextIMMDate() {
-        return getNextIMMDate(true, currentDate);
-    }
-
-    public LocalDate getPreviousIMMDate() {
-        return getNextIMMDate(false, currentDate);
-    }
-
-    private LocalDate getNextIMMDate(final boolean forward, final LocalDate start) {
+    @Override
+    protected LocalDate getNextIMMDate(final boolean forward, final LocalDate start) {
         LocalDate date = start;
-        // Monday = 1 -> + 2 for 1st Wed + 14 | 7 + 3 - 1 = 9
-        // Tuesday = 2 -> + 1 for 1st Wed + 14
-        // Wednesday = 3 -> + 0 for 1st Wed + 14
-        // Thursday = 4 -> + 6 for 1st Wed + 14
-        // Friday = 5 -> + 5 for 1st Wed + 14
-        // Saturday = 6 -> + 4 for 1st Wed + 14
-        // Sunday = 7 -> + 3 for 1st Wed + 14
 
         final int month = date.getMonthOfYear();
         int monthOffset = 0;
@@ -207,17 +124,6 @@ public class BaseDateCalculator extends AbstractDateCalculator<LocalDate> {
             } else if (!forward && !date.isAfter(immDate)) {
                 date = date.minusMonths(MONTHS_IN_QUARTER);
             }
-            //            
-            // final int day = date.getDayOfMonth();
-            // final int immDay = calculateIMMDay(date);
-            // if (forward && day >= immDay || !forward && day <= immDay) {
-            // monthOffset = 3;
-            // if (forward) {
-            // date = date.plusMonths(monthOffset);
-            // } else {
-            // date = date.minusMonths(monthOffset);
-            // }
-            // }
             break;
 
         default:
@@ -244,8 +150,6 @@ public class BaseDateCalculator extends AbstractDateCalculator<LocalDate> {
         }
 
         return calculate3rdWednesday(date);
-
-        // return date.dayOfMonth().setCopy(calculateIMMDay(date));
     }
 
     /**
@@ -263,5 +167,4 @@ public class BaseDateCalculator extends AbstractDateCalculator<LocalDate> {
         }
         return firstWed.plusWeeks(2);
     }
-
 }

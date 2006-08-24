@@ -55,9 +55,9 @@ public class DefaultDateCalculatorFactory implements DateCalculatorFactory {
         } else {
             throw new UnsupportedOperationException("only forward supported");
         }
-        
+
         return cal;
-        
+
         // } else if (HolidayHandlerType.BACKWARD.equals(holidayHandlerType)) {
         // cal.setHolidayHandler(new BackwardHandler());
         // } else if
