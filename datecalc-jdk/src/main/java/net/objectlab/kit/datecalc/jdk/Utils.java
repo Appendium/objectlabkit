@@ -21,14 +21,14 @@ import java.util.Date;
 /**
  * 
  * @author Marcin Jekot
- *
+ * 
  */
 public class Utils {
 
     public static Calendar getCal(final Date date) {
-        Calendar cal = Calendar.getInstance();
+        final Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         return cal;
     }
-    
+
 }

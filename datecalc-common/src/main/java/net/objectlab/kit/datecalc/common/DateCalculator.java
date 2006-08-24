@@ -3,14 +3,13 @@ package net.objectlab.kit.datecalc.common;
 import java.util.List;
 import java.util.Set;
 
-
 public interface DateCalculator<E> {
 
     /**
      * @return Calendar name (Typically the name associated with the holiday
      *         set).
      */
-    public String getName();
+    String getName();
 
     /**
      * @param startDate
@@ -18,33 +17,34 @@ public interface DateCalculator<E> {
      *            updated and may be moved if it falls on a non working day
      *            (holiday/weekend).
      */
-    public void setStartDate(final E startDate);
+    void setStartDate(final E startDate);
 
     /**
      * @return startDate the reference date for this calendar.
      */
-    public E getStartDate();
+    E getStartDate();
 
     /**
-     * @param currentDate held by the calendar.
+     * @param currentDate
+     *            held by the calendar.
      */
-    public E getCurrentDate();
+    E getCurrentDate();
 
     /**
      * is the given date on a weekend, according to the WorkingWeek
      */
-    public boolean isWeekend(final E date);
+    boolean isWeekend(final E date);
 
     /**
      * is the given date a non working day, i.e. either a "weekend" or a
      * holiday?
      */
-    public boolean isNonWorkingDay(final E date);
+    boolean isNonWorkingDay(final E date);
 
     /**
      * @return true if the current date is either a weekend or a holiday.
      */
-    public boolean isCurrentDateNonWorking();
+    boolean isCurrentDateNonWorking();
 
     /**
      * This is typically used at the construction of a DateCalculator.
@@ -52,12 +52,12 @@ public interface DateCalculator<E> {
      * @param holidays
      *            the holiday (if null, an empty set will be put in place)
      */
-    public void setNonWorkingDays(final Set<E> holidays);
+    void setNonWorkingDays(final Set<E> holidays);
 
     /**
      * @return an immutable copy of the holiday set.
      */
-    public Set<E> getNonWorkingDays();
+    Set<E> getNonWorkingDays();
 
     /**
      * Allow user to define what their Working Week should be (default is
@@ -65,7 +65,7 @@ public interface DateCalculator<E> {
      * 
      * @param week
      */
-    public void setWorkingWeek(final WorkingWeek week);
+    void setWorkingWeek(final WorkingWeek week);
 
     /**
      * give a current business date which may be moved if it falls on a non
@@ -74,12 +74,12 @@ public interface DateCalculator<E> {
      * @param date
      * @return new current date if moved.
      */
-    public E setCurrentBusinessDate(final E date);
+    E setCurrentBusinessDate(final E date);
 
     /**
      * @return the holiday handler type, can be null
      */
-    public String getHolidayHandlerType();
+    String getHolidayHandlerType();
 
     /**
      * move the current date by the number of days and, if it falls on a weekend
@@ -91,7 +91,7 @@ public interface DateCalculator<E> {
      * @return the businessCalendar (so one can do
      *         calendar.moveByDays(-2).getCurrentBusinessDate();)
      */
-    public DateCalculator<E> moveByDays(final int days);
+    DateCalculator<E> moveByDays(final int days);
 
     /**
      * move the current date by a number of business days, this means that if a
@@ -102,7 +102,7 @@ public interface DateCalculator<E> {
      * @return the current businessCalendar (so one can do
      *         calendar.moveByBusinessDays(2).getCurrentBusinessDate();)
      */
-    public DateCalculator<E> moveByBusinessDays(final int businessDays);
+    DateCalculator<E> moveByBusinessDays(final int businessDays);
 
     /**
      * By combining several calendars, we take into account several set of
@@ -111,7 +111,7 @@ public interface DateCalculator<E> {
      * @param calendar
      * @return a new DateCalculator
      */
-    public DateCalculator<E> combine(DateCalculator<E> calendar);
+    DateCalculator<E> combine(DateCalculator<E> calendar);
 
     /**
      * move the current date by a given tenor, this means that if a date is
@@ -122,17 +122,17 @@ public interface DateCalculator<E> {
      * @return the current businessCalendar (so one can do
      *         calendar.moveByTenor(StandardTenor.T_2M).getCurrentBusinessDate();)
      */
-    public DateCalculator<E> moveByTenor(final Tenor tenor);
+    DateCalculator<E> moveByTenor(final Tenor tenor);
 
     /**
      * @return the next IMMDate based on current date.
      */
-    public E getNextIMMDate();
+    E getNextIMMDate();
 
     /**
      * @return the previous IMMDate based on current date.
      */
-    public E getPreviousIMMDate();
+    E getPreviousIMMDate();
 
     /**
      * Returns a list of IMM dates between 2 dates, it will exclude the start
@@ -144,6 +144,5 @@ public interface DateCalculator<E> {
      *            end of the interval, may be included.
      * @return list of IMM dates
      */
-    public List<E> getIMMDates(final E start, final E end);
-
+    List<E> getIMMDates(final E start, final E end);
 }
