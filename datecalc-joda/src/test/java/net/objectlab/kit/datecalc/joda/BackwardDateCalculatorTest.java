@@ -17,7 +17,7 @@ import org.joda.time.LocalDate;
 public class BackwardDateCalculatorTest extends TestCase {
 
     public void testSimpleForwardWithWeekend() {
-        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.BACKWARD);
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
@@ -32,7 +32,7 @@ public class BackwardDateCalculatorTest extends TestCase {
     }
 
     public void testSimpleBackwardStartDateWithWeekend() {
-        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.BACKWARD);
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
@@ -60,7 +60,7 @@ public class BackwardDateCalculatorTest extends TestCase {
     }
 
     public void testSimpleForwardStartDateNoWeekend() {
-        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.BACKWARD);
         JodaWorkingWeek ww = new JodaWorkingWeek();
         ww = ww.withWorkingDayFromDateTimeConstant(true, DateTimeConstants.SATURDAY);
@@ -92,7 +92,7 @@ public class BackwardDateCalculatorTest extends TestCase {
     }
 
     public void testSimpleForwardStartDateWhackyWeek() {
-        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.BACKWARD);
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
@@ -130,7 +130,7 @@ public class BackwardDateCalculatorTest extends TestCase {
     }
 
     public void testSimpleForwardStartDateIdealWeekend() {
-        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.BACKWARD);
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
@@ -168,7 +168,7 @@ public class BackwardDateCalculatorTest extends TestCase {
     }
 
     public void testSimpleForwardWithHolidays() {
-        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.BACKWARD);
         final Set<LocalDate> holidays = new HashSet<LocalDate>();
         holidays.add(new LocalDate("2006-08-28"));
@@ -205,7 +205,7 @@ public class BackwardDateCalculatorTest extends TestCase {
      * @todo not sure what to expect from this... with backward mechanism...
      */
     public void testMoveByBusinessDays() {
-        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.BACKWARD);
         final Set<LocalDate> holidays = new HashSet<LocalDate>();
         holidays.add(new LocalDate("2006-08-28"));
@@ -228,7 +228,7 @@ public class BackwardDateCalculatorTest extends TestCase {
     }
 
     public void testMoveByTenorDays() {
-        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.BACKWARD);
 
         cal.setStartDate(new LocalDate("2006-08-08"));
@@ -246,7 +246,7 @@ public class BackwardDateCalculatorTest extends TestCase {
     }
 
     public void testMoveByTenorWeek() {
-        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.BACKWARD);
 
         cal.setStartDate(new LocalDate("2006-08-08"));
@@ -259,7 +259,7 @@ public class BackwardDateCalculatorTest extends TestCase {
         checkDate("Move 4W", cal.moveByTenor(new Tenor(4, TenorCode.WEEK)), "2006-09-05");
     }
 
-    private void checkDate(final String string, final DateCalculator calendar, final String string2) {
+    private void checkDate(final String string, final DateCalculator<LocalDate> calendar, final String string2) {
         Assert.assertEquals(string, new LocalDate(string2), calendar.getCurrentBusinessDate());
     }
 }

@@ -13,7 +13,7 @@ import net.objectlab.kit.datecalc.common.WorkingWeek;
 public class ForwardDateCalculatorTest extends AbstractDateCalculatorTest {
 
     public void testSimpleForwardWithWeekend() {
-        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<Date> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.FORWARD);
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
@@ -28,7 +28,7 @@ public class ForwardDateCalculatorTest extends AbstractDateCalculatorTest {
     }
 
     public void testSimpleForwardStartDateWithWeekend() {
-        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<Date> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.FORWARD);
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
@@ -56,7 +56,7 @@ public class ForwardDateCalculatorTest extends AbstractDateCalculatorTest {
     }
 
     public void testSimpleForwardStartDateNoWeekend() {
-        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<Date> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.FORWARD);
         final WorkingWeek ww = new WorkingWeek();
         ww.withWorkingDayFromCalendar(true, Calendar.SATURDAY);
@@ -88,7 +88,7 @@ public class ForwardDateCalculatorTest extends AbstractDateCalculatorTest {
     }
 
     public void testSimpleForwardStartDateWhackyWeek() {
-        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<Date> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.FORWARD);
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
@@ -126,7 +126,7 @@ public class ForwardDateCalculatorTest extends AbstractDateCalculatorTest {
     }
 
     public void testSimpleForwardStartDateIdealWeekend() {
-        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<Date> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.FORWARD);
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
@@ -164,7 +164,7 @@ public class ForwardDateCalculatorTest extends AbstractDateCalculatorTest {
     }
 
     public void testSimpleForwardWithHolidays() {
-        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<Date> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.FORWARD);
         final Set<Date> holidays = new HashSet<Date>();
         holidays.add(createDate("2006-08-28"));
@@ -197,7 +197,7 @@ public class ForwardDateCalculatorTest extends AbstractDateCalculatorTest {
         checkDate("23/12 + 1", cal.moveByDays(1), "2006-12-28");
     }
 
-    private void checkDate(final String string, final DateCalculator calendar, final String string2) {
+    private void checkDate(final String string, final DateCalculator<Date> calendar, final String string2) {
         Assert.assertEquals(string, createDate(string2), calendar.getCurrentBusinessDate());
     }
 }

@@ -17,7 +17,7 @@ import org.joda.time.LocalDate;
 public class ModifiedFollowingDateCalculatorTest extends TestCase {
 
     public void testSimpleForwardWithWeekend() {
-        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.MODIFIED_FOLLLOWING);
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
@@ -32,7 +32,7 @@ public class ModifiedFollowingDateCalculatorTest extends TestCase {
     }
 
     public void testSimpleForwardStartDateWithWeekend() {
-        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.MODIFIED_FOLLLOWING);
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
@@ -60,7 +60,7 @@ public class ModifiedFollowingDateCalculatorTest extends TestCase {
     }
 
     public void testSimpleForwardStartDateNoWeekend() {
-        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.MODIFIED_FOLLLOWING);
         JodaWorkingWeek ww = new JodaWorkingWeek();
         ww = ww.withWorkingDayFromDateTimeConstant(true, DateTimeConstants.SATURDAY);
@@ -92,7 +92,7 @@ public class ModifiedFollowingDateCalculatorTest extends TestCase {
     }
 
     public void testSimpleForwardStartDateWhackyWeek() {
-        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.MODIFIED_FOLLLOWING);
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
@@ -130,7 +130,7 @@ public class ModifiedFollowingDateCalculatorTest extends TestCase {
     }
 
     public void testSimpleForwardStartDateIdealWeekend() {
-        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.MODIFIED_FOLLLOWING);
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
@@ -168,7 +168,7 @@ public class ModifiedFollowingDateCalculatorTest extends TestCase {
     }
 
     public void testSimpleForwardWithHolidays() {
-        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.MODIFIED_FOLLLOWING);
         final Set<LocalDate> holidays = new HashSet<LocalDate>();
         holidays.add(new LocalDate("2006-08-28"));
@@ -202,7 +202,7 @@ public class ModifiedFollowingDateCalculatorTest extends TestCase {
     }
 
     public void testMoveByBusinessDays() {
-        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.MODIFIED_FOLLLOWING);
         final Set<LocalDate> holidays = new HashSet<LocalDate>();
         holidays.add(new LocalDate("2006-08-28"));
@@ -224,7 +224,7 @@ public class ModifiedFollowingDateCalculatorTest extends TestCase {
     }
 
     public void testMoveByTenorDays() {
-        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.MODIFIED_FOLLLOWING);
 
         cal.setStartDate(new LocalDate("2006-08-08"));
@@ -242,7 +242,7 @@ public class ModifiedFollowingDateCalculatorTest extends TestCase {
     }
 
     public void testMoveByTenorWeek() {
-        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.MODIFIED_FOLLLOWING);
 
         cal.setStartDate(new LocalDate("2006-08-08"));
@@ -256,7 +256,7 @@ public class ModifiedFollowingDateCalculatorTest extends TestCase {
     }
 
     public void testAddAcrossMonth() {
-        final DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.MODIFIED_FOLLLOWING);
 
         cal.setStartDate(new LocalDate("2006-07-28"));
@@ -276,7 +276,7 @@ public class ModifiedFollowingDateCalculatorTest extends TestCase {
         checkDate("do NOT move to next month", cal, "2006-07-28");
     }
 
-    private void checkDate(final String string, final DateCalculator calendar, final String string2) {
+    private void checkDate(final String string, final DateCalculator<LocalDate> calendar, final String string2) {
         Assert.assertEquals(string, new LocalDate(string2), calendar.getCurrentBusinessDate());
     }
 }
