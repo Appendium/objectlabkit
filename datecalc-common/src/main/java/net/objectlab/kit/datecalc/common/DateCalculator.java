@@ -1,5 +1,6 @@
 /*
  * $Id$
+ * 
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -27,12 +28,7 @@ import java.util.Set;
  * 
  * @author Benoit Xhenseval
  * @author $LastChangedBy$
- * @version $Revision$
- * $LastChangedRevision $
- * $Date$
- * $LastChangedDate$
- * $Date$
- * $LastChangedDate$
+ * @version $Revision$ $Date$
  */
 public interface DateCalculator<E> {
 
