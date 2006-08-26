@@ -24,7 +24,7 @@ import net.objectlab.kit.datecalc.common.WorkingWeek;
 /**
  * @author Benoit Xhenseval
  */
-public class JodaWorkingWeekTest extends TestCase {
+public class JdkWorkingWeekTest extends TestCase {
 
     public void testIsWorkingDayFromCalendar() {
         final WorkingWeek ww = new WorkingWeek();
@@ -54,7 +54,7 @@ public class JodaWorkingWeekTest extends TestCase {
         Assert.assertTrue("Calendar.THURSDAY", ww.isWorkingDayFromCalendar(Calendar.THURSDAY));
         Assert.assertTrue("Calendar.FRIDAY", ww.isWorkingDayFromCalendar(Calendar.FRIDAY));
         Assert.assertFalse("Calendar.SATURDAY", ww.isWorkingDayFromCalendar(Calendar.SATURDAY));
-        Assert.assertTrue("Calendar.SUNDAY", ww.isWorkingDayFromCalendar(Calendar.SUNDAY));
+        Assert.assertFalse("Calendar.SUNDAY", ww.isWorkingDayFromCalendar(Calendar.SUNDAY));
 
         ww.withWorkingDayFromCalendar(false, Calendar.SUNDAY); // sunday
         // working
