@@ -1,9 +1,38 @@
+/*
+ * $Id$
+ * 
+ * Copyright 2006 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package net.objectlab.kit.datecalc.common;
 
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Abstract implementation in order to encapsulate all the common functionality
+ * between Jdk and Joda implementations. It is parametrized on <code><E></code>
+ * but basically <code>Date</code> and <code>LocalDate</code> are the only
+ * viable values for it for now.
+ * 
+ * @author Marcin Jekot
+ * @author $LastChangedBy$
+ * @version $Revision$ $Date$
+ * 
+ * @param <E>
+ */
 public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
 
     protected static final int MONTHS_IN_QUARTER = 3;
@@ -22,7 +51,8 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
 
     private HolidayHandler<E> holidayHandler;
 
-    protected AbstractDateCalculator(final String name, final Set<E> nonWorkingDays, final HolidayHandler<E> holidayHandler) {
+    protected AbstractDateCalculator(final String name,
+            final Set<E> nonWorkingDays, final HolidayHandler<E> holidayHandler) {
         this.name = name;
         this.nonWorkingDays = nonWorkingDays;
         this.holidayHandler = holidayHandler;
@@ -149,9 +179,13 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
             return this;
         }
 
-        if (holidayHandler == null && calendar.getHolidayHandlerType() != null || holidayHandler != null
-                && !holidayHandler.getType().equals(calendar.getHolidayHandlerType())) {
-            throw new IllegalArgumentException("Combined Calendars cannot have different handler types");
+        if (holidayHandler == null
+                && calendar.getHolidayHandlerType() != null
+                || holidayHandler != null
+                && !holidayHandler.getType().equals(
+                        calendar.getHolidayHandlerType())) {
+            throw new IllegalArgumentException(
+                    "Combined Calendars cannot have different handler types");
         }
 
         final Set<E> newSet = new HashSet<E>();
@@ -162,8 +196,8 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
             newSet.addAll(calendar.getNonWorkingDays());
         }
 
-        final DateCalculator<E> cal = createNewCalcultaor(getName() + "/" + calendar.getName(), getStartDate(), newSet,
-                holidayHandler);
+        final DateCalculator<E> cal = createNewCalcultaor(getName() + "/"
+                + calendar.getName(), getStartDate(), newSet, holidayHandler);
 
         return cal;
     }
@@ -182,8 +216,9 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         return getNextIMMDate(false, currentBusinessDate);
     }
 
-    protected abstract E getNextIMMDate(final boolean forward, final E theStartDate);
+    protected abstract E getNextIMMDate(final boolean forward,
+            final E theStartDate);
 
-    protected abstract DateCalculator<E> createNewCalcultaor(String calcName, E theStartDate, Set<E> holidays,
-            HolidayHandler<E> handler);
+    protected abstract DateCalculator<E> createNewCalcultaor(String calcName,
+            E theStartDate, Set<E> holidays, HolidayHandler<E> handler);
 }
