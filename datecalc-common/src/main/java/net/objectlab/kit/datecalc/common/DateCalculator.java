@@ -25,8 +25,9 @@ import java.util.Set;
  * moveByBusinessDays methods are called.
  * 
  * @author Benoit Xhenseval
- * @author $Author: $
- * @version $Revision: $, $Version: $
+ * @author $Author$ $Author $
+ * @version $Revision$, $Version: $ $Revision$ $Date$
+ * $LastChangedDate$ $LastChangedBy$
  */
 public interface DateCalculator<E> {
 
