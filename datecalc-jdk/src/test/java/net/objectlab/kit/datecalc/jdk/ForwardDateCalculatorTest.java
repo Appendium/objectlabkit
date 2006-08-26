@@ -65,26 +65,26 @@ public class ForwardDateCalculatorTest extends AbstractDateCalculatorTest {
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
 
-        cal.setStartDate(createDate("2006-07-31")); // start date Monday
+        cal.setStartDate(createDate("2006-07-31"));
         checkDate("start date Monday", cal, "2006-07-31");
 
-        cal.setStartDate(createDate("2006-08-01")); // start date Tuesday
+        cal.setStartDate(createDate("2006-08-01"));
         checkDate("start date Tuesday", cal, "2006-08-01");
 
-        cal.setStartDate(createDate("2006-08-02")); // start date Wednesday
+        cal.setStartDate(createDate("2006-08-02"));
         checkDate("start date Wednesday", cal, "2006-08-02");
 
-        cal.setStartDate(createDate("2006-08-03")); // start date Thursday
+        cal.setStartDate(createDate("2006-08-03"));
         checkDate("start date Thursday", cal, "2006-08-03");
 
-        cal.setStartDate(createDate("2006-08-04")); // set on a Friday
+        cal.setStartDate(createDate("2006-08-04"));
         checkDate("start date friday", cal, "2006-08-04");
 
-        cal.setStartDate(createDate("2006-08-05")); // set on a Saturday
-        checkDate("start date Saturday", cal, "2006-08-05");
+        cal.setStartDate(createDate("2006-08-05"));
+        checkDate("start date Saturday, move to Monday", cal, "2006-08-07");
 
-        cal.setStartDate(createDate("2006-08-06")); // set on a Sunday
-        checkDate("start date Sunday", cal, "2006-08-06");
+        cal.setStartDate(createDate("2006-08-06"));
+        checkDate("start date Sunday, move to Monday", cal, "2006-08-07");
     }
 
     public void testSimpleForwardStartDateWhackyWeek() {
