@@ -20,6 +20,7 @@ import java.math.BigDecimal;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 import net.objectlab.kit.datecalc.common.PeriodCountBasis;
+import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
 import org.joda.time.LocalDate;
 
@@ -316,7 +317,7 @@ public class PeriodCountCalculatorTest extends TestCase {
     };
 
     public void testConv30EvIsma() {
-        final PeriodCountCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
+        final PeriodCountCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
         Assert.assertNotNull(cal);
 
         for (final String[] test : CONV_360E_ISMA) {

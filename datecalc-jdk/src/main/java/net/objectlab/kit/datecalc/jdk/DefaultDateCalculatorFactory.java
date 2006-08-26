@@ -1,4 +1,6 @@
 /*
+ * $Id$
+ * 
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -21,9 +23,19 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.DateCalculatorFactory;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
+import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
-public class DefaultDateCalculatorFactory implements DateCalculatorFactory {
+/**
+ * TODO add javadoc 
+ *
+ * @author Benoit Xhenseval
+ * @author $LastChangedBy$
+ * @version $Revision$ $Date$
+ *
+ */
+public class DefaultDateCalculatorFactory implements DateCalculatorFactory<Date> {
     private static final DateCalculatorFactory DEFAULT = new DefaultDateCalculatorFactory();
 
     private final ConcurrentMap<String, Set<Date>> holidays = new ConcurrentHashMap<String, Set<Date>>();
@@ -43,7 +55,7 @@ public class DefaultDateCalculatorFactory implements DateCalculatorFactory {
      *            typically one of the value of HolidayHandlerType
      * @return a new DateCalculator
      */
-    public DateCalculator getDateCalculator(final String name, final String holidayHandlerType) {
+    public DateCalculator<Date> getDateCalculator(final String name, final String holidayHandlerType) {
         final BaseDateCalculator cal = new BaseDateCalculator();
         cal.setName(name);
         if (holidays.containsKey(name)) {
@@ -85,9 +97,9 @@ public class DefaultDateCalculatorFactory implements DateCalculatorFactory {
         this.holidays.put(name, holidays);
     }
 
-    private static final PeriodCountCalculator PCC = new DefaultPeriodCountCalculator();
+    private static final PeriodCountCalculator<Date> PCC = new DefaultPeriodCountCalculator();
 
-    public PeriodCountCalculator getPeriodCountCalculator() {
+    public PeriodCountCalculator<Date> getPeriodCountCalculator() {
         return PCC;
     }
 }

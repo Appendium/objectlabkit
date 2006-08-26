@@ -1,4 +1,6 @@
 /*
+ * $Id$
+ * 
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -13,13 +15,9 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package net.objectlab.kit.datecalc.joda;
+package net.objectlab.kit.datecalc.common;
 
 import java.util.Set;
-
-import net.objectlab.kit.datecalc.common.DateCalculator;
-
-import org.joda.time.LocalDate;
 
 /**
  * Factory will create new instances of DateCalculator, these are lightweight,
@@ -30,8 +28,10 @@ import org.joda.time.LocalDate;
  * new DateCalculator to get the new set.
  * 
  * @author Benoit Xhenseval
+ * @author $LastEditedBy$
+ * @version $Revision$ $Date$
  */
-public interface DateCalculatorFactory {
+public interface DateCalculatorFactory<E> {
 
     /**
      * Create a new DateCalculator for a given name and type of handling.
@@ -44,7 +44,8 @@ public interface DateCalculatorFactory {
      *            typically one of the value of HolidayHandlerType
      * @return a new DateCalculator
      */
-    DateCalculator<LocalDate> getDateCalculator(final String name, final String holidayHandlerType);
+    DateCalculator<E> getDateCalculator(final String name,
+            final String holidayHandlerType);
 
     /**
      * Use this method to register a set of holidays for a given calendar.
@@ -54,10 +55,10 @@ public interface DateCalculatorFactory {
      * @param holidays
      *            the set of holidays (non-working days).
      */
-    void registerHolidays(final String name, Set<LocalDate> holidays);
+    void registerHolidays(final String name, Set<E> holidays);
 
     /**
      * @return a PeriodCountCalculator
      */
-    PeriodCountCalculator getPeriodCountCalculator();
+    PeriodCountCalculator<E> getPeriodCountCalculator();
 }
