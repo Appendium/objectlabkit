@@ -28,11 +28,11 @@ import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 import org.joda.time.LocalDate;
 
 public class DefaultDateCalculatorFactory implements DateCalculatorFactory<LocalDate> {
-    private static final DateCalculatorFactory DEFAULT = new DefaultDateCalculatorFactory();
+    private static final DateCalculatorFactory<LocalDate> DEFAULT = new DefaultDateCalculatorFactory();
 
     private final ConcurrentMap<String, Set<LocalDate>> holidays = new ConcurrentHashMap<String, Set<LocalDate>>();
 
-    public static DateCalculatorFactory getDefaultInstance() {
+    public static DateCalculatorFactory<LocalDate> getDefaultInstance() {
         return DEFAULT;
     }
 

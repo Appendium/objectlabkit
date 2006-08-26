@@ -10,12 +10,12 @@ import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 public class DateCalculatorFactoryTest extends AbstractDateCalculatorTest {
 
     public void testGetCalendarsNoHoliday() {
-        final DateCalculator cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla", null);
+        final DateCalculator<Date> cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla", null);
         Assert.assertNotNull("cal1", cal1);
         Assert.assertEquals("name", "bla", cal1.getName());
         Assert.assertTrue("no holiday", cal1.getNonWorkingDays().isEmpty());
 
-        final DateCalculator cal2 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla", null);
+        final DateCalculator<Date> cal2 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla", null);
         Assert.assertNotNull("cal2", cal2);
         Assert.assertEquals("name", "bla", cal2.getName());
         Assert.assertTrue("no holiday", cal2.getNonWorkingDays().isEmpty());
@@ -26,12 +26,12 @@ public class DateCalculatorFactoryTest extends AbstractDateCalculatorTest {
         final Set<Date> uk = createUKHolidays();
         DefaultDateCalculatorFactory.getDefaultInstance().registerHolidays("UK", uk);
 
-        final DateCalculator cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla", null);
+        final DateCalculator<Date> cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla", null);
         Assert.assertNotNull("cal1", cal1);
         Assert.assertEquals("name", "bla", cal1.getName());
         Assert.assertTrue("no holiday", cal1.getNonWorkingDays().isEmpty());
 
-        final DateCalculator cal2 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK", null);
+        final DateCalculator<Date> cal2 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK", null);
         Assert.assertNotNull("cal2", cal2);
         Assert.assertEquals("name cal2", "UK", cal2.getName());
         Assert.assertEquals("UK holidays", 4, cal2.getNonWorkingDays().size());
@@ -39,7 +39,7 @@ public class DateCalculatorFactoryTest extends AbstractDateCalculatorTest {
     }
 
     public void testGetCorrectAlgo() {
-        DateCalculator cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla", null);
+        DateCalculator<Date> cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla", null);
 
         Assert.assertNull("No algo", cal1.getHolidayHandlerType());
         cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla", HolidayHandlerType.BACKWARD);

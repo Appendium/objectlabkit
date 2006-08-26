@@ -36,11 +36,11 @@ import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
  *
  */
 public class DefaultDateCalculatorFactory implements DateCalculatorFactory<Date> {
-    private static final DateCalculatorFactory DEFAULT = new DefaultDateCalculatorFactory();
+    private static final DateCalculatorFactory<Date> DEFAULT = new DefaultDateCalculatorFactory();
 
     private final ConcurrentMap<String, Set<Date>> holidays = new ConcurrentHashMap<String, Set<Date>>();
 
-    public static DateCalculatorFactory getDefaultInstance() {
+    public static DateCalculatorFactory<Date> getDefaultInstance() {
         return DEFAULT;
     }
 

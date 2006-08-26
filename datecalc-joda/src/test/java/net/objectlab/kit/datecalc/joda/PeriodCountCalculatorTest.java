@@ -326,7 +326,7 @@ public class PeriodCountCalculatorTest extends TestCase {
     }
 
     public void testConv30Ev360() {
-        final PeriodCountCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
+        final PeriodCountCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
         Assert.assertNotNull(cal);
 
         for (final String[] test : CONV_360E_ISDA) {
@@ -335,7 +335,7 @@ public class PeriodCountCalculatorTest extends TestCase {
     }
 
     public void testConv30v360() {
-        final PeriodCountCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
+        final PeriodCountCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
         Assert.assertNotNull(cal);
 
         for (final String[] test : CONV_30_360) {
@@ -344,7 +344,7 @@ public class PeriodCountCalculatorTest extends TestCase {
     }
 
     public void testAct365() {
-        final PeriodCountCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
+        final PeriodCountCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
         Assert.assertNotNull(cal);
 
         for (final String[] test : ACT_365) {
@@ -353,7 +353,7 @@ public class PeriodCountCalculatorTest extends TestCase {
     }
 
     public void testAct360() {
-        final PeriodCountCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
+        final PeriodCountCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
         Assert.assertNotNull(cal);
 
         for (final String[] test : ACT_360) {
@@ -362,7 +362,7 @@ public class PeriodCountCalculatorTest extends TestCase {
     }
 
     public void testUnsupportedType() {
-        final PeriodCountCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
+        final PeriodCountCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
         Assert.assertNotNull(cal);
 
         final LocalDate start = new LocalDate();
@@ -385,7 +385,7 @@ public class PeriodCountCalculatorTest extends TestCase {
 
     }
 
-    private void runtest(final PeriodCountCalculator cal, final String[] test) {
+    private void runtest(final PeriodCountCalculator<LocalDate> cal, final String[] test) {
         final String name = test[0];
         final LocalDate start = new LocalDate(test[1]);
         final LocalDate end = new LocalDate(test[2]);
