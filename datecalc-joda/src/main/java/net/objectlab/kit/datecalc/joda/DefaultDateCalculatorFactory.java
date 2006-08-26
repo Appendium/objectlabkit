@@ -21,11 +21,13 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.DateCalculatorFactory;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
+import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
 import org.joda.time.LocalDate;
 
-public class DefaultDateCalculatorFactory implements DateCalculatorFactory {
+public class DefaultDateCalculatorFactory implements DateCalculatorFactory<LocalDate> {
     private static final DateCalculatorFactory DEFAULT = new DefaultDateCalculatorFactory();
 
     private final ConcurrentMap<String, Set<LocalDate>> holidays = new ConcurrentHashMap<String, Set<LocalDate>>();
@@ -79,9 +81,9 @@ public class DefaultDateCalculatorFactory implements DateCalculatorFactory {
         this.holidays.put(name, new HashSet<LocalDate>(holidayDates));
     }
 
-    private static final PeriodCountCalculator PCC = new DefaultPeriodCountCalculator();
+    private static final PeriodCountCalculator<LocalDate> PCC = new DefaultPeriodCountCalculator();
 
-    public PeriodCountCalculator getPeriodCountCalculator() {
+    public PeriodCountCalculator<LocalDate> getPeriodCountCalculator() {
         return PCC;
     }
 }

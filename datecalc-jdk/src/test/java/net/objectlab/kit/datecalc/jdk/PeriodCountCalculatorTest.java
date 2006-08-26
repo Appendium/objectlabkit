@@ -20,6 +20,7 @@ import java.util.Date;
 
 import junit.framework.Assert;
 import net.objectlab.kit.datecalc.common.PeriodCountBasis;
+import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
 public class PeriodCountCalculatorTest extends AbstractDateCalculatorTest {
 

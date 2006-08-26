@@ -1,12 +1,13 @@
 package net.objectlab.kit.datecalc.joda;
 
 import net.objectlab.kit.datecalc.common.PeriodCountBasis;
+import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
 import org.joda.time.LocalDate;
 import org.joda.time.Period;
 import org.joda.time.PeriodType;
 
-public class DefaultPeriodCountCalculator implements PeriodCountCalculator {
+public class DefaultPeriodCountCalculator implements PeriodCountCalculator<LocalDate> {
     private static final int YEAR_360 = 360;
 
     private static final int MONTHS_IN_YEAR = 12;
