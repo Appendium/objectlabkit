@@ -64,22 +64,17 @@ public class DefaultDateCalculatorFactory extends AbstractDateCalculatorFactory<
 
         if (HolidayHandlerType.FORWARD.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new ForwardHandler());
+        } else if (HolidayHandlerType.BACKWARD.equals(holidayHandlerType)) {
+            cal.setHolidayHandler(new BackwardHandler());
+        } else if (HolidayHandlerType.MODIFIED_FOLLLOWING.equals(holidayHandlerType)) {
+            cal.setHolidayHandler(new ModifiedFollowingHandler());
+        } else if (HolidayHandlerType.MODIFIED_PRECEEDING.equals(holidayHandlerType)) {
+            cal.setHolidayHandler(new ModifiedPreceedingHandler());
         } else {
-            throw new UnsupportedOperationException("only forward supported");
+            throw new UnsupportedOperationException("Unsupported HolidayHandler: " + holidayHandlerType);
         }
 
         return cal;
-
-        // } else if (HolidayHandlerType.BACKWARD.equals(holidayHandlerType)) {
-        // cal.setHolidayHandler(new BackwardHandler());
-        // } else if
-        // (HolidayHandlerType.MODIFIED_FOLLLOWING.equals(holidayHandlerType)) {
-        // cal.setHolidayHandler(new ModifiedFollowingHandler());
-        // } else if
-        // (HolidayHandlerType.MODIFIED_PRECEEDING.equals(holidayHandlerType)) {
-        // cal.setHolidayHandler(new ModifiedPreceedingHandler());
-        // }
-        // return cal;
     }
 
     public PeriodCountCalculator<Date> getPeriodCountCalculator() {
