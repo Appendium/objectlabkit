@@ -28,7 +28,7 @@ import java.util.Set;
  * new DateCalculator to get the new set.
  * 
  * @author Benoit Xhenseval
- * @author $LastEditedBy$
+ * @author $LastChangedBy$
  * @version $Revision$ $Date$
  */
 public interface DateCalculatorFactory<E> {
