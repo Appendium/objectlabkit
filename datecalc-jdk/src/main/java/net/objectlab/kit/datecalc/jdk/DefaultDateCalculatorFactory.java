@@ -18,10 +18,8 @@
 package net.objectlab.kit.datecalc.jdk;
 
 import java.util.Date;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 
+import net.objectlab.kit.datecalc.common.AbstractDateCalculatorFactory;
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.DateCalculatorFactory;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
@@ -35,10 +33,12 @@ import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
  * @version $Revision$ $Date$
  *
  */
-public class DefaultDateCalculatorFactory implements DateCalculatorFactory<Date> {
+public class DefaultDateCalculatorFactory extends AbstractDateCalculatorFactory<Date> 
+        implements DateCalculatorFactory<Date> {
+    
     private static final DateCalculatorFactory<Date> DEFAULT = new DefaultDateCalculatorFactory();
 
-    private final ConcurrentMap<String, Set<Date>> holidays = new ConcurrentHashMap<String, Set<Date>>();
+    private static final PeriodCountCalculator<Date> PCC = new DefaultPeriodCountCalculator();
 
     public static DateCalculatorFactory<Date> getDefaultInstance() {
         return DEFAULT;
@@ -82,24 +82,8 @@ public class DefaultDateCalculatorFactory implements DateCalculatorFactory<Date>
         // return cal;
     }
 
-    /**
-     * Use this method to register a set of holidays for a given calendar, it
-     * will replace any existing set. It won't update any existing
-     * DateCalculator as these should not be amended whilst in existence (we
-     * could otherwise get inconsistent results).
-     * 
-     * @param name
-     *            the calendar name to register these holidays under.
-     * @param holidays
-     *            the set of holidays (non-working days).
-     */
-    public void registerHolidays(final String name, final Set<Date> holidays) {
-        this.holidays.put(name, holidays);
-    }
-
-    private static final PeriodCountCalculator<Date> PCC = new DefaultPeriodCountCalculator();
-
     public PeriodCountCalculator<Date> getPeriodCountCalculator() {
         return PCC;
     }
+
 }
