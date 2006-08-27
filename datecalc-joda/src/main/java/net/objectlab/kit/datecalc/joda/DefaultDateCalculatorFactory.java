@@ -15,11 +15,7 @@
  */
 package net.objectlab.kit.datecalc.joda;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-
+import net.objectlab.kit.datecalc.common.AbstractDateCalculatorFactory;
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.DateCalculatorFactory;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
@@ -27,11 +23,13 @@ import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
 import org.joda.time.LocalDate;
 
-public class DefaultDateCalculatorFactory implements DateCalculatorFactory<LocalDate> {
+public class DefaultDateCalculatorFactory extends AbstractDateCalculatorFactory<LocalDate>
+        implements DateCalculatorFactory<LocalDate> {
+    
     private static final DateCalculatorFactory<LocalDate> DEFAULT = new DefaultDateCalculatorFactory();
 
-    private final ConcurrentMap<String, Set<LocalDate>> holidays = new ConcurrentHashMap<String, Set<LocalDate>>();
-
+    private static final PeriodCountCalculator<LocalDate> PCC = new DefaultPeriodCountCalculator();
+    
     public static DateCalculatorFactory<LocalDate> getDefaultInstance() {
         return DEFAULT;
     }
@@ -66,22 +64,6 @@ public class DefaultDateCalculatorFactory implements DateCalculatorFactory<Local
         return cal;
     }
 
-    /**
-     * Use this method to register a set of holidays for a given calendar, it
-     * will replace any existing set. It won't update any existing
-     * DateCalculator as these should not be amended whilst in existence (we
-     * could otherwise get inconsistent results).
-     * 
-     * @param name
-     *            the calendar name to register these holidays under.
-     * @param holidayDates
-     *            the set of holidays (non-working days).
-     */
-    public void registerHolidays(final String name, final Set<LocalDate> holidayDates) {
-        this.holidays.put(name, new HashSet<LocalDate>(holidayDates));
-    }
-
-    private static final PeriodCountCalculator<LocalDate> PCC = new DefaultPeriodCountCalculator();
 
     public PeriodCountCalculator<LocalDate> getPeriodCountCalculator() {
         return PCC;
