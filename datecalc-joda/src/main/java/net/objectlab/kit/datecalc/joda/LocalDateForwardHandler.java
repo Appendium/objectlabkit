@@ -22,31 +22,22 @@ import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 import org.joda.time.LocalDate;
 
 /**
- * A modified preceeding handler will move the date backward if it falls on a
- * non working day BUT, if the new date falls into another month, it will revert
- * to moving forward until it finds a working day.
+ * A Forward handler will move the date forward if it falls on a non working
+ * day.
  * 
  * @author Benoit Xhenseval
  */
-public class ModifiedPreceedingHandler implements HolidayHandler<LocalDate> {
+public class LocalDateForwardHandler implements HolidayHandler<LocalDate> {
 
     public LocalDate moveCurrentDate(final DateCalculator<LocalDate> calendar) {
         LocalDate date = calendar.getCurrentBusinessDate();
-        final int month = date.getMonthOfYear();
-        int step = -1;
         while (calendar.isNonWorkingDay(date)) {
-            date = date.plusDays(step);
-            if (date.getMonthOfYear() != month) {
-                // flick to backward
-                step = 1;
-                date = date.plusDays(step);
-            }
+            date = date.plusDays(1);
         }
         return date;
     }
 
     public String getType() {
-        return HolidayHandlerType.MODIFIED_PRECEEDING;
+        return HolidayHandlerType.FORWARD;
     }
-
 }

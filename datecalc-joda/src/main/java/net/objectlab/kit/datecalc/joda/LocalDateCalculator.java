@@ -77,7 +77,7 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
         return this;
     }
 
-    private void initialise() {
+    protected void initialise() {
         if (getStartDate() == null) {
             setStartDate(new LocalDate());
         } else if (getCurrentBusinessDate() == null) {

@@ -24,34 +24,46 @@ import org.joda.time.LocalDate;
 import org.joda.time.YearMonthDay;
 
 /**
- *
+ * 
  * @author xhensevb
  * @author $LastChangedBy: marchy $
  * @version $Revision: 59 $ $Date: 2006-08-26 11:06:39 +0200 (Sat, 26 Aug 2006) $
- *
+ * 
  */
 public class HolidayHandlerYearMonthDayWrapper implements HolidayHandler<LocalDate> {
 
     private HolidayHandler<YearMonthDay> delegate;
+
     private DateCalculator<YearMonthDay> calculator;
-    
-    protected HolidayHandlerYearMonthDayWrapper(HolidayHandler<YearMonthDay> delegate, DateCalculator<YearMonthDay> calculator) {
+
+    public HolidayHandlerYearMonthDayWrapper(final HolidayHandler<YearMonthDay> delegate, final DateCalculator<YearMonthDay> calculator) {
         this.delegate = delegate;
         this.calculator = calculator;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see net.objectlab.kit.datecalc.common.HolidayHandler#getType()
      */
     public String getType() {
         return delegate.getType();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see net.objectlab.kit.datecalc.common.HolidayHandler#moveCurrentDate(net.objectlab.kit.datecalc.common.DateCalculator)
      */
-    public LocalDate moveCurrentDate(DateCalculator<LocalDate> calendar) {
-        return delegate.moveCurrentDate(calculator).toLocalDate();
+    public LocalDate moveCurrentDate(final DateCalculator<LocalDate> calendar) {
+        LocalDate ret = calendar.getCurrentBusinessDate();
+        if (delegate != null) {
+            final YearMonthDay day = delegate.moveCurrentDate(calculator);
+            if (day != null) {
+                ret = day.toLocalDate();
+            }
+        }
+        return ret;
     }
 
 }

@@ -13,7 +13,7 @@ import org.joda.time.LocalDate;
 public class IMMDateTest extends TestCase {
 
     public void testNextIMM() {
-        final DateCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.FORWARD);
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
@@ -81,7 +81,7 @@ public class IMMDateTest extends TestCase {
     }
 
     public void testMoveByIMMTenor() {
-        final DateCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.FORWARD);
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
@@ -95,7 +95,7 @@ public class IMMDateTest extends TestCase {
     }
 
     public void testMoveByNullTenor() {
-        final DateCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.FORWARD);
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
@@ -112,7 +112,7 @@ public class IMMDateTest extends TestCase {
     }
 
     public void testPreviousIMM() {
-        final DateCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.FORWARD);
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
@@ -182,7 +182,7 @@ public class IMMDateTest extends TestCase {
     }
 
     public void testIMMLists() {
-        final DateCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.FORWARD);
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
@@ -201,7 +201,7 @@ public class IMMDateTest extends TestCase {
     }
 
     public void testEmptyIMMLists() {
-        final DateCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.FORWARD);
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
@@ -214,7 +214,7 @@ public class IMMDateTest extends TestCase {
     }
 
     public void testEndOnIMMDateIMMLists() {
-        final DateCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.FORWARD);
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
@@ -229,7 +229,7 @@ public class IMMDateTest extends TestCase {
     }
 
     public void testStartOnIMMDateIMMLists() {
-        final DateCalculator<LocalDate> cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.FORWARD);
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
