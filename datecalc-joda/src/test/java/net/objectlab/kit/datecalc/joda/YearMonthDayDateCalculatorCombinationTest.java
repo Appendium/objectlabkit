@@ -22,7 +22,7 @@ import java.util.Set;
 
 import net.objectlab.kit.datecalc.common.DateCalculator;
 
-import org.joda.time.LocalDate;
+import org.joda.time.YearMonthDay;
 
 /**
  * 
@@ -31,21 +31,21 @@ import org.joda.time.LocalDate;
  * @version $Revision: 59 $ $Date: 2006-08-26 11:06:39 +0200 (Sat, 26 Aug 2006) $
  * 
  */
-public class LocalDateForwardDateCalculatorTest extends AbstractForwardDateCalculatorTest<LocalDate> {
+public class YearMonthDayDateCalculatorCombinationTest extends AbstractDateCalculatorCombinationTest<YearMonthDay> {
 
     @Override
-    protected LocalDate newDate(final String date) {
-        return new LocalDate(date);
+    protected YearMonthDay newDate(final String date) {
+        return new YearMonthDay(date);
     }
 
     @Override
-    protected DateCalculator<LocalDate> newDateCalculator(final String name, final String type) {
-        return DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator(name, type);
+    protected DateCalculator<YearMonthDay> newDateCalculator(final String name, final String type) {
+        return DefaultYearMonthDayCalculatorFactory.getDefaultInstance().getDateCalculator(name, type);
     }
 
     @Override
-    protected Set<LocalDate> newHolidaysSet() {
-        final Set<LocalDate> holidays = new HashSet<LocalDate>();
+    protected Set<YearMonthDay> newHolidaysSet() {
+        final Set<YearMonthDay> holidays = new HashSet<YearMonthDay>();
         holidays.add(newDate("2006-08-28"));
         holidays.add(newDate("2006-12-25"));
         holidays.add(newDate("2006-12-26"));
@@ -53,27 +53,27 @@ public class LocalDateForwardDateCalculatorTest extends AbstractForwardDateCalcu
     }
 
     @Override
-    protected Set<LocalDate> createUKHolidays() {
-        final Set<LocalDate> uk = new HashSet<LocalDate>();
-        uk.add(new LocalDate("2006-01-01"));
-        uk.add(new LocalDate("2006-08-28"));
-        uk.add(new LocalDate("2006-12-25"));
-        uk.add(new LocalDate("2006-12-26"));
+    protected Set<YearMonthDay> createUKHolidays() {
+        final Set<YearMonthDay> uk = new HashSet<YearMonthDay>();
+        uk.add(new YearMonthDay("2006-01-01"));
+        uk.add(new YearMonthDay("2006-08-28"));
+        uk.add(new YearMonthDay("2006-12-25"));
+        uk.add(new YearMonthDay("2006-12-26"));
         return uk;
     }
 
     @Override
-    protected Set<LocalDate> createUSHolidays() {
-        final Set<LocalDate> us = new HashSet<LocalDate>();
-        us.add(new LocalDate("2006-07-04"));
-        us.add(new LocalDate("2006-11-28"));
-        us.add(new LocalDate("2006-12-25"));
+    protected Set<YearMonthDay> createUSHolidays() {
+        final Set<YearMonthDay> us = new HashSet<YearMonthDay>();
+        us.add(new YearMonthDay("2006-07-04"));
+        us.add(new YearMonthDay("2006-11-28"));
+        us.add(new YearMonthDay("2006-12-25"));
         return us;
     }
 
     @Override
-    protected void registerHolidays(final String name, final Set<LocalDate> holidays) {
-        DefaultLocalDateCalculatorFactory.getDefaultInstance().registerHolidays(name, holidays);
+    protected void registerHolidays(final String name, final Set<YearMonthDay> holidays) {
+        DefaultYearMonthDayCalculatorFactory.getDefaultInstance().registerHolidays(name, holidays);
     }
 
 }

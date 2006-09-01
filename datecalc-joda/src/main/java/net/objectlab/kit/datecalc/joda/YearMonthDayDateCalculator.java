@@ -68,7 +68,10 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
      * is the date a non-working day according to the WorkingWeek?
      */
     public boolean isWeekend(final YearMonthDay date) {
-        return delegate.isWeekend(date.toLocalDate());
+        if (date != null) {
+            return delegate.isWeekend(date.toLocalDate());
+        }
+        return false;
     }
 
     public DateCalculator<YearMonthDay> moveByDays(final int days) {

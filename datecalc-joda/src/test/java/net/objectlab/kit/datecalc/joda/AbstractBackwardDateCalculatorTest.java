@@ -200,14 +200,14 @@ public abstract class AbstractBackwardDateCalculatorTest<E> extends AbstractDate
         Assert.assertEquals("Holidays", holidays, cal.getNonWorkingDays());
         Assert.assertEquals("Holidays size", 3, cal.getNonWorkingDays().size());
 
-//        cal.setStartDate(newDate("2006-08-24"));
-//        checkDate("Move 1 BD", cal.moveByBusinessDays(1), "2006-08-25");
+        // cal.setStartDate(newDate("2006-08-24"));
+        // checkDate("Move 1 BD", cal.moveByBusinessDays(1), "2006-08-25");
 
         cal.setStartDate(newDate("2006-08-24"));
         try {
             cal.moveByBusinessDays(7);
             fail("Should have thrown exception");
-        } catch(IllegalArgumentException e) {
+        } catch (final IllegalArgumentException e) {
             // ok
         }
         // checkDate("Add 1 week", cal.moveByDays(7), "2006-08-31");
