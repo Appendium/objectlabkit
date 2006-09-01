@@ -51,4 +51,29 @@ public class YearMonthDayBackwardDateCalculatorTest extends AbstractBackwardDate
         holidays.add(newDate("2006-12-26"));
         return holidays;
     }
+
+    @Override
+    protected Set<YearMonthDay> createUKHolidays() {
+        final Set<YearMonthDay> uk = new HashSet<YearMonthDay>();
+        uk.add(new YearMonthDay("2006-01-01"));
+        uk.add(new YearMonthDay("2006-08-28"));
+        uk.add(new YearMonthDay("2006-12-25"));
+        uk.add(new YearMonthDay("2006-12-26"));
+        return uk;
+    }
+
+    @Override
+    protected Set<YearMonthDay> createUSHolidays() {
+        final Set<YearMonthDay> us = new HashSet<YearMonthDay>();
+        us.add(new YearMonthDay("2006-07-04"));
+        us.add(new YearMonthDay("2006-11-28"));
+        us.add(new YearMonthDay("2006-12-25"));
+        return us;
+    }
+
+    @Override
+    protected void registerHolidays(final String name, final Set<YearMonthDay> holidays) {
+        DefaultYearMonthDayCalculatorFactory.getDefaultInstance().registerHolidays(name, holidays);
+    }
+
 }

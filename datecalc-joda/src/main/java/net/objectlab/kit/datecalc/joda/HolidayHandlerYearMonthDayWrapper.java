@@ -36,7 +36,8 @@ public class HolidayHandlerYearMonthDayWrapper implements HolidayHandler<LocalDa
 
     private DateCalculator<YearMonthDay> calculator;
 
-    public HolidayHandlerYearMonthDayWrapper(final HolidayHandler<YearMonthDay> delegate, final DateCalculator<YearMonthDay> calculator) {
+    public HolidayHandlerYearMonthDayWrapper(final HolidayHandler<YearMonthDay> delegate,
+            final DateCalculator<YearMonthDay> calculator) {
         this.delegate = delegate;
         this.calculator = calculator;
     }

@@ -31,7 +31,7 @@ import org.joda.time.LocalDate;
  * @version $Revision: 59 $ $Date: 2006-08-26 11:06:39 +0200 (Sat, 26 Aug 2006) $
  * 
  */
-public class LocalDateForwardDateCalculatorTest extends AbstractForwardDateCalculatorTest<LocalDate> {
+public class LocalDateDateCalculatorCombinationTest extends AbstractDateCalculatorCombinationTest<LocalDate> {
 
     @Override
     protected LocalDate newDate(final String date) {

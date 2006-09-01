@@ -16,4 +16,10 @@ public abstract class AbstractDateTestCase<E> extends TestCase {
     }
 
     protected abstract Set<E> newHolidaysSet();
+
+    protected abstract Set<E> createUKHolidays();
+
+    protected abstract Set<E> createUSHolidays();
+
+    protected abstract void registerHolidays(final String name, Set<E> holidays);
 }

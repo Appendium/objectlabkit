@@ -189,10 +189,9 @@ public abstract class AbstractModifiedPreceedingDateCalculatorTest<E> extends Ab
         checkDate("23/12 + 1", cal.moveByDays(1), "2006-12-22");
     }
 
-   
     /**
      * @todo How to handle moveByBusDays if it moves backwards...
-     *
+     * 
      */
     public void testMoveByBusinessDays() {
         final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.MODIFIED_PRECEEDING);
@@ -202,19 +201,20 @@ public abstract class AbstractModifiedPreceedingDateCalculatorTest<E> extends Ab
         Assert.assertEquals("Holidays", holidays, cal.getNonWorkingDays());
         Assert.assertEquals("Holidays size", 3, cal.getNonWorkingDays().size());
 
-//        cal.setStartDate(newDate("2006-08-24"));
-//        checkDate("Move 1 BD", cal.moveByBusinessDays(1), "2006-08-25");
+        // cal.setStartDate(newDate("2006-08-24"));
+        // checkDate("Move 1 BD", cal.moveByBusinessDays(1), "2006-08-25");
 
         cal.setStartDate(newDate("2006-08-24"));
         try {
             cal.moveByBusinessDays(7);
             fail("Should have thrown exception");
-        } catch(IllegalArgumentException e) {
+        } catch (final IllegalArgumentException e) {
             // ok
         }
-//        checkDate("Add 1 week", cal.moveByDays(7), "2006-08-31");
-//        cal.setStartDate(newDate("2006-08-24"));
-//        checkDate("Move by 1W with 1 bank holiday", cal.moveByBusinessDays(7), "2006-09-05");
+        // checkDate("Add 1 week", cal.moveByDays(7), "2006-08-31");
+        // cal.setStartDate(newDate("2006-08-24"));
+        // checkDate("Move by 1W with 1 bank holiday",
+        // cal.moveByBusinessDays(7), "2006-09-05");
 
     }
 

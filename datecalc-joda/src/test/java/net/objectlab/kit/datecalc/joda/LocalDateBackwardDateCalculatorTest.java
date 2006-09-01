@@ -51,4 +51,29 @@ public class LocalDateBackwardDateCalculatorTest extends AbstractBackwardDateCal
         holidays.add(newDate("2006-12-26"));
         return holidays;
     }
+
+    @Override
+    protected Set<LocalDate> createUKHolidays() {
+        final Set<LocalDate> uk = new HashSet<LocalDate>();
+        uk.add(new LocalDate("2006-01-01"));
+        uk.add(new LocalDate("2006-08-28"));
+        uk.add(new LocalDate("2006-12-25"));
+        uk.add(new LocalDate("2006-12-26"));
+        return uk;
+    }
+
+    @Override
+    protected Set<LocalDate> createUSHolidays() {
+        final Set<LocalDate> us = new HashSet<LocalDate>();
+        us.add(new LocalDate("2006-07-04"));
+        us.add(new LocalDate("2006-11-28"));
+        us.add(new LocalDate("2006-12-25"));
+        return us;
+    }
+
+    @Override
+    protected void registerHolidays(final String name, final Set<LocalDate> holidays) {
+        DefaultLocalDateCalculatorFactory.getDefaultInstance().registerHolidays(name, holidays);
+    }
+
 }
