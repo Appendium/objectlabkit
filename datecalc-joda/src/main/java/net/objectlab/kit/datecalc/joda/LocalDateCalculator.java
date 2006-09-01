@@ -35,16 +35,16 @@ import org.joda.time.LocalDate;
  * 
  * @author Benoit Xhenseval
  */
-public class BaseDateCalculator extends AbstractDateCalculator<LocalDate> {
+public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
 
     private JodaWorkingWeek workingWeek = JodaWorkingWeek.DEFAULT;
 
     @SuppressWarnings("unchecked")
-    public BaseDateCalculator() {
+    public LocalDateCalculator() {
         this(null, null, Collections.EMPTY_SET, null);
     }
 
-    public BaseDateCalculator(final String name, final LocalDate startDate, final Set<LocalDate> nonWorkingDays,
+    public LocalDateCalculator(final String name, final LocalDate startDate, final Set<LocalDate> nonWorkingDays,
             final HolidayHandler<LocalDate> holidayHandler) {
         super(name, nonWorkingDays, holidayHandler);
         setStartDate(startDate);
@@ -88,7 +88,7 @@ public class BaseDateCalculator extends AbstractDateCalculator<LocalDate> {
     @Override
     protected DateCalculator<LocalDate> createNewCalcultaor(final String name, final LocalDate startDate,
             final Set<LocalDate> holidays, final HolidayHandler<LocalDate> handler) {
-        return new BaseDateCalculator(name, startDate, holidays, handler);
+        return new LocalDateCalculator(name, startDate, holidays, handler);
     }
 
     public List<LocalDate> getIMMDates(final LocalDate start, final LocalDate end) {
