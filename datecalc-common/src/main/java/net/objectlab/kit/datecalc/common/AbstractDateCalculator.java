@@ -51,8 +51,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
 
     private HolidayHandler<E> holidayHandler;
 
-    protected AbstractDateCalculator(final String name,
-            final Set<E> nonWorkingDays, final HolidayHandler<E> holidayHandler) {
+    protected AbstractDateCalculator(final String name, final Set<E> nonWorkingDays, final HolidayHandler<E> holidayHandler) {
         this.name = name;
         this.nonWorkingDays = nonWorkingDays;
         this.holidayHandler = holidayHandler;
@@ -152,6 +151,20 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     }
 
     public DateCalculator<E> moveByBusinessDays(final int businessDays) {
+        if (businessDays > 0
+                && holidayHandler != null
+                && (holidayHandler.getType().equals(HolidayHandlerType.BACKWARD) || holidayHandler.getType().equals(
+                        HolidayHandlerType.MODIFIED_PRECEEDING))) {
+            throw new IllegalArgumentException("A " + HolidayHandlerType.MODIFIED_PRECEEDING + " or "
+                    + HolidayHandlerType.BACKWARD + " does not allow positive steps for moveByBusinessDays");
+        } else if (businessDays < 0
+                && holidayHandler != null
+                && (holidayHandler.getType().equals(HolidayHandlerType.FORWARD) || holidayHandler.getType().equals(
+                        HolidayHandlerType.MODIFIED_FOLLLOWING))) {
+            throw new IllegalArgumentException("A " + HolidayHandlerType.MODIFIED_FOLLLOWING + " or "
+                    + HolidayHandlerType.FORWARD + " does not allow negative steps for moveByBusinessDays");
+        }
+
         final int numberOfStepsLeft = Math.abs(businessDays);
         final int step = (businessDays < 0 ? -1 : 1);
 
@@ -179,13 +192,9 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
             return this;
         }
 
-        if (holidayHandler == null
-                && calendar.getHolidayHandlerType() != null
-                || holidayHandler != null
-                && !holidayHandler.getType().equals(
-                        calendar.getHolidayHandlerType())) {
-            throw new IllegalArgumentException(
-                    "Combined Calendars cannot have different handler types");
+        if (holidayHandler == null && calendar.getHolidayHandlerType() != null || holidayHandler != null
+                && !holidayHandler.getType().equals(calendar.getHolidayHandlerType())) {
+            throw new IllegalArgumentException("Combined Calendars cannot have different handler types");
         }
 
         final Set<E> newSet = new HashSet<E>();
@@ -196,8 +205,8 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
             newSet.addAll(calendar.getNonWorkingDays());
         }
 
-        final DateCalculator<E> cal = createNewCalcultaor(getName() + "/"
-                + calendar.getName(), getStartDate(), newSet, holidayHandler);
+        final DateCalculator<E> cal = createNewCalcultaor(getName() + "/" + calendar.getName(), getStartDate(), newSet,
+                holidayHandler);
 
         return cal;
     }
@@ -216,9 +225,8 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         return getNextIMMDate(false, currentBusinessDate);
     }
 
-    protected abstract E getNextIMMDate(final boolean forward,
-            final E theStartDate);
+    protected abstract E getNextIMMDate(final boolean forward, final E theStartDate);
 
-    protected abstract DateCalculator<E> createNewCalcultaor(String calcName,
-            E theStartDate, Set<E> holidays, HolidayHandler<E> handler);
+    protected abstract DateCalculator<E> createNewCalcultaor(String calcName, E theStartDate, Set<E> holidays,
+            HolidayHandler<E> handler);
 }

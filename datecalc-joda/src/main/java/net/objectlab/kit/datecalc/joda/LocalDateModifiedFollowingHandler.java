@@ -1,4 +1,6 @@
 /*
+ * $Id: LocalDateModifiedFollowingHandler.java 68 2006-08-27 09:46:33Z marchy $
+ * 
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -22,23 +24,31 @@ import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 import org.joda.time.LocalDate;
 
 /**
- * A backward handler will move the date backward if it falls on a non working
- * day.
+ * A modified following handler will move the date forward if it falls on a non
+ * working day BUT, if the new date falls into another month, it will revert to
+ * moving backward until it finds a working day.
  * 
  * @author Benoit Xhenseval
  */
-public class BackwardHandler implements HolidayHandler<LocalDate> {
+public class LocalDateModifiedFollowingHandler implements HolidayHandler<LocalDate> {
 
     public LocalDate moveCurrentDate(final DateCalculator<LocalDate> calendar) {
         LocalDate date = calendar.getCurrentBusinessDate();
+        final int month = date.getMonthOfYear();
+        int step = 1;
         while (calendar.isNonWorkingDay(date)) {
-            date = date.minusDays(1);
+            date = date.plusDays(step);
+            if (date.getMonthOfYear() != month) {
+                // flick to backward
+                step = -1;
+                date = date.plusDays(step);
+            }
         }
         return date;
     }
 
     public String getType() {
-        return HolidayHandlerType.BACKWARD;
+        return HolidayHandlerType.MODIFIED_FOLLLOWING;
     }
 
 }

@@ -9,9 +9,9 @@ import org.joda.time.LocalDate;
 public class DateCalculatorCombinationTest extends AbstractDateCalculatorTest {
 
     public void testInvalidCombinationDiffHandler() {
-        final DateCalculator<LocalDate> cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal1 = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.BACKWARD);
-        final DateCalculator<LocalDate> cal2 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla2",
+        final DateCalculator<LocalDate> cal2 = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla2",
                 HolidayHandlerType.FORWARD);
 
         try {
@@ -23,8 +23,9 @@ public class DateCalculatorCombinationTest extends AbstractDateCalculatorTest {
     }
 
     public void testInvalidCombinationNullNotNullHandler() {
-        final DateCalculator<LocalDate> cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla", null);
-        final DateCalculator<LocalDate> cal2 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla2",
+        final DateCalculator<LocalDate> cal1 = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+                null);
+        final DateCalculator<LocalDate> cal2 = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla2",
                 HolidayHandlerType.FORWARD);
 
         try {
@@ -36,9 +37,10 @@ public class DateCalculatorCombinationTest extends AbstractDateCalculatorTest {
     }
 
     public void testInvalidCombinationNotNullNullHandler() {
-        final DateCalculator<LocalDate> cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        final DateCalculator<LocalDate> cal1 = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.FORWARD);
-        final DateCalculator<LocalDate> cal2 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla2", null);
+        final DateCalculator<LocalDate> cal2 = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla2",
+                null);
 
         try {
             cal1.combine(cal2);
@@ -49,12 +51,12 @@ public class DateCalculatorCombinationTest extends AbstractDateCalculatorTest {
     }
 
     public void testValidCombinationOneEmptySet() {
-        DefaultDateCalculatorFactory.getDefaultInstance().registerHolidays("UK", createUKHolidays());
-        final DateCalculator<LocalDate> cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+        DefaultLocalDateCalculatorFactory.getDefaultInstance().registerHolidays("UK", createUKHolidays());
+        final DateCalculator<LocalDate> cal1 = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
                 HolidayHandlerType.FORWARD);
         final LocalDate localDate = new LocalDate("2006-08-08");
         cal1.setStartDate(localDate);
-        final DateCalculator<LocalDate> cal2 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK",
+        final DateCalculator<LocalDate> cal2 = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK",
                 HolidayHandlerType.FORWARD);
 
         final DateCalculator<LocalDate> combo = cal1.combine(cal2);
@@ -66,13 +68,13 @@ public class DateCalculatorCombinationTest extends AbstractDateCalculatorTest {
     }
 
     public void testValidCombination() {
-        DefaultDateCalculatorFactory.getDefaultInstance().registerHolidays("UK", createUKHolidays());
-        DefaultDateCalculatorFactory.getDefaultInstance().registerHolidays("UK", createUKHolidays());
-        final DateCalculator<LocalDate> cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK",
+        DefaultLocalDateCalculatorFactory.getDefaultInstance().registerHolidays("UK", createUKHolidays());
+        DefaultLocalDateCalculatorFactory.getDefaultInstance().registerHolidays("UK", createUKHolidays());
+        final DateCalculator<LocalDate> cal1 = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK",
                 HolidayHandlerType.FORWARD);
         final LocalDate localDate = new LocalDate("2006-08-08");
         cal1.setStartDate(localDate);
-        final DateCalculator<LocalDate> cal2 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK",
+        final DateCalculator<LocalDate> cal2 = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK",
                 HolidayHandlerType.FORWARD);
 
         final DateCalculator<LocalDate> combo = cal1.combine(cal2);
@@ -84,13 +86,13 @@ public class DateCalculatorCombinationTest extends AbstractDateCalculatorTest {
     }
 
     public void testValidCombination2Sets() {
-        DefaultDateCalculatorFactory.getDefaultInstance().registerHolidays("UK", createUKHolidays());
-        DefaultDateCalculatorFactory.getDefaultInstance().registerHolidays("US", createUSHolidays());
-        final DateCalculator<LocalDate> cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("US",
+        DefaultLocalDateCalculatorFactory.getDefaultInstance().registerHolidays("UK", createUKHolidays());
+        DefaultLocalDateCalculatorFactory.getDefaultInstance().registerHolidays("US", createUSHolidays());
+        final DateCalculator<LocalDate> cal1 = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("US",
                 HolidayHandlerType.FORWARD);
         final LocalDate localDate = new LocalDate("2006-08-08");
         cal1.setStartDate(localDate);
-        final DateCalculator<LocalDate> cal2 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK",
+        final DateCalculator<LocalDate> cal2 = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK",
                 HolidayHandlerType.FORWARD);
 
         final DateCalculator<LocalDate> combo = cal1.combine(cal2);
@@ -102,8 +104,8 @@ public class DateCalculatorCombinationTest extends AbstractDateCalculatorTest {
     }
 
     public void testNullCombination() {
-        DefaultDateCalculatorFactory.getDefaultInstance().registerHolidays("US", createUSHolidays());
-        final DateCalculator<LocalDate> cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("US",
+        DefaultLocalDateCalculatorFactory.getDefaultInstance().registerHolidays("US", createUSHolidays());
+        final DateCalculator<LocalDate> cal1 = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("US",
                 HolidayHandlerType.FORWARD);
         final LocalDate localDate = new LocalDate("2006-08-08");
         cal1.setStartDate(localDate);
@@ -118,8 +120,8 @@ public class DateCalculatorCombinationTest extends AbstractDateCalculatorTest {
     }
 
     public void testSameCombination() {
-        DefaultDateCalculatorFactory.getDefaultInstance().registerHolidays("US", createUSHolidays());
-        final DateCalculator<LocalDate> cal1 = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("US",
+        DefaultLocalDateCalculatorFactory.getDefaultInstance().registerHolidays("US", createUSHolidays());
+        final DateCalculator<LocalDate> cal1 = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("US",
                 HolidayHandlerType.FORWARD);
         final LocalDate localDate = new LocalDate("2006-08-08");
         cal1.setStartDate(localDate);

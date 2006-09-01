@@ -21,16 +21,15 @@ import net.objectlab.kit.datecalc.common.DateCalculatorFactory;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
-import org.joda.time.LocalDate;
+import org.joda.time.YearMonthDay;
 
-public class DefaultDateCalculatorFactory extends AbstractDateCalculatorFactory<LocalDate>
-        implements DateCalculatorFactory<LocalDate> {
-    
-    private static final DateCalculatorFactory<LocalDate> DEFAULT = new DefaultDateCalculatorFactory();
+public class DefaultYearMonthDayCalculatorFactory extends AbstractDateCalculatorFactory<YearMonthDay> {
 
-    private static final PeriodCountCalculator<LocalDate> PCC = new DefaultPeriodCountCalculator();
-    
-    public static DateCalculatorFactory<LocalDate> getDefaultInstance() {
+    private static final DateCalculatorFactory<YearMonthDay> DEFAULT = new DefaultYearMonthDayCalculatorFactory();
+
+    private static final PeriodCountCalculator<YearMonthDay> PCC = new DefaultYearMonthDayPeriodCountCalculator();
+
+    public static DateCalculatorFactory<YearMonthDay> getDefaultInstance() {
         return DEFAULT;
     }
 
@@ -45,27 +44,28 @@ public class DefaultDateCalculatorFactory extends AbstractDateCalculatorFactory<
      *            typically one of the value of HolidayHandlerType
      * @return a new DateCalculator
      */
-    public DateCalculator<LocalDate> getDateCalculator(final String name, final String holidayHandlerType) {
-        final LocalDateCalculator cal = new LocalDateCalculator();
+    @Override
+    public DateCalculator<YearMonthDay> getDateCalculator(final String name, final String holidayHandlerType) {
+        final YearMonthDayDateCalculator cal = new YearMonthDayDateCalculator();
         cal.setName(name);
         if (holidays.containsKey(name)) {
             cal.setNonWorkingDays(holidays.get(name));
         }
 
         if (HolidayHandlerType.FORWARD.equals(holidayHandlerType)) {
-            cal.setHolidayHandler(new ForwardHandler());
+            cal.setHolidayHandler(new YearMonthDayForwardHandler());
         } else if (HolidayHandlerType.BACKWARD.equals(holidayHandlerType)) {
-            cal.setHolidayHandler(new BackwardHandler());
+            cal.setHolidayHandler(new YearMonthDayBackwardHandler());
         } else if (HolidayHandlerType.MODIFIED_FOLLLOWING.equals(holidayHandlerType)) {
-            cal.setHolidayHandler(new ModifiedFollowingHandler());
+            cal.setHolidayHandler(new YearMonthDayModifiedFollowingHandler());
         } else if (HolidayHandlerType.MODIFIED_PRECEEDING.equals(holidayHandlerType)) {
-            cal.setHolidayHandler(new ModifiedPreceedingHandler());
+            cal.setHolidayHandler(new YearMonthDayModifiedPreceedingHandler());
         }
         return cal;
     }
 
-
-    public PeriodCountCalculator<LocalDate> getPeriodCountCalculator() {
+    @Override
+    public PeriodCountCalculator<YearMonthDay> getPeriodCountCalculator() {
         return PCC;
     }
 }

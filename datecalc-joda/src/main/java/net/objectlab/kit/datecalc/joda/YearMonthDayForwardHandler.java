@@ -19,7 +19,7 @@ import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
-import org.joda.time.LocalDate;
+import org.joda.time.YearMonthDay;
 
 /**
  * A Forward handler will move the date forward if it falls on a non working
@@ -27,10 +27,10 @@ import org.joda.time.LocalDate;
  * 
  * @author Benoit Xhenseval
  */
-public class ForwardHandler implements HolidayHandler<LocalDate> {
+public class YearMonthDayForwardHandler implements HolidayHandler<YearMonthDay> {
 
-    public LocalDate moveCurrentDate(final DateCalculator<LocalDate> calendar) {
-        LocalDate date = calendar.getCurrentBusinessDate();
+    public YearMonthDay moveCurrentDate(final DateCalculator<YearMonthDay> calendar) {
+        YearMonthDay date = calendar.getCurrentBusinessDate();
         while (calendar.isNonWorkingDay(date)) {
             date = date.plusDays(1);
         }

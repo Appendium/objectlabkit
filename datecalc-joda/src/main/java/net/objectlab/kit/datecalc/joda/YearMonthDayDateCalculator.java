@@ -48,16 +48,16 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
     public YearMonthDayDateCalculator(final String name, final YearMonthDay startDate, final Set<YearMonthDay> nonWorkingDays,
             final HolidayHandler<YearMonthDay> holidayHandler) {
         super(name, nonWorkingDays, holidayHandler);
-        setStartDate(startDate);
 
-        Set<LocalDate> dates = new HashSet<LocalDate>();
-        for (YearMonthDay d : nonWorkingDays) {
+        final Set<LocalDate> dates = new HashSet<LocalDate>();
+        for (final YearMonthDay d : nonWorkingDays) {
             dates.add(d.toLocalDate());
         }
 
-        HolidayHandler<LocalDate> locDate = new HolidayHandlerYearMonthDayWrapper(holidayHandler, this);
+        final HolidayHandler<LocalDate> locDate = new HolidayHandlerYearMonthDayWrapper(holidayHandler, this);
 
-        delegate = new LocalDateCalculator(name, startDate.toLocalDate(), dates, locDate);
+        delegate = new LocalDateCalculator(name, (startDate != null ? startDate.toLocalDate() : null), dates, locDate);
+        setStartDate(startDate);
     }
 
     public void setWorkingWeek(final WorkingWeek week) {
@@ -105,7 +105,7 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
         final List<YearMonthDay> dates = new ArrayList<YearMonthDay>();
         final List<LocalDate> localDates = delegate.getIMMDates(start.toLocalDate(), end.toLocalDate());
 
-        for (LocalDate d : localDates) {
+        for (final LocalDate d : localDates) {
             dates.add(new YearMonthDay(d));
         }
 
@@ -116,4 +116,22 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
     protected YearMonthDay getNextIMMDate(final boolean forward, final YearMonthDay start) {
         return new YearMonthDay(delegate.getNextIMMDate(forward, start.toLocalDate()));
     }
+
+    // @Override
+    // public YearMonthDay setCurrentBusinessDate(YearMonthDay date) {
+    // if (delegate != null) {
+    // delegate.setCurrentBusinessDate(date != null ? date.toLocalDate() :
+    // null);
+    // }
+    // return super.setCurrentBusinessDate(date);
+    // }
+
+    @Override
+    public void setStartDate(final YearMonthDay startDate) {
+        if (delegate != null) {
+            delegate.setStartDate(startDate != null ? startDate.toLocalDate() : null);
+        }
+        super.setStartDate(startDate);
+    }
+
 }

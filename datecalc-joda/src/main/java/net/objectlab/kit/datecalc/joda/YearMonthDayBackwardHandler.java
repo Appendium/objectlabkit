@@ -1,6 +1,4 @@
 /*
- * $Id$
- * 
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -21,34 +19,26 @@ import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
-import org.joda.time.LocalDate;
+import org.joda.time.YearMonthDay;
 
 /**
- * A modified following handler will move the date forward if it falls on a non
- * working day BUT, if the new date falls into another month, it will revert to
- * moving backward until it finds a working day.
+ * A backward handler will move the date backward if it falls on a non working
+ * day.
  * 
  * @author Benoit Xhenseval
  */
-public class ModifiedFollowingHandler implements HolidayHandler<LocalDate> {
+public class YearMonthDayBackwardHandler implements HolidayHandler<YearMonthDay> {
 
-    public LocalDate moveCurrentDate(final DateCalculator<LocalDate> calendar) {
-        LocalDate date = calendar.getCurrentBusinessDate();
-        final int month = date.getMonthOfYear();
-        int step = 1;
+    public YearMonthDay moveCurrentDate(final DateCalculator<YearMonthDay> calendar) {
+        YearMonthDay date = calendar.getCurrentBusinessDate();
         while (calendar.isNonWorkingDay(date)) {
-            date = date.plusDays(step);
-            if (date.getMonthOfYear() != month) {
-                // flick to backward
-                step = -1;
-                date = date.plusDays(step);
-            }
+            date = date.minusDays(1);
         }
         return date;
     }
 
     public String getType() {
-        return HolidayHandlerType.MODIFIED_FOLLLOWING;
+        return HolidayHandlerType.BACKWARD;
     }
 
 }
