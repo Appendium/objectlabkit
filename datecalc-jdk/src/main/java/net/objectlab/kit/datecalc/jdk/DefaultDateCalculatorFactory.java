@@ -62,7 +62,9 @@ public class DefaultDateCalculatorFactory extends AbstractDateCalculatorFactory<
             cal.setNonWorkingDays(holidays.get(name));
         }
 
-        if (HolidayHandlerType.FORWARD.equals(holidayHandlerType)) {
+        if (holidayHandlerType == null) {
+            return cal;
+        } else if (HolidayHandlerType.FORWARD.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new ForwardHandler());
         } else if (HolidayHandlerType.BACKWARD.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new BackwardHandler());
