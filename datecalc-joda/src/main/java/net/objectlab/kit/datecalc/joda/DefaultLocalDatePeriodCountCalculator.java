@@ -8,17 +8,6 @@ import org.joda.time.Period;
 import org.joda.time.PeriodType;
 
 public class DefaultLocalDatePeriodCountCalculator implements PeriodCountCalculator<LocalDate> {
-    private static final int YEAR_360 = 360;
-
-    private static final int MONTHS_IN_YEAR = 12;
-
-    private static final double YEAR_365_0 = 365.0;
-
-    private static final double YEAR_360_0 = 360.0;
-
-    private static final int MONTH_31_DAYS = 31;
-
-    private static final int MONTH_30_DAYS = 30;
 
     public int dayDiff(final LocalDate start, final LocalDate end, final PeriodCountBasis basis) {
         int diff = 0;
