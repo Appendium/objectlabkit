@@ -93,14 +93,14 @@ public class ForwardDateCalculatorTest extends AbstractDateCalculatorTest {
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
 
-        final WorkingWeek ww = new WorkingWeek();
-        ww.withWorkingDayFromCalendar(false, Calendar.MONDAY);
-        ww.withWorkingDayFromCalendar(true, Calendar.TUESDAY);
-        ww.withWorkingDayFromCalendar(false, Calendar.WEDNESDAY);
-        ww.withWorkingDayFromCalendar(true, Calendar.THURSDAY);
-        ww.withWorkingDayFromCalendar(false, Calendar.FRIDAY);
-        ww.withWorkingDayFromCalendar(true, Calendar.SATURDAY);
-        ww.withWorkingDayFromCalendar(false, Calendar.SUNDAY);
+        final WorkingWeek ww = new WorkingWeek()
+            .withWorkingDayFromCalendar(false, Calendar.MONDAY)
+            .withWorkingDayFromCalendar(true, Calendar.TUESDAY)
+            .withWorkingDayFromCalendar(false, Calendar.WEDNESDAY)
+            .withWorkingDayFromCalendar(true, Calendar.THURSDAY)
+            .withWorkingDayFromCalendar(false, Calendar.FRIDAY)
+            .withWorkingDayFromCalendar(true, Calendar.SATURDAY)
+            .withWorkingDayFromCalendar(false, Calendar.SUNDAY);
         cal.setWorkingWeek(ww);
 
         cal.setStartDate(createDate("2006-07-31")); // start date Monday
@@ -131,14 +131,14 @@ public class ForwardDateCalculatorTest extends AbstractDateCalculatorTest {
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
 
-        final WorkingWeek ww = new WorkingWeek();
-        ww.withWorkingDayFromCalendar(false, Calendar.MONDAY);
-        ww.withWorkingDayFromCalendar(true, Calendar.TUESDAY);
-        ww.withWorkingDayFromCalendar(true, Calendar.WEDNESDAY);
-        ww.withWorkingDayFromCalendar(true, Calendar.THURSDAY);
-        ww.withWorkingDayFromCalendar(true, Calendar.FRIDAY);
-        ww.withWorkingDayFromCalendar(false, Calendar.SATURDAY);
-        ww.withWorkingDayFromCalendar(false, Calendar.SUNDAY);
+        final WorkingWeek ww = new WorkingWeek()
+                .withWorkingDayFromCalendar(false, Calendar.MONDAY)
+                .withWorkingDayFromCalendar(true, Calendar.TUESDAY)
+                .withWorkingDayFromCalendar(true, Calendar.WEDNESDAY)
+                .withWorkingDayFromCalendar(true, Calendar.THURSDAY)
+                .withWorkingDayFromCalendar(true, Calendar.FRIDAY)
+                .withWorkingDayFromCalendar(false, Calendar.SATURDAY)
+                .withWorkingDayFromCalendar(false, Calendar.SUNDAY);
         cal.setWorkingWeek(ww);
 
         cal.setStartDate(createDate("2006-07-31")); // start date Monday
