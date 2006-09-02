@@ -19,14 +19,27 @@ package net.objectlab.kit.datecalc.common;
 
 /**
  * TODO add javadoc
- *
+ * 
  * @author Benoit Xhenseval
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
- *
+ * 
  * @param <E>
  */
 public interface PeriodCountCalculator<E> {
+
+    static final int YEAR_360 = 360;
+
+    static final int MONTHS_IN_YEAR = 12;
+
+    static final double YEAR_365_0 = 365.0;
+
+    static final double YEAR_360_0 = 360.0;
+
+    static final int MONTH_31_DAYS = 31;
+
+    static final int MONTH_30_DAYS = 30;
+
     int dayDiff(final E start, final E end, PeriodCountBasis basis);
 
     double monthDiff(final E start, final E end, PeriodCountBasis basis);
