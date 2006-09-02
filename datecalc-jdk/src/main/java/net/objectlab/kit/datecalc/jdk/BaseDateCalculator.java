@@ -1,4 +1,6 @@
 /*
+ * $Id$
+ * 
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -32,7 +34,9 @@ import net.objectlab.kit.datecalc.common.WorkingWeek;
  * of different HolidayHandler, if no HolidayHandler is defined, the calendar
  * will NOT move a date, even if it falls on a holiday or weekend.
  * 
- * @author Benoit Xhenseval
+ * @author Marcin Jekot
+ * @author $LastModifiedBy$
+ * @version $Revision$ $Date$
  */
 public class BaseDateCalculator extends AbstractDateCalculator<Date> {
 
@@ -117,6 +121,7 @@ public class BaseDateCalculator extends AbstractDateCalculator<Date> {
         if (isIMMMonth(cal)) {
             moveToIMMDay(cal);
             // TODO simplify this if condition
+//            if (forward ^ cal.getTime().before(startDate) || cal.getTime().equals(startDate)) {
             if ((forward && cal.getTime().after(startDate)) || (!forward && cal.getTime().before(startDate))) {
                 return cal.getTime();
             }
@@ -133,7 +138,16 @@ public class BaseDateCalculator extends AbstractDateCalculator<Date> {
 
     private boolean isIMMMonth(final Calendar cal) {
         final int month = cal.get(Calendar.MONTH);
-        return (month == Calendar.MARCH || month == Calendar.JUNE || month == Calendar.SEPTEMBER || month == Calendar.DECEMBER);
+        
+        switch (month) {
+        case Calendar.MARCH:
+        case Calendar.JUNE:
+        case Calendar.SEPTEMBER:
+        case Calendar.DECEMBER:
+            return true;
+        }
+        
+        return false;
     }
 
     /**
