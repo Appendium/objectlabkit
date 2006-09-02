@@ -32,6 +32,8 @@ import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
  */
 public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Calendar> {
 
+    private double MILLIS_IN_DAY = 1000 * 60 * 60 * 24;
+    
     public int dayDiff(final Calendar start, final Calendar end, final PeriodCountBasis basis) {
         
         int diff = 0;
@@ -74,12 +76,14 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
             diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * YEAR_360 + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * MONTH_30_DAYS
                     + dayEnd - dayStart;
         } else {
-            // TODO implement this
-            diff = 0;
-//            final Period p = new Period(start, end, PeriodType.days());
-//            diff = p.getDays();
+            diff = dayDiff(start, end); 
         }
         return diff;
+    }
+
+    private int dayDiff(final Calendar start, final Calendar end) {
+        // TODO the 12 hours is just for safety - in case DST kicked in, but is there a better way?
+        return (int)((Math.abs(start.getTime().getTime() - end.getTime().getTime()) + 12) / MILLIS_IN_DAY);
     }
 
     public double monthDiff(final Calendar start, final Calendar end, final PeriodCountBasis basis) {
@@ -97,15 +101,11 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
                 final Calendar startOfEndYear = (Calendar) end.clone();
                 startOfEndYear.set(Calendar.DAY_OF_YEAR, startOfEndYear.getActualMinimum(Calendar.DAY_OF_YEAR));
 
-                Calendar c1 = Calendar.getInstance();
-                c1.clone();
+                final int diff1 = dayDiff(start, endOfStartYear);
+                final int diff2 = dayDiff(startOfEndYear, end);
                 
-                // TODO implement this
-                diff = 0;
-//                final int diff1 = new Period(start, endOfStartYear, PeriodType.days()).getDays();
-//                final int diff2 = new Period(startOfEndYear, end, PeriodType.days()).getDays();
-//                diff = (diff1 + 1.0) / start.dayOfYear().getMaximumValue() + (endYear - startYear - 1.0) + (diff2)
-//                        / (double) end.dayOfYear().getMaximumValue();
+                diff = (diff1 + 1.0) / start.getMaximum(Calendar.DAY_OF_YEAR) + (endYear - startYear - 1.0) + (diff2)
+                    / (double) end.getMaximum(Calendar.DAY_OF_YEAR);
             }
 
         } else if (basis == PeriodCountBasis.CONV_30_360 || basis == PeriodCountBasis.CONV_360E_ISDA
