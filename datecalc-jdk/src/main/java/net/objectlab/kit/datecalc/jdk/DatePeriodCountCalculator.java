@@ -25,22 +25,25 @@ import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 /**
  * TODO javadoc
  *
- * @author Benoit Xhenseval
+ * @author Marcin Jekot
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
  *
  */
-public class DefaultPeriodCountCalculator implements PeriodCountCalculator<Date> {
+public class DatePeriodCountCalculator implements PeriodCountCalculator<Date> {
 
+    private final CalendarPeriodCountCalculator PCC = new CalendarPeriodCountCalculator(); 
+    
     public int dayDiff(final Date start, final Date end, final PeriodCountBasis basis) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        
+        return PCC.dayDiff(Utils.getCal(start), Utils.getCal(end), basis);
     }
 
     public double monthDiff(final Date start, final Date end, final PeriodCountBasis basis) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        return PCC.monthDiff(Utils.getCal(start), Utils.getCal(end), basis);
     }
 
     public double yearDiff(final Date start, final Date end, final PeriodCountBasis basis) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        return PCC.yearDiff(Utils.getCal(start), Utils.getCal(end), basis);
     }
 }

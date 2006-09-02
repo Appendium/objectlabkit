@@ -38,7 +38,7 @@ public class DefaultDateCalculatorFactory extends AbstractDateCalculatorFactory<
     
     private static final DateCalculatorFactory<Date> DEFAULT = new DefaultDateCalculatorFactory();
 
-    private static final PeriodCountCalculator<Date> PCC = new DefaultPeriodCountCalculator();
+    private static final PeriodCountCalculator<Date> PCC = new DatePeriodCountCalculator();
 
     public static DateCalculatorFactory<Date> getDefaultInstance() {
         return DEFAULT;
