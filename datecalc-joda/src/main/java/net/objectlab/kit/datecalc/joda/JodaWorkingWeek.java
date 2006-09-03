@@ -41,7 +41,8 @@ public class JodaWorkingWeek extends WorkingWeek {
     }
     
     public boolean isWorkingDay(final LocalDate date) {
-        return isWorkingDayFromCalendar(date.getDayOfWeek());
+        int dayOfWeek = jodaToCalendarDayConstant(date.getDayOfWeek());
+        return isWorkingDayFromCalendar(dayOfWeek);
     }
     
     /**
@@ -52,7 +53,8 @@ public class JodaWorkingWeek extends WorkingWeek {
      * @param dayOfWeek
      *            e.g. DateTimeConstants.MONDAY, DateTimeConstants.TUESDAY, etc
      */
-    public JodaWorkingWeek withWorkingDayFromDateTimeConstant(final boolean working, final int dayOfWeek) {
+    public JodaWorkingWeek withWorkingDayFromDateTimeConstant(final boolean working, int dayOfWeek) {
+        dayOfWeek = jodaToCalendarDayConstant(dayOfWeek);
         return new JodaWorkingWeek(super.withWorkingDayFromCalendar(working, dayOfWeek));
     }
 
