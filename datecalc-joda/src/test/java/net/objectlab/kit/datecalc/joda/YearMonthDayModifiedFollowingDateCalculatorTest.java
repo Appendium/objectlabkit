@@ -17,11 +17,11 @@
  */
 package net.objectlab.kit.datecalc.joda;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import net.objectlab.kit.datecalc.common.AbstractModifiedPreceedingDateCalculatorTest;
 import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.DateCalculatorFactory;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
 import org.joda.time.YearMonthDay;
@@ -46,34 +46,6 @@ public class YearMonthDayModifiedFollowingDateCalculatorTest extends AbstractMod
     }
 
     @Override
-    protected Set<YearMonthDay> newHolidaysSet() {
-        final Set<YearMonthDay> holidays = new HashSet<YearMonthDay>();
-        holidays.add(newDate("2006-08-28"));
-        holidays.add(newDate("2006-12-25"));
-        holidays.add(newDate("2006-12-26"));
-        return holidays;
-    }
-
-    @Override
-    protected Set<YearMonthDay> createUKHolidays() {
-        final Set<YearMonthDay> uk = new HashSet<YearMonthDay>();
-        uk.add(new YearMonthDay("2006-01-01"));
-        uk.add(new YearMonthDay("2006-08-28"));
-        uk.add(new YearMonthDay("2006-12-25"));
-        uk.add(new YearMonthDay("2006-12-26"));
-        return uk;
-    }
-
-    @Override
-    protected Set<YearMonthDay> createUSHolidays() {
-        final Set<YearMonthDay> us = new HashSet<YearMonthDay>();
-        us.add(new YearMonthDay("2006-07-04"));
-        us.add(new YearMonthDay("2006-11-28"));
-        us.add(new YearMonthDay("2006-12-25"));
-        return us;
-    }
-
-    @Override
     protected void registerHolidays(final String name, final Set<YearMonthDay> holidays) {
         DefaultYearMonthDayCalculatorFactory.getDefaultInstance().registerHolidays(name, holidays);
     }
@@ -81,4 +53,10 @@ public class YearMonthDayModifiedFollowingDateCalculatorTest extends AbstractMod
     protected WorkingWeek getWorkingWeek(WorkingWeek ww) {
         return new JodaWorkingWeek(ww);
     }
+
+    @Override
+    protected DateCalculatorFactory<YearMonthDay> getDateCalculatorFactory() {
+        return DefaultYearMonthDayCalculatorFactory.getDefaultInstance();
+    }
+    
 }
