@@ -15,6 +15,8 @@
  */
 package net.objectlab.kit.datecalc.joda;
 
+import java.util.Calendar;
+
 import junit.framework.Assert;
 import junit.framework.TestCase;
 
@@ -26,8 +28,13 @@ import org.joda.time.LocalDate;
  */
 public class JodaWorkingWeekTest extends TestCase {
 
+    private JodaWorkingWeek ww;
+    
+    public void setUp() {
+        ww = new JodaWorkingWeek();
+    }
+    
     public void testIsWorkingDayFromDateTimeConstant() {
-        final JodaWorkingWeek ww = new JodaWorkingWeek();
         Assert.assertTrue("DateTimeConstants.MONDAY", ww.isWorkingDayFromDateTimeConstant(DateTimeConstants.MONDAY));
         Assert.assertTrue("DateTimeConstants.TUESDAY", ww.isWorkingDayFromDateTimeConstant(DateTimeConstants.TUESDAY));
         Assert.assertTrue("DateTimeConstants.WEDNESDAY", ww.isWorkingDayFromDateTimeConstant(DateTimeConstants.WEDNESDAY));
@@ -38,7 +45,6 @@ public class JodaWorkingWeekTest extends TestCase {
     }
 
     public void testIsWorkingDay() {
-        final JodaWorkingWeek ww = new JodaWorkingWeek();
         LocalDate date = new LocalDate("2006-08-01");
         Assert.assertTrue("Calendar.TUESDAY", ww.isWorkingDay(date));
         date = date.plusDays(1);
@@ -56,7 +62,6 @@ public class JodaWorkingWeekTest extends TestCase {
     }
 
     public void testSetWorkingDayFromDateTimeConstant() {
-        JodaWorkingWeek ww = new JodaWorkingWeek();
         ww = ww.withWorkingDayFromDateTimeConstant(true, DateTimeConstants.SUNDAY); // sunday
         // working
         // day
@@ -91,6 +96,17 @@ public class JodaWorkingWeekTest extends TestCase {
         // do
         // it
         // twice
+    }
+    
+    public void testJodaToCalendarDayConstant() {
+        assertEquals("Monday", ww.jodaToCalendarDayConstant(DateTimeConstants.MONDAY), Calendar.MONDAY);
+        assertEquals("Tuesday", ww.jodaToCalendarDayConstant(DateTimeConstants.TUESDAY), Calendar.TUESDAY);
+        assertEquals("Wednesday", ww.jodaToCalendarDayConstant(DateTimeConstants.WEDNESDAY), Calendar.WEDNESDAY);
+        assertEquals("Thursday", ww.jodaToCalendarDayConstant(DateTimeConstants.THURSDAY), Calendar.THURSDAY);
+        assertEquals("Friday", ww.jodaToCalendarDayConstant(DateTimeConstants.FRIDAY), Calendar.FRIDAY);
+        assertEquals("Saturday", ww.jodaToCalendarDayConstant(DateTimeConstants.SATURDAY), Calendar.SATURDAY);
+        assertEquals("Sunday", ww.jodaToCalendarDayConstant(DateTimeConstants.SUNDAY), Calendar.SUNDAY);
+        
     }
 
 }

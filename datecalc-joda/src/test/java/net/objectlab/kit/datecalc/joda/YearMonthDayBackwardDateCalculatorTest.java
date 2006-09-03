@@ -20,7 +20,9 @@ package net.objectlab.kit.datecalc.joda;
 import java.util.HashSet;
 import java.util.Set;
 
+import net.objectlab.kit.datecalc.common.AbstractBackwardDateCalculatorTest;
 import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.WorkingWeek;
 
 import org.joda.time.YearMonthDay;
 
@@ -74,6 +76,11 @@ public class YearMonthDayBackwardDateCalculatorTest extends AbstractBackwardDate
     @Override
     protected void registerHolidays(final String name, final Set<YearMonthDay> holidays) {
         DefaultYearMonthDayCalculatorFactory.getDefaultInstance().registerHolidays(name, holidays);
+    }
+
+    @Override
+    protected WorkingWeek getWorkingWeek(WorkingWeek ww) {
+        return new JodaWorkingWeek(ww);
     }
 
 }

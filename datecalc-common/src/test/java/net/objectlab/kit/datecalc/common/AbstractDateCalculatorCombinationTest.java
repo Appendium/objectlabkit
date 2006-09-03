@@ -1,4 +1,4 @@
-package net.objectlab.kit.datecalc.joda;
+package net.objectlab.kit.datecalc.common;
 
 import junit.framework.Assert;
 import net.objectlab.kit.datecalc.common.DateCalculator;
