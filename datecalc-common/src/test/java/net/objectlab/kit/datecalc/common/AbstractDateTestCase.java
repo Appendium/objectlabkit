@@ -1,4 +1,4 @@
-package net.objectlab.kit.datecalc.joda;
+package net.objectlab.kit.datecalc.common;
 
 import java.util.Set;
 
@@ -11,6 +11,8 @@ public abstract class AbstractDateTestCase<E> extends TestCase {
 
     protected abstract DateCalculator<E> newDateCalculator(String name, String type);
 
+    protected abstract WorkingWeek getWorkingWeek(WorkingWeek ww);
+    
     protected void checkDate(final String string, final DateCalculator<E> calendar, final String string2) {
         Assert.assertEquals(string, newDate(string2), calendar.getCurrentBusinessDate());
     }

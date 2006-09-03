@@ -60,6 +60,7 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
         setStartDate(startDate);
     }
 
+    //TODO throw an exception if the type is incorrect
     public void setWorkingWeek(final WorkingWeek week) {
         delegate.setWorkingWeek(week);
     }

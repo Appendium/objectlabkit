@@ -1,15 +1,9 @@
-package net.objectlab.kit.datecalc.joda;
+package net.objectlab.kit.datecalc.common;
 
+import java.util.Calendar;
 import java.util.Set;
 
 import junit.framework.Assert;
-import net.objectlab.kit.datecalc.common.DateCalculator;
-import net.objectlab.kit.datecalc.common.HolidayHandlerType;
-import net.objectlab.kit.datecalc.common.StandardTenor;
-import net.objectlab.kit.datecalc.common.Tenor;
-import net.objectlab.kit.datecalc.common.TenorCode;
-
-import org.joda.time.DateTimeConstants;
 
 public abstract class AbstractModifiedFollowingDateCalculatorTest<E> extends AbstractDateTestCase<E> {
 
@@ -56,10 +50,11 @@ public abstract class AbstractModifiedFollowingDateCalculatorTest<E> extends Abs
 
     public void testSimpleForwardStartDateNoWeekend() {
         final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.MODIFIED_FOLLLOWING);
-        JodaWorkingWeek ww = new JodaWorkingWeek();
-        ww = ww.withWorkingDayFromDateTimeConstant(true, DateTimeConstants.SATURDAY);
-        ww = ww.withWorkingDayFromDateTimeConstant(true, DateTimeConstants.SUNDAY);
-        cal.setWorkingWeek(ww);
+        WorkingWeek ww = new WorkingWeek()
+                .withWorkingDayFromCalendar(true, Calendar.SATURDAY)
+                .withWorkingDayFromCalendar(true, Calendar.SUNDAY);
+        cal.setWorkingWeek(getWorkingWeek(ww));
+        
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
 
@@ -90,15 +85,15 @@ public abstract class AbstractModifiedFollowingDateCalculatorTest<E> extends Abs
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
 
-        JodaWorkingWeek ww = new JodaWorkingWeek();
-        ww = ww.withWorkingDayFromDateTimeConstant(false, DateTimeConstants.MONDAY);
-        ww = ww.withWorkingDayFromDateTimeConstant(true, DateTimeConstants.TUESDAY);
-        ww = ww.withWorkingDayFromDateTimeConstant(false, DateTimeConstants.WEDNESDAY);
-        ww = ww.withWorkingDayFromDateTimeConstant(true, DateTimeConstants.THURSDAY);
-        ww = ww.withWorkingDayFromDateTimeConstant(false, DateTimeConstants.FRIDAY);
-        ww = ww.withWorkingDayFromDateTimeConstant(true, DateTimeConstants.SATURDAY);
-        ww = ww.withWorkingDayFromDateTimeConstant(false, DateTimeConstants.SUNDAY);
-        cal.setWorkingWeek(ww);
+        WorkingWeek ww = new WorkingWeek()
+                .withWorkingDayFromCalendar(false, Calendar.MONDAY)
+                .withWorkingDayFromCalendar(true, Calendar.TUESDAY)
+                .withWorkingDayFromCalendar(false, Calendar.WEDNESDAY)
+                .withWorkingDayFromCalendar(true, Calendar.THURSDAY)
+                .withWorkingDayFromCalendar(false, Calendar.FRIDAY)
+                .withWorkingDayFromCalendar(true, Calendar.SATURDAY)
+                .withWorkingDayFromCalendar(false, Calendar.SUNDAY);
+        cal.setWorkingWeek(getWorkingWeek(ww));
 
         cal.setStartDate(newDate("2006-07-31")); // start date Monday
         checkDate("start date Monday", cal, "2006-07-29");
@@ -127,15 +122,15 @@ public abstract class AbstractModifiedFollowingDateCalculatorTest<E> extends Abs
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
 
-        JodaWorkingWeek ww = new JodaWorkingWeek();
-        ww = ww.withWorkingDayFromDateTimeConstant(false, DateTimeConstants.MONDAY);
-        ww = ww.withWorkingDayFromDateTimeConstant(true, DateTimeConstants.TUESDAY);
-        ww = ww.withWorkingDayFromDateTimeConstant(true, DateTimeConstants.WEDNESDAY);
-        ww = ww.withWorkingDayFromDateTimeConstant(true, DateTimeConstants.THURSDAY);
-        ww = ww.withWorkingDayFromDateTimeConstant(true, DateTimeConstants.FRIDAY);
-        ww = ww.withWorkingDayFromDateTimeConstant(false, DateTimeConstants.SATURDAY);
-        ww = ww.withWorkingDayFromDateTimeConstant(false, DateTimeConstants.SUNDAY);
-        cal.setWorkingWeek(ww);
+        WorkingWeek ww = new WorkingWeek()
+                .withWorkingDayFromCalendar(false, Calendar.MONDAY)
+                .withWorkingDayFromCalendar(true, Calendar.TUESDAY)
+                .withWorkingDayFromCalendar(true, Calendar.WEDNESDAY)
+                .withWorkingDayFromCalendar(true, Calendar.THURSDAY)
+                .withWorkingDayFromCalendar(true, Calendar.FRIDAY)
+                .withWorkingDayFromCalendar(false, Calendar.SATURDAY)
+                .withWorkingDayFromCalendar(false, Calendar.SUNDAY);
+        cal.setWorkingWeek(getWorkingWeek(ww));
 
         cal.setStartDate(newDate("2006-07-31")); // start date Monday
         checkDate("start date Monday", cal, "2006-07-28");

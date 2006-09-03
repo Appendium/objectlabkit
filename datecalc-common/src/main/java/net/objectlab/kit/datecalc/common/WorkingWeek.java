@@ -25,23 +25,23 @@ import java.util.Date;
  */
 public class WorkingWeek {
 
-    private static final byte MONDAY = 1;
+    protected static final byte MONDAY = 1;
 
-    private static final byte TUESDAY = 2;
+    protected static final byte TUESDAY = 2;
 
-    private static final byte WEDNESDAY = 4;
+    protected static final byte WEDNESDAY = 4;
 
-    private static final byte THURSDAY = 8;
+    protected static final byte THURSDAY = 8;
 
-    private static final byte FRIDAY = 16;
+    protected static final byte FRIDAY = 16;
 
-    private static final byte SATURDAY = 32;
+    protected static final byte SATURDAY = 32;
 
-    private static final byte SUNDAY = 64;
+    protected static final byte SUNDAY = 64;
 
-    private static final byte DEFAULT_WORKING_DAYS = (byte) (MONDAY + TUESDAY + WEDNESDAY + THURSDAY + FRIDAY);
+    protected static final byte DEFAULT_WORKING_DAYS = (byte) (MONDAY + TUESDAY + WEDNESDAY + THURSDAY + FRIDAY);
 
-    private static final byte[] WORKING_WEEK_DAYS_OFFSET = new byte[] { SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY,
+    protected static final byte[] WORKING_WEEK_DAYS_OFFSET = new byte[] { SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY,
             SATURDAY };
 
     public static final WorkingWeek DEFAULT = new WorkingWeek();
@@ -61,8 +61,8 @@ public class WorkingWeek {
      * working days: 1 Monday, 2 Tuesday, 4 Wednesday, 8 Thursday, 16 Friday, 32
      * Saturday, 64 Sunday So Monday-Friday= 1+2+4+8+16 = 31
      */
-    private byte workingDays = DEFAULT_WORKING_DAYS;
-
+    protected byte workingDays = DEFAULT_WORKING_DAYS;
+    
     public boolean isWorkingDayFromCalendar(final int dayOfWeek) {
         final int day = adjustDay(dayOfWeek);
         return (WORKING_WEEK_DAYS_OFFSET[day] & workingDays) != 0;
@@ -74,7 +74,7 @@ public class WorkingWeek {
         return isWorkingDayFromCalendar(cal.get(Calendar.DAY_OF_WEEK));
     }
 
-    private int adjustDay(final int dayOfWeek) {
+    protected int adjustDay(final int dayOfWeek) {
         return dayOfWeek - 1;
     }
 
@@ -96,5 +96,9 @@ public class WorkingWeek {
             ret = new WorkingWeek((byte) (workingDays - WORKING_WEEK_DAYS_OFFSET[day]));
         }
         return ret;
+    }
+
+    public byte getWorkingDays() {
+        return workingDays;
     }
 }

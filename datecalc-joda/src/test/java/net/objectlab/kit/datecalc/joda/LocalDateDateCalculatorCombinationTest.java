@@ -20,7 +20,9 @@ package net.objectlab.kit.datecalc.joda;
 import java.util.HashSet;
 import java.util.Set;
 
+import net.objectlab.kit.datecalc.common.AbstractDateCalculatorCombinationTest;
 import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.WorkingWeek;
 
 import org.joda.time.LocalDate;
 
@@ -75,5 +77,8 @@ public class LocalDateDateCalculatorCombinationTest extends AbstractDateCalculat
     protected void registerHolidays(final String name, final Set<LocalDate> holidays) {
         DefaultLocalDateCalculatorFactory.getDefaultInstance().registerHolidays(name, holidays);
     }
-
+    
+    protected WorkingWeek getWorkingWeek(WorkingWeek ww) {
+        return new JodaWorkingWeek(ww);
+    }
 }

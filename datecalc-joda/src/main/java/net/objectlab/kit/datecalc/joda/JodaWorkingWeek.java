@@ -25,34 +25,25 @@ import org.joda.time.LocalDate;
  * @author Benoit Xhenseval
  */
 public class JodaWorkingWeek extends WorkingWeek {
-    private static final int DEFAULT_WEEK = 31;
-
-    private static final byte[] DAYS = new byte[] { 1, 2, 4, 8, 16, 32, 64 };
 
     public static final JodaWorkingWeek DEFAULT = new JodaWorkingWeek();
 
-    /**
-     * working days: 1 Monday 2 Tuesday 4 Wednesday 8 Thursday 16 Friday 32
-     * Saturday 64 Sunday So Monday-Friday= 1+2+4+8+16 = 31
-     */
-    private byte workingDays = DEFAULT_WEEK;
-
     public JodaWorkingWeek() {
-        this((byte) DEFAULT_WEEK);
+        this((byte) DEFAULT_WORKING_DAYS);
     }
 
     private JodaWorkingWeek(final byte workingDays) {
         this.workingDays = workingDays;
     }
 
-    public boolean isWorkingDayFromDateTimeConstant(final int dayOfWeek) {
-        return (DAYS[dayOfWeek - 1] & workingDays) != 0;
+    public JodaWorkingWeek(final WorkingWeek ww) {
+        this.workingDays = ww.getWorkingDays();
     }
-
+    
     public boolean isWorkingDay(final LocalDate date) {
-        return isWorkingDayFromDateTimeConstant(date.getDayOfWeek());
+        return isWorkingDayFromCalendar(date.getDayOfWeek());
     }
-
+    
     /**
      * Return a new JodaWorkingWeek if the status for the given day has changed.
      * 
@@ -62,13 +53,15 @@ public class JodaWorkingWeek extends WorkingWeek {
      *            e.g. DateTimeConstants.MONDAY, DateTimeConstants.TUESDAY, etc
      */
     public JodaWorkingWeek withWorkingDayFromDateTimeConstant(final boolean working, final int dayOfWeek) {
-        final int day = dayOfWeek - 1;
-        JodaWorkingWeek ret = this;
-        if (working && (!isWorkingDayFromDateTimeConstant(dayOfWeek))) {
-            ret = new JodaWorkingWeek((byte) (workingDays + DAYS[day]));
-        } else if (!working && isWorkingDayFromDateTimeConstant(dayOfWeek)) {
-            ret = new JodaWorkingWeek((byte) (workingDays - DAYS[day]));
-        }
-        return ret;
+        return new JodaWorkingWeek(super.withWorkingDayFromCalendar(working, dayOfWeek));
+    }
+
+    public boolean isWorkingDayFromDateTimeConstant(final int dayOfWeek) {
+        return isWorkingDayFromCalendar(jodaToCalendarDayConstant(dayOfWeek));
+    }
+    
+    public int jodaToCalendarDayConstant(int dayOfWeek) {
+        dayOfWeek++;
+        return (dayOfWeek <= 7 ? dayOfWeek : dayOfWeek % 7);
     }
 }
