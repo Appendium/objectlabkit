@@ -27,6 +27,7 @@ import java.util.Set;
 import net.objectlab.kit.datecalc.common.AbstractDateCalculator;
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandler;
+import net.objectlab.kit.datecalc.common.Tenor;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
 /**
@@ -38,16 +39,16 @@ import net.objectlab.kit.datecalc.common.WorkingWeek;
  * @author $LastModifiedBy$
  * @version $Revision$ $Date$
  */
-public class BaseDateCalculator extends AbstractDateCalculator<Date> {
+public class JdkDateBaseDateCalculator extends AbstractDateCalculator<Date> implements JdkDateCalculator {
 
     private WorkingWeek workingWeek = WorkingWeek.DEFAULT;
 
     @SuppressWarnings("unchecked")
-    public BaseDateCalculator() {
+    public JdkDateBaseDateCalculator() {
         this(null, null, Collections.EMPTY_SET, null);
     }
 
-    public BaseDateCalculator(final String name, final Date startDate, final Set<Date> nonWorkingDays,
+    public JdkDateBaseDateCalculator(final String name, final Date startDate, final Set<Date> nonWorkingDays,
             final HolidayHandler<Date> holidayHandler) {
         super(name, nonWorkingDays, holidayHandler);
         setStartDate(startDate);
@@ -65,7 +66,7 @@ public class BaseDateCalculator extends AbstractDateCalculator<Date> {
         return !workingWeek.isWorkingDay(date);
     }
 
-    public DateCalculator<Date> moveByDays(final int days) {
+    public JdkDateCalculator moveByDays(final int days) {
         if (getCurrentBusinessDate() == null) {
             initialise();
         }
@@ -88,7 +89,7 @@ public class BaseDateCalculator extends AbstractDateCalculator<Date> {
     @Override
     protected DateCalculator<Date> createNewCalcultaor(final String name, final Date startDate, final Set<Date> holidays,
             final HolidayHandler<Date> handler) {
-        return new BaseDateCalculator(name, startDate, holidays, handler);
+        return new JdkDateBaseDateCalculator(name, startDate, holidays, handler);
     }
 
     /**
@@ -172,4 +173,22 @@ public class BaseDateCalculator extends AbstractDateCalculator<Date> {
         // go to 3rd wednesday - i.e. move 2 weeks forward
         cal.add(Calendar.DAY_OF_MONTH, 7 * 2);
     }
+
+    @Override
+    public JdkDateCalculator combine(DateCalculator<Date> calendar) {
+        return (JdkDateCalculator) super.combine(calendar);
+    }
+
+    @Override
+    public JdkDateCalculator moveByTenor(Tenor tenor) {
+        return (JdkDateCalculator) super.moveByTenor(tenor);
+    }
+
+    @Override
+    public JdkDateCalculator moveByBusinessDays(int businessDays) {
+        return (JdkDateCalculator) super.moveByBusinessDays(businessDays);
+    }
+    
+    
+    
 }
