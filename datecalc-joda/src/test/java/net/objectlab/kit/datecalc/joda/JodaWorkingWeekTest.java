@@ -96,6 +96,9 @@ public class JodaWorkingWeekTest extends TestCase {
         // do
         // it
         // twice
+        Assert.assertFalse("2/ DateTimeConstants.SATURDAY", ww.isWorkingDayFromDateTimeConstant(DateTimeConstants.SATURDAY));
+        Assert.assertTrue("2/ DateTimeConstants.SUNDAY", ww.isWorkingDayFromDateTimeConstant(DateTimeConstants.SUNDAY));
+
     }
     
     public void testJodaToCalendarDayConstant() {
