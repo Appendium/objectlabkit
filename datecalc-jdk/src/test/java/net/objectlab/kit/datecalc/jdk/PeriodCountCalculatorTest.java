@@ -225,7 +225,7 @@ public class PeriodCountCalculatorTest extends AbstractDateCalculatorTest {
     };
 
     public void testConv30EvIsma() {
-        final PeriodCountCalculator<Date> cal = DefaultDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
+        final PeriodCountCalculator<Date> cal = DefaultJdkDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
         Assert.assertNotNull(cal);
 
         for (final String[] test : CONV_360E_ISMA) {
@@ -234,7 +234,7 @@ public class PeriodCountCalculatorTest extends AbstractDateCalculatorTest {
     }
 
     public void testConv30Ev360() {
-        final PeriodCountCalculator<Date> cal = DefaultDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
+        final PeriodCountCalculator<Date> cal = DefaultJdkDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
         Assert.assertNotNull(cal);
 
         for (final String[] test : CONV_360E_ISDA) {
@@ -243,7 +243,7 @@ public class PeriodCountCalculatorTest extends AbstractDateCalculatorTest {
     }
 
     public void testConv30v360() {
-        final PeriodCountCalculator<Date> cal = DefaultDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
+        final PeriodCountCalculator<Date> cal = DefaultJdkDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
         Assert.assertNotNull(cal);
 
         for (final String[] test : CONV_30_360) {
@@ -252,7 +252,7 @@ public class PeriodCountCalculatorTest extends AbstractDateCalculatorTest {
     }
 
     public void testAct365() {
-        final PeriodCountCalculator<Date> cal = DefaultDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
+        final PeriodCountCalculator<Date> cal = DefaultJdkDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
         Assert.assertNotNull(cal);
 
         for (final String[] test : ACT_365) {
@@ -261,7 +261,7 @@ public class PeriodCountCalculatorTest extends AbstractDateCalculatorTest {
     }
 
     public void testAct360() {
-        final PeriodCountCalculator<Date> cal = DefaultDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
+        final PeriodCountCalculator<Date> cal = DefaultJdkDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
         Assert.assertNotNull(cal);
 
         for (final String[] test : ACT_360) {

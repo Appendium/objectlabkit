@@ -20,10 +20,7 @@ package net.objectlab.kit.datecalc.jdk;
 import java.util.Date;
 
 import net.objectlab.kit.datecalc.common.AbstractDateCalculatorFactory;
-import net.objectlab.kit.datecalc.common.DateCalculator;
-import net.objectlab.kit.datecalc.common.DateCalculatorFactory;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
-import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
 /**
  * TODO add javadoc 
@@ -33,30 +30,22 @@ import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
  * @version $Revision$ $Date$
  *
  */
-public class DefaultDateCalculatorFactory extends AbstractDateCalculatorFactory<Date> 
-        implements DateCalculatorFactory<Date> {
+public class DefaultJdkDateCalculatorFactory extends AbstractDateCalculatorFactory<Date> 
+        implements JdkDateCalculatorFactory {
     
-    private static final DateCalculatorFactory<Date> DEFAULT = new DefaultDateCalculatorFactory();
+    private static final JdkDateCalculatorFactory DEFAULT = new DefaultJdkDateCalculatorFactory();
 
-    private static final PeriodCountCalculator<Date> PCC = new DatePeriodCountCalculator();
+    private static final JdkDatePeriodCountCalculator PCC = new DatePeriodCountCalculator();
 
-    public static DateCalculatorFactory<Date> getDefaultInstance() {
+    public static JdkDateCalculatorFactory getDefaultInstance() {
         return DEFAULT;
     }
 
-    /**
-     * Create a new DateCalculator for a given name and type of handling.
-     * 
-     * @param name
-     *            calendar name (holidays set interested in). If there is set of
-     *            holidays with that name, it will return a DateCalculator with
-     *            an empty holiday set (will work on Weekend only).
-     * @param type
-     *            typically one of the value of HolidayHandlerType
-     * @return a new DateCalculator
+    /* (non-Javadoc)
+     * @see net.objectlab.kit.datecalc.jdk.JdkDateCalculatorFactory#getDateCalculator(java.lang.String, java.lang.String)
      */
-    public DateCalculator<Date> getDateCalculator(final String name, final String holidayHandlerType) {
-        final BaseDateCalculator cal = new BaseDateCalculator();
+    public JdkDateCalculator getDateCalculator(final String name, final String holidayHandlerType) {
+        final JdkDateBaseDateCalculator cal = new JdkDateBaseDateCalculator();
         cal.setName(name);
         if (holidays.containsKey(name)) {
             cal.setNonWorkingDays(holidays.get(name));
@@ -79,7 +68,10 @@ public class DefaultDateCalculatorFactory extends AbstractDateCalculatorFactory<
         return cal;
     }
 
-    public PeriodCountCalculator<Date> getPeriodCountCalculator() {
+    /* (non-Javadoc)
+     * @see net.objectlab.kit.datecalc.jdk.JdkDateCalculatorFactory#getPeriodCountCalculator()
+     */
+    public JdkDatePeriodCountCalculator getPeriodCountCalculator() {
         return PCC;
     }
 
