@@ -17,11 +17,10 @@
  */
 package net.objectlab.kit.datecalc.joda;
 
-import java.util.HashSet;
-import java.util.Set;
 
 import net.objectlab.kit.datecalc.common.AbstractBackwardDateCalculatorTest;
 import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.DateCalculatorFactory;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
 import org.joda.time.LocalDate;
@@ -45,40 +44,12 @@ public class LocalDateBackwardDateCalculatorTest extends AbstractBackwardDateCal
         return DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator(name, type);
     }
 
-    @Override
-    protected Set<LocalDate> newHolidaysSet() {
-        final Set<LocalDate> holidays = new HashSet<LocalDate>();
-        holidays.add(newDate("2006-08-28"));
-        holidays.add(newDate("2006-12-25"));
-        holidays.add(newDate("2006-12-26"));
-        return holidays;
-    }
-
-    @Override
-    protected Set<LocalDate> createUKHolidays() {
-        final Set<LocalDate> uk = new HashSet<LocalDate>();
-        uk.add(new LocalDate("2006-01-01"));
-        uk.add(new LocalDate("2006-08-28"));
-        uk.add(new LocalDate("2006-12-25"));
-        uk.add(new LocalDate("2006-12-26"));
-        return uk;
-    }
-
-    @Override
-    protected Set<LocalDate> createUSHolidays() {
-        final Set<LocalDate> us = new HashSet<LocalDate>();
-        us.add(new LocalDate("2006-07-04"));
-        us.add(new LocalDate("2006-11-28"));
-        us.add(new LocalDate("2006-12-25"));
-        return us;
-    }
-
-    @Override
-    protected void registerHolidays(final String name, final Set<LocalDate> holidays) {
-        DefaultLocalDateCalculatorFactory.getDefaultInstance().registerHolidays(name, holidays);
-    }
-
     protected WorkingWeek getWorkingWeek(WorkingWeek ww) {
         return new JodaWorkingWeek(ww);
+    }
+
+    @Override
+    protected DateCalculatorFactory<LocalDate> getDateCalculatorFactory() {
+        return DefaultLocalDateCalculatorFactory.getDefaultInstance();
     }
 }
