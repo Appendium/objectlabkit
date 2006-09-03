@@ -1,10 +1,10 @@
 package net.objectlab.kit.datecalc.common;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;
-import net.objectlab.kit.datecalc.common.DateCalculator;
 
 public abstract class AbstractDateTestCase<E> extends TestCase {
     protected abstract E newDate(final String date);
@@ -13,15 +13,38 @@ public abstract class AbstractDateTestCase<E> extends TestCase {
 
     protected abstract WorkingWeek getWorkingWeek(WorkingWeek ww);
     
+    protected abstract DateCalculatorFactory<E> getDateCalculatorFactory();
+    
     protected void checkDate(final String string, final DateCalculator<E> calendar, final String string2) {
         Assert.assertEquals(string, newDate(string2), calendar.getCurrentBusinessDate());
     }
 
-    protected abstract Set<E> newHolidaysSet();
+    protected Set<E> newHolidaysSet() {
+        final Set<E> holidays = new HashSet<E>();
+        holidays.add(newDate("2006-08-28"));
+        holidays.add(newDate("2006-12-25"));
+        holidays.add(newDate("2006-12-26"));
+        return holidays;
+    }
 
-    protected abstract Set<E> createUKHolidays();
+    protected Set<E> createUKHolidays() {
+        final Set<E> uk = new HashSet<E>();
+        uk.add(newDate("2006-01-01"));
+        uk.add(newDate("2006-08-28"));
+        uk.add(newDate("2006-12-25"));
+        uk.add(newDate("2006-12-26"));
+        return uk;
+    }
 
-    protected abstract Set<E> createUSHolidays();
+    protected Set<E> createUSHolidays() {
+        final Set<E> us = new HashSet<E>();
+        us.add(newDate("2006-07-04"));
+        us.add(newDate("2006-11-28"));
+        us.add(newDate("2006-12-25"));
+        return us;
+    }
 
-    protected abstract void registerHolidays(final String name, Set<E> holidays);
+    protected void registerHolidays(final String name, final Set<E> holidays) {
+        getDateCalculatorFactory().registerHolidays(name, holidays);
+    }
 }
