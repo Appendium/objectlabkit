@@ -20,24 +20,35 @@ package net.objectlab.kit.datecalc.jdk;
 import java.util.Calendar;
 
 import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
 /**
  * TODO javadoc
  *
  * @author Marcin Jekot
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
- *
+ * @author $LastChangedBy: marchy $
+ * @version $Revision: 69 $ $Date: 2006-08-27 11:47:25 +0200 (Sun, 27 Aug 2006) $
+ * 
  */
-public class BackwardHandler extends ForwardHandler {
+public class CalendarForwardHandler implements HolidayHandler<Calendar> {
 
-    public Calendar moveCurrentDate(DateCalculator<Calendar> calendar) {
-        return move(calendar, -1);
+    public Calendar moveCurrentDate(final DateCalculator<Calendar> calendar) {
+        return move(calendar, 1);
     }
 
+    protected Calendar move(final DateCalculator<Calendar> calculator, int step) {
+        final Calendar cal = (Calendar)calculator.getCurrentBusinessDate().clone();
+
+        while (calculator.isNonWorkingDay(cal)) {
+            cal.add(Calendar.DAY_OF_MONTH, step);
+        }
+
+        return cal;        
+    }
+    
     public String getType() {
-        return HolidayHandlerType.BACKWARD;
+        return HolidayHandlerType.FORWARD;
     }
 
 }

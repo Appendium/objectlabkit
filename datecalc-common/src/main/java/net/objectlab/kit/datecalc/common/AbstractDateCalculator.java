@@ -146,7 +146,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         return currentBusinessDate;
     }
 
-    protected HolidayHandler<E> getHolidayHandler() {
+    public HolidayHandler<E> getHolidayHandler() {
         return holidayHandler;
     }
 

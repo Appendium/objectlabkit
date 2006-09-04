@@ -2,6 +2,7 @@ package net.objectlab.kit.datecalc.jdk;
 
 import net.objectlab.kit.datecalc.common.AbstractForwardDateCalculatorTest;
 import net.objectlab.kit.datecalc.common.DateCalculatorFactory;
+import net.objectlab.kit.datecalc.common.Utils;
 
 public class JdkDateForwardDateCalculatorTest extends AbstractForwardDateCalculatorTest {
 

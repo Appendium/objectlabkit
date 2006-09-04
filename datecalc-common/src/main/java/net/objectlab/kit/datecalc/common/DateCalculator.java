@@ -135,10 +135,10 @@ public interface DateCalculator<E> {
      * By combining several calendars, we take into account several set of
      * holidays.
      * 
-     * @param calendar
+     * @param calculator
      * @return a new DateCalculator
      */
-    DateCalculator<E> combine(DateCalculator<E> calendar);
+    DateCalculator<E> combine(DateCalculator<E> calculator);
 
     /**
      * move the current date by a given tenor, this means that if a date is

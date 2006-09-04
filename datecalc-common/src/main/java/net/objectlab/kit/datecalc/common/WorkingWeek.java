@@ -69,8 +69,10 @@ public class WorkingWeek {
     }
 
     public boolean isWorkingDay(final Date date) {
-        final Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
+        return isWorkingDay(Utils.getCal(date));
+    }
+    
+    public boolean isWorkingDay(final Calendar cal) {
         return isWorkingDayFromCalendar(cal.get(Calendar.DAY_OF_WEEK));
     }
 
