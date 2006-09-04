@@ -20,7 +20,6 @@ package net.objectlab.kit.datecalc.joda;
 import java.util.Set;
 
 import net.objectlab.kit.datecalc.common.AbstractModifiedPreceedingDateCalculatorTest;
-import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.DateCalculatorFactory;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
@@ -38,11 +37,6 @@ public class YearMonthDayModifiedFollowingDateCalculatorTest extends AbstractMod
     @Override
     protected YearMonthDay newDate(final String date) {
         return new YearMonthDay(date);
-    }
-
-    @Override
-    protected DateCalculator<YearMonthDay> newDateCalculator(final String name, final String type) {
-        return DefaultYearMonthDayCalculatorFactory.getDefaultInstance().getDateCalculator(name, type);
     }
 
     @Override
