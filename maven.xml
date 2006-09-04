@@ -27,10 +27,9 @@
 	</goal>
 
 	<goal name="kit:releasebuild">
-		<j:set var="do.obfuscation" value="true" scope="parent"/>
 		<attainGoal name="clean" />
 		<attainGoal name="multiproject:clean" />
-		<j:set var="goal" value="kit:rebuild" />
+		<j:set var="goal" value="artifact:create-upload-bundle" />
 		<attainGoal name="multiproject:goal" />
 	</goal>
 

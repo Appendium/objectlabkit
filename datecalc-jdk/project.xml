@@ -60,6 +60,15 @@
          <excludes>
             <exclude>**/Abstract*.java</exclude>
          </excludes>
+         <resources>
+             <resource>
+                 <directory>../datecalc-common/target/test-classes</directory>
+                 <filtering>false</filtering>
+                 <includes>
+                       <include>**/*.class</include>
+                  </includes>
+              </resource>
+         </resources>
       </unitTest>
    </build>
 

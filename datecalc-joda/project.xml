@@ -1,101 +1,76 @@
 <?xml version="1.0"?>
 
 <!--
-	/*  
-	* ========================================================================
-	* 
-	* ========================================================================
-	*/
+    /*  
+    * ========================================================================
+    * 
+    * ========================================================================
+    */
 -->
 
 <project>
-	<extend>../common-build/project.xml</extend>
-	<name>DateCalc Joda</name>
-	<artifactId>datecalc-joda</artifactId>
-	<package>net.objectlab.kit</package>
-	<shortDescription>DateCalc JDK library</shortDescription>
-	<description>This library provides a JODA-time implementation of the Date Calculator.</description>
-	<repository>
+    <extend>../common-build/project.xml</extend>
+    <name>DateCalc Joda</name>
+    <artifactId>datecalc-joda</artifactId>
+    <package>net.objectlab.kit</package>
+    <shortDescription>DateCalc JDK library</shortDescription>
+    <description>This library provides a JODA-time implementation of the Date Calculator.</description>
+    <repository>
                 <connection>scm:svn:https://svn.sourceforge.net/svnroot/objectlabkit/trunk/datecalc-joda</connection>
                 <developerConnection>scm:svn:https://svn.sourceforge.net/svnroot/objectlabkit/trunk/datecalc-joda</developerConnection>
         </repository>
-	<dependencies>
-		<dependency>
-			<groupId>net.objectlab.kit</groupId>
-			<artifactId>datecalc-common</artifactId>
-			<version>${pom.currentVersion}</version>
-			<type>jar</type>
-		</dependency>
-		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-			<version>1.3</version>
-			<type>jar</type>
-		</dependency>
-	</dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>net.objectlab.kit</groupId>
+            <artifactId>datecalc-common</artifactId>
+            <version>${pom.currentVersion}</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>1.3</version>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
 
-	<reports>
-		<report>maven-checkstyle-plugin</report>
-		<report>maven-findbugs-plugin</report>
-		<report>maven-pmd-plugin</report>
-		<report>maven-simian-plugin</report>
-		<report>maven-cobertura-plugin</report>
-		<report>maven-qalab-plugin</report>
-		<report>maven-ydoc-plugin</report>
-		<report>maven-jdepend-plugin</report>
-		<report>maven-faq-plugin</report>
- 		<report>maven-junit-report-plugin</report>
-		<report>maven-jxr-plugin</report>
-		<report>maven-tasklist-plugin</report>
-	</reports>
+    <reports>
+        <report>maven-checkstyle-plugin</report>
+        <report>maven-findbugs-plugin</report>
+        <report>maven-pmd-plugin</report>
+        <report>maven-simian-plugin</report>
+        <report>maven-cobertura-plugin</report>
+        <report>maven-qalab-plugin</report>
+        <report>maven-ydoc-plugin</report>
+        <report>maven-jdepend-plugin</report>
+        <report>maven-faq-plugin</report>
+         <report>maven-junit-report-plugin</report>
+        <report>maven-jxr-plugin</report>
+        <report>maven-tasklist-plugin</report>
+    </reports>
 
-	<build>
-		<sourceDirectory>src/main/java</sourceDirectory>
-		<unitTestSourceDirectory>src/test/java</unitTestSourceDirectory>
-		<!-- TODO: to be removed as it is not generic -->
-		<nagEmailAddress>bx@objectlab.co.uk</nagEmailAddress>
-		<unitTest>
-			<includes>
-				<include>**/*Test.java</include>
-			</includes>
-			<excludes>
-				<exclude>**/Abstract*.java</exclude>
-			</excludes>
-<!--			<resources>
-				<resource>
-					<directory>src/test/conf</directory>
-					<includes>
-						<include>*.properties</include>
-						<include>**/*.xml</include>
-					</includes>
-				</resource>
-			</resources>
-			-->
-		</unitTest>
-<!--		<resources>
-			<resource>
-				<directory>src/conf</directory>
-				<includes>
-					<include>*.properties</include>
-					<include>**/*.xml</include>
-					<include>*.template</include>
-					<include>*.jar</include>
-				</includes>
-			</resource>
-			<resource>
-				<directory>src/har</directory>
-				<includes>
-					<include>**/*.xml</include>
-				</includes>
-			</resource>
-			<resource>
-				<directory>../common/target</directory>
-				<includes>
-					<include>safemargin-common-${pom.currentVersion}.jar</include>
-				</includes>
-			</resource>
-		</resources>
-		-->
-	</build>
-
+    <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <unitTestSourceDirectory>src/test/java</unitTestSourceDirectory>
+        <!-- TODO: to be removed as it is not generic -->
+        <nagEmailAddress>bx@objectlab.co.uk</nagEmailAddress>
+        <unitTest>
+            <includes>
+                <include>**/*Test.java</include>
+            </includes>
+            <excludes>
+                <exclude>**/Abstract*.java</exclude>
+            </excludes>
+            
+            <resources>
+                <resource>
+                    <directory>../datecalc-common/target/test-classes</directory>
+                    <filtering>false</filtering>
+                    <includes>
+                       <include>**/*.class</include>
+                    </includes>
+                 </resource>
+            </resources>           
+        </unitTest>
+    </build>
 </project>
