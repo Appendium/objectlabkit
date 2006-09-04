@@ -18,26 +18,35 @@
 package net.objectlab.kit.datecalc.jdk;
 
 import java.util.Calendar;
+import java.util.Date;
 
 import net.objectlab.kit.datecalc.common.DateCalculator;
-import net.objectlab.kit.datecalc.common.HolidayHandlerType;
+import net.objectlab.kit.datecalc.common.HolidayHandler;
 
 /**
- * TODO javadoc
+ * A Wrapper to handle any HolidayHandler<Date> types via a HolidayHandler<Calendar> delegate
  *
  * @author Marcin Jekot
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
  *
  */
-public class BackwardHandler extends ForwardHandler {
+public class HolidayHandlerDateWrapper implements HolidayHandler<Date> {
 
-    public Calendar moveCurrentDate(DateCalculator<Calendar> calendar) {
-        return move(calendar, -1);
+    HolidayHandler<Calendar> delegate;
+    DateCalculator<Calendar> calculator;
+    
+    public HolidayHandlerDateWrapper(HolidayHandler<Calendar> holidayHandler, DateCalculator<Calendar> dateCalulator) {
+        delegate = holidayHandler;
+        calculator = dateCalulator;
+    }
+    
+    public Date moveCurrentDate(DateCalculator<Date> calendar) {
+        return delegate.moveCurrentDate(calculator).getTime();
     }
 
     public String getType() {
-        return HolidayHandlerType.BACKWARD;
+        return delegate.getType();
     }
-
+    
 }

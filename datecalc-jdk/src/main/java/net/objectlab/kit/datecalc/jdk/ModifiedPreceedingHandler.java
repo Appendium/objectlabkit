@@ -16,7 +16,7 @@
  * the License.
  */package net.objectlab.kit.datecalc.jdk;
 
-import java.util.Date;
+import java.util.Calendar;
 
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
@@ -31,7 +31,7 @@ import net.objectlab.kit.datecalc.common.HolidayHandlerType;
  */
 public class ModifiedPreceedingHandler extends ModifiedFollowingHandler {
 
-    public Date moveCurrentDate(DateCalculator<Date> calendar) {
+    public Calendar moveCurrentDate(DateCalculator<Calendar> calendar) {
         return move(calendar, -1);
     }
 

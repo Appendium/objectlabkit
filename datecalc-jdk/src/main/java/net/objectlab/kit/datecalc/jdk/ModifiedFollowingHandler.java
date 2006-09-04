@@ -17,7 +17,6 @@
  */package net.objectlab.kit.datecalc.jdk;
 
 import java.util.Calendar;
-import java.util.Date;
 
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandler;
@@ -31,26 +30,28 @@ import net.objectlab.kit.datecalc.common.HolidayHandlerType;
  * @version $Revision$ $Date$
  *
  */
-public class ModifiedFollowingHandler implements HolidayHandler<Date> {
+public class ModifiedFollowingHandler implements HolidayHandler<Calendar> {
 
-    public Date moveCurrentDate(DateCalculator<Date> calendar) {
+    public Calendar moveCurrentDate(DateCalculator<Calendar> calendar) {
         return move(calendar, 1);
     }
 
-    protected Date move(DateCalculator<Date> calendar, int step) {
+    protected Calendar move(DateCalculator<Calendar> calendar, int step) {
 
-        final Calendar cal = Utils.getCal(calendar.getCurrentBusinessDate());
+        final Calendar cal = (Calendar)calendar.getCurrentBusinessDate().clone();
 
         int month = cal.get(Calendar.MONTH);
         
-        while (calendar.isNonWorkingDay(cal.getTime())) {
+        while (calendar.isNonWorkingDay(cal)) {
             cal.add(Calendar.DAY_OF_MONTH, step);
             if (month != cal.get(Calendar.MONTH)) {
+                // switch direction and go back
                 step *= -1;
+                cal.add(Calendar.DAY_OF_MONTH, step);
             }
         }
 
-        return cal.getTime();
+        return cal;
     }
     
     public String getType() {

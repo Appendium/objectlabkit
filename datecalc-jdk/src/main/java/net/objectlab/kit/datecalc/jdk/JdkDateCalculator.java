@@ -11,7 +11,7 @@ public interface JdkDateCalculator extends DateCalculator<Date> {
 
     JdkDateCalculator moveByBusinessDays(final int businessDays);
 
-    JdkDateCalculator combine(DateCalculator<Date> calendar);
+    JdkDateCalculator combine(DateCalculator<Date> calculator);
 
     JdkDateCalculator moveByTenor(final Tenor tenor);
 
