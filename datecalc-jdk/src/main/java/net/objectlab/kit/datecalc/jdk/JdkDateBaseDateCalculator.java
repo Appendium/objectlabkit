@@ -25,6 +25,7 @@ import java.util.Set;
 
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandler;
+import net.objectlab.kit.datecalc.common.IMMPeriod;
 import net.objectlab.kit.datecalc.common.Tenor;
 import net.objectlab.kit.datecalc.common.Utils;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
@@ -58,16 +59,16 @@ public class JdkDateBaseDateCalculator implements JdkDateCalculator {
         return delegate.getCurrentBusinessDate().getTime();
     }
 
-    public List<Date> getIMMDates(final Date start, final Date end) {
-        return Utils.toDateList(delegate.getIMMDates(Utils.getCal(start), Utils.getCal(end)));
+    public List<Date> getIMMDates(final Date start, final Date end, final IMMPeriod period) {
+        return Utils.toDateList(delegate.getIMMDates(Utils.getCal(start), Utils.getCal(end), period));
     }
 
-    public Date getNextIMMDate() {
-        return delegate.getNextIMMDate().getTime();
+    public Date getNextIMMDate(final IMMPeriod period) {
+        return delegate.getNextIMMDate(period).getTime();
     }
 
-    public Date getPreviousIMMDate() {
-        return delegate.getPreviousIMMDate().getTime();
+    public Date getPreviousIMMDate(final IMMPeriod period) {
+        return delegate.getPreviousIMMDate(period).getTime();
     }
 
     public Date getStartDate() {
@@ -153,5 +154,21 @@ public class JdkDateBaseDateCalculator implements JdkDateCalculator {
         newSet.addAll(calculator.getNonWorkingDays());
         return new JdkDateBaseDateCalculator(delegate.getName() + "/" + calculator.getName(), getStartDate(), newSet, delegate
                 .getHolidayHandler());
+    }
+
+    public List<Date> getIMMDates(final Date start, final Date end) {
+        return getIMMDates(start, end, IMMPeriod.QUARTERLY);
+    }
+
+    public Date getNextIMMDate() {
+        return getNextIMMDate(IMMPeriod.QUARTERLY);
+    }
+
+    public Date getPreviousIMMDate() {
+        return getPreviousIMMDate(IMMPeriod.QUARTERLY);
+    }
+
+    public boolean isIMMDate(final Date date) {
+        return delegate.isIMMDate(Utils.getCal(date));
     }
 }

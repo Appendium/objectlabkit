@@ -6,6 +6,7 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
+import net.objectlab.kit.datecalc.common.IMMPeriod;
 import net.objectlab.kit.datecalc.common.StandardTenor;
 
 import org.joda.time.LocalDate;
@@ -78,6 +79,65 @@ public class IMMDateTest extends TestCase {
         Assert.assertEquals("From " + cal.getStartDate(), new LocalDate("2007-03-21"), cal.getNextIMMDate());
         cal.setStartDate(new LocalDate("2006-12-21"));
         Assert.assertEquals("From " + cal.getStartDate(), new LocalDate("2007-03-21"), cal.getNextIMMDate());
+    }
+
+    public void testNextIMMWithPeriod() {
+        final DateCalculator<LocalDate> cal = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+                HolidayHandlerType.FORWARD);
+        Assert.assertEquals("Name", "bla", cal.getName());
+        Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
+
+        final LocalDate startDate = new LocalDate("2006-08-01");
+        cal.setStartDate(startDate);
+
+        Assert.assertEquals("From " + cal.getStartDate(), new LocalDate("2006-09-20"), cal.getNextIMMDate());
+
+        cal.setStartDate(new LocalDate("2006-01-09"));
+        Assert.assertEquals("From " + cal.getStartDate(), new LocalDate("2006-03-15"), cal.getNextIMMDate(IMMPeriod.QUARTERLY));
+        Assert.assertEquals("From " + cal.getStartDate(), new LocalDate("2006-06-21"), cal
+                .getNextIMMDate(IMMPeriod.BI_ANNUALY_JUN_DEC));
+        Assert.assertEquals("From " + cal.getStartDate(), new LocalDate("2006-03-15"), cal
+                .getNextIMMDate(IMMPeriod.BI_ANNUALY_MAR_SEP));
+
+        cal.setStartDate(new LocalDate("2006-03-20"));
+        Assert.assertEquals("From " + cal.getStartDate(), new LocalDate("2006-06-21"), cal.getNextIMMDate(IMMPeriod.QUARTERLY));
+        Assert.assertEquals("From " + cal.getStartDate(), new LocalDate("2006-06-21"), cal
+                .getNextIMMDate(IMMPeriod.BI_ANNUALY_JUN_DEC));
+        Assert.assertEquals("From " + cal.getStartDate(), new LocalDate("2006-09-20"), cal
+                .getNextIMMDate(IMMPeriod.BI_ANNUALY_MAR_SEP));
+    }
+
+    public void testIfIMMDate() {
+        final DateCalculator<LocalDate> cal = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+                HolidayHandlerType.FORWARD);
+        Assert.assertEquals("Name", "bla", cal.getName());
+        Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
+
+        final LocalDate startDate = new LocalDate("2006-08-01");
+        cal.setStartDate(startDate);
+
+        checkImm(cal, new LocalDate("2006-08-01"), false);
+
+        checkImm(cal, new LocalDate("2006-03-14"), false);
+        checkImm(cal, new LocalDate("2006-03-15"), true);
+        checkImm(cal, new LocalDate("2006-03-16"), false);
+
+        checkImm(cal, new LocalDate("2006-06-20"), false);
+        checkImm(cal, new LocalDate("2006-06-21"), true);
+        checkImm(cal, new LocalDate("2006-06-22"), false);
+
+        checkImm(cal, new LocalDate("2006-09-19"), false);
+        checkImm(cal, new LocalDate("2006-09-20"), true);
+        checkImm(cal, new LocalDate("2006-09-21"), false);
+
+        checkImm(cal, new LocalDate("2006-12-19"), false);
+        checkImm(cal, new LocalDate("2006-12-20"), true);
+        checkImm(cal, new LocalDate("2006-12-21"), false);
+
+    }
+
+    private void checkImm(final DateCalculator<LocalDate> cal, final LocalDate date, final boolean expected) {
+        assertEquals("check " + date, expected, cal.isIMMDate(date));
     }
 
     public void testMoveByIMMTenor() {

@@ -26,6 +26,7 @@ import java.util.Set;
 import net.objectlab.kit.datecalc.common.AbstractDateCalculator;
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandler;
+import net.objectlab.kit.datecalc.common.IMMPeriod;
 import net.objectlab.kit.datecalc.common.Tenor;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
@@ -93,17 +94,24 @@ public class JdkCalendarBaseDateCalculator extends AbstractDateCalculator<Calend
     }
 
     /**
-     * Calculates IMMDates between a start and end dates the 3rd wednesday of
-     * Mar/Jun/Sep/Dec when a lot of derivative contracts expire
+     * Returns a list of IMM dates between 2 dates, it will exclude the start
+     * date if it is an IMM date but would include the end date if it is an IMM.
      * 
-     * @return a List of Dates
+     * @param start
+     *            start of the interval, excluded
+     * @param end
+     *            end of the interval, may be included.
+     * @param period
+     *            specify when the "next" IMM is, if quarterly then it is the
+     *            conventional algorithm.
+     * @return list of IMM dates
      */
-    public List<Calendar> getIMMDates(final Calendar start, final Calendar end) {
+    public List<Calendar> getIMMDates(final Calendar start, final Calendar end, final IMMPeriod period) {
 
         final List<Calendar> dates = new ArrayList<Calendar>();
         Calendar cal = (Calendar) start.clone();
         while (true) {
-            cal = getNextIMMDate(true, cal);
+            cal = getNextIMMDate(true, cal, period);
             if (!cal.after(end)) {
                 dates.add(cal);
             } else {
@@ -115,9 +123,9 @@ public class JdkCalendarBaseDateCalculator extends AbstractDateCalculator<Calend
     }
 
     @Override
-    protected Calendar getNextIMMDate(final boolean forward, final Calendar startDate) {
+    protected Calendar getNextIMMDate(final boolean forward, final Calendar startDate, final IMMPeriod period) {
 
-        final Calendar cal = (Calendar) startDate.clone();
+        Calendar cal = (Calendar) startDate.clone();
         
         if (isIMMMonth(cal)) {
             moveToIMMDay(cal);
@@ -135,6 +143,18 @@ public class JdkCalendarBaseDateCalculator extends AbstractDateCalculator<Calend
         } while (!isIMMMonth(cal));
 
         moveToIMMDay(cal);
+        
+        final int month = cal.get(Calendar.MONTH); 
+        if ( (period == IMMPeriod.BI_ANNUALY_JUN_DEC 
+                && (Calendar.MARCH == month || Calendar.SEPTEMBER==month) ) 
+                || 
+                ( period == IMMPeriod.BI_ANNUALY_MAR_SEP 
+                        && (Calendar.JUNE == month || Calendar.DECEMBER==month) ) ) { 
+                // need to move to the next one.
+                cal = getNextIMMDate(forward, cal, period);
+            }
+        
+        
         return cal;
     }
 
@@ -188,6 +208,11 @@ public class JdkCalendarBaseDateCalculator extends AbstractDateCalculator<Calend
     @Override
     public JdkCalendarBaseDateCalculator moveByBusinessDays(final int businessDays) {
         return (JdkCalendarBaseDateCalculator) super.moveByBusinessDays(businessDays);
+    }
+
+    public boolean isIMMDate(final Calendar date) {
+        // TODO Auto-generated method stub
+        return false;
     }
 
 }
