@@ -19,7 +19,6 @@ package net.objectlab.kit.datecalc.joda;
 
 
 import net.objectlab.kit.datecalc.common.AbstractBackwardDateCalculatorTest;
-import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.DateCalculatorFactory;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
@@ -37,11 +36,6 @@ public class LocalDateBackwardDateCalculatorTest extends AbstractBackwardDateCal
     @Override
     protected LocalDate newDate(final String date) {
         return new LocalDate(date);
-    }
-
-    @Override
-    protected DateCalculator<LocalDate> newDateCalculator(final String name, final String type) {
-        return DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator(name, type);
     }
 
     protected WorkingWeek getWorkingWeek(WorkingWeek ww) {
