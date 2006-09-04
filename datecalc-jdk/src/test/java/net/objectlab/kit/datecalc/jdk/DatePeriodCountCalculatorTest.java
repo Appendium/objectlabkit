@@ -1,6 +1,4 @@
 /*
- * $Id$
- * Copyright 2006 the original author or authors.
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -15,28 +13,29 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package net.objectlab.kit.datecalc.joda;
+package net.objectlab.kit.datecalc.jdk;
 
-import org.joda.time.LocalDate;
+import java.util.Date;
 
 import net.objectlab.kit.datecalc.common.AbstractPeriodCountCalculator;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
+import net.objectlab.kit.datecalc.common.Utils;
 
-public class PeriodCountCalculatorTest extends AbstractPeriodCountCalculator<LocalDate> {
-
+public class DatePeriodCountCalculatorTest extends AbstractPeriodCountCalculator<Date> {
+    
     @Override
-    public PeriodCountCalculator<LocalDate> getPeriodCountCalculator() {
-        return DefaultLocalDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
+    public PeriodCountCalculator<Date> getPeriodCountCalculator() {
+        return DefaultJdkDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
     }
 
     @Override
-    public LocalDate parseDate(String string) {
-        return new LocalDate(string);
+    public Date parseDate(String string) {
+        return Utils.createDate(string);
     }
 
     @Override
-    public LocalDate getDate() {
-        return new LocalDate();
+    public Date getDate() {
+        return new Date();
     }
 
 }
