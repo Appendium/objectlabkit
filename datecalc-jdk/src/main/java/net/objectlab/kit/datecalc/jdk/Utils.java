@@ -15,8 +15,12 @@
  */
 package net.objectlab.kit.datecalc.jdk;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
+import junit.framework.Assert;
 
 /**
  * 
@@ -25,10 +29,22 @@ import java.util.Date;
  */
 public class Utils {
 
+    private static final SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd");
+
+    // TODO create tests
     public static Calendar getCal(final Date date) {
         final Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         return cal;
     }
 
+    // TODO create tests
+    public static Date createDate(final String str) {
+        try {
+            return SDF.parse(str);
+        } catch (final ParseException e) {
+            Assert.fail(e.toString());
+        }
+        return null;
+    }
 }
