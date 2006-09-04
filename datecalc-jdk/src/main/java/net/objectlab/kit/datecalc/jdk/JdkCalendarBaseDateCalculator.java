@@ -1,5 +1,5 @@
 /*
- * $Id: JdkDateBaseDateCalculator.java 82 2006-09-03 09:56:09Z marchy $
+ * $Id$
  * 
  * Copyright 2006 the original author or authors.
  *
@@ -37,7 +37,7 @@ import net.objectlab.kit.datecalc.common.WorkingWeek;
  * 
  * @author Marcin Jekot
  * @author $LastModifiedBy$
- * @version $Revision: 82 $ $Date: 2006-09-03 11:56:09 +0200 (Sun, 03 Sep 2006) $
+ * @version $Revision$ $Date$
  */
 public class JdkCalendarBaseDateCalculator extends AbstractDateCalculator<Calendar> implements JdkCalendarDateCalculator {
 
@@ -185,9 +185,7 @@ public class JdkCalendarBaseDateCalculator extends AbstractDateCalculator<Calend
         final int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
         if (dayOfWeek < Calendar.WEDNESDAY) {
             cal.add(Calendar.DAY_OF_MONTH, Calendar.WEDNESDAY - dayOfWeek);
-        } else if (dayOfWeek == Calendar.WEDNESDAY) {
-            // do nothing
-        } else {
+        } else if (dayOfWeek > Calendar.WEDNESDAY){
             cal.add(Calendar.DAY_OF_MONTH, (Calendar.WEDNESDAY + 7) - dayOfWeek);
         }
 

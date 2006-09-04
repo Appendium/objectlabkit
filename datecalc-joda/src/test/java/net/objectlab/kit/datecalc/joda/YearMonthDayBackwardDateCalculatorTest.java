@@ -1,5 +1,5 @@
 /*
- * $Id: org.eclipse.jdt.ui.prefs 59 2006-08-26 09:06:39Z marchy $
+ * $Id$
  * 
  * Copyright 2006 the original author or authors.
  *
@@ -28,8 +28,8 @@ import org.joda.time.YearMonthDay;
 /**
  * 
  * @author xhensevb
- * @author $LastChangedBy: marchy $
- * @version $Revision: 59 $ $Date: 2006-08-26 11:06:39 +0200 (Sat, 26 Aug 2006) $
+ * @author $LastChangedBy$
+ * @version $Revision$ $Date$
  * 
  */
 public class YearMonthDayBackwardDateCalculatorTest extends AbstractBackwardDateCalculatorTest<YearMonthDay> {

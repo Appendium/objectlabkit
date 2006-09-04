@@ -1,5 +1,5 @@
 /*
- * $Id: DefaultDateCalculatorFactory.java 64 2006-08-26 10:41:51Z marchy $
+ * $Id$
  * 
  * Copyright 2006 the original author or authors.
  *
