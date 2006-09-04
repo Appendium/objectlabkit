@@ -33,7 +33,7 @@
     big business will have their own official list of 'holidays' anyway.</p>
     <p>Furthermore, "weekends" also need to be handled and some market have a different week to the conventional Monday ->
     Friday, our library provides you with full flexibility to design a Working Week.</p>
-    <p>As such a Non-working Day can be a holiday or a 'weekend'.</p>
+    <p>As such a Non-working Day can be a holiday or a 'weekend'.</p>       
     </subsection>
 
 
@@ -50,6 +50,26 @@
     </ol>
     </subsection>
     
+    <subsection name="Main interfaces">
+    <p>The main interfaces are:</p>
+    <ul>
+    <li><a href="./multiproject/datecalc-common/apidocs/net/objectlab/kit/datecalc/common/DateCalculator.html">DateCalculator</a> for all Date calculations.</li>
+    <li><a href="./multiproject/datecalc-common/apidocs/net/objectlab/kit/datecalc/common/PeriodCountCalculator.html">PeriodCountCalculator</a> for all day, month and year diff calculations.</li>
+    </ul>
+    	<h4>JDK</h4>
+    	<p>2 implementations for Pure JDK have been released</p>
+    	<ol>
+    		<li><strong>Calendar:</strong><pre>DateCalculatorFactory&lt;Calendar> calc = DefaultJdkCalendarCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);</pre></li>
+    		<li><strong>Date:</strong><pre>DateCalculatorFactory&lt;Date> calc = DefaultJdkDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);</pre></li>
+    	</ol>
+    	<h4>JODA</h4>
+    	<p>2 implementations for Joda have been released</p>
+    	<ol>
+    		<li><strong>LocalDate</strong> (preferred):<pre>DateCalculatorFactory&lt;LocalDate> calc = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);</pre></li>
+    		<li><strong>YearMonthDay:</strong><pre>DateCalculatorFactory&lt;YearMonthDay> calc = DefaultYearMonthDayCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);</pre></li>
+    	</ol>
+    </subsection>
+    
     <subsection name="How do I use it?">
     <p>There are several steps</p>
     <ul>
@@ -61,19 +81,19 @@
     	<li>when you call addDays(..), moveByBusinessDays(..) the currentDate is moved in the Calculator.</li>
     </ul>
     <pre>
-    	// create of get Holidays
+    	// create or get the Holidays
         final Set&lt;LocalDate> holidays = new HashSet&lt;LocalDate>();
         holidays.add(new LocalDate("2006-08-28"));
         
         DefaultDateCalculatorFactory.getDefaultInstance().registerHolidays("UK", holidays);
 
-        DateCalculator cal = DefaultDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);
-	cal.setStartDate(new LocalDate("2006-08-28));
+        DateCalculator&lt;LocalDate> cal = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);
+	cal.setStartDate(new LocalDate("2006-08-28)); // this also sets the current business date.
 	
 	// the startDate stays 28 Aug 06 BUT the currentDate has moved, 
 	// according to Forward handler to 29 Aug 2006.
 	cal.getStartDate();   // 28 Aug 06
-	cal.getCurrentDate(); // 29 Aug 06   
+	cal.getCurrentBusinessDate(); // 29 Aug 06   
     </pre>
    
     
