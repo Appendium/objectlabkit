@@ -46,10 +46,10 @@
         <summaryresult date="2006-09-02" filecount="13" statvalue="9" type="checkstyle"/>
         <summaryresult date="2006-09-02" filecount="12" statvalue="59" type="cobertura-line"/>
         <summaryresult date="2006-09-02" filecount="12" statvalue="61" type="cobertura-branch"/>
-        <summaryresult date="2006-09-04" filecount="14" statvalue="12" type="checkstyle"/>
+        <summaryresult date="2006-09-04" filecount="15" statvalue="12" type="checkstyle"/>
         <summaryresult date="2006-09-04" filecount="1" statvalue="1" type="findbugs"/>
-        <summaryresult date="2006-09-04" filecount="13" statvalue="62" type="cobertura-line"/>
-        <summaryresult date="2006-09-04" filecount="13" statvalue="64" type="cobertura-branch"/>
+        <summaryresult date="2006-09-04" filecount="14" statvalue="61" type="cobertura-line"/>
+        <summaryresult date="2006-09-04" filecount="14" statvalue="64" type="cobertura-branch"/>
     </summary>
     <file id="net_objectlab_kit_datecalc_common_package.html" path="net/objectlab/kit/datecalc/common/package.html">
         <result date="2006-08-08" statvalue="1" type="checkstyle"/>
@@ -243,7 +243,10 @@
     </file>
     <file id="net_objectlab_kit_datecalc_common_Utils.java" path="net/objectlab/kit/datecalc/common/Utils.java">
         <result date="2006-09-04" statvalue="2" type="checkstyle"/>
-        <result date="2006-09-04" statvalue="88" type="cobertura-line"/>
+        <result date="2006-09-04" statvalue="90" type="cobertura-line"/>
+        <result date="2006-09-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file id="net_objectlab_kit_datecalc_common_IMMPeriod.java" path="net/objectlab/kit/datecalc/common/IMMPeriod.java">
         <result date="2006-09-04" statvalue="100" type="cobertura-branch"/>
     </file>
 </qalab>
