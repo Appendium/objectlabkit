@@ -7,7 +7,7 @@ import net.objectlab.kit.datecalc.common.Utils;
 public class JdkDateModifiedPreceedingDateCalculatorTest extends AbstractModifiedPreceedingDateCalculatorTest {
 
     @Override
-    protected Object newDate(String date) {
+    protected Object newDate(final String date) {
         return Utils.createDate(date);
     }
 

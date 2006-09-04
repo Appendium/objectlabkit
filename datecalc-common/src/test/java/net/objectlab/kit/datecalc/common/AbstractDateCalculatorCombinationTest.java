@@ -1,8 +1,6 @@
 package net.objectlab.kit.datecalc.common;
 
 import junit.framework.Assert;
-import net.objectlab.kit.datecalc.common.DateCalculator;
-import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
 public abstract class AbstractDateCalculatorCombinationTest<E> extends AbstractDateTestCase<E> {
 

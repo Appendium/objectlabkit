@@ -44,7 +44,8 @@ public class YearMonthDayForwardDateCalculatorTest extends AbstractForwardDateCa
         DefaultYearMonthDayCalculatorFactory.getDefaultInstance().registerHolidays(name, holidays);
     }
 
-    protected WorkingWeek getWorkingWeek(WorkingWeek ww) {
+    @Override
+    protected WorkingWeek getWorkingWeek(final WorkingWeek ww) {
         return new JodaWorkingWeek(ww);
     }
 

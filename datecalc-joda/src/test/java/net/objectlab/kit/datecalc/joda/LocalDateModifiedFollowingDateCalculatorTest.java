@@ -17,7 +17,6 @@
  */
 package net.objectlab.kit.datecalc.joda;
 
-
 import net.objectlab.kit.datecalc.common.AbstractModifiedFollowingDateCalculatorTest;
 import net.objectlab.kit.datecalc.common.DateCalculatorFactory;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
@@ -38,12 +37,13 @@ public class LocalDateModifiedFollowingDateCalculatorTest extends AbstractModifi
         return new LocalDate(date);
     }
 
-    protected WorkingWeek getWorkingWeek(WorkingWeek ww) {
+    @Override
+    protected WorkingWeek getWorkingWeek(final WorkingWeek ww) {
         return new JodaWorkingWeek(ww);
     }
 
     @Override
     protected DateCalculatorFactory<LocalDate> getDateCalculatorFactory() {
-        return DefaultLocalDateCalculatorFactory.getDefaultInstance();    
+        return DefaultLocalDateCalculatorFactory.getDefaultInstance();
     }
 }

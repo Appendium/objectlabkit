@@ -29,11 +29,12 @@ import org.joda.time.LocalDate;
 public class JodaWorkingWeekTest extends TestCase {
 
     private JodaWorkingWeek ww;
-    
+
+    @Override
     public void setUp() {
         ww = new JodaWorkingWeek();
     }
-    
+
     public void testIsWorkingDayFromDateTimeConstant() {
         Assert.assertTrue("DateTimeConstants.MONDAY", ww.isWorkingDayFromDateTimeConstant(DateTimeConstants.MONDAY));
         Assert.assertTrue("DateTimeConstants.TUESDAY", ww.isWorkingDayFromDateTimeConstant(DateTimeConstants.TUESDAY));
@@ -100,7 +101,7 @@ public class JodaWorkingWeekTest extends TestCase {
         Assert.assertTrue("2/ DateTimeConstants.SUNDAY", ww.isWorkingDayFromDateTimeConstant(DateTimeConstants.SUNDAY));
 
     }
-    
+
     public void testJodaToCalendarDayConstant() {
         assertEquals("Monday", ww.jodaToCalendarDayConstant(DateTimeConstants.MONDAY), Calendar.MONDAY);
         assertEquals("Tuesday", ww.jodaToCalendarDayConstant(DateTimeConstants.TUESDAY), Calendar.TUESDAY);
@@ -109,7 +110,7 @@ public class JodaWorkingWeekTest extends TestCase {
         assertEquals("Friday", ww.jodaToCalendarDayConstant(DateTimeConstants.FRIDAY), Calendar.FRIDAY);
         assertEquals("Saturday", ww.jodaToCalendarDayConstant(DateTimeConstants.SATURDAY), Calendar.SATURDAY);
         assertEquals("Sunday", ww.jodaToCalendarDayConstant(DateTimeConstants.SUNDAY), Calendar.SUNDAY);
-        
+
     }
 
 }

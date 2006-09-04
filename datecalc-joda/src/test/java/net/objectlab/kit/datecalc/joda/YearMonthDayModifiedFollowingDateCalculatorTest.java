@@ -43,8 +43,9 @@ public class YearMonthDayModifiedFollowingDateCalculatorTest extends AbstractMod
     protected void registerHolidays(final String name, final Set<YearMonthDay> holidays) {
         DefaultYearMonthDayCalculatorFactory.getDefaultInstance().registerHolidays(name, holidays);
     }
-    
-    protected WorkingWeek getWorkingWeek(WorkingWeek ww) {
+
+    @Override
+    protected WorkingWeek getWorkingWeek(final WorkingWeek ww) {
         return new JodaWorkingWeek(ww);
     }
 
@@ -52,5 +53,5 @@ public class YearMonthDayModifiedFollowingDateCalculatorTest extends AbstractMod
     protected DateCalculatorFactory<YearMonthDay> getDateCalculatorFactory() {
         return DefaultYearMonthDayCalculatorFactory.getDefaultInstance();
     }
-    
+
 }

@@ -44,8 +44,7 @@ public interface DateCalculatorFactory<E> {
      *            typically one of the value of HolidayHandlerType
      * @return a new DateCalculator
      */
-    DateCalculator<E> getDateCalculator(final String name,
-            final String holidayHandlerType);
+    DateCalculator<E> getDateCalculator(final String name, final String holidayHandlerType);
 
     /**
      * Use this method to register a set of holidays for a given calendar.

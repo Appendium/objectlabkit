@@ -29,7 +29,7 @@ public class JodaWorkingWeek extends WorkingWeek {
     public static final JodaWorkingWeek DEFAULT = new JodaWorkingWeek();
 
     public JodaWorkingWeek() {
-        this((byte) DEFAULT_WORKING_DAYS);
+        this(DEFAULT_WORKING_DAYS);
     }
 
     private JodaWorkingWeek(final byte workingDays) {
@@ -39,12 +39,12 @@ public class JodaWorkingWeek extends WorkingWeek {
     public JodaWorkingWeek(final WorkingWeek ww) {
         this.workingDays = ww.getWorkingDays();
     }
-    
+
     public boolean isWorkingDay(final LocalDate date) {
-        int dayOfWeek = jodaToCalendarDayConstant(date.getDayOfWeek());
+        final int dayOfWeek = jodaToCalendarDayConstant(date.getDayOfWeek());
         return isWorkingDayFromCalendar(dayOfWeek);
     }
-    
+
     /**
      * Return a new JodaWorkingWeek if the status for the given day has changed.
      * 
@@ -61,7 +61,7 @@ public class JodaWorkingWeek extends WorkingWeek {
     public boolean isWorkingDayFromDateTimeConstant(final int dayOfWeek) {
         return isWorkingDayFromCalendar(jodaToCalendarDayConstant(dayOfWeek));
     }
-    
+
     public int jodaToCalendarDayConstant(int dayOfWeek) {
         dayOfWeek++;
         return (dayOfWeek <= 7 ? dayOfWeek : dayOfWeek % 7);

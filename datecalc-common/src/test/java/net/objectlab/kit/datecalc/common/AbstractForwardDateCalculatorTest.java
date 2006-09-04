@@ -50,9 +50,8 @@ public abstract class AbstractForwardDateCalculatorTest<E> extends AbstractDateT
 
     public void testSimpleForwardStartDateNoWeekend() {
         final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.FORWARD);
-        WorkingWeek ww = new WorkingWeek()
-                .withWorkingDayFromCalendar(true, Calendar.SATURDAY)
-                .withWorkingDayFromCalendar(true, Calendar.SUNDAY);
+        final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(true, Calendar.SATURDAY).withWorkingDayFromCalendar(true,
+                Calendar.SUNDAY);
         cal.setWorkingWeek(getWorkingWeek(ww));
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
@@ -84,14 +83,10 @@ public abstract class AbstractForwardDateCalculatorTest<E> extends AbstractDateT
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
 
-        WorkingWeek ww = new WorkingWeek()
-                .withWorkingDayFromCalendar(false, Calendar.MONDAY)
-                .withWorkingDayFromCalendar(true, Calendar.TUESDAY)
-                .withWorkingDayFromCalendar(false, Calendar.WEDNESDAY)
-                .withWorkingDayFromCalendar(true, Calendar.THURSDAY)
-                .withWorkingDayFromCalendar(false, Calendar.FRIDAY)
-                .withWorkingDayFromCalendar(true, Calendar.SATURDAY)
-                .withWorkingDayFromCalendar(false, Calendar.SUNDAY);
+        final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(false, Calendar.MONDAY).withWorkingDayFromCalendar(true,
+                Calendar.TUESDAY).withWorkingDayFromCalendar(false, Calendar.WEDNESDAY).withWorkingDayFromCalendar(true,
+                Calendar.THURSDAY).withWorkingDayFromCalendar(false, Calendar.FRIDAY).withWorkingDayFromCalendar(true,
+                Calendar.SATURDAY).withWorkingDayFromCalendar(false, Calendar.SUNDAY);
         cal.setWorkingWeek(getWorkingWeek(ww));
 
         cal.setStartDate(newDate("2006-07-31")); // start date Monday
@@ -121,14 +116,10 @@ public abstract class AbstractForwardDateCalculatorTest<E> extends AbstractDateT
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
 
-        WorkingWeek ww = new WorkingWeek()
-                .withWorkingDayFromCalendar(false, Calendar.MONDAY)
-                .withWorkingDayFromCalendar(true, Calendar.TUESDAY)
-                .withWorkingDayFromCalendar(true, Calendar.WEDNESDAY)
-                .withWorkingDayFromCalendar(true, Calendar.THURSDAY)
-                .withWorkingDayFromCalendar(true, Calendar.FRIDAY)
-                .withWorkingDayFromCalendar(false, Calendar.SATURDAY)
-                .withWorkingDayFromCalendar(false, Calendar.SUNDAY);
+        final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(false, Calendar.MONDAY).withWorkingDayFromCalendar(true,
+                Calendar.TUESDAY).withWorkingDayFromCalendar(true, Calendar.WEDNESDAY).withWorkingDayFromCalendar(true,
+                Calendar.THURSDAY).withWorkingDayFromCalendar(true, Calendar.FRIDAY).withWorkingDayFromCalendar(false,
+                Calendar.SATURDAY).withWorkingDayFromCalendar(false, Calendar.SUNDAY);
         cal.setWorkingWeek(getWorkingWeek(ww));
 
         cal.setStartDate(newDate("2006-07-31")); // start date Monday
