@@ -17,6 +17,7 @@ public abstract class AbstractDateCalculatorTest extends TestCase {
 
     private static final SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd");
 
+    // TODO remove this and use utils one instead
     protected Date createDate(final String str) {
         try {
             return SDF.parse(str);
