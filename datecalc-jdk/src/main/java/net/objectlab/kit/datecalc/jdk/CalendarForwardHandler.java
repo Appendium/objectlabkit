@@ -27,8 +27,8 @@ import net.objectlab.kit.datecalc.common.HolidayHandlerType;
  * TODO javadoc
  * 
  * @author Marcin Jekot
- * @author $LastChangedBy: marchy $
- * @version $Revision: 69 $ $Date: 2006-08-27 11:47:25 +0200 (Sun, 27 Aug 2006) $
+ * @author $LastChangedBy$
+ * @version $Revision$ $Date$
  * 
  */
 public class CalendarForwardHandler implements HolidayHandler<Calendar> {

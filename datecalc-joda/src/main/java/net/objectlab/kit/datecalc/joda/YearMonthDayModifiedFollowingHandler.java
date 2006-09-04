@@ -1,5 +1,5 @@
 /*
- * $Id: LocalDateModifiedFollowingHandler.java 68 2006-08-27 09:46:33Z marchy $
+ * $Id$
  * 
  * Copyright 2006 the original author or authors.
  *
