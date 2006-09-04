@@ -28,6 +28,7 @@ import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.IMMPeriod;
 import net.objectlab.kit.datecalc.common.Tenor;
+import net.objectlab.kit.datecalc.common.Utils;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
 /**
@@ -193,6 +194,13 @@ public class JdkCalendarBaseDateCalculator extends AbstractDateCalculator<Calend
         cal.add(Calendar.DAY_OF_MONTH, 7 * 2);
     }
 
+    public boolean isIMMDate(final Calendar date) {
+        //TODO a slightly crude implementation - revisit
+        Calendar cal = (Calendar)date.clone();
+        moveToIMMDay(cal);
+        return cal.equals(date);
+    }
+    
     @Override
     public JdkCalendarBaseDateCalculator combine(final DateCalculator<Calendar> calendar) {
         return (JdkCalendarBaseDateCalculator) super.combine(calendar);
@@ -206,11 +214,6 @@ public class JdkCalendarBaseDateCalculator extends AbstractDateCalculator<Calend
     @Override
     public JdkCalendarBaseDateCalculator moveByBusinessDays(final int businessDays) {
         return (JdkCalendarBaseDateCalculator) super.moveByBusinessDays(businessDays);
-    }
-
-    public boolean isIMMDate(final Calendar date) {
-        // TODO Auto-generated method stub
-        return false;
     }
 
 }
