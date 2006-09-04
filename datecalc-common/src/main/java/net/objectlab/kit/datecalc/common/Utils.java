@@ -23,6 +23,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.TimeZone;
 
 /**
  * TODO javadoc
@@ -36,23 +37,28 @@ public class Utils {
     private static final String DATE_PATTERN = "yyyy-MM-dd";
     private static final SimpleDateFormat SDF = new SimpleDateFormat(DATE_PATTERN);
 
-    // TODO create tests
     public static Calendar getCal(final Date date) {
         final Calendar cal = Calendar.getInstance();
         cal.setTime(date);
+        cal.setTimeZone(TimeZone.getTimeZone("UTC"));
+        cal.set(Calendar.HOUR, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
         return cal;
     }
 
     public static Date createDate(final String str) throws IllegalArgumentException {
         try {
-            return SDF.parse(str);
+            Date date = SDF.parse(str);
+            Calendar cal = getCal(date);
+            return cal.getTime();
         } catch (final ParseException e) {
             throw new IllegalArgumentException("\"" + str + "\"" + " is an invalid date, the pattern is : " + DATE_PATTERN);
         }
     }
     
-    public static Set<Calendar> toCalendarSet(Set<Date> dates) {
-        
+    public static Set<Calendar> toCalendarSet(Set<Date> dates) {        
         Set<Calendar> calendars = new HashSet<Calendar>();
         for (Date date : dates) {
             calendars.add(getCal(date));

@@ -1,13 +1,11 @@
 package net.objectlab.kit.datecalc.jdk;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import junit.framework.Assert;
 import junit.framework.TestCase;
+import net.objectlab.kit.datecalc.common.Utils;
 
 public abstract class AbstractDateCalculatorTest extends TestCase {
 
@@ -15,16 +13,8 @@ public abstract class AbstractDateCalculatorTest extends TestCase {
         super();
     }
 
-    private static final SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd");
-
-    // TODO remove this and use utils one instead
     protected Date createDate(final String str) {
-        try {
-            return SDF.parse(str);
-        } catch (final ParseException e) {
-            Assert.fail(e.toString());
-        }
-        return null;
+        return Utils.createDate(str);
     }
 
     protected Set<Date> createUKHolidays() {
