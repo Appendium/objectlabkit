@@ -9,10 +9,6 @@ import junit.framework.TestCase;
 public abstract class AbstractDateTestCase<E> extends TestCase {
     protected abstract E newDate(final String date);
 
-    protected abstract DateCalculator<E> newDateCalculator(String name, String type);
-
-    protected abstract WorkingWeek getWorkingWeek(WorkingWeek ww);
-    
     protected abstract DateCalculatorFactory<E> getDateCalculatorFactory();
     
     protected void checkDate(final String string, final DateCalculator<E> calendar, final String string2) {
@@ -46,5 +42,13 @@ public abstract class AbstractDateTestCase<E> extends TestCase {
 
     protected void registerHolidays(final String name, final Set<E> holidays) {
         getDateCalculatorFactory().registerHolidays(name, holidays);
+    }
+
+    protected WorkingWeek getWorkingWeek(WorkingWeek ww) {
+        return ww;
+    }
+
+    protected DateCalculator<E> newDateCalculator(String name, String type) {
+        return getDateCalculatorFactory().getDateCalculator(name, type);
     }
 }

@@ -4,11 +4,6 @@ import java.util.Calendar;
 import java.util.Set;
 
 import junit.framework.Assert;
-import net.objectlab.kit.datecalc.common.DateCalculator;
-import net.objectlab.kit.datecalc.common.HolidayHandlerType;
-import net.objectlab.kit.datecalc.common.StandardTenor;
-import net.objectlab.kit.datecalc.common.Tenor;
-import net.objectlab.kit.datecalc.common.TenorCode;
 
 public abstract class AbstractModifiedPreceedingDateCalculatorTest<E> extends AbstractDateTestCase<E> {
 
@@ -276,5 +271,4 @@ public abstract class AbstractModifiedPreceedingDateCalculatorTest<E> extends Ab
         checkDate("do NOT move to next month", cal, "2006-08-02");
     }
     
-    protected abstract WorkingWeek getWorkingWeek(WorkingWeek ww); 
 }
