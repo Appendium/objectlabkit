@@ -20,8 +20,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import junit.framework.Assert;
-
 /**
  * 
  * @author Marcin Jekot
@@ -43,7 +41,7 @@ public class Utils {
         try {
             return SDF.parse(str);
         } catch (final ParseException e) {
-            Assert.fail(e.toString());
+            System.out.println(e.toString());
         }
         return null;
     }
