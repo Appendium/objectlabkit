@@ -117,12 +117,13 @@ public class JdkCalendarBaseDateCalculator extends AbstractDateCalculator<Calend
     @Override
     protected Calendar getNextIMMDate(final boolean forward, final Calendar startDate) {
 
-        Calendar cal = (Calendar) startDate.clone();
+        final Calendar cal = (Calendar) startDate.clone();
         
         if (isIMMMonth(cal)) {
             moveToIMMDay(cal);
             // TODO simplify this if condition
-//            if (forward ^ cal.getTime().before(startDate) || cal.getTime().equals(startDate)) {
+// if (forward ^ cal.getTime().before(startDate) ||
+// cal.getTime().equals(startDate)) {
             if ((forward && cal.after(startDate)) || (!forward && cal.before(startDate))) {
                 return cal;
             }
@@ -175,17 +176,17 @@ public class JdkCalendarBaseDateCalculator extends AbstractDateCalculator<Calend
     }
 
     @Override
-    public JdkCalendarBaseDateCalculator combine(DateCalculator<Calendar> calendar) {
+    public JdkCalendarBaseDateCalculator combine(final DateCalculator<Calendar> calendar) {
         return (JdkCalendarBaseDateCalculator) super.combine(calendar);
     }
 
     @Override
-    public JdkCalendarBaseDateCalculator moveByTenor(Tenor tenor) {
+    public JdkCalendarBaseDateCalculator moveByTenor(final Tenor tenor) {
         return (JdkCalendarBaseDateCalculator) super.moveByTenor(tenor);
     }
 
     @Override
-    public JdkCalendarBaseDateCalculator moveByBusinessDays(int businessDays) {
+    public JdkCalendarBaseDateCalculator moveByBusinessDays(final int businessDays) {
         return (JdkCalendarBaseDateCalculator) super.moveByBusinessDays(businessDays);
     }
 

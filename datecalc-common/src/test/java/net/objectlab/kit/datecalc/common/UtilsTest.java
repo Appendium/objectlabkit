@@ -22,6 +22,7 @@ public class UtilsTest extends TestCase {
 
     Set<Date> dateSet;
 
+    @Override
     protected void setUp() throws Exception {
         sdf = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -34,8 +35,8 @@ public class UtilsTest extends TestCase {
         dateSet.add(getCal(2083, 12, 1).getTime());
     }
 
-    private Calendar getCal(int year, int month, int day) {
-        Calendar cal = Calendar.getInstance();
+    private Calendar getCal(final int year, final int month, final int day) {
+        final Calendar cal = Calendar.getInstance();
         cal.clear();
         cal.setTimeZone(TimeZone.getTimeZone("UTC"));
         cal.set(year, month - 1, day, 0, 0, 0);
@@ -44,11 +45,11 @@ public class UtilsTest extends TestCase {
 
     public void testGetCal() throws Exception {
 
-        Date d = sdf.parse("2004-02-03");
+        final Date d = sdf.parse("2004-02-03");
         assertEquals(Utils.getCal(d).getTime(), getCal(2004, 2, 3).getTime());
 
-        Date d1 = getCal(2080, 5, 31).getTime();
-        Date d2 = getCal(2080, 5, 31).getTime();
+        final Date d1 = getCal(2080, 5, 31).getTime();
+        final Date d2 = getCal(2080, 5, 31).getTime();
         assertEquals(Utils.getCal(d1).getTime(), d2);
     }
 
@@ -71,10 +72,10 @@ public class UtilsTest extends TestCase {
 
     public void testToDateList() {
 
-        List<Date> expected = new ArrayList<Date>(dateSet);
+        final List<Date> expected = new ArrayList<Date>(dateSet);
         Collections.sort(expected);
 
-        List<Date> actual = Utils.toDateList(new ArrayList<Calendar>(calendarSet));
+        final List<Date> actual = Utils.toDateList(new ArrayList<Calendar>(calendarSet));
         Collections.sort(actual);
         assertEquals(expected, actual);
     }

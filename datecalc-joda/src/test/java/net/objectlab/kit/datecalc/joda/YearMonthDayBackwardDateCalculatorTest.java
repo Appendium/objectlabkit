@@ -45,7 +45,7 @@ public class YearMonthDayBackwardDateCalculatorTest extends AbstractBackwardDate
     }
 
     @Override
-    protected WorkingWeek getWorkingWeek(WorkingWeek ww) {
+    protected WorkingWeek getWorkingWeek(final WorkingWeek ww) {
         return new JodaWorkingWeek(ww);
     }
 

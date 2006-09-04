@@ -62,7 +62,7 @@ public class WorkingWeek {
      * Saturday, 64 Sunday So Monday-Friday= 1+2+4+8+16 = 31
      */
     protected byte workingDays = DEFAULT_WORKING_DAYS;
-    
+
     public boolean isWorkingDayFromCalendar(final int dayOfWeek) {
         final int day = adjustDay(dayOfWeek);
         return (WORKING_WEEK_DAYS_OFFSET[day] & workingDays) != 0;
@@ -71,7 +71,7 @@ public class WorkingWeek {
     public boolean isWorkingDay(final Date date) {
         return isWorkingDay(Utils.getCal(date));
     }
-    
+
     public boolean isWorkingDay(final Calendar cal) {
         return isWorkingDayFromCalendar(cal.get(Calendar.DAY_OF_WEEK));
     }

@@ -24,29 +24,31 @@ import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandler;
 
 /**
- * A Wrapper to handle any HolidayHandler<Date> types via a HolidayHandler<Calendar> delegate
- *
+ * A Wrapper to handle any HolidayHandler<Date> types via a HolidayHandler<Calendar>
+ * delegate
+ * 
  * @author Marcin Jekot
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
- *
+ * 
  */
 public class HolidayHandlerDateWrapper implements HolidayHandler<Date> {
 
     HolidayHandler<Calendar> delegate;
+
     DateCalculator<Calendar> calculator;
-    
-    public HolidayHandlerDateWrapper(HolidayHandler<Calendar> holidayHandler, DateCalculator<Calendar> dateCalulator) {
+
+    public HolidayHandlerDateWrapper(final HolidayHandler<Calendar> holidayHandler, final DateCalculator<Calendar> dateCalulator) {
         delegate = holidayHandler;
         calculator = dateCalulator;
     }
-    
-    public Date moveCurrentDate(DateCalculator<Date> calendar) {
+
+    public Date moveCurrentDate(final DateCalculator<Date> calendar) {
         return delegate.moveCurrentDate(calculator).getTime();
     }
 
     public String getType() {
         return delegate.getType();
     }
-    
+
 }

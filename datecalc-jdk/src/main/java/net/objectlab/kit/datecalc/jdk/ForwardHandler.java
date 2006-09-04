@@ -35,8 +35,9 @@ public class ForwardHandler implements HolidayHandler<Calendar> {
         return move(calendar, 1);
     }
 
-    protected Calendar move(final DateCalculator<Calendar> calculator, int step) {
-//        final Calendar cal = (Calendar) calculator.getCurrentBusinessDate().clone();
+    protected Calendar move(final DateCalculator<Calendar> calculator, final int step) {
+        // final Calendar cal = (Calendar)
+        // calculator.getCurrentBusinessDate().clone();
         final Calendar cal = calculator.getCurrentBusinessDate();
 
         while (calculator.isNonWorkingDay(cal)) {

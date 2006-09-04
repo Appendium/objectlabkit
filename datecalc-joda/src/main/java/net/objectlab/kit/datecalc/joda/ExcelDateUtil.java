@@ -17,6 +17,7 @@
  */
 package net.objectlab.kit.datecalc.joda;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -60,12 +61,12 @@ public final class ExcelDateUtil {
      *         Excel date
      * @see java.util.TimeZone
      */
-    public static Date getJavaDate(double date, boolean use1904windowing) {
+    public static Date getJavaDate(final double date, final boolean use1904windowing) {
         if (isValidExcelDate(date)) {
             int startYear = 1900;
             int dayAdjust = -1; // Excel thinks 2/29/1900 is a valid date, which
             // it isn't
-            int wholeDays = (int) Math.floor(date);
+            final int wholeDays = (int) Math.floor(date);
             if (use1904windowing) {
                 startYear = 1904;
                 dayAdjust = 1; // 1904 date windowing uses 1/2/1904 as the
@@ -77,24 +78,24 @@ public final class ExcelDateUtil {
                 // representation
                 dayAdjust = 0;
             }
-            GregorianCalendar calendar = new GregorianCalendar(startYear, 0, wholeDays + dayAdjust);
-            int millisecondsInDay = (int) ((date - Math.floor(date)) * (double) DAY_MILLISECONDS + 0.5);
-            calendar.set(GregorianCalendar.MILLISECOND, millisecondsInDay);
+            final GregorianCalendar calendar = new GregorianCalendar(startYear, 0, wholeDays + dayAdjust);
+            final int millisecondsInDay = (int) ((date - Math.floor(date)) * DAY_MILLISECONDS + 0.5);
+            calendar.set(Calendar.MILLISECOND, millisecondsInDay);
             return calendar.getTime();
         } else {
             return null;
         }
     }
 
-    public static LocalDate getLocalDate(double date, boolean use1904windowing) {
+    public static LocalDate getLocalDate(final double date, final boolean use1904windowing) {
         return new LocalDate(getJavaDate(date, use1904windowing));
     }
 
-    public static YearMonthDay getYearMonthDay(double date, boolean use1904windowing) {
+    public static YearMonthDay getYearMonthDay(final double date, final boolean use1904windowing) {
         return new YearMonthDay(getJavaDate(date, use1904windowing));
     }
 
-    public static DateTime getDateTime(double date, boolean use1904windowing) {
+    public static DateTime getDateTime(final double date, final boolean use1904windowing) {
         return new DateTime(getJavaDate(date, use1904windowing));
     }
 
@@ -105,7 +106,7 @@ public final class ExcelDateUtil {
      * @param value
      *            the double value
      */
-    public static boolean isValidExcelDate(double value) {
+    public static boolean isValidExcelDate(final double value) {
         return (value > -Double.MIN_VALUE);
     }
 }

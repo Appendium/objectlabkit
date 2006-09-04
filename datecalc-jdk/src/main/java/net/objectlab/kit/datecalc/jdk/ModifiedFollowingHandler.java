@@ -24,24 +24,24 @@ import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
 /**
  * TODO javadoc
- *
+ * 
  * @author Marcin Jekot
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
- *
+ * 
  */
 public class ModifiedFollowingHandler implements HolidayHandler<Calendar> {
 
-    public Calendar moveCurrentDate(DateCalculator<Calendar> calendar) {
+    public Calendar moveCurrentDate(final DateCalculator<Calendar> calendar) {
         return move(calendar, 1);
     }
 
-    protected Calendar move(DateCalculator<Calendar> calendar, int step) {
+    protected Calendar move(final DateCalculator<Calendar> calendar, int step) {
 
-        final Calendar cal = (Calendar)calendar.getCurrentBusinessDate().clone();
+        final Calendar cal = (Calendar) calendar.getCurrentBusinessDate().clone();
 
-        int month = cal.get(Calendar.MONTH);
-        
+        final int month = cal.get(Calendar.MONTH);
+
         while (calendar.isNonWorkingDay(cal)) {
             cal.add(Calendar.DAY_OF_MONTH, step);
             if (month != cal.get(Calendar.MONTH)) {
@@ -53,7 +53,7 @@ public class ModifiedFollowingHandler implements HolidayHandler<Calendar> {
 
         return cal;
     }
-    
+
     public String getType() {
         return HolidayHandlerType.MODIFIED_FOLLLOWING;
     }

@@ -23,16 +23,15 @@ import net.objectlab.kit.datecalc.common.AbstractDateCalculatorFactory;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
 /**
- * TODO add javadoc 
- *
+ * TODO add javadoc
+ * 
  * @author Benoit Xhenseval
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
- *
+ * 
  */
-public class DefaultJdkDateCalculatorFactory extends AbstractDateCalculatorFactory<Date> 
-        implements JdkDateCalculatorFactory {
-    
+public class DefaultJdkDateCalculatorFactory extends AbstractDateCalculatorFactory<Date> implements JdkDateCalculatorFactory {
+
     private static final JdkDateCalculatorFactory DEFAULT = new DefaultJdkDateCalculatorFactory();
 
     private static final JdkDatePeriodCountCalculator PCC = new DatePeriodCountCalculator();
@@ -41,9 +40,13 @@ public class DefaultJdkDateCalculatorFactory extends AbstractDateCalculatorFacto
         return DEFAULT;
     }
 
-    /* (non-Javadoc)
-     * @see net.objectlab.kit.datecalc.jdk.JdkDateCalculatorFactory#getDateCalculator(java.lang.String, java.lang.String)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see net.objectlab.kit.datecalc.jdk.JdkDateCalculatorFactory#getDateCalculator(java.lang.String,
+     *      java.lang.String)
      */
+    @Override
     public JdkDateCalculator getDateCalculator(final String name, final String holidayHandlerType) {
         final JdkDateBaseDateCalculator cal = new JdkDateBaseDateCalculator();
         cal.setName(name);
@@ -68,9 +71,12 @@ public class DefaultJdkDateCalculatorFactory extends AbstractDateCalculatorFacto
         return cal;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see net.objectlab.kit.datecalc.jdk.JdkDateCalculatorFactory#getPeriodCountCalculator()
      */
+    @Override
     public JdkDatePeriodCountCalculator getPeriodCountCalculator() {
         return PCC;
     }

@@ -18,7 +18,6 @@
 package net.objectlab.kit.datecalc.jdk;
 
 import java.util.Calendar;
-import java.util.TimeZone;
 
 import net.objectlab.kit.datecalc.common.PeriodCountBasis;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;

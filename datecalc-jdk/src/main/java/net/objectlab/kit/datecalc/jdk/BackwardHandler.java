@@ -24,18 +24,20 @@ import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
 /**
  * TODO javadoc
- *
+ * 
  * @author Marcin Jekot
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
- *
+ * 
  */
 public class BackwardHandler extends ForwardHandler {
 
-    public Calendar moveCurrentDate(DateCalculator<Calendar> calendar) {
+    @Override
+    public Calendar moveCurrentDate(final DateCalculator<Calendar> calendar) {
         return move(calendar, -1);
     }
 
+    @Override
     public String getType() {
         return HolidayHandlerType.BACKWARD;
     }

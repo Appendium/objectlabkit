@@ -50,7 +50,7 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
         setStartDate(startDate);
     }
 
-    //TODO throw an exception if the WorkinWeek type is wrong
+    // TODO throw an exception if the WorkinWeek type is wrong
     public void setWorkingWeek(final WorkingWeek week) {
         if (week instanceof JodaWorkingWeek) {
             workingWeek = (JodaWorkingWeek) week;

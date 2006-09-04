@@ -41,15 +41,15 @@ import net.objectlab.kit.datecalc.common.WorkingWeek;
 public class JdkDateBaseDateCalculator implements JdkDateCalculator {
 
     private JdkCalendarBaseDateCalculator delegate;
-    
+
     public JdkDateBaseDateCalculator() {
         delegate = new JdkCalendarBaseDateCalculator();
     }
 
     public JdkDateBaseDateCalculator(final String name, final Date startDate, final Set<Date> nonWorkingDays,
             final HolidayHandler<Calendar> holidayHandler) {
-        final Set<Calendar> nonWorkingCalendars = Utils.toCalendarSet(nonWorkingDays); 
-        
+        final Set<Calendar> nonWorkingCalendars = Utils.toCalendarSet(nonWorkingDays);
+
         delegate = new JdkCalendarBaseDateCalculator(name, Utils.getCal(startDate), nonWorkingCalendars, holidayHandler);
         delegate.setStartDate(Utils.getCal(startDate));
     }
@@ -58,7 +58,7 @@ public class JdkDateBaseDateCalculator implements JdkDateCalculator {
         return delegate.getCurrentBusinessDate().getTime();
     }
 
-    public List<Date> getIMMDates(Date start, Date end) {
+    public List<Date> getIMMDates(final Date start, final Date end) {
         return Utils.toDateList(delegate.getIMMDates(Utils.getCal(start), Utils.getCal(end)));
     }
 
@@ -74,42 +74,42 @@ public class JdkDateBaseDateCalculator implements JdkDateCalculator {
         return delegate.getStartDate().getTime();
     }
 
-    public boolean isNonWorkingDay(Date date) {
+    public boolean isNonWorkingDay(final Date date) {
         return delegate.isNonWorkingDay(Utils.getCal(date));
     }
 
-    public boolean isWeekend(Date date) {
+    public boolean isWeekend(final Date date) {
         return delegate.isWeekend(Utils.getCal(date));
     }
 
-    public JdkDateBaseDateCalculator moveByBusinessDays(int businessDays) {
+    public JdkDateBaseDateCalculator moveByBusinessDays(final int businessDays) {
         delegate = delegate.moveByBusinessDays(businessDays);
         return this;
     }
 
-    public JdkDateBaseDateCalculator moveByDays(int days) {
+    public JdkDateBaseDateCalculator moveByDays(final int days) {
         delegate = delegate.moveByDays(days);
         return this;
     }
 
-    public JdkDateBaseDateCalculator moveByTenor(Tenor tenor) {
+    public JdkDateBaseDateCalculator moveByTenor(final Tenor tenor) {
         delegate = delegate.moveByTenor(tenor);
         return this;
     }
 
-    public Date setCurrentBusinessDate(Date date) {
+    public Date setCurrentBusinessDate(final Date date) {
         return delegate.setCurrentBusinessDate(Utils.getCal(date)).getTime();
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(final Date startDate) {
         delegate.setStartDate(Utils.getCal(startDate));
     }
 
     public String getName() {
         return delegate.getName();
     }
-    
-    public void setName(String name) {
+
+    public void setName(final String name) {
         delegate.setName(name);
     }
 
@@ -117,7 +117,7 @@ public class JdkDateBaseDateCalculator implements JdkDateCalculator {
         return delegate.isCurrentDateNonWorking();
     }
 
-    public void setNonWorkingDays(Set<Date> holidays) {
+    public void setNonWorkingDays(final Set<Date> holidays) {
         delegate.setNonWorkingDays(Utils.toCalendarSet(holidays));
     }
 
@@ -125,24 +125,25 @@ public class JdkDateBaseDateCalculator implements JdkDateCalculator {
         return Utils.toDateSet(delegate.getNonWorkingDays());
     }
 
-    public void setWorkingWeek(WorkingWeek week) {
+    public void setWorkingWeek(final WorkingWeek week) {
         delegate.setWorkingWeek(week);
     }
 
     public String getHolidayHandlerType() {
         return delegate.getHolidayHandlerType();
     }
-    
-    public void setHolidayHandler(HolidayHandler<Calendar> holidayHandler) {
+
+    public void setHolidayHandler(final HolidayHandler<Calendar> holidayHandler) {
         delegate.setHolidayHandler(holidayHandler);
     }
 
-    public JdkDateBaseDateCalculator combine(DateCalculator<Date> calculator) {
+    public JdkDateBaseDateCalculator combine(final DateCalculator<Date> calculator) {
         if (calculator == null || calculator == this) {
             return this;
         }
 
-        if (delegate.getHolidayHandlerType() == null && calculator.getHolidayHandlerType() != null || delegate.getHolidayHandlerType() != null
+        if (delegate.getHolidayHandlerType() == null && calculator.getHolidayHandlerType() != null
+                || delegate.getHolidayHandlerType() != null
                 && !delegate.getHolidayHandlerType().equals(calculator.getHolidayHandlerType())) {
             throw new IllegalArgumentException("Combined Calendars cannot have different handler types");
         }
@@ -150,6 +151,7 @@ public class JdkDateBaseDateCalculator implements JdkDateCalculator {
         final Set<Date> newSet = new HashSet<Date>();
         newSet.addAll(Utils.toDateSet(delegate.getNonWorkingDays()));
         newSet.addAll(calculator.getNonWorkingDays());
-        return new JdkDateBaseDateCalculator(delegate.getName() + "/" + calculator.getName(), getStartDate(), newSet, delegate.getHolidayHandler());
+        return new JdkDateBaseDateCalculator(delegate.getName() + "/" + calculator.getName(), getStartDate(), newSet, delegate
+                .getHolidayHandler());
     }
 }

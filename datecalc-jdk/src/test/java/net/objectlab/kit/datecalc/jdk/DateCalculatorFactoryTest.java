@@ -48,10 +48,12 @@ public class DateCalculatorFactoryTest extends AbstractDateCalculatorTest {
         cal1 = DefaultJdkDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla", HolidayHandlerType.FORWARD);
         Assert.assertEquals("Type", HolidayHandlerType.FORWARD, cal1.getHolidayHandlerType());
 
-        cal1 = DefaultJdkDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla", HolidayHandlerType.MODIFIED_FOLLLOWING);
+        cal1 = DefaultJdkDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+                HolidayHandlerType.MODIFIED_FOLLLOWING);
         Assert.assertEquals("Type", HolidayHandlerType.MODIFIED_FOLLLOWING, cal1.getHolidayHandlerType());
 
-        cal1 = DefaultJdkDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla", HolidayHandlerType.MODIFIED_PRECEEDING);
+        cal1 = DefaultJdkDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla",
+                HolidayHandlerType.MODIFIED_PRECEEDING);
         Assert.assertEquals("Type", HolidayHandlerType.MODIFIED_PRECEEDING, cal1.getHolidayHandlerType());
 
     }

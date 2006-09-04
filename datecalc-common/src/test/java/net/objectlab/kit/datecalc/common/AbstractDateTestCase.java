@@ -10,7 +10,7 @@ public abstract class AbstractDateTestCase<E> extends TestCase {
     protected abstract E newDate(final String date);
 
     protected abstract DateCalculatorFactory<E> getDateCalculatorFactory();
-    
+
     protected void checkDate(final String string, final DateCalculator<E> calendar, final String string2) {
         Assert.assertEquals(string, newDate(string2), calendar.getCurrentBusinessDate());
     }
@@ -44,11 +44,11 @@ public abstract class AbstractDateTestCase<E> extends TestCase {
         getDateCalculatorFactory().registerHolidays(name, holidays);
     }
 
-    protected WorkingWeek getWorkingWeek(WorkingWeek ww) {
+    protected WorkingWeek getWorkingWeek(final WorkingWeek ww) {
         return ww;
     }
 
-    protected DateCalculator<E> newDateCalculator(String name, String type) {
+    protected DateCalculator<E> newDateCalculator(final String name, final String type) {
         return getDateCalculatorFactory().getDateCalculator(name, type);
     }
 }

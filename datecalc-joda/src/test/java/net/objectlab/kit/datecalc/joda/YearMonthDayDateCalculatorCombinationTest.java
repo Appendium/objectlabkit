@@ -43,8 +43,9 @@ public class YearMonthDayDateCalculatorCombinationTest extends AbstractDateCalcu
     protected void registerHolidays(final String name, final Set<YearMonthDay> holidays) {
         DefaultYearMonthDayCalculatorFactory.getDefaultInstance().registerHolidays(name, holidays);
     }
-    
-    protected WorkingWeek getWorkingWeek(WorkingWeek ww) {
+
+    @Override
+    protected WorkingWeek getWorkingWeek(final WorkingWeek ww) {
         return new JodaWorkingWeek(ww);
     }
 
