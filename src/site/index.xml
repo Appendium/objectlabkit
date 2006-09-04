@@ -16,7 +16,7 @@
     the business-friendly Apache 2.0 license.</p>
 
     <subsection name="So, what do we provide?">
-    <p>The initial release provides 2 modules for Date calculations, both depend on the classes in common:</p>
+    <p>The initial release provides 2 modules for <strong>Date calculations</strong>, both depend on the classes in common:</p>
     <ul><li>one for the <a href="./multiproject/datecalc-jdk/index.html">datecalc-jdk.jar JDK</a> with no dependencies</li>
     <li>and one is based on the powerful <a href="./multiproject/datecalc-joda/index.html">datecalc-joda.jar Joda-time</a> library (we recommend it!)</li>
     </ul>
@@ -27,8 +27,8 @@
     </subsection>
     
     <subsection name ="Date Calculations? What is that?">
-    <p>Apart from the very basic "add days" features, most business have to deal with Holidays and what to do when a
-    calculated day falls on a holiday.  This library does <strong>not</strong> attempt to create or guess the holidays, we
+    <p>Apart from the very basic "add days" features, most business have to <strong>deal with Holidays</strong> and what to do when a
+    <strong>calculated day falls on a holiday</strong>.  This library does <strong>not</strong> attempt to create or guess the holidays, we
     all know that some bank holidays can be decided at a moment's notice in some markets.  All financial institutions or 
     big business will have their own official list of 'holidays' anyway.</p>
     <p>Furthermore, "weekends" also need to be handled and some market have a different week to the conventional Monday ->
