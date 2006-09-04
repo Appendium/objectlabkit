@@ -18,24 +18,25 @@
 package net.objectlab.kit.datecalc.jdk;
 
 import java.util.Calendar;
+import java.util.TimeZone;
 
 import net.objectlab.kit.datecalc.common.PeriodCountBasis;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
 /**
  * TODO javadoc
- *
+ * 
  * @author Marcin Jekot
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
- *
+ * 
  */
 public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Calendar> {
 
-    private double MILLIS_IN_DAY = 1000 * 60 * 60 * 24;
-    
+    private static final long MILLIS_IN_DAY = 1000L * 60L * 60L * 24L;
+
     public int dayDiff(final Calendar start, final Calendar end, final PeriodCountBasis basis) {
-        
+
         int diff = 0;
 
         if (basis == PeriodCountBasis.CONV_30_360) {
@@ -47,8 +48,8 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
             if (dayStart == MONTH_31_DAYS) {
                 dayStart = MONTH_30_DAYS;
             }
-            diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * YEAR_360 + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * MONTH_30_DAYS
-                    + dayEnd - dayStart;
+            diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * YEAR_360
+                    + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * MONTH_30_DAYS + dayEnd - dayStart;
 
         } else if (basis == PeriodCountBasis.CONV_360E_ISDA) {
             int dayStart = start.get(Calendar.DAY_OF_MONTH);
@@ -61,8 +62,8 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
                 dayStart = MONTH_30_DAYS;
             }
 
-            diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * YEAR_360 + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * MONTH_30_DAYS
-                    + dayEnd - dayStart;
+            diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * YEAR_360
+                    + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * MONTH_30_DAYS + dayEnd - dayStart;
 
         } else if (basis == PeriodCountBasis.CONV_360E_ISMA) {
             int dayStart = start.get(Calendar.DAY_OF_MONTH);
@@ -73,17 +74,21 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
             if (dayStart == MONTH_31_DAYS) {
                 dayStart = MONTH_30_DAYS;
             }
-            diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * YEAR_360 + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * MONTH_30_DAYS
-                    + dayEnd - dayStart;
+            diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * YEAR_360
+                    + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * MONTH_30_DAYS + dayEnd - dayStart;
         } else {
-            diff = dayDiff(start, end); 
+            diff = dayDiff(start, end);
         }
         return diff;
     }
 
     private int dayDiff(final Calendar start, final Calendar end) {
-        // TODO the 12 hours is just for safety - in case DST kicked in, but is there a better way?
-        return (int)((Math.abs(start.getTime().getTime() - end.getTime().getTime()) + 12) / MILLIS_IN_DAY);
+//        System.out.println("start:" + start.getTime() + " end:" + end.getTime());
+        long diff = Math.abs(start.getTimeInMillis() - end.getTimeInMillis());
+//        System.out.println("ms diff:" + diff);
+        double dayDiff = ((double)diff) / MILLIS_IN_DAY;
+//        System.out.println("day diff:" + dayDiff);
+        return (int) (dayDiff);
     }
 
     public double monthDiff(final Calendar start, final Calendar end, final PeriodCountBasis basis) {
@@ -103,9 +108,9 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
 
                 final int diff1 = dayDiff(start, endOfStartYear);
                 final int diff2 = dayDiff(startOfEndYear, end);
-                
+
                 diff = (diff1 + 1.0) / start.getMaximum(Calendar.DAY_OF_YEAR) + (endYear - startYear - 1.0) + (diff2)
-                    / (double) end.getMaximum(Calendar.DAY_OF_YEAR);
+                        / (double) end.getMaximum(Calendar.DAY_OF_YEAR);
             }
 
         } else if (basis == PeriodCountBasis.CONV_30_360 || basis == PeriodCountBasis.CONV_360E_ISDA
