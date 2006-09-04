@@ -27,6 +27,7 @@ import java.util.TimeZone;
 
 /**
  * TODO javadoc
+ * 
  * @author Marcin Jekot
  * @author $LastModifiedBy$
  * @version $Revision$ $Date$
@@ -35,6 +36,7 @@ import java.util.TimeZone;
 public class Utils {
 
     private static final String DATE_PATTERN = "yyyy-MM-dd";
+
     private static final SimpleDateFormat SDF = new SimpleDateFormat(DATE_PATTERN);
 
     public static Calendar getCal(final Date date) {
@@ -50,35 +52,35 @@ public class Utils {
 
     public static Date createDate(final String str) throws IllegalArgumentException {
         try {
-            Date date = SDF.parse(str);
-            Calendar cal = getCal(date);
+            final Date date = SDF.parse(str);
+            final Calendar cal = getCal(date);
             return cal.getTime();
         } catch (final ParseException e) {
             throw new IllegalArgumentException("\"" + str + "\"" + " is an invalid date, the pattern is : " + DATE_PATTERN);
         }
     }
-    
-    public static Set<Calendar> toCalendarSet(Set<Date> dates) {        
-        Set<Calendar> calendars = new HashSet<Calendar>();
-        for (Date date : dates) {
+
+    public static Set<Calendar> toCalendarSet(final Set<Date> dates) {
+        final Set<Calendar> calendars = new HashSet<Calendar>();
+        for (final Date date : dates) {
             calendars.add(getCal(date));
         }
         return calendars;
     }
 
-    public static Set<Date> toDateSet(Set<Calendar> calendars) {
-        
-        Set<Date> dates = new HashSet<Date>();
-        for (Calendar calendar : calendars) {
+    public static Set<Date> toDateSet(final Set<Calendar> calendars) {
+
+        final Set<Date> dates = new HashSet<Date>();
+        for (final Calendar calendar : calendars) {
             dates.add(calendar.getTime());
         }
         return dates;
     }
 
-    public static List<Date> toDateList(List<Calendar> dates) {
-        
-        List<Date> dateList = new ArrayList<Date>();
-        for (Calendar calendar : dates) {
+    public static List<Date> toDateList(final List<Calendar> dates) {
+
+        final List<Date> dateList = new ArrayList<Date>();
+        for (final Calendar calendar : dates) {
             dateList.add(calendar.getTime());
         }
 

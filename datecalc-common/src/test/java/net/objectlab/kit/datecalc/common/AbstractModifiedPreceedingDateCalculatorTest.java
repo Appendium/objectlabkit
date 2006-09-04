@@ -51,8 +51,8 @@ public abstract class AbstractModifiedPreceedingDateCalculatorTest<E> extends Ab
     public void testSimpleForwardStartDateNoWeekend() {
         final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.MODIFIED_PRECEEDING);
 
-        final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(true, Calendar.SATURDAY).withWorkingDayFromCalendar(true,
-                Calendar.SUNDAY);
+        final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(true, Calendar.SATURDAY).withWorkingDayFromCalendar(
+                true, Calendar.SUNDAY);
 
         cal.setWorkingWeek(getWorkingWeek(ww));
         Assert.assertEquals("Name", "bla", cal.getName());
@@ -85,8 +85,8 @@ public abstract class AbstractModifiedPreceedingDateCalculatorTest<E> extends Ab
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
 
-        final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(false, Calendar.MONDAY).withWorkingDayFromCalendar(true,
-                Calendar.TUESDAY).withWorkingDayFromCalendar(false, Calendar.WEDNESDAY).withWorkingDayFromCalendar(true,
+        final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(false, Calendar.MONDAY).withWorkingDayFromCalendar(
+                true, Calendar.TUESDAY).withWorkingDayFromCalendar(false, Calendar.WEDNESDAY).withWorkingDayFromCalendar(true,
                 Calendar.THURSDAY).withWorkingDayFromCalendar(false, Calendar.FRIDAY).withWorkingDayFromCalendar(true,
                 Calendar.SATURDAY).withWorkingDayFromCalendar(false, Calendar.SUNDAY);
         cal.setWorkingWeek(getWorkingWeek(ww));
@@ -118,8 +118,8 @@ public abstract class AbstractModifiedPreceedingDateCalculatorTest<E> extends Ab
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
 
-        final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(false, Calendar.MONDAY).withWorkingDayFromCalendar(true,
-                Calendar.TUESDAY).withWorkingDayFromCalendar(true, Calendar.WEDNESDAY).withWorkingDayFromCalendar(true,
+        final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(false, Calendar.MONDAY).withWorkingDayFromCalendar(
+                true, Calendar.TUESDAY).withWorkingDayFromCalendar(true, Calendar.WEDNESDAY).withWorkingDayFromCalendar(true,
                 Calendar.THURSDAY).withWorkingDayFromCalendar(true, Calendar.FRIDAY).withWorkingDayFromCalendar(false,
                 Calendar.SATURDAY).withWorkingDayFromCalendar(false, Calendar.SUNDAY);
         cal.setWorkingWeek(getWorkingWeek(ww));

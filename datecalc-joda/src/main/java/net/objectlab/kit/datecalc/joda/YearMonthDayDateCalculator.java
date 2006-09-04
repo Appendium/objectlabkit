@@ -24,6 +24,7 @@ import java.util.Set;
 import net.objectlab.kit.datecalc.common.AbstractDateCalculator;
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandler;
+import net.objectlab.kit.datecalc.common.IMMPeriod;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
 import org.joda.time.LocalDate;
@@ -79,32 +80,15 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
         delegate.setCurrentBusinessDate(getCurrentBusinessDate().toLocalDate());
         setCurrentBusinessDate(new YearMonthDay(delegate.moveByDays(days).getCurrentBusinessDate()));
         return this;
-        // if (getCurrentBusinessDate() == null) {
-        // initialise();
-        // }
-        // setCurrentBusinessDate(getCurrentBusinessDate().plusDays(days));
-        //
-        // if (getHolidayHandler() != null) {
-        // setCurrentBusinessDate(getHolidayHandler().moveCurrentDate(this));
-        // }
-        //
-        // return this;
     }
 
-    // private void initialise() {
-    // if (getStartDate() == null) {
-    // setStartDate(new YearMonthDay());
-    // } else if (getCurrentBusinessDate() == null) {
-    // setCurrentBusinessDate(new YearMonthDay());
-    // }
-    // }
-    //
     @Override
     protected DateCalculator<YearMonthDay> createNewCalcultaor(final String name, final YearMonthDay startDate,
             final Set<YearMonthDay> holidays, final HolidayHandler<YearMonthDay> handler) {
         return new YearMonthDayDateCalculator(name, startDate, holidays, handler);
     }
 
+    @Override
     public List<YearMonthDay> getIMMDates(final YearMonthDay start, final YearMonthDay end) {
         final List<YearMonthDay> dates = new ArrayList<YearMonthDay>();
         final List<LocalDate> localDates = delegate.getIMMDates(start.toLocalDate(), end.toLocalDate());
@@ -117,18 +101,9 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
     }
 
     @Override
-    protected YearMonthDay getNextIMMDate(final boolean forward, final YearMonthDay start) {
-        return new YearMonthDay(delegate.getNextIMMDate(forward, start.toLocalDate()));
+    protected YearMonthDay getNextIMMDate(final boolean forward, final YearMonthDay start, final IMMPeriod period) {
+        return new YearMonthDay(delegate.getNextIMMDate(forward, start.toLocalDate(), period));
     }
-
-    // @Override
-    // public YearMonthDay setCurrentBusinessDate(YearMonthDay date) {
-    // if (delegate != null) {
-    // delegate.setCurrentBusinessDate(date != null ? date.toLocalDate() :
-    // null);
-    // }
-    // return super.setCurrentBusinessDate(date);
-    // }
 
     @Override
     public void setStartDate(final YearMonthDay startDate) {
@@ -136,6 +111,19 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
             delegate.setStartDate(startDate != null ? startDate.toLocalDate() : null);
         }
         super.setStartDate(startDate);
+    }
+
+    public List<YearMonthDay> getIMMDates(final YearMonthDay start, final YearMonthDay end, final IMMPeriod period) {
+        final List<YearMonthDay> dates = new ArrayList<YearMonthDay>();
+        final List<LocalDate> d = delegate.getIMMDates(start.toLocalDate(), end.toLocalDate(), period);
+        for (final LocalDate date : d) {
+            dates.add(new YearMonthDay(date));
+        }
+        return dates;
+    }
+
+    public boolean isIMMDate(final YearMonthDay date) {
+        return delegate.isIMMDate(date.toLocalDate());
     }
 
 }

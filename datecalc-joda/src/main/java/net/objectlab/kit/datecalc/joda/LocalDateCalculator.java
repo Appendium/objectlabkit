@@ -23,6 +23,7 @@ import java.util.Set;
 import net.objectlab.kit.datecalc.common.AbstractDateCalculator;
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandler;
+import net.objectlab.kit.datecalc.common.IMMPeriod;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
 import org.joda.time.DateTimeConstants;
@@ -92,12 +93,12 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
         return new LocalDateCalculator(name, startDate, holidays, handler);
     }
 
-    public List<LocalDate> getIMMDates(final LocalDate start, final LocalDate end) {
+    public List<LocalDate> getIMMDates(final LocalDate start, final LocalDate end, final IMMPeriod period) {
         final List<LocalDate> dates = new ArrayList<LocalDate>();
 
         LocalDate date = start;
         while (true) {
-            date = getNextIMMDate(true, date);
+            date = getNextIMMDate(true, date, period);
             if (!date.isAfter(end)) {
                 dates.add(date);
             } else {
@@ -109,7 +110,7 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
     }
 
     @Override
-    protected LocalDate getNextIMMDate(final boolean forward, final LocalDate start) {
+    protected LocalDate getNextIMMDate(final boolean forward, final LocalDate start, final IMMPeriod period) {
         LocalDate date = start;
 
         final int month = date.getMonthOfYear();
@@ -151,7 +152,18 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
             break;
         }
 
-        return calculate3rdWednesday(date);
+        LocalDate imm = calculate3rdWednesday(date);
+        
+        if ( period == IMMPeriod.BI_ANNUALY_JUN_DEC 
+                && (DateTimeConstants.MARCH == imm.getMonthOfYear() || DateTimeConstants.SEPTEMBER==imm.getMonthOfYear() ) 
+                || 
+                 period == IMMPeriod.BI_ANNUALY_MAR_SEP 
+                        && (DateTimeConstants.JUNE == imm.getMonthOfYear() || DateTimeConstants.DECEMBER==imm.getMonthOfYear()) ) { 
+                // need to move to the next one.
+                imm = getNextIMMDate(forward, imm, period);
+            }
+        
+        return imm;
     }
 
     /**
@@ -168,5 +180,21 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
             firstWed = firstWed.plusWeeks(1);
         }
         return firstWed.plusWeeks(2);
+    }
+    
+    /**
+     * @param date
+     * @return true if that date is an IMM date.
+     */
+    public boolean isIMMDate(final LocalDate date) {
+        boolean same = false;
+        
+        final List<LocalDate> dates = getIMMDates(date.minusDays(1), date, IMMPeriod.QUARTERLY);
+
+        if (!dates.isEmpty()) {
+            same = date.equals(dates.get(0));
+        }
+        
+        return same;
     }
 }

@@ -152,14 +152,57 @@ public interface DateCalculator<E> {
     DateCalculator<E> moveByTenor(final Tenor tenor);
 
     /**
+     * @param date
+     * @return true if that date is an IMM date.
+     */
+    boolean isIMMDate(E date);
+
+    /**
+     * Even if the current date is an IMM date, it will return the next one.
+     * 
      * @return the next IMMDate based on current date.
      */
     E getNextIMMDate();
 
     /**
+     * Even if the current date is an IMM date, it will return the next one.
+     * 
+     * @param period
+     *            specify when the "next" IMM is, if quarterly then it is the
+     *            conventional algorithm.
+     * @return the next IMMDate based on current date.
+     */
+    E getNextIMMDate(IMMPeriod period);
+
+    /**
+     * Even if the current date is an IMM date, it will return the previous one.
+     * 
      * @return the previous IMMDate based on current date.
      */
     E getPreviousIMMDate();
+
+    /**
+     * Even if the current date is an IMM date, it will return the previous one.
+     * 
+     * @param period
+     *            specify when the "previous" IMM is, if quarterly then it is
+     *            the conventional algorithm.
+     * @return the previous IMMDate based on current date.
+     */
+    E getPreviousIMMDate(IMMPeriod period);
+
+    /**
+     * Returns a list of IMM dates between 2 dates, it will exclude the start
+     * date if it is an IMM date but would include the end date if it is an IMM
+     * (same as IMMPeriod.QUARTERLY).
+     * 
+     * @param start
+     *            start of the interval, excluded
+     * @param end
+     *            end of the interval, may be included.
+     * @return list of IMM dates
+     */
+    List<E> getIMMDates(final E start, final E end);
 
     /**
      * Returns a list of IMM dates between 2 dates, it will exclude the start
@@ -169,7 +212,10 @@ public interface DateCalculator<E> {
      *            start of the interval, excluded
      * @param end
      *            end of the interval, may be included.
+     * @param period
+     *            specify when the "next" IMM is, if quarterly then it is the
+     *            conventional algorithm.
      * @return list of IMM dates
      */
-    List<E> getIMMDates(final E start, final E end);
+    List<E> getIMMDates(final E start, final E end, final IMMPeriod period);
 }
