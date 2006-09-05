@@ -12,6 +12,7 @@
       <item name="DateCalc Common" href="multiproject/datecalc-common/index.html"/>
       <item name="DateCalc JDK" href="multiproject/datecalc-jdk/index.html"/>
       <item name="DateCalc JODA" href="multiproject/datecalc-joda/index.html"/>
+      <item name="Holiday Handler" href="algo.html"/>
     </menu>
 <!--
     <menu name="Related Projects">
