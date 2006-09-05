@@ -22,14 +22,14 @@ import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 import net.objectlab.kit.datecalc.common.Utils;
 
 public class DatePeriodCountCalculatorTest extends AbstractPeriodCountCalculator<Date> {
-    
+
     @Override
     public PeriodCountCalculator<Date> getPeriodCountCalculator() {
         return DefaultJdkDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
     }
 
     @Override
-    public Date parseDate(String string) {
+    public Date parseDate(final String string) {
         return Utils.createDate(string);
     }
 

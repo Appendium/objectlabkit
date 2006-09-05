@@ -10,12 +10,12 @@ import net.objectlab.kit.datecalc.common.Utils;
 public class IMMDateTest extends AbstractIMMDateTest<Date> {
 
     @Override
-    protected DateCalculator<Date> getDateCalculator(String name) {
+    protected DateCalculator<Date> getDateCalculator(final String name) {
         return DefaultJdkDateCalculatorFactory.getDefaultInstance().getDateCalculator(name, HolidayHandlerType.FORWARD);
     }
 
     @Override
-    protected Date parseDate(String string) {
+    protected Date parseDate(final String string) {
         return Utils.createDate(string);
     }
 

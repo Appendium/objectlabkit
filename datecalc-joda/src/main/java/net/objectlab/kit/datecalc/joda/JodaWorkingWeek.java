@@ -26,6 +26,8 @@ import org.joda.time.LocalDate;
  */
 public class JodaWorkingWeek extends WorkingWeek {
 
+    private static final int MAX_WEEKDAY_INDEX = 7;
+
     public static final JodaWorkingWeek DEFAULT = new JodaWorkingWeek();
 
     public JodaWorkingWeek() {
@@ -64,6 +66,6 @@ public class JodaWorkingWeek extends WorkingWeek {
 
     public int jodaToCalendarDayConstant(int dayOfWeek) {
         dayOfWeek++;
-        return (dayOfWeek <= 7 ? dayOfWeek : dayOfWeek % 7);
+        return (dayOfWeek <= MAX_WEEKDAY_INDEX ? dayOfWeek : dayOfWeek % MAX_WEEKDAY_INDEX);
     }
 }

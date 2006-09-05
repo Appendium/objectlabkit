@@ -113,10 +113,6 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
     protected LocalDate getNextIMMDate(final boolean requestNextIMM, final LocalDate start, final IMMPeriod period) {
         LocalDate date = start;
 
-//        if (period == IMMPeriod.ANNUALLY) {
-//            date = date.plusYears(1);
-//        }
-        
         final int month = date.getMonthOfYear();
         int monthOffset = 0;
 
@@ -134,18 +130,6 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
             break;
 
         default:
-            // Jan 1 -> 2
-            // Feb 2 -> 1
-            // Mar 3 -> 0
-            // Apr 4 -> 2
-            // May 5 -> 1
-            // Jun 6 -> 0
-            // Jul 7 -> 2
-            // Aug 8 -> 1
-            // Sep 9 -> 0
-            // Oct 10 -> 2
-            // Nov 11 -> 1
-            // Dec 12 -> 0
             if (requestNextIMM) {
                 monthOffset = (MONTH_IN_YEAR - month) % MONTHS_IN_QUARTER;
                 date = date.plusMonths(monthOffset);
@@ -157,24 +141,22 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
         }
 
         LocalDate imm = calculate3rdWednesday(date);
+        final int immMonth = imm.getMonthOfYear();
+        final boolean isMarchSept = DateTimeConstants.MARCH == immMonth || DateTimeConstants.SEPTEMBER == immMonth; 
         
-        if ( period == IMMPeriod.BI_ANNUALY_JUN_DEC 
-                && (DateTimeConstants.MARCH == imm.getMonthOfYear() || DateTimeConstants.SEPTEMBER==imm.getMonthOfYear() ) 
-                || 
-                 period == IMMPeriod.BI_ANNUALY_MAR_SEP 
-                        && (DateTimeConstants.JUNE == imm.getMonthOfYear() || DateTimeConstants.DECEMBER==imm.getMonthOfYear()) ) { 
-                // need to move to the next one.
-                imm = getNextIMMDate(requestNextIMM, imm, period);
-            } else if (period == IMMPeriod.ANNUALLY) {
-                // second jump
-                imm = getNextIMMDate(requestNextIMM, imm, IMMPeriod.QUARTERLY);
-                // third jump
-                imm = getNextIMMDate(requestNextIMM, imm, IMMPeriod.QUARTERLY);
-                // fourth jump
-                imm = getNextIMMDate(requestNextIMM, imm, IMMPeriod.QUARTERLY);
-                // fifth jump
-                imm = getNextIMMDate(requestNextIMM, imm, IMMPeriod.QUARTERLY);
-            }
+        if ( period == IMMPeriod.BI_ANNUALY_JUN_DEC && isMarchSept 
+          || period == IMMPeriod.BI_ANNUALY_MAR_SEP && !isMarchSept) { 
+            imm = getNextIMMDate(requestNextIMM, imm, period);
+        } else if (period == IMMPeriod.ANNUALLY) {
+            // second jump
+            imm = getNextIMMDate(requestNextIMM, imm, IMMPeriod.QUARTERLY);
+            // third jump
+            imm = getNextIMMDate(requestNextIMM, imm, IMMPeriod.QUARTERLY);
+            // fourth jump
+            imm = getNextIMMDate(requestNextIMM, imm, IMMPeriod.QUARTERLY);
+            // fifth jump
+            imm = getNextIMMDate(requestNextIMM, imm, IMMPeriod.QUARTERLY);
+        }
         
         return imm;
     }
