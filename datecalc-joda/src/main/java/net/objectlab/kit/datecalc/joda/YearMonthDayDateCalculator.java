@@ -101,8 +101,8 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
     }
 
     @Override
-    protected YearMonthDay getNextIMMDate(final boolean forward, final YearMonthDay start, final IMMPeriod period) {
-        return new YearMonthDay(delegate.getNextIMMDate(forward, start.toLocalDate(), period));
+    protected YearMonthDay getNextIMMDate(final boolean requestNextIMM, final YearMonthDay start, final IMMPeriod period) {
+        return new YearMonthDay(delegate.getNextIMMDate(requestNextIMM, start.toLocalDate(), period));
     }
 
     @Override

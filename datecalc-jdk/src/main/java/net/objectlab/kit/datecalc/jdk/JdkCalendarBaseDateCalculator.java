@@ -123,7 +123,7 @@ public class JdkCalendarBaseDateCalculator extends AbstractDateCalculator<Calend
     }
 
     @Override
-    protected Calendar getNextIMMDate(final boolean forward, final Calendar startDate, final IMMPeriod period) {
+    protected Calendar getNextIMMDate(final boolean requestNextIMM, final Calendar startDate, final IMMPeriod period) {
 
         Calendar cal = (Calendar) startDate.clone();
         
@@ -132,12 +132,12 @@ public class JdkCalendarBaseDateCalculator extends AbstractDateCalculator<Calend
             // TODO simplify this if condition
 // if (forward ^ cal.getTime().before(startDate) ||
 // cal.getTime().equals(startDate)) {
-            if ((forward && cal.after(startDate)) || (!forward && cal.before(startDate))) {
+            if ((requestNextIMM && cal.after(startDate)) || (!requestNextIMM && cal.before(startDate))) {
                 return cal;
             }
         }
 
-        final int delta = (forward ? 1 : -1);
+        final int delta = (requestNextIMM ? 1 : -1);
         do {
             cal.add(Calendar.MONTH, delta);
         } while (!isIMMMonth(cal));
@@ -151,7 +151,16 @@ public class JdkCalendarBaseDateCalculator extends AbstractDateCalculator<Calend
                 ( period == IMMPeriod.BI_ANNUALY_MAR_SEP 
                         && (Calendar.JUNE == month || Calendar.DECEMBER==month) ) ) { 
                 // need to move to the next one.
-                cal = getNextIMMDate(forward, cal, period);
+                cal = getNextIMMDate(requestNextIMM, cal, period);
+        } else if (period == IMMPeriod.ANNUALLY) {
+            // second jump
+            cal = getNextIMMDate(requestNextIMM, cal, IMMPeriod.QUARTERLY);
+            // third jump
+            cal = getNextIMMDate(requestNextIMM, cal, IMMPeriod.QUARTERLY);
+            // fourth jump
+            cal = getNextIMMDate(requestNextIMM, cal, IMMPeriod.QUARTERLY);
+            // fifth jump
+            cal = getNextIMMDate(requestNextIMM, cal, IMMPeriod.QUARTERLY);
             }
         
         
@@ -194,7 +203,7 @@ public class JdkCalendarBaseDateCalculator extends AbstractDateCalculator<Calend
     }
 
     public boolean isIMMDate(final Calendar date) {
-        //TODO a slightly crude implementation - revisit
+        // TODO a slightly crude implementation - revisit
         Calendar cal = (Calendar)date.clone();
         moveToIMMDay(cal);
         return cal.equals(date);

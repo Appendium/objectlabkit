@@ -110,7 +110,7 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
     }
 
     @Override
-    protected LocalDate getNextIMMDate(final boolean forward, final LocalDate start, final IMMPeriod period) {
+    protected LocalDate getNextIMMDate(final boolean requestNextIMM, final LocalDate start, final IMMPeriod period) {
         LocalDate date = start;
 
 //        if (period == IMMPeriod.ANNUALLY) {
@@ -126,9 +126,9 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
         case DateTimeConstants.SEPTEMBER:
         case DateTimeConstants.DECEMBER:
             final LocalDate immDate = calculate3rdWednesday(date);
-            if (forward && !date.isBefore(immDate)) {
+            if (requestNextIMM && !date.isBefore(immDate)) {
                 date = date.plusMonths(MONTHS_IN_QUARTER);
-            } else if (!forward && !date.isAfter(immDate)) {
+            } else if (!requestNextIMM && !date.isAfter(immDate)) {
                 date = date.minusMonths(MONTHS_IN_QUARTER);
             }
             break;
@@ -146,7 +146,7 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
             // Oct 10 -> 2
             // Nov 11 -> 1
             // Dec 12 -> 0
-            if (forward) {
+            if (requestNextIMM) {
                 monthOffset = (MONTH_IN_YEAR - month) % MONTHS_IN_QUARTER;
                 date = date.plusMonths(monthOffset);
             } else {
@@ -164,16 +164,16 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
                  period == IMMPeriod.BI_ANNUALY_MAR_SEP 
                         && (DateTimeConstants.JUNE == imm.getMonthOfYear() || DateTimeConstants.DECEMBER==imm.getMonthOfYear()) ) { 
                 // need to move to the next one.
-                imm = getNextIMMDate(forward, imm, period);
+                imm = getNextIMMDate(requestNextIMM, imm, period);
             } else if (period == IMMPeriod.ANNUALLY) {
                 // second jump
-                imm = getNextIMMDate(forward, imm, IMMPeriod.QUARTERLY);
+                imm = getNextIMMDate(requestNextIMM, imm, IMMPeriod.QUARTERLY);
                 // third jump
-                imm = getNextIMMDate(forward, imm, IMMPeriod.QUARTERLY);
+                imm = getNextIMMDate(requestNextIMM, imm, IMMPeriod.QUARTERLY);
                 // fourth jump
-                imm = getNextIMMDate(forward, imm, IMMPeriod.QUARTERLY);
+                imm = getNextIMMDate(requestNextIMM, imm, IMMPeriod.QUARTERLY);
                 // fifth jump
-                imm = getNextIMMDate(forward, imm, IMMPeriod.QUARTERLY);
+                imm = getNextIMMDate(requestNextIMM, imm, IMMPeriod.QUARTERLY);
             }
         
         return imm;
