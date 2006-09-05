@@ -1,0 +1,38 @@
+<document>
+  <properties>
+    <author email="Kit@objectlab.co.uk">Benoit Xhenseval</author>
+    <title>ObjectLab Kit - Holiday Handler Algorithms</title>
+  </properties>
+  <head>
+
+  </head>
+  <body>
+    <!-- The body of the document contains a number of sections -->
+    <section name="Holiday Handler Algorithms">
+
+    <subsection name="Forward">
+    <p>If the date is a non-working day, move forward to the next working day.</p>
+    <img src="forward.png"/>
+    </subsection>
+    
+    <subsection name="backward">
+    <p>If the date is a non-working day, move backward to the previous working day.</p>
+    <img src="backward.png"/>
+    </subsection>
+    
+    <subsection name="Modified Following">
+    <p>If the date is a non-working day, move forward to the next working day, 
+    UNLESS it crosses over a new month, in which case we revert to find the last working day of the current month.</p>
+    <img src="modif-following.png"/>
+    </subsection>
+    
+    <subsection name="Modified Preceeding">
+    <p>If the date is a non-working day, move backward to the previous working day, 
+    	UNLESS it crosses over a new month, in which case we revert to find the next working day of the current month.</p>
+    <img src="modif-preceeding.png"/>
+    </subsection>
+
+    </section>
+
+  </body>
+</document>
