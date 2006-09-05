@@ -398,7 +398,7 @@
         <result date="2006-09-02" statvalue="83" type="cobertura-branch"/>
         <result date="2006-09-04" statvalue="64" type="cobertura-line"/>
         <result date="2006-09-04" statvalue="71" type="cobertura-branch"/>
-        <result date="2006-09-05" statvalue="66" type="cobertura-line"/>
+        <result date="2006-09-05" statvalue="64" type="cobertura-line"/>
         <result date="2006-09-05" statvalue="71" type="cobertura-branch"/>
     </file>
     <file
