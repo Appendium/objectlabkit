@@ -48,6 +48,7 @@
     	<li><strong>Modified Preceeding</strong>, if the date is a non-working day, move backward to the previous working day, 
     	UNLESS it crosses over a new month, in which case we revert to find the next working day of the current month.</li>
     </ol>
+    <p>See this page for some <a href="algo.html">examples</a>.</p>
     </subsection>
     
     <subsection name="Main interfaces">
