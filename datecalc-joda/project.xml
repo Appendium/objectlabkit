@@ -12,7 +12,7 @@
     <extend>../common-build/project.xml</extend>
     <name>DateCalc Joda</name>
     <artifactId>datecalc-joda</artifactId>
-    <package>net.objectlab.kit</package>
+    <package>net.objectlab.kit.datecalc</package>
     <shortDescription>DateCalc JDK library</shortDescription>
     <description>This library provides a JODA-time implementation of the Date Calculator.</description>
     <repository>
@@ -34,22 +34,7 @@
         </dependency>
     </dependencies>
 
-    <reports>
-        <report>maven-checkstyle-plugin</report>
-        <report>maven-findbugs-plugin</report>
-        <report>maven-pmd-plugin</report>
-        <report>maven-simian-plugin</report>
-        <report>maven-cobertura-plugin</report>
-        <report>maven-qalab-plugin</report>
-        <report>maven-ydoc-plugin</report>
-        <report>maven-jdepend-plugin</report>
-        <report>maven-faq-plugin</report>
-         <report>maven-junit-report-plugin</report>
-        <report>maven-jxr-plugin</report>
-        <report>maven-tasklist-plugin</report>
-    </reports>
-
-    <build>
+    <build>
         <sourceDirectory>src/main/java</sourceDirectory>
         <unitTestSourceDirectory>src/test/java</unitTestSourceDirectory>
         <!-- TODO: to be removed as it is not generic -->
