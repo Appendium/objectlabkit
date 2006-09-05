@@ -57,7 +57,7 @@
         <summaryresult date="2006-09-04" filecount="17" statvalue="84" type="cobertura-line"/>
         <summaryresult date="2006-09-04" filecount="17" statvalue="87" type="cobertura-branch"/>
         <summaryresult date="2006-09-05" filecount="4" statvalue="40" type="simian"/>
-        <summaryresult date="2006-09-05" filecount="17" statvalue="90" type="cobertura-line"/>
+        <summaryresult date="2006-09-05" filecount="17" statvalue="91" type="cobertura-line"/>
         <summaryresult date="2006-09-05" filecount="17" statvalue="93" type="cobertura-branch"/>
     </summary>
     <file id="net_objectlab_kit_datecalc_joda_package.html" path="net/objectlab/kit/datecalc/joda/package.html">
@@ -315,7 +315,7 @@
         <result date="2006-09-02" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-04" statvalue="94" type="cobertura-line"/>
         <result date="2006-09-04" statvalue="100" type="cobertura-branch"/>
-        <result date="2006-09-05" statvalue="94" type="cobertura-line"/>
+        <result date="2006-09-05" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
@@ -324,7 +324,7 @@
         <result date="2006-09-02" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-04" statvalue="40" type="cobertura-line"/>
         <result date="2006-09-04" statvalue="100" type="cobertura-branch"/>
-        <result date="2006-09-05" statvalue="40" type="cobertura-line"/>
+        <result date="2006-09-05" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
     </file>
     <file

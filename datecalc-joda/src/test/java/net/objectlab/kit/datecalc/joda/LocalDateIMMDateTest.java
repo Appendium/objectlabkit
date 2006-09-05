@@ -6,7 +6,7 @@ import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
 import org.joda.time.LocalDate;
 
-public class IMMDateTest extends AbstractIMMDateTest<LocalDate> {
+public class LocalDateIMMDateTest extends AbstractIMMDateTest<LocalDate> {
 
     @Override
     protected DateCalculator<LocalDate> getDateCalculator(final String name) {
