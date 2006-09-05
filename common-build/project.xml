@@ -10,7 +10,7 @@
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://maven.apache.org/POM/3.0.0 http://maven.apache.org/maven-v3_0_0.xsd">
    <pomVersion>3</pomVersion>
-   <groupId>net.objectlab.kit</groupId>
+   <groupId>net.objectlab.kit.datecalc</groupId>
    <currentVersion>1.0</currentVersion>
    <organization>
       <name>ObjectLab Financial Ltd</name>
@@ -104,6 +104,21 @@
       <nagEmailAddress>kit@objectlab.co.uk</nagEmailAddress>
       <defaultGoal>kit:build</defaultGoal>
    </build>
+
+   <reports>
+      <report>maven-checkstyle-plugin</report>
+      <!--<report>maven-findbugs-plugin</report>-->
+      <report>maven-pmd-plugin</report>
+      <report>maven-simian-plugin</report>
+      <!--<report>maven-cobertura-plugin</report>-->
+      <!--<report>maven-qalab-plugin</report>-->
+      <report>maven-javadoc-plugin</report>
+      <report>maven-jdepend-plugin</report>
+      <report>maven-faq-plugin</report>
+      <report>maven-junit-report-plugin</report>
+      <report>maven-jxr-plugin</report>
+      <report>maven-tasklist-plugin</report>
+   </reports>
 
    <versions>
       <version>

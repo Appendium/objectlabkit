@@ -12,7 +12,7 @@
    <extend>../common-build/project.xml</extend>
    <name>DateCalc Common</name>
    <artifactId>datecalc-common</artifactId>
-   <package>net.objectlab.kit.common</package>
+   <package>net.objectlab.kit.datecalc</package>
    <shortDescription>DateCalc Common library</shortDescription>
    <description>
       DateCalc Common library is the library used by both JDK and JODA
@@ -27,21 +27,6 @@
       </developerConnection>
    </repository>
    <dependencies></dependencies>
-
-   <reports>
-      <report>maven-checkstyle-plugin</report>
-      <report>maven-findbugs-plugin</report>
-      <report>maven-pmd-plugin</report>
-      <report>maven-simian-plugin</report>
-      <report>maven-cobertura-plugin</report>
-      <report>maven-qalab-plugin</report>
-      <report>maven-ydoc-plugin</report>
-      <report>maven-jdepend-plugin</report>
-      <report>maven-faq-plugin</report>
-      <report>maven-junit-report-plugin</report>
-      <report>maven-jxr-plugin</report>
-      <report>maven-tasklist-plugin</report>
-   </reports>
 
    <build>
       <sourceDirectory>src/main/java</sourceDirectory>

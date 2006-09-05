@@ -13,6 +13,7 @@
       <item name="DateCalc JDK" href="multiproject/datecalc-jdk/index.html"/>
       <item name="DateCalc JODA" href="multiproject/datecalc-joda/index.html"/>
       <item name="Holiday Handler" href="algo.html"/>
+      <item name="JavaDoc" href="apidocs/index.html"/>
     </menu>
 <!--
     <menu name="Related Projects">
