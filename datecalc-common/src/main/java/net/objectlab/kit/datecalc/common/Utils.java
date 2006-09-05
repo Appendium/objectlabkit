@@ -33,11 +33,13 @@ import java.util.TimeZone;
  * @version $Revision$ $Date$
  * 
  */
-public class Utils {
+public final class Utils {
 
     private static final String DATE_PATTERN = "yyyy-MM-dd";
 
     private static final SimpleDateFormat SDF = new SimpleDateFormat(DATE_PATTERN);
+    
+    private Utils() {}
 
     public static Calendar getCal(final Date date) {
         final Calendar cal = Calendar.getInstance();
@@ -50,7 +52,13 @@ public class Utils {
         return cal;
     }
 
-    public static Date createDate(final String str) throws IllegalArgumentException {
+    /**
+     * 
+     * @param str string
+     * @return
+     * @throws IllegalArgumentException if the string cannot be parsed.  
+     */
+    public static Date createDate(final String str) {
         try {
             final Date date = SDF.parse(str);
             final Calendar cal = getCal(date);
@@ -60,7 +68,13 @@ public class Utils {
         }
     }
 
-    public static Calendar createCalendar(final String str) throws IllegalArgumentException {
+    /**
+     * 
+     * @param str string
+     * @return
+     * @throws IllegalArgumentException if the string cannot be parsed.  
+     */
+    public static Calendar createCalendar(final String str) {
         try {
             final Date date = SDF.parse(str);
             final Calendar cal = getCal(date);

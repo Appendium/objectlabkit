@@ -56,10 +56,10 @@
         <summaryresult date="2006-09-04" filecount="4" statvalue="40" type="simian"/>
         <summaryresult date="2006-09-04" filecount="17" statvalue="84" type="cobertura-line"/>
         <summaryresult date="2006-09-04" filecount="17" statvalue="87" type="cobertura-branch"/>
-        <summaryresult date="2006-09-05" filecount="18" statvalue="10" type="checkstyle"/>
+        <summaryresult date="2006-09-05" filecount="18" statvalue="2" type="checkstyle"/>
         <summaryresult date="2006-09-05" filecount="4" statvalue="40" type="simian"/>
-        <summaryresult date="2006-09-05" filecount="17" statvalue="84" type="cobertura-line"/>
-        <summaryresult date="2006-09-05" filecount="17" statvalue="87" type="cobertura-branch"/>
+        <summaryresult date="2006-09-05" filecount="17" statvalue="90" type="cobertura-line"/>
+        <summaryresult date="2006-09-05" filecount="17" statvalue="93" type="cobertura-branch"/>
     </summary>
     <file id="net_objectlab_kit_datecalc_joda_package.html" path="net/objectlab/kit/datecalc/joda/package.html">
         <result date="2006-08-08" statvalue="1" type="checkstyle"/>
@@ -168,7 +168,6 @@
         <result date="2006-09-04" statvalue="2" type="checkstyle"/>
         <result date="2006-09-04" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-04" statvalue="100" type="cobertura-branch"/>
-        <result date="2006-09-05" statvalue="2" type="checkstyle"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
     </file>
@@ -292,7 +291,6 @@
     <file id="net_objectlab_kit_datecalc_joda_ExcelDateUtil.java" path="net/objectlab/kit/datecalc/joda/ExcelDateUtil.java">
         <result date="2006-09-02" statvalue="4" type="checkstyle"/>
         <result date="2006-09-04" statvalue="4" type="checkstyle"/>
-        <result date="2006-09-05" statvalue="4" type="checkstyle"/>
     </file>
     <file
         id="net_objectlab_kit_datecalc_joda_DefaultLocalDateCalculatorFactory.java" path="net/objectlab/kit/datecalc/joda/DefaultLocalDateCalculatorFactory.java">
@@ -354,7 +352,7 @@
         <result date="2006-09-04" statvalue="4" type="checkstyle"/>
         <result date="2006-09-04" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-04" statvalue="100" type="cobertura-branch"/>
-        <result date="2006-09-05" statvalue="4" type="checkstyle"/>
+        <result date="2006-09-05" statvalue="2" type="checkstyle"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
     </file>
@@ -400,7 +398,7 @@
         <result date="2006-09-02" statvalue="83" type="cobertura-branch"/>
         <result date="2006-09-04" statvalue="64" type="cobertura-line"/>
         <result date="2006-09-04" statvalue="71" type="cobertura-branch"/>
-        <result date="2006-09-05" statvalue="64" type="cobertura-line"/>
+        <result date="2006-09-05" statvalue="66" type="cobertura-line"/>
         <result date="2006-09-05" statvalue="71" type="cobertura-branch"/>
     </file>
     <file
@@ -428,6 +426,10 @@
         <result date="2006-09-04" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-04" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-line"/>
+        <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file id="net_objectlab_kit_datecalc_joda_JodaExcelDateUtil.java" path="net/objectlab/kit/datecalc/joda/JodaExcelDateUtil.java">
+        <result date="2006-09-05" statvalue="85" type="cobertura-line"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
     </file>
 </qalab>

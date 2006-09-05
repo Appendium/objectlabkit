@@ -33,6 +33,11 @@
 		<attainGoal name="multiproject:goal" />
 	</goal>
 
+	<goal name="kit:site">
+		<attainGoal name="dist:multiproject-bin" />
+		<attainGoal name="dist:multiproject-src" />
+	</goal>
+
 	<goal name="kit:clean" prereqs="multiproject:clean,clean" />
 
 	<goal name="kit:generate" prereqs="multiproject:projects-init">
