@@ -28,7 +28,7 @@ package net.objectlab.kit.datecalc.common;
 public enum IMMPeriod {
     /** Bi annually March and September */
     BI_ANNUALY_MAR_SEP,
-    /** Bi annually March and September */
+    /** Bi annually June and December */
     BI_ANNUALY_JUN_DEC,
     /** Quarterly: eg March, June, September, December */
     QUARTERLY    
