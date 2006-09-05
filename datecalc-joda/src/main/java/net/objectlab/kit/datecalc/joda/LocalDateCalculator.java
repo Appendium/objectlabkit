@@ -114,6 +114,29 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
         LocalDate date = start;
 
         final int month = date.getMonthOfYear();
+        date = calculateIMMMonth(requestNextIMM, date, month);
+
+        LocalDate imm = calculate3rdWednesday(date);
+        final int immMonth = imm.getMonthOfYear();
+        final boolean isMarchSept = DateTimeConstants.MARCH == immMonth || DateTimeConstants.SEPTEMBER == immMonth;
+
+        if (period == IMMPeriod.BI_ANNUALY_JUN_DEC && isMarchSept || period == IMMPeriod.BI_ANNUALY_MAR_SEP && !isMarchSept) {
+            imm = getNextIMMDate(requestNextIMM, imm, period);
+        } else if (period == IMMPeriod.ANNUALLY) {
+            // second jump
+            imm = getNextIMMDate(requestNextIMM, imm, IMMPeriod.QUARTERLY);
+            // third jump
+            imm = getNextIMMDate(requestNextIMM, imm, IMMPeriod.QUARTERLY);
+            // fourth jump
+            imm = getNextIMMDate(requestNextIMM, imm, IMMPeriod.QUARTERLY);
+            // fifth jump
+            imm = getNextIMMDate(requestNextIMM, imm, IMMPeriod.QUARTERLY);
+        }
+
+        return imm;
+    }
+
+    private LocalDate calculateIMMMonth(final boolean requestNextIMM, LocalDate date, final int month) {
         int monthOffset = 0;
 
         switch (month) {
@@ -139,26 +162,7 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
             }
             break;
         }
-
-        LocalDate imm = calculate3rdWednesday(date);
-        final int immMonth = imm.getMonthOfYear();
-        final boolean isMarchSept = DateTimeConstants.MARCH == immMonth || DateTimeConstants.SEPTEMBER == immMonth; 
-        
-        if ( period == IMMPeriod.BI_ANNUALY_JUN_DEC && isMarchSept 
-          || period == IMMPeriod.BI_ANNUALY_MAR_SEP && !isMarchSept) { 
-            imm = getNextIMMDate(requestNextIMM, imm, period);
-        } else if (period == IMMPeriod.ANNUALLY) {
-            // second jump
-            imm = getNextIMMDate(requestNextIMM, imm, IMMPeriod.QUARTERLY);
-            // third jump
-            imm = getNextIMMDate(requestNextIMM, imm, IMMPeriod.QUARTERLY);
-            // fourth jump
-            imm = getNextIMMDate(requestNextIMM, imm, IMMPeriod.QUARTERLY);
-            // fifth jump
-            imm = getNextIMMDate(requestNextIMM, imm, IMMPeriod.QUARTERLY);
-        }
-        
-        return imm;
+        return date;
     }
 
     /**
@@ -176,20 +180,20 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
         }
         return firstWed.plusWeeks(2);
     }
-    
+
     /**
      * @param date
      * @return true if that date is an IMM date.
      */
     public boolean isIMMDate(final LocalDate date) {
         boolean same = false;
-        
+
         final List<LocalDate> dates = getIMMDates(date.minusDays(1), date, IMMPeriod.QUARTERLY);
 
         if (!dates.isEmpty()) {
             same = date.equals(dates.get(0));
         }
-        
+
         return same;
     }
 }
