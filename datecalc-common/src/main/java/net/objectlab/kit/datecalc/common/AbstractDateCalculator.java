@@ -261,7 +261,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         return getIMMDates(start, end, IMMPeriod.QUARTERLY);
     }
 
-    protected abstract E getNextIMMDate(final boolean forward, final E theStartDate, final IMMPeriod period);
+    protected abstract E getNextIMMDate(final boolean requestNextIMM, final E theStartDate, final IMMPeriod period);
 
     protected abstract DateCalculator<E> createNewCalcultaor(String calcName, E theStartDate, Set<E> holidays,
             HolidayHandler<E> handler);
