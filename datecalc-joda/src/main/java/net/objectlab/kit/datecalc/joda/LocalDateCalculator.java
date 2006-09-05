@@ -113,6 +113,10 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
     protected LocalDate getNextIMMDate(final boolean forward, final LocalDate start, final IMMPeriod period) {
         LocalDate date = start;
 
+//        if (period == IMMPeriod.ANNUALLY) {
+//            date = date.plusYears(1);
+//        }
+        
         final int month = date.getMonthOfYear();
         int monthOffset = 0;
 
@@ -161,6 +165,15 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
                         && (DateTimeConstants.JUNE == imm.getMonthOfYear() || DateTimeConstants.DECEMBER==imm.getMonthOfYear()) ) { 
                 // need to move to the next one.
                 imm = getNextIMMDate(forward, imm, period);
+            } else if (period == IMMPeriod.ANNUALLY) {
+                // second jump
+                imm = getNextIMMDate(forward, imm, IMMPeriod.QUARTERLY);
+                // third jump
+                imm = getNextIMMDate(forward, imm, IMMPeriod.QUARTERLY);
+                // fourth jump
+                imm = getNextIMMDate(forward, imm, IMMPeriod.QUARTERLY);
+                // fifth jump
+                imm = getNextIMMDate(forward, imm, IMMPeriod.QUARTERLY);
             }
         
         return imm;

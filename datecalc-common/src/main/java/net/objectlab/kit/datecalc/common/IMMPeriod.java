@@ -26,10 +26,12 @@ package net.objectlab.kit.datecalc.common;
  * @version $Revision$ $Date$
  */
 public enum IMMPeriod {
-    /** Bi annually March and September */
+    /** Bi-annually March and September */
     BI_ANNUALY_MAR_SEP,
-    /** Bi annually June and December */
+    /** Bi-annually June and December */
     BI_ANNUALY_JUN_DEC,
-    /** Quarterly: eg March, June, September, December */
-    QUARTERLY    
+    /** Conventional period: Quarterly: eg March, June, September, December */
+    QUARTERLY,
+    /** Annually, jump from 1y to the next */
+    ANNUALLY
 }
