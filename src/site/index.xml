@@ -59,14 +59,14 @@
     	<h4>JDK</h4>
     	<p>2 implementations for Pure JDK have been released</p>
     	<ol>
-    		<li><strong>Calendar:</strong><pre>DateCalculatorFactory&lt;Calendar> calc = DefaultJdkCalendarCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);</pre></li>
-    		<li><strong>Date:</strong><pre>DateCalculatorFactory&lt;Date> calc = DefaultJdkDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);</pre></li>
+    		<li><strong>Calendar:</strong><pre>DateCalculator&lt;Calendar> calc = DefaultJdkCalendarCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);</pre></li>
+    		<li><strong>Date:</strong><pre>DateCalculator&lt;Date> calc = DefaultJdkDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);</pre></li>
     	</ol>
     	<h4>JODA</h4>
     	<p>2 implementations for Joda have been released</p>
     	<ol>
-    		<li><strong>LocalDate</strong> (preferred):<pre>DateCalculatorFactory&lt;LocalDate> calc = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);</pre></li>
-    		<li><strong>YearMonthDay:</strong><pre>DateCalculatorFactory&lt;YearMonthDay> calc = DefaultYearMonthDayCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);</pre></li>
+    		<li><strong>LocalDate</strong> (preferred):<pre>DateCalculator&lt;LocalDate> calc = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);</pre></li>
+    		<li><strong>YearMonthDay:</strong><pre>DateCalculator&lt;YearMonthDay> calc = DefaultYearMonthDayCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);</pre></li>
     	</ol>
     </subsection>
     
