@@ -28,7 +28,7 @@
    </repository>
    <dependencies>
       <dependency>
-         <groupId>net.objectlab.kit</groupId>
+         <groupId>net.objectlab.kit.datecalc</groupId>
          <artifactId>datecalc-common</artifactId>
          <version>${pom.currentVersion}</version>
          <type>jar</type>
