@@ -30,7 +30,7 @@ import java.util.TimeZone;
  * @version $Revision: 99 $ $Date: 2006-09-04 21:30:25 +0100 (Mon, 04 Sep 2006) $
  * 
  */
-public class ExcelDateUtil {
+public final class ExcelDateUtil {
     private static final double HALF_MILLISEC = 0.5;
 
     private static final int EXCEL_FUDGE_19000229 = 61;

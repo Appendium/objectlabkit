@@ -52,9 +52,9 @@
         <summaryresult date="2006-09-04" filecount="17" statvalue="18" type="checkstyle"/>
         <summaryresult date="2006-09-04" filecount="16" statvalue="77" type="cobertura-line"/>
         <summaryresult date="2006-09-04" filecount="16" statvalue="79" type="cobertura-branch"/>
-        <summaryresult date="2006-09-05" filecount="17" statvalue="18" type="checkstyle"/>
-        <summaryresult date="2006-09-05" filecount="16" statvalue="77" type="cobertura-line"/>
-        <summaryresult date="2006-09-05" filecount="16" statvalue="79" type="cobertura-branch"/>
+        <summaryresult date="2006-09-05" filecount="16" statvalue="14" type="checkstyle"/>
+        <summaryresult date="2006-09-05" filecount="24" statvalue="63" type="cobertura-line"/>
+        <summaryresult date="2006-09-05" filecount="24" statvalue="88" type="cobertura-branch"/>
     </summary>
     <file id="net_objectlab_kit_datecalc_jdk_package.html" path="net/objectlab/kit/datecalc/jdk/package.html">
         <result date="2006-08-08" statvalue="1" type="checkstyle"/>
@@ -251,7 +251,7 @@
         <result date="2006-09-02" statvalue="84" type="cobertura-branch"/>
         <result date="2006-09-04" statvalue="79" type="cobertura-line"/>
         <result date="2006-09-04" statvalue="84" type="cobertura-branch"/>
-        <result date="2006-09-05" statvalue="79" type="cobertura-line"/>
+        <result date="2006-09-05" statvalue="78" type="cobertura-line"/>
         <result date="2006-09-05" statvalue="84" type="cobertura-branch"/>
     </file>
     <file
@@ -269,7 +269,6 @@
     <file id="net_objectlab_kit_datecalc_jdk_ExcelDateUtil.java" path="net/objectlab/kit/datecalc/jdk/ExcelDateUtil.java">
         <result date="2006-09-02" statvalue="4" type="checkstyle"/>
         <result date="2006-09-04" statvalue="4" type="checkstyle"/>
-        <result date="2006-09-05" statvalue="4" type="checkstyle"/>
     </file>
     <file
         id="net_objectlab_kit_datecalc_jdk_ModifiedFollowingHandler.java" path="net/objectlab/kit/datecalc/jdk/ModifiedFollowingHandler.java">
@@ -292,8 +291,8 @@
         <result date="2006-09-04" statvalue="86" type="cobertura-line"/>
         <result date="2006-09-04" statvalue="85" type="cobertura-branch"/>
         <result date="2006-09-05" statvalue="8" type="checkstyle"/>
-        <result date="2006-09-05" statvalue="86" type="cobertura-line"/>
-        <result date="2006-09-05" statvalue="85" type="cobertura-branch"/>
+        <result date="2006-09-05" statvalue="87" type="cobertura-line"/>
+        <result date="2006-09-05" statvalue="86" type="cobertura-branch"/>
     </file>
     <file
         id="net_objectlab_kit_datecalc_jdk_JdkDateCalculatorFactory.java" path="net/objectlab/kit/datecalc/jdk/JdkDateCalculatorFactory.java">
@@ -322,7 +321,7 @@
         id="net_objectlab_kit_datecalc_jdk_JdkDateBaseDateCalculator.java" path="net/objectlab/kit/datecalc/jdk/JdkDateBaseDateCalculator.java">
         <result date="2006-09-04" statvalue="91" type="cobertura-line"/>
         <result date="2006-09-04" statvalue="100" type="cobertura-branch"/>
-        <result date="2006-09-05" statvalue="91" type="cobertura-line"/>
+        <result date="2006-09-05" statvalue="92" type="cobertura-line"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
     </file>
     <file id="net_objectlab_kit_datecalc_jdk_JdkDateCalculator.java" path="net/objectlab/kit/datecalc/jdk/JdkDateCalculator.java">
@@ -336,6 +335,41 @@
         <result date="2006-09-04" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-04" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-line"/>
+        <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="net_objectlab_kit_datecalc_jdk_AbstractDateCalculatorTest.java" path="net/objectlab/kit/datecalc/jdk/AbstractDateCalculatorTest.java">
+        <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="net_objectlab_kit_datecalc_jdk_DateCalculatorFactoryTest.java" path="net/objectlab/kit/datecalc/jdk/DateCalculatorFactoryTest.java">
+        <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="net_objectlab_kit_datecalc_jdk_DatePeriodCountCalculatorTest.java" path="net/objectlab/kit/datecalc/jdk/DatePeriodCountCalculatorTest.java">
+        <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file id="net_objectlab_kit_datecalc_jdk_IMMDateTest.java" path="net/objectlab/kit/datecalc/jdk/IMMDateTest.java">
+        <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="net_objectlab_kit_datecalc_jdk_JdkDateBackwardDateCalculatorTest.java" path="net/objectlab/kit/datecalc/jdk/JdkDateBackwardDateCalculatorTest.java">
+        <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="net_objectlab_kit_datecalc_jdk_JdkDateDateCalculatorCombinationTest.java" path="net/objectlab/kit/datecalc/jdk/JdkDateDateCalculatorCombinationTest.java">
+        <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="net_objectlab_kit_datecalc_jdk_JdkDateForwardDateCalculatorTest.java" path="net/objectlab/kit/datecalc/jdk/JdkDateForwardDateCalculatorTest.java">
+        <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="net_objectlab_kit_datecalc_jdk_JdkDateModifiedFollowingDateCalculatorTest.java" path="net/objectlab/kit/datecalc/jdk/JdkDateModifiedFollowingDateCalculatorTest.java">
+        <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="net_objectlab_kit_datecalc_jdk_JdkDateModifiedPreceedingDateCalculatorTest.java" path="net/objectlab/kit/datecalc/jdk/JdkDateModifiedPreceedingDateCalculatorTest.java">
         <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
     </file>
 </qalab>

@@ -107,11 +107,11 @@
 
    <reports>
       <report>maven-checkstyle-plugin</report>
-      <!--<report>maven-findbugs-plugin</report>-->
+      <report>maven-findbugs-plugin</report>
       <report>maven-pmd-plugin</report>
       <report>maven-simian-plugin</report>
-      <!--<report>maven-cobertura-plugin</report>-->
-      <!--<report>maven-qalab-plugin</report>-->
+      <report>maven-cobertura-plugin</report>
+      <report>maven-qalab-plugin</report>
       <report>maven-javadoc-plugin</report>
       <report>maven-jdepend-plugin</report>
       <report>maven-faq-plugin</report>

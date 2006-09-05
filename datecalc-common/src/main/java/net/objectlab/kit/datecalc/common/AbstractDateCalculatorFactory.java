@@ -48,8 +48,8 @@ public abstract class AbstractDateCalculatorFactory<E> implements DateCalculator
      * @param holidays
      *            the set of holidays (non-working days).
      */
-    public void registerHolidays(final String name, final Set<E> holidays) {
-        this.holidays.put(name, holidays);
+    public void registerHolidays(final String name, final Set<E> holidaysSet) {
+        this.holidays.put(name, holidaysSet);
     }
 
 }
