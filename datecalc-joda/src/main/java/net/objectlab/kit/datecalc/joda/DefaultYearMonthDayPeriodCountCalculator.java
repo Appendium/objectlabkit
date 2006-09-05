@@ -18,6 +18,6 @@ public class DefaultYearMonthDayPeriodCountCalculator implements PeriodCountCalc
     }
 
     public double yearDiff(final YearMonthDay start, final YearMonthDay end, final PeriodCountBasis basis) {
-        return DELEGATE.monthDiff(start.toLocalDate(), end.toLocalDate(), basis);
+        return DELEGATE.yearDiff(start.toLocalDate(), end.toLocalDate(), basis);
     }
 }

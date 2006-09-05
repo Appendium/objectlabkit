@@ -22,7 +22,7 @@ import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
 import org.joda.time.LocalDate;
 
-public class PeriodCountCalculatorTest extends AbstractPeriodCountCalculator<LocalDate> {
+public class LocalDatePeriodCountCalculatorTest extends AbstractPeriodCountCalculator<LocalDate> {
 
     @Override
     public PeriodCountCalculator<LocalDate> getPeriodCountCalculator() {

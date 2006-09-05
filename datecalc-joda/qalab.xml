@@ -56,7 +56,6 @@
         <summaryresult date="2006-09-04" filecount="4" statvalue="40" type="simian"/>
         <summaryresult date="2006-09-04" filecount="17" statvalue="84" type="cobertura-line"/>
         <summaryresult date="2006-09-04" filecount="17" statvalue="87" type="cobertura-branch"/>
-        <summaryresult date="2006-09-05" filecount="18" statvalue="2" type="checkstyle"/>
         <summaryresult date="2006-09-05" filecount="4" statvalue="40" type="simian"/>
         <summaryresult date="2006-09-05" filecount="17" statvalue="90" type="cobertura-line"/>
         <summaryresult date="2006-09-05" filecount="17" statvalue="93" type="cobertura-branch"/>
@@ -352,7 +351,6 @@
         <result date="2006-09-04" statvalue="4" type="checkstyle"/>
         <result date="2006-09-04" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-04" statvalue="100" type="cobertura-branch"/>
-        <result date="2006-09-05" statvalue="2" type="checkstyle"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
     </file>
