@@ -204,7 +204,7 @@ public class JdkCalendarBaseDateCalculator extends AbstractDateCalculator<Calend
 
     public boolean isIMMDate(final Calendar date) {
         // TODO a slightly crude implementation - revisit
-        Calendar cal = (Calendar)date.clone();
+        final Calendar cal = (Calendar)date.clone();
         moveToIMMDay(cal);
         return cal.equals(date);
     }

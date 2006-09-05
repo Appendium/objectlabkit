@@ -17,10 +17,10 @@
  */
 package net.objectlab.kit.datecalc.joda;
 
-import org.joda.time.LocalDate;
-
 import net.objectlab.kit.datecalc.common.AbstractPeriodCountCalculator;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
+
+import org.joda.time.LocalDate;
 
 public class PeriodCountCalculatorTest extends AbstractPeriodCountCalculator<LocalDate> {
 
@@ -30,7 +30,7 @@ public class PeriodCountCalculatorTest extends AbstractPeriodCountCalculator<Loc
     }
 
     @Override
-    public LocalDate parseDate(String string) {
+    public LocalDate parseDate(final String string) {
         return new LocalDate(string);
     }
 

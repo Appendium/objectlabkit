@@ -60,6 +60,16 @@ public class Utils {
         }
     }
 
+    public static Calendar createCalendar(final String str) throws IllegalArgumentException {
+        try {
+            final Date date = SDF.parse(str);
+            final Calendar cal = getCal(date);
+            return cal;
+        } catch (final ParseException e) {
+            throw new IllegalArgumentException("\"" + str + "\"" + " is an invalid date, the pattern is : " + DATE_PATTERN);
+        }
+    }
+
     public static Set<Calendar> toCalendarSet(final Set<Date> dates) {
         final Set<Calendar> calendars = new HashSet<Calendar>();
         for (final Date date : dates) {
