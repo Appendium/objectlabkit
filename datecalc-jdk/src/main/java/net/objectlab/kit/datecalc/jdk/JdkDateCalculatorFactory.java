@@ -7,8 +7,8 @@ import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
 public interface JdkDateCalculatorFactory extends DateCalculatorFactory<Date> {
 
-    public abstract JdkDateCalculator getDateCalculator(final String name, final String holidayHandlerType);
+    JdkDateCalculator getDateCalculator(final String name, final String holidayHandlerType);
 
-    public abstract PeriodCountCalculator<Date> getPeriodCountCalculator();
+    PeriodCountCalculator<Date> getPeriodCountCalculator();
 
 }

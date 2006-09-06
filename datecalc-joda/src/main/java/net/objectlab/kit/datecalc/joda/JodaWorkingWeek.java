@@ -31,15 +31,15 @@ public class JodaWorkingWeek extends WorkingWeek {
     public static final JodaWorkingWeek DEFAULT = new JodaWorkingWeek();
 
     public JodaWorkingWeek() {
-        this(DEFAULT_WORKING_DAYS);
+        super();
     }
 
     private JodaWorkingWeek(final byte workingDays) {
-        this.workingDays = workingDays;
+        super(workingDays);
     }
 
     public JodaWorkingWeek(final WorkingWeek ww) {
-        this.workingDays = ww.getWorkingDays();
+        this(ww.getWorkingDays());
     }
 
     public boolean isWorkingDay(final LocalDate date) {

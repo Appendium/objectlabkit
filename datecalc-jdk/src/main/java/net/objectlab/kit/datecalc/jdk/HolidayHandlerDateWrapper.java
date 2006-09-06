@@ -34,9 +34,9 @@ import net.objectlab.kit.datecalc.common.HolidayHandler;
  */
 public class HolidayHandlerDateWrapper implements HolidayHandler<Date> {
 
-    HolidayHandler<Calendar> delegate;
+    private HolidayHandler<Calendar> delegate;
 
-    DateCalculator<Calendar> calculator;
+    private DateCalculator<Calendar> calculator;
 
     public HolidayHandlerDateWrapper(final HolidayHandler<Calendar> holidayHandler, final DateCalculator<Calendar> dateCalulator) {
         delegate = holidayHandler;

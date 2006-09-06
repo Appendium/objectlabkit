@@ -33,9 +33,10 @@ public abstract class AbstractDateCalculatorFactory<E> implements DateCalculator
 
     protected final ConcurrentMap<String, Set<E>> holidays = new ConcurrentHashMap<String, Set<E>>();
 
-//    public abstract DateCalculator<E> getDateCalculator(String name, String holidayHandlerType);
+    // public abstract DateCalculator<E> getDateCalculator(String name, String
+    // holidayHandlerType);
 
-//    public abstract PeriodCountCalculator<E> getPeriodCountCalculator();
+    // public abstract PeriodCountCalculator<E> getPeriodCountCalculator();
 
     /**
      * Use this method to register a set of holidays for a given calendar, it

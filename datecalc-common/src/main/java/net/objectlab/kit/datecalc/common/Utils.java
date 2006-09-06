@@ -38,8 +38,9 @@ public final class Utils {
     private static final String DATE_PATTERN = "yyyy-MM-dd";
 
     private static final SimpleDateFormat SDF = new SimpleDateFormat(DATE_PATTERN);
-    
-    private Utils() {}
+
+    private Utils() {
+    }
 
     public static Calendar getCal(final Date date) {
         final Calendar cal = Calendar.getInstance();
@@ -54,9 +55,11 @@ public final class Utils {
 
     /**
      * 
-     * @param str string
+     * @param str
+     *            string
      * @return
-     * @throws IllegalArgumentException if the string cannot be parsed.  
+     * @throws IllegalArgumentException
+     *             if the string cannot be parsed.
      */
     public static Date createDate(final String str) {
         try {
@@ -70,9 +73,11 @@ public final class Utils {
 
     /**
      * 
-     * @param str string
+     * @param str
+     *            string
      * @return
-     * @throws IllegalArgumentException if the string cannot be parsed.  
+     * @throws IllegalArgumentException
+     *             if the string cannot be parsed.
      */
     public static Calendar createCalendar(final String str) {
         try {

@@ -32,7 +32,7 @@ import net.objectlab.kit.datecalc.common.Utils;
  */
 public class DatePeriodCountCalculator implements JdkDatePeriodCountCalculator {
 
-    private final CalendarPeriodCountCalculator PCC = new CalendarPeriodCountCalculator();
+    private static final CalendarPeriodCountCalculator PCC = new CalendarPeriodCountCalculator();
 
     public int dayDiff(final Date start, final Date end, final PeriodCountBasis basis) {
 

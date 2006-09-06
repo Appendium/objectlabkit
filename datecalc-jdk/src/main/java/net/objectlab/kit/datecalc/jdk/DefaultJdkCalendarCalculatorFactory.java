@@ -31,7 +31,8 @@ import net.objectlab.kit.datecalc.common.IMMDateCalculator;
  * @version $Revision: 96 $ $Date: 2006-09-04 16:01:20 +0100 (Mon, 04 Sep 2006) $
  * 
  */
-public class DefaultJdkCalendarCalculatorFactory extends AbstractDateCalculatorFactory<Calendar> implements JdkCalendarCalculatorFactory {
+public class DefaultJdkCalendarCalculatorFactory extends AbstractDateCalculatorFactory<Calendar> implements
+        JdkCalendarCalculatorFactory {
 
     private static final DefaultJdkCalendarCalculatorFactory DEFAULT = new DefaultJdkCalendarCalculatorFactory();
 

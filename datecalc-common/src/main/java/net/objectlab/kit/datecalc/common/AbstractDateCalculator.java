@@ -35,9 +35,9 @@ import java.util.Set;
  */
 public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
 
-//    protected static final int MONTHS_IN_QUARTER = 3;
+    // protected static final int MONTHS_IN_QUARTER = 3;
 
-//    protected static final int MONTH_IN_YEAR = 12;
+    // protected static final int MONTH_IN_YEAR = 12;
 
     protected static final int DAYS_IN_WEEK = 7;
 
