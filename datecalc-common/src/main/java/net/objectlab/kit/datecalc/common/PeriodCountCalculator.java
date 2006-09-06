@@ -28,17 +28,17 @@ package net.objectlab.kit.datecalc.common;
  */
 public interface PeriodCountCalculator<E> {
 
-    final int YEAR_360 = 360;
+    int YEAR_360 = 360;
 
-    final int MONTHS_IN_YEAR = 12;
+    int MONTHS_IN_YEAR = 12;
 
-    final double YEAR_365_0 = 365.0;
+    double YEAR_365_0 = 365.0;
 
-    final double YEAR_360_0 = 360.0;
+    double YEAR_360_0 = 360.0;
 
-    final int MONTH_31_DAYS = 31;
+    int MONTH_31_DAYS = 31;
 
-    final int MONTH_30_DAYS = 30;
+    int MONTH_30_DAYS = 30;
 
     int dayDiff(final E start, final E end, PeriodCountBasis basis);
 

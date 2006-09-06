@@ -1,16 +1,15 @@
 package net.objectlab.kit.datecalc.joda;
 
 import net.objectlab.kit.datecalc.common.AbstractIMMDateTest;
-import net.objectlab.kit.datecalc.common.DateCalculator;
-import net.objectlab.kit.datecalc.common.HolidayHandlerType;
+import net.objectlab.kit.datecalc.common.IMMDateCalculator;
 
 import org.joda.time.YearMonthDay;
 
 public class YearMonthDayIMMDateTest extends AbstractIMMDateTest<YearMonthDay> {
 
     @Override
-    protected DateCalculator<YearMonthDay> getDateCalculator(final String name) {
-        return DefaultYearMonthDayCalculatorFactory.getDefaultInstance().getDateCalculator(name, HolidayHandlerType.FORWARD);
+    protected IMMDateCalculator<YearMonthDay> getDateCalculator(final String name) {
+        return DefaultYearMonthDayCalculatorFactory.getDefaultInstance().getIMMDateCalculator();
     }
 
     @Override

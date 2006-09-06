@@ -1,5 +1,5 @@
 /*
- * $Id$
+ * $Id: DefaultJdkDateCalculatorFactory.java 96 2006-09-04 15:01:20Z benoitx $
  * 
  * Copyright 2006 the original author or authors.
  *
@@ -17,7 +17,7 @@
  */
 package net.objectlab.kit.datecalc.jdk;
 
-import java.util.Date;
+import java.util.Calendar;
 
 import net.objectlab.kit.datecalc.common.AbstractDateCalculatorFactory;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
@@ -27,19 +27,19 @@ import net.objectlab.kit.datecalc.common.IMMDateCalculator;
  * TODO add javadoc
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
+ * @author $LastChangedBy: benoitx $
+ * @version $Revision: 96 $ $Date: 2006-09-04 16:01:20 +0100 (Mon, 04 Sep 2006) $
  * 
  */
-public class DefaultJdkDateCalculatorFactory extends AbstractDateCalculatorFactory<Date> implements JdkDateCalculatorFactory {
+public class DefaultJdkCalendarCalculatorFactory extends AbstractDateCalculatorFactory<Calendar> implements JdkCalendarCalculatorFactory {
 
-    private static final JdkDateCalculatorFactory DEFAULT = new DefaultJdkDateCalculatorFactory();
+    private static final DefaultJdkCalendarCalculatorFactory DEFAULT = new DefaultJdkCalendarCalculatorFactory();
 
-    private static final JdkDatePeriodCountCalculator PCC = new DatePeriodCountCalculator();
+    private static final CalendarPeriodCountCalculator PCC = new CalendarPeriodCountCalculator();
 
-    private static final JdkDateIMMDateCalculator IMMDC = new JdkDateIMMDateCalculator();
+    private static final JdkCalendarIMMDateCalculator IMMDC = new JdkCalendarIMMDateCalculator();
 
-    public static JdkDateCalculatorFactory getDefaultInstance() {
+    public static JdkCalendarCalculatorFactory getDefaultInstance() {
         return DEFAULT;
     }
 
@@ -49,8 +49,8 @@ public class DefaultJdkDateCalculatorFactory extends AbstractDateCalculatorFacto
      * @see net.objectlab.kit.datecalc.jdk.JdkDateCalculatorFactory#getDateCalculator(java.lang.String,
      *      java.lang.String)
      */
-    public JdkDateCalculator getDateCalculator(final String name, final String holidayHandlerType) {
-        final JdkDateBaseDateCalculator cal = new JdkDateBaseDateCalculator();
+    public JdkCalendarDateCalculator getDateCalculator(final String name, final String holidayHandlerType) {
+        final JdkCalendarBaseDateCalculator cal = new JdkCalendarBaseDateCalculator();
         cal.setName(name);
         if (holidays.containsKey(name)) {
             cal.setNonWorkingDays(holidays.get(name));
@@ -78,11 +78,11 @@ public class DefaultJdkDateCalculatorFactory extends AbstractDateCalculatorFacto
      * 
      * @see net.objectlab.kit.datecalc.jdk.JdkDateCalculatorFactory#getPeriodCountCalculator()
      */
-    public JdkDatePeriodCountCalculator getPeriodCountCalculator() {
+    public CalendarPeriodCountCalculator getPeriodCountCalculator() {
         return PCC;
     }
 
-    public IMMDateCalculator<Date> getIMMDateCalculator() {
+    public IMMDateCalculator<Calendar> getIMMDateCalculator() {
         return IMMDC;
     }
 
