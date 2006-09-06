@@ -18,13 +18,14 @@
 package net.objectlab.kit.datecalc.common;
 
 /**
- * TODO add javadoc
+ * Interface that defines a financial market way of calculating difference in days, month (or part of) and year (or part of).
+ * TODO Improve javadoc.
  * 
  * @author Benoit Xhenseval
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
  * 
- * @param <E>
+ * @param <E> a representation of "Date", typically Date, Calendar, LocalDate, YearMonthDay.
  */
 public interface PeriodCountCalculator<E> {
 

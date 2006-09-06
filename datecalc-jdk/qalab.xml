@@ -55,6 +55,9 @@
         <summaryresult date="2006-09-05" filecount="16" statvalue="14" type="checkstyle"/>
         <summaryresult date="2006-09-05" filecount="15" statvalue="83" type="cobertura-line"/>
         <summaryresult date="2006-09-05" filecount="15" statvalue="87" type="cobertura-branch"/>
+        <summaryresult date="2006-09-06" filecount="2" statvalue="32" type="simian"/>
+        <summaryresult date="2006-09-06" filecount="21" statvalue="84" type="cobertura-line"/>
+        <summaryresult date="2006-09-06" filecount="21" statvalue="89" type="cobertura-branch"/>
     </summary>
     <file id="net_objectlab_kit_datecalc_jdk_package.html" path="net/objectlab/kit/datecalc/jdk/package.html">
         <result date="2006-08-08" statvalue="1" type="checkstyle"/>
@@ -223,6 +226,8 @@
         <result date="2006-09-04" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-09-06" statvalue="100" type="cobertura-line"/>
+        <result date="2006-09-06" statvalue="100" type="cobertura-branch"/>
     </file>
     <file id="net_objectlab_kit_datecalc_jdk_BackwardHandler.java" path="net/objectlab/kit/datecalc/jdk/BackwardHandler.java">
         <result date="2006-08-28" statvalue="66" type="cobertura-line"/>
@@ -233,6 +238,8 @@
         <result date="2006-09-04" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-09-06" statvalue="100" type="cobertura-line"/>
+        <result date="2006-09-06" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="net_objectlab_kit_datecalc_jdk_ModifiedPreceedingHandler.java" path="net/objectlab/kit/datecalc/jdk/ModifiedPreceedingHandler.java">
@@ -243,6 +250,8 @@
         <result date="2006-09-04" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-09-06" statvalue="100" type="cobertura-line"/>
+        <result date="2006-09-06" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="net_objectlab_kit_datecalc_jdk_CalendarPeriodCountCalculator.java" path="net/objectlab/kit/datecalc/jdk/CalendarPeriodCountCalculator.java">
@@ -253,6 +262,8 @@
         <result date="2006-09-04" statvalue="84" type="cobertura-branch"/>
         <result date="2006-09-05" statvalue="79" type="cobertura-line"/>
         <result date="2006-09-05" statvalue="84" type="cobertura-branch"/>
+        <result date="2006-09-06" statvalue="79" type="cobertura-line"/>
+        <result date="2006-09-06" statvalue="84" type="cobertura-branch"/>
     </file>
     <file
         id="net_objectlab_kit_datecalc_jdk_DatePeriodCountCalculator.java" path="net/objectlab/kit/datecalc/jdk/DatePeriodCountCalculator.java">
@@ -265,6 +276,8 @@
         <result date="2006-09-05" statvalue="1" type="checkstyle"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-09-06" statvalue="100" type="cobertura-line"/>
+        <result date="2006-09-06" statvalue="100" type="cobertura-branch"/>
     </file>
     <file id="net_objectlab_kit_datecalc_jdk_ExcelDateUtil.java" path="net/objectlab/kit/datecalc/jdk/ExcelDateUtil.java">
         <result date="2006-09-02" statvalue="4" type="checkstyle"/>
@@ -277,6 +290,8 @@
         <result date="2006-09-04" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-09-06" statvalue="100" type="cobertura-line"/>
+        <result date="2006-09-06" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="net_objectlab_kit_datecalc_jdk_HolidayHandlerDateWrapper.java" path="net/objectlab/kit/datecalc/jdk/HolidayHandlerDateWrapper.java">
@@ -284,6 +299,7 @@
         <result date="2006-09-04" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-05" statvalue="2" type="checkstyle"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-09-06" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="net_objectlab_kit_datecalc_jdk_JdkCalendarBaseDateCalculator.java" path="net/objectlab/kit/datecalc/jdk/JdkCalendarBaseDateCalculator.java">
@@ -293,6 +309,8 @@
         <result date="2006-09-05" statvalue="8" type="checkstyle"/>
         <result date="2006-09-05" statvalue="87" type="cobertura-line"/>
         <result date="2006-09-05" statvalue="86" type="cobertura-branch"/>
+        <result date="2006-09-06" statvalue="69" type="cobertura-line"/>
+        <result date="2006-09-06" statvalue="66" type="cobertura-branch"/>
     </file>
     <file
         id="net_objectlab_kit_datecalc_jdk_JdkDateCalculatorFactory.java" path="net/objectlab/kit/datecalc/jdk/JdkDateCalculatorFactory.java">
@@ -302,6 +320,8 @@
         <result date="2006-09-05" statvalue="2" type="checkstyle"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-09-06" statvalue="100" type="cobertura-line"/>
+        <result date="2006-09-06" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="net_objectlab_kit_datecalc_jdk_DefaultJdkDateCalculatorFactory.java" path="net/objectlab/kit/datecalc/jdk/DefaultJdkDateCalculatorFactory.java">
@@ -309,6 +329,8 @@
         <result date="2006-09-04" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-05" statvalue="95" type="cobertura-line"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-09-06" statvalue="95" type="cobertura-line"/>
+        <result date="2006-09-06" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="net_objectlab_kit_datecalc_jdk_JdkCalendarDateCalculator.java" path="net/objectlab/kit/datecalc/jdk/JdkCalendarDateCalculator.java">
@@ -316,6 +338,8 @@
         <result date="2006-09-04" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-09-06" statvalue="100" type="cobertura-line"/>
+        <result date="2006-09-06" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="net_objectlab_kit_datecalc_jdk_JdkDateBaseDateCalculator.java" path="net/objectlab/kit/datecalc/jdk/JdkDateBaseDateCalculator.java">
@@ -323,12 +347,16 @@
         <result date="2006-09-04" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-05" statvalue="91" type="cobertura-line"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-09-06" statvalue="90" type="cobertura-line"/>
+        <result date="2006-09-06" statvalue="100" type="cobertura-branch"/>
     </file>
     <file id="net_objectlab_kit_datecalc_jdk_JdkDateCalculator.java" path="net/objectlab/kit/datecalc/jdk/JdkDateCalculator.java">
         <result date="2006-09-04" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-04" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-09-06" statvalue="100" type="cobertura-line"/>
+        <result date="2006-09-06" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="net_objectlab_kit_datecalc_jdk_JdkDatePeriodCountCalculator.java" path="net/objectlab/kit/datecalc/jdk/JdkDatePeriodCountCalculator.java">
@@ -336,6 +364,8 @@
         <result date="2006-09-04" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
+        <result date="2006-09-06" statvalue="100" type="cobertura-line"/>
+        <result date="2006-09-06" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="net_objectlab_kit_datecalc_jdk_AbstractDateCalculatorTest.java" path="net/objectlab/kit/datecalc/jdk/AbstractDateCalculatorTest.java"/>
@@ -354,4 +384,33 @@
         id="net_objectlab_kit_datecalc_jdk_JdkDateModifiedFollowingDateCalculatorTest.java" path="net/objectlab/kit/datecalc/jdk/JdkDateModifiedFollowingDateCalculatorTest.java"/>
     <file
         id="net_objectlab_kit_datecalc_jdk_JdkDateModifiedPreceedingDateCalculatorTest.java" path="net/objectlab/kit/datecalc/jdk/JdkDateModifiedPreceedingDateCalculatorTest.java"/>
+    <file
+        id="net_objectlab_kit_datecalc_jdk_DefaultJdkCalendarCalculatorFactory.java" path="net/objectlab/kit/datecalc/jdk/DefaultJdkCalendarCalculatorFactory.java">
+        <result date="2006-09-06" statvalue="87" type="cobertura-line"/>
+        <result date="2006-09-06" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file id="net_objectlab_kit_datecalc_jdk_JdkCalendarCalculator.java" path="net/objectlab/kit/datecalc/jdk/JdkCalendarCalculator.java">
+        <result date="2006-09-06" statvalue="100" type="cobertura-line"/>
+        <result date="2006-09-06" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="net_objectlab_kit_datecalc_jdk_JdkCalendarCalculatorFactory.java" path="net/objectlab/kit/datecalc/jdk/JdkCalendarCalculatorFactory.java">
+        <result date="2006-09-06" statvalue="100" type="cobertura-line"/>
+        <result date="2006-09-06" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="net_objectlab_kit_datecalc_jdk_JdkCalendarIMMDateCalculator.java" path="net/objectlab/kit/datecalc/jdk/JdkCalendarIMMDateCalculator.java">
+        <result date="2006-09-06" statvalue="100" type="cobertura-line"/>
+        <result date="2006-09-06" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="net_objectlab_kit_datecalc_jdk_JdkCalendarPeriodCountCalculator.java" path="net/objectlab/kit/datecalc/jdk/JdkCalendarPeriodCountCalculator.java">
+        <result date="2006-09-06" statvalue="100" type="cobertura-line"/>
+        <result date="2006-09-06" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="net_objectlab_kit_datecalc_jdk_JdkDateIMMDateCalculator.java" path="net/objectlab/kit/datecalc/jdk/JdkDateIMMDateCalculator.java">
+        <result date="2006-09-06" statvalue="100" type="cobertura-line"/>
+        <result date="2006-09-06" statvalue="100" type="cobertura-branch"/>
+    </file>
 </qalab>
