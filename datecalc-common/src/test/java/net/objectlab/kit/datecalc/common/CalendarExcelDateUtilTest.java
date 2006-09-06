@@ -10,7 +10,7 @@ public class CalendarExcelDateUtilTest extends AbstractExcelDateUtilTest<Calenda
     }
 
     @Override
-    protected Calendar createDateFromExcel(final double excelDate) {
-        return ExcelDateUtil.getJavaCalendar(excelDate, false);
+    protected Calendar createDateFromExcel(final double excelDate, final boolean use1904Windowing) {
+        return ExcelDateUtil.getJavaCalendar(excelDate, use1904Windowing);
     }
 }

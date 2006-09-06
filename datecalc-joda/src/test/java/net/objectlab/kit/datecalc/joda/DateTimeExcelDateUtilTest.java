@@ -12,7 +12,7 @@ public class DateTimeExcelDateUtilTest extends AbstractExcelDateUtilTest<DateTim
     }
 
     @Override
-    protected DateTime createDateFromExcel(final double excelDate) {
-        return JodaExcelDateUtil.getDateTime(excelDate, false);
+    protected DateTime createDateFromExcel(final double excelDate, final boolean use1904Windowing) {
+        return JodaExcelDateUtil.getDateTime(excelDate, use1904Windowing);
     }
 }

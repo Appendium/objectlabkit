@@ -10,7 +10,7 @@ public class DateExcelDateUtilTest extends AbstractExcelDateUtilTest<Date> {
     }
 
     @Override
-    protected Date createDateFromExcel(final double excelDate) {
-        return ExcelDateUtil.getJavaDateOnly(excelDate, false);
+    protected Date createDateFromExcel(final double excelDate, final boolean use1904Windowing) {
+        return ExcelDateUtil.getJavaDateOnly(excelDate, use1904Windowing);
     }
 }

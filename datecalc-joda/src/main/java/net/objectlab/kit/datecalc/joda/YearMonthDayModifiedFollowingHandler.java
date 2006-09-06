@@ -32,6 +32,10 @@ import org.joda.time.YearMonthDay;
  */
 public class YearMonthDayModifiedFollowingHandler implements HolidayHandler<YearMonthDay> {
 
+    public String getType() {
+        return HolidayHandlerType.MODIFIED_FOLLLOWING;
+    }
+
     public YearMonthDay moveCurrentDate(final DateCalculator<YearMonthDay> calendar) {
         YearMonthDay date = calendar.getCurrentBusinessDate();
         final int month = date.getMonthOfYear();
@@ -45,10 +49,6 @@ public class YearMonthDayModifiedFollowingHandler implements HolidayHandler<Year
             }
         }
         return date;
-    }
-
-    public String getType() {
-        return HolidayHandlerType.MODIFIED_FOLLLOWING;
     }
 
 }
