@@ -18,8 +18,8 @@
 package net.objectlab.kit.datecalc.common;
 
 /**
- * Some instruments require a period Bi Annually which then can be Mar-Sep or
- * Jun-Dec.
+ * Some instruments require a period different from the usual Quarterly but still following IMM, e.g. Bi Annually which then can be Mar-Sep or
+ * Jun-Dec, or Annually.
  * 
  * @author Benoit Xhenseval
  * @author $LastChangedBy$
@@ -32,6 +32,6 @@ public enum IMMPeriod {
     BI_ANNUALY_JUN_DEC,
     /** Conventional period: Quarterly: eg March, June, September, December */
     QUARTERLY,
-    /** Annually, jump from 1y to the next */
+    /** Annually, jump from 1 year to the next */
     ANNUALLY
 }

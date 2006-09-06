@@ -56,18 +56,37 @@
     <ul>
     <li><a href="./multiproject/datecalc-common/apidocs/net/objectlab/kit/datecalc/common/DateCalculator.html">DateCalculator</a> for all Date calculations.</li>
     <li><a href="./multiproject/datecalc-common/apidocs/net/objectlab/kit/datecalc/common/PeriodCountCalculator.html">PeriodCountCalculator</a> for all day, month and year diff calculations.</li>
+    <li><a href="./multiproject/datecalc-common/apidocs/net/objectlab/kit/datecalc/common/IMMDateCalculator.html">IMMDateCalculator</a> for all IMM calculations (International Money Market).</li>
     </ul>
     	<h4>JDK</h4>
     	<p>2 implementations for Pure JDK have been released</p>
     	<ol>
-    		<li><strong>Calendar:</strong><pre>DateCalculator&lt;Calendar> calc = DefaultJdkCalendarCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);</pre></li>
-    		<li><strong>Date:</strong><pre>DateCalculator&lt;Date> calc = DefaultJdkDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);</pre></li>
+    		<li><strong>Calendar:</strong>
+    		<pre>
+    		DateCalculator&lt;Calendar> calc = DefaultJdkCalendarCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);
+    		PeriodCountCalculator&lt;Calendar> calc = DefaultJdkCalendarCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
+    		IMMDateCalculator&lt;Calendar> calc = DefaultJdkCalendarCalculatorFactory.getDefaultInstance().getIMMDateCalculator();
+    		</pre>
+    		</li>
+    		<li><strong>Date:</strong><pre>
+    		DateCalculator&lt;Date> calc = DefaultJdkDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);
+    		PeriodCountCalculator&lt;Date> calc = DefaultJdkDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
+    		IMMDateCalculator&lt;Date> calc = DefaultJdkDateCalculatorFactory.getDefaultInstance().getIMMDateCalculator();
+    		</pre></li>
     	</ol>
     	<h4>JODA</h4>
     	<p>2 implementations for Joda have been released</p>
     	<ol>
-    		<li><strong>LocalDate</strong> (preferred):<pre>DateCalculator&lt;LocalDate> calc = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);</pre></li>
-    		<li><strong>YearMonthDay:</strong><pre>DateCalculator&lt;YearMonthDay> calc = DefaultYearMonthDayCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);</pre></li>
+    		<li><strong>LocalDate</strong> (preferred):<pre>
+    		DateCalculator&lt;LocalDate> calc = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);
+    		PeriodCountCalculator&lt;LocalDate> calc = DefaultLocalDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
+    		IMMDateCalculator&lt;LocalDate> calc = DefaultLocalDateCalculatorFactory.getDefaultInstance().getIMMDateCalculator();
+    		</pre></li>
+    		<li><strong>YearMonthDay:</strong><pre>
+    		DateCalculator&lt;YearMonthDay> calc = DefaultYearMonthDayCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);
+    		PeriodCountCalculator&lt;YearMonthDay> calc = DefaultYearMonthDayCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
+    		IMMDateCalculator&lt;YearMonthDay> calc = DefaultYearMonthDayCalculatorFactory.getDefaultInstance().getIMMDateCalculator();
+    		</pre></li>
     	</ol>
     </subsection>
     

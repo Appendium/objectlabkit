@@ -20,7 +20,7 @@ package net.objectlab.kit.datecalc.common;
 import java.util.List;
 
 /**
- * The IMMDates are defined
+ * The IMMDates are defined as the 3rd Wednesday of March, June, September and December.
  * 
  * @author Benoit Xhenseval
  * @author $LastChangedBy: benoitx $
@@ -37,8 +37,8 @@ public interface IMMDateCalculator<E> {
     boolean isIMMDate(final E date);
 
     /**
-     * Starting from the current business date, it will return the next IMM
-     * Date, even if the current business date is an IMM date (same as calling
+     * Given a start date, it will return the next IMM
+     * Date, even if the start date is an IMM date (same as calling
      * getNextIMMDate(IMMPeriod.QUARTERLY)).
      * 
      * @param startDate
@@ -47,8 +47,8 @@ public interface IMMDateCalculator<E> {
     E getNextIMMDate(final E startDate);
 
     /**
-     * Starting from the current business date, it will return the next IMM Date
-     * based on the IMMPeriod, even if the current business date is an IMM date.
+     * Given a start date, it will return the next IMM Date
+     * based on the IMMPeriod, even if the start date is an IMM date.
      * 
      * @param startDate
      * @param period
@@ -59,8 +59,8 @@ public interface IMMDateCalculator<E> {
     E getNextIMMDate(final E startDate, final IMMPeriod period);
 
     /**
-     * Starting from the current business date, it will return the previous IMM
-     * Date, even if the current business date is an IMM date.
+     * Given a start date, it will return the previous IMM
+     * Date, even if the start date is an IMM date.
      * 
      * @param startDate
      * @return the previous IMMDate based on current date.
@@ -68,8 +68,8 @@ public interface IMMDateCalculator<E> {
     E getPreviousIMMDate(final E startDate);
 
     /**
-     * Starting from the current business date, it will return the previous IMM
-     * Date based on the IMMPeriod, even if the current business date is an IMM
+     * Given a start date, it will return the previous IMM
+     * Date based on the IMMPeriod, even if the start date is an IMM
      * date.
      * 
      * @param period

@@ -59,7 +59,6 @@
         <summaryresult date="2006-09-05" filecount="4" statvalue="40" type="simian"/>
         <summaryresult date="2006-09-05" filecount="17" statvalue="91" type="cobertura-line"/>
         <summaryresult date="2006-09-05" filecount="17" statvalue="93" type="cobertura-branch"/>
-        <summaryresult date="2006-09-06" filecount="4" statvalue="40" type="simian"/>
         <summaryresult date="2006-09-06" filecount="19" statvalue="95" type="cobertura-line"/>
         <summaryresult date="2006-09-06" filecount="19" statvalue="96" type="cobertura-branch"/>
     </summary>
