@@ -104,5 +104,4 @@ public class JdkCalendarBaseDateCalculator extends AbstractDateCalculator<Calend
     public JdkCalendarBaseDateCalculator moveByBusinessDays(final int businessDays) {
         return (JdkCalendarBaseDateCalculator) super.moveByBusinessDays(businessDays);
     }
-
 }
