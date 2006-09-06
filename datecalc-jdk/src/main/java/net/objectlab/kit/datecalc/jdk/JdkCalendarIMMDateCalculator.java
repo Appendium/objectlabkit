@@ -8,6 +8,8 @@ import net.objectlab.kit.datecalc.common.AbstractIMMDateCalculator;
 import net.objectlab.kit.datecalc.common.IMMPeriod;
 
 public class JdkCalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calendar> {
+    private static final int NUMBER_DAYS_IN_WEEK = 7;
+
     /**
      * Returns a list of IMM dates between 2 dates, it will exclude the start
      * date if it is an IMM date but would include the end date if it is an IMM.
@@ -87,9 +89,9 @@ public class JdkCalendarIMMDateCalculator extends AbstractIMMDateCalculator<Cale
         case Calendar.SEPTEMBER:
         case Calendar.DECEMBER:
             return true;
+        default:
+            return false;
         }
-
-        return false;
     }
 
     /**
@@ -106,11 +108,11 @@ public class JdkCalendarIMMDateCalculator extends AbstractIMMDateCalculator<Cale
         if (dayOfWeek < Calendar.WEDNESDAY) {
             cal.add(Calendar.DAY_OF_MONTH, Calendar.WEDNESDAY - dayOfWeek);
         } else if (dayOfWeek > Calendar.WEDNESDAY) {
-            cal.add(Calendar.DAY_OF_MONTH, (Calendar.WEDNESDAY + 7) - dayOfWeek);
+            cal.add(Calendar.DAY_OF_MONTH, (Calendar.WEDNESDAY + NUMBER_DAYS_IN_WEEK) - dayOfWeek);
         }
 
         // go to 3rd wednesday - i.e. move 2 weeks forward
-        cal.add(Calendar.DAY_OF_MONTH, 7 * 2);
+        cal.add(Calendar.DAY_OF_MONTH, NUMBER_DAYS_IN_WEEK * 2);
     }
 
     public boolean isIMMDate(final Calendar date) {

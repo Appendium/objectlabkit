@@ -155,7 +155,6 @@ public abstract class AbstractIMMDateTest<E> extends TestCase {
         checkImm(cal, parseDate("2006-12-21"), false);
     }
 
-
     public void testPreviousIMM() {
         E startDate = parseDate("2006-08-01");
 

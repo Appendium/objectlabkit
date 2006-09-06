@@ -20,7 +20,7 @@ package net.objectlab.kit.datecalc.common;
 import java.util.List;
 
 /**
- * The IMMDates are defined 
+ * The IMMDates are defined
  * 
  * @author Benoit Xhenseval
  * @author $LastChangedBy: benoitx $

@@ -13,22 +13,22 @@ public class YearMonthDayIMMDateCalculator extends AbstractIMMDateCalculator<Yea
 
     private static final LocalDateIMMDateCalculator DELEGATE = new LocalDateIMMDateCalculator();
 
-    public boolean isIMMDate(YearMonthDay date) {
+    public boolean isIMMDate(final YearMonthDay date) {
         return DELEGATE.isIMMDate(date.toLocalDate());
     }
 
     @Override
-    protected YearMonthDay getNextIMMDate(boolean requestNextIMM, YearMonthDay theStartDate, IMMPeriod period) {
+    protected YearMonthDay getNextIMMDate(final boolean requestNextIMM, final YearMonthDay theStartDate, final IMMPeriod period) {
         return new YearMonthDay(DELEGATE.getNextIMMDate(requestNextIMM, theStartDate.toLocalDate(), period));
     }
 
-    public List<YearMonthDay> getIMMDates(YearMonthDay start, YearMonthDay end, IMMPeriod period) {
+    public List<YearMonthDay> getIMMDates(final YearMonthDay start, final YearMonthDay end, final IMMPeriod period) {
         return buildList(DELEGATE.getIMMDates(start.toLocalDate(), end.toLocalDate(), period));
     }
 
-    private List<YearMonthDay> buildList(List<LocalDate> dates) {
-        List<YearMonthDay> imms = new ArrayList<YearMonthDay>();
-        for (LocalDate date : dates) {
+    private List<YearMonthDay> buildList(final List<LocalDate> dates) {
+        final List<YearMonthDay> imms = new ArrayList<YearMonthDay>();
+        for (final LocalDate date : dates) {
             imms.add(new YearMonthDay(date));
         }
         return imms;

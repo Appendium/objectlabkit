@@ -76,12 +76,12 @@ public class UtilsTest extends TestCase {
         Collections.sort(actual);
         assertEquals(expected, actual);
     }
-    
+
     public void testFailCreateDate() {
         try {
             Utils.createDate("blablabla");
             fail("should have thown an IllegalArgumentException");
-        } catch(IllegalArgumentException e) {
+        } catch (final IllegalArgumentException e) {
             // all ok
         }
     }
@@ -90,7 +90,7 @@ public class UtilsTest extends TestCase {
         try {
             Utils.createCalendar("blablabla");
             fail("should have thown an IllegalArgumentException");
-        } catch(IllegalArgumentException e) {
+        } catch (final IllegalArgumentException e) {
             // all ok
         }
     }
