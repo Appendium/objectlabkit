@@ -79,22 +79,26 @@
     	should get its own!</li>
     	<li>when you get a DateCalculator, you can set the startDate, this sets the currentDate too.  The startDate does not move.  The current date is
     	the result of your calculations.  If the startDate is a non-working day, it may be moved automatically according to the HolidayHandler.</li>
-    	<li>when you call addDays(..), moveByBusinessDays(..) the currentDate is moved in the Calculator.</li>
+    	<li>when you call moveByDays(..), moveByBusinessDays(..) the currentDate is moved in the Calculator.</li>
     </ul>
     <pre>
     	// create or get the Holidays
         final Set&lt;LocalDate> holidays = new HashSet&lt;LocalDate>();
         holidays.add(new LocalDate("2006-08-28"));
         
+        // register the holidays (any calculator with name "UK" asked from now on will receive a reference to this set
         DefaultDateCalculatorFactory.getDefaultInstance().registerHolidays("UK", holidays);
 
+	// ask for a LocalDate calculator for "UK" (even if a new set of holidays is registered, this one calculator is not affected
         DateCalculator&lt;LocalDate> cal = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);
 	cal.setStartDate(new LocalDate("2006-08-28)); // this also sets the current business date.
 	
 	// the startDate stays 28 Aug 06 BUT the currentDate has moved, 
 	// according to Forward handler to 29 Aug 2006.
-	cal.getStartDate();   // 28 Aug 06
-	cal.getCurrentBusinessDate(); // 29 Aug 06   
+	LocalDate start = cal.getStartDate();   // 28 Aug 06
+	LocalDate current = cal.getCurrentBusinessDate(); // 29 Aug 06
+	
+	LocalDate newCurrent = cal.moveByDays(4).getCurrentBusinessDate(); // 4 Sept 06 due to weekend!
     </pre>
    
     

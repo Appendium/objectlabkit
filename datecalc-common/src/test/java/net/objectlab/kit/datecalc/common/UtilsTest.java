@@ -13,14 +13,11 @@ import java.util.TimeZone;
 import junit.framework.TestCase;
 
 public class UtilsTest extends TestCase {
+    private SimpleDateFormat sdf;
 
-    SimpleDateFormat sdf;
+    private Set<Calendar> calendarSet;
 
-    Calendar cal;
-
-    Set<Calendar> calendarSet;
-
-    Set<Date> dateSet;
+    private Set<Date> dateSet;
 
     @Override
     protected void setUp() throws Exception {

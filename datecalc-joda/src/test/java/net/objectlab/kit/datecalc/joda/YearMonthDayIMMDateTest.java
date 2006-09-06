@@ -4,7 +4,6 @@ import net.objectlab.kit.datecalc.common.AbstractIMMDateTest;
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
-import org.joda.time.LocalDate;
 import org.joda.time.YearMonthDay;
 
 public class YearMonthDayIMMDateTest extends AbstractIMMDateTest<YearMonthDay> {
