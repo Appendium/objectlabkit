@@ -30,6 +30,10 @@ import org.joda.time.LocalDate;
  */
 public class LocalDateModifiedPreceedingHandler implements HolidayHandler<LocalDate> {
 
+    public String getType() {
+        return HolidayHandlerType.MODIFIED_PRECEEDING;
+    }
+
     public LocalDate moveCurrentDate(final DateCalculator<LocalDate> calendar) {
         LocalDate date = calendar.getCurrentBusinessDate();
         final int month = date.getMonthOfYear();
@@ -44,9 +48,4 @@ public class LocalDateModifiedPreceedingHandler implements HolidayHandler<LocalD
         }
         return date;
     }
-
-    public String getType() {
-        return HolidayHandlerType.MODIFIED_PRECEEDING;
-    }
-
 }

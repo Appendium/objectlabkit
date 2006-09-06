@@ -12,7 +12,7 @@ public class LocalDateExcelDateUtilTest extends AbstractExcelDateUtilTest<LocalD
     }
 
     @Override
-    protected LocalDate createDateFromExcel(final double excelDate) {
-        return JodaExcelDateUtil.getLocalDate(excelDate, false);
+    protected LocalDate createDateFromExcel(final double excelDate, final boolean use1904Windowing) {
+        return JodaExcelDateUtil.getLocalDate(excelDate, use1904Windowing);
     }
 }

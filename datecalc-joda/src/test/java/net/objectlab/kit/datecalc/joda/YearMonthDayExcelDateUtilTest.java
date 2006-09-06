@@ -12,7 +12,7 @@ public class YearMonthDayExcelDateUtilTest extends AbstractExcelDateUtilTest<Yea
     }
 
     @Override
-    protected YearMonthDay createDateFromExcel(final double excelDate) {
-        return JodaExcelDateUtil.getYearMonthDay(excelDate, false);
+    protected YearMonthDay createDateFromExcel(final double excelDate, final boolean use1904Windowing) {
+        return JodaExcelDateUtil.getYearMonthDay(excelDate, use1904Windowing);
     }
 }
