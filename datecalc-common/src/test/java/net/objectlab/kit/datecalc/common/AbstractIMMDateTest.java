@@ -7,145 +7,135 @@ import junit.framework.TestCase;
 
 public abstract class AbstractIMMDateTest<E> extends TestCase {
 
-    private DateCalculator<E> cal;
+    private IMMDateCalculator<E> cal;
 
     public void setUp() {
         cal = getDateCalculator("bla");
     }
 
-    protected abstract DateCalculator<E> getDateCalculator(String name);
+    protected abstract IMMDateCalculator<E> getDateCalculator(String name);
 
     protected abstract E parseDate(String string);
 
-    private void checkImm(final DateCalculator<E> cal, final E date, final boolean expected) {
+    private void checkImm(final IMMDateCalculator<E> cal, final E date, final boolean expected) {
         assertEquals("check " + date, expected, cal.isIMMDate(date));
     }
 
-    public void testSanityCheck() {
-        Assert.assertEquals("Name", "bla", cal.getName());
-        Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
-    }
-
     public void testNextIMM() {
-        final E startDate = parseDate("2006-08-01");
-        cal.setStartDate(startDate);
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-09-20"), cal.getNextIMMDate());
+        E startDate = parseDate("2006-08-01");
+        Assert.assertEquals("From " + startDate, parseDate("2006-09-20"), cal.getNextIMMDate(startDate));
 
-        cal.setStartDate(parseDate("2006-01-09"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-03-15"), cal.getNextIMMDate());
-        cal.setStartDate(parseDate("2006-02-09"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-03-15"), cal.getNextIMMDate());
-        cal.setStartDate(parseDate("2006-03-09"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-03-15"), cal.getNextIMMDate());
+        startDate = parseDate("2006-01-09");
+        Assert.assertEquals("From " + startDate, parseDate("2006-03-15"), cal.getNextIMMDate(startDate));
+        startDate = parseDate("2006-02-09");
+        Assert.assertEquals("From " + startDate, parseDate("2006-03-15"), cal.getNextIMMDate(startDate));
+        startDate = parseDate("2006-03-09");
+        Assert.assertEquals("From " + startDate, parseDate("2006-03-15"), cal.getNextIMMDate(startDate));
 
-        cal.setStartDate(parseDate("2006-04-09"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-06-21"), cal.getNextIMMDate());
-        cal.setStartDate(parseDate("2006-05-09"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-06-21"), cal.getNextIMMDate());
-        cal.setStartDate(parseDate("2006-06-09"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-06-21"), cal.getNextIMMDate());
+        startDate = parseDate("2006-04-09");
+        Assert.assertEquals("From " + startDate, parseDate("2006-06-21"), cal.getNextIMMDate(startDate));
+        startDate = parseDate("2006-05-09");
+        Assert.assertEquals("From " + startDate, parseDate("2006-06-21"), cal.getNextIMMDate(startDate));
+        startDate = parseDate("2006-06-09");
+        Assert.assertEquals("From " + startDate, parseDate("2006-06-21"), cal.getNextIMMDate(startDate));
 
-        cal.setStartDate(parseDate("2006-07-09"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-09-20"), cal.getNextIMMDate());
-        cal.setStartDate(parseDate("2006-08-09"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-09-20"), cal.getNextIMMDate());
-        cal.setStartDate(parseDate("2006-09-09"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-09-20"), cal.getNextIMMDate());
+        startDate = parseDate("2006-07-09");
+        Assert.assertEquals("From " + startDate, parseDate("2006-09-20"), cal.getNextIMMDate(startDate));
+        startDate = parseDate("2006-08-09");
+        Assert.assertEquals("From " + startDate, parseDate("2006-09-20"), cal.getNextIMMDate(startDate));
+        startDate = parseDate("2006-09-09");
+        Assert.assertEquals("From " + startDate, parseDate("2006-09-20"), cal.getNextIMMDate(startDate));
 
-        cal.setStartDate(parseDate("2006-10-09"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-12-20"), cal.getNextIMMDate());
-        cal.setStartDate(parseDate("2006-11-09"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-12-20"), cal.getNextIMMDate());
-        cal.setStartDate(parseDate("2006-12-09"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-12-20"), cal.getNextIMMDate());
+        startDate = parseDate("2006-10-09");
+        Assert.assertEquals("From " + startDate, parseDate("2006-12-20"), cal.getNextIMMDate(startDate));
+        startDate = parseDate("2006-11-09");
+        Assert.assertEquals("From " + startDate, parseDate("2006-12-20"), cal.getNextIMMDate(startDate));
+        startDate = parseDate("2006-12-09");
+        Assert.assertEquals("From " + startDate, parseDate("2006-12-20"), cal.getNextIMMDate(startDate));
 
-        cal.setStartDate(parseDate("2006-03-14"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-03-15"), cal.getNextIMMDate());
-        cal.setStartDate(parseDate("2006-03-15"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-06-21"), cal.getNextIMMDate());
-        cal.setStartDate(parseDate("2006-03-16"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-06-21"), cal.getNextIMMDate());
+        startDate = parseDate("2006-03-14");
+        Assert.assertEquals("From " + startDate, parseDate("2006-03-15"), cal.getNextIMMDate(startDate));
+        startDate = parseDate("2006-03-15");
+        Assert.assertEquals("From " + startDate, parseDate("2006-06-21"), cal.getNextIMMDate(startDate));
+        startDate = parseDate("2006-03-16");
+        Assert.assertEquals("From " + startDate, parseDate("2006-06-21"), cal.getNextIMMDate(startDate));
 
-        cal.setStartDate(parseDate("2006-06-20"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-06-21"), cal.getNextIMMDate());
-        cal.setStartDate(parseDate("2006-06-21"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-09-20"), cal.getNextIMMDate());
-        cal.setStartDate(parseDate("2006-06-22"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-09-20"), cal.getNextIMMDate());
+        startDate = parseDate("2006-06-20");
+        Assert.assertEquals("From " + startDate, parseDate("2006-06-21"), cal.getNextIMMDate(startDate));
+        startDate = parseDate("2006-06-21");
+        Assert.assertEquals("From " + startDate, parseDate("2006-09-20"), cal.getNextIMMDate(startDate));
+        startDate = parseDate("2006-06-22");
+        Assert.assertEquals("From " + startDate, parseDate("2006-09-20"), cal.getNextIMMDate(startDate));
 
-        cal.setStartDate(parseDate("2006-09-19"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-09-20"), cal.getNextIMMDate());
-        cal.setStartDate(parseDate("2006-09-20"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-12-20"), cal.getNextIMMDate());
-        cal.setStartDate(parseDate("2006-09-21"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-12-20"), cal.getNextIMMDate());
+        startDate = parseDate("2006-09-19");
+        Assert.assertEquals("From " + startDate, parseDate("2006-09-20"), cal.getNextIMMDate(startDate));
+        startDate = parseDate("2006-09-20");
+        Assert.assertEquals("From " + startDate, parseDate("2006-12-20"), cal.getNextIMMDate(startDate));
+        startDate = parseDate("2006-09-21");
+        Assert.assertEquals("From " + startDate, parseDate("2006-12-20"), cal.getNextIMMDate(startDate));
 
-        cal.setStartDate(parseDate("2006-12-19"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-12-20"), cal.getNextIMMDate());
-        cal.setStartDate(parseDate("2006-12-20"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2007-03-21"), cal.getNextIMMDate());
-        cal.setStartDate(parseDate("2006-12-21"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2007-03-21"), cal.getNextIMMDate());
+        startDate = parseDate("2006-12-19");
+        Assert.assertEquals("From " + startDate, parseDate("2006-12-20"), cal.getNextIMMDate(startDate));
+        startDate = parseDate("2006-12-20");
+        Assert.assertEquals("From " + startDate, parseDate("2007-03-21"), cal.getNextIMMDate(startDate));
+        startDate = parseDate("2006-12-21");
+        Assert.assertEquals("From " + startDate, parseDate("2007-03-21"), cal.getNextIMMDate(startDate));
 
-        cal.setStartDate(parseDate("2006-03-15"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-06-21"), cal.getNextIMMDate());
+        startDate = parseDate("2006-03-15");
+        Assert.assertEquals("From " + startDate, parseDate("2006-06-21"), cal.getNextIMMDate(startDate));
     }
 
     public void testNextIMMWithPeriod() {
-        final E startDate = parseDate("2006-08-01");
-        cal.setStartDate(startDate);
+        E startDate = parseDate("2006-08-01");
 
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-09-20"), cal.getNextIMMDate());
+        Assert.assertEquals("From " + startDate, parseDate("2006-09-20"), cal.getNextIMMDate(startDate));
 
         IMMPeriod period = IMMPeriod.QUARTERLY;
 
-        cal.setStartDate(parseDate("2006-01-09"));
-        Assert.assertEquals("From " + cal.getStartDate() + " period:" + period, parseDate("2006-03-15"), cal
-                .getNextIMMDate(period));
+        startDate = parseDate("2006-01-09");
+        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2006-03-15"), cal.getNextIMMDate(startDate,
+                period));
         period = IMMPeriod.BI_ANNUALY_JUN_DEC;
-        Assert.assertEquals("From " + cal.getStartDate() + " period:" + period, parseDate("2006-06-21"), cal
-                .getNextIMMDate(period));
+        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2006-06-21"), cal.getNextIMMDate(startDate,
+                period));
         period = IMMPeriod.BI_ANNUALY_MAR_SEP;
-        Assert.assertEquals("From " + cal.getStartDate() + " period:" + period, parseDate("2006-03-15"), cal
-                .getNextIMMDate(period));
+        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2006-03-15"), cal.getNextIMMDate(startDate,
+                period));
         period = IMMPeriod.ANNUALLY;
-        Assert.assertEquals("From " + cal.getStartDate() + " period:" + period, parseDate("2007-03-21"), cal
-                .getNextIMMDate(period));
+        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2007-03-21"), cal.getNextIMMDate(startDate,
+                period));
 
-        cal.setStartDate(parseDate("2006-03-20"));
+        startDate = parseDate("2006-03-20");
         period = IMMPeriod.QUARTERLY;
-        Assert.assertEquals("From " + cal.getStartDate() + " period:" + period, parseDate("2006-06-21"), cal
-                .getNextIMMDate(period));
+        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2006-06-21"), cal.getNextIMMDate(startDate,
+                period));
         period = IMMPeriod.BI_ANNUALY_JUN_DEC;
-        Assert.assertEquals("From " + cal.getStartDate() + " period:" + period, parseDate("2006-06-21"), cal
-                .getNextIMMDate(period));
+        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2006-06-21"), cal.getNextIMMDate(startDate,
+                period));
         period = IMMPeriod.BI_ANNUALY_MAR_SEP;
-        Assert.assertEquals("From " + cal.getStartDate() + " period:" + period, parseDate("2006-09-20"), cal
-                .getNextIMMDate(period));
+        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2006-09-20"), cal.getNextIMMDate(startDate,
+                period));
         period = IMMPeriod.ANNUALLY;
-        Assert.assertEquals("From " + cal.getStartDate() + " period:" + period, parseDate("2007-06-20"), cal
-                .getNextIMMDate(period));
+        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2007-06-20"), cal.getNextIMMDate(startDate,
+                period));
 
-        cal.setStartDate(parseDate("2006-03-15"));
+        startDate = parseDate("2006-03-15");
         period = IMMPeriod.QUARTERLY;
-        Assert.assertEquals("From " + cal.getStartDate() + " period:" + period, parseDate("2006-06-21"), cal
-                .getNextIMMDate(period));
+        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2006-06-21"), cal.getNextIMMDate(startDate,
+                period));
         period = IMMPeriod.BI_ANNUALY_JUN_DEC;
-        Assert.assertEquals("From " + cal.getStartDate() + " period:" + period, parseDate("2006-06-21"), cal
-                .getNextIMMDate(period));
+        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2006-06-21"), cal.getNextIMMDate(startDate,
+                period));
         period = IMMPeriod.BI_ANNUALY_MAR_SEP;
-        Assert.assertEquals("From " + cal.getStartDate() + " period:" + period, parseDate("2006-09-20"), cal
-                .getNextIMMDate(period));
-        cal.setStartDate(parseDate("2006-03-15"));
+        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2006-09-20"), cal.getNextIMMDate(startDate,
+                period));
+        startDate = parseDate("2006-03-15");
         period = IMMPeriod.ANNUALLY;
-        Assert.assertEquals("From " + cal.getStartDate() + " period:" + period, parseDate("2007-06-20"), cal
-                .getNextIMMDate(period));
+        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2007-06-20"), cal.getNextIMMDate(startDate,
+                period));
     }
 
     public void testIfIMMDate() {
-        final E startDate = parseDate("2006-08-01");
-        cal.setStartDate(startDate);
-
         checkImm(cal, parseDate("2006-08-01"), false);
 
         checkImm(cal, parseDate("2006-03-14"), false);
@@ -165,89 +155,69 @@ public abstract class AbstractIMMDateTest<E> extends TestCase {
         checkImm(cal, parseDate("2006-12-21"), false);
     }
 
-    public void testMoveByIMMTenor() {
-        final E startDate = parseDate("2006-04-01");
-        cal.setStartDate(startDate);
-
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-06-21"), cal.moveByTenor(StandardTenor.IMM)
-                .getCurrentBusinessDate());
-    }
-
-    public void testMoveByNullTenor() {
-        final E startDate = parseDate("2006-04-01");
-        cal.setStartDate(startDate);
-
-        try {
-            cal.moveByTenor(null);
-            Assert.fail("Should have thrown IllegalArgumentException");
-        } catch (final IllegalArgumentException e) {
-            // ok
-        }
-    }
 
     public void testPreviousIMM() {
-        final E startDate = parseDate("2006-08-01");
-        cal.setStartDate(startDate);
+        E startDate = parseDate("2006-08-01");
 
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-06-21"), cal.getPreviousIMMDate());
+        Assert.assertEquals("From " + startDate, parseDate("2006-06-21"), cal.getPreviousIMMDate(startDate));
 
-        cal.setStartDate(parseDate("2006-01-09"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2005-12-21"), cal.getPreviousIMMDate());
-        cal.setStartDate(parseDate("2006-02-09"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2005-12-21"), cal.getPreviousIMMDate());
-        cal.setStartDate(parseDate("2006-03-09"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2005-12-21"), cal.getPreviousIMMDate());
+        startDate = parseDate("2006-01-09");
+        Assert.assertEquals("From " + startDate, parseDate("2005-12-21"), cal.getPreviousIMMDate(startDate));
+        startDate = parseDate("2006-02-09");
+        Assert.assertEquals("From " + startDate, parseDate("2005-12-21"), cal.getPreviousIMMDate(startDate));
+        startDate = parseDate("2006-03-09");
+        Assert.assertEquals("From " + startDate, parseDate("2005-12-21"), cal.getPreviousIMMDate(startDate));
 
-        cal.setStartDate(parseDate("2006-04-09"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-03-15"), cal.getPreviousIMMDate());
-        cal.setStartDate(parseDate("2006-05-09"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-03-15"), cal.getPreviousIMMDate());
-        cal.setStartDate(parseDate("2006-06-09"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-03-15"), cal.getPreviousIMMDate());
+        startDate = parseDate("2006-04-09");
+        Assert.assertEquals("From " + startDate, parseDate("2006-03-15"), cal.getPreviousIMMDate(startDate));
+        startDate = parseDate("2006-05-09");
+        Assert.assertEquals("From " + startDate, parseDate("2006-03-15"), cal.getPreviousIMMDate(startDate));
+        startDate = parseDate("2006-06-09");
+        Assert.assertEquals("From " + startDate, parseDate("2006-03-15"), cal.getPreviousIMMDate(startDate));
 
-        cal.setStartDate(parseDate("2006-07-09"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-06-21"), cal.getPreviousIMMDate());
-        cal.setStartDate(parseDate("2006-08-09"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-06-21"), cal.getPreviousIMMDate());
-        cal.setStartDate(parseDate("2006-09-09"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-06-21"), cal.getPreviousIMMDate());
+        startDate = parseDate("2006-07-09");
+        Assert.assertEquals("From " + startDate, parseDate("2006-06-21"), cal.getPreviousIMMDate(startDate));
+        startDate = parseDate("2006-08-09");
+        Assert.assertEquals("From " + startDate, parseDate("2006-06-21"), cal.getPreviousIMMDate(startDate));
+        startDate = parseDate("2006-09-09");
+        Assert.assertEquals("From " + startDate, parseDate("2006-06-21"), cal.getPreviousIMMDate(startDate));
 
-        cal.setStartDate(parseDate("2006-10-09"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-09-20"), cal.getPreviousIMMDate());
-        cal.setStartDate(parseDate("2006-11-09"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-09-20"), cal.getPreviousIMMDate());
-        cal.setStartDate(parseDate("2006-12-09"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-09-20"), cal.getPreviousIMMDate());
+        startDate = parseDate("2006-10-09");
+        Assert.assertEquals("From " + startDate, parseDate("2006-09-20"), cal.getPreviousIMMDate(startDate));
+        startDate = parseDate("2006-11-09");
+        Assert.assertEquals("From " + startDate, parseDate("2006-09-20"), cal.getPreviousIMMDate(startDate));
+        startDate = parseDate("2006-12-09");
+        Assert.assertEquals("From " + startDate, parseDate("2006-09-20"), cal.getPreviousIMMDate(startDate));
 
         // close to dates
 
-        cal.setStartDate(parseDate("2006-03-14"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2005-12-21"), cal.getPreviousIMMDate());
-        cal.setStartDate(parseDate("2006-03-15"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2005-12-21"), cal.getPreviousIMMDate());
-        cal.setStartDate(parseDate("2006-03-16"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-03-15"), cal.getPreviousIMMDate());
+        startDate = parseDate("2006-03-14");
+        Assert.assertEquals("From " + startDate, parseDate("2005-12-21"), cal.getPreviousIMMDate(startDate));
+        startDate = parseDate("2006-03-15");
+        Assert.assertEquals("From " + startDate, parseDate("2005-12-21"), cal.getPreviousIMMDate(startDate));
+        startDate = parseDate("2006-03-16");
+        Assert.assertEquals("From " + startDate, parseDate("2006-03-15"), cal.getPreviousIMMDate(startDate));
 
-        cal.setStartDate(parseDate("2006-06-20"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-03-15"), cal.getPreviousIMMDate());
-        cal.setStartDate(parseDate("2006-06-21"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-03-15"), cal.getPreviousIMMDate());
-        cal.setStartDate(parseDate("2006-06-22"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-06-21"), cal.getPreviousIMMDate());
+        startDate = parseDate("2006-06-20");
+        Assert.assertEquals("From " + startDate, parseDate("2006-03-15"), cal.getPreviousIMMDate(startDate));
+        startDate = parseDate("2006-06-21");
+        Assert.assertEquals("From " + startDate, parseDate("2006-03-15"), cal.getPreviousIMMDate(startDate));
+        startDate = parseDate("2006-06-22");
+        Assert.assertEquals("From " + startDate, parseDate("2006-06-21"), cal.getPreviousIMMDate(startDate));
 
-        cal.setStartDate(parseDate("2006-09-19"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-06-21"), cal.getPreviousIMMDate());
-        cal.setStartDate(parseDate("2006-09-20"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-06-21"), cal.getPreviousIMMDate());
-        cal.setStartDate(parseDate("2006-09-21"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-09-20"), cal.getPreviousIMMDate());
+        startDate = parseDate("2006-09-19");
+        Assert.assertEquals("From " + startDate, parseDate("2006-06-21"), cal.getPreviousIMMDate(startDate));
+        startDate = parseDate("2006-09-20");
+        Assert.assertEquals("From " + startDate, parseDate("2006-06-21"), cal.getPreviousIMMDate(startDate));
+        startDate = parseDate("2006-09-21");
+        Assert.assertEquals("From " + startDate, parseDate("2006-09-20"), cal.getPreviousIMMDate(startDate));
 
-        cal.setStartDate(parseDate("2006-12-19"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-09-20"), cal.getPreviousIMMDate());
-        cal.setStartDate(parseDate("2006-12-20"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-09-20"), cal.getPreviousIMMDate());
-        cal.setStartDate(parseDate("2006-12-21"));
-        Assert.assertEquals("From " + cal.getStartDate(), parseDate("2006-12-20"), cal.getPreviousIMMDate());
+        startDate = parseDate("2006-12-19");
+        Assert.assertEquals("From " + startDate, parseDate("2006-09-20"), cal.getPreviousIMMDate(startDate));
+        startDate = parseDate("2006-12-20");
+        Assert.assertEquals("From " + startDate, parseDate("2006-09-20"), cal.getPreviousIMMDate(startDate));
+        startDate = parseDate("2006-12-21");
+        Assert.assertEquals("From " + startDate, parseDate("2006-12-20"), cal.getPreviousIMMDate(startDate));
     }
 
     public void testIMMLists() {

@@ -17,7 +17,7 @@ package net.objectlab.kit.datecalc.common;
 
 public enum TenorCode {
     OVERNIGHT("ON", false), TOMNEXT("TN", false), SPOT("SP", false), SPOTNEXT("SN", false), SPOTWEEK("SW", false), DAY("D", true), WEEK(
-            "W", true), MONTH("M", true), YEAR("Y", true), IMM("IMM", false);
+            "W", true), MONTH("M", true), YEAR("Y", true);
 
     private final String code;
 

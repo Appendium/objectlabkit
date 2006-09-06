@@ -17,7 +17,6 @@
  */
 package net.objectlab.kit.datecalc.common;
 
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -193,81 +192,4 @@ public interface DateCalculator<E> {
      *         calendar.moveByTenor(StandardTenor.T_2M).getCurrentBusinessDate();)
      */
     DateCalculator<E> moveByTenor(final Tenor tenor);
-
-    /**
-     * Checks if a given date is an official IMM Date (3rd Wednesdays of
-     * March/June/Sept/Dec.
-     * 
-     * @param date
-     * @return true if that date is an IMM date.
-     */
-    boolean isIMMDate(E date);
-
-    /**
-     * Starting from the current business date, it will return the next IMM
-     * Date, even if the current business date is an IMM date (same as calling
-     * getNextIMMDate(IMMPeriod.QUARTERLY)).
-     * 
-     * @return the next IMMDate based on current business date.
-     */
-    E getNextIMMDate();
-
-    /**
-     * Starting from the current business date, it will return the next IMM Date
-     * based on the IMMPeriod, even if the current business date is an IMM date.
-     * 
-     * @param period
-     *            specify when the "next" IMM is, if quarterly then it is the
-     *            conventional algorithm.
-     * @return the next IMMDate based on current date.
-     */
-    E getNextIMMDate(IMMPeriod period);
-
-    /**
-     * Starting from the current business date, it will return the previous IMM
-     * Date, even if the current business date is an IMM date.
-     * 
-     * @return the previous IMMDate based on current date.
-     */
-    E getPreviousIMMDate();
-
-    /**
-     * Starting from the current business date, it will return the previous IMM
-     * Date based on the IMMPeriod, even if the current business date is an IMM
-     * date.
-     * 
-     * @param period
-     *            specify when the "previous" IMM is, if quarterly then it is
-     *            the conventional algorithm.
-     * @return the previous IMMDate based on current date.
-     */
-    E getPreviousIMMDate(IMMPeriod period);
-
-    /**
-     * Returns a list of IMM dates between 2 dates, it will exclude the start
-     * date if it is an IMM date but would include the end date if it is an IMM
-     * (same as as calling getIMMDates(start,end,IMMPeriod.QUARTERLY)).
-     * 
-     * @param start
-     *            start of the interval, excluded
-     * @param end
-     *            end of the interval, may be included.
-     * @return list of IMM dates
-     */
-    List<E> getIMMDates(final E start, final E end);
-
-    /**
-     * Returns a list of IMM dates between 2 dates, it will exclude the start
-     * date if it is an IMM date but would include the end date if it is an IMM.
-     * 
-     * @param start
-     *            start of the interval, excluded
-     * @param end
-     *            end of the interval, may be included.
-     * @param period
-     *            specify when the "next" IMM is, if quarterly then it is the
-     *            conventional algorithm.
-     * @return list of IMM dates
-     */
-    List<E> getIMMDates(final E start, final E end, final IMMPeriod period);
 }

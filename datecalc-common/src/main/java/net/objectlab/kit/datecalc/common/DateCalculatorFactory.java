@@ -60,4 +60,9 @@ public interface DateCalculatorFactory<E> {
      * @return a PeriodCountCalculator
      */
     PeriodCountCalculator<E> getPeriodCountCalculator();
+    
+    /**
+     * @return an IMMDateCalculator
+     */
+    IMMDateCalculator<E> getIMMDateCalculator();
 }

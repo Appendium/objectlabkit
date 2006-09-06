@@ -69,6 +69,4 @@ public final class StandardTenor {
     public static final Tenor T_30Y = new Tenor(30, TenorCode.YEAR);
 
     public static final Tenor T_50Y = new Tenor(50, TenorCode.YEAR);
-
-    public static final Tenor IMM = new Tenor(0, TenorCode.IMM);
 }

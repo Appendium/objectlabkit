@@ -19,6 +19,7 @@ import net.objectlab.kit.datecalc.common.AbstractDateCalculatorFactory;
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.DateCalculatorFactory;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
+import net.objectlab.kit.datecalc.common.IMMDateCalculator;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
 import org.joda.time.YearMonthDay;
@@ -28,6 +29,8 @@ public class DefaultYearMonthDayCalculatorFactory extends AbstractDateCalculator
     private static final DateCalculatorFactory<YearMonthDay> DEFAULT = new DefaultYearMonthDayCalculatorFactory();
 
     private static final PeriodCountCalculator<YearMonthDay> PCC = new DefaultYearMonthDayPeriodCountCalculator();
+
+    private static final IMMDateCalculator<YearMonthDay> IMMDC = new YearMonthDayIMMDateCalculator();
 
     public static DateCalculatorFactory<YearMonthDay> getDefaultInstance() {
         return DEFAULT;
@@ -44,7 +47,6 @@ public class DefaultYearMonthDayCalculatorFactory extends AbstractDateCalculator
      *            typically one of the value of HolidayHandlerType
      * @return a new DateCalculator
      */
-    @Override
     public DateCalculator<YearMonthDay> getDateCalculator(final String name, final String holidayHandlerType) {
         final YearMonthDayDateCalculator cal = new YearMonthDayDateCalculator();
         cal.setName(name);
@@ -64,8 +66,11 @@ public class DefaultYearMonthDayCalculatorFactory extends AbstractDateCalculator
         return cal;
     }
 
-    @Override
     public PeriodCountCalculator<YearMonthDay> getPeriodCountCalculator() {
         return PCC;
+    }
+
+    public IMMDateCalculator<YearMonthDay> getIMMDateCalculator() {
+        return IMMDC;
     }
 }

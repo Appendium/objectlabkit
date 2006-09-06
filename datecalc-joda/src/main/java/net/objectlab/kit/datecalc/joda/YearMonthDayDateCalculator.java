@@ -15,16 +15,13 @@
  */
 package net.objectlab.kit.datecalc.joda;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import net.objectlab.kit.datecalc.common.AbstractDateCalculator;
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandler;
-import net.objectlab.kit.datecalc.common.IMMPeriod;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
 import org.joda.time.LocalDate;
@@ -89,41 +86,10 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
     }
 
     @Override
-    public List<YearMonthDay> getIMMDates(final YearMonthDay start, final YearMonthDay end) {
-        final List<YearMonthDay> dates = new ArrayList<YearMonthDay>();
-        final List<LocalDate> localDates = delegate.getIMMDates(start.toLocalDate(), end.toLocalDate());
-
-        for (final LocalDate d : localDates) {
-            dates.add(new YearMonthDay(d));
-        }
-
-        return dates;
-    }
-
-    @Override
-    protected YearMonthDay getNextIMMDate(final boolean requestNextIMM, final YearMonthDay start, final IMMPeriod period) {
-        return new YearMonthDay(delegate.getNextIMMDate(requestNextIMM, start.toLocalDate(), period));
-    }
-
-    @Override
     public void setStartDate(final YearMonthDay startDate) {
         if (delegate != null) {
             delegate.setStartDate(startDate != null ? startDate.toLocalDate() : null);
         }
         super.setStartDate(startDate);
     }
-
-    public List<YearMonthDay> getIMMDates(final YearMonthDay start, final YearMonthDay end, final IMMPeriod period) {
-        final List<YearMonthDay> dates = new ArrayList<YearMonthDay>();
-        final List<LocalDate> d = delegate.getIMMDates(start.toLocalDate(), end.toLocalDate(), period);
-        for (final LocalDate date : d) {
-            dates.add(new YearMonthDay(date));
-        }
-        return dates;
-    }
-
-    public boolean isIMMDate(final YearMonthDay date) {
-        return delegate.isIMMDate(date.toLocalDate());
-    }
-
 }

@@ -50,7 +50,6 @@ public class TenorTest extends TestCase {
         checkValidTenor("ON", false, TenorCode.OVERNIGHT, 0);
         checkValidTenor("SW", false, TenorCode.SPOTWEEK, 0);
         checkValidTenor("SN", false, TenorCode.SPOTNEXT, 0);
-        checkValidTenor("IMM", false, TenorCode.IMM, 0);
         checkValidTenor("TN", false, TenorCode.TOMNEXT, 0);
 
         checkValidTenor("1D", true, TenorCode.DAY, 1);
@@ -79,7 +78,6 @@ public class TenorTest extends TestCase {
         checkToString("ON");
         checkToString("SW");
         checkToString("SN");
-        checkToString("IMM");
         checkToString("TN");
         checkToString("1D");
         checkToString("1W");

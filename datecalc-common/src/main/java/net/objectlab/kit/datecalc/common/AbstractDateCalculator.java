@@ -19,7 +19,6 @@ package net.objectlab.kit.datecalc.common;
 
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -36,9 +35,9 @@ import java.util.Set;
  */
 public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
 
-    protected static final int MONTHS_IN_QUARTER = 3;
+//    protected static final int MONTHS_IN_QUARTER = 3;
 
-    protected static final int MONTH_IN_YEAR = 12;
+//    protected static final int MONTH_IN_YEAR = 12;
 
     protected static final int DAYS_IN_WEEK = 7;
 
@@ -111,9 +110,6 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
             return moveByDays(tenor.getUnits());
         case WEEK:
             return moveByDays(tenor.getUnits() * DAYS_IN_WEEK);
-        case IMM:
-            setCurrentBusinessDate(getNextIMMDate());
-            return this;
         default:
             throw new UnsupportedOperationException("Sorry not yet...");
         }
@@ -211,57 +207,6 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
 
         return cal;
     }
-
-    /**
-     * @return the next IMMDate based on current date.
-     */
-    public E getNextIMMDate() {
-        return getNextIMMDate(true, currentBusinessDate, IMMPeriod.QUARTERLY);
-    }
-
-    /**
-     * @param period
-     *            specify when the "next" IMM is, if quarterly then it is the
-     *            conventional algorithm.
-     * @return the next IMMDate based on current date.
-     */
-    public E getNextIMMDate(final IMMPeriod period) {
-        return getNextIMMDate(true, currentBusinessDate, period);
-    }
-
-    /**
-     * @return the previous IMMDate based on current date.
-     */
-    public E getPreviousIMMDate() {
-        return getNextIMMDate(false, currentBusinessDate, IMMPeriod.QUARTERLY);
-    }
-
-    /**
-     * @param period
-     *            specify when the "previous" IMM is, if quarterly then it is
-     *            the conventional algorithm.
-     * @return the previous IMMDate based on current date.
-     */
-    public E getPreviousIMMDate(final IMMPeriod period) {
-        return getNextIMMDate(false, currentBusinessDate, period);
-    }
-
-    /**
-     * Returns a list of IMM dates between 2 dates, it will exclude the start
-     * date if it is an IMM date but would include the end date if it is an IMM
-     * (same as IMMPeriod.QUARTERLY).
-     * 
-     * @param start
-     *            start of the interval, excluded
-     * @param end
-     *            end of the interval, may be included.
-     * @return list of IMM dates
-     */
-    public List<E> getIMMDates(final E start, final E end) {
-        return getIMMDates(start, end, IMMPeriod.QUARTERLY);
-    }
-
-    protected abstract E getNextIMMDate(final boolean requestNextIMM, final E theStartDate, final IMMPeriod period);
 
     protected abstract DateCalculator<E> createNewCalcultaor(String calcName, E theStartDate, Set<E> holidays,
             HolidayHandler<E> handler);

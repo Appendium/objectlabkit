@@ -17,6 +17,7 @@ package net.objectlab.kit.datecalc.joda;
 
 import net.objectlab.kit.datecalc.common.AbstractDateCalculatorFactory;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
+import net.objectlab.kit.datecalc.common.IMMDateCalculator;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
 import org.joda.time.LocalDate;
@@ -26,6 +27,8 @@ public class DefaultLocalDateCalculatorFactory extends AbstractDateCalculatorFac
     private static final DefaultLocalDateCalculatorFactory DEFAULT = new DefaultLocalDateCalculatorFactory();
 
     private static final PeriodCountCalculator<LocalDate> PCC = new DefaultLocalDatePeriodCountCalculator();
+
+    private static final IMMDateCalculator<LocalDate> IMMDC = new LocalDateIMMDateCalculator();
 
     public static DefaultLocalDateCalculatorFactory getDefaultInstance() {
         return DEFAULT;
@@ -42,7 +45,6 @@ public class DefaultLocalDateCalculatorFactory extends AbstractDateCalculatorFac
      *            typically one of the value of HolidayHandlerType
      * @return a new DateCalculator
      */
-    @Override
     public LocalDateCalculator getDateCalculator(final String name, final String holidayHandlerType) {
         final LocalDateCalculator cal = new LocalDateCalculator();
         cal.setName(name);
@@ -62,8 +64,11 @@ public class DefaultLocalDateCalculatorFactory extends AbstractDateCalculatorFac
         return cal;
     }
 
-    @Override
     public PeriodCountCalculator<LocalDate> getPeriodCountCalculator() {
         return PCC;
+    }
+
+    public IMMDateCalculator<LocalDate> getIMMDateCalculator() {
+        return IMMDC;
     }
 }
