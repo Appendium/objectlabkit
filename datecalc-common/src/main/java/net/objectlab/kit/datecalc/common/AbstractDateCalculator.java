@@ -61,8 +61,13 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     }
 
     public E getStartDate() {
+        if (startDate == null) {
+            startDate = getToday();
+        }
         return startDate;
     }
+
+    protected abstract E getToday();
 
     /** Set both start date and current date */
     public void setStartDate(final E startDate) {
@@ -71,6 +76,9 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     }
 
     public E getCurrentBusinessDate() {
+        if (currentBusinessDate == null) {
+            currentBusinessDate = getToday();
+        }
         return currentBusinessDate;
     }
 
@@ -127,6 +135,9 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     }
 
     public boolean isCurrentDateNonWorking() {
+        if (currentBusinessDate == null) {
+            currentBusinessDate = getToday();
+        }
         return isNonWorkingDay(currentBusinessDate);
     }
 

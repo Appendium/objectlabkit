@@ -1,11 +1,10 @@
-package net.objectlab.kit.datecalc.jdk;
+package net.objectlab.kit.datecalc.common;
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 import junit.framework.TestCase;
-import net.objectlab.kit.datecalc.common.Utils;
 
 public abstract class AbstractDateCalculatorTest extends TestCase {
 

@@ -67,7 +67,7 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
      * is the date a non-working day according to the WorkingWeek?
      */
     public boolean isWeekend(final YearMonthDay date) {
-        if (date != null) {
+        if (date != null && delegate != null) {
             return delegate.isWeekend(date.toLocalDate());
         }
         return false;
@@ -91,5 +91,10 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
             delegate.setStartDate(startDate != null ? startDate.toLocalDate() : null);
         }
         super.setStartDate(startDate);
+    }
+
+    @Override
+    protected YearMonthDay getToday() {
+        return new YearMonthDay();
     }
 }

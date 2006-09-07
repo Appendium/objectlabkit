@@ -66,7 +66,7 @@ public class DefaultJdkCalendarCalculatorFactory extends AbstractDateCalculatorF
         } else if (HolidayHandlerType.MODIFIED_PRECEEDING.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new CalendarModifiedPreceedingHandler());
         } else {
-            throw new UnsupportedOperationException("Unsupported HolidayHandler: " + holidayHandlerType);
+            throw new IllegalArgumentException("Unsupported HolidayHandler: " + holidayHandlerType);
         }
 
         return cal;

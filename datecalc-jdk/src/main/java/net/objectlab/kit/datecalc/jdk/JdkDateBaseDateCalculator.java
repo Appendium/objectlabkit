@@ -49,13 +49,17 @@ public class JdkDateBaseDateCalculator extends AbstractDateCalculator<Date> {
     public JdkDateBaseDateCalculator(final String name, final Date startDate, final Set<Date> nonWorkingDays,
             final HolidayHandler<Date> holidayHandler) {
         super(name, nonWorkingDays, holidayHandler);
-
+        Date date = startDate;
         final HolidayHandler<Calendar> locDate = new HolidayHandlerDateWrapper(holidayHandler, this);
 
         final Set<Calendar> nonWorkingCalendars = Utils.toCalendarSet(nonWorkingDays);
-        delegate = new JdkCalendarBaseDateCalculator(name, Utils.getCal(startDate), nonWorkingCalendars, locDate);
-        setStartDate(startDate);
-        delegate.setStartDate(Utils.getCal(startDate));
+        if (date == null) {
+            date = getToday();
+        }
+
+        delegate = new JdkCalendarBaseDateCalculator(name, Utils.getCal(date), nonWorkingCalendars, locDate);
+        delegate.setStartDate(Utils.getCal(date));
+        setStartDate(date);
     }
 
     // TODO throw an exception if the type is incorrect
@@ -67,7 +71,7 @@ public class JdkDateBaseDateCalculator extends AbstractDateCalculator<Date> {
      * is the date a non-working day according to the WorkingWeek?
      */
     public boolean isWeekend(final Date date) {
-        if (date != null) {
+        if (date != null && delegate != null) {
             return delegate.isWeekend(Utils.getCal(date));
         }
         return false;
@@ -91,5 +95,10 @@ public class JdkDateBaseDateCalculator extends AbstractDateCalculator<Date> {
             delegate.setStartDate(startDate != null ? Utils.getCal(startDate) : null);
         }
         super.setStartDate(startDate);
+    }
+
+    @Override
+    protected Date getToday() {
+        return Utils.blastTime(Calendar.getInstance()).getTime();
     }
 }

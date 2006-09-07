@@ -25,6 +25,7 @@ import net.objectlab.kit.datecalc.common.AbstractDateCalculator;
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.Tenor;
+import net.objectlab.kit.datecalc.common.Utils;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
 /**
@@ -48,7 +49,11 @@ public class JdkCalendarBaseDateCalculator extends AbstractDateCalculator<Calend
     public JdkCalendarBaseDateCalculator(final String name, final Calendar startDate, final Set<Calendar> nonWorkingDays,
             final HolidayHandler<Calendar> holidayHandler) {
         super(name, nonWorkingDays, holidayHandler);
-        setStartDate(startDate);
+        Calendar date = startDate;
+        if (date == null) {
+            date = getToday();
+        }
+        setStartDate(date);
     }
 
     public void setWorkingWeek(final WorkingWeek week) {
@@ -103,5 +108,10 @@ public class JdkCalendarBaseDateCalculator extends AbstractDateCalculator<Calend
     @Override
     public JdkCalendarBaseDateCalculator moveByBusinessDays(final int businessDays) {
         return (JdkCalendarBaseDateCalculator) super.moveByBusinessDays(businessDays);
+    }
+
+    @Override
+    protected Calendar getToday() {
+        return Utils.blastTime(Calendar.getInstance());
     }
 }

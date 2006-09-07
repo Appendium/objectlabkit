@@ -45,8 +45,10 @@ public interface DateCalculatorFactory<E> {
      *            holidays with that name, it will return a DateCalculator with
      *            an empty holiday set (will work on Weekend only).
      * @param type
-     *            typically one of the value of HolidayHandlerType
+     *            typically one of the value of HolidayHandlerType or null.
      * @return a new DateCalculator
+     * @exception IllegalArgumentException
+     *                if the type is not null or a valid value.
      */
     DateCalculator<E> getDateCalculator(final String name, final String holidayHandlerType);
 

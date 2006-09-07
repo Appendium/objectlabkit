@@ -48,8 +48,12 @@ public final class Utils {
         }
         final Calendar cal = Calendar.getInstance();
         cal.setTime(date);
+        return blastTime(cal);
+    }
+
+    public static Calendar blastTime(final Calendar cal) {
         cal.setTimeZone(TimeZone.getTimeZone("UTC"));
-        cal.set(Calendar.HOUR, 0);
+        cal.set(Calendar.HOUR_OF_DAY, 0);
         cal.set(Calendar.MINUTE, 0);
         cal.set(Calendar.SECOND, 0);
         cal.set(Calendar.MILLISECOND, 0);
@@ -59,12 +63,15 @@ public final class Utils {
     /**
      * 
      * @param str
-     *            string
-     * @return
+     *            string (return today if string is null)
+     * @return today if
      * @throws IllegalArgumentException
      *             if the string cannot be parsed.
      */
     public static Date createDate(final String str) {
+        if (str == null) {
+            return createCalendar(null).getTime();
+        }
         try {
             final Date date = SDF.parse(str);
             final Calendar cal = getCal(date);
@@ -83,6 +90,9 @@ public final class Utils {
      *             if the string cannot be parsed.
      */
     public static Calendar createCalendar(final String str) {
+        if (str == null) {
+            return blastTime(Calendar.getInstance());
+        }
         try {
             final Date date = SDF.parse(str);
             final Calendar cal = getCal(date);
