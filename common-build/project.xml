@@ -112,7 +112,7 @@
       <report>maven-simian-plugin</report>
       <report>maven-cobertura-plugin</report>
       <report>maven-qalab-plugin</report>
-      <report>maven-ydoc-plugin</report>
+      <!--<report>maven-ydoc-plugin</report>-->
       <report>maven-jdepend-plugin</report>
       <report>maven-faq-plugin</report>
       <report>maven-junit-report-plugin</report>

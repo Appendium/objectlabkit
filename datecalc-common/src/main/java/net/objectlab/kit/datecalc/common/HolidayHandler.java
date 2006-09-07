@@ -22,7 +22,7 @@ package net.objectlab.kit.datecalc.common;
  * @author Benoit Xhenseval
  */
 public interface HolidayHandler<E> {
-    E moveCurrentDate(DateCalculator<E> calendar);
+    E moveCurrentDate(DateCalculator<E> date);
 
     String getType();
 }

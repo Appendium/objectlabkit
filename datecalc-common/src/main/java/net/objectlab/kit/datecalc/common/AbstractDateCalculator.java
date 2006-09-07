@@ -34,11 +34,6 @@ import java.util.Set;
  * @param <E>
  */
 public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
-
-    // protected static final int MONTHS_IN_QUARTER = 3;
-
-    // protected static final int MONTH_IN_YEAR = 12;
-
     protected static final int DAYS_IN_WEEK = 7;
 
     private String name;
@@ -202,12 +197,12 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
             newSet.addAll(calendar.getNonWorkingDays());
         }
 
-        final DateCalculator<E> cal = createNewCalcultaor(getName() + "/" + calendar.getName(), getStartDate(), newSet,
+        final DateCalculator<E> cal = createNewCalculator(getName() + "/" + calendar.getName(), getStartDate(), newSet,
                 holidayHandler);
 
         return cal;
     }
 
-    protected abstract DateCalculator<E> createNewCalcultaor(String calcName, E theStartDate, Set<E> holidays,
+    protected abstract DateCalculator<E> createNewCalculator(String calcName, E theStartDate, Set<E> holidays,
             HolidayHandler<E> handler);
 }

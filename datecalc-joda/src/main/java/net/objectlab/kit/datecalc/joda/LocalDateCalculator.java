@@ -84,7 +84,7 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
     }
 
     @Override
-    protected DateCalculator<LocalDate> createNewCalcultaor(final String name, final LocalDate startDate,
+    protected DateCalculator<LocalDate> createNewCalculator(final String name, final LocalDate startDate,
             final Set<LocalDate> holidays, final HolidayHandler<LocalDate> handler) {
         return new LocalDateCalculator(name, startDate, holidays, handler);
     }

@@ -50,9 +50,7 @@ public class DefaultYearMonthDayCalculatorFactory extends AbstractDateCalculator
     public DateCalculator<YearMonthDay> getDateCalculator(final String name, final String holidayHandlerType) {
         final YearMonthDayDateCalculator cal = new YearMonthDayDateCalculator();
         cal.setName(name);
-        if (holidays.containsKey(name)) {
-            cal.setNonWorkingDays(holidays.get(name));
-        }
+        setHolidays(name, cal);
 
         if (HolidayHandlerType.FORWARD.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new YearMonthDayForwardHandler());

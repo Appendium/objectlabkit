@@ -1,5 +1,5 @@
 /*
- * $Id$
+ * $Id: CalendarModifiedFollowingHandler.java 99 2006-09-04 20:30:25Z marchy $
  * 
  * Copyright 2006 the original author or authors.
  *
@@ -26,11 +26,11 @@ import net.objectlab.kit.datecalc.common.HolidayHandlerType;
  * TODO javadoc
  * 
  * @author Marcin Jekot
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
+ * @author $LastChangedBy: marchy $
+ * @version $Revision: 99 $ $Date: 2006-09-04 21:30:25 +0100 (Mon, 04 Sep 2006) $
  * 
  */
-public class ModifiedFollowingHandler implements HolidayHandler<Calendar> {
+public class CalendarModifiedFollowingHandler implements HolidayHandler<Calendar> {
 
     public Calendar moveCurrentDate(final DateCalculator<Calendar> calendar) {
         return move(calendar, 1);
@@ -57,5 +57,4 @@ public class ModifiedFollowingHandler implements HolidayHandler<Calendar> {
     public String getType() {
         return HolidayHandlerType.MODIFIED_FOLLLOWING;
     }
-
 }

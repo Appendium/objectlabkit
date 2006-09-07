@@ -31,12 +31,7 @@ import java.util.concurrent.ConcurrentMap;
  */
 public abstract class AbstractDateCalculatorFactory<E> implements DateCalculatorFactory<E> {
 
-    protected final ConcurrentMap<String, Set<E>> holidays = new ConcurrentHashMap<String, Set<E>>();
-
-    // public abstract DateCalculator<E> getDateCalculator(String name, String
-    // holidayHandlerType);
-
-    // public abstract PeriodCountCalculator<E> getPeriodCountCalculator();
+    private final ConcurrentMap<String, Set<E>> holidays = new ConcurrentHashMap<String, Set<E>>();
 
     /**
      * Use this method to register a set of holidays for a given calendar, it
@@ -51,5 +46,11 @@ public abstract class AbstractDateCalculatorFactory<E> implements DateCalculator
      */
     public void registerHolidays(final String name, final Set<E> holidaysSet) {
         this.holidays.put(name, holidaysSet);
+    }
+    
+    protected void setHolidays(final String name, final DateCalculator<E> dc) {
+        if (holidays.containsKey(name)) {
+            dc.setNonWorkingDays(holidays.get(name));
+        }
     }
 }

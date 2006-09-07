@@ -58,34 +58,35 @@
     <li><a href="./multiproject/datecalc-common/apidocs/net/objectlab/kit/datecalc/common/PeriodCountCalculator.html">PeriodCountCalculator</a> for all day, month and year diff calculations.</li>
     <li><a href="./multiproject/datecalc-common/apidocs/net/objectlab/kit/datecalc/common/IMMDateCalculator.html">IMMDateCalculator</a> for all IMM calculations (International Money Market).</li>
     </ul>
+    <p>Here are the examples of how to get a DateCalculator "forward" for the "UK" holidays (if you have registered the holidays). The WorkingWeek is Mon-Fri by default.</p>
     	<h4>JDK</h4>
     	<p>2 implementations for Pure JDK have been released</p>
     	<ol>
     		<li><strong>Calendar:</strong>
     		<pre>
-    		DateCalculator&lt;Calendar> calc = DefaultJdkCalendarCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);
-    		PeriodCountCalculator&lt;Calendar> calc = DefaultJdkCalendarCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
-    		IMMDateCalculator&lt;Calendar> calc = DefaultJdkCalendarCalculatorFactory.getDefaultInstance().getIMMDateCalculator();
+DateCalculator&lt;Calendar> calc = DefaultJdkCalendarCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);
+PeriodCountCalculator&lt;Calendar> calc = DefaultJdkCalendarCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
+IMMDateCalculator&lt;Calendar> calc = DefaultJdkCalendarCalculatorFactory.getDefaultInstance().getIMMDateCalculator();
     		</pre>
     		</li>
     		<li><strong>Date:</strong><pre>
-    		DateCalculator&lt;Date> calc = DefaultJdkDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);
-    		PeriodCountCalculator&lt;Date> calc = DefaultJdkDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
-    		IMMDateCalculator&lt;Date> calc = DefaultJdkDateCalculatorFactory.getDefaultInstance().getIMMDateCalculator();
+DateCalculator&lt;Date> calc = DefaultJdkDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);
+PeriodCountCalculator&lt;Date> calc = DefaultJdkDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
+IMMDateCalculator&lt;Date> calc = DefaultJdkDateCalculatorFactory.getDefaultInstance().getIMMDateCalculator();
     		</pre></li>
     	</ol>
     	<h4>JODA</h4>
     	<p>2 implementations for Joda have been released</p>
     	<ol>
     		<li><strong>LocalDate</strong> (preferred):<pre>
-    		DateCalculator&lt;LocalDate> calc = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);
-    		PeriodCountCalculator&lt;LocalDate> calc = DefaultLocalDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
-    		IMMDateCalculator&lt;LocalDate> calc = DefaultLocalDateCalculatorFactory.getDefaultInstance().getIMMDateCalculator();
+DateCalculator&lt;LocalDate> calc = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);
+PeriodCountCalculator&lt;LocalDate> calc = DefaultLocalDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
+IMMDateCalculator&lt;LocalDate> calc = DefaultLocalDateCalculatorFactory.getDefaultInstance().getIMMDateCalculator();
     		</pre></li>
     		<li><strong>YearMonthDay:</strong><pre>
-    		DateCalculator&lt;YearMonthDay> calc = DefaultYearMonthDayCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);
-    		PeriodCountCalculator&lt;YearMonthDay> calc = DefaultYearMonthDayCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
-    		IMMDateCalculator&lt;YearMonthDay> calc = DefaultYearMonthDayCalculatorFactory.getDefaultInstance().getIMMDateCalculator();
+DateCalculator&lt;YearMonthDay> calc = DefaultYearMonthDayCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);
+PeriodCountCalculator&lt;YearMonthDay> calc = DefaultYearMonthDayCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
+IMMDateCalculator&lt;YearMonthDay> calc = DefaultYearMonthDayCalculatorFactory.getDefaultInstance().getIMMDateCalculator();
     		</pre></li>
     	</ol>
     </subsection>
@@ -101,23 +102,23 @@
     	<li>when you call moveByDays(..), moveByBusinessDays(..) the currentDate is moved in the Calculator.</li>
     </ul>
     <pre>
-    	// create or get the Holidays
-        final Set&lt;LocalDate> holidays = new HashSet&lt;LocalDate>();
-        holidays.add(new LocalDate("2006-08-28"));
-        
-        // register the holidays (any calculator with name "UK" asked from now on will receive a reference to this set
-        DefaultDateCalculatorFactory.getDefaultInstance().registerHolidays("UK", holidays);
+// create or get the Holidays
+final Set&lt;LocalDate> holidays = new HashSet&lt;LocalDate>();
+holidays.add(new LocalDate("2006-08-28"));
+  
+// register the holidays (any calculator with name "UK" asked from now on will receive a reference to this set
+DefaultDateCalculatorFactory.getDefaultInstance().registerHolidays("UK", holidays);
 
-	// ask for a LocalDate calculator for "UK" (even if a new set of holidays is registered, this one calculator is not affected
-        DateCalculator&lt;LocalDate> cal = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);
-	cal.setStartDate(new LocalDate("2006-08-28)); // this also sets the current business date.
-	
-	// the startDate stays 28 Aug 06 BUT the currentDate has moved, 
-	// according to Forward handler to 29 Aug 2006.
-	LocalDate start = cal.getStartDate();   // 28 Aug 06
-	LocalDate current = cal.getCurrentBusinessDate(); // 29 Aug 06
-	
-	LocalDate newCurrent = cal.moveByDays(4).getCurrentBusinessDate(); // 4 Sept 06 due to weekend!
+// ask for a LocalDate calculator for "UK" (even if a new set of holidays is registered, this one calculator is not affected
+DateCalculator&lt;LocalDate> cal = DefaultLocalDateCalculatorFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);
+cal.setStartDate(new LocalDate("2006-08-28)); // this also sets the current business date.
+
+// the startDate stays 28 Aug 06 BUT the currentDate has moved, 
+// according to Forward handler to 29 Aug 2006.
+LocalDate start = cal.getStartDate();   // 28 Aug 06
+LocalDate current = cal.getCurrentBusinessDate(); // 29 Aug 06
+
+LocalDate newCurrent = cal.moveByDays(4).getCurrentBusinessDate(); // 4 Sept 06 due to weekend!
     </pre>
    
     

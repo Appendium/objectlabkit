@@ -18,8 +18,9 @@
 package net.objectlab.kit.datecalc.common;
 
 /**
- * Some instruments require a period different from the usual Quarterly but still following IMM, e.g. Bi Annually which then can be Mar-Sep or
- * Jun-Dec, or Annually.
+ * Some instruments require a period different from the usual Quarterly but
+ * still following IMM, e.g. Bi Annually which then can be Mar-Sep or Jun-Dec,
+ * or Annually.
  * 
  * @author Benoit Xhenseval
  * @author $LastChangedBy$
