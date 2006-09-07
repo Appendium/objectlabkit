@@ -58,6 +58,8 @@ public class DefaultLocalDateCalculatorFactory extends AbstractDateCalculatorFac
             cal.setHolidayHandler(new LocalDateModifiedFollowingHandler());
         } else if (HolidayHandlerType.MODIFIED_PRECEEDING.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new LocalDateModifiedPreceedingHandler());
+        } else if (holidayHandlerType != null) {
+            throw new IllegalArgumentException("Unsupported HolidayHandler: " + holidayHandlerType);
         }
         return cal;
     }

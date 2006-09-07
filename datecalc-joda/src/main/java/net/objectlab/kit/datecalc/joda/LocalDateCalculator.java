@@ -88,4 +88,9 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
             final Set<LocalDate> holidays, final HolidayHandler<LocalDate> handler) {
         return new LocalDateCalculator(name, startDate, holidays, handler);
     }
+
+    @Override
+    protected LocalDate getToday() {
+        return new LocalDate();
+    }
 }

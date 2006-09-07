@@ -60,6 +60,8 @@ public class DefaultYearMonthDayCalculatorFactory extends AbstractDateCalculator
             cal.setHolidayHandler(new YearMonthDayModifiedFollowingHandler());
         } else if (HolidayHandlerType.MODIFIED_PRECEEDING.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new YearMonthDayModifiedPreceedingHandler());
+        } else if (holidayHandlerType != null) {
+            throw new IllegalArgumentException("Unsupported HolidayHandler: " + holidayHandlerType);
         }
         return cal;
     }
