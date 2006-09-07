@@ -57,5 +57,14 @@
                  </resource>
             </resources>           
         </unitTest>
+         <resources>
+             <resource>
+                 <directory>../datecalc-common/target/</directory>
+                 <filtering>false</filtering>
+                 <includes>
+                       <include>*.jar</include>
+                  </includes>
+              </resource>
+         </resources>
     </build>
 </project>
