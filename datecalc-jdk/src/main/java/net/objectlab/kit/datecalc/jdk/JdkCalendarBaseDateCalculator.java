@@ -36,7 +36,7 @@ import net.objectlab.kit.datecalc.common.WorkingWeek;
  * @author $LastModifiedBy$
  * @version $Revision$ $Date$
  */
-public class JdkCalendarBaseDateCalculator extends AbstractDateCalculator<Calendar> implements JdkCalendarDateCalculator {
+public class JdkCalendarBaseDateCalculator extends AbstractDateCalculator<Calendar>  {
 
     private WorkingWeek workingWeek = WorkingWeek.DEFAULT;
 
@@ -85,7 +85,7 @@ public class JdkCalendarBaseDateCalculator extends AbstractDateCalculator<Calend
     }
 
     @Override
-    protected JdkCalendarDateCalculator createNewCalcultaor(final String name, final Calendar startDate, final Set<Calendar> holidays,
+    protected DateCalculator<Calendar> createNewCalculator(final String name, final Calendar startDate, final Set<Calendar> holidays,
             final HolidayHandler<Calendar> handler) {
         return new JdkCalendarBaseDateCalculator(name, startDate, holidays, handler);
     }

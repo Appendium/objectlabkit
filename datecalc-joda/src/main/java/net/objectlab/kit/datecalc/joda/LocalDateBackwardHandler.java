@@ -16,7 +16,6 @@
 package net.objectlab.kit.datecalc.joda;
 
 import net.objectlab.kit.datecalc.common.DateCalculator;
-import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
 import org.joda.time.LocalDate;
@@ -27,16 +26,14 @@ import org.joda.time.LocalDate;
  * 
  * @author Benoit Xhenseval
  */
-public class LocalDateBackwardHandler implements HolidayHandler<LocalDate> {
+public class LocalDateBackwardHandler extends LocalDateForwardHandler {
 
+    @Override
     public LocalDate moveCurrentDate(final DateCalculator<LocalDate> calendar) {
-        LocalDate date = calendar.getCurrentBusinessDate();
-        while (calendar.isNonWorkingDay(date)) {
-            date = date.minusDays(1);
-        }
-        return date;
+        return move(calendar, -1);
     }
 
+    @Override
     public String getType() {
         return HolidayHandlerType.BACKWARD;
     }

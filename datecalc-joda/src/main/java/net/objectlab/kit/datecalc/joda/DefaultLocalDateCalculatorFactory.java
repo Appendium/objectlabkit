@@ -48,9 +48,7 @@ public class DefaultLocalDateCalculatorFactory extends AbstractDateCalculatorFac
     public LocalDateCalculator getDateCalculator(final String name, final String holidayHandlerType) {
         final LocalDateCalculator cal = new LocalDateCalculator();
         cal.setName(name);
-        if (holidays.containsKey(name)) {
-            cal.setNonWorkingDays(holidays.get(name));
-        }
+        setHolidays(name, cal);
 
         if (HolidayHandlerType.FORWARD.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new LocalDateForwardHandler());

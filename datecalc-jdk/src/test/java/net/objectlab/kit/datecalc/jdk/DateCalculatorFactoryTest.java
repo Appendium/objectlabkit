@@ -10,12 +10,12 @@ import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 public class DateCalculatorFactoryTest extends AbstractDateCalculatorTest {
 
     public void testGetCalendarsNoHoliday() {
-        final JdkDateCalculator cal1 = DefaultJdkDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla", null);
+        final DateCalculator<Date> cal1 = DefaultJdkDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla", null);
         Assert.assertNotNull("cal1", cal1);
         Assert.assertEquals("name", "bla", cal1.getName());
         Assert.assertTrue("no holiday", cal1.getNonWorkingDays().isEmpty());
 
-        final JdkDateCalculator cal2 = DefaultJdkDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla", null);
+        final DateCalculator<Date> cal2 = DefaultJdkDateCalculatorFactory.getDefaultInstance().getDateCalculator("bla", null);
         Assert.assertNotNull("cal2", cal2);
         Assert.assertEquals("name", "bla", cal2.getName());
         Assert.assertTrue("no holiday", cal2.getNonWorkingDays().isEmpty());

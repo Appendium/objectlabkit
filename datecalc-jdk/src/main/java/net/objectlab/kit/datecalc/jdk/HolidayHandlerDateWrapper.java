@@ -22,6 +22,7 @@ import java.util.Date;
 
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandler;
+import net.objectlab.kit.datecalc.common.Utils;
 
 /**
  * A Wrapper to handle any HolidayHandler<Date> types via a HolidayHandler<Calendar>
@@ -32,19 +33,26 @@ import net.objectlab.kit.datecalc.common.HolidayHandler;
  * @version $Revision$ $Date$
  * 
  */
-public class HolidayHandlerDateWrapper implements HolidayHandler<Date> {
+public class HolidayHandlerDateWrapper implements HolidayHandler<Calendar> {
 
-    private HolidayHandler<Calendar> delegate;
+    private HolidayHandler<Date> delegate;
 
-    private DateCalculator<Calendar> calculator;
+    private DateCalculator<Date> calculator;
 
-    public HolidayHandlerDateWrapper(final HolidayHandler<Calendar> holidayHandler, final DateCalculator<Calendar> dateCalulator) {
+    public HolidayHandlerDateWrapper(final HolidayHandler<Date> holidayHandler, final DateCalculator<Date> dateCalculator) {
         delegate = holidayHandler;
-        calculator = dateCalulator;
+        calculator = dateCalculator;
     }
 
-    public Date moveCurrentDate(final DateCalculator<Date> calendar) {
-        return delegate.moveCurrentDate(calculator).getTime();
+    public Calendar moveCurrentDate(final DateCalculator<Calendar> calendar) {
+        Calendar ret = calendar.getCurrentBusinessDate();
+        if (delegate != null) {
+            final Date day = delegate.moveCurrentDate(calculator);
+            if (day != null) {
+                ret = Utils.getCal(day);
+            }
+        }
+        return ret;
     }
 
     public String getType() {

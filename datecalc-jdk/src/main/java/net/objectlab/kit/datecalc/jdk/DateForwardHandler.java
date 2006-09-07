@@ -13,35 +13,46 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package net.objectlab.kit.datecalc.joda;
+package net.objectlab.kit.datecalc.jdk;
+
+import java.util.Calendar;
+import java.util.Date;
 
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
-
-import org.joda.time.LocalDate;
+import net.objectlab.kit.datecalc.common.Utils;
 
 /**
- * A Forward handler will move the date forward if it falls on a non working
- * day.
+ * TODO javadoc
  * 
- * @author Benoit Xhenseval
+ * @author Marcin Jekot
+ * @author $LastChangedBy: benoitx $
+ * @version $Revision: 96 $ $Date: 2006-09-04 16:01:20 +0100 (Mon, 04 Sep 2006) $
+ * 
  */
-public class LocalDateForwardHandler implements HolidayHandler<LocalDate> {
+public class DateForwardHandler implements HolidayHandler<Date> {
 
-    public LocalDate moveCurrentDate(final DateCalculator<LocalDate> calendar) {
+    public Date moveCurrentDate(final DateCalculator<Date> calendar) {
         return move(calendar, 1);
     }
 
-    protected LocalDate move(final DateCalculator<LocalDate> calendar, final int step) {
-        LocalDate date = calendar.getCurrentBusinessDate();
-        while (calendar.isNonWorkingDay(date)) {
-            date = date.plusDays(step);
+    protected Date move(final DateCalculator<Date> calculator, final int step) {
+        final Calendar cal = Utils.getCal(calculator.getCurrentBusinessDate());
+
+        if (cal == null) {
+            return null;
         }
-        return date;
+
+        while (calculator.isNonWorkingDay(cal.getTime())) {
+            cal.add(Calendar.DAY_OF_MONTH, step);
+        }
+
+        return cal.getTime();
     }
 
     public String getType() {
         return HolidayHandlerType.FORWARD;
     }
+
 }

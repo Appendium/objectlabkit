@@ -1,4 +1,6 @@
 /*
+ * $Id: CalendarModifiedPreceedingHandler.java 99 2006-09-04 20:30:25Z marchy $
+ * 
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -12,43 +14,31 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
  * License for the specific language governing permissions and limitations under
  * the License.
- */
-package net.objectlab.kit.datecalc.jdk;
+ */package net.objectlab.kit.datecalc.jdk;
 
 import java.util.Calendar;
 
 import net.objectlab.kit.datecalc.common.DateCalculator;
-import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
 /**
  * TODO javadoc
  * 
  * @author Marcin Jekot
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
+ * @author $LastChangedBy: marchy $
+ * @version $Revision: 99 $ $Date: 2006-09-04 21:30:25 +0100 (Mon, 04 Sep 2006) $
  * 
  */
-public class ForwardHandler implements HolidayHandler<Calendar> {
+public class CalendarModifiedPreceedingHandler extends CalendarModifiedFollowingHandler {
 
+    @Override
     public Calendar moveCurrentDate(final DateCalculator<Calendar> calendar) {
-        return move(calendar, 1);
+        return move(calendar, -1);
     }
 
-    protected Calendar move(final DateCalculator<Calendar> calculator, final int step) {
-        // final Calendar cal = (Calendar)
-        // calculator.getCurrentBusinessDate().clone();
-        final Calendar cal = calculator.getCurrentBusinessDate();
-
-        while (calculator.isNonWorkingDay(cal)) {
-            cal.add(Calendar.DAY_OF_MONTH, step);
-        }
-
-        return cal;
-    }
-
+    @Override
     public String getType() {
-        return HolidayHandlerType.FORWARD;
+        return HolidayHandlerType.MODIFIED_PRECEEDING;
     }
 
 }

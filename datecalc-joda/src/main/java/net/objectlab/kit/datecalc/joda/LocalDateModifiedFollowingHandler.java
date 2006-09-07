@@ -33,14 +33,17 @@ import org.joda.time.LocalDate;
 public class LocalDateModifiedFollowingHandler implements HolidayHandler<LocalDate> {
 
     public LocalDate moveCurrentDate(final DateCalculator<LocalDate> calendar) {
+        return move(calendar, 1);
+    }
+
+    protected LocalDate move(final DateCalculator<LocalDate> calendar, int step) {
         LocalDate date = calendar.getCurrentBusinessDate();
         final int month = date.getMonthOfYear();
-        int step = 1;
         while (calendar.isNonWorkingDay(date)) {
             date = date.plusDays(step);
             if (date.getMonthOfYear() != month) {
                 // flick to backward
-                step = -1;
+                step *= -1;
                 date = date.plusDays(step);
             }
         }

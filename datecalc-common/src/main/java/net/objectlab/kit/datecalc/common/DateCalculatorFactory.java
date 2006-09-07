@@ -20,12 +20,16 @@ package net.objectlab.kit.datecalc.common;
 import java.util.Set;
 
 /**
- * Factory will create new instances of DateCalculator, these are lightweight,
- * each thread should use the factory as a given DateCalculator should NOT be
- * shared across thread (unless you know what you're doing) as the startDate,
- * current date and working week would be shared. Once created, the set of
- * holidays will NOT change even if a new set is registered; one needs to get a
- * new DateCalculator to get the new set.
+ * Factory will create new instances of calculators, these are lightweight, each
+ * thread should use the factory as a given calculator should NOT be shared
+ * across thread (unless you know what you're doing) as the startDate, current
+ * date and working week would be shared. Once created, the set of holidays will
+ * NOT change even if a new set is registered; one needs to get a new
+ * DateCalculator to get the new set.
+ * 
+ * @param E
+ *            a representation of a date, typically JDK: Date, Calendar;
+ *            Joda:LocalDate, YearMonthDay
  * 
  * @author Benoit Xhenseval
  * @author $LastChangedBy$
@@ -57,11 +61,15 @@ public interface DateCalculatorFactory<E> {
     void registerHolidays(final String name, Set<E> holidays);
 
     /**
+     * Create a new PeriodCountCalculator.
+     * 
      * @return a PeriodCountCalculator
      */
     PeriodCountCalculator<E> getPeriodCountCalculator();
 
     /**
+     * Create a new IMMDateCalculator.
+     * 
      * @return an IMMDateCalculator
      */
     IMMDateCalculator<E> getIMMDateCalculator();

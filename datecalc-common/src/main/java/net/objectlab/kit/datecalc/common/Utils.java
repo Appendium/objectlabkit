@@ -43,6 +43,9 @@ public final class Utils {
     }
 
     public static Calendar getCal(final Date date) {
+        if (date == null) {
+            return null;
+        }
         final Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         cal.setTimeZone(TimeZone.getTimeZone("UTC"));

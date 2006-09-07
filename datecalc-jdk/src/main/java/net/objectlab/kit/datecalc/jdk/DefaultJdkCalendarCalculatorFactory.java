@@ -20,6 +20,7 @@ package net.objectlab.kit.datecalc.jdk;
 import java.util.Calendar;
 
 import net.objectlab.kit.datecalc.common.AbstractDateCalculatorFactory;
+import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 import net.objectlab.kit.datecalc.common.IMMDateCalculator;
 
@@ -31,8 +32,7 @@ import net.objectlab.kit.datecalc.common.IMMDateCalculator;
  * @version $Revision: 96 $ $Date: 2006-09-04 16:01:20 +0100 (Mon, 04 Sep 2006) $
  * 
  */
-public class DefaultJdkCalendarCalculatorFactory extends AbstractDateCalculatorFactory<Calendar> implements
-        JdkCalendarCalculatorFactory {
+public class DefaultJdkCalendarCalculatorFactory extends AbstractDateCalculatorFactory<Calendar> {
 
     private static final DefaultJdkCalendarCalculatorFactory DEFAULT = new DefaultJdkCalendarCalculatorFactory();
 
@@ -40,7 +40,7 @@ public class DefaultJdkCalendarCalculatorFactory extends AbstractDateCalculatorF
 
     private static final JdkCalendarIMMDateCalculator IMMDC = new JdkCalendarIMMDateCalculator();
 
-    public static JdkCalendarCalculatorFactory getDefaultInstance() {
+    public static DefaultJdkCalendarCalculatorFactory getDefaultInstance() {
         return DEFAULT;
     }
 
@@ -50,23 +50,21 @@ public class DefaultJdkCalendarCalculatorFactory extends AbstractDateCalculatorF
      * @see net.objectlab.kit.datecalc.jdk.JdkDateCalculatorFactory#getDateCalculator(java.lang.String,
      *      java.lang.String)
      */
-    public JdkCalendarDateCalculator getDateCalculator(final String name, final String holidayHandlerType) {
+    public DateCalculator<Calendar> getDateCalculator(final String name, final String holidayHandlerType) {
         final JdkCalendarBaseDateCalculator cal = new JdkCalendarBaseDateCalculator();
         cal.setName(name);
-        if (holidays.containsKey(name)) {
-            cal.setNonWorkingDays(holidays.get(name));
-        }
+        setHolidays(name, cal);
 
         if (holidayHandlerType == null) {
             return cal;
         } else if (HolidayHandlerType.FORWARD.equals(holidayHandlerType)) {
-            cal.setHolidayHandler(new ForwardHandler());
+            cal.setHolidayHandler(new CalendarForwardHandler());
         } else if (HolidayHandlerType.BACKWARD.equals(holidayHandlerType)) {
-            cal.setHolidayHandler(new BackwardHandler());
+            cal.setHolidayHandler(new CalendarBackwardHandler());
         } else if (HolidayHandlerType.MODIFIED_FOLLLOWING.equals(holidayHandlerType)) {
-            cal.setHolidayHandler(new ModifiedFollowingHandler());
+            cal.setHolidayHandler(new CalendarModifiedFollowingHandler());
         } else if (HolidayHandlerType.MODIFIED_PRECEEDING.equals(holidayHandlerType)) {
-            cal.setHolidayHandler(new ModifiedPreceedingHandler());
+            cal.setHolidayHandler(new CalendarModifiedPreceedingHandler());
         } else {
             throw new UnsupportedOperationException("Unsupported HolidayHandler: " + holidayHandlerType);
         }

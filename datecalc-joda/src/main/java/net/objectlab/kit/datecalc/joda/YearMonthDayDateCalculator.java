@@ -80,7 +80,7 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
     }
 
     @Override
-    protected DateCalculator<YearMonthDay> createNewCalcultaor(final String name, final YearMonthDay startDate,
+    protected DateCalculator<YearMonthDay> createNewCalculator(final String name, final YearMonthDay startDate,
             final Set<YearMonthDay> holidays, final HolidayHandler<YearMonthDay> handler) {
         return new YearMonthDayDateCalculator(name, startDate, holidays, handler);
     }
