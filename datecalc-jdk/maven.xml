@@ -15,6 +15,7 @@
    <goal name="kit:rebuild" prereqs="clean,kit:build" />
 
    <goal name="kit:build" prereqs="jar:jar">
+   <!--
       <echo>ADD Common to full JAR</echo>
       <ant:jar basedir="target/classes"
          jarfile="${maven.build.dir}/${pom.artifactId}-full-${pom.currentVersion}.jar"
@@ -22,6 +23,6 @@
          <fileset dir="${basedir}/../datecalc-common/target/classes"
             excludes="**/Test.class" includes="**/*.class" />
       </ant:jar>
-
+   -->
    </goal>
 </project>
