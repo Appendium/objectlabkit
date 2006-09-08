@@ -51,4 +51,13 @@ public abstract class AbstractDateTestCase<E> extends TestCase {
     protected DateCalculator<E> newDateCalculator(final String name, final String type) {
         return getDateCalculatorFactory().getDateCalculator(name, type);
     }
+
+    protected void checkMoveByTenor(final String startDate, final Tenor tenor, final int daysToSpot, final String expectedDate,
+            final String holidayHandlerType) {
+        final DateCalculator<E> cal = newDateCalculator("bla", holidayHandlerType);
+        cal.setStartDate(newDate(startDate));
+        checkDate("Move start:" + startDate + " tenor:" + tenor + " daysToSpot:" + daysToSpot,
+                cal.moveByTenor(tenor, daysToSpot), expectedDate);
+    }
+
 }

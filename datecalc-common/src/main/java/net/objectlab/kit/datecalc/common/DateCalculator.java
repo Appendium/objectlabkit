@@ -145,7 +145,7 @@ public interface DateCalculator<E> {
      * 
      * @param days
      *            number of days (can be <0 or >0)
-     * @return the businessCalendar (so one can do
+     * @return the DateCalculator (so one can do
      *         calendar.moveByDays(-2).getCurrentBusinessDate();)
      */
     DateCalculator<E> moveByDays(final int days);
@@ -159,7 +159,7 @@ public interface DateCalculator<E> {
      * 
      * @param businessDays
      *            (can be <0 or >0)
-     * @return the current businessCalendar (so one can do
+     * @return the current DateCalculator (so one can do
      *         calendar.moveByBusinessDays(2).getCurrentBusinessDate();)
      * @exception IllegalArgumentException
      *                if the HolidayHandlerType is (MODIFIED_PRECEEDING or
@@ -183,13 +183,14 @@ public interface DateCalculator<E> {
     DateCalculator<E> combine(DateCalculator<E> calculator);
 
     /**
-     * move the current date by a given tenor, this means that if a date is
-     * either a 'weekend' or holiday, it will be skipped acording to the holiday
-     * handler and not count towards the number of days to move.
+     * Move the current date by a given tenor, please note that all tenors are relative to
+     * the SPOT day which is a number of days from the current date.  This method therefore,
+     * calculates the SPOT day first, moves it if it falls on a holiday and then goes to the
+     * calculated day according to the Tenor.
      * 
-     * @param businessDays
-     * @return the current businessCalendar (so one can do
-     *         calendar.moveByTenor(StandardTenor.T_2M).getCurrentBusinessDate();)
+     * @param tenor the Tenor to reach.
+     * @param daysToSpot number of days to "spot" days, this can vary from one market to the other.
+     * @return the current DateCalculator
      */
-    DateCalculator<E> moveByTenor(final Tenor tenor);
+    DateCalculator<E> moveByTenor(final Tenor tenor, final int daysToSpot);
 }
