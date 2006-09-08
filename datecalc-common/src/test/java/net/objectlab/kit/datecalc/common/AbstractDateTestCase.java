@@ -52,9 +52,18 @@ public abstract class AbstractDateTestCase<E> extends TestCase {
         return getDateCalculatorFactory().getDateCalculator(name, type);
     }
 
+    /**
+     * Based on UK Holidays for Aug 2006.
+     * @param startDate
+     * @param tenor
+     * @param daysToSpot
+     * @param expectedDate
+     * @param holidayHandlerType
+     */
     protected void checkMoveByTenor(final String startDate, final Tenor tenor, final int daysToSpot, final String expectedDate,
-            final String holidayHandlerType) {
+            final String holidayHandlerType) {        
         final DateCalculator<E> cal = newDateCalculator("bla", holidayHandlerType);
+        cal.setNonWorkingDays(createUKHolidays());
         cal.setStartDate(newDate(startDate));
         checkDate("Move start:" + startDate + " tenor:" + tenor + " daysToSpot:" + daysToSpot,
                 cal.moveByTenor(tenor, daysToSpot), expectedDate);
