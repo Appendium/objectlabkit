@@ -1,5 +1,5 @@
 /*
- * $Id$
+ * $Id: JdkCalendarBaseDateCalculator.java 128 2006-09-08 13:14:46Z benoitx $
  * 
  * Copyright 2006 the original author or authors.
  *
@@ -34,18 +34,18 @@ import net.objectlab.kit.datecalc.common.WorkingWeek;
  * 
  * @author Marcin Jekot
  * @author $LastModifiedBy$
- * @version $Revision$ $Date$
+ * @version $Revision: 128 $ $Date: 2006-09-08 15:14:46 +0200 (Fri, 08 Sep 2006) $
  */
-public class JdkCalendarBaseDateCalculator extends AbstractDateCalculator<Calendar>  {
+public class CalendarDateCalculator extends AbstractDateCalculator<Calendar>  {
 
     private WorkingWeek workingWeek = WorkingWeek.DEFAULT;
 
     @SuppressWarnings("unchecked")
-    public JdkCalendarBaseDateCalculator() {
+    public CalendarDateCalculator() {
         this(null, null, Collections.EMPTY_SET, null);
     }
 
-    public JdkCalendarBaseDateCalculator(final String name, final Calendar startDate, final Set<Calendar> nonWorkingDays,
+    public CalendarDateCalculator(final String name, final Calendar startDate, final Set<Calendar> nonWorkingDays,
             final HolidayHandler<Calendar> holidayHandler) {
         super(name, nonWorkingDays, holidayHandler);
         Calendar date = startDate;
@@ -67,7 +67,7 @@ public class JdkCalendarBaseDateCalculator extends AbstractDateCalculator<Calend
         return !workingWeek.isWorkingDay(date);
     }
 
-    public JdkCalendarBaseDateCalculator moveByDays(final int days) {
+    public CalendarDateCalculator moveByDays(final int days) {
         if (getCurrentBusinessDate() == null) {
             initialise();
         }
@@ -91,7 +91,7 @@ public class JdkCalendarBaseDateCalculator extends AbstractDateCalculator<Calend
     @Override
     protected DateCalculator<Calendar> createNewCalculator(final String name, final Calendar startDate, final Set<Calendar> holidays,
             final HolidayHandler<Calendar> handler) {
-        return new JdkCalendarBaseDateCalculator(name, startDate, holidays, handler);
+        return new CalendarDateCalculator(name, startDate, holidays, handler);
     }
 /*
  * @Override public JdkCalendarBaseDateCalculator combine(final DateCalculator<Calendar>

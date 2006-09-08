@@ -9,9 +9,9 @@ import net.objectlab.kit.datecalc.common.AbstractIMMDateCalculator;
 import net.objectlab.kit.datecalc.common.IMMPeriod;
 import net.objectlab.kit.datecalc.common.Utils;
 
-public class JdkDateIMMDateCalculator extends AbstractIMMDateCalculator<Date> {
+public class DateIMMDateCalculator extends AbstractIMMDateCalculator<Date> {
 
-    private static final JdkCalendarIMMDateCalculator DELEGATE = new JdkCalendarIMMDateCalculator();
+    private static final CalendarIMMDateCalculator DELEGATE = new CalendarIMMDateCalculator();
 
     @Override
     protected Date getNextIMMDate(final boolean requestNextIMM, final Date theStartDate, final IMMPeriod period) {

@@ -25,7 +25,7 @@ public class JdkDatePeriodCountCalculatorTest extends AbstractPeriodCountCalcula
 
     @Override
     public PeriodCountCalculator<Date> getPeriodCountCalculator() {
-        return DefaultJdkDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
+        return DateKitCalculatorsFactory.getDefaultInstance().getPeriodCountCalculator();
     }
 
     @Override

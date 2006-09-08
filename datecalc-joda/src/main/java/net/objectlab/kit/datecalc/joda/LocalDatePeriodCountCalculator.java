@@ -7,7 +7,7 @@ import org.joda.time.LocalDate;
 import org.joda.time.Period;
 import org.joda.time.PeriodType;
 
-public class DefaultLocalDatePeriodCountCalculator implements PeriodCountCalculator<LocalDate> {
+public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<LocalDate> {
 
     public int dayDiff(final LocalDate start, final LocalDate end, final PeriodCountBasis basis) {
         int diff = 0;

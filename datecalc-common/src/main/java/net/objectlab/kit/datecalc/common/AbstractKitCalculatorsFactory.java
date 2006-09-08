@@ -1,5 +1,5 @@
 /*
- * $Id$
+ * $Id: AbstractDateCalculatorFactory.java 125 2006-09-07 17:24:20Z benoitx $
  * 
  * Copyright 2006 the original author or authors.
  *
@@ -25,11 +25,11 @@ import java.util.concurrent.ConcurrentMap;
  * TODO javadoc
  * 
  * @author marchi
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
+ * @author $LastChangedBy: benoitx $
+ * @version $Revision: 125 $ $Date: 2006-09-07 19:24:20 +0200 (Thu, 07 Sep 2006) $
  * 
  */
-public abstract class AbstractDateCalculatorFactory<E> implements DateCalculatorFactory<E> {
+public abstract class AbstractKitCalculatorsFactory<E> implements KitCalculatorsFactory<E> {
 
     private final ConcurrentMap<String, Set<E>> holidays = new ConcurrentHashMap<String, Set<E>>();
 

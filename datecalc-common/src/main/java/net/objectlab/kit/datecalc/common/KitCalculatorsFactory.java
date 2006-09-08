@@ -1,5 +1,5 @@
 /*
- * $Id$
+ * $Id: DateCalculatorFactory.java 125 2006-09-07 17:24:20Z benoitx $
  * 
  * Copyright 2006 the original author or authors.
  *
@@ -32,10 +32,10 @@ import java.util.Set;
  *            Joda:LocalDate, YearMonthDay
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
+ * @author $LastChangedBy: benoitx $
+ * @version $Revision: 125 $ $Date: 2006-09-07 19:24:20 +0200 (Thu, 07 Sep 2006) $
  */
-public interface DateCalculatorFactory<E> {
+public interface KitCalculatorsFactory<E> {
 
     /**
      * Create a new DateCalculator for a given name and type of handling.

@@ -26,7 +26,7 @@ public class LocalDatePeriodCountCalculatorTest extends AbstractPeriodCountCalcu
 
     @Override
     public PeriodCountCalculator<LocalDate> getPeriodCountCalculator() {
-        return DefaultLocalDateCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
+        return LocalDateKitCalculatorsFactory.getDefaultInstance().getPeriodCountCalculator();
     }
 
     @Override

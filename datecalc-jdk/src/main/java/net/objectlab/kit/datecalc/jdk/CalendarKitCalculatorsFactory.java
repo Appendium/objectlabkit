@@ -1,5 +1,5 @@
 /*
- * $Id$
+ * $Id: DefaultJdkDateCalculatorFactory.java 96 2006-09-04 15:01:20Z benoitx $
  * 
  * Copyright 2006 the original author or authors.
  *
@@ -17,9 +17,9 @@
  */
 package net.objectlab.kit.datecalc.jdk;
 
-import java.util.Date;
+import java.util.Calendar;
 
-import net.objectlab.kit.datecalc.common.AbstractDateCalculatorFactory;
+import net.objectlab.kit.datecalc.common.AbstractKitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 import net.objectlab.kit.datecalc.common.IMMDateCalculator;
@@ -29,19 +29,19 @@ import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
  * TODO add javadoc
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
+ * @author $LastChangedBy: benoitx $
+ * @version $Revision: 96 $ $Date: 2006-09-04 16:01:20 +0100 (Mon, 04 Sep 2006) $
  * 
  */
-public class DefaultJdkDateCalculatorFactory extends AbstractDateCalculatorFactory<Date> {
+public class CalendarKitCalculatorsFactory extends AbstractKitCalculatorsFactory<Calendar> {
 
-    private static final DefaultJdkDateCalculatorFactory DEFAULT = new DefaultJdkDateCalculatorFactory();
+    private static final CalendarKitCalculatorsFactory DEFAULT = new CalendarKitCalculatorsFactory();
 
-    private static final PeriodCountCalculator<Date> PCC = new DatePeriodCountCalculator();
+    private static final PeriodCountCalculator<Calendar> PCC = new CalendarPeriodCountCalculator();
 
-    private static final JdkDateIMMDateCalculator IMMDC = new JdkDateIMMDateCalculator();
+    private static final CalendarIMMDateCalculator IMMDC = new CalendarIMMDateCalculator();
 
-    public static DefaultJdkDateCalculatorFactory getDefaultInstance() {
+    public static CalendarKitCalculatorsFactory getDefaultInstance() {
         return DEFAULT;
     }
 
@@ -51,21 +51,21 @@ public class DefaultJdkDateCalculatorFactory extends AbstractDateCalculatorFacto
      * @see net.objectlab.kit.datecalc.jdk.JdkDateCalculatorFactory#getDateCalculator(java.lang.String,
      *      java.lang.String)
      */
-    public DateCalculator<Date> getDateCalculator(final String name, final String holidayHandlerType) {
-        final JdkDateBaseDateCalculator cal = new JdkDateBaseDateCalculator();
+    public DateCalculator<Calendar> getDateCalculator(final String name, final String holidayHandlerType) {
+        final CalendarDateCalculator cal = new CalendarDateCalculator();
         cal.setName(name);
         setHolidays(name, cal);
 
         if (holidayHandlerType == null) {
             return cal;
         } else if (HolidayHandlerType.FORWARD.equals(holidayHandlerType)) {
-            cal.setHolidayHandler(new DateForwardHandler());
+            cal.setHolidayHandler(new CalendarForwardHandler());
         } else if (HolidayHandlerType.BACKWARD.equals(holidayHandlerType)) {
-            cal.setHolidayHandler(new DateBackwardHandler());
+            cal.setHolidayHandler(new CalendarBackwardHandler());
         } else if (HolidayHandlerType.MODIFIED_FOLLLOWING.equals(holidayHandlerType)) {
-            cal.setHolidayHandler(new DateModifiedFollowingHandler());
+            cal.setHolidayHandler(new CalendarModifiedFollowingHandler());
         } else if (HolidayHandlerType.MODIFIED_PRECEEDING.equals(holidayHandlerType)) {
-            cal.setHolidayHandler(new DateModifiedPreceedingHandler());
+            cal.setHolidayHandler(new CalendarModifiedPreceedingHandler());
         } else {
             throw new IllegalArgumentException("Unsupported HolidayHandler: " + holidayHandlerType);
         }
@@ -78,11 +78,11 @@ public class DefaultJdkDateCalculatorFactory extends AbstractDateCalculatorFacto
      * 
      * @see net.objectlab.kit.datecalc.jdk.JdkDateCalculatorFactory#getPeriodCountCalculator()
      */
-    public PeriodCountCalculator<Date> getPeriodCountCalculator() {
+    public PeriodCountCalculator<Calendar> getPeriodCountCalculator() {
         return PCC;
     }
 
-    public IMMDateCalculator<Date> getIMMDateCalculator() {
+    public IMMDateCalculator<Calendar> getIMMDateCalculator() {
         return IMMDC;
     }
 
