@@ -23,6 +23,7 @@ import net.objectlab.kit.datecalc.common.AbstractDateCalculatorFactory;
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 import net.objectlab.kit.datecalc.common.IMMDateCalculator;
+import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
 /**
  * TODO add javadoc
@@ -36,7 +37,7 @@ public class DefaultJdkDateCalculatorFactory extends AbstractDateCalculatorFacto
 
     private static final DefaultJdkDateCalculatorFactory DEFAULT = new DefaultJdkDateCalculatorFactory();
 
-    private static final JdkDatePeriodCountCalculator PCC = new DatePeriodCountCalculator();
+    private static final PeriodCountCalculator<Date> PCC = new DatePeriodCountCalculator();
 
     private static final JdkDateIMMDateCalculator IMMDC = new JdkDateIMMDateCalculator();
 
@@ -77,7 +78,7 @@ public class DefaultJdkDateCalculatorFactory extends AbstractDateCalculatorFacto
      * 
      * @see net.objectlab.kit.datecalc.jdk.JdkDateCalculatorFactory#getPeriodCountCalculator()
      */
-    public JdkDatePeriodCountCalculator getPeriodCountCalculator() {
+    public PeriodCountCalculator<Date> getPeriodCountCalculator() {
         return PCC;
     }
 
