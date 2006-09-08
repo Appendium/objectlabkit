@@ -15,22 +15,24 @@
  */
 package net.objectlab.kit.datecalc.joda;
 
-import net.objectlab.kit.datecalc.common.AbstractDateCalculatorFactory;
+import net.objectlab.kit.datecalc.common.AbstractKitCalculatorsFactory;
+import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.KitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 import net.objectlab.kit.datecalc.common.IMMDateCalculator;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
-import org.joda.time.LocalDate;
+import org.joda.time.YearMonthDay;
 
-public class DefaultLocalDateCalculatorFactory extends AbstractDateCalculatorFactory<LocalDate> {
+public class YearMonthDayKitCalculatorsFactory extends AbstractKitCalculatorsFactory<YearMonthDay> {
 
-    private static final DefaultLocalDateCalculatorFactory DEFAULT = new DefaultLocalDateCalculatorFactory();
+    private static final KitCalculatorsFactory<YearMonthDay> DEFAULT = new YearMonthDayKitCalculatorsFactory();
 
-    private static final PeriodCountCalculator<LocalDate> PCC = new DefaultLocalDatePeriodCountCalculator();
+    private static final PeriodCountCalculator<YearMonthDay> PCC = new YearMonthDayPeriodCountCalculator();
 
-    private static final IMMDateCalculator<LocalDate> IMMDC = new LocalDateIMMDateCalculator();
+    private static final IMMDateCalculator<YearMonthDay> IMMDC = new YearMonthDayIMMDateCalculator();
 
-    public static DefaultLocalDateCalculatorFactory getDefaultInstance() {
+    public static KitCalculatorsFactory<YearMonthDay> getDefaultInstance() {
         return DEFAULT;
     }
 
@@ -45,30 +47,30 @@ public class DefaultLocalDateCalculatorFactory extends AbstractDateCalculatorFac
      *            typically one of the value of HolidayHandlerType
      * @return a new DateCalculator
      */
-    public LocalDateCalculator getDateCalculator(final String name, final String holidayHandlerType) {
-        final LocalDateCalculator cal = new LocalDateCalculator();
+    public DateCalculator<YearMonthDay> getDateCalculator(final String name, final String holidayHandlerType) {
+        final YearMonthDayDateCalculator cal = new YearMonthDayDateCalculator();
         cal.setName(name);
         setHolidays(name, cal);
 
         if (HolidayHandlerType.FORWARD.equals(holidayHandlerType)) {
-            cal.setHolidayHandler(new LocalDateForwardHandler());
+            cal.setHolidayHandler(new YearMonthDayForwardHandler());
         } else if (HolidayHandlerType.BACKWARD.equals(holidayHandlerType)) {
-            cal.setHolidayHandler(new LocalDateBackwardHandler());
+            cal.setHolidayHandler(new YearMonthDayBackwardHandler());
         } else if (HolidayHandlerType.MODIFIED_FOLLLOWING.equals(holidayHandlerType)) {
-            cal.setHolidayHandler(new LocalDateModifiedFollowingHandler());
+            cal.setHolidayHandler(new YearMonthDayModifiedFollowingHandler());
         } else if (HolidayHandlerType.MODIFIED_PRECEEDING.equals(holidayHandlerType)) {
-            cal.setHolidayHandler(new LocalDateModifiedPreceedingHandler());
+            cal.setHolidayHandler(new YearMonthDayModifiedPreceedingHandler());
         } else if (holidayHandlerType != null) {
             throw new IllegalArgumentException("Unsupported HolidayHandler: " + holidayHandlerType);
         }
         return cal;
     }
 
-    public PeriodCountCalculator<LocalDate> getPeriodCountCalculator() {
+    public PeriodCountCalculator<YearMonthDay> getPeriodCountCalculator() {
         return PCC;
     }
 
-    public IMMDateCalculator<LocalDate> getIMMDateCalculator() {
+    public IMMDateCalculator<YearMonthDay> getIMMDateCalculator() {
         return IMMDC;
     }
 }

@@ -10,7 +10,7 @@ public class JdkDateIMMDateTest extends AbstractIMMDateTest<Date> {
 
     @Override
     protected IMMDateCalculator<Date> getDateCalculator(final String name) {
-        return DefaultJdkDateCalculatorFactory.getDefaultInstance().getIMMDateCalculator();
+        return DateKitCalculatorsFactory.getDefaultInstance().getIMMDateCalculator();
     }
 
     @Override

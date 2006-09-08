@@ -1,7 +1,7 @@
 package net.objectlab.kit.datecalc.jdk;
 
 import net.objectlab.kit.datecalc.common.AbstractModifiedFollowingDateCalculatorTest;
-import net.objectlab.kit.datecalc.common.DateCalculatorFactory;
+import net.objectlab.kit.datecalc.common.KitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.Utils;
 
 public class JdkDateModifiedFollowingDateCalculatorTest extends AbstractModifiedFollowingDateCalculatorTest {
@@ -12,8 +12,8 @@ public class JdkDateModifiedFollowingDateCalculatorTest extends AbstractModified
     }
 
     @Override
-    protected DateCalculatorFactory getDateCalculatorFactory() {
-        return DefaultJdkDateCalculatorFactory.getDefaultInstance();
+    protected KitCalculatorsFactory getDateCalculatorFactory() {
+        return DateKitCalculatorsFactory.getDefaultInstance();
     }
 
 }

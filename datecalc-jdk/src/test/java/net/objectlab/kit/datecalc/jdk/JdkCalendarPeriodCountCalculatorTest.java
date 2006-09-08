@@ -25,7 +25,7 @@ public class JdkCalendarPeriodCountCalculatorTest extends AbstractPeriodCountCal
 
     @Override
     public PeriodCountCalculator<Calendar> getPeriodCountCalculator() {
-        return DefaultJdkCalendarCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
+        return CalendarKitCalculatorsFactory.getDefaultInstance().getPeriodCountCalculator();
     }
 
     @Override

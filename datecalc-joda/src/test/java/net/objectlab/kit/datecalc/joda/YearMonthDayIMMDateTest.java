@@ -9,7 +9,7 @@ public class YearMonthDayIMMDateTest extends AbstractIMMDateTest<YearMonthDay> {
 
     @Override
     protected IMMDateCalculator<YearMonthDay> getDateCalculator(final String name) {
-        return DefaultYearMonthDayCalculatorFactory.getDefaultInstance().getIMMDateCalculator();
+        return YearMonthDayKitCalculatorsFactory.getDefaultInstance().getIMMDateCalculator();
     }
 
     @Override

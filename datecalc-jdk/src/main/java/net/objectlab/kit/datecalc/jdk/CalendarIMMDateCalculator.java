@@ -7,7 +7,7 @@ import java.util.List;
 import net.objectlab.kit.datecalc.common.AbstractIMMDateCalculator;
 import net.objectlab.kit.datecalc.common.IMMPeriod;
 
-public class JdkCalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calendar> {
+public class CalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calendar> {
     private static final int NUMBER_DAYS_IN_WEEK = 7;
 
     /**

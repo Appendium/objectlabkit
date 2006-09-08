@@ -26,7 +26,7 @@ public class YearMonthDayPeriodCountCalculatorTest extends AbstractPeriodCountCa
 
     @Override
     public PeriodCountCalculator<YearMonthDay> getPeriodCountCalculator() {
-        return DefaultYearMonthDayCalculatorFactory.getDefaultInstance().getPeriodCountCalculator();
+        return YearMonthDayKitCalculatorsFactory.getDefaultInstance().getPeriodCountCalculator();
     }
 
     @Override

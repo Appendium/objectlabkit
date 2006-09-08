@@ -9,7 +9,7 @@ import junit.framework.TestCase;
 public abstract class AbstractDateTestCase<E> extends TestCase {
     protected abstract E newDate(final String date);
 
-    protected abstract DateCalculatorFactory<E> getDateCalculatorFactory();
+    protected abstract KitCalculatorsFactory<E> getDateCalculatorFactory();
 
     protected void checkDate(final String string, final DateCalculator<E> calendar, final String string2) {
         Assert.assertEquals(string, newDate(string2), calendar.getCurrentBusinessDate());

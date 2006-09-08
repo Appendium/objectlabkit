@@ -5,9 +5,9 @@ import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
 import org.joda.time.YearMonthDay;
 
-public class DefaultYearMonthDayPeriodCountCalculator implements PeriodCountCalculator<YearMonthDay> {
+public class YearMonthDayPeriodCountCalculator implements PeriodCountCalculator<YearMonthDay> {
 
-    private static final DefaultLocalDatePeriodCountCalculator DELEGATE = new DefaultLocalDatePeriodCountCalculator();
+    private static final LocalDatePeriodCountCalculator DELEGATE = new LocalDatePeriodCountCalculator();
 
     public int dayDiff(final YearMonthDay start, final YearMonthDay end, final PeriodCountBasis basis) {
         return DELEGATE.dayDiff(start.toLocalDate(), end.toLocalDate(), basis);

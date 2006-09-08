@@ -1,5 +1,5 @@
 /*
- * $Id$
+ * $Id: JdkDateBaseDateCalculator.java 125 2006-09-07 17:24:20Z benoitx $
  * 
  * Copyright 2006 the original author or authors.
  *
@@ -35,18 +35,18 @@ import net.objectlab.kit.datecalc.common.WorkingWeek;
  * 
  * @author Marcin Jekot
  * @author $LastModifiedBy$
- * @version $Revision$ $Date$
+ * @version $Revision: 125 $ $Date: 2006-09-07 19:24:20 +0200 (Thu, 07 Sep 2006) $
  */
-public class JdkDateBaseDateCalculator extends AbstractDateCalculator<Date> {
+public class DateDateCalculator extends AbstractDateCalculator<Date> {
 
-    private JdkCalendarBaseDateCalculator delegate;
+    private CalendarDateCalculator delegate;
 
     @SuppressWarnings("unchecked")
-    public JdkDateBaseDateCalculator() {
+    public DateDateCalculator() {
         this(null, null, Collections.EMPTY_SET, null);
     }
 
-    public JdkDateBaseDateCalculator(final String name, final Date startDate, final Set<Date> nonWorkingDays,
+    public DateDateCalculator(final String name, final Date startDate, final Set<Date> nonWorkingDays,
             final HolidayHandler<Date> holidayHandler) {
         super(name, nonWorkingDays, holidayHandler);
         Date date = startDate;
@@ -57,7 +57,7 @@ public class JdkDateBaseDateCalculator extends AbstractDateCalculator<Date> {
             date = getToday();
         }
 
-        delegate = new JdkCalendarBaseDateCalculator(name, Utils.getCal(date), nonWorkingCalendars, locDate);
+        delegate = new CalendarDateCalculator(name, Utils.getCal(date), nonWorkingCalendars, locDate);
         delegate.setStartDate(Utils.getCal(date));
         setStartDate(date);
     }
@@ -86,7 +86,7 @@ public class JdkDateBaseDateCalculator extends AbstractDateCalculator<Date> {
     @Override
     protected DateCalculator<Date> createNewCalculator(final String name, final Date startDate, final Set<Date> holidays,
             final HolidayHandler<Date> handler) {
-        return new JdkDateBaseDateCalculator(name, startDate, holidays, handler);
+        return new DateDateCalculator(name, startDate, holidays, handler);
     }
 
     @Override

@@ -9,7 +9,7 @@ public class LocalDateIMMDateTest extends AbstractIMMDateTest<LocalDate> {
 
     @Override
     protected IMMDateCalculator<LocalDate> getDateCalculator(final String name) {
-        return DefaultLocalDateCalculatorFactory.getDefaultInstance().getIMMDateCalculator();
+        return LocalDateKitCalculatorsFactory.getDefaultInstance().getIMMDateCalculator();
     }
 
     @Override

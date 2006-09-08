@@ -20,7 +20,7 @@ package net.objectlab.kit.datecalc.joda;
 import java.util.Set;
 
 import net.objectlab.kit.datecalc.common.AbstractForwardDateCalculatorTest;
-import net.objectlab.kit.datecalc.common.DateCalculatorFactory;
+import net.objectlab.kit.datecalc.common.KitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
 import org.joda.time.YearMonthDay;
@@ -41,7 +41,7 @@ public class YearMonthDayForwardDateCalculatorTest extends AbstractForwardDateCa
 
     @Override
     protected void registerHolidays(final String name, final Set<YearMonthDay> holidays) {
-        DefaultYearMonthDayCalculatorFactory.getDefaultInstance().registerHolidays(name, holidays);
+        YearMonthDayKitCalculatorsFactory.getDefaultInstance().registerHolidays(name, holidays);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class YearMonthDayForwardDateCalculatorTest extends AbstractForwardDateCa
     }
 
     @Override
-    protected DateCalculatorFactory<YearMonthDay> getDateCalculatorFactory() {
-        return DefaultYearMonthDayCalculatorFactory.getDefaultInstance();
+    protected KitCalculatorsFactory<YearMonthDay> getDateCalculatorFactory() {
+        return YearMonthDayKitCalculatorsFactory.getDefaultInstance();
     }
 }

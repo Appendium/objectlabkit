@@ -1,7 +1,7 @@
 package net.objectlab.kit.datecalc.joda;
 
 import net.objectlab.kit.datecalc.common.AbstractDateCalculatorFactoryTest;
-import net.objectlab.kit.datecalc.common.DateCalculatorFactory;
+import net.objectlab.kit.datecalc.common.KitCalculatorsFactory;
 
 import org.joda.time.YearMonthDay;
 
@@ -13,7 +13,7 @@ public class YearMonthDayCalculatorFactoryTest extends AbstractDateCalculatorFac
     }
 
     @Override
-    protected DateCalculatorFactory<YearMonthDay> getDateCalculatorFactory() {
-        return DefaultYearMonthDayCalculatorFactory.getDefaultInstance();
+    protected KitCalculatorsFactory<YearMonthDay> getDateCalculatorFactory() {
+        return YearMonthDayKitCalculatorsFactory.getDefaultInstance();
     }
 }

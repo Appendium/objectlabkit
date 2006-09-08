@@ -20,7 +20,7 @@ package net.objectlab.kit.datecalc.joda;
 import java.util.Set;
 
 import net.objectlab.kit.datecalc.common.AbstractModifiedPreceedingDateCalculatorTest;
-import net.objectlab.kit.datecalc.common.DateCalculatorFactory;
+import net.objectlab.kit.datecalc.common.KitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
 import org.joda.time.YearMonthDay;
@@ -41,7 +41,7 @@ public class YearMonthDayModifiedFollowingDateCalculatorTest extends AbstractMod
 
     @Override
     protected void registerHolidays(final String name, final Set<YearMonthDay> holidays) {
-        DefaultYearMonthDayCalculatorFactory.getDefaultInstance().registerHolidays(name, holidays);
+        YearMonthDayKitCalculatorsFactory.getDefaultInstance().registerHolidays(name, holidays);
     }
 
     @Override
@@ -50,8 +50,8 @@ public class YearMonthDayModifiedFollowingDateCalculatorTest extends AbstractMod
     }
 
     @Override
-    protected DateCalculatorFactory<YearMonthDay> getDateCalculatorFactory() {
-        return DefaultYearMonthDayCalculatorFactory.getDefaultInstance();
+    protected KitCalculatorsFactory<YearMonthDay> getDateCalculatorFactory() {
+        return YearMonthDayKitCalculatorsFactory.getDefaultInstance();
     }
 
 }

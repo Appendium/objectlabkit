@@ -3,7 +3,7 @@ package net.objectlab.kit.datecalc.jdk;
 import java.util.Calendar;
 
 import net.objectlab.kit.datecalc.common.AbstractDateCalculatorCombinationTest;
-import net.objectlab.kit.datecalc.common.DateCalculatorFactory;
+import net.objectlab.kit.datecalc.common.KitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.Utils;
 
 public class JdkCalendarDateCalculatorCombinationTest extends AbstractDateCalculatorCombinationTest<Calendar> {
@@ -14,8 +14,8 @@ public class JdkCalendarDateCalculatorCombinationTest extends AbstractDateCalcul
     }
 
     @Override
-    protected DateCalculatorFactory<Calendar> getDateCalculatorFactory() {
-        return DefaultJdkCalendarCalculatorFactory.getDefaultInstance();
+    protected KitCalculatorsFactory<Calendar> getDateCalculatorFactory() {
+        return CalendarKitCalculatorsFactory.getDefaultInstance();
     }
 
 }
