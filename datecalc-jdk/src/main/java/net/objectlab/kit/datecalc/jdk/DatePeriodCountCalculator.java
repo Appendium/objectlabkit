@@ -20,6 +20,7 @@ package net.objectlab.kit.datecalc.jdk;
 import java.util.Date;
 
 import net.objectlab.kit.datecalc.common.PeriodCountBasis;
+import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 import net.objectlab.kit.datecalc.common.Utils;
 
 /**
@@ -30,7 +31,7 @@ import net.objectlab.kit.datecalc.common.Utils;
  * @version $Revision$ $Date$
  * 
  */
-public class DatePeriodCountCalculator implements JdkDatePeriodCountCalculator {
+public class DatePeriodCountCalculator implements PeriodCountCalculator<Date> {
 
     private static final CalendarPeriodCountCalculator PCC = new CalendarPeriodCountCalculator();
 
