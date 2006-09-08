@@ -203,32 +203,17 @@ public abstract class AbstractBackwardDateCalculatorTest<E> extends AbstractDate
     }
 
     public void testMoveByTenorDays() {
-        final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.BACKWARD);
-
-        cal.setStartDate(newDate("2006-08-08"));
-        checkDate("Move 1D", cal.moveByTenor(StandardTenor.T_1D), "2006-08-09");
-
-        cal.setStartDate(newDate("2006-08-08"));
-        checkDate("Move 2D", cal.moveByTenor(new Tenor(2, TenorCode.DAY)), "2006-08-10");
-
-        cal.setStartDate(newDate("2006-08-08"));
-        checkDate("Move 10D", cal.moveByTenor(new Tenor(10, TenorCode.DAY)), "2006-08-18");
-
-        cal.setStartDate(newDate("2006-08-08"));
-        checkDate("Move 11D", cal.moveByTenor(new Tenor(11, TenorCode.DAY)), "2006-08-18");
-
+        checkMoveByTenor("2006-08-08", StandardTenor.T_1D, 0, "2006-08-09", HolidayHandlerType.BACKWARD);
+        checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.DAY), 0, "2006-08-10", HolidayHandlerType.BACKWARD);
+        checkMoveByTenor("2006-08-08", new Tenor(10, TenorCode.DAY), 0, "2006-08-18", HolidayHandlerType.BACKWARD);
+        checkMoveByTenor("2006-08-08", new Tenor(11, TenorCode.DAY), 0, "2006-08-18", HolidayHandlerType.BACKWARD);
+        checkMoveByTenor("2006-08-08", new Tenor(12, TenorCode.DAY), 0, "2006-08-18", HolidayHandlerType.BACKWARD);
+        checkMoveByTenor("2006-08-08", new Tenor(13, TenorCode.DAY), 0, "2006-08-21", HolidayHandlerType.BACKWARD);
     }
 
     public void testMoveByTenorWeek() {
-        final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.BACKWARD);
-
-        cal.setStartDate(newDate("2006-08-08"));
-        checkDate("Move 1W", cal.moveByTenor(StandardTenor.T_1W), "2006-08-15");
-
-        cal.setStartDate(newDate("2006-08-08"));
-        checkDate("Move 2W", cal.moveByTenor(new Tenor(2, TenorCode.WEEK)), "2006-08-22");
-
-        cal.setStartDate(newDate("2006-08-08"));
-        checkDate("Move 4W", cal.moveByTenor(new Tenor(4, TenorCode.WEEK)), "2006-09-05");
+        checkMoveByTenor("2006-08-08", StandardTenor.T_1W, 0, "2006-08-15", HolidayHandlerType.BACKWARD);
+        checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.WEEK), 0, "2006-08-22", HolidayHandlerType.BACKWARD);
+        checkMoveByTenor("2006-08-08", new Tenor(4, TenorCode.WEEK), 0, "2006-09-05", HolidayHandlerType.BACKWARD);
     }
 }

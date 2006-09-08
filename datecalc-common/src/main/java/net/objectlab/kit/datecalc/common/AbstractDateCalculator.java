@@ -100,14 +100,19 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
      * handler and not count towards the number of days to move.
      * 
      * @param businessDays
+     * @param daysToSpot number of days to "spot" days, this can vary from one market to the other.
      * @return the current businessCalendar (so one can do
      *         calendar.moveByTenor(StandardTenor.T_2M).getCurrentBusinessDate();)
      */
-    public DateCalculator<E> moveByTenor(final Tenor tenor) {
+    public DateCalculator<E> moveByTenor(final Tenor tenor, final int daysToSpot) {
         if (tenor == null) {
             throw new IllegalArgumentException("Tenor cannot be null");
         }
+        
+        // get to the Spot date first:
+        moveByDays(daysToSpot);
 
+        // move by tenor
         switch (tenor.getCode()) {
         case DAY:
             return moveByDays(tenor.getUnits());

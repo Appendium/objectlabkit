@@ -24,7 +24,6 @@ import java.util.Set;
 import net.objectlab.kit.datecalc.common.AbstractDateCalculator;
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandler;
-import net.objectlab.kit.datecalc.common.Tenor;
 import net.objectlab.kit.datecalc.common.Utils;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
@@ -94,22 +93,17 @@ public class JdkCalendarBaseDateCalculator extends AbstractDateCalculator<Calend
             final HolidayHandler<Calendar> handler) {
         return new JdkCalendarBaseDateCalculator(name, startDate, holidays, handler);
     }
-
-    @Override
-    public JdkCalendarBaseDateCalculator combine(final DateCalculator<Calendar> calendar) {
-        return (JdkCalendarBaseDateCalculator) super.combine(calendar);
-    }
-
-    @Override
-    public JdkCalendarBaseDateCalculator moveByTenor(final Tenor tenor) {
-        return (JdkCalendarBaseDateCalculator) super.moveByTenor(tenor);
-    }
-
-    @Override
-    public JdkCalendarBaseDateCalculator moveByBusinessDays(final int businessDays) {
-        return (JdkCalendarBaseDateCalculator) super.moveByBusinessDays(businessDays);
-    }
-
+/*
+ * @Override public JdkCalendarBaseDateCalculator combine(final DateCalculator<Calendar>
+ * calendar) { return (JdkCalendarBaseDateCalculator) super.combine(calendar); }
+ * 
+ * @Override public JdkCalendarBaseDateCalculator moveByTenor(final Tenor tenor) {
+ * return (JdkCalendarBaseDateCalculator) super.moveByTenor(tenor); }
+ * 
+ * @Override public JdkCalendarBaseDateCalculator moveByBusinessDays(final int
+ * businessDays) { return (JdkCalendarBaseDateCalculator)
+ * super.moveByBusinessDays(businessDays); }
+ */
     @Override
     protected Calendar getToday() {
         return Utils.blastTime(Calendar.getInstance());

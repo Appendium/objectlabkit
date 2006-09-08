@@ -194,33 +194,48 @@ public abstract class AbstractModifiedFollowingDateCalculatorTest<E> extends Abs
     }
 
     public void testMoveByTenorDays() {
-        final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.MODIFIED_FOLLLOWING);
+        checkMoveByTenor("2006-08-08", StandardTenor.T_1D, 0, "2006-08-09", HolidayHandlerType.MODIFIED_FOLLLOWING);
+        checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.DAY), 0, "2006-08-10", HolidayHandlerType.MODIFIED_FOLLLOWING);
+        checkMoveByTenor("2006-08-08", new Tenor(10, TenorCode.DAY), 0, "2006-08-18", HolidayHandlerType.MODIFIED_FOLLLOWING);
+        checkMoveByTenor("2006-08-08", new Tenor(11, TenorCode.DAY), 0, "2006-08-21", HolidayHandlerType.MODIFIED_FOLLLOWING);
+        checkMoveByTenor("2006-08-08", new Tenor(12, TenorCode.DAY), 0, "2006-08-21", HolidayHandlerType.MODIFIED_FOLLLOWING);
+        checkMoveByTenor("2006-08-08", new Tenor(13, TenorCode.DAY), 0, "2006-08-21", HolidayHandlerType.MODIFIED_FOLLLOWING);
+    }
 
-        cal.setStartDate(newDate("2006-08-08"));
-        checkDate("Move 1D", cal.moveByTenor(StandardTenor.T_1D), "2006-08-09");
+    public void testMoveByTenorDaysOneDayToSpot() {
+        checkMoveByTenor("2006-08-08", StandardTenor.T_1D, 1, "2006-08-10", HolidayHandlerType.MODIFIED_FOLLLOWING);
+        checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.DAY), 1, "2006-08-11", HolidayHandlerType.MODIFIED_FOLLLOWING);
+        checkMoveByTenor("2006-08-07", new Tenor(10, TenorCode.DAY), 1, "2006-08-18", HolidayHandlerType.MODIFIED_FOLLLOWING);
+        checkMoveByTenor("2006-08-07", new Tenor(11, TenorCode.DAY), 1, "2006-08-21", HolidayHandlerType.MODIFIED_FOLLLOWING);
+        checkMoveByTenor("2006-08-07", new Tenor(12, TenorCode.DAY), 1, "2006-08-21", HolidayHandlerType.MODIFIED_FOLLLOWING);
+        checkMoveByTenor("2006-08-07", new Tenor(13, TenorCode.DAY), 1, "2006-08-21", HolidayHandlerType.MODIFIED_FOLLLOWING);
+    }
 
-        cal.setStartDate(newDate("2006-08-08"));
-        checkDate("Move 2D", cal.moveByTenor(new Tenor(2, TenorCode.DAY)), "2006-08-10");
-
-        cal.setStartDate(newDate("2006-08-08"));
-        checkDate("Move 10D", cal.moveByTenor(new Tenor(10, TenorCode.DAY)), "2006-08-18");
-
-        cal.setStartDate(newDate("2006-08-08"));
-        checkDate("Move 11D", cal.moveByTenor(new Tenor(11, TenorCode.DAY)), "2006-08-21");
-
+    public void testMoveByTenorDaysTwoDaysToSpot() {
+        checkMoveByTenor("2006-08-08", StandardTenor.T_1D, 2, "2006-08-11", HolidayHandlerType.MODIFIED_FOLLLOWING);
+        checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.DAY), 2, "2006-08-14", HolidayHandlerType.MODIFIED_FOLLLOWING);
+        checkMoveByTenor("2006-08-07", new Tenor(10, TenorCode.DAY), 2, "2006-08-21", HolidayHandlerType.MODIFIED_FOLLLOWING);
+        checkMoveByTenor("2006-08-07", new Tenor(11, TenorCode.DAY), 2, "2006-08-21", HolidayHandlerType.MODIFIED_FOLLLOWING);
+        checkMoveByTenor("2006-08-07", new Tenor(12, TenorCode.DAY), 2, "2006-08-21", HolidayHandlerType.MODIFIED_FOLLLOWING);
+        checkMoveByTenor("2006-08-07", new Tenor(13, TenorCode.DAY), 2, "2006-08-22", HolidayHandlerType.MODIFIED_FOLLLOWING);
     }
 
     public void testMoveByTenorWeek() {
-        final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.MODIFIED_FOLLLOWING);
+        checkMoveByTenor("2006-08-08", StandardTenor.T_1W, 0, "2006-08-15", HolidayHandlerType.MODIFIED_FOLLLOWING);
+        checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.WEEK), 0, "2006-08-22", HolidayHandlerType.MODIFIED_FOLLLOWING);
+        checkMoveByTenor("2006-08-08", new Tenor(4, TenorCode.WEEK), 0, "2006-09-05", HolidayHandlerType.MODIFIED_FOLLLOWING);
+    }
 
-        cal.setStartDate(newDate("2006-08-08"));
-        checkDate("Move 1W", cal.moveByTenor(StandardTenor.T_1W), "2006-08-15");
+    public void testMoveByTenorWeekOneDayToSpot() {
+        checkMoveByTenor("2006-08-08", StandardTenor.T_1W, 1, "2006-08-16", HolidayHandlerType.MODIFIED_FOLLLOWING);
+        checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.WEEK), 1, "2006-08-23", HolidayHandlerType.MODIFIED_FOLLLOWING);
+        checkMoveByTenor("2006-08-08", new Tenor(4, TenorCode.WEEK), 1, "2006-09-06", HolidayHandlerType.MODIFIED_FOLLLOWING);
+    }
 
-        cal.setStartDate(newDate("2006-08-08"));
-        checkDate("Move 2W", cal.moveByTenor(new Tenor(2, TenorCode.WEEK)), "2006-08-22");
-
-        cal.setStartDate(newDate("2006-08-08"));
-        checkDate("Move 4W", cal.moveByTenor(new Tenor(4, TenorCode.WEEK)), "2006-09-05");
+    public void testMoveByTenorWeekTwoDaysToSpot() {
+        checkMoveByTenor("2006-08-08", StandardTenor.T_1W, 2, "2006-08-17", HolidayHandlerType.MODIFIED_FOLLLOWING);
+        checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.WEEK), 2, "2006-08-24", HolidayHandlerType.MODIFIED_FOLLLOWING);
+        checkMoveByTenor("2006-08-08", new Tenor(4, TenorCode.WEEK), 2, "2006-09-07", HolidayHandlerType.MODIFIED_FOLLLOWING);
     }
 
     public void testAddAcrossMonth() {
