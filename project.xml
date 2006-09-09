@@ -19,12 +19,11 @@
 	        <report>maven-faq-plugin</report>
 		<report>maven-dashboard-plugin</report>
 		<report>maven-license-plugin</report>
-	<!--		<report>maven-statcvs-plugin</report>
+	<!--		<report>maven-statcvs-plugin</report> -->
+	        <report>maven-changes-plugin</report>
 		<report>maven-changelog-plugin</report>
 	        <report>maven-developer-activity-plugin</report>
 	        <report>maven-file-activity-plugin</report>
-		<report>maven-file-activity-plugin</report>
-		<report>maven-developer-activity-plugin</report>-->
 		<report>maven-linkcheck-plugin</report>
 	</reports>
 </project>
