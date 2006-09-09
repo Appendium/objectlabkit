@@ -31,7 +31,10 @@
          </menu>
       -->
       <search/>
-
+      <menu name="Links">
+         <item name="QALab"  href="http://qalab.sourceforge.net/" />
+         <item name="ObjectLab"  href="http://www.objectlab.co.uk" />
+      </menu>
       <footer>
          <script src="http://www.google-analytics.com/urchin.js"
             type="text/javascript">
