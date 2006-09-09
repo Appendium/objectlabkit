@@ -63,8 +63,8 @@
         <summaryresult date="2006-09-06" filecount="19" statvalue="96" type="cobertura-branch"/>
         <summaryresult date="2006-09-07" filecount="19" statvalue="94" type="cobertura-line"/>
         <summaryresult date="2006-09-07" filecount="19" statvalue="93" type="cobertura-branch"/>
-        <summaryresult date="2006-09-09" filecount="19" statvalue="94" type="cobertura-line"/>
-        <summaryresult date="2006-09-09" filecount="19" statvalue="93" type="cobertura-branch"/>
+        <summaryresult date="2006-09-09" filecount="19" statvalue="96" type="cobertura-line"/>
+        <summaryresult date="2006-09-09" filecount="19" statvalue="96" type="cobertura-branch"/>
     </summary>
     <file id="net_objectlab_kit_datecalc_joda_package.html" path="net/objectlab/kit/datecalc/joda/package.html">
         <result date="2006-08-08" statvalue="1" type="checkstyle"/>
@@ -397,8 +397,8 @@
         <result date="2006-09-06" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-07" statvalue="76" type="cobertura-line"/>
         <result date="2006-09-07" statvalue="71" type="cobertura-branch"/>
-        <result date="2006-09-09" statvalue="76" type="cobertura-line"/>
-        <result date="2006-09-09" statvalue="71" type="cobertura-branch"/>
+        <result date="2006-09-09" statvalue="100" type="cobertura-line"/>
+        <result date="2006-09-09" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="net_objectlab_kit_datecalc_joda_LocalDateForwardHandler.java" path="net/objectlab/kit/datecalc/joda/LocalDateForwardHandler.java">
@@ -527,7 +527,7 @@
         <result date="2006-09-06" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-07" statvalue="85" type="cobertura-line"/>
         <result date="2006-09-07" statvalue="100" type="cobertura-branch"/>
-        <result date="2006-09-09" statvalue="85" type="cobertura-line"/>
+        <result date="2006-09-09" statvalue="92" type="cobertura-line"/>
         <result date="2006-09-09" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
