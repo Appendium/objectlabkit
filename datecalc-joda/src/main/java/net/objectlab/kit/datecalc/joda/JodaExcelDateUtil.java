@@ -35,7 +35,8 @@ import org.joda.time.YearMonthDay;
  */
 public final class JodaExcelDateUtil {
 
-    private JodaExcelDateUtil() {}
+    private JodaExcelDateUtil() {
+    }
 
     public static LocalDate getLocalDate(final double date, final boolean use1904windowing) {
         final Date javaDate = ExcelDateUtil.getJavaDate(date, use1904windowing);

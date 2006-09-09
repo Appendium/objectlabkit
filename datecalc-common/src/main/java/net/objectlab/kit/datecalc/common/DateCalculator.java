@@ -183,13 +183,17 @@ public interface DateCalculator<E> {
     DateCalculator<E> combine(DateCalculator<E> calculator);
 
     /**
-     * Move the current date by a given tenor, please note that all tenors are relative to
-     * the SPOT day which is a number of days from the current date.  This method therefore,
-     * calculates the SPOT day first, moves it if it falls on a holiday and then goes to the
-     * calculated day according to the Tenor.
+     * Move the current date by a given tenor, please note that all tenors are
+     * relative to the SPOT day which is a number of days from the current date.
+     * This method therefore, calculates the SPOT day first, moves it if it
+     * falls on a holiday and then goes to the calculated day according to the
+     * Tenor.
      * 
-     * @param tenor the Tenor to reach.
-     * @param daysToSpot number of days to "spot" days, this can vary from one market to the other.
+     * @param tenor
+     *            the Tenor to reach.
+     * @param daysToSpot
+     *            number of days to "spot" days, this can vary from one market
+     *            to the other.
      * @return the current DateCalculator
      */
     DateCalculator<E> moveByTenor(final Tenor tenor, final int daysToSpot);

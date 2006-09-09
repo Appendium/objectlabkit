@@ -17,9 +17,9 @@ package net.objectlab.kit.datecalc.joda;
 
 import net.objectlab.kit.datecalc.common.AbstractKitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.DateCalculator;
-import net.objectlab.kit.datecalc.common.KitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 import net.objectlab.kit.datecalc.common.IMMDateCalculator;
+import net.objectlab.kit.datecalc.common.KitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
 import org.joda.time.YearMonthDay;
