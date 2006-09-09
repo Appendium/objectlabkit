@@ -36,7 +36,7 @@ import net.objectlab.kit.datecalc.common.WorkingWeek;
  * @author $LastModifiedBy$
  * @version $Revision: 128 $ $Date: 2006-09-08 15:14:46 +0200 (Fri, 08 Sep 2006) $
  */
-public class CalendarDateCalculator extends AbstractDateCalculator<Calendar>  {
+public class CalendarDateCalculator extends AbstractDateCalculator<Calendar> {
 
     private WorkingWeek workingWeek = WorkingWeek.DEFAULT;
 
@@ -68,42 +68,21 @@ public class CalendarDateCalculator extends AbstractDateCalculator<Calendar>  {
     }
 
     public CalendarDateCalculator moveByDays(final int days) {
-        if (getCurrentBusinessDate() == null) {
-            initialise();
-        }
         getCurrentBusinessDate().add(Calendar.DAY_OF_MONTH, days);
-        
+
         if (getHolidayHandler() != null) {
             setCurrentBusinessDate(getHolidayHandler().moveCurrentDate(this));
         }
-        
+
         return this;
     }
 
-    private void initialise() {
-        if (getStartDate() == null) {
-            setStartDate(Calendar.getInstance());
-        } else if (getCurrentBusinessDate() == null) {
-            setCurrentBusinessDate(Calendar.getInstance());
-        }
-    }
-
     @Override
-    protected DateCalculator<Calendar> createNewCalculator(final String name, final Calendar startDate, final Set<Calendar> holidays,
-            final HolidayHandler<Calendar> handler) {
+    protected DateCalculator<Calendar> createNewCalculator(final String name, final Calendar startDate,
+            final Set<Calendar> holidays, final HolidayHandler<Calendar> handler) {
         return new CalendarDateCalculator(name, startDate, holidays, handler);
     }
-/*
- * @Override public JdkCalendarBaseDateCalculator combine(final DateCalculator<Calendar>
- * calendar) { return (JdkCalendarBaseDateCalculator) super.combine(calendar); }
- * 
- * @Override public JdkCalendarBaseDateCalculator moveByTenor(final Tenor tenor) {
- * return (JdkCalendarBaseDateCalculator) super.moveByTenor(tenor); }
- * 
- * @Override public JdkCalendarBaseDateCalculator moveByBusinessDays(final int
- * businessDays) { return (JdkCalendarBaseDateCalculator)
- * super.moveByBusinessDays(businessDays); }
- */
+
     @Override
     protected Calendar getToday() {
         return Utils.blastTime(Calendar.getInstance());
