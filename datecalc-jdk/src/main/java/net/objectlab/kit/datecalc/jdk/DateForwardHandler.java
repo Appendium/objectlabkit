@@ -40,10 +40,6 @@ public class DateForwardHandler implements HolidayHandler<Date> {
     protected Date move(final DateCalculator<Date> calculator, final int step) {
         final Calendar cal = Utils.getCal(calculator.getCurrentBusinessDate());
 
-        if (cal == null) {
-            return null;
-        }
-
         while (calculator.isNonWorkingDay(cal.getTime())) {
             cal.add(Calendar.DAY_OF_MONTH, step);
         }

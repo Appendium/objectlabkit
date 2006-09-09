@@ -16,6 +16,7 @@
          <item name="DateCalc JODA"
             href="multiproject/datecalc-joda/index.html" />
          <item name="Holiday Handling" href="algo.html" />
+         <item name="Tenor Handling" href="tenor.html" />
          <item name="JavaDoc" class="newWindow" target="_new" href="apidocs/index.html" />
       </menu>
       <!--

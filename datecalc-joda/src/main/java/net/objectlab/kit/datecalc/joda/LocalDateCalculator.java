@@ -47,7 +47,10 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
         setStartDate(startDate);
     }
 
-    // TODO throw an exception if the WorkinWeek type is wrong
+    /**
+     * @todo throw an exception if the WorkinWeek type is wrong
+     * 
+     */
     public void setWorkingWeek(final WorkingWeek week) {
         if (week instanceof JodaWorkingWeek) {
             workingWeek = (JodaWorkingWeek) week;
@@ -63,9 +66,6 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
     }
 
     public DateCalculator<LocalDate> moveByDays(final int days) {
-        if (getCurrentBusinessDate() == null) {
-            initialise();
-        }
         setCurrentBusinessDate(getCurrentBusinessDate().plusDays(days));
 
         if (getHolidayHandler() != null) {
@@ -73,14 +73,6 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
         }
 
         return this;
-    }
-
-    protected void initialise() {
-        if (getStartDate() == null) {
-            setStartDate(new LocalDate());
-        } else if (getCurrentBusinessDate() == null) {
-            setCurrentBusinessDate(new LocalDate());
-        }
     }
 
     @Override
