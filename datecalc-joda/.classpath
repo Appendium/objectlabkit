@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry path="src/main/java" kind="src"/>
-	<classpathentry path="src/test/java" output="target/test-classes" kind="src"/>
-	<classpathentry path="org.eclipse.jdt.launching.JRE_CONTAINER" kind="con"/>
-	<classpathentry sourcepath="/JODA_TIME_SRC" path="M2_REPO/joda-time/joda-time/1.3/joda-time-1.3.jar" kind="var"/>
-	<classpathentry path="/datecalc-common" combineaccessrules="false" kind="src"/>
-	<classpathentry path="M2_REPO/junit/junit/3.8.1/junit-3.8.1.jar" kind="var"/>
-	<classpathentry path="target/classes" kind="output"/>
+	<classpathentry output="target/classes" kind="src" path="src/main/java"/>
+	<classpathentry output="target/test-classes" kind="src" path="src/test/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry sourcepath="/JODA_TIME_SRC" kind="var" path="M2_REPO/joda-time/joda-time/1.3/joda-time-1.3.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/datecalc-common"/>
+	<classpathentry kind="var" path="M2_REPO/junit/junit/3.8.1/junit-3.8.1.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
 </classpath>
