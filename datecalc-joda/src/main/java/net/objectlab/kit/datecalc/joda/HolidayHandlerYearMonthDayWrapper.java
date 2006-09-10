@@ -24,8 +24,10 @@ import org.joda.time.LocalDate;
 import org.joda.time.YearMonthDay;
 
 /**
- * 
- * @author xhensevb
+ * A Wrapper to handle any HolidayHandler<LocalDate> types via a HolidayHandler<YearMonthDay>
+ * delegate
+ *
+ * @author Benoit Xhenseval
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
  * 

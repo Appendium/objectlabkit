@@ -28,6 +28,9 @@ import org.joda.time.LocalDate;
  * day.
  * 
  * @author Benoit Xhenseval
+ * @author $LastChangedBy$
+ * @version $Revision$ $Date$
+ *
  */
 public class LocalDateForwardHandler implements HolidayHandler<LocalDate> {
 

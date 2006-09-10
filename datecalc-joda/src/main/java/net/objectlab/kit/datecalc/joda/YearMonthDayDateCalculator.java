@@ -35,6 +35,9 @@ import org.joda.time.YearMonthDay;
  * will NOT move a date, even if it falls on a holiday or weekend.
  * 
  * @author Benoit Xhenseval
+ * @author $LastChangedBy$
+ * @version $Revision$ $Date$
+ *
  */
 public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonthDay> {
 

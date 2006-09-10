@@ -24,6 +24,14 @@ import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
 import org.joda.time.LocalDate;
 
+/**
+ * The default factory for getting Joda <code>LocalDate</code> based calculators.
+ * 
+ * @author Benoit Xhenseval
+ * @author $LastChangedBy: marchy $
+ * @version $Revision: 138 $ $Date: 2006-09-10 14:29:15 +0200 (Sun, 10 Sep 2006) $
+ *
+ */
 public class LocalDateKitCalculatorsFactory extends AbstractKitCalculatorsFactory<LocalDate> {
 
     private static final LocalDateKitCalculatorsFactory DEFAULT = new LocalDateKitCalculatorsFactory();
