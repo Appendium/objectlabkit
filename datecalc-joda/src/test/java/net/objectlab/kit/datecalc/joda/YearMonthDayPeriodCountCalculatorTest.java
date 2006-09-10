@@ -17,12 +17,12 @@
  */
 package net.objectlab.kit.datecalc.joda;
 
-import net.objectlab.kit.datecalc.common.AbstractPeriodCountCalculator;
+import net.objectlab.kit.datecalc.common.AbstractPeriodCountCalculatorTest;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
 import org.joda.time.YearMonthDay;
 
-public class YearMonthDayPeriodCountCalculatorTest extends AbstractPeriodCountCalculator<YearMonthDay> {
+public class YearMonthDayPeriodCountCalculatorTest extends AbstractPeriodCountCalculatorTest<YearMonthDay> {
 
     @Override
     public PeriodCountCalculator<YearMonthDay> getPeriodCountCalculator() {

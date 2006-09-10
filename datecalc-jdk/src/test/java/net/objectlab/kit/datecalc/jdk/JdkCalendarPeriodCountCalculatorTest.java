@@ -17,11 +17,11 @@ package net.objectlab.kit.datecalc.jdk;
 
 import java.util.Calendar;
 
-import net.objectlab.kit.datecalc.common.AbstractPeriodCountCalculator;
+import net.objectlab.kit.datecalc.common.AbstractPeriodCountCalculatorTest;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 import net.objectlab.kit.datecalc.common.Utils;
 
-public class JdkCalendarPeriodCountCalculatorTest extends AbstractPeriodCountCalculator<Calendar> {
+public class JdkCalendarPeriodCountCalculatorTest extends AbstractPeriodCountCalculatorTest<Calendar> {
 
     @Override
     public PeriodCountCalculator<Calendar> getPeriodCountCalculator() {
