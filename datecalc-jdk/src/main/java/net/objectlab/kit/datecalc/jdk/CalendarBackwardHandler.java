@@ -23,12 +23,12 @@ import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
 /**
- * TODO javadoc
+ * A Jdk <code>Calendar</code> implementation of the {@link HolidayHandler}, for the 
+ * <strong>Backward</strong> algorithm.
  * 
  * @author Marcin Jekot
  * @author $LastChangedBy: marchy $
  * @version $Revision: 99 $ $Date: 2006-09-04 21:30:25 +0100 (Mon, 04 Sep 2006) $
- * 
  */
 public class CalendarBackwardHandler extends CalendarForwardHandler {
 

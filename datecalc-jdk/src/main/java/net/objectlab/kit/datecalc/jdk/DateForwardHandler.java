@@ -26,7 +26,8 @@ import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 import net.objectlab.kit.datecalc.common.Utils;
 
 /**
- * TODO javadoc
+ * A Jdk <code>Date</code> implementation of the {@link HolidayHandler}, for the 
+ * <strong>Forward</strong> algorithm.
  * 
  * @author Marcin Jekot
  * @author $LastChangedBy: benoitx $

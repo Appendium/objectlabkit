@@ -26,9 +26,9 @@ import net.objectlab.kit.datecalc.common.IMMDateCalculator;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
 /**
- * TODO add javadoc
+ * The default factory for getting Jdk <code>Calendar</code> based calculators.
  * 
- * @author Benoit Xhenseval
+ * @author Marcin Jekot
  * @author $LastChangedBy: benoitx $
  * @version $Revision: 96 $ $Date: 2006-09-04 16:01:20 +0100 (Mon, 04 Sep 2006) $
  * 
@@ -45,9 +45,7 @@ public class CalendarKitCalculatorsFactory extends AbstractKitCalculatorsFactory
         return DEFAULT;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
+    /**
      * @see net.objectlab.kit.datecalc.jdk.JdkDateCalculatorFactory#getDateCalculator(java.lang.String,
      *      java.lang.String)
      */
@@ -73,15 +71,16 @@ public class CalendarKitCalculatorsFactory extends AbstractKitCalculatorsFactory
         return cal;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
+    /**
      * @see net.objectlab.kit.datecalc.jdk.JdkDateCalculatorFactory#getPeriodCountCalculator()
      */
     public PeriodCountCalculator<Calendar> getPeriodCountCalculator() {
         return PCC;
     }
 
+    /**
+     * @see net.objectlab.kit.datecalc.jdk.JdkDateCalculatorFactory#getIMMDateCalculator()
+     */
     public IMMDateCalculator<Calendar> getIMMDateCalculator() {
         return IMMDC;
     }
