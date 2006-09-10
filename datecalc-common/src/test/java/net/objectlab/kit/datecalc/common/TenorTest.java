@@ -48,9 +48,6 @@ public class TenorTest extends TestCase {
     public void testValidTenors() {
         checkValidTenor("SP", false, TenorCode.SPOT, 0);
         checkValidTenor("ON", false, TenorCode.OVERNIGHT, 0);
-        checkValidTenor("SW", false, TenorCode.SPOTWEEK, 0);
-        checkValidTenor("SN", false, TenorCode.SPOTNEXT, 0);
-        checkValidTenor("TN", false, TenorCode.TOMNEXT, 0);
 
         checkValidTenor("1D", true, TenorCode.DAY, 1);
         checkValidTenor("0D", true, TenorCode.DAY, 0);
@@ -76,9 +73,6 @@ public class TenorTest extends TestCase {
     public void testToString() {
         checkToString("SP");
         checkToString("ON");
-        checkToString("SW");
-        checkToString("SN");
-        checkToString("TN");
         checkToString("1D");
         checkToString("1W");
         checkToString("1M");
@@ -90,10 +84,10 @@ public class TenorTest extends TestCase {
     public void testHashcode() {
         final Set<Tenor> set = new HashSet<Tenor>();
         set.add(StandardTenor.OVERNIGHT);
+        set.add(StandardTenor.T_1D);
         set.add(StandardTenor.T_15Y);
-        set.add(StandardTenor.SPOT_WEEK);
         Assert.assertEquals("size", 3, set.size());
-        Assert.assertTrue("Contains " + StandardTenor.SPOT_WEEK, set.contains(StandardTenor.SPOT_WEEK));
+        Assert.assertTrue("Contains " + StandardTenor.T_1D, set.contains(StandardTenor.T_1D));
         Assert.assertTrue("Contains " + StandardTenor.OVERNIGHT, set.contains(StandardTenor.OVERNIGHT));
         Assert.assertTrue("Contains " + StandardTenor.T_15Y, set.contains(StandardTenor.T_15Y));
         Assert.assertEquals("Equals ", StandardTenor.T_15Y, StandardTenor.T_15Y);
@@ -102,7 +96,7 @@ public class TenorTest extends TestCase {
     public void testEquals() {
         Assert.assertEquals("Equals ", StandardTenor.T_15Y, StandardTenor.T_15Y);
         Assert.assertTrue("same", StandardTenor.OVERNIGHT.equals(StandardTenor.OVERNIGHT));
-        Assert.assertFalse("not same", StandardTenor.OVERNIGHT.equals(StandardTenor.SPOT_NEXT));
+        Assert.assertFalse("not same", StandardTenor.OVERNIGHT.equals(StandardTenor.SPOT));
         Assert.assertFalse("Different class", StandardTenor.OVERNIGHT.equals("Hello"));
         Assert.assertFalse("Null", StandardTenor.OVERNIGHT.equals(null));
         Assert.assertTrue("same", StandardTenor.T_10Y.equals(StandardTenor.T_10Y));
