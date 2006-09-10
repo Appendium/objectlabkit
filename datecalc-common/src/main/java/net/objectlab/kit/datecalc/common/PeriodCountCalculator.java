@@ -19,7 +19,9 @@ package net.objectlab.kit.datecalc.common;
 
 /**
  * Interface that defines a financial market way of calculating difference in
- * days, month (or part of) and year (or part of). TODO Improve javadoc.
+ * days, month (or part of) and year (or part of). 
+ * 
+ * @TODO Improve javadoc.
  * 
  * @author Benoit Xhenseval
  * @author $LastChangedBy$
