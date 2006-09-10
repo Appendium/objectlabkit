@@ -20,6 +20,11 @@ package net.objectlab.kit.datecalc.common;
 /**
  * Holds only valid unit and TenorCode: Day, Week, Month, Year, IMM, Overnight,
  * TomNext, Spot, SpotNext, SpotWeek.
+ *
+ * @author Benoit Xhenseval
+ * @author $LastChangedBy$
+ * @version $Revision$ $Date$
+ *
  */
 public class Tenor {
     private int units = 0;

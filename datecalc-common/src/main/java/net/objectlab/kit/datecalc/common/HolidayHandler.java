@@ -20,8 +20,12 @@ package net.objectlab.kit.datecalc.common;
 /**
  * This will be called to determine whether the date should be moved according
  * to the special algorithm used.
- * 
+ *
  * @author Benoit Xhenseval
+ * @author $LastChangedBy$
+ * @version $Revision$ $Date$
+ *
+ * @param <E>
  */
 public interface HolidayHandler<E> {
     E moveCurrentDate(DateCalculator<E> date);

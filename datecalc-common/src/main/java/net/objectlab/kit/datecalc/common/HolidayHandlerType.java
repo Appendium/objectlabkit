@@ -21,6 +21,9 @@ package net.objectlab.kit.datecalc.common;
  * Define a series of standard way to handle holidays.
  * 
  * @author Benoit Xhenseval
+ * @author $LastChangedBy$
+ * @version $Revision$ $Date$
+ *
  */
 public final class HolidayHandlerType {
 

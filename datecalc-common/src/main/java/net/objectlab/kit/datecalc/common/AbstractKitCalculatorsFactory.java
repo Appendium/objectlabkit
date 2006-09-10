@@ -22,9 +22,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 /**
- * TODO javadoc
+ * @TODO javadoc
  * 
- * @author marchi
+ * @author Marcin Jekot
  * @author $LastChangedBy: benoitx $
  * @version $Revision: 125 $ $Date: 2006-09-07 19:24:20 +0200 (Thu, 07 Sep 2006) $
  * 

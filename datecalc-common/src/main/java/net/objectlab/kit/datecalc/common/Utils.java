@@ -28,7 +28,7 @@ import java.util.Set;
 import java.util.TimeZone;
 
 /**
- * TODO javadoc
+ * Utilities class for <code>Date/Calendar</code> conversions
  * 
  * @author Marcin Jekot
  * @author $LastModifiedBy$
@@ -44,15 +44,12 @@ public final class Utils {
     private Utils() {
     }
 
-    public static Calendar getCal(final Date date) {
-        if (date == null) {
-            return null;
-        }
-        final Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        return blastTime(cal);
-    }
-
+    /**
+     * Removes set's all "time" fields to zero, leaving only the date portion of the Calendar.
+     * The Calendar passe
+     * @param cal to Calendar object to blast, note, it will be modified
+     * @return the calendar object modified (same instance)
+     */
     public static Calendar blastTime(final Calendar cal) {
         cal.setTimeZone(TimeZone.getTimeZone("UTC"));
         cal.set(Calendar.HOUR_OF_DAY, 0);
@@ -63,26 +60,28 @@ public final class Utils {
     }
 
     /**
+     * Creates a Date object given a string representation of it
      * 
-     * @param str
+     * @param dateStr
      *            string (return today if string is null)
-     * @return today if
+     * @return today if string is null, a Date object representing the string
+     *         otherwise
      * @throws IllegalArgumentException
      *             if the string cannot be parsed.
      */
-    public static Date createDate(final String str) {
-        if (str == null) {
+    public static Date createDate(final String dateStr) {
+        if (dateStr == null) {
             return createCalendar(null).getTime();
         }
         try {
-            final Date date = SDF.parse(str);
+            final Date date = SDF.parse(dateStr);
             final Calendar cal = getCal(date);
             return cal.getTime();
         } catch (final ParseException e) {
-            throw new IllegalArgumentException("\"" + str + "\"" + " is an invalid date, the pattern is : " + DATE_PATTERN);
+            throw new IllegalArgumentException("\"" + dateStr + "\"" + " is an invalid date, the pattern is : " + DATE_PATTERN);
         }
     }
-
+    
     /**
      * 
      * @param str
@@ -104,6 +103,26 @@ public final class Utils {
         }
     }
 
+    /**
+     * Get a Calendar object for a given Date representation
+     * @param date
+     * @return
+     */
+    public static Calendar getCal(final Date date) {
+        if (date == null) {
+            return null;
+        }
+        final Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        return blastTime(cal);
+    }
+    
+    /**
+     * Converts a Set of Date objects to a Set of Calendar objects
+     * 
+     * @param dates
+     * @return
+     */
     public static Set<Calendar> toCalendarSet(final Set<Date> dates) {
         final Set<Calendar> calendars = new HashSet<Calendar>();
         for (final Date date : dates) {
@@ -112,6 +131,12 @@ public final class Utils {
         return calendars;
     }
 
+    /**
+     * Converts a Set of Calendar objects to a Set of Date objects
+     * 
+     * @param calendars
+     * @return
+     */
     public static Set<Date> toDateSet(final Set<Calendar> calendars) {
 
         final Set<Date> dates = new HashSet<Date>();
@@ -121,6 +146,13 @@ public final class Utils {
         return dates;
     }
 
+    /**
+     * Converts a <code>List</code> of Calendar objects to a <code>List</code>
+     * of dates
+     * 
+     * @param dates
+     * @return
+     */
     public static List<Date> toDateList(final List<Calendar> dates) {
 
         final List<Date> dateList = new ArrayList<Date>();
