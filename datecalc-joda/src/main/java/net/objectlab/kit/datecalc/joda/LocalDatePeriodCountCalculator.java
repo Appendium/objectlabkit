@@ -63,17 +63,18 @@ public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<Loc
 
     public double yearDiff(final LocalDate start, final LocalDate end, final PeriodCountBasis basis) {
         double diff = 0.0;
+
         if (basis == PeriodCountBasis.ACT_ACT) {
             final int startYear = start.getYear();
             final int endYear = end.getYear();
             if (startYear != endYear) {
                 final LocalDate endOfStartYear = start.dayOfYear().withMaximumValue();
-                final LocalDate startOfEndYear = end.dayOfYear().setCopy(1);
+                final LocalDate startOfEndYear = end.withDayOfYear(1);
 
                 final int diff1 = new Period(start, endOfStartYear, PeriodType.days()).getDays();
                 final int diff2 = new Period(startOfEndYear, end, PeriodType.days()).getDays();
-                diff = (diff1 + 1.0) / start.dayOfYear().getMaximumValue() + (endYear - startYear - 1.0) + (diff2)
-                        / (double) end.dayOfYear().getMaximumValue();
+                diff = ((double) (diff1 + 1.0)) / (double) start.dayOfYear().getMaximumValue()
+                        + ((double) (endYear - startYear - 1.0)) + ((double) (diff2)) / (double) end.dayOfYear().getMaximumValue();
             }
 
         } else if (basis == PeriodCountBasis.CONV_30_360 || basis == PeriodCountBasis.CONV_360E_ISDA
