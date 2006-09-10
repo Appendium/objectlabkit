@@ -25,7 +25,7 @@ import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.Utils;
 
 /**
- * A Wrapper to handle any HolidayHandler<Date> types via a HolidayHandler<Calendar>
+ * A Wrapper to handle any HolidayHandler<Calendar> types via a HolidayHandler<Date>
  * delegate
  * 
  * @author Marcin Jekot
