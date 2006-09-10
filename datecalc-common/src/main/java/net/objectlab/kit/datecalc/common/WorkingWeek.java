@@ -24,6 +24,9 @@ import java.util.Date;
  * Immutable Working Week, default is Mon->Friday.
  * 
  * @author Benoit Xhenseval
+ * @author $LastChangedBy$
+ * @version $Revision$ $Date$
+ *
  */
 public class WorkingWeek {
     private static final byte MONDAY = 1;

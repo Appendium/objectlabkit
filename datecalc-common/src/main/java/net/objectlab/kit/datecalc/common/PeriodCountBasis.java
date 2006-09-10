@@ -17,10 +17,13 @@
  */
 package net.objectlab.kit.datecalc.common;
 
+
 /**
  * Defines some standard Day Count basis.
  * 
  * @author Benoit Xhenseval
+ * @author $LastChangedBy$
+ * @version $Revision$ $Date$
  */
 public enum PeriodCountBasis {
     /**

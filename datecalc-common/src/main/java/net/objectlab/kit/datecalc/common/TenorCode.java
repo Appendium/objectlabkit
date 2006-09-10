@@ -17,6 +17,14 @@
  */
 package net.objectlab.kit.datecalc.common;
 
+/**
+ * enum of Tenor Codes held by a {@link Tenor}
+ *
+ * @author Benoit Xhenseval
+ * @author $LastChangedBy$
+ * @version $Revision$ $Date$
+ *
+ */
 public enum TenorCode {
     OVERNIGHT("ON", false),
     // TOMNEXT("TN", false),
@@ -34,10 +42,17 @@ public enum TenorCode {
         this.acceptUnits = acceptUnits;
     }
 
+    /**
+     * @return the string representation of this <code>TenorCode</code>
+     */
     public String getCode() {
         return code;
     }
 
+    /**
+     * @param code string representation of the <code>TenorCode</code>
+     * @return a <code>TenorCode</code> represented by the string argument 
+     */
     public static TenorCode fromCode(final String code) {
         for (final TenorCode ct : TenorCode.values()) {
             if (ct.getCode().equals(code)) {

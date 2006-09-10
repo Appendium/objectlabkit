@@ -21,6 +21,9 @@ package net.objectlab.kit.datecalc.common;
  * A series of Standard Tenors used by the financial industry.
  * 
  * @author Benoit Xhenseval
+ * @author $LastChangedBy$
+ * @version $Revision$ $Date$
+ *
  */
 public final class StandardTenor {
     private StandardTenor() {
