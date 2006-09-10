@@ -67,8 +67,6 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         return startDate;
     }
 
-    protected abstract E getToday();
-
     /** Set both start date and current date */
     public void setStartDate(final E startDate) {
         this.startDate = startDate;
@@ -111,10 +109,20 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
             throw new IllegalArgumentException("Tenor cannot be null");
         }
 
-        final TenorCode tenorCode = tenor.getCode();
+        TenorCode tenorCode = tenor.getCode();
         if (tenorCode != TenorCode.OVERNIGHT) {
             // get to the Spot date first:
             moveByDays(daysToSpot);
+        }
+        int unit = tenor.getUnits();
+        if (tenorCode==TenorCode.WEEK) {
+            tenorCode = TenorCode.DAY;
+            unit *= DAYS_IN_WEEK;            
+        }
+        
+        if (tenorCode==TenorCode.YEAR) {
+            tenorCode = TenorCode.MONTH;
+            unit *= 12;
         }
 
         // move by tenor
@@ -124,14 +132,16 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         case SPOT:
             return this;
         case DAY:
-            return moveByDays(tenor.getUnits());
-        case WEEK:
-            return moveByDays(tenor.getUnits() * DAYS_IN_WEEK);
+            return moveByDays(unit);
+        case MONTH:
+            return moveByMonths(unit);
         default:
             throw new UnsupportedOperationException("Sorry not yet...");
         }
 
     }
+
+    protected abstract DateCalculator<E> moveByMonths(int months);
 
     public void setHolidayHandler(final HolidayHandler<E> holidayHandler) {
         this.holidayHandler = holidayHandler;
@@ -227,6 +237,8 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
 
         return cal;
     }
+
+    protected abstract E getToday();
 
     protected abstract DateCalculator<E> createNewCalculator(String calcName, E theStartDate, Set<E> holidays,
             HolidayHandler<E> handler);

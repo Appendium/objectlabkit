@@ -78,6 +78,27 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
     }
 
     @Override
+    public DateCalculator<LocalDate> moveByMonths(final int months) {
+        // LocalDate date = getCurrentBusinessDate();
+        // int day = date.getDayOfMonth();
+        // date = date.withDayOfMonth(1).plusMonths(months);
+        //        
+        // int lastDayOfMonth = date.dayOfMonth().getMaximumValue();
+        // if (day>lastDayOfMonth) {
+        // day = lastDayOfMonth;
+        // }
+
+        // setCurrentBusinessDate(date.withDayOfMonth(day));
+        setCurrentBusinessDate(getCurrentBusinessDate().plusMonths(months));
+
+        if (getHolidayHandler() != null) {
+            setCurrentBusinessDate(getHolidayHandler().moveCurrentDate(this));
+        }
+
+        return this;
+    }
+
+    @Override
     protected DateCalculator<LocalDate> createNewCalculator(final String name, final LocalDate startDate,
             final Set<LocalDate> holidays, final HolidayHandler<LocalDate> handler) {
         return new LocalDateCalculator(name, startDate, holidays, handler);

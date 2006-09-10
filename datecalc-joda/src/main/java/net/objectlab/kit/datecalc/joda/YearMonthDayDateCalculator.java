@@ -99,4 +99,11 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
     protected YearMonthDay getToday() {
         return new YearMonthDay();
     }
+
+    @Override
+    protected DateCalculator<YearMonthDay> moveByMonths(final int months) {
+        delegate.setCurrentBusinessDate(getCurrentBusinessDate().toLocalDate());
+        setCurrentBusinessDate(new YearMonthDay(delegate.moveByMonths(months).getCurrentBusinessDate()));
+        return this;
+    }
 }

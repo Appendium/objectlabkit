@@ -422,7 +422,7 @@ public abstract class AbstractPeriodCountCalculatorTest<E> extends TestCase {
         }
     }
     
-    private void runtests(String[][] tests) {
+    private void runtests(final String[][] tests) {
         for (final String[] test : tests) {
             runtest(cal, test);
         }
