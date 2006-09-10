@@ -17,15 +17,6 @@
         Date Calculator methods for Joda
     </description>
 
-    <reporting>
-        <plugins>
-            <plugin>
-              <groupId>org.codehaus.mojo</groupId>
-              <artifactId>jdepend-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </reporting>
-
     <dependencies>
         <dependency>
           <groupId>net.objectlab.kit.datecalc</groupId>

@@ -23,15 +23,6 @@
    <name>Date Calculator for JDK</name>
    <description>Date Calculator methods for JDK</description>
 
-   <reporting>
-      <plugins>
-         <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>jdepend-maven-plugin</artifactId>
-         </plugin>
-      </plugins>
-   </reporting>
-
    <dependencies>
       <dependency>
          <groupId>net.objectlab.kit.datecalc</groupId>

@@ -24,13 +24,4 @@
    <name>DateCalc commons</name>
    <description>Common Date Calculator methods</description>
 
-   <reporting>
-      <plugins>
-         <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>jdepend-maven-plugin</artifactId>
-         </plugin>
-      </plugins>
-   </reporting>
-
 </project>
