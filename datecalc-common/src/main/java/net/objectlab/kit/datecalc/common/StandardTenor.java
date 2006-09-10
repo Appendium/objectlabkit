@@ -39,13 +39,13 @@ public final class StandardTenor {
 
     public static final Tenor T_1M = new Tenor(1, TenorCode.MONTH);
 
-    public static final Tenor T_2M = new Tenor(1, TenorCode.MONTH);
+    public static final Tenor T_2M = new Tenor(2, TenorCode.MONTH);
 
-    public static final Tenor T_3M = new Tenor(1, TenorCode.MONTH);
+    public static final Tenor T_3M = new Tenor(3, TenorCode.MONTH);
 
-    public static final Tenor T_6M = new Tenor(1, TenorCode.MONTH);
+    public static final Tenor T_6M = new Tenor(6, TenorCode.MONTH);
 
-    public static final Tenor T_9M = new Tenor(1, TenorCode.MONTH);
+    public static final Tenor T_9M = new Tenor(9, TenorCode.MONTH);
 
     public static final Tenor T_1Y = new Tenor(1, TenorCode.YEAR);
 

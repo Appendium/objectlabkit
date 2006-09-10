@@ -101,4 +101,11 @@ public class DateDateCalculator extends AbstractDateCalculator<Date> {
     protected Date getToday() {
         return Utils.blastTime(Calendar.getInstance()).getTime();
     }
+
+    @Override
+    protected DateCalculator<Date> moveByMonths(final int months) {
+        delegate.setCurrentBusinessDate(Utils.getCal(getCurrentBusinessDate()));
+        setCurrentBusinessDate(delegate.moveByMonths(months).getCurrentBusinessDate().getTime());
+        return this;
+    }
 }

@@ -209,11 +209,43 @@ public abstract class AbstractBackwardDateCalculatorTest<E> extends AbstractDate
         checkMoveByTenor("2006-08-08", new Tenor(11, TenorCode.DAY), 0, "2006-08-18", HolidayHandlerType.BACKWARD);
         checkMoveByTenor("2006-08-08", new Tenor(12, TenorCode.DAY), 0, "2006-08-18", HolidayHandlerType.BACKWARD);
         checkMoveByTenor("2006-08-08", new Tenor(13, TenorCode.DAY), 0, "2006-08-21", HolidayHandlerType.BACKWARD);
+        checkMoveByTenor("2006-09-26", new Tenor(4, TenorCode.DAY), 0, "2006-09-29", HolidayHandlerType.BACKWARD);
     }
 
     public void testMoveByTenorWeek() {
         checkMoveByTenor("2006-08-08", StandardTenor.T_1W, 0, "2006-08-15", HolidayHandlerType.BACKWARD);
         checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.WEEK), 0, "2006-08-22", HolidayHandlerType.BACKWARD);
         checkMoveByTenor("2006-08-08", new Tenor(4, TenorCode.WEEK), 0, "2006-09-05", HolidayHandlerType.BACKWARD);
+    }
+
+    public void testMoveByTenorMonth() {
+        checkMoveByTenor("2006-08-31", StandardTenor.T_1M, 0, "2006-09-29", HolidayHandlerType.BACKWARD);
+        checkMoveByTenor("2006-08-31", StandardTenor.T_2M, 0, "2006-10-31", HolidayHandlerType.BACKWARD);
+        checkMoveByTenor("2006-01-31", StandardTenor.T_1M, 0, "2006-02-28", HolidayHandlerType.BACKWARD);
+        checkMoveByTenor("2008-01-31", StandardTenor.T_1M, 0, "2008-02-29", HolidayHandlerType.BACKWARD);
+        
+        checkMoveByTenor("2006-08-08", StandardTenor.T_1M, 0, "2006-09-08", HolidayHandlerType.BACKWARD);
+        checkMoveByTenor("2006-08-09", StandardTenor.T_1M, 0, "2006-09-08", HolidayHandlerType.BACKWARD);
+        checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.MONTH), 0, "2006-10-06", HolidayHandlerType.BACKWARD);
+        checkMoveByTenor("2006-08-08", new Tenor(5, TenorCode.MONTH), 0, "2007-01-08", HolidayHandlerType.BACKWARD);
+    }
+
+    public void testMoveByTenorYear() {
+        checkMoveByTenor("2006-08-31", StandardTenor.T_1Y, 0, "2007-08-31", HolidayHandlerType.BACKWARD);
+        checkMoveByTenor("2006-08-31", StandardTenor.T_2Y, 0, "2008-08-29", HolidayHandlerType.BACKWARD);
+        checkMoveByTenor("2008-02-29", StandardTenor.T_1Y, 0, "2009-02-27", HolidayHandlerType.BACKWARD);
+        checkMoveByTenor("2008-02-29", StandardTenor.T_4Y, 0, "2012-02-29", HolidayHandlerType.BACKWARD);
+    }
+
+    public void testMoveByTenorSpot() {
+        checkMoveByTenor("2006-08-31", StandardTenor.SPOT, 0, "2006-08-31", HolidayHandlerType.BACKWARD);
+        checkMoveByTenor("2006-08-28", StandardTenor.SPOT, 0, "2006-08-25", HolidayHandlerType.BACKWARD);
+    }
+
+    public void testMoveByTenorOvernight() {
+        checkMoveByTenor("2006-08-24", StandardTenor.OVERNIGHT, 0, "2006-08-25", HolidayHandlerType.BACKWARD);
+        checkMoveByTenor("2006-08-25", StandardTenor.OVERNIGHT, 0, "2006-08-25", HolidayHandlerType.BACKWARD);
+        checkMoveByTenor("2006-08-31", StandardTenor.OVERNIGHT, 0, "2006-09-01", HolidayHandlerType.BACKWARD);
+        checkMoveByTenor("2006-08-28", StandardTenor.OVERNIGHT, 0, "2006-08-25", HolidayHandlerType.BACKWARD);
     }
 }
