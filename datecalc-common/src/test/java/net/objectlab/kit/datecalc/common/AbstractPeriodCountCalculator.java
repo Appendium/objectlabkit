@@ -297,6 +297,9 @@ public abstract class AbstractPeriodCountCalculator<E> extends TestCase {
     // end of set
     };
 
+    //TODO fill with values
+    private static final String[][] ACT_ACT = null;
+
     private PeriodCountCalculator<E> cal;
 
     public void setUp() {
@@ -309,46 +312,35 @@ public abstract class AbstractPeriodCountCalculator<E> extends TestCase {
 
     public abstract E getDate();
 
-    public void testConv30EvIsma() {
+    public void testSanity() {
         Assert.assertNotNull(cal);
-
-        for (final String[] test : CONV_360E_ISMA) {
-            runtest(cal, test);
-        }
+    }
+    
+    public void testConv30EvIsma() {
+        runtests(CONV_360E_ISMA);
     }
 
     public void testConv30Ev360() {
-        Assert.assertNotNull(cal);
-
-        for (final String[] test : CONV_360E_ISDA) {
-            runtest(cal, test);
-        }
+        runtests(CONV_360E_ISDA);
     }
 
     public void testConv30v360() {
-        Assert.assertNotNull(cal);
-
-        for (final String[] test : CONV_30_360) {
-            runtest(cal, test);
-        }
+        runtests(CONV_30_360);
     }
 
     public void testAct365() {
-        Assert.assertNotNull(cal);
-
-        for (final String[] test : ACT_365) {
-            runtest(cal, test);
-        }
+        runtests(ACT_365);
     }
 
     public void testAct360() {
-        Assert.assertNotNull(cal);
-
-        for (final String[] test : ACT_360) {
-            runtest(cal, test);
-        }
+        runtests(ACT_360);
     }
 
+    public void testActAct() {
+        runtests(ACT_ACT);
+    }
+
+    
     public void testUnsupportedType() {
         Assert.assertNotNull(cal);
 
@@ -370,7 +362,13 @@ public abstract class AbstractPeriodCountCalculator<E> extends TestCase {
             // ok
         }
     }
-
+    
+    private void runtests(String[][] tests) {
+        for (final String[] test : tests) {
+            runtest(cal, test);
+        }
+    }
+    
     private void runtest(final PeriodCountCalculator<E> cal, final String[] test) {
         final String name = test[0];
         final E start = parseDate(test[1]);
