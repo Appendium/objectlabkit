@@ -26,7 +26,7 @@ import net.objectlab.kit.datecalc.common.IMMDateCalculator;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
 /**
- * TODO add javadoc
+ * The default factory for getting Jdk <code>Date</code> based calculators.
  * 
  * @author Benoit Xhenseval
  * @author $LastChangedBy: benoitx $
