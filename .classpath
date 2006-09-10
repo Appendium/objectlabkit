@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="datecalc-common/src/main/java"/>
-	<classpathentry kind="src" path="datecalc-common/src/test/java"/>
-	<classpathentry kind="src" path="datecalc-jdk/src/main/java"/>
-	<classpathentry kind="src" path="datecalc-jdk/src/test/java"/>
-	<classpathentry kind="src" path="datecalc-joda/src/main/java"/>
-	<classpathentry kind="src" path="datecalc-joda/src/test/java"/>
+	<classpathentry output="datecalc-common/target/classes" kind="src" path="datecalc-common/src/main/java"/>
+	<classpathentry output="datecalc-common/target/test-classes" kind="src" path="datecalc-common/src/test/java"/>
+	<classpathentry output="datecalc-jdk/target/classes" kind="src" path="datecalc-jdk/src/main/java"/>
+	<classpathentry output="datecalc-jdk/target/test-classes" kind="src" path="datecalc-jdk/src/test/java"/>
+	<classpathentry output="datecalc-joda/target/classes" kind="src" path="datecalc-joda/src/main/java"/>
+	<classpathentry output="datecalc-joda/target/test-classes" kind="src" path="datecalc-joda/src/test/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="var" path="M2_REPO/junit/junit/3.8.1/junit-3.8.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/joda-time/joda-time/1.3/joda-time-1.3.jar"/>
