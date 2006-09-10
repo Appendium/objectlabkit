@@ -66,8 +66,8 @@ public abstract class AbstractDateTestCase<E> extends TestCase {
         final DateCalculator<E> cal = newDateCalculator("bla", holidayHandlerType);
         cal.setNonWorkingDays(createUKHolidays());
         cal.setStartDate(newDate(startDate));
-        checkDate("Move start:" + startDate + " tenor:" + tenor + " daysToSpot:" + daysToSpot,
-                cal.moveByTenor(tenor, daysToSpot), expectedDate);
+        checkDate("Move start:" + startDate + " tenor:" + tenor + " daysToSpot:" + daysToSpot, cal.moveByTenor(tenor, daysToSpot),
+                expectedDate);
     }
 
 }

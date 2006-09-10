@@ -111,11 +111,18 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
             throw new IllegalArgumentException("Tenor cannot be null");
         }
 
-        // get to the Spot date first:
-        moveByDays(daysToSpot);
+        final TenorCode tenorCode = tenor.getCode();
+        if (tenorCode != TenorCode.OVERNIGHT) {
+            // get to the Spot date first:
+            moveByDays(daysToSpot);
+        }
 
         // move by tenor
-        switch (tenor.getCode()) {
+        switch (tenorCode) {
+        case OVERNIGHT:
+            return moveByDays(1);
+        case SPOT:
+            return this;
         case DAY:
             return moveByDays(tenor.getUnits());
         case WEEK:
@@ -171,8 +178,8 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
                 && holidayHandler != null
                 && (holidayHandler.getType().equals(HolidayHandlerType.FORWARD) || holidayHandler.getType().equals(
                         HolidayHandlerType.MODIFIED_FOLLLOWING))) {
-            throw new IllegalArgumentException("A " + HolidayHandlerType.MODIFIED_FOLLLOWING + " or "
-                    + HolidayHandlerType.FORWARD + " does not allow negative steps for moveByBusinessDays");
+            throw new IllegalArgumentException("A " + HolidayHandlerType.MODIFIED_FOLLLOWING + " or " + HolidayHandlerType.FORWARD
+                    + " does not allow negative steps for moveByBusinessDays");
         }
 
         final int numberOfStepsLeft = Math.abs(businessDays);

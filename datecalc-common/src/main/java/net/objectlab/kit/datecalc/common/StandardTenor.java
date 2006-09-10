@@ -28,12 +28,6 @@ public final class StandardTenor {
 
     public static final Tenor OVERNIGHT = new Tenor(0, TenorCode.OVERNIGHT);
 
-    public static final Tenor TOM_NEXT = new Tenor(0, TenorCode.TOMNEXT);
-
-    public static final Tenor SPOT_NEXT = new Tenor(0, TenorCode.SPOTNEXT);
-
-    public static final Tenor SPOT_WEEK = new Tenor(0, TenorCode.SPOTWEEK);
-
     public static final Tenor T_1D = new Tenor(1, TenorCode.DAY);
 
     public static final Tenor T_1W = new Tenor(1, TenorCode.WEEK);
