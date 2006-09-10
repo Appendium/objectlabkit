@@ -24,6 +24,14 @@ import org.joda.time.LocalDate;
 import org.joda.time.Period;
 import org.joda.time.PeriodType;
 
+/**
+ * Joda <code>LocalDatePeriod</code> based implementation of the {@link PeriodCountCalculator}
+ *
+ * @author Benoit Xhenseval
+ * @author $LastChangedBy: marchy $
+ * @version $Revision: 138 $ $Date: 2006-09-10 14:29:15 +0200 (Sun, 10 Sep 2006) $
+ *
+ */
 public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<LocalDate> {
 
     public int dayDiff(final LocalDate start, final LocalDate end, final PeriodCountBasis basis) {

@@ -28,6 +28,9 @@ import org.joda.time.YearMonthDay;
  * day.
  * 
  * @author Benoit Xhenseval
+ * @author $LastChangedBy$
+ * @version $Revision$ $Date$
+ *
  */
 public class YearMonthDayBackwardHandler implements HolidayHandler<YearMonthDay> {
 
