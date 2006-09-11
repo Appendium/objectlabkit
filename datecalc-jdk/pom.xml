@@ -31,4 +31,17 @@
       </dependency>
    </dependencies>
 
+   <build>
+      <testResources>
+         <testResource>
+            <directory>
+               ../datecalc-common/target/test-classes
+            </directory>
+            <includes>
+               <include>**/*.class</include>
+            </includes>
+         </testResource>
+      </testResources>
+   </build>
+
 </project>
