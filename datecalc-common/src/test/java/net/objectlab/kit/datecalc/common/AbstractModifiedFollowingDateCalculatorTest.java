@@ -213,7 +213,7 @@ public abstract class AbstractModifiedFollowingDateCalculatorTest<E> extends Abs
 
         checkDate("do NOT move to next month", cal, "2006-07-28");
     }
-    
+
     public void testMoveByTenorDays() {
         checkMoveByTenor("2006-08-08", StandardTenor.T_1D, 0, "2006-08-09", HolidayHandlerType.MODIFIED_FOLLLOWING);
         checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.DAY), 0, "2006-08-10", HolidayHandlerType.MODIFIED_FOLLLOWING);
@@ -265,7 +265,7 @@ public abstract class AbstractModifiedFollowingDateCalculatorTest<E> extends Abs
         checkMoveByTenor("2006-08-31", StandardTenor.T_2M, 0, "2006-10-31", HolidayHandlerType.MODIFIED_FOLLLOWING);
         checkMoveByTenor("2006-01-31", StandardTenor.T_1M, 0, "2006-02-28", HolidayHandlerType.MODIFIED_FOLLLOWING);
         checkMoveByTenor("2008-01-31", StandardTenor.T_1M, 0, "2008-02-29", HolidayHandlerType.MODIFIED_FOLLLOWING);
-        
+
         checkMoveByTenor("2006-08-08", StandardTenor.T_1M, 0, "2006-09-08", HolidayHandlerType.MODIFIED_FOLLLOWING);
         checkMoveByTenor("2006-08-09", StandardTenor.T_1M, 0, "2006-09-11", HolidayHandlerType.MODIFIED_FOLLLOWING);
         checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.MONTH), 0, "2006-10-09", HolidayHandlerType.MODIFIED_FOLLLOWING);
@@ -277,7 +277,7 @@ public abstract class AbstractModifiedFollowingDateCalculatorTest<E> extends Abs
         checkMoveByTenor("2006-08-31", StandardTenor.T_2M, 1, "2006-11-01", HolidayHandlerType.MODIFIED_FOLLLOWING);
         checkMoveByTenor("2006-01-31", StandardTenor.T_1M, 1, "2006-03-01", HolidayHandlerType.MODIFIED_FOLLLOWING);
         checkMoveByTenor("2008-01-31", StandardTenor.T_1M, 1, "2008-03-03", HolidayHandlerType.MODIFIED_FOLLLOWING);
-        
+
         checkMoveByTenor("2006-08-08", StandardTenor.T_1M, 1, "2006-09-11", HolidayHandlerType.MODIFIED_FOLLLOWING);
         checkMoveByTenor("2006-08-09", StandardTenor.T_1M, 1, "2006-09-11", HolidayHandlerType.MODIFIED_FOLLLOWING);
         checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.MONTH), 1, "2006-10-09", HolidayHandlerType.MODIFIED_FOLLLOWING);
@@ -289,7 +289,7 @@ public abstract class AbstractModifiedFollowingDateCalculatorTest<E> extends Abs
         checkMoveByTenor("2006-08-31", StandardTenor.T_2M, 2, "2006-11-06", HolidayHandlerType.MODIFIED_FOLLLOWING);
         checkMoveByTenor("2006-01-31", StandardTenor.T_1M, 2, "2006-03-02", HolidayHandlerType.MODIFIED_FOLLLOWING);
         checkMoveByTenor("2008-01-31", StandardTenor.T_1M, 2, "2008-03-04", HolidayHandlerType.MODIFIED_FOLLLOWING);
-        
+
         checkMoveByTenor("2006-08-08", StandardTenor.T_1M, 2, "2006-09-11", HolidayHandlerType.MODIFIED_FOLLLOWING);
         checkMoveByTenor("2006-08-09", StandardTenor.T_1M, 2, "2006-09-11", HolidayHandlerType.MODIFIED_FOLLLOWING);
         checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.MONTH), 2, "2006-10-10", HolidayHandlerType.MODIFIED_FOLLLOWING);

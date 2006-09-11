@@ -23,17 +23,18 @@ import java.util.Date;
 import java.util.List;
 
 import net.objectlab.kit.datecalc.common.AbstractIMMDateCalculator;
+import net.objectlab.kit.datecalc.common.IMMDateCalculator;
 import net.objectlab.kit.datecalc.common.IMMPeriod;
 import net.objectlab.kit.datecalc.common.Utils;
 
 /**
  * Jdk <code>Date</code> based implementation of the {@link IMMDateCalculator}.
  * It simply delegates to the Calendar implementation.
- *
+ * 
  * @author Marcin Jekot
  * @author $LastChangedBy: marchy $
  * @version $Revision: 138 $ $Date: 2006-09-10 14:29:15 +0200 (Sun, 10 Sep 2006) $
- *
+ * 
  */
 public class DateIMMDateCalculator extends AbstractIMMDateCalculator<Date> {
 

@@ -30,7 +30,7 @@ import org.joda.time.YearMonthDay;
  * @author Benoit Xhenseval
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
- *
+ * 
  */
 public class YearMonthDayForwardHandler implements HolidayHandler<YearMonthDay> {
 

@@ -26,7 +26,7 @@ import java.util.Date;
  * @author Benoit Xhenseval
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
- *
+ * 
  */
 public class WorkingWeek {
     private static final byte MONDAY = 1;
@@ -91,7 +91,8 @@ public class WorkingWeek {
      *            true if working day
      * @param dayOfWeek
      *            e.g. Calendar.MONDAY, Calendar.TUESDAY, etc
-     * @return a new instance of a <code>WorkingWeek</code> with the working day set
+     * @return a new instance of a <code>WorkingWeek</code> with the working
+     *         day set
      */
     public WorkingWeek withWorkingDayFromCalendar(final boolean working, final int dayOfWeek) {
         final int day = adjustDay(dayOfWeek);

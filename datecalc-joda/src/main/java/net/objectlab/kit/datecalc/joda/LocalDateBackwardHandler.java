@@ -29,7 +29,7 @@ import org.joda.time.LocalDate;
  * @author Benoit Xhenseval
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
- *
+ * 
  */
 public class LocalDateBackwardHandler extends LocalDateForwardHandler {
 

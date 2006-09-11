@@ -22,15 +22,16 @@ import java.util.Calendar;
 import java.util.List;
 
 import net.objectlab.kit.datecalc.common.AbstractIMMDateCalculator;
+import net.objectlab.kit.datecalc.common.IMMDateCalculator;
 import net.objectlab.kit.datecalc.common.IMMPeriod;
 
 /**
  * Jdk Calendar implementation of the {@link IMMDateCalculator}
- *
+ * 
  * @author Marcin Jekot
  * @author $LastChangedBy: marchy $
  * @version $Revision: 138 $ $Date: 2006-09-10 14:29:15 +0200 (Sun, 10 Sep 2006) $
- *
+ * 
  */
 public class CalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calendar> {
     private static final int NUMBER_DAYS_IN_WEEK = 7;

@@ -19,16 +19,14 @@ package net.objectlab.kit.datecalc.common;
 
 /**
  * enum of Tenor Codes held by a {@link Tenor}
- *
+ * 
  * @author Benoit Xhenseval
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
- *
+ * 
  */
 public enum TenorCode {
-    OVERNIGHT("ON", false),
-    SPOT("SP", false),
-    DAY("D", true), WEEK("W", true), MONTH("M", true), YEAR("Y", true);
+    OVERNIGHT("ON", false), SPOT("SP", false), DAY("D", true), WEEK("W", true), MONTH("M", true), YEAR("Y", true);
 
     private final String code;
 
@@ -47,8 +45,9 @@ public enum TenorCode {
     }
 
     /**
-     * @param code string representation of the <code>TenorCode</code>
-     * @return a <code>TenorCode</code> represented by the string argument 
+     * @param code
+     *            string representation of the <code>TenorCode</code>
+     * @return a <code>TenorCode</code> represented by the string argument
      */
     public static TenorCode fromCode(final String code) {
         for (final TenorCode ct : TenorCode.values()) {

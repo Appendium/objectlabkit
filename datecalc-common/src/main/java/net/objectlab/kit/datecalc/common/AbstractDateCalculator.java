@@ -34,6 +34,8 @@ import java.util.Set;
  * @param <E>
  */
 public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
+    private static final int MONTHS_IN_YEAR = 12;
+
     protected static final int DAYS_IN_WEEK = 7;
 
     private String name;
@@ -115,30 +117,37 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
             moveByDays(daysToSpot);
         }
         int unit = tenor.getUnits();
-        if (tenorCode==TenorCode.WEEK) {
+        if (tenorCode == TenorCode.WEEK) {
             tenorCode = TenorCode.DAY;
-            unit *= DAYS_IN_WEEK;            
+            unit *= DAYS_IN_WEEK;
         }
-        
-        if (tenorCode==TenorCode.YEAR) {
+
+        if (tenorCode == TenorCode.YEAR) {
             tenorCode = TenorCode.MONTH;
-            unit *= 12;
+            unit *= MONTHS_IN_YEAR;
         }
+
+        DateCalculator<E> calc = this;
 
         // move by tenor
         switch (tenorCode) {
         case OVERNIGHT:
-            return moveByDays(1);
+            calc = moveByDays(1);
+            break;
         case SPOT:
-            return this;
+            calc = this;
+            break;
         case DAY:
-            return moveByDays(unit);
+            calc = moveByDays(unit);
+            break;
         case MONTH:
-            return moveByMonths(unit);
+            calc = moveByMonths(unit);
+            break;
         default:
             throw new UnsupportedOperationException("Sorry not yet...");
         }
 
+        return calc;
     }
 
     protected abstract DateCalculator<E> moveByMonths(int months);
