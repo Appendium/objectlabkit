@@ -30,6 +30,9 @@ import java.util.List;
  * @version $Revision: 108 $ $Date: 2006-09-05 11:13:01 +0100 (Tue, 05 Sep 2006) $
  * 
  * @param <E>
+ *            a representation of a date, typically JDK: Date, Calendar;
+ *            Joda:LocalDate, YearMonthDay
+ * 
  */
 public abstract class AbstractIMMDateCalculator<E> implements IMMDateCalculator<E> {
 
