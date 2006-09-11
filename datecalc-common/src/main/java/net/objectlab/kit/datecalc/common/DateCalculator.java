@@ -196,10 +196,10 @@ public interface DateCalculator<E> {
      * 
      * @param tenor
      *            the Tenor to reach.
-     * @param daysToSpot
+     * @param spotLag
      *            number of days to "spot" days, this can vary from one market
      *            to the other.
      * @return the current DateCalculator
      */
-    DateCalculator<E> moveByTenor(final Tenor tenor, final int daysToSpot);
+    DateCalculator<E> moveByTenor(final Tenor tenor, final int spotLag);
 }

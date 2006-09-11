@@ -44,31 +44,46 @@ public interface PeriodCountCalculator<E> {
     int MONTH_30_DAYS = 30;
 
     /**
-     * This calculates the number of days between 2 dates, it follows the given basis which means that 
-     * the result could vary between the same 2 dates if the basis is different.
-     * @param start the start date
-     * @param end the end date
-     * @param basis the basis to use
+     * This calculates the number of days between 2 dates, it follows the given
+     * basis which means that the result could vary between the same 2 dates if
+     * the basis is different.
+     * 
+     * @param start
+     *            the start date
+     * @param end
+     *            the end date
+     * @param basis
+     *            the basis to use
      * @return number of days between end and start.
      */
     int dayDiff(final E start, final E end, PeriodCountBasis basis);
 
     /**
-     * This calculates the number of months (or fraction) between 2 dates, it follows the given basis which means that 
-     * the result could vary between the same 2 dates if the basis is different.
-     * @param start the start date
-     * @param end the end date
-     * @param basis the basis to use
+     * This calculates the number of months (or fraction) between 2 dates, it
+     * follows the given basis which means that the result could vary between
+     * the same 2 dates if the basis is different.
+     * 
+     * @param start
+     *            the start date
+     * @param end
+     *            the end date
+     * @param basis
+     *            the basis to use
      * @return number of months between end and start.
      */
     double monthDiff(final E start, final E end, PeriodCountBasis basis);
 
     /**
-     * This calculates the number of years (or fraction) between 2 dates, it follows the given basis which means that 
-     * the result could vary between the same 2 dates if the basis is different.
-     * @param start the start date
-     * @param end the end date
-     * @param basis the basis to use
+     * This calculates the number of years (or fraction) between 2 dates, it
+     * follows the given basis which means that the result could vary between
+     * the same 2 dates if the basis is different.
+     * 
+     * @param start
+     *            the start date
+     * @param end
+     *            the end date
+     * @param basis
+     *            the basis to use
      * @return number of months between end and start.
      */
     double yearDiff(final E start, final E end, PeriodCountBasis basis);

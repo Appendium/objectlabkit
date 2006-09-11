@@ -34,11 +34,24 @@ import net.objectlab.kit.datecalc.common.HolidayHandlerType;
  */
 public class DateBackwardHandler extends DateForwardHandler {
 
+    /**
+     * If the current date of the give calculator is a non-working day, it will
+     * be moved according to the algorithm implemented.
+     * 
+     * @param calculator
+     *            the calculator
+     * @return the date which may have moved.
+     */
     @Override
-    public Date moveCurrentDate(final DateCalculator<Date> calendar) {
-        return move(calendar, -1);
+    public Date moveCurrentDate(final DateCalculator<Date> calculator) {
+        return move(calculator, -1);
     }
 
+    /**
+     * Give the type name for this algorithm.
+     * 
+     * @return algorithm name.
+     */
     @Override
     public String getType() {
         return HolidayHandlerType.BACKWARD;

@@ -44,8 +44,16 @@ public class HolidayHandlerDateWrapper implements HolidayHandler<Calendar> {
         calculator = dateCalculator;
     }
 
-    public Calendar moveCurrentDate(final DateCalculator<Calendar> calendar) {
-        Calendar ret = calendar.getCurrentBusinessDate();
+    /**
+     * If the current date of the give calculator is a non-working day, it will
+     * be moved according to the algorithm implemented.
+     * 
+     * @param calc
+     *            the calculator
+     * @return the date which may have moved.
+     */
+    public Calendar moveCurrentDate(final DateCalculator<Calendar> calc) {
+        Calendar ret = calc.getCurrentBusinessDate();
         if (delegate != null) {
             final Date day = delegate.moveCurrentDate(calculator);
             if (day != null) {
@@ -55,6 +63,11 @@ public class HolidayHandlerDateWrapper implements HolidayHandler<Calendar> {
         return ret;
     }
 
+    /**
+     * Give the type name for this algorithm.
+     * 
+     * @return algorithm name.
+     */
     public String getType() {
         return delegate.getType();
     }

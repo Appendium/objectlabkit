@@ -38,6 +38,14 @@ public class HolidayHandlerYearMonthDayWrapper implements HolidayHandler<LocalDa
 
     private DateCalculator<YearMonthDay> calculator;
 
+    /**
+     * If the current date of the give calculator is a non-working day, it will
+     * be moved according to the algorithm implemented.
+     * 
+     * @param calculator
+     *            the calculator
+     * @return the date which may have moved.
+     */
     public HolidayHandlerYearMonthDayWrapper(final HolidayHandler<YearMonthDay> delegate,
             final DateCalculator<YearMonthDay> calculator) {
         this.delegate = delegate;
@@ -58,8 +66,8 @@ public class HolidayHandlerYearMonthDayWrapper implements HolidayHandler<LocalDa
      * 
      * @see net.objectlab.kit.datecalc.common.HolidayHandler#moveCurrentDate(net.objectlab.kit.datecalc.common.DateCalculator)
      */
-    public LocalDate moveCurrentDate(final DateCalculator<LocalDate> calendar) {
-        LocalDate ret = calendar.getCurrentBusinessDate();
+    public LocalDate moveCurrentDate(final DateCalculator<LocalDate> calc) {
+        LocalDate ret = calc.getCurrentBusinessDate();
         if (delegate != null) {
             final YearMonthDay day = delegate.moveCurrentDate(calculator);
             if (day != null) {

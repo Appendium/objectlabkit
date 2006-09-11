@@ -34,13 +34,26 @@ import org.joda.time.LocalDate;
  */
 public class LocalDateModifiedPreceedingHandler extends LocalDateModifiedFollowingHandler {
 
+    /**
+     * Give the type name for this algorithm.
+     * 
+     * @return algorithm name.
+     */
     @Override
     public String getType() {
         return HolidayHandlerType.MODIFIED_PRECEEDING;
     }
 
+    /**
+     * If the current date of the give calculator is a non-working day, it will
+     * be moved according to the algorithm implemented.
+     * 
+     * @param calculator
+     *            the calculator
+     * @return the date which may have moved.
+     */
     @Override
-    public LocalDate moveCurrentDate(final DateCalculator<LocalDate> calendar) {
-        return move(calendar, -1);
+    public LocalDate moveCurrentDate(final DateCalculator<LocalDate> calculator) {
+        return move(calculator, -1);
     }
 }
