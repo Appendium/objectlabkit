@@ -33,17 +33,24 @@ import net.objectlab.kit.datecalc.common.HolidayHandlerType;
  */
 public class CalendarModifiedFollowingHandler implements HolidayHandler<Calendar> {
 
-    public Calendar moveCurrentDate(final DateCalculator<Calendar> calendar) {
-        return move(calendar, 1);
+    /**
+     * If the current date of the give calculator is a non-working day, it will
+     * be moved according to the algorithm implemented.
+     * 
+     * @param calculator
+     *            the calculator
+     * @return the date which may have moved.
+     */
+    public Calendar moveCurrentDate(final DateCalculator<Calendar> calculator) {
+        return move(calculator, 1);
     }
 
-    protected Calendar move(final DateCalculator<Calendar> calendar, int step) {
-
-        final Calendar cal = (Calendar) calendar.getCurrentBusinessDate().clone();
+    protected Calendar move(final DateCalculator<Calendar> calculator, int step) {
+        final Calendar cal = (Calendar) calculator.getCurrentBusinessDate().clone();
 
         final int month = cal.get(Calendar.MONTH);
 
-        while (calendar.isNonWorkingDay(cal)) {
+        while (calculator.isNonWorkingDay(cal)) {
             cal.add(Calendar.DAY_OF_MONTH, step);
             if (month != cal.get(Calendar.MONTH)) {
                 // switch direction and go back
@@ -55,6 +62,11 @@ public class CalendarModifiedFollowingHandler implements HolidayHandler<Calendar
         return cal;
     }
 
+    /**
+     * Give the type name for this algorithm.
+     * 
+     * @return algorithm name.
+     */
     public String getType() {
         return HolidayHandlerType.MODIFIED_FOLLLOWING;
     }

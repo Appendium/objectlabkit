@@ -18,7 +18,6 @@
 package net.objectlab.kit.datecalc.joda;
 
 import net.objectlab.kit.datecalc.common.DateCalculator;
-import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
 import org.joda.time.YearMonthDay;
@@ -33,25 +32,26 @@ import org.joda.time.YearMonthDay;
  * @version $Revision$ $Date$
  * 
  */
-public class YearMonthDayModifiedPreceedingHandler implements HolidayHandler<YearMonthDay> {
+public class YearMonthDayModifiedPreceedingHandler extends YearMonthDayModifiedFollowingHandler {
 
-    public YearMonthDay moveCurrentDate(final DateCalculator<YearMonthDay> calendar) {
-        YearMonthDay date = calendar.getCurrentBusinessDate();
-        final int month = date.getMonthOfYear();
-        int step = -1;
-        while (calendar.isNonWorkingDay(date)) {
-            date = date.plusDays(step);
-            if (date.getMonthOfYear() != month) {
-                // flick to backward
-                step = 1;
-                date = date.plusDays(step);
-            }
-        }
-        return date;
+    /**
+     * If the current date of the give calculator is a non-working day, it will
+     * be moved according to the algorithm implemented.
+     * 
+     * @param calculator
+     *            the calculator
+     * @return the date which may have moved.
+     */
+    public YearMonthDay moveCurrentDate(final DateCalculator<YearMonthDay> calculator) {
+        return move(calculator, -1);
     }
 
+    /**
+     * Give the type name for this algorithm.
+     * 
+     * @return algorithm name.
+     */
     public String getType() {
         return HolidayHandlerType.MODIFIED_PRECEEDING;
     }
-
 }

@@ -35,14 +35,22 @@ import org.joda.time.LocalDate;
  */
 public class LocalDateModifiedFollowingHandler implements HolidayHandler<LocalDate> {
 
-    public LocalDate moveCurrentDate(final DateCalculator<LocalDate> calendar) {
-        return move(calendar, 1);
+    /**
+     * If the current date of the give calculator is a non-working day, it will
+     * be moved according to the algorithm implemented.
+     * 
+     * @param calculator
+     *            the calculator
+     * @return the date which may have moved.
+     */
+    public LocalDate moveCurrentDate(final DateCalculator<LocalDate> calculator) {
+        return move(calculator, 1);
     }
 
-    protected LocalDate move(final DateCalculator<LocalDate> calendar, int step) {
-        LocalDate date = calendar.getCurrentBusinessDate();
+    protected LocalDate move(final DateCalculator<LocalDate> calculator, int step) {
+        LocalDate date = calculator.getCurrentBusinessDate();
         final int month = date.getMonthOfYear();
-        while (calendar.isNonWorkingDay(date)) {
+        while (calculator.isNonWorkingDay(date)) {
             date = date.plusDays(step);
             if (date.getMonthOfYear() != month) {
                 // flick to backward
@@ -53,6 +61,11 @@ public class LocalDateModifiedFollowingHandler implements HolidayHandler<LocalDa
         return date;
     }
 
+    /**
+     * Give the type name for this algorithm.
+     * 
+     * @return algorithm name.
+     */
     public String getType() {
         return HolidayHandlerType.MODIFIED_FOLLLOWING;
     }

@@ -57,16 +57,16 @@ public abstract class AbstractDateTestCase<E> extends TestCase {
      * 
      * @param startDate
      * @param tenor
-     * @param daysToSpot
+     * @param spotLag
      * @param expectedDate
      * @param holidayHandlerType
      */
-    protected void checkMoveByTenor(final String startDate, final Tenor tenor, final int daysToSpot, final String expectedDate,
+    protected void checkMoveByTenor(final String startDate, final Tenor tenor, final int spotLag, final String expectedDate,
             final String holidayHandlerType) {
         final DateCalculator<E> cal = newDateCalculator("bla", holidayHandlerType);
         cal.setNonWorkingDays(createUKHolidays());
         cal.setStartDate(newDate(startDate));
-        checkDate("Move start:" + startDate + " tenor:" + tenor + " daysToSpot:" + daysToSpot, cal.moveByTenor(tenor, daysToSpot),
+        checkDate("Move start:" + startDate + " tenor:" + tenor + " daysToSpot:" + spotLag, cal.moveByTenor(tenor, spotLag),
                 expectedDate);
     }
 

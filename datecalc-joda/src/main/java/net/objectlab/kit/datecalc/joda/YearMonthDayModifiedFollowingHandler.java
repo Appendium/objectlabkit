@@ -35,19 +35,35 @@ import org.joda.time.YearMonthDay;
  */
 public class YearMonthDayModifiedFollowingHandler implements HolidayHandler<YearMonthDay> {
 
+    /**
+     * Give the type name for this algorithm.
+     * 
+     * @return algorithm name.
+     */
     public String getType() {
         return HolidayHandlerType.MODIFIED_FOLLLOWING;
     }
 
-    public YearMonthDay moveCurrentDate(final DateCalculator<YearMonthDay> calendar) {
-        YearMonthDay date = calendar.getCurrentBusinessDate();
+    /**
+     * If the current date of the give calculator is a non-working day, it will
+     * be moved according to the algorithm implemented.
+     * 
+     * @param calculator
+     *            the calculator
+     * @return the date which may have moved.
+     */
+    public YearMonthDay moveCurrentDate(final DateCalculator<YearMonthDay> calculator) {
+        return move(calculator, 1);
+    }
+
+    protected YearMonthDay move(final DateCalculator<YearMonthDay> calculator, int step) {
+        YearMonthDay date = calculator.getCurrentBusinessDate();
         final int month = date.getMonthOfYear();
-        int step = 1;
-        while (calendar.isNonWorkingDay(date)) {
+        while (calculator.isNonWorkingDay(date)) {
             date = date.plusDays(step);
             if (date.getMonthOfYear() != month) {
                 // flick to backward
-                step = -1;
+                step *= -1;
                 date = date.plusDays(step);
             }
         }

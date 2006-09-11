@@ -31,7 +31,20 @@ package net.objectlab.kit.datecalc.common;
  * 
  */
 public interface HolidayHandler<E> {
-    E moveCurrentDate(DateCalculator<E> date);
+    /**
+     * If the current date of the give calculator is a non-working day, it will
+     * be moved according to the algorithm implemented.
+     * 
+     * @param calculator
+     *            the calculator
+     * @return the date which may have moved.
+     */
+    E moveCurrentDate(DateCalculator<E> calculator);
 
+    /**
+     * Give the type name for this algorithm.
+     * 
+     * @return algorithm name.
+     */
     String getType();
 }

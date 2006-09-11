@@ -34,14 +34,31 @@ import org.joda.time.YearMonthDay;
  */
 public class YearMonthDayForwardHandler implements HolidayHandler<YearMonthDay> {
 
-    public YearMonthDay moveCurrentDate(final DateCalculator<YearMonthDay> calendar) {
-        YearMonthDay date = calendar.getCurrentBusinessDate();
-        while (calendar.isNonWorkingDay(date)) {
-            date = date.plusDays(1);
+    /**
+     * If the current date of the give calculator is a non-working day, it will
+     * be moved according to the algorithm implemented.
+     * 
+     * @param calculator
+     *            the calculator
+     * @return the date which may have moved.
+     */
+    public YearMonthDay moveCurrentDate(final DateCalculator<YearMonthDay> calculator) {
+        return move(calculator, 1);
+    }
+
+    protected YearMonthDay move(final DateCalculator<YearMonthDay> calculator, final int step) {
+        YearMonthDay date = calculator.getCurrentBusinessDate();
+        while (calculator.isNonWorkingDay(date)) {
+            date = date.plusDays(step);
         }
         return date;
     }
 
+    /**
+     * Give the type name for this algorithm.
+     * 
+     * @return algorithm name.
+     */
     public String getType() {
         return HolidayHandlerType.FORWARD;
     }

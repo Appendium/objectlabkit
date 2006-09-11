@@ -30,7 +30,7 @@ import java.util.Set;
  * @author Benoit Xhenseval
  * @author $LastChangedBy: benoitx $
  * @version $Revision: 125 $ $Date: 2006-09-07 19:24:20 +0200 (Thu, 07 Sep 2006) $
- *
+ * 
  * @param <E>
  *            a representation of a date, typically JDK: Date, Calendar;
  *            Joda:LocalDate, YearMonthDay

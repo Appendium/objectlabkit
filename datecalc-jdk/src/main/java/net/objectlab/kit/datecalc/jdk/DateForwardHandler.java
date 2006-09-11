@@ -36,8 +36,16 @@ import net.objectlab.kit.datecalc.common.Utils;
  */
 public class DateForwardHandler implements HolidayHandler<Date> {
 
-    public Date moveCurrentDate(final DateCalculator<Date> calendar) {
-        return move(calendar, 1);
+    /**
+     * If the current date of the give calculator is a non-working day, it will
+     * be moved according to the algorithm implemented.
+     * 
+     * @param calculator
+     *            the calculator
+     * @return the date which may have moved.
+     */
+    public Date moveCurrentDate(final DateCalculator<Date> calculator) {
+        return move(calculator, 1);
     }
 
     protected Date move(final DateCalculator<Date> calculator, final int step) {
@@ -50,6 +58,11 @@ public class DateForwardHandler implements HolidayHandler<Date> {
         return cal.getTime();
     }
 
+    /**
+     * Give the type name for this algorithm.
+     * 
+     * @return algorithm name.
+     */
     public String getType() {
         return HolidayHandlerType.FORWARD;
     }

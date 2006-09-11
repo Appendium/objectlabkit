@@ -34,18 +34,31 @@ import org.joda.time.LocalDate;
  */
 public class LocalDateForwardHandler implements HolidayHandler<LocalDate> {
 
-    public LocalDate moveCurrentDate(final DateCalculator<LocalDate> calendar) {
-        return move(calendar, 1);
+    /**
+     * If the current date of the give calculator is a non-working day, it will
+     * be moved according to the algorithm implemented.
+     * 
+     * @param calculator
+     *            the calculator
+     * @return the date which may have moved.
+     */
+    public LocalDate moveCurrentDate(final DateCalculator<LocalDate> calculator) {
+        return move(calculator, 1);
     }
 
-    protected LocalDate move(final DateCalculator<LocalDate> calendar, final int step) {
-        LocalDate date = calendar.getCurrentBusinessDate();
-        while (calendar.isNonWorkingDay(date)) {
+    protected LocalDate move(final DateCalculator<LocalDate> calculator, final int step) {
+        LocalDate date = calculator.getCurrentBusinessDate();
+        while (calculator.isNonWorkingDay(date)) {
             date = date.plusDays(step);
         }
         return date;
     }
 
+    /**
+     * Give the type name for this algorithm.
+     * 
+     * @return algorithm name.
+     */
     public String getType() {
         return HolidayHandlerType.FORWARD;
     }
