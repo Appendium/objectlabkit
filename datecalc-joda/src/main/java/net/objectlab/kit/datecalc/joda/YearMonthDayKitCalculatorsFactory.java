@@ -27,12 +27,13 @@ import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 import org.joda.time.YearMonthDay;
 
 /**
- * The default factory for getting Joda <code>YearMonthDay</code> based calculators.
+ * The default factory for getting Joda <code>YearMonthDay</code> based
+ * calculators.
  * 
  * @author Benoit Xhenseval
  * @author $LastChangedBy: marchy $
  * @version $Revision: 138 $ $Date: 2006-09-10 14:29:15 +0200 (Sun, 10 Sep 2006) $
- *
+ * 
  */
 public class YearMonthDayKitCalculatorsFactory extends AbstractKitCalculatorsFactory<YearMonthDay> {
 

@@ -17,7 +17,6 @@
  */
 package net.objectlab.kit.datecalc.common;
 
-
 /**
  * Defines some standard Day Count basis.
  * 

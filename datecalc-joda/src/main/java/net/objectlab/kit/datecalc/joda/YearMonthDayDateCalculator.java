@@ -37,7 +37,7 @@ import org.joda.time.YearMonthDay;
  * @author Benoit Xhenseval
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
- *
+ * 
  */
 public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonthDay> {
 

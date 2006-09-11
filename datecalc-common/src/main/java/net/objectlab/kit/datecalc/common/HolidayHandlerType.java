@@ -23,7 +23,7 @@ package net.objectlab.kit.datecalc.common;
  * @author Benoit Xhenseval
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
- *
+ * 
  */
 public final class HolidayHandlerType {
 

@@ -205,7 +205,6 @@ public abstract class AbstractModifiedPreceedingDateCalculatorTest<E> extends Ab
 
     }
 
-
     public void testAddAcrossMonth() {
         final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.MODIFIED_PRECEEDING);
 
@@ -237,23 +236,76 @@ public abstract class AbstractModifiedPreceedingDateCalculatorTest<E> extends Ab
         checkMoveByTenor("2006-09-26", new Tenor(4, TenorCode.DAY), 0, "2006-09-29", HolidayHandlerType.MODIFIED_PRECEEDING);
     }
 
+    public void testMoveByTenorDaysOneDayToSpot() {
+        checkMoveByTenor("2006-08-08", StandardTenor.T_1D, 1, "2006-08-10", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.DAY), 1, "2006-08-11", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-08-07", new Tenor(10, TenorCode.DAY), 1, "2006-08-18", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-08-07", new Tenor(11, TenorCode.DAY), 1, "2006-08-21", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-08-07", new Tenor(12, TenorCode.DAY), 1, "2006-08-21", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-08-07", new Tenor(13, TenorCode.DAY), 1, "2006-08-21", HolidayHandlerType.FORWARD);
+    }
+
+    public void testMoveByTenorDaysTwoDaysToSpot() {
+        checkMoveByTenor("2006-08-08", StandardTenor.T_1D, 2, "2006-08-11", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.DAY), 2, "2006-08-14", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-08-07", new Tenor(10, TenorCode.DAY), 2, "2006-08-21", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-08-07", new Tenor(11, TenorCode.DAY), 2, "2006-08-21", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-08-07", new Tenor(12, TenorCode.DAY), 2, "2006-08-21", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-08-07", new Tenor(13, TenorCode.DAY), 2, "2006-08-22", HolidayHandlerType.FORWARD);
+    }
+
     public void testMoveByTenorWeek() {
         checkMoveByTenor("2006-08-08", StandardTenor.T_1W, 0, "2006-08-15", HolidayHandlerType.MODIFIED_PRECEEDING);
         checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.WEEK), 0, "2006-08-22", HolidayHandlerType.MODIFIED_PRECEEDING);
         checkMoveByTenor("2006-08-08", new Tenor(4, TenorCode.WEEK), 0, "2006-09-05", HolidayHandlerType.MODIFIED_PRECEEDING);
     }
 
+    public void testMoveByTenorWeekOneDayToSpot() {
+        checkMoveByTenor("2006-08-08", StandardTenor.T_1W, 1, "2006-08-16", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.WEEK), 1, "2006-08-23", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2006-08-08", new Tenor(4, TenorCode.WEEK), 1, "2006-09-06", HolidayHandlerType.MODIFIED_PRECEEDING);
+    }
+
+    public void testMoveByTenorWeekTwoDaysToSpot() {
+        checkMoveByTenor("2006-08-08", StandardTenor.T_1W, 2, "2006-08-17", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.WEEK), 2, "2006-08-24", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2006-08-08", new Tenor(4, TenorCode.WEEK), 2, "2006-09-07", HolidayHandlerType.MODIFIED_PRECEEDING);
+    }
 
     public void testMoveByTenorMonth() {
         checkMoveByTenor("2006-08-31", StandardTenor.T_1M, 0, "2006-09-29", HolidayHandlerType.MODIFIED_PRECEEDING);
         checkMoveByTenor("2006-08-31", StandardTenor.T_2M, 0, "2006-10-31", HolidayHandlerType.MODIFIED_PRECEEDING);
         checkMoveByTenor("2006-01-31", StandardTenor.T_1M, 0, "2006-02-28", HolidayHandlerType.MODIFIED_PRECEEDING);
         checkMoveByTenor("2008-01-31", StandardTenor.T_1M, 0, "2008-02-29", HolidayHandlerType.MODIFIED_PRECEEDING);
-        
+
         checkMoveByTenor("2006-08-08", StandardTenor.T_1M, 0, "2006-09-08", HolidayHandlerType.MODIFIED_PRECEEDING);
         checkMoveByTenor("2006-08-09", StandardTenor.T_1M, 0, "2006-09-08", HolidayHandlerType.MODIFIED_PRECEEDING);
         checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.MONTH), 0, "2006-10-06", HolidayHandlerType.MODIFIED_PRECEEDING);
         checkMoveByTenor("2006-08-08", new Tenor(5, TenorCode.MONTH), 0, "2007-01-08", HolidayHandlerType.MODIFIED_PRECEEDING);
+    }
+
+    public void testMoveByTenorMonthOneDayToSpot() {
+        checkMoveByTenor("2006-08-31", StandardTenor.T_1M, 1, "2006-10-02", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2006-08-31", StandardTenor.T_2M, 1, "2006-11-01", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2006-01-31", StandardTenor.T_1M, 1, "2006-03-01", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2008-01-31", StandardTenor.T_1M, 1, "2008-03-03", HolidayHandlerType.MODIFIED_PRECEEDING);
+
+        checkMoveByTenor("2006-08-08", StandardTenor.T_1M, 1, "2006-09-08", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2006-08-09", StandardTenor.T_1M, 1, "2006-09-08", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.MONTH), 1, "2006-10-09", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2006-08-08", new Tenor(5, TenorCode.MONTH), 1, "2007-01-09", HolidayHandlerType.MODIFIED_PRECEEDING);
+    }
+
+    public void testMoveByTenorMonthTwoDaysToSpot() {
+        checkMoveByTenor("2006-08-31", StandardTenor.T_1M, 2, "2006-10-02", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2006-08-31", StandardTenor.T_2M, 2, "2006-11-01", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2006-01-31", StandardTenor.T_1M, 2, "2006-03-02", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2008-01-31", StandardTenor.T_1M, 2, "2008-03-03", HolidayHandlerType.MODIFIED_PRECEEDING);
+
+        checkMoveByTenor("2006-08-08", StandardTenor.T_1M, 2, "2006-09-08", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2006-08-09", StandardTenor.T_1M, 2, "2006-09-11", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.MONTH), 2, "2006-10-10", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2006-08-08", new Tenor(5, TenorCode.MONTH), 2, "2007-01-10", HolidayHandlerType.MODIFIED_PRECEEDING);
     }
 
     public void testMoveByTenorYear() {
@@ -263,9 +315,33 @@ public abstract class AbstractModifiedPreceedingDateCalculatorTest<E> extends Ab
         checkMoveByTenor("2008-02-29", StandardTenor.T_4Y, 0, "2012-02-29", HolidayHandlerType.MODIFIED_PRECEEDING);
     }
 
+    public void testMoveByTenorYearOneDayToSpot() {
+        checkMoveByTenor("2006-08-31", StandardTenor.T_1Y, 1, "2007-09-03", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2006-08-31", StandardTenor.T_2Y, 1, "2008-09-01", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2008-02-29", StandardTenor.T_1Y, 1, "2009-03-03", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2008-02-29", StandardTenor.T_4Y, 1, "2012-03-02", HolidayHandlerType.MODIFIED_PRECEEDING);
+    }
+
+    public void testMoveByTenorYearTwoDaysToSpot() {
+        checkMoveByTenor("2006-08-31", StandardTenor.T_1Y, 2, "2007-09-03", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2006-08-31", StandardTenor.T_2Y, 2, "2008-09-01", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2008-02-29", StandardTenor.T_1Y, 2, "2009-03-03", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2008-02-29", StandardTenor.T_4Y, 2, "2012-03-02", HolidayHandlerType.MODIFIED_PRECEEDING);
+    }
+
     public void testMoveByTenorSpot() {
         checkMoveByTenor("2006-08-31", StandardTenor.SPOT, 0, "2006-08-31", HolidayHandlerType.MODIFIED_PRECEEDING);
         checkMoveByTenor("2006-08-28", StandardTenor.SPOT, 0, "2006-08-25", HolidayHandlerType.MODIFIED_PRECEEDING);
+    }
+
+    public void testMoveByTenorSpotOneDayToSpot() {
+        checkMoveByTenor("2006-08-31", StandardTenor.SPOT, 1, "2006-09-01", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2006-08-28", StandardTenor.SPOT, 1, "2006-08-25", HolidayHandlerType.MODIFIED_PRECEEDING);
+    }
+
+    public void testMoveByTenorSpotTwoDaysToSpot() {
+        checkMoveByTenor("2006-08-31", StandardTenor.SPOT, 2, "2006-09-01", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2006-08-28", StandardTenor.SPOT, 2, "2006-08-25", HolidayHandlerType.MODIFIED_PRECEEDING);
     }
 
     public void testMoveByTenorOvernight() {
@@ -273,5 +349,19 @@ public abstract class AbstractModifiedPreceedingDateCalculatorTest<E> extends Ab
         checkMoveByTenor("2006-08-25", StandardTenor.OVERNIGHT, 0, "2006-08-25", HolidayHandlerType.MODIFIED_PRECEEDING);
         checkMoveByTenor("2006-08-31", StandardTenor.OVERNIGHT, 0, "2006-09-01", HolidayHandlerType.MODIFIED_PRECEEDING);
         checkMoveByTenor("2006-08-28", StandardTenor.OVERNIGHT, 0, "2006-08-25", HolidayHandlerType.MODIFIED_PRECEEDING);
+    }
+
+    public void testMoveByTenorOvernightOneDayToSpot() {
+        checkMoveByTenor("2006-08-24", StandardTenor.OVERNIGHT, 1, "2006-08-25", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2006-08-25", StandardTenor.OVERNIGHT, 1, "2006-08-25", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2006-08-31", StandardTenor.OVERNIGHT, 1, "2006-09-01", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2006-08-28", StandardTenor.OVERNIGHT, 1, "2006-08-25", HolidayHandlerType.MODIFIED_PRECEEDING);
+    }
+
+    public void testMoveByTenorOvernightTwoDaysToSpot() {
+        checkMoveByTenor("2006-08-24", StandardTenor.OVERNIGHT, 2, "2006-08-25", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2006-08-25", StandardTenor.OVERNIGHT, 2, "2006-08-25", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2006-08-31", StandardTenor.OVERNIGHT, 2, "2006-09-01", HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkMoveByTenor("2006-08-28", StandardTenor.OVERNIGHT, 2, "2006-08-25", HolidayHandlerType.MODIFIED_PRECEEDING);
     }
 }

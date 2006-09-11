@@ -45,9 +45,11 @@ public final class Utils {
     }
 
     /**
-     * Removes set's all "time" fields to zero, leaving only the date portion of the Calendar.
-     * The Calendar passe
-     * @param cal to Calendar object to blast, note, it will be modified
+     * Removes set's all "time" fields to zero, leaving only the date portion of
+     * the Calendar. The Calendar passe
+     * 
+     * @param cal
+     *            to Calendar object to blast, note, it will be modified
      * @return the calendar object modified (same instance)
      */
     public static Calendar blastTime(final Calendar cal) {
@@ -81,7 +83,7 @@ public final class Utils {
             throw new IllegalArgumentException("\"" + dateStr + "\"" + " is an invalid date, the pattern is : " + DATE_PATTERN);
         }
     }
-    
+
     /**
      * 
      * @param str
@@ -105,6 +107,7 @@ public final class Utils {
 
     /**
      * Get a Calendar object for a given Date representation
+     * 
      * @param date
      * @return
      */
@@ -116,7 +119,7 @@ public final class Utils {
         cal.setTime(date);
         return blastTime(cal);
     }
-    
+
     /**
      * Converts a Set of Date objects to a Set of Calendar objects
      * 

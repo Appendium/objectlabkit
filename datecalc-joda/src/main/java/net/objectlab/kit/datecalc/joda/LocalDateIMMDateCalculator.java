@@ -21,18 +21,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.objectlab.kit.datecalc.common.AbstractIMMDateCalculator;
+import net.objectlab.kit.datecalc.common.IMMDateCalculator;
 import net.objectlab.kit.datecalc.common.IMMPeriod;
 
 import org.joda.time.DateTimeConstants;
 import org.joda.time.LocalDate;
 
 /**
- * Joda <code>LocalDate</code> based implementation of the {@link IMMDateCalculator}
- *
+ * Joda <code>LocalDate</code> based implementation of the
+ * {@link IMMDateCalculator}
+ * 
  * @author Benoit Xhenseval
  * @author $LastChangedBy: marchy $
  * @version $Revision: 138 $ $Date: 2006-09-10 14:29:15 +0200 (Sun, 10 Sep 2006) $
- *
+ * 
  */
 public class LocalDateIMMDateCalculator extends AbstractIMMDateCalculator<LocalDate> {
     protected static final int MONTHS_IN_QUARTER = 3;

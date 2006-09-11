@@ -26,7 +26,8 @@ import net.objectlab.kit.datecalc.common.IMMDateCalculator;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
 /**
- * The default factory for getting Jdk <code>Calendar</code> based calculators.
+ * The default factory for getting Jdk <code>Calendar</code> based
+ * calculators.
  * 
  * @author Marcin Jekot
  * @author $LastChangedBy: benoitx $

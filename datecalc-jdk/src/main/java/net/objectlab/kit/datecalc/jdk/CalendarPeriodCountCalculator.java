@@ -23,7 +23,8 @@ import net.objectlab.kit.datecalc.common.PeriodCountBasis;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
 /**
- * Jdk <code>Calendar</code> based implementation of the {@link PeriodCountCalculator}
+ * Jdk <code>Calendar</code> based implementation of the
+ * {@link PeriodCountCalculator}
  * 
  * @author Marcin Jekot
  * @author $LastChangedBy$
