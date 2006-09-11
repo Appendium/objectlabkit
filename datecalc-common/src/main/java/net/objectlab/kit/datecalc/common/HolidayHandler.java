@@ -26,6 +26,9 @@ package net.objectlab.kit.datecalc.common;
  * @version $Revision$ $Date$
  * 
  * @param <E>
+ *            a representation of a date, typically JDK: Date, Calendar;
+ *            Joda:LocalDate, YearMonthDay
+ * 
  */
 public interface HolidayHandler<E> {
     E moveCurrentDate(DateCalculator<E> date);

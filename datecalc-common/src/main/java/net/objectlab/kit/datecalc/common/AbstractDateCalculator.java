@@ -32,6 +32,9 @@ import java.util.Set;
  * @version $Revision$ $Date$
  * 
  * @param <E>
+ *            a representation of a date, typically JDK: Date, Calendar;
+ *            Joda:LocalDate, YearMonthDay
+ * 
  */
 public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     private static final int MONTHS_IN_YEAR = 12;

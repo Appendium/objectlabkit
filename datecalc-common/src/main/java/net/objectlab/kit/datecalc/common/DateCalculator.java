@@ -32,6 +32,11 @@ import java.util.Set;
  * @author Benoit Xhenseval
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
+ * 
+ * @param <E>
+ *            a representation of a date, typically JDK: Date, Calendar;
+ *            Joda:LocalDate, YearMonthDay
+ * 
  */
 public interface DateCalculator<E> {
 

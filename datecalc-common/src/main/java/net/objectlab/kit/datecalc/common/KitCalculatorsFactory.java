@@ -27,13 +27,14 @@ import java.util.Set;
  * NOT change even if a new set is registered; one needs to get a new
  * DateCalculator to get the new set.
  * 
- * @param E
- *            a representation of a date, typically JDK: Date, Calendar;
- *            Joda:LocalDate, YearMonthDay
- * 
  * @author Benoit Xhenseval
  * @author $LastChangedBy: benoitx $
  * @version $Revision: 125 $ $Date: 2006-09-07 19:24:20 +0200 (Thu, 07 Sep 2006) $
+ *
+ * @param <E>
+ *            a representation of a date, typically JDK: Date, Calendar;
+ *            Joda:LocalDate, YearMonthDay
+ * 
  */
 public interface KitCalculatorsFactory<E> {
 

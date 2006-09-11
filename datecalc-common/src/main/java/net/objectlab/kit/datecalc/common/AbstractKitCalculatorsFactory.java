@@ -22,11 +22,15 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 /**
- * @TODO javadoc
+ * Base class for all calculator factories, it handles the holiday registration.
  * 
  * @author Marcin Jekot
  * @author $LastChangedBy: benoitx $
  * @version $Revision: 125 $ $Date: 2006-09-07 19:24:20 +0200 (Thu, 07 Sep 2006) $
+ * 
+ * @param <E>
+ *            a representation of a date, typically JDK: Date, Calendar;
+ *            Joda:LocalDate, YearMonthDay
  * 
  */
 public abstract class AbstractKitCalculatorsFactory<E> implements KitCalculatorsFactory<E> {
