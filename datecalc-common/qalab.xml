@@ -360,7 +360,7 @@
         <result date="2006-09-07" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-09" statvalue="88" type="cobertura-line"/>
         <result date="2006-09-09" statvalue="100" type="cobertura-branch"/>
-        <result date="2006-09-12" statvalue="87" type="cobertura-line"/>
+        <result date="2006-09-12" statvalue="88" type="cobertura-line"/>
         <result date="2006-09-12" statvalue="100" type="cobertura-branch"/>
     </file>
     <file id="net_objectlab_kit_datecalc_common_IMMPeriod.java" path="net/objectlab/kit/datecalc/common/IMMPeriod.java">
