@@ -123,10 +123,6 @@ public abstract class AbstractPeriodCountCalculatorTest<E> extends TestCase {
     // end of set
     };
 
-    // private static final String[][] ACT_ACT = {
-    // { "my testies", "2006-08-08", "2006-11-08", "ACT_ACT", "92", "0" },
-    // };
-
     private static final String[][] ACT_ACT = {
             // name start end period dayDiff yearDiff
             { "0D", "2006-08-08", "2006-08-08", "ACT_ACT", "0", "0.00" },
