@@ -130,7 +130,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
             unit *= MONTHS_IN_YEAR;
         }
 
-        DateCalculator<E> calc = this;
+        DateCalculator<E> calc;
 
         // move by tenor
         switch (tenorCode) {
