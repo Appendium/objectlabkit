@@ -11,6 +11,38 @@
     <section name="Tenor Handling">
 
     <subsection name="Spot">
+    <p>Example that shows the calculation of a Spot date with 2 different spotLags. SpotLag is typically 2 days but this may
+    vary by market and/or currencies.</p>
+    <img src="spot.png"/>
+    </subsection>
+
+    <subsection name="1D - 1 Day">
+    <p>Example of a 1D calculation, first of all it calculates the Spot Day (spotLag=2) and then adds 1 day to it</p>
+    <img src="1d.png"/>
+    </subsection>
+
+    <subsection name="2D - 2 Day">
+    <p>Example of a 2D calculation, first of all it calculates the Spot Day (spotLag=2) and then adds 2 days to it and it must
+    roll forward as the calculated date falls on a weekend.</p>
+    <img src="2d.png"/>
+    </subsection>
+
+    <subsection name="1W - 1 Week">
+    <p>Example of a 1W calculation, first of all it calculates the Spot Day (spotLag=2) and then adds 1 week to it and it must
+    roll forward as the calculated date falls on a holiday.</p>
+    <img src="1w.png"/>
+    </subsection>
+
+    <subsection name="1M - 1 Month">
+    <p>Example of a 1M calculation, first of all it calculates the Spot Day (spotLag=2) and then adds 1 month to it. 
+    Notice that it falls on the last day of the month too.</p>
+    <img src="1m.png"/>
+    </subsection>
+
+    <subsection name="1Y - 1 Year">
+    <p>Example of a 1Y calculation, first of all it calculates the Spot Day (spotLag=2) and then adds 1 year to it. 
+    Notice that it falls on a weekend and hence is moved forward (if HandlerHolidayType is 'forward').</p>
+    <img src="1y.png"/>
     </subsection>
 
     </section>
