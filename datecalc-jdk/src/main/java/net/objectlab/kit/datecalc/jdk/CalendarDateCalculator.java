@@ -79,16 +79,10 @@ public class CalendarDateCalculator extends AbstractDateCalculator<Calendar> {
 
     @Override
     public DateCalculator<Calendar> moveByMonths(final int months) {
-        // LocalDate date = getCurrentBusinessDate();
-        // int day = date.getDayOfMonth();
-        // date = date.withDayOfMonth(1).plusMonths(months);
-        //        
-        // int lastDayOfMonth = date.dayOfMonth().getMaximumValue();
-        // if (day>lastDayOfMonth) {
-        // day = lastDayOfMonth;
-        // }
+         Calendar date = getCurrentBusinessDate();
+         date.add(Calendar.MONTH,months);
 
-        // setCurrentBusinessDate(date.withDayOfMonth(day));
+         setCurrentBusinessDate(date);
 
         if (getHolidayHandler() != null) {
             setCurrentBusinessDate(getHolidayHandler().moveCurrentDate(this));
