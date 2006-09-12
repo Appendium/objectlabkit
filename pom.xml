@@ -11,7 +11,7 @@
    <version>1.0-SNAPSHOT</version>
    <description>
       ObjectLab Kit provides a generic Business Calendar for calculating dates given set(s) of holidays. Why
-      re-inventing the wheel???
+      re-invent the wheel?
    </description>
 
    <modules>
@@ -30,15 +30,20 @@
                <target>1.5</target>
             </configuration>
          </plugin>
+		 
+		 <plugin>
+		 	<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-plugin</artifactId>
+			<configuration>
+				<testFailureIgnore>true</testFailureIgnore>
+			</configuration>
+		  </plugin>
+		  
       </plugins>
    </build>
 
    <reporting>
       <plugins>
-         <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>jdepend-maven-plugin</artifactId>
-         </plugin>
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-javadoc-plugin</artifactId>
@@ -46,13 +51,8 @@
                <aggregate>true</aggregate>
             </configuration>
          </plugin>
-         <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-jxr-plugin</artifactId>
-         </plugin>
       </plugins>
    </reporting>
-
 
    <dependencies>
       <dependency>
@@ -62,7 +62,15 @@
          <scope>test</scope>
       </dependency>
    </dependencies>
-
+   
+   <distributionManagement>
+   	  <site>
+		<id>stage-site</id>
+		<name>Local Stage Site</name>
+		<url>file:///temp/objectlabkit</url>
+	  </site>
+   </distributionManagement>
+   
    <!--       
       <dependencyManagement>
       <dependencies>
@@ -83,7 +91,6 @@
       </dependency>
       </dependencies>
       </dependencyManagement>
-      
    -->
 
 </project>
