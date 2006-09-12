@@ -9,6 +9,7 @@
    <packaging>pom</packaging>
    <name>ObjectLab Kit</name>
    <version>1.0-SNAPSHOT</version>
+   <url>http://objectlabkit.sourceforge.net/</url>
    <description>
       ObjectLab Kit provides a generic Business Calendar for calculating dates given set(s) of holidays. Why
       re-invent the wheel?
@@ -51,6 +52,25 @@
                <aggregate>true</aggregate>
             </configuration>
          </plugin>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jxr-plugin</artifactId>
+         </plugin>		 
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-pmd-plugin</artifactId>
+            <configuration>
+               <linkXref>true</linkXref>
+               <minimumTokens>100</minimumTokens>
+               <targetJdk>1.5</targetJdk>
+            </configuration>
+         </plugin>
+         <!--
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-checkstyle-plugin</artifactId>
+         </plugin>
+         -->
       </plugins>
    </reporting>
 
@@ -63,14 +83,42 @@
       </dependency>
    </dependencies>
    
-   <distributionManagement>
-   	  <site>
-		<id>stage-site</id>
-		<name>Local Stage Site</name>
-		<url>file:///temp/objectlabkit</url>
-	  </site>
-   </distributionManagement>
-   
+   <profiles>
+      <profile>
+         <id>site-staging</id>
+         <activation>
+            <property>
+               <name>stage</name>
+            </property>
+         </activation>
+         
+         <distributionManagement>
+            <site>
+               <id>stage-site</id>
+               <name>Local Stage Site</name>
+               <url>file:///temp/site</url>
+            </site>
+         </distributionManagement>
+	   </profile>
+      
+      <profile>
+         <id>site-deploy</id>
+         <activation>
+	   		<property>
+				   <name>deploy</name>
+            </property>
+         </activation>
+		
+         <distributionManagement>
+           <site>
+            <id>sourceforge-site</id>
+            <name>Sourceforge Site</name>
+            <url>scp:@TODO</url>
+           </site>
+         </distributionManagement>
+      </profile>
+   </profiles>
+	   
    <!--       
       <dependencyManagement>
       <dependencies>
