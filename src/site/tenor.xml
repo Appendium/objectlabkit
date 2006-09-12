@@ -4,7 +4,19 @@
     <title>ObjectLab Kit - Tenor Handling</title>
   </properties>
   <head>
+    <meta name="description"
+	content="ObjectLab Kit offers free and open source Date calculators, released under the business-friendly Apache 2.0 license."
+	/>
 
+    <meta name="keywords"
+        content="Date calculator, IMM Dates, Period Calculator, Financial Calendar, Business Calendar, java, open source" />
+    <meta name="Subject" content="Date Calculators" />
+    <meta name="Copyright" content="ObjectLab Financial Ltd" />
+    <meta name="Language" content="English" />
+    <meta name="Designer" content="ObjectLab Financial Ltd" />
+    <meta name="Distribution" content="Global" />
+    <meta name="robots" content="ALL"/>
+    <meta name="Revisit-After" content="20 Days" />
   </head>
   <body>
     <!-- The body of the document contains a number of sections -->
