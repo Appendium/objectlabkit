@@ -20,7 +20,6 @@ package net.objectlab.kit.datecalc.jdk;
 import java.util.Date;
 
 import net.objectlab.kit.datecalc.common.DateCalculator;
-import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
 /**
