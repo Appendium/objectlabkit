@@ -23,8 +23,9 @@ import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
 /**
- * A Jdk <code>Calendar</code> implementation of the {@link HolidayHandler},
- * for the <strong>Modified Following</strong> algorithm.
+ * A Jdk <code>Calendar</code> implementation of the
+ * {@link net.objectlab.kit.datecalc.common.HolidayHandler}, for the
+ * <strong>Modified Following</strong> algorithm.
  * 
  * @author Marcin Jekot
  * @author $LastChangedBy: marchy $

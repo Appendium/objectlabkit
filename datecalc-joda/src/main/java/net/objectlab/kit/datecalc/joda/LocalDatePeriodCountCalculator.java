@@ -26,7 +26,7 @@ import org.joda.time.PeriodType;
 
 /**
  * Joda <code>LocalDatePeriod</code> based implementation of the
- * {@link PeriodCountCalculator}
+ * {@link net.objectlab.kit.datecalc.common.PeriodCountCalculator}.
  * 
  * @author Benoit Xhenseval
  * @author $LastChangedBy: marchy $
