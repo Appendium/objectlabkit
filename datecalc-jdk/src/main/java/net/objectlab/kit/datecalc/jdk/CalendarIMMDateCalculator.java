@@ -22,11 +22,11 @@ import java.util.Calendar;
 import java.util.List;
 
 import net.objectlab.kit.datecalc.common.AbstractIMMDateCalculator;
-import net.objectlab.kit.datecalc.common.IMMDateCalculator;
 import net.objectlab.kit.datecalc.common.IMMPeriod;
 
 /**
- * Jdk Calendar implementation of the {@link IMMDateCalculator}
+ * Jdk Calendar implementation of the
+ * {@link net.objectlab.kit.datecalc.common.IMMDateCalculator}
  * 
  * @author Marcin Jekot
  * @author $LastChangedBy: marchy $

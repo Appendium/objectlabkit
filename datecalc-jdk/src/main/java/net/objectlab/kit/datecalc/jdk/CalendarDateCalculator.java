@@ -79,7 +79,7 @@ public class CalendarDateCalculator extends AbstractDateCalculator<Calendar> {
 
     @Override
     public DateCalculator<Calendar> moveByMonths(final int months) {
-         Calendar date = getCurrentBusinessDate();
+         final Calendar date = getCurrentBusinessDate();
          date.add(Calendar.MONTH,months);
 
          setCurrentBusinessDate(date);

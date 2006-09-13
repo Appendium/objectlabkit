@@ -28,7 +28,7 @@ import org.joda.time.LocalDate;
 
 /**
  * Joda <code>LocalDate</code> based implementation of the
- * {@link IMMDateCalculator}
+ * {@link net.objectlab.kit.datecalc.common.IMMDateCalculator}.
  * 
  * @author Benoit Xhenseval
  * @author $LastChangedBy: marchy $

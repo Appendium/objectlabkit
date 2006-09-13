@@ -24,8 +24,8 @@ import org.joda.time.YearMonthDay;
 
 /**
  * Joda <code>YearMonthDay</code> based implementation of the
- * {@link PeriodCountCalculator}. It just delegates to a
- * <code>PeriodCountCalculator<LocalDate></code>
+ * {@link net.objectlab.kit.datecalc.common.PeriodCountCalculator}. It just
+ * delegates to a <code>PeriodCountCalculator<LocalDate></code>
  * 
  * @author Benoit Xhenseval
  * @author $LastChangedBy: marchy $

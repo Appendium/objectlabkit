@@ -27,8 +27,9 @@ import net.objectlab.kit.datecalc.common.IMMPeriod;
 import net.objectlab.kit.datecalc.common.Utils;
 
 /**
- * Jdk <code>Date</code> based implementation of the {@link IMMDateCalculator}.
- * It simply delegates to the Calendar implementation.
+ * Jdk <code>Date</code> based implementation of the
+ * {@link net.objectlab.kit.datecalc.common.IMMDateCalculator}. It simply
+ * delegates to the Calendar implementation.
  * 
  * @author Marcin Jekot
  * @author $LastChangedBy: marchy $

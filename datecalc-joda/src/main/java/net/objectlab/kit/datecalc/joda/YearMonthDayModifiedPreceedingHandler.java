@@ -42,6 +42,7 @@ public class YearMonthDayModifiedPreceedingHandler extends YearMonthDayModifiedF
      *            the calculator
      * @return the date which may have moved.
      */
+    @Override
     public YearMonthDay moveCurrentDate(final DateCalculator<YearMonthDay> calculator) {
         return move(calculator, -1);
     }
@@ -51,6 +52,7 @@ public class YearMonthDayModifiedPreceedingHandler extends YearMonthDayModifiedF
      * 
      * @return algorithm name.
      */
+    @Override
     public String getType() {
         return HolidayHandlerType.MODIFIED_PRECEEDING;
     }

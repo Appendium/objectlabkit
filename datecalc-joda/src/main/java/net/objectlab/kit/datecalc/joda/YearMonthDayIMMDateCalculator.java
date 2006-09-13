@@ -28,7 +28,7 @@ import org.joda.time.YearMonthDay;
 
 /**
  * Joda <code>YearMonthDay</code> based implementation of the
- * {@link IMMDateCalculator}
+ * {@link net.objectlab.kit.datecalc.common.IMMDateCalculator}
  * 
  * @author Benoit Xhenseval
  * @author $LastChangedBy: marchy $

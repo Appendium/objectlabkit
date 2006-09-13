@@ -41,6 +41,7 @@ public class YearMonthDayBackwardHandler extends YearMonthDayForwardHandler {
      *            the calculator
      * @return the date which may have moved.
      */
+    @Override
     public YearMonthDay moveCurrentDate(final DateCalculator<YearMonthDay> calculator) {
         return move(calculator, -1);
     }
@@ -50,6 +51,7 @@ public class YearMonthDayBackwardHandler extends YearMonthDayForwardHandler {
      * 
      * @return algorithm name.
      */
+    @Override
     public String getType() {
         return HolidayHandlerType.BACKWARD;
     }
