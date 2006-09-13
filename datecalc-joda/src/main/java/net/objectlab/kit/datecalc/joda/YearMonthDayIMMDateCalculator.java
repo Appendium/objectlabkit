@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.objectlab.kit.datecalc.common.AbstractIMMDateCalculator;
-import net.objectlab.kit.datecalc.common.IMMDateCalculator;
 import net.objectlab.kit.datecalc.common.IMMPeriod;
 
 import org.joda.time.LocalDate;
