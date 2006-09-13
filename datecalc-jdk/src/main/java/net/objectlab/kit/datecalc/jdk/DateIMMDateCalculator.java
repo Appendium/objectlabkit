@@ -23,7 +23,6 @@ import java.util.Date;
 import java.util.List;
 
 import net.objectlab.kit.datecalc.common.AbstractIMMDateCalculator;
-import net.objectlab.kit.datecalc.common.IMMDateCalculator;
 import net.objectlab.kit.datecalc.common.IMMPeriod;
 import net.objectlab.kit.datecalc.common.Utils;
 
