@@ -44,7 +44,7 @@
    <repository>
       <url>https://svn.sourceforge.net/viewvc/objectlabkit/</url>
       <connection>
-         https://svn.sourceforge.net/svnroot/objectlabkit/trunk
+         scm:svn:https://svn.sourceforge.net/svnroot/objectlabkit/trunk
       </connection>
       <developerConnection>
          scm:svn:https://svn.sourceforge.net/svnroot/objectlabkit/trunk
