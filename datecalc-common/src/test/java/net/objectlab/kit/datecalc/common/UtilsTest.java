@@ -35,7 +35,6 @@ public class UtilsTest extends TestCase {
     private Calendar getCal(final int year, final int month, final int day) {
         final Calendar cal = Calendar.getInstance();
         cal.clear();
-        cal.setTimeZone(TimeZone.getTimeZone("UTC"));
         cal.set(year, month - 1, day, 0, 0, 0);
         return cal;
     }

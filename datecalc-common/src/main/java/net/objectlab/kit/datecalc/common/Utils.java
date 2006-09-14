@@ -25,7 +25,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.TimeZone;
 
 /**
  * Utilities class for <code>Date/Calendar</code> conversions
@@ -53,7 +52,6 @@ public final class Utils {
      * @return the calendar object modified (same instance)
      */
     public static Calendar blastTime(final Calendar cal) {
-        cal.setTimeZone(TimeZone.getTimeZone("UTC"));
         cal.set(Calendar.HOUR_OF_DAY, 0);
         cal.set(Calendar.MINUTE, 0);
         cal.set(Calendar.SECOND, 0);
