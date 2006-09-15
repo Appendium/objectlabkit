@@ -85,7 +85,7 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
     private int dayDiff(final Calendar start, final Calendar end) {
         final long diff = Math.abs(start.getTimeInMillis() - end.getTimeInMillis());
         final double dayDiff = ((double) diff) / MILLIS_IN_DAY;
-        return (int) (dayDiff);
+        return (int) Math.round(dayDiff);
     }
 
     public double monthDiff(final Calendar start, final Calendar end, final PeriodCountBasis basis) {
