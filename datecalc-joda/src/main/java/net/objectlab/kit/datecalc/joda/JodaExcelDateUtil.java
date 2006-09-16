@@ -17,7 +17,7 @@
  */
 package net.objectlab.kit.datecalc.joda;
 
-import java.util.Date;
+import java.util.Calendar;
 
 import net.objectlab.kit.datecalc.common.ExcelDateUtil;
 
@@ -39,26 +39,39 @@ public final class JodaExcelDateUtil {
     }
 
     public static LocalDate getLocalDate(final double date, final boolean use1904windowing) {
-        final Date javaDate = ExcelDateUtil.getJavaDate(date, use1904windowing);
-        if (javaDate == null) {
+        final Calendar c = ExcelDateUtil.getJavaCalendar(date, use1904windowing);
+        
+        if (c == null) {
             return null;
         }
-        return new LocalDate(javaDate);
+        
+        return new LocalDate()
+                .withYear(c.get(Calendar.YEAR))
+                .withMonthOfYear(c.get(Calendar.MONTH) + 1)
+                .withDayOfMonth(c.get(Calendar.DAY_OF_MONTH));
     }
 
     public static YearMonthDay getYearMonthDay(final double date, final boolean use1904windowing) {
-        final Date javaDate = ExcelDateUtil.getJavaDate(date, use1904windowing);
-        if (javaDate == null) {
+        final Calendar c = ExcelDateUtil.getJavaCalendar(date, use1904windowing);
+        
+        if (c == null) {
             return null;
         }
-        return new YearMonthDay(javaDate);
+        
+        return new YearMonthDay(c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1, c.get(Calendar.DAY_OF_MONTH));
     }
 
     public static DateTime getDateTime(final double date, final boolean use1904windowing) {
-        final Date javaDate = ExcelDateUtil.getJavaDate(date, use1904windowing);
-        if (javaDate == null) {
+        final Calendar c = ExcelDateUtil.getJavaCalendar(date, use1904windowing);
+        
+        if (c == null) {
             return null;
         }
-        return new DateTime(javaDate);
+        
+        return new DateTime()
+                .withYear(c.get(Calendar.YEAR))
+                .withMonthOfYear(c.get(Calendar.MONTH) + 1)
+                .withDayOfMonth(c.get(Calendar.DAY_OF_MONTH))
+                .withMillisOfDay(0);
     }
 }
