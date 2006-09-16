@@ -1,7 +1,6 @@
 package net.objectlab.kit.datecalc.joda;
 
 import net.objectlab.kit.datecalc.common.AbstractExcelDateUtilTest;
-import net.objectlab.kit.datecalc.common.Utils;
 
 import org.joda.time.DateTime;
 
@@ -9,7 +8,7 @@ public class DateTimeExcelDateUtilTest extends AbstractExcelDateUtilTest<DateTim
 
     @Override
     protected DateTime createDate(final String str) {
-        return new DateTime(Utils.createDate(str));
+        return new DateTime(str);
     }
 
     @Override
