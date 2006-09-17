@@ -29,8 +29,8 @@ import net.objectlab.kit.datecalc.common.IMMPeriod;
  * {@link net.objectlab.kit.datecalc.common.IMMDateCalculator}
  * 
  * @author Marcin Jekot
- * @author $LastChangedBy: marchy $
- * @version $Revision: 138 $ $Date: 2006-09-10 14:29:15 +0200 (Sun, 10 Sep 2006) $
+ * @author $LastChangedBy$
+ * @version $Revision$ $Date$
  * 
  */
 public class CalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calendar> {

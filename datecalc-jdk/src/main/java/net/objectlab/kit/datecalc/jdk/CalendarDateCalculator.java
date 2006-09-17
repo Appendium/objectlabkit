@@ -1,5 +1,5 @@
 /*
- * $Id: JdkCalendarBaseDateCalculator.java 128 2006-09-08 13:14:46Z benoitx $
+ * $Id$
  * 
  * Copyright 2006 the original author or authors.
  *
@@ -34,7 +34,7 @@ import net.objectlab.kit.datecalc.common.WorkingWeek;
  * 
  * @author Marcin Jekot
  * @author $LastModifiedBy$
- * @version $Revision: 128 $ $Date: 2006-09-08 15:14:46 +0200 (Fri, 08 Sep 2006) $
+ * @version $Revision$ $Date$
  */
 public class CalendarDateCalculator extends AbstractDateCalculator<Calendar> {
 

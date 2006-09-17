@@ -1,5 +1,5 @@
 /*
- * $Id: DateCalculator.java 109 2006-09-05 11:16:39Z benoitx $
+ * $Id$
  * 
  * Copyright 2006 the original author or authors.
  *
@@ -24,8 +24,8 @@ import java.util.List;
  * December.
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy: benoitx $
- * @version $Revision: 109 $ $Date: 2006-09-05 12:16:39 +0100 (Tue, 05 Sep 2006) $
+ * @author $LastChangedBy$
+ * @version $Revision$ $Date$
  * @param <E>
  *            a representation of a date, typically JDK: Date, Calendar;
  *            Joda:LocalDate, YearMonthDay

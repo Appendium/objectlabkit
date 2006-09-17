@@ -1,5 +1,5 @@
 /*
- * $Id: ExcelDateUtil.java 99 2006-09-04 20:30:25Z marchy $
+ * $Id$
  *
  * Copyright 2006 the original author or authors.
  *
@@ -25,8 +25,8 @@ import java.util.GregorianCalendar;
  * Convert Excel Date to Jdk <code>Date</code> or <code>Calendar</code>.
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy: marchy $
- * @version $Revision: 99 $ $Date: 2006-09-04 21:30:25 +0100 (Mon, 04 Sep 2006) $
+ * @author $LastChangedBy$
+ * @version $Revision$ $Date$
  * 
  */
 public final class ExcelDateUtil {
