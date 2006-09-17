@@ -1,5 +1,5 @@
 /*
- * $Id: CalendarBackwardHandler.java 99 2006-09-04 20:30:25Z marchy $
+ * $Id$
  * 
  * Copyright 2006 the original author or authors.
  *
@@ -28,8 +28,8 @@ import net.objectlab.kit.datecalc.common.HolidayHandlerType;
  * <strong>Backward</strong> algorithm.
  * 
  * @author Marcin Jekot
- * @author $LastChangedBy: marchy $
- * @version $Revision: 99 $ $Date: 2006-09-04 21:30:25 +0100 (Mon, 04 Sep 2006) $
+ * @author $LastChangedBy$
+ * @version $Revision$ $Date$
  * 
  */
 public class DateBackwardHandler extends DateForwardHandler {

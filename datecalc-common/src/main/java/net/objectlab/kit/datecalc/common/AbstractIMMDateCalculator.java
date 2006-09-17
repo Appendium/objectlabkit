@@ -1,5 +1,5 @@
 /*
- * $Id: AbstractDateCalculator.java 108 2006-09-05 10:13:01Z benoitx $
+ * $Id$
  * 
  * Copyright 2006 the original author or authors.
  *
@@ -26,8 +26,8 @@ import java.util.List;
  * viable values for it for now.
  * 
  * @author Marcin Jekot
- * @author $LastChangedBy: benoitx $
- * @version $Revision: 108 $ $Date: 2006-09-05 11:13:01 +0100 (Tue, 05 Sep 2006) $
+ * @author $LastChangedBy$
+ * @version $Revision$ $Date$
  * 
  * @param <E>
  *            a representation of a date, typically JDK: Date, Calendar;

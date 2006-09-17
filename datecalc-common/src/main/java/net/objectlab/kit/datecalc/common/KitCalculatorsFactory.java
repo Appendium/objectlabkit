@@ -1,5 +1,5 @@
 /*
- * $Id: DateCalculatorFactory.java 125 2006-09-07 17:24:20Z benoitx $
+ * $Id$
  * 
  * Copyright 2006 the original author or authors.
  *
@@ -28,8 +28,8 @@ import java.util.Set;
  * DateCalculator to get the new set.
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy: benoitx $
- * @version $Revision: 125 $ $Date: 2006-09-07 19:24:20 +0200 (Thu, 07 Sep 2006) $
+ * @author $LastChangedBy$
+ * @version $Revision$ $Date$
  * 
  * @param <E>
  *            a representation of a date, typically JDK: Date, Calendar;

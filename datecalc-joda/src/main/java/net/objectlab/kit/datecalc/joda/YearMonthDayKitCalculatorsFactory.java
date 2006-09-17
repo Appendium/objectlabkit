@@ -31,8 +31,8 @@ import org.joda.time.YearMonthDay;
  * calculators.
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy: marchy $
- * @version $Revision: 138 $ $Date: 2006-09-10 14:29:15 +0200 (Sun, 10 Sep 2006) $
+ * @author $LastChangedBy$
+ * @version $Revision$ $Date$
  * 
  */
 public class YearMonthDayKitCalculatorsFactory extends AbstractKitCalculatorsFactory<YearMonthDay> {

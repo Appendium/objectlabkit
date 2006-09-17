@@ -31,8 +31,8 @@ import net.objectlab.kit.datecalc.common.Utils;
  * <strong>Forward</strong> algorithm.
  * 
  * @author Marcin Jekot
- * @author $LastChangedBy: benoitx $
- * @version $Revision: 96 $ $Date: 2006-09-04 16:01:20 +0100 (Mon, 04 Sep 2006) $
+ * @author $LastChangedBy$
+ * @version $Revision$ $Date$
  * 
  */
 public class DateForwardHandler implements HolidayHandler<Date> {

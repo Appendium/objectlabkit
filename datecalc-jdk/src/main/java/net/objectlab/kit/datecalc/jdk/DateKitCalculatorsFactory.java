@@ -1,5 +1,5 @@
 /*
- * $Id: DefaultJdkDateCalculatorFactory.java 127 2006-09-08 11:22:24Z benoitx $
+ * $Id$
  * 
  * Copyright 2006 the original author or authors.
  *
@@ -29,8 +29,8 @@ import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
  * The default factory for getting Jdk <code>Date</code> based calculators.
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy: benoitx $
- * @version $Revision: 127 $ $Date: 2006-09-08 13:22:24 +0200 (Fri, 08 Sep 2006) $
+ * @author $LastChangedBy$
+ * @version $Revision$ $Date$
  * 
  */
 public class DateKitCalculatorsFactory extends AbstractKitCalculatorsFactory<Date> {
