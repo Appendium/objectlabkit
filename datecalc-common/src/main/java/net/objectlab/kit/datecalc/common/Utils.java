@@ -83,10 +83,10 @@ public final class Utils {
     }
 
     /**
-     * 
+     * get a new Calendar based on the string date.
      * @param str
-     *            string
-     * @return
+     *            the date string
+     * @return a new Calendar
      * @throws IllegalArgumentException
      *             if the string cannot be parsed.
      */
@@ -104,10 +104,10 @@ public final class Utils {
     }
 
     /**
-     * Get a Calendar object for a given Date representation
+     * Get a Calendar object for a given Date representation.
      * 
      * @param date
-     * @return
+     * @return the Calendar
      */
     public static Calendar getCal(final Date date) {
         if (date == null) {
@@ -119,10 +119,10 @@ public final class Utils {
     }
 
     /**
-     * Converts a Set of Date objects to a Set of Calendar objects
+     * Converts a Set of Date objects to a Set of Calendar objects.
      * 
      * @param dates
-     * @return
+     * @return the converted Set<Calendar>
      */
     public static Set<Calendar> toCalendarSet(final Set<Date> dates) {
         final Set<Calendar> calendars = new HashSet<Calendar>();
@@ -136,7 +136,7 @@ public final class Utils {
      * Converts a Set of Calendar objects to a Set of Date objects
      * 
      * @param calendars
-     * @return
+     * @return the converset Set<Date>
      */
     public static Set<Date> toDateSet(final Set<Calendar> calendars) {
 
@@ -152,7 +152,7 @@ public final class Utils {
      * of dates
      * 
      * @param dates
-     * @return
+     * @return the converted List<Date> 
      */
     public static List<Date> toDateList(final List<Calendar> dates) {
 

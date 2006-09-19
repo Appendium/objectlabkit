@@ -178,7 +178,7 @@ public interface DateCalculator<E> {
      * currentBusinessDate will be the ones from the existing calendar (not the
      * parameter one). The name will be combined name1+"/"+calendar.getName().
      * 
-     * @param calendar,
+     * @param calculator
      *            return the same DateCalculator if calender is null or the
      *            original calendar (but why would you want to do that?)
      * @throws IllegalArgumentException

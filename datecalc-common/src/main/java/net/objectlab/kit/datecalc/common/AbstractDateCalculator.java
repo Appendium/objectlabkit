@@ -102,7 +102,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
      * either a 'weekend' or holiday, it will be skipped acording to the holiday
      * handler and not count towards the number of days to move.
      * 
-     * @param businessDays
+     * @param tenor the tenor.
      * @param spotLag
      *            number of days to "spot" days, this can vary from one market
      *            to the other.
@@ -219,20 +219,20 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
      * currentBusinessDate will be the ones from the existing calendar (not the
      * parameter one). The name will be combined name1+"/"+calendar.getName().
      * 
-     * @param calendar,
+     * @param calculator
      *            return the same DateCalculator if calender is null or the
      *            original calendar (but why would you want to do that?)
      * @throws IllegalArgumentException
      *             if both calendars have different types of HolidayHandlers or
      *             WorkingWeek;
      */
-    public DateCalculator<E> combine(final DateCalculator<E> calendar) {
-        if (calendar == null || calendar == this) {
+    public DateCalculator<E> combine(final DateCalculator<E> calculator) {
+        if (calculator == null || calculator == this) {
             return this;
         }
 
-        if (holidayHandler == null && calendar.getHolidayHandlerType() != null || holidayHandler != null
-                && !holidayHandler.getType().equals(calendar.getHolidayHandlerType())) {
+        if (holidayHandler == null && calculator.getHolidayHandlerType() != null || holidayHandler != null
+                && !holidayHandler.getType().equals(calculator.getHolidayHandlerType())) {
             throw new IllegalArgumentException("Combined Calendars cannot have different handler types");
         }
 
@@ -240,11 +240,11 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         if (nonWorkingDays != null) {
             newSet.addAll(nonWorkingDays);
         }
-        if (calendar.getNonWorkingDays() != null) {
-            newSet.addAll(calendar.getNonWorkingDays());
+        if (calculator.getNonWorkingDays() != null) {
+            newSet.addAll(calculator.getNonWorkingDays());
         }
 
-        final DateCalculator<E> cal = createNewCalculator(getName() + "/" + calendar.getName(), getStartDate(), newSet,
+        final DateCalculator<E> cal = createNewCalculator(getName() + "/" + calculator.getName(), getStartDate(), newSet,
                 holidayHandler);
 
         return cal;
