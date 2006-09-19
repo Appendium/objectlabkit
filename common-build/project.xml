@@ -27,7 +27,7 @@
    xsi:schemaLocation="http://maven.apache.org/POM/3.0.0 http://maven.apache.org/maven-v3_0_0.xsd">
    <pomVersion>3</pomVersion>
    <groupId>net.objectlab.kit.datecalc</groupId>
-   <currentVersion>1.0</currentVersion>
+   <currentVersion>1.0.1</currentVersion>
    <organization>
       <name>ObjectLab Financial Ltd</name>
       <url>http://www.objectlab.co.uk</url>
