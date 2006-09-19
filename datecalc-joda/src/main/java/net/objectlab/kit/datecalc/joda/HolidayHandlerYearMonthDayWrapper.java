@@ -44,7 +44,6 @@ public class HolidayHandlerYearMonthDayWrapper implements HolidayHandler<LocalDa
      * 
      * @param calculator
      *            the calculator
-     * @return the date which may have moved.
      */
     public HolidayHandlerYearMonthDayWrapper(final HolidayHandler<YearMonthDay> delegate,
             final DateCalculator<YearMonthDay> calculator) {

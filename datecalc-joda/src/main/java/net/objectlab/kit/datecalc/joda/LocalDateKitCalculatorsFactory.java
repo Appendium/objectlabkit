@@ -52,7 +52,7 @@ public class LocalDateKitCalculatorsFactory extends AbstractKitCalculatorsFactor
      *            calendar name (holidays set interested in). If there is set of
      *            holidays with that name, it will return a DateCalculator with
      *            an empty holiday set (will work on Weekend only).
-     * @param type
+     * @param holidayHandlerType
      *            typically one of the value of HolidayHandlerType
      * @return a new DateCalculator
      */
