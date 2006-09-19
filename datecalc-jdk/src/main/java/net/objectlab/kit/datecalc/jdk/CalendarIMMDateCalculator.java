@@ -123,8 +123,7 @@ public class CalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calenda
     /**
      * Assumes that the month is correct, get the day for the 3rd wednesday.
      * 
-     * @param first
-     * @return
+     * @param cal 
      */
     private void moveToIMMDay(final Calendar cal) {
         cal.set(Calendar.DAY_OF_MONTH, 1);

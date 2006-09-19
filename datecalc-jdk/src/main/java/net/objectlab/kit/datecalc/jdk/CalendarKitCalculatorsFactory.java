@@ -47,8 +47,17 @@ public class CalendarKitCalculatorsFactory extends AbstractKitCalculatorsFactory
     }
 
     /**
-     * @see net.objectlab.kit.datecalc.jdk.JdkDateCalculatorFactory#getDateCalculator(java.lang.String,
-     *      java.lang.String)
+     * Create a new DateCalculator for a given name and type of handling.
+     * 
+     * @param name
+     *            calendar name (holidays set interested in). If there is set of
+     *            holidays with that name, it will return a DateCalculator with
+     *            an empty holiday set (will work on Weekend only).
+     * @param holidayHandlerType
+     *            typically one of the value of HolidayHandlerType or null.
+     * @return a new DateCalculator
+     * @exception IllegalArgumentException
+     *                if the type is not null or a valid value.
      */
     public DateCalculator<Calendar> getDateCalculator(final String name, final String holidayHandlerType) {
         final CalendarDateCalculator cal = new CalendarDateCalculator();
@@ -73,17 +82,20 @@ public class CalendarKitCalculatorsFactory extends AbstractKitCalculatorsFactory
     }
 
     /**
-     * @see net.objectlab.kit.datecalc.jdk.JdkDateCalculatorFactory#getPeriodCountCalculator()
+     * Create a new PeriodCountCalculator.
+     * 
+     * @return a PeriodCountCalculator
      */
     public PeriodCountCalculator<Calendar> getPeriodCountCalculator() {
         return PCC;
     }
 
     /**
-     * @see net.objectlab.kit.datecalc.jdk.JdkDateCalculatorFactory#getIMMDateCalculator()
+     * Create a new IMMDateCalculator.
+     * 
+     * @return an IMMDateCalculator
      */
     public IMMDateCalculator<Calendar> getIMMDateCalculator() {
         return IMMDC;
     }
-
 }
