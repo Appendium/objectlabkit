@@ -42,7 +42,7 @@
       /var/www/solutions/website/objectlab.co.uk/
    </siteDirectory>
    <repository>
-      <url>https://svn.sourceforge.net/viewvc/objectlabkit/</url>
+      <url>http://svn.sourceforge.net/objectlabkit</url>
       <connection>
          scm:svn:https://svn.sourceforge.net/svnroot/objectlabkit/trunk
       </connection>
