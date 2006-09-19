@@ -45,7 +45,7 @@ public abstract class AbstractKitCalculatorsFactory<E> implements KitCalculators
      * 
      * @param name
      *            the calendar name to register these holidays under.
-     * @param holidays
+     * @param holidaysSet
      *            the set of holidays (non-working days).
      */
     public void registerHolidays(final String name, final Set<E> holidaysSet) {
