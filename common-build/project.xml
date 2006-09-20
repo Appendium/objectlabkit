@@ -142,9 +142,9 @@
 
    <versions>
       <version>
-         <id>1.0</id>
-         <name>1.0</name>
-         <tag>v1.0</tag>
+         <id>1.0.1</id>
+         <name>1.0.1</name>
+         <tag>v1.0.1</tag>
       </version>
    </versions>
 </project>
