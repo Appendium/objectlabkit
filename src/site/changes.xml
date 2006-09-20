@@ -8,7 +8,7 @@
     <author email="kit@objectlab.co.uk">Benoit Xhenseval</author>
   </properties>
   <body>
-    <release version="1.0" date="In SVN" description="First Cut">
+    <release version="1.0.1" date="In SVN" description="First Cut">
       <action dev="benoitx" type="add">First cut.</action>
     </release>
   </body>
