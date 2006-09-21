@@ -1,7 +1,7 @@
 <document>
   <properties>
     <author email="Kit@objectlab.co.uk">Benoit Xhenseval</author>
-    <title>ObjectLab Kit - Introduction</title>
+    <title>Introduction</title>
   </properties>
   <head>
     <meta name="description"
@@ -27,15 +27,17 @@
     project for this but their licence forbids most financial institution from using it.  This one is released under
     the business-friendly Apache 2.0 license.</p>
 
-    <subsection name="So, what do we provide?">
-    <p>The initial release provides 2 modules for <strong>Date calculations</strong>, both depend on the classes in common:</p>
-    <ul><li>one for the <a href="./multiproject/datecalc-jdk/index.html">datecalc-jdk.jar JDK</a> with no dependencies</li>
-    <li>and one is based on the powerful <a href="./multiproject/datecalc-joda/index.html">datecalc-joda.jar Joda-time</a> library (we recommend it!)</li>
+    <subsection name="So, what is on offer?">
+    <p>The initial release provides 2 implementations for <strong>Date calculations</strong>, both depend on the classes in datecalc-common. So, 
+    you need to include:</p>
+    <ul>
+    <li><strong>datecalc-common.jar</strong> (mandatory)</li>
+    <li>and either <strong>datecalc-jdk.jar</strong> OR <strong>datecalc-joda.jar</strong></li>
     </ul>
-    </subsection>
     
-    <subsection name="Which JDK?">
-    <p>1.5+, get over it :-)</p>
+    <p>the <a href="./multiproject/datecalc-jdk/index.html">datecalc-jdk.jar</a> has no dependencies other than JDK 1.5+.  
+    <a href="./multiproject/datecalc-joda/index.html">datecalc-joda.jar</a> is based on the powerful 
+    <a href="http://joda-time.sourceforge.net">JODA-Time</a> library (we recommend it!)</p>
     </subsection>
     
     <subsection name ="Date Calculations? What is that?">
@@ -61,6 +63,19 @@
     	UNLESS it crosses over a new month, in which case we revert to find the next working day of the current month.</li>
     </ol>
     <p>See this page for some <a href="algo.html">examples</a>.</p>
+    </subsection>
+    
+    <subsection name="Which JDK?">
+    <p>1.5+, get over it :-)</p>
+    </subsection>
+    
+    <subsection name="UML?">
+    <p>We are using yDoc to generate a 'javadoc-like' documentation per module with the added twist of UML diagrams:</p>
+    <ul>
+       <li><a href="multiproject/datecalc-common/apidocs/index.html">UML for DateCalc Common</a></li>
+       <li><a href="multiproject/datecalc-jdk/apidocs/index.html">UML for DateCalc JDK</a></li>
+       <li><a href="multiproject/datecalc-joda/apidocs/index.html">UML for DateCalc JODA</a></li>
+    </ul>
     </subsection>
     
     <subsection name="Main interfaces">

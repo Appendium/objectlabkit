@@ -74,17 +74,5 @@
             </resource>
          </resources>
       </unitTest>
-
-      <!-- This JAR should contain the common jar. -->
-      <resources>
-         <resource>
-            <directory>../datecalc-common/target/</directory>
-            <filtering>false</filtering>
-            <includes>
-               <include>*.jar</include>
-            </includes>
-         </resource>
-      </resources>
    </build>
-
 </project>
