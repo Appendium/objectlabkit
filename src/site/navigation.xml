@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="QALab">
+<project name="ObjectLab-Kit">
    <title>ObjectLab Kit</title>
    <body>
       <links>
@@ -19,18 +19,9 @@
          <item name="Tenor Handling" href="tenor.html" />
          <item name="JavaDoc" class="newWindow" target="_new" href="apidocs/index.html" />
          <item name="Stat SVN" class="newWindow" target="_new" href="statsvn/index.html" />
+         <item name="Sitemap" href="sitemap.html" />
       </menu>
-      <!--
-         <menu name="Related Projects">
-         <item name="CheckStyle"  href="http://checkstyle.sourceforge.net/" />
-         <item name="PMD"  href="http://pmd.sourceforge.net/" />
-         <item name="FindBugs"  href="http://findbugs.sourceforge.net/" />
-         <item name="Cobertura"  href="http://cobertura.sourceforge.net/" />
-         <item name="Simian"  href="http://www.redhillconsulting.com.au/products/simian/" />
-         <item name="Hosted by SourceForge" href="http://sourceforge.net/projects/qalab"
-         img="http://sourceforge.net/sflogo.php?group_id=140880&amp;type=1"/>
-         </menu>
-      -->
+      <sitemap/>
       <search/>
       <menu name="Links">
          <item name="QALab"  href="http://qalab.sourceforge.net/" />
