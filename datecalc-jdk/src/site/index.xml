@@ -23,8 +23,8 @@
     <section name="DateCalc JDK Introduction">
 
     <p>DateCalc JDK provides an implementation for pure JDK.</p>
-    <p>Check out the UML diagrams <a href="apidocs/index.html">here</a></p>
-    <p>Also look at the Report menu on the left for project specific items, unit tests, QA etc.</p>
+    <p>Check out the <a href="apidocs/index.html">UML diagrams here</a></p>
+    <p>Also look at the <a href="maven-reports.html">Project Reports</a> menu on the left for project specific items, unit tests, QA etc.</p>
     </section>
 
   </body>

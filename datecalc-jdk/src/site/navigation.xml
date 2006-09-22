@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project name="ObjectLab-Kit">
-  <title>ObjectLab Kit</title>
+  <title>DateCalc JDK</title>
   <body>
+      <menu name="DateCalc JDK">
+         <item name="Sitemap" href="sitemap.html" />
+      </menu>
     <links>
       <item name="ObjectLab Kit" href="../../index.html" />
       <item name="DateCalc Common" href="../datecalc-common/index.html" />
       <item name="DateCalc JDK" href="../datecalc-jdk/index.html" />
       <item name="DateCalc Joda" href="../datecalc-joda/index.html" />
     </links>
-
+    <sitemap/>
+    <search/>
   </body>
 </project>  

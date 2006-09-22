@@ -5,7 +5,7 @@
   </properties>
   <head>
     <meta name="description"
-	content="ObjectLab Kit offers free and open source Date calculators, released under the business-friendly Apache 2.0 license."
+	content="Tenor are representation of some specific financial date/durations."
 	/>
 
     <meta name="keywords"
