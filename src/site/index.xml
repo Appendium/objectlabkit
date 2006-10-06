@@ -117,8 +117,9 @@ IMMDateCalculator&lt;YearMonthDay> calc = YearMonthDayKitCalculatorsFactory.getD
     		</pre></li>
     	</ol>
     </subsection>
+    </section>
     
-    <subsection name="How do I use it?">
+    <section name="How do I use it?">
     <p>There are several steps</p>
     <ul>
         <li>Register holidays in the factory by calling registerHolidays(final String name, Set&lt;Date> holidays)</li>
@@ -128,6 +129,9 @@ IMMDateCalculator&lt;YearMonthDay> calc = YearMonthDayKitCalculatorsFactory.getD
     	the result of your calculations.  If the startDate is a non-working day, it may be moved automatically according to the HolidayHandler.</li>
     	<li>when you call moveByDays(..), moveByBusinessDays(..) the currentDate is moved in the Calculator.</li>
     </ul>
+    
+    <subsection name="Using Joda-time LocalDate">
+    
     <pre>
 // create or get the Holidays
 final Set&lt;LocalDate> holidays = new HashSet&lt;LocalDate>();
@@ -147,8 +151,41 @@ LocalDate current = cal.getCurrentBusinessDate(); // 29 Aug 06
 
 LocalDate newCurrent = cal.moveByDays(4).getCurrentBusinessDate(); // 4 Sept 06 due to weekend!
     </pre>
-   
+      
+    </subsection>
+
+
+    <subsection name="Using JDK Calendar">
     
+    <pre>
+// create or get the Holidays
+final Set&lt;Calendar> holidays = new HashSet&lt;Calendar>();
+Calendar calendar = Calendar.getInstance();
+calendar.set(Calendar.DAY_OF_MONTH,28);
+calendar.set(Calendar.MONTH,Calendar.AUGUST);
+calendar.set(Calendar.YEAR,2006);
+holidays.add(calendar);
+  
+// register the holidays (any calculator with name "UK" asked from now on will receive a reference to this set
+DefaultDateCalculatorFactory.getDefaultInstance().registerHolidays("UK", holidays);
+
+// ask for a LocalDate calculator for "UK" (even if a new set of holidays is registered, this one calculator is not affected
+DateCalculator&lt;Calendar> cal = LocalDateKitCalculatorsFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);
+Calendar initial = Calendar.getInstance();
+initial.set(Calendar.DAY_OF_MONTH,28);
+initial.set(Calendar.MONTH,Calendar.AUGUST);
+initial.set(Calendar.YEAR,2006);
+
+cal.setStartDate(initial); // this also sets the current business date.
+
+// the startDate stays 28 Aug 06 BUT the currentDate has moved, 
+// according to Forward handler to 29 Aug 2006.
+Calendar start = cal.getStartDate();   // 28 Aug 06
+Calendar current = cal.getCurrentBusinessDate(); // 29 Aug 06
+
+Calendar newCurrent = cal.moveByDays(4).getCurrentBusinessDate(); // 4 Sept 06 due to weekend!
+    </pre>
+      
     </subsection>
 
     </section>
