@@ -1,4 +1,19 @@
 /*
+ * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
+ * 
+ * Based in London, we are world leaders in the design and development 
+ * of bespoke applications for the securities financing markets.
+ * 
+ * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
+ *           ___  _     _           _   _          _
+ *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
+ *         | | | | '_ \| |/ _ \/ __| __| |   / _` | '_ \
+ *         | |_| | |_) | |  __/ (__| |_| |__| (_| | |_) |
+ *          \___/|_.__// |\___|\___|\__|_____\__,_|_.__/
+ *                   |__/
+ *
+ *                     www.ObjectLab.co.uk
+ *
  * $Id$
  * 
  * Copyright 2006 the original author or authors.
@@ -33,6 +48,14 @@ public abstract class AbstractDateCalculatorTest extends TestCase {
         return Utils.createDate(str);
     }
 
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
     protected Set<Date> createUKHolidays() {
         final Set<Date> uk = new HashSet<Date>();
         uk.add(createDate("2006-01-01"));
@@ -50,3 +73,20 @@ public abstract class AbstractDateCalculatorTest extends TestCase {
         return us;
     }
 }
+
+/*
+ * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
+ * 
+ * Based in London, we are world leaders in the design and development 
+ * of bespoke applications for the securities financing markets.
+ * 
+ * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
+ *           ___  _     _           _   _          _
+ *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
+ *         | | | | '_ \| |/ _ \/ __| __| |   / _` | '_ \
+ *         | |_| | |_) | |  __/ (__| |_| |__| (_| | |_) |
+ *          \___/|_.__// |\___|\___|\__|_____\__,_|_.__/
+ *                   |__/
+ *
+ *                     www.ObjectLab.co.uk
+ */

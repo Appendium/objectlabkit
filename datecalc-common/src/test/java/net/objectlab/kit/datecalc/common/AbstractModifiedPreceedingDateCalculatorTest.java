@@ -1,4 +1,19 @@
 /*
+ * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
+ * 
+ * Based in London, we are world leaders in the design and development 
+ * of bespoke applications for the securities financing markets.
+ * 
+ * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
+ *           ___  _     _           _   _          _
+ *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
+ *         | | | | '_ \| |/ _ \/ __| __| |   / _` | '_ \
+ *         | |_| | |_) | |  __/ (__| |_| |__| (_| | |_) |
+ *          \___/|_.__// |\___|\___|\__|_____\__,_|_.__/
+ *                   |__/
+ *
+ *                     www.ObjectLab.co.uk
+ *
  * $Id$
  * 
  * Copyright 2006 the original author or authors.
@@ -162,6 +177,14 @@ public abstract class AbstractModifiedPreceedingDateCalculatorTest<E> extends Ab
         cal.setStartDate(newDate("2006-08-06")); // set on a Sunday
         checkDate("start date Sunday", cal, "2006-08-04");
     }
+
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
 
     public void testSimpleForwardWithHolidays() {
         final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.MODIFIED_PRECEEDING);
@@ -382,3 +405,20 @@ public abstract class AbstractModifiedPreceedingDateCalculatorTest<E> extends Ab
         checkMoveByTenor("2006-08-28", StandardTenor.OVERNIGHT, 2, "2006-08-25", HolidayHandlerType.MODIFIED_PRECEEDING);
     }
 }
+
+/*
+ * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
+ * 
+ * Based in London, we are world leaders in the design and development 
+ * of bespoke applications for the securities financing markets.
+ * 
+ * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
+ *           ___  _     _           _   _          _
+ *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
+ *         | | | | '_ \| |/ _ \/ __| __| |   / _` | '_ \
+ *         | |_| | |_) | |  __/ (__| |_| |__| (_| | |_) |
+ *          \___/|_.__// |\___|\___|\__|_____\__,_|_.__/
+ *                   |__/
+ *
+ *                     www.ObjectLab.co.uk
+ */

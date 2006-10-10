@@ -1,4 +1,19 @@
 /*
+ * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
+ * 
+ * Based in London, we are world leaders in the design and development 
+ * of bespoke applications for the securities financing markets.
+ * 
+ * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
+ *           ___  _     _           _   _          _
+ *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
+ *         | | | | '_ \| |/ _ \/ __| __| |   / _` | '_ \
+ *         | |_| | |_) | |  __/ (__| |_| |__| (_| | |_) |
+ *          \___/|_.__// |\___|\___|\__|_____\__,_|_.__/
+ *                   |__/
+ *
+ *                     www.ObjectLab.co.uk
+ *
  * $Id$
  * 
  * Copyright 2006 the original author or authors.
@@ -46,6 +61,14 @@ public enum PeriodCountBasis {
      */
     CONV_360E_ISMA,
 
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
     /**
      * Actual/Actual, means that the numerator is the number of days between the
      * two dates. The denominator is the actual number of days in the coupon
@@ -69,3 +92,20 @@ public enum PeriodCountBasis {
      */
     ACT_365, ACT_UST, END_365
 }
+
+/*
+ * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
+ * 
+ * Based in London, we are world leaders in the design and development 
+ * of bespoke applications for the securities financing markets.
+ * 
+ * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
+ *           ___  _     _           _   _          _
+ *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
+ *         | | | | '_ \| |/ _ \/ __| __| |   / _` | '_ \
+ *         | |_| | |_) | |  __/ (__| |_| |__| (_| | |_) |
+ *          \___/|_.__// |\___|\___|\__|_____\__,_|_.__/
+ *                   |__/
+ *
+ *                     www.ObjectLab.co.uk
+ */

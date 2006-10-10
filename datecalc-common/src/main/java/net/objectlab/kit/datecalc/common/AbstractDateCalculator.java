@@ -1,10 +1,10 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
  * 
- * Based in London, we are world leaders in the design and development of 
- * bespoke applications for the securities financing markets.
+ * Based in London, we are world leaders in the design and development 
+ * of bespoke applications for the securities financing markets.
  * 
- * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
+ * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
  *         | | | | '_ \| |/ _ \/ __| __| |   / _` | '_ \
@@ -168,6 +168,14 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         return calc;
     }
 
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
     protected abstract DateCalculator<E> moveByMonths(int months);
 
     public void setHolidayHandler(final HolidayHandler<E> holidayHandler) {
@@ -274,8 +282,8 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
  * 
- * Based in London, we are world leaders in the design and development of 
- * bespoke applications for the securities financing markets.
+ * Based in London, we are world leaders in the design and development 
+ * of bespoke applications for the securities financing markets.
  * 
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
