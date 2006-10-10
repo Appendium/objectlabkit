@@ -1,4 +1,19 @@
 /*
+ * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
+ * 
+ * Based in London, we are world leaders in the design and development 
+ * of bespoke applications for the securities financing markets.
+ * 
+ * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
+ *           ___  _     _           _   _          _
+ *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
+ *         | | | | '_ \| |/ _ \/ __| __| |   / _` | '_ \
+ *         | |_| | |_) | |  __/ (__| |_| |__| (_| | |_) |
+ *          \___/|_.__// |\___|\___|\__|_____\__,_|_.__/
+ *                   |__/
+ *
+ *                     www.ObjectLab.co.uk
+ *
  * $Id$
  * 
  * Copyright 2006 the original author or authors.
@@ -39,6 +54,14 @@ public final class HolidayHandlerType {
      */
     public static final String BACKWARD = "backward";
 
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
     /**
      * A modified following handler will move the date forward if it falls on a
      * non working day BUT, if the new date falls into another month, it will
@@ -56,3 +79,20 @@ public final class HolidayHandlerType {
     private HolidayHandlerType() {
     }
 }
+
+/*
+ * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
+ * 
+ * Based in London, we are world leaders in the design and development 
+ * of bespoke applications for the securities financing markets.
+ * 
+ * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
+ *           ___  _     _           _   _          _
+ *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
+ *         | | | | '_ \| |/ _ \/ __| __| |   / _` | '_ \
+ *         | |_| | |_) | |  __/ (__| |_| |__| (_| | |_) |
+ *          \___/|_.__// |\___|\___|\__|_____\__,_|_.__/
+ *                   |__/
+ *
+ *                     www.ObjectLab.co.uk
+ */
