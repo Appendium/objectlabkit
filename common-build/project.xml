@@ -37,6 +37,9 @@
    </organization>
    <inceptionYear>2006</inceptionYear>
    <url>http://objectlabkit.sourceforge.net</url>
+   <issueTrackingUrl>
+         http://www.sourceforge.net/tracker/?group_id=175139
+   </issueTrackingUrl>
    <siteAddress>objectlabkit.sourceforge.net</siteAddress>
    <siteDirectory>
       /var/www/solutions/website/objectlab.co.uk/

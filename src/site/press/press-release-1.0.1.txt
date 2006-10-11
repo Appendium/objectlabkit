@@ -1,5 +1,7 @@
 ObjectLab is pleased to announce release 1.0.1 of Objectlab Kit for Java 1.5
 
+Open Source Date Calculators for Business and Finance
+
 http://objectlabkit.sourceforge.net
 
 The ObjectLab Kit is released under the business friendly Apache License v2.0.
