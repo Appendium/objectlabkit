@@ -1,0 +1,59 @@
+ObjectLab is pleased to announce release 1.0.1 of Objectlab Kit for Java 1.5
+
+http://objectlabkit.sourceforge.net
+
+The ObjectLab Kit is released under the business friendly Apache License v2.0.
+
+It is available immediately for download via SourceForge or the Maven Central
+Repository (both Maven 1 and Maven 2). The homepage has some very 
+quick examples.
+
+The Kit provides Date Calculators and comes in two flavours:
+- one based on pure JDK (1.5)
+- one based on the Joda-time library (1.3+, jdk 1.5)
+
+This library is now live in a major UK & international Bank (in their Credit
+Derivatives department).  The library is small, lightweight and thread-safe.  
+
+The DateCalculator implementation is useful to any business; the other two
+interfaces are more specific to the financial industry.
+
+The most common function of a lot of banking or business applications is the
+handling of holidays and weekends, a set of standard rules are implemented to
+deal with days falling on a holiday. The library does not attempt to guess
+the 'holidays', most business will have an official list anyway, but
+concentrate on the date manipulation and calculations.
+
+What does it provide? Implementation of 3 interfaces
+- DateCalculator for all date calculation and handling of weekends or holidays.
+The supported algorithms are: Do Nothing, Move Forward, Move Backward,
+Modified Following and Modified Preceeding.  The Calculators are immutable
+once created but they can be easily composed to take into account multiple
+sets of holidays. The library also supports the calculation of generic tenor
+dates (Spot, 1D, 1W, 2M, 3Y, etc)
+
+- PeriodCountCalculator for calculating differences between two dates in days,
+months or years according to some financial algorithms: ACT/360, ACT/365,
+ACT/ACT, CONV/30-360, CONV/30-365_ISDA, CONV/30-360_ISMA
+
+- IMMDateCalculator, to calculate the International Money Market dates
+(IMM Dates are 3rd Wednesday of March/June/Sept/Dec)
+
+This kit is one of the first steps in pushing the Open Source movement up 
+"the stack" towards business functionalities in the financial industry.
+ 
+ObjectLab is not new to the open-source community having used numerous OS 
+projects, participated in a few and sponsoring QALab 
+(http://qalab.sourceforge.net), a tool that keeps track over-time of the 
+static analysis results from FindBugs, Checkstyle, PMD, Cobertura etc.
+ 
+We would like to thanks our friends and colleagues at XXXX for their help, 
+reviews and suggestions.
+
+Sorry for the long email... 
+
+Feel free to pass on to people who may be interested.
+
+Enjoy!!
+
+Benoit Xhenseval and Marcin Jekot

@@ -1,0 +1,56 @@
+<document>
+  <properties>
+    <author email="Kit@objectlab.co.uk">Benoit Xhenseval</author>
+    <title>On the web...</title>
+  </properties>
+  <head>
+    <meta name="description"
+	content="Mentions of the ObjectLab Kit."
+	/>
+
+    <meta name="keywords"
+        content="Date calculator, IMM Dates, Period Calculator, Financial Calendar, Business Calendar, java, open source" />
+    <meta name="Subject" content="Date Calculators" />
+    <meta name="Copyright" content="ObjectLab Financial Ltd" />
+    <meta name="Language" content="English" />
+    <meta name="Designer" content="ObjectLab Financial Ltd" />
+    <meta name="Distribution" content="Global" />
+    <meta name="robots" content="ALL"/>
+    <meta name="Revisit-After" content="20 Days" />
+  </head>
+  <body>
+    <!-- The body of the document contains a number of sections -->
+    <section name="Initial release 1.0.1. Oct 2006">
+
+    <subsection name="On the web">
+	<ul>
+		<li><a href="press-release-1.0.1.txt">Original 'press' release</a></li>
+	</ul>
+    </subsection>
+
+    <subsection name="JavaLobby">
+	<ul>
+		<li><a href="http://www.javalobby.org/java/forums/t82598.html">JavaLobby.org notice</a></li>
+		<li><a href="homepage-javalobby2.png">JavaLobby.org homepage image</a></li>
+		<li><a href="homepage-javalobby.pdf">JavaLobby.org homepage PDF</a></li>
+	</ul>
+    </subsection>
+
+    <subsection name="The Server Side">
+	<ul>
+		<li><a href="http://www.theserverside.com/news/thread.tss?thread_id=42572">TheServerSide.com notice</a></li>
+		<li><a href="homepage-theserverside.png">TheServerSide.com homepage image</a></li>
+		<li><a href="homepage-theserverside.pdf">TheServerSide.com homepage PDF</a></li>
+	</ul>
+    </subsection>
+
+    <subsection name="JavaRSS.com">
+	<ul>
+		<li><a href="homepage-javarss.png">JavaRSS.com homepage image</a></li>
+		<li><a href="homepage-javarss.pdf">JavaRSS.com homepage PDF</a></li>
+	</ul>
+    </subsection>
+    </section>
+
+  </body>
+</document>
