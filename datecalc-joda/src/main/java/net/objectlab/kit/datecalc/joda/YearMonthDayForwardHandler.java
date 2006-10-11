@@ -46,6 +46,14 @@ public class YearMonthDayForwardHandler implements HolidayHandler<YearMonthDay> 
         return move(calculator, 1);
     }
 
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
     protected YearMonthDay move(final DateCalculator<YearMonthDay> calculator, final int step) {
         YearMonthDay date = calculator.getCurrentBusinessDate();
         while (calculator.isNonWorkingDay(date)) {

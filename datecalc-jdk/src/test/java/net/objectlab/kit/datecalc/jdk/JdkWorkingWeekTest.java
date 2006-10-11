@@ -36,6 +36,14 @@ public class JdkWorkingWeekTest extends TestCase {
         Assert.assertFalse("Calendar.SUNDAY", ww.isWorkingDayFromCalendar(Calendar.SUNDAY));
     }
 
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
     public void testSetWorkingDayFromCalendar() {
         final WorkingWeek ww = new WorkingWeek();
         ww.withWorkingDayFromCalendar(true, Calendar.SUNDAY); // sunday

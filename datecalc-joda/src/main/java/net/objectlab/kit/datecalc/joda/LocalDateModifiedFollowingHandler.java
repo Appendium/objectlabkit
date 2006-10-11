@@ -47,7 +47,15 @@ public class LocalDateModifiedFollowingHandler implements HolidayHandler<LocalDa
         return move(calculator, 1);
     }
 
-    protected LocalDate move(final DateCalculator<LocalDate> calculator, int step) {
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
+   protected LocalDate move(final DateCalculator<LocalDate> calculator, int step) {
         LocalDate date = calculator.getCurrentBusinessDate();
         final int month = date.getMonthOfYear();
         while (calculator.isNonWorkingDay(date)) {

@@ -46,7 +46,15 @@ public class CalendarModifiedFollowingHandler implements HolidayHandler<Calendar
         return move(calculator, 1);
     }
 
-    protected Calendar move(final DateCalculator<Calendar> calculator, int step) {
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
+   protected Calendar move(final DateCalculator<Calendar> calculator, int step) {
         final Calendar cal = (Calendar) calculator.getCurrentBusinessDate().clone();
 
         final int month = cal.get(Calendar.MONTH);

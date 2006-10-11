@@ -83,7 +83,15 @@ public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<Loc
         return diff;
     }
 
-    public double monthDiff(final LocalDate start, final LocalDate end, final PeriodCountBasis basis) {
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
+   public double monthDiff(final LocalDate start, final LocalDate end, final PeriodCountBasis basis) {
         return yearDiff(start, end, basis) * MONTHS_IN_YEAR;
     }
 

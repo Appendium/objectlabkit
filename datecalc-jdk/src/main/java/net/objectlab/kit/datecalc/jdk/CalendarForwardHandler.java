@@ -46,6 +46,14 @@ public class CalendarForwardHandler implements HolidayHandler<Calendar> {
         return move(calculator, 1);
     }
 
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
     protected Calendar move(final DateCalculator<Calendar> calculator, final int step) {
         final Calendar cal = (Calendar) calculator.getCurrentBusinessDate().clone();
 

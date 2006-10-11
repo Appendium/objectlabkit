@@ -47,6 +47,14 @@ public class DateModifiedPreceedingHandler extends DateModifiedFollowingHandler 
         return move(calculator, -1);
     }
 
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
     /**
      * Give the type name for this algorithm.
      * 

@@ -51,7 +51,15 @@ public class HolidayHandlerYearMonthDayWrapper implements HolidayHandler<LocalDa
         this.calculator = calculator;
     }
 
-    /*
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
+   /*
      * (non-Javadoc)
      * 
      * @see net.objectlab.kit.datecalc.common.HolidayHandler#getType()

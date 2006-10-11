@@ -44,7 +44,15 @@ public class HolidayHandlerDateWrapper implements HolidayHandler<Calendar> {
         calculator = dateCalculator;
     }
 
-    /**
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
+   /**
      * If the current date of the give calculator is a non-working day, it will
      * be moved according to the algorithm implemented.
      * 

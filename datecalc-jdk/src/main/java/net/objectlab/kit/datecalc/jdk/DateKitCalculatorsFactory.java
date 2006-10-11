@@ -45,7 +45,15 @@ public class DateKitCalculatorsFactory extends AbstractKitCalculatorsFactory<Dat
         return DEFAULT;
     }
 
-    /*
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
+   /*
      * (non-Javadoc)
      * 
      * @see net.objectlab.kit.datecalc.jdk.JdkDateCalculatorFactory#getDateCalculator(java.lang.String,

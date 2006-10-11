@@ -47,7 +47,15 @@ public class JodaWorkingWeek extends WorkingWeek {
         this(ww.getWorkingDays());
     }
 
-    public boolean isWorkingDay(final LocalDate date) {
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
+   public boolean isWorkingDay(final LocalDate date) {
         final int dayOfWeek = jodaToCalendarDayConstant(date.getDayOfWeek());
         return isWorkingDayFromCalendar(dayOfWeek);
     }
