@@ -106,6 +106,14 @@ public class CalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calenda
         return cal;
     }
 
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
     private boolean isIMMMonth(final Calendar cal) {
         final int month = cal.get(Calendar.MONTH);
 

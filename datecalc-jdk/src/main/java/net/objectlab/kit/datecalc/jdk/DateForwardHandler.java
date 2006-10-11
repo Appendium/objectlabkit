@@ -49,7 +49,15 @@ public class DateForwardHandler implements HolidayHandler<Date> {
         return move(calculator, 1);
     }
 
-    protected Date move(final DateCalculator<Date> calculator, final int step) {
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
+   protected Date move(final DateCalculator<Date> calculator, final int step) {
         final Calendar cal = Utils.getCal(calculator.getCurrentBusinessDate());
 
         while (calculator.isNonWorkingDay(cal.getTime())) {

@@ -62,7 +62,15 @@ public class DateDateCalculator extends AbstractDateCalculator<Date> {
         setStartDate(date);
     }
 
-    // TODO throw an exception if the type is incorrect
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
+   // TODO throw an exception if the type is incorrect
     public void setWorkingWeek(final WorkingWeek week) {
         delegate.setWorkingWeek(week);
     }

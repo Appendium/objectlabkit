@@ -47,7 +47,15 @@ public class YearMonthDayKitCalculatorsFactory extends AbstractKitCalculatorsFac
         return DEFAULT;
     }
 
-    /**
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
+   /**
      * Create a new DateCalculator for a given name and type of handling.
      * 
      * @param name

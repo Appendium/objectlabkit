@@ -98,6 +98,14 @@ public class LocalDateIMMDateCalculator extends AbstractIMMDateCalculator<LocalD
         return imm;
     }
 
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
     private LocalDate calculateIMMMonth(final boolean requestNextIMM, LocalDate date, final int month) {
         int monthOffset = 0;
 

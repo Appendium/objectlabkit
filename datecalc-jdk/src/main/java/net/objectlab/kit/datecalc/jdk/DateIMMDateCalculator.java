@@ -45,6 +45,14 @@ public class DateIMMDateCalculator extends AbstractIMMDateCalculator<Date> {
         return DELEGATE.getNextIMMDate(requestNextIMM, Utils.getCal(theStartDate), period).getTime();
     }
 
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
     public List<Date> getIMMDates(final Date start, final Date end, final IMMPeriod period) {
         return buildList(DELEGATE.getIMMDates(Utils.getCal(start), Utils.getCal(end), period));
     }

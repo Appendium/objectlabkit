@@ -48,7 +48,15 @@ public class YearMonthDayIMMDateCalculator extends AbstractIMMDateCalculator<Yea
         return new YearMonthDay(DELEGATE.getNextIMMDate(requestNextIMM, theStartDate.toLocalDate(), period));
     }
 
-    public List<YearMonthDay> getIMMDates(final YearMonthDay start, final YearMonthDay end, final IMMPeriod period) {
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
+   public List<YearMonthDay> getIMMDates(final YearMonthDay start, final YearMonthDay end, final IMMPeriod period) {
         return buildList(DELEGATE.getIMMDates(start.toLocalDate(), end.toLocalDate(), period));
     }
 

@@ -67,7 +67,15 @@ public class CalendarDateCalculator extends AbstractDateCalculator<Calendar> {
         return !workingWeek.isWorkingDay(date);
     }
 
-    public CalendarDateCalculator moveByDays(final int days) {
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
+   public CalendarDateCalculator moveByDays(final int days) {
         getCurrentBusinessDate().add(Calendar.DAY_OF_MONTH, days);
 
         if (getHolidayHandler() != null) {

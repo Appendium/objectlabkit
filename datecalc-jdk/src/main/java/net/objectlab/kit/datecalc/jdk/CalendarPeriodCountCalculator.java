@@ -82,7 +82,15 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
         return diff;
     }
 
-    private int dayDiff(final Calendar start, final Calendar end) {
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
+   private int dayDiff(final Calendar start, final Calendar end) {
         final long diff = Math.abs(start.getTimeInMillis() - end.getTimeInMillis());
         final double dayDiff = ((double) diff) / MILLIS_IN_DAY;
         return (int) Math.round(dayDiff);

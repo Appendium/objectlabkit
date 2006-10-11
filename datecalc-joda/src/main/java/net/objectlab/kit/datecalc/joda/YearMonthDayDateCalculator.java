@@ -68,6 +68,14 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
         delegate.setWorkingWeek(week);
     }
 
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
     /**
      * is the date a non-working day according to the WorkingWeek?
      */

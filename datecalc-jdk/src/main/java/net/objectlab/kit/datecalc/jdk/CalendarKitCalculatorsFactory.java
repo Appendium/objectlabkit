@@ -81,7 +81,15 @@ public class CalendarKitCalculatorsFactory extends AbstractKitCalculatorsFactory
         return cal;
     }
 
-    /**
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
+   /**
      * Create a new PeriodCountCalculator.
      * 
      * @return a PeriodCountCalculator

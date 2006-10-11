@@ -61,16 +61,19 @@ public class JodaWorkingWeekTest extends TestCase {
         Assert.assertTrue("Calendar.MONDAY", ww.isWorkingDay(date));
     }
 
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
     public void testSetWorkingDayFromDateTimeConstant() {
         ww = ww.withWorkingDayFromDateTimeConstant(true, DateTimeConstants.SUNDAY); // sunday
-        // working
-        // day
+        // working day
         ww = ww.withWorkingDayFromDateTimeConstant(true, DateTimeConstants.SUNDAY); // sunday
-        // working
-        // day
-        // do
-        // it
-        // twice
+        // working day do it twice
         Assert.assertTrue("DateTimeConstants.MONDAY", ww.isWorkingDayFromDateTimeConstant(DateTimeConstants.MONDAY));
         Assert.assertTrue("DateTimeConstants.TUESDAY", ww.isWorkingDayFromDateTimeConstant(DateTimeConstants.TUESDAY));
         Assert.assertTrue("DateTimeConstants.WEDNESDAY", ww.isWorkingDayFromDateTimeConstant(DateTimeConstants.WEDNESDAY));

@@ -73,6 +73,14 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
         return !workingWeek.isWorkingDay(date);
     }
 
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
     public DateCalculator<LocalDate> moveByDays(final int days) {
         setCurrentBusinessDate(getCurrentBusinessDate().plusDays(days));
 
@@ -85,17 +93,7 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
 
     @Override
     public DateCalculator<LocalDate> moveByMonths(final int months) {
-        // LocalDate date = getCurrentBusinessDate();
-        // int day = date.getDayOfMonth();
-        // date = date.withDayOfMonth(1).plusMonths(months);
-        //        
-        // int lastDayOfMonth = date.dayOfMonth().getMaximumValue();
-        // if (day>lastDayOfMonth) {
-        // day = lastDayOfMonth;
-        // }
-
-        // setCurrentBusinessDate(date.withDayOfMonth(day));
-        setCurrentBusinessDate(getCurrentBusinessDate().plusMonths(months));
+         setCurrentBusinessDate(getCurrentBusinessDate().plusMonths(months));
 
         if (getHolidayHandler() != null) {
             setCurrentBusinessDate(getHolidayHandler().moveCurrentDate(this));

@@ -51,6 +51,14 @@ public final class JodaExcelDateUtil {
                 .withDayOfMonth(c.get(Calendar.DAY_OF_MONTH));
     }
 
+    // -----------------------------------------------------------------------
+    //
+    //    ObjectLab, world leaders in the design and development of bespoke 
+    //          applications for the securities financing markets.
+    //                         www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
+
     public static YearMonthDay getYearMonthDay(final double date, final boolean use1904windowing) {
         final Calendar c = ExcelDateUtil.getJavaCalendar(date, use1904windowing);
         
