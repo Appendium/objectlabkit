@@ -82,10 +82,10 @@
       <mailingList>
          <name>Kit Announcements</name>
          <subscribe>
-            https://lists.sourceforge.net/lists/listinfo/objectlabkit-announce
+            http://lists.sourceforge.net/lists/listinfo/objectlabkit-announce
          </subscribe>
          <unsubscribe>
-            https://lists.sourceforge.net/lists/listinfo/objectlabkit-announce
+            http://lists.sourceforge.net/lists/listinfo/objectlabkit-announce
          </unsubscribe>
          <post/>
          <archive>
@@ -96,10 +96,10 @@
       <mailingList>
          <name>Kit User</name>
          <subscribe>
-            https://lists.sourceforge.net/lists/listinfo/objectlabkit-user
+            http://lists.sourceforge.net/lists/listinfo/objectlabkit-user
          </subscribe>
          <unsubscribe>
-            https://lists.sourceforge.net/lists/listinfo/objectlabkit-user
+            http://lists.sourceforge.net/lists/listinfo/objectlabkit-user
          </unsubscribe>
          <post>objectlabkit-user@lists.sourceforge.net</post>
          <archive>
@@ -109,10 +109,10 @@
       <mailingList>
          <name>Kit Developers (SVN checkins)</name>
          <subscribe>
-            https://lists.sourceforge.net/lists/listinfo/objectlabkit-svn
+            http://lists.sourceforge.net/lists/listinfo/objectlabkit-svn
          </subscribe>
          <unsubscribe>
-            https://lists.sourceforge.net/lists/listinfo/objectlabkit-svn
+            http://lists.sourceforge.net/lists/listinfo/objectlabkit-svn
          </unsubscribe>
          <post/>
          <archive>
