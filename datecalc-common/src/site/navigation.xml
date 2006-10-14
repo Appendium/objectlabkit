@@ -14,5 +14,20 @@
     </links>
     <sitemap/>
     <search/>
+      <menu name="Links">
+         <item name="QALab"  href="http://qalab.sourceforge.net/" />
+         <item name="ObjectLab"  href="http://www.objectlab.co.uk" />
+      </menu>
+      <footer>
+         <a href="http://sourceforge.net">
+            <img src="http://sourceforge.net/sflogo.php?group_id=97367&amp;type=2" width="125" height="37" border="0" alt="SourceForge.net Logo" />
+         </a>         
+         <script src="http://www.google-analytics.com/urchin.js"
+            type="text/javascript">
+         </script>
+         <script type="text/javascript">
+            _uacct = "UA-615747-1"; urchinTracker();
+         </script>
+      </footer>
   </body>
 </project>  
