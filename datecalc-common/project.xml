@@ -52,6 +52,15 @@
          <excludes>
             <exclude>**/Abstract*.java</exclude>
          </excludes>
+         <resources>
+            <resource>
+               <directory>src/test/java</directory>
+               <includes>
+                  <include>**/*.txt</include>
+               </includes>
+               <filtering>false</filtering>
+            </resource>
+         </resources>
       </unitTest>
    </build>
 
