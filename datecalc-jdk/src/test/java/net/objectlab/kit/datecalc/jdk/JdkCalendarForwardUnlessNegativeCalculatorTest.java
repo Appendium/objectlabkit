@@ -14,7 +14,7 @@
  *
  *                     www.ObjectLab.co.uk
  *
- * $Id$
+ * $Id: JdkCalendarForwardDateCalculatorTest.java 203 2006-10-11 12:53:07Z benoitx $
  * 
  * Copyright 2006 the original author or authors.
  *
@@ -30,60 +30,26 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package net.objectlab.kit.datecalc.common;
+package net.objectlab.kit.datecalc.jdk;
 
-/**
- * Define a series of standard way to handle holidays.
- * 
- * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
- * 
- */
-public final class HolidayHandlerType {
+import java.util.Calendar;
 
-    /**
-     * A Forward handler will move the date forward if it falls on a non working
-     * day.
-     */
-    public static final String FORWARD = "forward";
+import net.objectlab.kit.datecalc.common.AbstractForwardUnlessNegativeCalculatorTest;
+import net.objectlab.kit.datecalc.common.KitCalculatorsFactory;
+import net.objectlab.kit.datecalc.common.Utils;
 
-    /**
-     * A backward handler will move the date backward if it falls on a non
-     * working day.
-     */
-    public static final String BACKWARD = "backward";
+public class JdkCalendarForwardUnlessNegativeCalculatorTest extends AbstractForwardUnlessNegativeCalculatorTest<Calendar> {
 
-    // -----------------------------------------------------------------------
-    //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
-    //
-    // -----------------------------------------------------------------------
-
-    /**
-     * A modified following handler will move the date forward if it falls on a
-     * non working day BUT, if the new date falls into another month, it will
-     * revert to moving backward until it finds a working day.
-     */
-    public static final String MODIFIED_FOLLLOWING = "modifiedFollowing";
-
-    /**
-     * A modified preceeding handler will move the date backward if it falls on
-     * a non working day BUT, if the new date falls into another month, it will
-     * revert to moving forward until it finds a working day.
-     */
-    public static final String MODIFIED_PRECEEDING = "modifiedPreceeding";
-
-    /**
-     * A handler that moves the date forward unless the increment is negative
-     * (eg moveByDays(-2)) in which case it behaves like a Backward handler.
-     */
-    public static final String FORWARD_UNLESS_MOVING_BACK = "forwardUnlessMovingBack";
-
-    private HolidayHandlerType() {
+    @Override
+    protected Calendar newDate(final String date) {
+        return Utils.createCalendar(date);
     }
+
+    @Override
+    protected KitCalculatorsFactory<Calendar> getDateCalculatorFactory() {
+        return CalendarKitCalculatorsFactory.getDefaultInstance();
+    }
+
 }
 
 /*

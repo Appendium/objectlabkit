@@ -101,6 +101,8 @@ public class DateDateCalculator extends AbstractDateCalculator<Date> {
     }
 
     public DateCalculator<Date> moveByDays(final int days) {
+        setCurrentIncrement(days);
+        delegate.setCurrentIncrement(days);
         delegate.setCurrentBusinessDate(Utils.getCal(getCurrentBusinessDate()));
         setCurrentBusinessDate(delegate.moveByDays(days).getCurrentBusinessDate().getTime());
         return this;
@@ -127,6 +129,8 @@ public class DateDateCalculator extends AbstractDateCalculator<Date> {
 
     @Override
     protected DateCalculator<Date> moveByMonths(final int months) {
+        setCurrentIncrement(months);
+        delegate.setCurrentIncrement(months);
         delegate.setCurrentBusinessDate(Utils.getCal(getCurrentBusinessDate()));
         setCurrentBusinessDate(delegate.moveByMonths(months).getCurrentBusinessDate().getTime());
         return this;

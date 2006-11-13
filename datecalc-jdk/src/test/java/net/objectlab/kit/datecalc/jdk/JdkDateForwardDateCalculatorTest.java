@@ -33,10 +33,11 @@
 package net.objectlab.kit.datecalc.jdk;
 
 import net.objectlab.kit.datecalc.common.AbstractForwardDateCalculatorTest;
+import net.objectlab.kit.datecalc.common.AbstractForwardUnlessNegativeCalculatorTest;
 import net.objectlab.kit.datecalc.common.KitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.Utils;
 
-public class JdkDateForwardDateCalculatorTest extends AbstractForwardDateCalculatorTest {
+public class JdkDateForwardDateCalculatorTest extends AbstractForwardUnlessNegativeCalculatorTest {
 
     @Override
     protected Object newDate(final String date) {

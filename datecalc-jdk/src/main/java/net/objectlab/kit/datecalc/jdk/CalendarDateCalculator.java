@@ -84,13 +84,14 @@ public class CalendarDateCalculator extends AbstractDateCalculator<Calendar> {
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
-   public CalendarDateCalculator moveByDays(final int days) {
+    public CalendarDateCalculator moveByDays(final int days) {
+        setCurrentIncrement(days);
         getCurrentBusinessDate().add(Calendar.DAY_OF_MONTH, days);
 
         if (getHolidayHandler() != null) {
@@ -102,10 +103,11 @@ public class CalendarDateCalculator extends AbstractDateCalculator<Calendar> {
 
     @Override
     public DateCalculator<Calendar> moveByMonths(final int months) {
-         final Calendar date = getCurrentBusinessDate();
-         date.add(Calendar.MONTH,months);
+        setCurrentIncrement(months);
+        final Calendar date = getCurrentBusinessDate();
+        date.add(Calendar.MONTH, months);
 
-         setCurrentBusinessDate(date);
+        setCurrentBusinessDate(date);
 
         if (getHolidayHandler() != null) {
             setCurrentBusinessDate(getHolidayHandler().moveCurrentDate(this));

@@ -9,16 +9,13 @@
       </links>
 
       <menu name="Kit">
-         <item name="DateCalc Common"
-            href="multiproject/datecalc-common/index.html" />
-         <item name="DateCalc JDK"
-            href="multiproject/datecalc-jdk/index.html" />
-         <item name="DateCalc JODA"
-            href="multiproject/datecalc-joda/index.html" />
+         <item name="DateCalc Common" href="multiproject/datecalc-common/index.html" />
+         <item name="DateCalc JDK" href="multiproject/datecalc-jdk/index.html" />
+         <item name="DateCalc JODA" href="multiproject/datecalc-joda/index.html" />
          <item name="Holiday Handling" href="algo.html" />
          <item name="Tenor Handling" href="tenor.html" />
          <item name="JavaDoc" class="newWindow" target="_new" href="apidocs/index.html" />
-         <item name="Stat SVN" class="newWindow" target="_new" href="statsvn/index.html" />
+         <item name="Stat SVN" href="statsvn/index.html" />
          <item name="In the press" href="press/index.html" />
          <item name="Sitemap" href="sitemap.html" />
       </menu>

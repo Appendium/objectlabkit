@@ -65,6 +65,8 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     private Set<E> nonWorkingDays;
 
     private HolidayHandler<E> holidayHandler;
+    
+    private int currentIncrement = 0;
 
     protected AbstractDateCalculator(final String name, final Set<E> nonWorkingDays, final HolidayHandler<E> holidayHandler) {
         this.name = name;
@@ -277,6 +279,20 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
 
     protected abstract DateCalculator<E> createNewCalculator(String calcName, E theStartDate, Set<E> holidays,
             HolidayHandler<E> handler);
+
+    /**
+     * @return Returns the currentIncrement.
+     */
+    public int getCurrentIncrement() {
+        return currentIncrement;
+    }
+
+    /**
+     * @param currentIncrement The currentIncrement to set.
+     */
+    public void setCurrentIncrement(int currentIncrement) {
+        this.currentIncrement = currentIncrement;
+    }
 }
 
 /*

@@ -102,6 +102,8 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
     }
 
     public DateCalculator<YearMonthDay> moveByDays(final int days) {
+        setCurrentIncrement(days);
+        delegate.setCurrentIncrement(days);
         delegate.setCurrentBusinessDate(getCurrentBusinessDate().toLocalDate());
         setCurrentBusinessDate(new YearMonthDay(delegate.moveByDays(days).getCurrentBusinessDate()));
         return this;
@@ -128,6 +130,8 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
 
     @Override
     protected DateCalculator<YearMonthDay> moveByMonths(final int months) {
+        setCurrentIncrement(months);
+        delegate.setCurrentIncrement(months);
         delegate.setCurrentBusinessDate(getCurrentBusinessDate().toLocalDate());
         setCurrentBusinessDate(new YearMonthDay(delegate.moveByMonths(months).getCurrentBusinessDate()));
         return this;
