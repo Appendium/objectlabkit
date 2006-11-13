@@ -14,7 +14,7 @@
  *
  *                     www.ObjectLab.co.uk
  *
- * $Id$
+ * $Id: YearMonthDayForwardHandler.java 203 2006-10-11 12:53:07Z benoitx $
  * 
  * Copyright 2006 the original author or authors.
  *
@@ -30,29 +30,36 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package net.objectlab.kit.datecalc.common;
+package net.objectlab.kit.datecalc.joda;
+
+import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.HolidayHandler;
+import net.objectlab.kit.datecalc.common.HolidayHandlerType;
+
+import org.joda.time.YearMonthDay;
 
 /**
- * Define a series of standard way to handle holidays.
+ * A Forward handler will move the date forward if it falls on a non working
+ * day.
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
+ * @author $LastChangedBy: benoitx $
+ * @version $Revision: 203 $ $Date: 2006-10-11 13:53:07 +0100 (Wed, 11 Oct 2006) $
  * 
  */
-public final class HolidayHandlerType {
+public class YearMonthDayForwardUnlessNegativeHandler implements HolidayHandler<YearMonthDay> {
 
     /**
-     * A Forward handler will move the date forward if it falls on a non working
-     * day.
+     * If the current date of the give calculator is a non-working day, it will
+     * be moved according to the algorithm implemented.
+     * 
+     * @param calculator
+     *            the calculator
+     * @return the date which may have moved.
      */
-    public static final String FORWARD = "forward";
-
-    /**
-     * A backward handler will move the date backward if it falls on a non
-     * working day.
-     */
-    public static final String BACKWARD = "backward";
+    public YearMonthDay moveCurrentDate(final DateCalculator<YearMonthDay> calculator) {
+        return move(calculator, 1);
+    }
 
     // -----------------------------------------------------------------------
     //
@@ -62,27 +69,27 @@ public final class HolidayHandlerType {
     //
     // -----------------------------------------------------------------------
 
-    /**
-     * A modified following handler will move the date forward if it falls on a
-     * non working day BUT, if the new date falls into another month, it will
-     * revert to moving backward until it finds a working day.
-     */
-    public static final String MODIFIED_FOLLLOWING = "modifiedFollowing";
+    protected YearMonthDay move(final DateCalculator<YearMonthDay> calculator, final int step) {
+        YearMonthDay date = calculator.getCurrentBusinessDate();
+        while (calculator.isNonWorkingDay(date)) {
+            if (calculator.getCurrentIncrement() < 0) {
+                // act as a Backward calendar
+                date = date.minusDays(step);
+            } else {
+                // move forward by a day!
+                date = date.plusDays(step);
+            }
+        }
+        return date;
+    }
 
     /**
-     * A modified preceeding handler will move the date backward if it falls on
-     * a non working day BUT, if the new date falls into another month, it will
-     * revert to moving forward until it finds a working day.
+     * Give the type name for this algorithm.
+     * 
+     * @return algorithm name.
      */
-    public static final String MODIFIED_PRECEEDING = "modifiedPreceeding";
-
-    /**
-     * A handler that moves the date forward unless the increment is negative
-     * (eg moveByDays(-2)) in which case it behaves like a Backward handler.
-     */
-    public static final String FORWARD_UNLESS_MOVING_BACK = "forwardUnlessMovingBack";
-
-    private HolidayHandlerType() {
+    public String getType() {
+        return HolidayHandlerType.FORWARD;
     }
 }
 

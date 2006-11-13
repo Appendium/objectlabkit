@@ -94,6 +94,8 @@ public class YearMonthDayKitCalculatorsFactory extends AbstractKitCalculatorsFac
             cal.setHolidayHandler(new YearMonthDayModifiedFollowingHandler());
         } else if (HolidayHandlerType.MODIFIED_PRECEEDING.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new YearMonthDayModifiedPreceedingHandler());
+        } else if (HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK.equals(holidayHandlerType)) {
+            cal.setHolidayHandler(new YearMonthDayForwardUnlessNegativeHandler());
         } else if (holidayHandlerType != null) {
             throw new IllegalArgumentException("Unsupported HolidayHandler: " + holidayHandlerType);
         }

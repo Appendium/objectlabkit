@@ -8,6 +8,10 @@
     <author email="kit@objectlab.co.uk">Benoit Xhenseval</author>
   </properties>
   <body>
+    <release version="1.1.0" date="in SVN" description="Maintenance">
+      <action dev="benoitx" type="add">Added new handler type ForwardUnlessNegative: a handler that acts like a Forward handler
+      if the increment is positive otherwise acts like a Backward handler.</action>
+    </release>
     <release version="1.0.1" date="2006-09-25" description="First release">
       <action dev="benoitx" type="add">First official release.</action>
       <action dev="marchy" type="add">First official release.</action>

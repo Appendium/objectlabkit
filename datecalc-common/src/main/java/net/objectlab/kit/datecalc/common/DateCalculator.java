@@ -225,6 +225,20 @@ public interface DateCalculator<E> {
      * @return the current DateCalculator
      */
     DateCalculator<E> moveByTenor(final Tenor tenor, final int spotLag);
+    
+    /**
+     * return the current increment in the calculator, this is used by the 
+     * handler.
+     */
+    int getCurrentIncrement();
+    
+    /**
+     * This would be used by delegate methods to detect if the increment
+     * if positive or negative (this will allow us to define a Handler
+     * that can act as Forward if positive and Backward if negative).
+     * @param increment
+     */
+    void setCurrentIncrement(final int increment);
 }
 
 /*
