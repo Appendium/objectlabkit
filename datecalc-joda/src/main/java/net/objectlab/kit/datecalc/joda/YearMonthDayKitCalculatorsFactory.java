@@ -90,7 +90,7 @@ public class YearMonthDayKitCalculatorsFactory extends AbstractKitCalculatorsFac
             cal.setHolidayHandler(new YearMonthDayForwardHandler());
         } else if (HolidayHandlerType.BACKWARD.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new YearMonthDayBackwardHandler());
-        } else if (HolidayHandlerType.MODIFIED_FOLLLOWING.equals(holidayHandlerType)) {
+        } else if (HolidayHandlerType.MODIFIED_FOLLOWING.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new YearMonthDayModifiedFollowingHandler());
         } else if (HolidayHandlerType.MODIFIED_PRECEEDING.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new YearMonthDayModifiedPreceedingHandler());

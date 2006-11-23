@@ -224,8 +224,8 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         } else if (businessDays < 0
                 && holidayHandler != null
                 && (holidayHandler.getType().equals(HolidayHandlerType.FORWARD) || holidayHandler.getType().equals(
-                        HolidayHandlerType.MODIFIED_FOLLLOWING))) {
-            throw new IllegalArgumentException("A " + HolidayHandlerType.MODIFIED_FOLLLOWING + " or " + HolidayHandlerType.FORWARD
+                        HolidayHandlerType.MODIFIED_FOLLOWING))) {
+            throw new IllegalArgumentException("A " + HolidayHandlerType.MODIFIED_FOLLOWING + " or " + HolidayHandlerType.FORWARD
                     + " does not allow negative steps for moveByBusinessDays");
         }
 

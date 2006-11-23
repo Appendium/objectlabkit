@@ -9,6 +9,8 @@
   </properties>
   <body>
     <release version="1.1.0" date="in SVN" description="Maintenance">
+      <action dev="benoitx" type="fix" issue="1601542" due-to="Anthony Whitford">Spelling mistake in the code, 
+      sorry for breaking your code with this release.</action>
       <action dev="benoitx" type="add">Added new handler type ForwardUnlessNegative: a handler that acts like a Forward handler
       if the increment is positive otherwise acts like a Backward handler.</action>
     </release>

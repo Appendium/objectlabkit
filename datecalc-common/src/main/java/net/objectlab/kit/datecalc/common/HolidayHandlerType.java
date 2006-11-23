@@ -67,7 +67,7 @@ public final class HolidayHandlerType {
      * non working day BUT, if the new date falls into another month, it will
      * revert to moving backward until it finds a working day.
      */
-    public static final String MODIFIED_FOLLLOWING = "modifiedFollowing";
+    public static final String MODIFIED_FOLLOWING = "modifiedFollowing";
 
     /**
      * A modified preceeding handler will move the date backward if it falls on

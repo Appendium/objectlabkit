@@ -90,7 +90,7 @@ public class LocalDateModifiedFollowingHandler implements HolidayHandler<LocalDa
      * @return algorithm name.
      */
     public String getType() {
-        return HolidayHandlerType.MODIFIED_FOLLLOWING;
+        return HolidayHandlerType.MODIFIED_FOLLOWING;
     }
 }
 

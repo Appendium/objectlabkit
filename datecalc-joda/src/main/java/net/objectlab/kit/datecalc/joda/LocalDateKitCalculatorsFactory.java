@@ -88,7 +88,7 @@ public class LocalDateKitCalculatorsFactory extends AbstractKitCalculatorsFactor
             cal.setHolidayHandler(new LocalDateForwardHandler());
         } else if (HolidayHandlerType.BACKWARD.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new LocalDateBackwardHandler());
-        } else if (HolidayHandlerType.MODIFIED_FOLLLOWING.equals(holidayHandlerType)) {
+        } else if (HolidayHandlerType.MODIFIED_FOLLOWING.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new LocalDateModifiedFollowingHandler());
         } else if (HolidayHandlerType.MODIFIED_PRECEEDING.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new LocalDateModifiedPreceedingHandler());

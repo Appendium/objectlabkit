@@ -95,7 +95,7 @@ public class DateModifiedFollowingHandler implements HolidayHandler<Date> {
      * @return algorithm name.
      */
     public String getType() {
-        return HolidayHandlerType.MODIFIED_FOLLLOWING;
+        return HolidayHandlerType.MODIFIED_FOLLOWING;
     }
 }
 
