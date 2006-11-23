@@ -50,6 +50,8 @@ public final class StandardTenor {
 
     public static final Tenor T_1D = new Tenor(1, TenorCode.DAY);
 
+    public static final Tenor T_2D = new Tenor(2, TenorCode.DAY);
+
     public static final Tenor T_1W = new Tenor(1, TenorCode.WEEK);
 
     public static final Tenor T_1M = new Tenor(1, TenorCode.MONTH);
