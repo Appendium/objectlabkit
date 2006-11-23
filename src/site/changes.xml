@@ -9,6 +9,7 @@
   </properties>
   <body>
     <release version="1.1.0" date="in SVN" description="Maintenance">
+      <action dev="benoitx" type="add" issue="1601540" due-to="Anthony Whitford">Added a standard Tenor 2D.</action>
       <action dev="benoitx" type="fix" issue="1601542" due-to="Anthony Whitford">Spelling mistake in the code, 
       sorry for breaking your code with this release.</action>
       <action dev="benoitx" type="add">Added new handler type ForwardUnlessNegative: a handler that acts like a Forward handler
