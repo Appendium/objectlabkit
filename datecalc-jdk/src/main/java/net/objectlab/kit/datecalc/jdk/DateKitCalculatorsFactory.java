@@ -85,7 +85,7 @@ public class DateKitCalculatorsFactory extends AbstractKitCalculatorsFactory<Dat
             cal.setHolidayHandler(new DateForwardHandler());
         } else if (HolidayHandlerType.BACKWARD.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new DateBackwardHandler());
-        } else if (HolidayHandlerType.MODIFIED_FOLLLOWING.equals(holidayHandlerType)) {
+        } else if (HolidayHandlerType.MODIFIED_FOLLOWING.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new DateModifiedFollowingHandler());
         } else if (HolidayHandlerType.MODIFIED_PRECEEDING.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new DateModifiedPreceedingHandler());
