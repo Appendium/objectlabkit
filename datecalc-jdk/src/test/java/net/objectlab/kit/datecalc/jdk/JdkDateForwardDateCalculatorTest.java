@@ -32,7 +32,6 @@
  */
 package net.objectlab.kit.datecalc.jdk;
 
-import net.objectlab.kit.datecalc.common.AbstractForwardDateCalculatorTest;
 import net.objectlab.kit.datecalc.common.AbstractForwardUnlessNegativeCalculatorTest;
 import net.objectlab.kit.datecalc.common.KitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.Utils;
