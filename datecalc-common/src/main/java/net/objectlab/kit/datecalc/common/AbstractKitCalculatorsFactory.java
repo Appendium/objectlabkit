@@ -64,11 +64,13 @@ public abstract class AbstractKitCalculatorsFactory<E> implements KitCalculators
      *            the set of holidays (non-working days).
      */
     public void registerHolidays(final String name, final Set<E> holidaysSet) {
-        this.holidays.put(name, holidaysSet);
+        if (name != null) {
+            this.holidays.put(name, holidaysSet);
+        }
     }
 
     protected void setHolidays(final String name, final DateCalculator<E> dc) {
-        if (holidays.containsKey(name)) {
+        if (name != null && holidays.containsKey(name)) {
             dc.setNonWorkingDays(holidays.get(name));
         }
     }
