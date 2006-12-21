@@ -80,8 +80,12 @@ public class YearMonthDayKitCalculatorsFactory extends AbstractKitCalculatorsFac
      * @param holidayHandlerType
      *            typically one of the value of HolidayHandlerType
      * @return a new DateCalculator
+     * @throws IllegalArgumentException if name is null
      */
     public DateCalculator<YearMonthDay> getDateCalculator(final String name, final String holidayHandlerType) {
+        if (name == null) {
+            throw new IllegalArgumentException("name cannot be null, use anything.");
+        }
         final YearMonthDayDateCalculator cal = new YearMonthDayDateCalculator();
         cal.setName(name);
         setHolidays(name, cal);
