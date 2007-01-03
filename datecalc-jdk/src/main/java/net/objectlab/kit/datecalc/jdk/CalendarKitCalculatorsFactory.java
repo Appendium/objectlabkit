@@ -36,6 +36,7 @@ import java.util.Calendar;
 
 import net.objectlab.kit.datecalc.common.AbstractKitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.HolidayCalendar;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 import net.objectlab.kit.datecalc.common.IMMDateCalculator;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
@@ -106,7 +107,7 @@ public class CalendarKitCalculatorsFactory extends AbstractKitCalculatorsFactory
     //
     // -----------------------------------------------------------------------
 
-   /**
+    /**
      * Create a new PeriodCountCalculator.
      * 
      * @return a PeriodCountCalculator
@@ -122,6 +123,25 @@ public class CalendarKitCalculatorsFactory extends AbstractKitCalculatorsFactory
      */
     public IMMDateCalculator<Calendar> getIMMDateCalculator() {
         return IMMDC;
+    }
+
+    /**
+     * Picks up the first and last days of the set as the early and late boundaries. 
+     */
+    @Override
+    protected void calculateDefaultBoundaries(HolidayCalendar<Calendar> holidaysCalendar) {
+        Calendar min = holidaysCalendar.getHolidays().iterator().next();
+        Calendar max = min;
+        for (Calendar days : holidaysCalendar.getHolidays()) {
+            min = days.before(min) ? days : min;
+            max = days.after(max) ? days : max;
+        }
+        if (holidaysCalendar.getEarlyBoundary() == null) {
+            holidaysCalendar.setEarlyBoundary(min);
+        }
+        if (holidaysCalendar.getLateBoundary() == null) {
+            holidaysCalendar.setLateBoundary(max);
+        }
     }
 }
 

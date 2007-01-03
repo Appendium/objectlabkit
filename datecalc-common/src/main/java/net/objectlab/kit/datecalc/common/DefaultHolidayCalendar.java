@@ -51,6 +51,18 @@ public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
 
     private E lateBoundary;
 
+    public DefaultHolidayCalendar(Set<E> holidays, E earlyBoundary, E lateBoundary) {
+        super();
+        this.holidays = holidays;
+        this.earlyBoundary = earlyBoundary;
+        this.lateBoundary = lateBoundary;
+    }
+
+    public DefaultHolidayCalendar(Set<E> holidays) {
+        super();
+        this.holidays = holidays;
+    }
+
     /*
      * (non-Javadoc)
      * 
