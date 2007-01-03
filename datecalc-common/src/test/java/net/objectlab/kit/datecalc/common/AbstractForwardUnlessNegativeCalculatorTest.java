@@ -335,7 +335,7 @@ public abstract class AbstractForwardUnlessNegativeCalculatorTest<E> extends Abs
     public void testMoveByTenorYearTwoDaysToSpot() {
         checkMoveByTenor("2006-08-31", StandardTenor.T_1Y, 2, "2007-09-04", HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
         checkMoveByTenor("2006-08-31", StandardTenor.T_2Y, 2, "2008-09-04", HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
-        checkMoveByTenor("2008-02-29", StandardTenor.T_1Y, 2, "2009-03-03", HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
+        checkMoveByTenor("2008-02-29", StandardTenor.T_1Y, 2, "2009-03-04", HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
         checkMoveByTenor("2008-02-29", StandardTenor.T_4Y, 2, "2012-03-05", HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
     }
 
