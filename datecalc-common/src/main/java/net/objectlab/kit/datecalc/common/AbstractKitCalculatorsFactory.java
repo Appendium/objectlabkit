@@ -50,7 +50,7 @@ import java.util.concurrent.ConcurrentMap;
  */
 public abstract class AbstractKitCalculatorsFactory<E> implements KitCalculatorsFactory<E> {
 
-    private final ConcurrentMap<String, Set<E>> holidays = new ConcurrentHashMap<String, Set<E>>();
+    private final ConcurrentMap<String, HolidayCalendar<E>> holidays = new ConcurrentHashMap<String, HolidayCalendar<E>>();
 
     /**
      * Use this method to register a set of holidays for a given calendar, it
@@ -62,33 +62,64 @@ public abstract class AbstractKitCalculatorsFactory<E> implements KitCalculators
      *            the calendar name to register these holidays under.
      * @param holidaysSet
      *            the set of holidays (non-working days).
+     * @deprecated use the HolidayCalendar
      */
     public void registerHolidays(final String name, final Set<E> holidaysSet) {
         if (name != null) {
-            this.holidays.put(name, holidaysSet);
+            DefaultHolidayCalendar<E> defaultHolidayCalendar = new DefaultHolidayCalendar<E>(holidaysSet);
+            calculateDefaultBoundaries(defaultHolidayCalendar);
+            this.holidays.put(name, defaultHolidayCalendar);
         }
     }
 
-    protected void setHolidays(final String name, final DateCalculator<E> dc) {
-        if (name != null && holidays.containsKey(name)) {
-            dc.setNonWorkingDays(holidays.get(name));
+    /**
+     * Use this method to register a given calendar, it will replace any
+     * existing set. It won't update any existing DateCalculator as these should
+     * not be amended whilst in existence (we could otherwise get inconsistent
+     * results).
+     * 
+     * @param name
+     *            the calendar name to register these holidays under.
+     * @param holidaysSet
+     *            the set of holidays (non-working days).
+     */
+    public void registerHolidays(final String name, final HolidayCalendar<E> holidaysCalendar) {
+        if (name != null) {
+            if (holidaysCalendar != null && holidaysCalendar.getHolidays() != null && !holidaysCalendar.getHolidays().isEmpty()
+                    && (holidaysCalendar.getEarlyBoundary() == null || holidaysCalendar.getLateBoundary() == null)) {
+                calculateDefaultBoundaries(holidaysCalendar);
+            }
+            this.holidays.put(name, holidaysCalendar);
         }
     }
+
+    /**
+     * Used by extensions to set holidays in a DateCalculator.
+     * 
+     * @param name
+     *            holiday name
+     * @param dc
+     *            the date calculator to configure.
+     */
+    protected void setHolidays(final String name, final DateCalculator<E> dc) {
+        if (name != null && holidays.containsKey(name)) {
+            dc.setNonWorkingDays(holidays.get(name).getHolidays());
+        }
+    }
+
+    protected abstract void calculateDefaultBoundaries(final HolidayCalendar<E> holidaysCalendar);
 }
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
  * 
- * Based in London, we are world leaders in the design and development 
- * of bespoke applications for the securities financing markets.
+ * Based in London, we are world leaders in the design and development of
+ * bespoke applications for the securities financing markets.
  * 
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
- *           ___  _     _           _   _          _
- *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
- *         | | | | '_ \| |/ _ \/ __| __| |   / _` | '_ \
- *         | |_| | |_) | |  __/ (__| |_| |__| (_| | |_) |
- *          \___/|_.__// |\___|\___|\__|_____\__,_|_.__/
- *                   |__/
- *
- *                     www.ObjectLab.co.uk
+ * ___ _ _ _ _ _ / _ \| |__ (_) ___ ___| |_| | __ _| |__ | | | | '_ \| |/ _ \/
+ * __| __| | / _` | '_ \ | |_| | |_) | | __/ (__| |_| |__| (_| | |_) |
+ * \___/|_.__// |\___|\___|\__|_____\__,_|_.__/ |__/
+ * 
+ * www.ObjectLab.co.uk
  */

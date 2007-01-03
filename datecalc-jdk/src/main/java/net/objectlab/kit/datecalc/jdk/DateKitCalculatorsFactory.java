@@ -36,6 +36,7 @@ import java.util.Date;
 
 import net.objectlab.kit.datecalc.common.AbstractKitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.HolidayCalendar;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 import net.objectlab.kit.datecalc.common.IMMDateCalculator;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
@@ -68,7 +69,7 @@ public class DateKitCalculatorsFactory extends AbstractKitCalculatorsFactory<Dat
     //
     // -----------------------------------------------------------------------
 
-   /*
+    /*
      * (non-Javadoc)
      * 
      * @see net.objectlab.kit.datecalc.jdk.JdkDateCalculatorFactory#getDateCalculator(java.lang.String,
@@ -109,6 +110,25 @@ public class DateKitCalculatorsFactory extends AbstractKitCalculatorsFactory<Dat
 
     public IMMDateCalculator<Date> getIMMDateCalculator() {
         return IMMDC;
+    }
+
+    /**
+     * Picks up the first and last days of the set as the early and late boundaries. 
+     */
+    @Override
+    protected void calculateDefaultBoundaries(HolidayCalendar<Date> holidaysCalendar) {
+        Date min = holidaysCalendar.getHolidays().iterator().next();
+        Date max = min;
+        for (Date days : holidaysCalendar.getHolidays()) {
+            min = days.before(min) ? days : min;
+            max = days.after(max) ? days : max;
+        }
+        if (holidaysCalendar.getEarlyBoundary() == null) {
+            holidaysCalendar.setEarlyBoundary(min);
+        }
+        if (holidaysCalendar.getLateBoundary() == null) {
+            holidaysCalendar.setLateBoundary(max);
+        }
     }
 }
 

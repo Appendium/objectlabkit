@@ -148,6 +148,15 @@ public abstract class AbstractDateCalculatorFactoryTest<E> extends AbstractDateT
         cal1.setCurrentBusinessDate(newDate("2006-12-24"));
         Assert.assertTrue("current date is weekend", cal1.isCurrentDateNonWorking());
     }
+
+    public void testHolidayCalendar() {
+        final Set<E> uk = createUKHolidays();
+        final HolidayCalendar<E> ukCal = new DefaultHolidayCalendar<E>(uk);
+        getDateCalculatorFactory().registerHolidays("UK", ukCal);
+
+        assertEquals("Early boundary", newDate("2006-01-01"), ukCal.getEarlyBoundary());
+        assertEquals("Late boundary", newDate("2006-12-26"), ukCal.getLateBoundary());
+    }
 }
 
 /*

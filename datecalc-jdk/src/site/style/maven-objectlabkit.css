@@ -1,0 +1,146 @@
+body, select, input, li {
+    background: #ffffff;
+    color: #002070;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+a img {
+    border: 0;
+}
+
+a:link, a:visited {
+    color: #0020d0;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #0000ff !important;
+}
+
+a.externalLink, a.externalLink:link, a.externalLink:visited, a.externalLink:active, a.externalLink:hover {
+    background: url(../images/external.png) right center no-repeat;
+    padding-right: 15px;
+}
+
+a.newWindow, a.newWindow:link, a.newWindow:visited, a.newWindow:active, a.newWindow:hover {
+    background: url(../images/newwindow.png) right center no-repeat;
+    padding-right: 18px;
+}
+
+h2 {
+    padding: 2px 5px;
+    border: 1px solid #c0c0c0;
+    color: #002070;
+    background-color: #eeeeee;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+h3 {
+    padding: 2px 5px;
+    border: 1px solid #aaaaaa;
+    color: #002070;
+    background-color: #eeeeee;
+    font-size: 14px;
+}
+
+p {
+    line-height: 1.3em;
+    font-size: small;
+}
+
+#breadcrumbs {
+    background: url(../images/grayBar.jpg);
+    border: 1px solid #c0c0c0;
+    height: 17px;
+}
+
+#breadcrumbs a {
+    font-size: 11px;
+    font-weight: bold;
+    margin: 0px 2px;
+    text-decoration: none;
+}
+
+#leftColumn {
+    border: 1px solid #999999;
+    border-top: 0;
+    border-left: 0;
+    background: #eeeeee;
+}
+
+div#navcolumn {
+    font-size: 12px;
+}
+
+div#navcolumn h5 {
+    font-size: 12px;
+    padding-top: 2px;
+}
+
+div#navcolumn li {
+    background: #eeeeee !important;
+}
+
+div#navcolumn div a {
+    color: #002070;
+    font-size: 11px;
+    text-decoration: none;
+}
+
+table.bodyTable th {
+    color: #ffffff;
+    background-color: #bbb;
+    text-align: left;
+    font-weight: bold;
+}
+
+table.bodyTable th {
+    color: #ffffff;
+    background-color: #bbb;
+    text-align: left;
+    font-weight: bold;
+}
+
+table.bodyTable a {
+    text-decoration : none;
+}
+
+table.bodyTable tr.a {
+    background-color: #ddd;
+    text-decoration : none;
+}
+
+table.bodyTable tr.b {
+    background-color: #eee;
+}
+
+.source {
+    background: #ffffdd;
+    border: 1px solid #999999;
+    color: #000000;
+    font-size: 12px !important;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 5px 5px 5px 7px;
+}
+
+
+.xright, #projectLogo img, #projectLogo span{
+  float:right;
+  color: #0020a0;
+}
+
+#footer {
+  padding: 10px;
+  margin: 20px 0px 20px 0px;
+  border-top: solid #ccc 1px; 
+  color: #333333;
+}
+
+.subsectionTitle {
+	font-size: 13px;
+	font-weight: bold;
+	color: #666;
+}

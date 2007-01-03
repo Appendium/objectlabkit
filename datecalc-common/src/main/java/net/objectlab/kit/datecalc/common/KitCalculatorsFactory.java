@@ -78,6 +78,16 @@ public interface KitCalculatorsFactory<E> {
      */
     void registerHolidays(final String name, Set<E> holidays);
 
+    /**
+     * Use this method to register a holidays calendar.
+     * 
+     * @param name
+     *            the calendar name to register these holidays under.
+     * @param holidaysCalendar
+     *            the holiday calendar (non-working days with boundaries).
+     */
+    void registerHolidays(final String name, HolidayCalendar<E> holidaysCalendar);
+
     // -----------------------------------------------------------------------
     //
     //    ObjectLab, world leaders in the design and development of bespoke 
