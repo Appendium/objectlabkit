@@ -134,7 +134,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         TenorCode tenorCode = tenor.getCode();
         if (tenorCode != TenorCode.OVERNIGHT) {
             // get to the Spot date first:
-            moveByDays(spotLag);
+            moveByBusinessDays(spotLag);
         }
         int unit = tenor.getUnits();
         if (tenorCode == TenorCode.WEEK) {
