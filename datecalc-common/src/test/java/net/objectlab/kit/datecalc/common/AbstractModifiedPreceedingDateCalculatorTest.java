@@ -266,7 +266,7 @@ public abstract class AbstractModifiedPreceedingDateCalculatorTest<E> extends Ab
         checkDate("do NOT move to next month", cal, "2006-08-02");
     }
 
-    public void testMoveByTenorDays() {
+/*    public void testMoveByTenorDays() {
         checkMoveByTenor("2006-08-08", StandardTenor.T_1D, 0, "2006-08-09", HolidayHandlerType.MODIFIED_PRECEEDING);
         checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.DAY), 0, "2006-08-10", HolidayHandlerType.MODIFIED_PRECEEDING);
         checkMoveByTenor("2006-08-08", new Tenor(10, TenorCode.DAY), 0, "2006-08-18", HolidayHandlerType.MODIFIED_PRECEEDING);
@@ -404,7 +404,7 @@ public abstract class AbstractModifiedPreceedingDateCalculatorTest<E> extends Ab
         checkMoveByTenor("2006-08-31", StandardTenor.OVERNIGHT, 2, "2006-09-01", HolidayHandlerType.MODIFIED_PRECEEDING);
         checkMoveByTenor("2006-08-28", StandardTenor.OVERNIGHT, 2, "2006-08-25", HolidayHandlerType.MODIFIED_PRECEEDING);
     }
-}
+*/}
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.

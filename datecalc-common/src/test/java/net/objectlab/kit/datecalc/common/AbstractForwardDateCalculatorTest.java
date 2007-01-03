@@ -331,23 +331,26 @@ public abstract class AbstractForwardDateCalculatorTest<E> extends AbstractDateT
     public void testMoveByTenorYearTwoDaysToSpot() {
         checkMoveByTenor("2006-08-31", StandardTenor.T_1Y, 2, "2007-09-04", HolidayHandlerType.FORWARD);
         checkMoveByTenor("2006-08-31", StandardTenor.T_2Y, 2, "2008-09-04", HolidayHandlerType.FORWARD);
-        checkMoveByTenor("2008-02-29", StandardTenor.T_1Y, 2, "2009-03-03", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2008-02-29", StandardTenor.T_1Y, 2, "2009-03-04", HolidayHandlerType.FORWARD);
         checkMoveByTenor("2008-02-29", StandardTenor.T_4Y, 2, "2012-03-05", HolidayHandlerType.FORWARD);
     }
 
     public void testMoveByTenorSpot() {
         checkMoveByTenor("2006-08-31", StandardTenor.SPOT, 0, "2006-08-31", HolidayHandlerType.FORWARD);
         checkMoveByTenor("2006-08-28", StandardTenor.SPOT, 0, "2006-08-29", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-08-25", StandardTenor.SPOT, 0, "2006-08-25", HolidayHandlerType.FORWARD);
     }
 
     public void testMoveByTenorSpotOneDayToSpot() {
         checkMoveByTenor("2006-08-31", StandardTenor.SPOT, 1, "2006-09-01", HolidayHandlerType.FORWARD);
         checkMoveByTenor("2006-08-28", StandardTenor.SPOT, 1, "2006-08-30", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-08-25", StandardTenor.SPOT, 1, "2006-08-29", HolidayHandlerType.FORWARD);
     }
 
     public void testMoveByTenorSpotTwoDaysToSpot() {
         checkMoveByTenor("2006-08-31", StandardTenor.SPOT, 2, "2006-09-04", HolidayHandlerType.FORWARD);
         checkMoveByTenor("2006-08-28", StandardTenor.SPOT, 2, "2006-08-31", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-08-25", StandardTenor.SPOT, 2, "2006-08-30", HolidayHandlerType.FORWARD);
     }
 
     public void testMoveByTenorOvernight() {

@@ -242,7 +242,7 @@ public abstract class AbstractBackwardDateCalculatorTest<E> extends AbstractDate
 
     }
 
-    public void testMoveByTenorDays() {
+/*    public void testMoveByTenorDays() {
         checkMoveByTenor("2006-08-08", StandardTenor.T_1D, 0, "2006-08-09", HolidayHandlerType.BACKWARD);
         checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.DAY), 0, "2006-08-10", HolidayHandlerType.BACKWARD);
         checkMoveByTenor("2006-08-08", new Tenor(10, TenorCode.DAY), 0, "2006-08-18", HolidayHandlerType.BACKWARD);
@@ -380,7 +380,7 @@ public abstract class AbstractBackwardDateCalculatorTest<E> extends AbstractDate
         checkMoveByTenor("2006-08-31", StandardTenor.OVERNIGHT, 2, "2006-09-01", HolidayHandlerType.BACKWARD);
         checkMoveByTenor("2006-08-28", StandardTenor.OVERNIGHT, 2, "2006-08-25", HolidayHandlerType.BACKWARD);
     }
-
+*/
 }
 
 /*
