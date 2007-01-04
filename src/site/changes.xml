@@ -9,6 +9,9 @@
   </properties>
   <body>
     <release version="1.1.0" date="in SVN" description="Maintenance">
+      <action dev="benoitx" type="add" issue="1575498" due-to="Paul Hill">Valid Range via HolidayCalendar.  HolidayCalendar should replace the simple Set&lt;E&gt; of dates
+      for holidays.  A HolidayCalendar MAY contain an eraly and late boundary, if the calculation break a boundary, an exception is thrown, if there are no
+      boundaries no exception would be thrown. This would ensure that calculations are not going outside the valid set of holidays.</action>
       <action dev="benoitx" type="fix" due-to="David Owen">The calculation of Spot date should take into account holidays BETWEEN now and spot (aka moveByBusinessDay).</action>
       <action dev="benoitx" type="add" issue="1601540" due-to="Anthony Whitford">Added a standard Tenor 2D.</action>
       <action dev="benoitx" type="fix" issue="1601542" due-to="Anthony Whitford">Spelling mistake in the code, 

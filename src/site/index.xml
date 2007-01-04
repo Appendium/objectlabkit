@@ -20,12 +20,18 @@
   </head>
   <body>
     <!-- The body of the document contains a number of sections -->
+    <section name="Quick News">
+    <p>2007-01-xx: version 1.1.0 is out and contains a couple of changes, a new HolidayHandler and the ability to define a valid range for the holiday (and
+    if the calculation is beyond that range, an exception is thrown).  This is done via HolidayCalendar which should replace the simple Set&lt;E&gt; for holidays.
+    More info on the changes <a href="changes-report.html">here</a>.</p>
+    </section>
+    
     <section name="ObjectLab Kit Introduction">
 
     <p>ObjectLab Kit came out of our frustration to have to re-do the same kind of code over and over each time we
     joined a new company and Bank.  Most banks will require basic Date calculation, we did spot another open source
     project for this but their licence forbids most financial institution from using it.  This one is released under
-    the business-friendly Apache 2.0 license.     <a href="http://digg.com/submit?phase=2&amp;url=objectlabkit.sourceforge.net&amp;title=ObjectLab%20Kit%3A%20Open%20Source%20Date%20Calculators%20for%20Business%20and%20Finance&amp;bodytext=ObjectLab%20released%20version%201%2E0%2E1%20of%20ObjectLab%20Kit%20for%20Java%201%2E5,%20available%20for%20download%20via%20SourceForge%20or%20the%20Maven%20Central%20Repository%2E%20The%20Kit%20provides%20a%20Date%20Calculator%20that%20handle%20holidays,%20a%20IMM%20Date%20and%20Period%20Count%20Calculator%20and%20comes%20in%20two%20versions%3A%20one%20based%20on%20pure%20JDK%20(1%2E5)%20and%20one%20based%20on%20the%20Joda-time%20library%20(1%2E3%2B,%20JDK%201%2E5)%2E&amp;topic=programming">
+    the business-friendly Apache 2.0 license.     <a href="http://digg.com/submit?phase=2&amp;url=objectlabkit.sourceforge.net&amp;title=ObjectLab%20Kit%3A%20Open%20Source%20Date%20Calculators%20for%20Business%20and%20Finance&amp;bodytext=ObjectLab%20released%20version%201%2E1%2E0%20of%20ObjectLab%20Kit%20for%20Java%201%2E5,%20available%20for%20download%20via%20SourceForge%20or%20the%20Maven%20Central%20Repository%2E%20The%20Kit%20provides%20a%20Date%20Calculator%20that%20handle%20holidays,%20a%20IMM%20Date%20and%20Period%20Count%20Calculator%20and%20comes%20in%20two%20versions%3A%20one%20based%20on%20pure%20JDK%20(1%2E5)%20and%20one%20based%20on%20the%20Joda-time%20library%20(1%2E3%2B,%20JDK%201%2E5)%2E&amp;topic=programming">
     <img src="http://digg.com/img/badges/91x17-digg-button.png" width="91" height="17" alt="Digg!" style="vertical-align:middle" /></a></p>
     
 
@@ -54,7 +60,7 @@
 
 
     <subsection name ="Ok, what algorithm for handling a holiday do you support?">
-    <p>At the moment, we support the following 5 algorithms:</p>
+    <p>At the moment, we support the following 6 algorithms:</p>
     <ol>
     	<li><strong>Do Nothing</strong>, i.e. leave the date as-is, even if it is a non-working day.</li>
     	<li><strong>Forward</strong>, if the date is a non-working day, move forward to the next working day.</li>
@@ -63,6 +69,7 @@
     	UNLESS it crosses over a new month, in which case we revert to find the last working day of the current month.</li>
     	<li><strong>Modified Preceeding</strong>, if the date is a non-working day, move backward to the previous working day, 
     	UNLESS it crosses over a new month, in which case we revert to find the next working day of the current month.</li>
+    	<li><strong>ForwardUnlessNegative</strong> (new with v1.1.0), acts like a Forward algo unless the increment is negative, in which case it behaves like Backward.</li>
     </ol>
     <p>See this page for some <a href="algo.html">examples</a>.</p>
     </subsection>
@@ -124,12 +131,12 @@ IMMDateCalculator&lt;<strong>YearMonthDay</strong>> calc = <strong>YearMonthDay<
     <section name="How do I use it?">
     <p>There are several steps</p>
     <ul>
-        <li>Register holidays in the factory by calling registerHolidays(final String name, Set&lt;Date> holidays)</li>
+        <li>Register holidays in the factory by calling registerHolidays(final String name, HolidayCalendar&lt;Date> holidays)</li>
     	<li>Use the factory to get a DateCalculator with a given Handler (forward/backward etc), it is a disposable object that should <strong>not</strong> be shared accross threads, each thread 
     	should get its own!</li>
     	<li>when you get a DateCalculator, you can set the startDate, this sets the currentDate too.  The startDate does not move.  The current date is
     	the result of your calculations.  If the startDate is a non-working day, it may be moved automatically according to the HolidayHandler.</li>
-    	<li>when you call moveByDays(..), moveByBusinessDays(..) the currentDate is moved in the Calculator.</li>
+    	<li>when you call moveByDays(..), moveByBusinessDays(..), moveByTenor the currentDate is moved in the Calculator.</li>
     </ul>
     
     <subsection name="Using Joda-time LocalDate">
@@ -138,9 +145,13 @@ IMMDateCalculator&lt;<strong>YearMonthDay</strong>> calc = <strong>YearMonthDay<
 // create or get the Holidays
 final Set&lt;LocalDate> holidays = new HashSet&lt;LocalDate>();
 holidays.add(new LocalDate("2006-08-28"));
+//... keep adding all holidays for 2006
+
+// create the HolidayCalendar ASSUMING that the set covers 2006!
+final HolidayCalendar&lt;LocalDate> calendar = new DefaultHolidayCalendar&lt;LocalDate>(holidays, new LocalDate("2006-01-01"), new LocalDate("2006-12-31"));
   
-// register the holidays (any calculator with name "UK" asked from now on will receive a reference to this set
-LocalDateKitCalculatorsFactory.getDefaultInstance().registerHolidays("UK", holidays);
+// register the holiday calendar (any calculator with name "UK" asked from now on will receive an IMMUTABLE reference to this calendar)
+LocalDateKitCalculatorsFactory.getDefaultInstance().registerHolidays("UK", calendar);
 
 // ask for a LocalDate calculator for "UK" (even if a new set of holidays is registered, this one calculator is not affected
 DateCalculator&lt;LocalDate> cal = LocalDateKitCalculatorsFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);
@@ -152,6 +163,9 @@ LocalDate start = cal.getStartDate();   // 28 Aug 06
 LocalDate current = cal.getCurrentBusinessDate(); // 29 Aug 06
 
 LocalDate newCurrent = cal.moveByDays(4).getCurrentBusinessDate(); // 4 Sept 06 due to weekend!
+
+// Example with Tenor, 1W with a 2 day spot lag
+LocalDate date1WeekFromSpot = cal.moveByTenor(StandardTenor.T_1W, 2).getCurrentBusinessDate();
     </pre></div>
       
     </subsection>
@@ -166,10 +180,14 @@ Calendar calendar = Calendar.getInstance();
 calendar.set(Calendar.DAY_OF_MONTH,28);
 calendar.set(Calendar.MONTH,Calendar.AUGUST);
 calendar.set(Calendar.YEAR,2006);
-holidays.add(calendar);
-  
-// register the holidays (any calculator with name "UK" asked from now on will receive a reference to this set
-CalendarKitCalculatorsFactory.getDefaultInstance().registerHolidays("UK", holidays);
+holidays.add(calendar);  
+//... keep adding all holidays for 2006
+
+// create the HolidayCalendar ASSUMING that the set covers 2006!
+final HolidayCalendar&lt;Calendar> calendar = new DefaultHolidayCalendar&lt;Calendar>(holidays, new Calendar("2006-01-01"), new Calendar("2006-12-31"));
+
+// register the holidays (any calculator with name "UK" asked from now on will receive an IMMUTABLE reference to this calendar
+CalendarKitCalculatorsFactory.getDefaultInstance().registerHolidays("UK", calendar);
 
 // ask for a LocalDate calculator for "UK" (even if a new set of holidays is registered, this one calculator is not affected
 DateCalculator&lt;Calendar> cal = LocalDateKitCalculatorsFactory.getDefaultInstance().getDateCalculator("UK", HolidayHandlerType.FORWARD);
@@ -186,6 +204,9 @@ Calendar start = cal.getStartDate();   // 28 Aug 06
 Calendar current = cal.getCurrentBusinessDate(); // 29 Aug 06
 
 Calendar newCurrent = cal.moveByDays(4).getCurrentBusinessDate(); // 4 Sept 06 due to weekend!
+
+// Example with Tenor, 1W with a 2 day spot lag
+Calendar date1WeekFromSpot = cal.moveByTenor(StandardTenor.T_1W, 2).getCurrentBusinessDate();
     </pre></div>
       
     </subsection>
