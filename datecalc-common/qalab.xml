@@ -173,7 +173,7 @@
             project="objectlabkit" statvalue="30" type="cobertura-branch"/>
     </summary>
     <file
-        id="default-default-net_objectlab_kit_datecalc_common_package.html"
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_package.html"
         module="common"
         path="net/objectlab/kit/datecalc/common/package.html" project="objectlabkit">
         <result date="2006-08-08" statvalue="1" type="checkstyle"/>
@@ -189,7 +189,7 @@
         <result date="2006-09-05" statvalue="1" type="checkstyle"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_common_Tenor.java"
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_Tenor.java"
         module="common"
         path="net/objectlab/kit/datecalc/common/Tenor.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="1" type="checkstyle"/>
@@ -253,7 +253,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_common_WorkingWeek.java"
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_WorkingWeek.java"
         module="common"
         path="net/objectlab/kit/datecalc/common/WorkingWeek.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="3" type="checkstyle"/>
@@ -322,7 +322,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_common_TenorCode.java"
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_TenorCode.java"
         module="common"
         path="net/objectlab/kit/datecalc/common/TenorCode.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="100" type="cobertura-line"/>
@@ -383,7 +383,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_common_HolidayHandlerType.java"
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_HolidayHandlerType.java"
         module="common"
         path="net/objectlab/kit/datecalc/common/HolidayHandlerType.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="100" type="cobertura-branch"/>
@@ -416,7 +416,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_common_PeriodCountBasis.java"
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_PeriodCountBasis.java"
         module="common"
         path="net/objectlab/kit/datecalc/common/PeriodCountBasis.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="100" type="cobertura-branch"/>
@@ -447,7 +447,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_common_StandardTenor.java"
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_StandardTenor.java"
         module="common"
         path="net/objectlab/kit/datecalc/common/StandardTenor.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="100" type="cobertura-branch"/>
@@ -507,17 +507,17 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_common_AbstractDateCalculator.java"
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_AbstractDateCalculator.java"
         module="common"
         path="net/objectlab/kit/datecalc/common/AbstractDateCalculator.java" project="objectlabkit">
         <result date="2006-08-23" statvalue="5" type="checkstyle"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_common_DateCalculatorGeneric.java"
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_DateCalculatorGeneric.java"
         module="common"
         path="net/objectlab/kit/datecalc/common/DateCalculatorGeneric.java" project="objectlabkit"/>
     <file
-        id="default-default-net_objectlab_kit_datecalc_common_DateCalculator.java"
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_DateCalculator.java"
         module="common"
         path="net/objectlab/kit/datecalc/common/DateCalculator.java" project="objectlabkit">
         <result date="2006-08-23" statvalue="19" type="checkstyle"/>
@@ -569,7 +569,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_common_HolidayHandler.java"
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_HolidayHandler.java"
         module="common"
         path="net/objectlab/kit/datecalc/common/HolidayHandler.java" project="objectlabkit">
         <result date="2006-08-23" statvalue="100" type="cobertura-line"/>
@@ -620,7 +620,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_common_AbstractDateCalculatorFactory.java"
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_AbstractDateCalculatorFactory.java"
         module="common"
         path="net/objectlab/kit/datecalc/common/AbstractDateCalculatorFactory.java" project="objectlabkit">
         <result date="2006-08-28" statvalue="2" type="checkstyle"/>
@@ -635,7 +635,7 @@
         <result date="2006-09-06" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_common_DateCalculatorFactory.java"
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_DateCalculatorFactory.java"
         module="common"
         path="net/objectlab/kit/datecalc/common/DateCalculatorFactory.java" project="objectlabkit">
         <result date="2006-08-28" statvalue="100" type="cobertura-line"/>
@@ -652,7 +652,7 @@
         <result date="2006-09-07" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_common_PeriodCountCalculator.java"
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_PeriodCountCalculator.java"
         module="common"
         path="net/objectlab/kit/datecalc/common/PeriodCountCalculator.java" project="objectlabkit">
         <result date="2006-08-28" statvalue="100" type="cobertura-line"/>
@@ -702,7 +702,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_common_Utils.java"
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_Utils.java"
         module="common"
         path="net/objectlab/kit/datecalc/common/Utils.java" project="objectlabkit">
         <result date="2006-09-04" statvalue="2" type="checkstyle"/>
@@ -746,7 +746,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_common_IMMPeriod.java"
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_IMMPeriod.java"
         module="common"
         path="net/objectlab/kit/datecalc/common/IMMPeriod.java" project="objectlabkit">
         <result date="2006-09-04" statvalue="100" type="cobertura-branch"/>
@@ -770,7 +770,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_common_ExcelDateUtil.java"
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_ExcelDateUtil.java"
         module="common"
         path="net/objectlab/kit/datecalc/common/ExcelDateUtil.java" project="objectlabkit">
         <result date="2006-09-05" statvalue="84" type="cobertura-line"/>
@@ -811,7 +811,7 @@
         <result date="2007-01-03" statvalue="83" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_common_IMMDateCalculator.java"
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_IMMDateCalculator.java"
         module="common"
         path="net/objectlab/kit/datecalc/common/IMMDateCalculator.java" project="objectlabkit">
         <result date="2006-09-06" statvalue="100" type="cobertura-line"/>
@@ -850,7 +850,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_common_AbstractIMMDateCalculator.java"
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_AbstractIMMDateCalculator.java"
         module="common"
         path="net/objectlab/kit/datecalc/common/AbstractIMMDateCalculator.java" project="objectlabkit">
         <result date="2006-09-06" statvalue="100" type="cobertura-branch"/>
@@ -872,7 +872,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_common_KitCalculatorsFactory.java"
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_KitCalculatorsFactory.java"
         module="common"
         path="net/objectlab/kit/datecalc/common/KitCalculatorsFactory.java" project="objectlabkit">
         <result date="2006-09-09" statvalue="100" type="cobertura-line"/>
@@ -907,20 +907,20 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_common_HolidayCalendar.java"
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_HolidayCalendar.java"
         module="common"
         path="net/objectlab/kit/datecalc/common/HolidayCalendar.java" project="objectlabkit">
         <result date="2007-01-03" statvalue="100" type="cobertura-line"/>
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_common_DefaultHolidayCalendar.java"
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_DefaultHolidayCalendar.java"
         module="common"
         path="net/objectlab/kit/datecalc/common/DefaultHolidayCalendar.java" project="objectlabkit">
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_common_ImmutableHolidayCalendar.java"
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_ImmutableHolidayCalendar.java"
         module="common"
         path="net/objectlab/kit/datecalc/common/ImmutableHolidayCalendar.java" project="objectlabkit"/>
     <file
