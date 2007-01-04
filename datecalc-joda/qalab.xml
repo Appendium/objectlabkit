@@ -183,7 +183,7 @@
             project="objectlabkit" statvalue="100" type="cobertura-branch"/>
     </summary>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_package.html"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_package.html"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/package.html" project="objectlabkit">
         <result date="2006-08-08" statvalue="1" type="checkstyle"/>
@@ -194,7 +194,7 @@
         <result date="2006-08-23" statvalue="1" type="checkstyle"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_BaseDateCalculator.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_BaseDateCalculator.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/BaseDateCalculator.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="9" type="checkstyle"/>
@@ -223,7 +223,7 @@
         <result date="2006-08-28" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_DefaultDateCalculatorFactory.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_DefaultDateCalculatorFactory.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/DefaultDateCalculatorFactory.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="1" type="checkstyle"/>
@@ -248,7 +248,7 @@
         <result date="2006-08-28" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_DefaultPeriodCountCalculator.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_DefaultPeriodCountCalculator.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/DefaultPeriodCountCalculator.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="31" type="checkstyle"/>
@@ -275,7 +275,7 @@
         <result date="2006-08-28" statvalue="84" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_JodaWorkingWeek.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_JodaWorkingWeek.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/JodaWorkingWeek.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="1" type="checkstyle"/>
@@ -338,7 +338,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_BackwardHandler.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_BackwardHandler.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/BackwardHandler.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="28" type="cobertura-line"/>
@@ -356,7 +356,7 @@
         <result date="2006-08-28" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_DateCalculator.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_DateCalculator.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/DateCalculator.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="100" type="cobertura-line"/>
@@ -371,7 +371,7 @@
         <result date="2006-08-20" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_DateCalculatorFactory.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_DateCalculatorFactory.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/DateCalculatorFactory.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="100" type="cobertura-line"/>
@@ -390,7 +390,7 @@
         <result date="2006-08-24" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_ForwardHandler.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_ForwardHandler.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/ForwardHandler.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="100" type="cobertura-line"/>
@@ -411,7 +411,7 @@
         <result date="2006-08-28" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_HolidayHandler.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_HolidayHandler.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/HolidayHandler.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="100" type="cobertura-line"/>
@@ -426,7 +426,7 @@
         <result date="2006-08-20" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_PeriodCountCalculator.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_PeriodCountCalculator.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/PeriodCountCalculator.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="100" type="cobertura-line"/>
@@ -445,7 +445,7 @@
         <result date="2006-08-24" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_ModifiedFollowingHandler.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_ModifiedFollowingHandler.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/ModifiedFollowingHandler.java" project="objectlabkit">
         <result date="2006-08-09" statvalue="16" type="cobertura-line"/>
@@ -460,7 +460,7 @@
         <result date="2006-08-28" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_ModifiedPreceedingHandler.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_ModifiedPreceedingHandler.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/ModifiedPreceedingHandler.java" project="objectlabkit">
         <result date="2006-08-09" statvalue="16" type="cobertura-line"/>
@@ -475,14 +475,14 @@
         <result date="2006-08-28" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_ExcelDateUtil.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_ExcelDateUtil.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/ExcelDateUtil.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="4" type="checkstyle"/>
         <result date="2006-09-04" statvalue="4" type="checkstyle"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_DefaultLocalDateCalculatorFactory.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_DefaultLocalDateCalculatorFactory.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/DefaultLocalDateCalculatorFactory.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="100" type="cobertura-line"/>
@@ -497,7 +497,7 @@
         <result date="2006-09-07" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_DefaultLocalDatePeriodCountCalculator.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_DefaultLocalDatePeriodCountCalculator.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/DefaultLocalDatePeriodCountCalculator.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="81" type="cobertura-line"/>
@@ -512,7 +512,7 @@
         <result date="2006-09-07" statvalue="84" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_DefaultYearMonthDayCalculatorFactory.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_DefaultYearMonthDayCalculatorFactory.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/DefaultYearMonthDayCalculatorFactory.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="94" type="cobertura-line"/>
@@ -527,7 +527,7 @@
         <result date="2006-09-07" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_DefaultYearMonthDayPeriodCountCalculator.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_DefaultYearMonthDayPeriodCountCalculator.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/DefaultYearMonthDayPeriodCountCalculator.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="40" type="cobertura-line"/>
@@ -542,7 +542,7 @@
         <result date="2006-09-07" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_HolidayHandlerYearMonthDayWrapper.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_HolidayHandlerYearMonthDayWrapper.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/HolidayHandlerYearMonthDayWrapper.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="83" type="cobertura-line"/>
@@ -585,7 +585,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_LocalDateBackwardHandler.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_LocalDateBackwardHandler.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/LocalDateBackwardHandler.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="100" type="cobertura-line"/>
@@ -628,7 +628,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_LocalDateCalculator.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_LocalDateCalculator.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/LocalDateCalculator.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="100" type="cobertura-line"/>
@@ -672,7 +672,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_LocalDateForwardHandler.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_LocalDateForwardHandler.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/LocalDateForwardHandler.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="100" type="cobertura-line"/>
@@ -715,7 +715,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_LocalDateModifiedFollowingHandler.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_LocalDateModifiedFollowingHandler.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/LocalDateModifiedFollowingHandler.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="100" type="cobertura-line"/>
@@ -758,7 +758,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_LocalDateModifiedPreceedingHandler.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_LocalDateModifiedPreceedingHandler.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/LocalDateModifiedPreceedingHandler.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="100" type="cobertura-line"/>
@@ -801,7 +801,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_YearMonthDayBackwardHandler.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_YearMonthDayBackwardHandler.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/YearMonthDayBackwardHandler.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="100" type="cobertura-line"/>
@@ -844,7 +844,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_YearMonthDayDateCalculator.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_YearMonthDayDateCalculator.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/YearMonthDayDateCalculator.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="78" type="cobertura-line"/>
@@ -887,7 +887,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_YearMonthDayForwardHandler.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_YearMonthDayForwardHandler.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/YearMonthDayForwardHandler.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="100" type="cobertura-line"/>
@@ -930,7 +930,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_YearMonthDayModifiedFollowingHandler.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_YearMonthDayModifiedFollowingHandler.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/YearMonthDayModifiedFollowingHandler.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="100" type="cobertura-line"/>
@@ -973,7 +973,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_YearMonthDayModifiedPreceedingHandler.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_YearMonthDayModifiedPreceedingHandler.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/YearMonthDayModifiedPreceedingHandler.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="100" type="cobertura-line"/>
@@ -1016,7 +1016,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_JodaExcelDateUtil.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_JodaExcelDateUtil.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/JodaExcelDateUtil.java" project="objectlabkit">
         <result date="2006-09-05" statvalue="85" type="cobertura-line"/>
@@ -1055,7 +1055,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_LocalDateIMMDateCalculator.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_LocalDateIMMDateCalculator.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/LocalDateIMMDateCalculator.java" project="objectlabkit">
         <result date="2006-09-06" statvalue="100" type="cobertura-line"/>
@@ -1094,7 +1094,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_YearMonthDayIMMDateCalculator.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_YearMonthDayIMMDateCalculator.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/YearMonthDayIMMDateCalculator.java" project="objectlabkit">
         <result date="2006-09-06" statvalue="100" type="cobertura-line"/>
@@ -1133,7 +1133,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_LocalDateKitCalculatorsFactory.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_LocalDateKitCalculatorsFactory.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/LocalDateKitCalculatorsFactory.java" project="objectlabkit">
         <result date="2006-09-09" statvalue="100" type="cobertura-line"/>
@@ -1166,7 +1166,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_LocalDatePeriodCountCalculator.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_LocalDatePeriodCountCalculator.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/LocalDatePeriodCountCalculator.java" project="objectlabkit">
         <result date="2006-09-09" statvalue="81" type="cobertura-line"/>
@@ -1199,7 +1199,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_YearMonthDayKitCalculatorsFactory.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_YearMonthDayKitCalculatorsFactory.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/YearMonthDayKitCalculatorsFactory.java" project="objectlabkit">
         <result date="2006-09-09" statvalue="100" type="cobertura-line"/>
@@ -1232,7 +1232,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_YearMonthDayPeriodCountCalculator.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_YearMonthDayPeriodCountCalculator.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/YearMonthDayPeriodCountCalculator.java" project="objectlabkit">
         <result date="2006-09-09" statvalue="100" type="cobertura-line"/>
@@ -1265,7 +1265,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_LocalDateForwardUnlessNegativeHandler.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_LocalDateForwardUnlessNegativeHandler.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/LocalDateForwardUnlessNegativeHandler.java" project="objectlabkit">
         <result date="2006-11-13" statvalue="2" type="checkstyle"/>
@@ -1276,7 +1276,7 @@
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
-        id="default-default-net_objectlab_kit_datecalc_joda_YearMonthDayForwardUnlessNegativeHandler.java"
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_YearMonthDayForwardUnlessNegativeHandler.java"
         module="joda"
         path="net/objectlab/kit/datecalc/joda/YearMonthDayForwardUnlessNegativeHandler.java" project="objectlabkit">
         <result date="2006-11-13" statvalue="100" type="cobertura-line"/>
