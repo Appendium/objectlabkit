@@ -156,6 +156,22 @@ public final class Utils {
     }
 
     /**
+     * Converts a Set of Date objects to a Set of Calendar objects.
+     * 
+     * @param dates
+     * @return the converted Set<Calendar>
+     */
+    public static HolidayCalendar<Calendar> toHolidayCalendarSet(final HolidayCalendar<Date> dates) {
+        final Set<Calendar> calendars = new HashSet<Calendar>();
+        for (final Date date : dates.getHolidays()) {
+            calendars.add(getCal(date));
+        }
+        final HolidayCalendar<Calendar> cal = new DefaultHolidayCalendar<Calendar>(calendars, getCal(dates.getEarlyBoundary()),
+                getCal(dates.getLateBoundary()));
+        return cal;
+    }
+
+    /**
      * Converts a Set of Calendar objects to a Set of Date objects
      * 
      * @param calendars

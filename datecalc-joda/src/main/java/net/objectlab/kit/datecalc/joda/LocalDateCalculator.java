@@ -37,6 +37,8 @@ import java.util.Set;
 
 import net.objectlab.kit.datecalc.common.AbstractDateCalculator;
 import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.DefaultHolidayCalendar;
+import net.objectlab.kit.datecalc.common.HolidayCalendar;
 import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
@@ -58,12 +60,25 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
 
     @SuppressWarnings("unchecked")
     public LocalDateCalculator() {
-        this(null, null, Collections.EMPTY_SET, null);
+        this(null, null, new DefaultHolidayCalendar<LocalDate>(Collections.EMPTY_SET), null);
     }
 
+    /**
+     * @deprecated should use the constructor with HolidayCalendar.
+     * @param name
+     * @param startDate
+     * @param nonWorkingDays
+     * @param holidayHandler
+     */
+    @Deprecated
     public LocalDateCalculator(final String name, final LocalDate startDate, final Set<LocalDate> nonWorkingDays,
             final HolidayHandler<LocalDate> holidayHandler) {
-        super(name, nonWorkingDays, holidayHandler);
+        this(name, startDate, new DefaultHolidayCalendar<LocalDate>(nonWorkingDays), holidayHandler);
+    }
+
+    public LocalDateCalculator(final String name, final LocalDate startDate, final HolidayCalendar<LocalDate> holidayCalendar,
+            final HolidayHandler<LocalDate> holidayHandler) {
+        super(name, holidayCalendar, holidayHandler);
         setStartDate(startDate);
     }
 
@@ -98,7 +113,7 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
 
     public DateCalculator<LocalDate> moveByDays(final int days) {
         setCurrentIncrement(days);
-        
+
         setCurrentBusinessDate(getCurrentBusinessDate().plusDays(days));
 
         if (getHolidayHandler() != null) {
@@ -111,7 +126,7 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
     @Override
     public DateCalculator<LocalDate> moveByMonths(final int months) {
         setCurrentIncrement(months);
-        
+
         setCurrentBusinessDate(getCurrentBusinessDate().plusMonths(months));
 
         if (getHolidayHandler() != null) {
@@ -123,13 +138,38 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
 
     @Override
     protected DateCalculator<LocalDate> createNewCalculator(final String name, final LocalDate startDate,
-            final Set<LocalDate> holidays, final HolidayHandler<LocalDate> handler) {
+            final HolidayCalendar<LocalDate> holidays, final HolidayHandler<LocalDate> handler) {
         return new LocalDateCalculator(name, startDate, holidays, handler);
     }
 
     @Override
     protected LocalDate getToday() {
         return new LocalDate();
+    }
+
+    @Override
+    protected LocalDate compareDate(final LocalDate date1, final LocalDate date2, final boolean returnEarliest) {
+        if (date1 == null || date2 == null) {
+            return null;
+        }
+        if (returnEarliest) {
+            return date1.isAfter(date2) ? date2 : date1;
+        } else {
+            return date2.isAfter(date1) ? date2 : date1;
+        }
+    }
+
+    @Override
+    protected void checkBoundary(final LocalDate date) {
+        final LocalDate early = getHolidayCalendar().getEarlyBoundary();
+        if (early != null && early.isAfter(date)) {
+            throw new IndexOutOfBoundsException(date + " is before the early boundary " + early);
+        }
+
+        final LocalDate late = getHolidayCalendar().getLateBoundary();
+        if (late != null && late.isBefore(date)) {
+            throw new IndexOutOfBoundsException(date + " is after the late boundary " + late);
+        }
     }
 }
 

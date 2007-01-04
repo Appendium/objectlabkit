@@ -14,14 +14,20 @@
     </links>
     <sitemap/>
     <search/>
-      <menu name="Links">
-         <item name="QALab"  href="http://qalab.sourceforge.net/" />
+      <menu name="Interesting Projects">
+         <item name="QALab" href="http://qalab.sourceforge.net/" />
+         <item name="JTreeMap" href="http://jtreemap.sourceforge.net/" />
+         <item name="PZFileReader" href="http://pzfilereader.sourceforge.net/" />
+         <item name="StatSVN"  href="http://www.StatSVN.org/" />
          <item name="ObjectLab"  href="http://www.objectlab.co.uk" />
+         <item name="Joda-time"  href="http://joda-time.sourceforge.net" />
       </menu>
       <footer>
          <a href="http://sourceforge.net">
             <img src="http://sourceforge.net/sflogo.php?group_id=97367&amp;type=2" width="125" height="37" border="0" alt="SourceForge.net Logo" />
          </a>         
+         <a href="http://digg.com/submit?phase=2&amp;url=objectlabkit.sourceforge.net&amp;title=ObjectLab%20Kit%3A%20Open%20Source%20Date%20Calculators%20for%20Business%20and%20Finance&amp;bodytext=ObjectLab%20released%20version%201%2E1%2E0%20of%20ObjectLab%20Kit%20for%20Java%201%2E5,%20available%20for%20download%20via%20SourceForge%20or%20the%20Maven%20Central%20Repository%2E%20The%20Kit%20provides%20a%20Date%20Calculator%20that%20handle%20holidays,%20a%20IMM%20Date%20and%20Period%20Count%20Calculator%20and%20comes%20in%20two%20versions%3A%20one%20based%20on%20pure%20JDK%20(1%2E5)%20and%20one%20based%20on%20the%20Joda-time%20library%20(1%2E3%2B,%20JDK%201%2E5)%2E&amp;topic=programming">
+    <img src="http://digg.com/img/badges/91x17-digg-button.png" width="91" height="17" alt="Digg!" style="vertical-align:middle" /></a>
          <script src="http://www.google-analytics.com/urchin.js"
             type="text/javascript">
          </script>

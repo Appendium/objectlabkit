@@ -21,167 +21,171 @@
 ]>
 <qalab version="1.2">
     <summary>
-        <summaryresult date="2006-08-08" filecount="13" module="default"
-            project="default" statvalue="43" type="checkstyle"/>
-        <summaryresult date="2006-08-08" filecount="6" module="default"
-            project="default" statvalue="15" type="pmd"/>
-        <summaryresult date="2006-08-08" filecount="2" module="default"
-            project="default" statvalue="2" type="findbugs"/>
-        <summaryresult date="2006-08-08" filecount="12" module="default"
-            project="default" statvalue="69" type="cobertura-line"/>
-        <summaryresult date="2006-08-08" filecount="12" module="default"
-            project="default" statvalue="72" type="cobertura-branch"/>
-        <summaryresult date="2006-08-09" filecount="13" module="default"
-            project="default" statvalue="45" type="checkstyle"/>
-        <summaryresult date="2006-08-09" filecount="6" module="default"
-            project="default" statvalue="18" type="pmd"/>
-        <summaryresult date="2006-08-09" filecount="2" module="default"
-            project="default" statvalue="2" type="findbugs"/>
-        <summaryresult date="2006-08-09" filecount="12" module="default"
-            project="default" statvalue="73" type="cobertura-line"/>
-        <summaryresult date="2006-08-09" filecount="12" module="default"
-            project="default" statvalue="76" type="cobertura-branch"/>
-        <summaryresult date="2006-08-10" filecount="13" module="default"
-            project="default" statvalue="34" type="checkstyle"/>
-        <summaryresult date="2006-08-10" filecount="3" module="default"
-            project="default" statvalue="6" type="pmd"/>
-        <summaryresult date="2006-08-10" filecount="2" module="default"
-            project="default" statvalue="2" type="findbugs"/>
-        <summaryresult date="2006-08-10" filecount="12" module="default"
-            project="default" statvalue="84" type="cobertura-line"/>
-        <summaryresult date="2006-08-10" filecount="12" module="default"
-            project="default" statvalue="86" type="cobertura-branch"/>
-        <summaryresult date="2006-08-19" filecount="13" module="default"
-            project="default" statvalue="1" type="checkstyle"/>
-        <summaryresult date="2006-08-19" filecount="3" module="default"
-            project="default" statvalue="6" type="pmd"/>
-        <summaryresult date="2006-08-19" filecount="12" module="default"
-            project="default" statvalue="89" type="cobertura-line"/>
-        <summaryresult date="2006-08-19" filecount="12" module="default"
-            project="default" statvalue="92" type="cobertura-branch"/>
-        <summaryresult date="2006-08-20" filecount="13" module="default"
-            project="default" statvalue="2" type="checkstyle"/>
-        <summaryresult date="2006-08-20" filecount="1" module="default"
-            project="default" statvalue="1" type="pmd"/>
-        <summaryresult date="2006-08-20" filecount="12" module="default"
-            project="default" statvalue="86" type="cobertura-line"/>
-        <summaryresult date="2006-08-20" filecount="12" module="default"
-            project="default" statvalue="88" type="cobertura-branch"/>
-        <summaryresult date="2006-08-23" filecount="11" module="default"
-            project="default" statvalue="1" type="checkstyle"/>
-        <summaryresult date="2006-08-23" filecount="10" module="default"
-            project="default" statvalue="93" type="cobertura-line"/>
-        <summaryresult date="2006-08-23" filecount="10" module="default"
-            project="default" statvalue="95" type="cobertura-branch"/>
-        <summaryresult date="2006-08-24" filecount="10" module="default"
-            project="default" statvalue="93" type="cobertura-line"/>
-        <summaryresult date="2006-08-24" filecount="10" module="default"
-            project="default" statvalue="94" type="cobertura-branch"/>
-        <summaryresult date="2006-08-28" filecount="1" module="default"
-            project="default" statvalue="1" type="findbugs"/>
-        <summaryresult date="2006-08-28" filecount="8" module="default"
-            project="default" statvalue="93" type="cobertura-line"/>
-        <summaryresult date="2006-08-28" filecount="8" module="default"
-            project="default" statvalue="94" type="cobertura-branch"/>
-        <summaryresult date="2006-09-02" filecount="18" module="default"
-            project="default" statvalue="4" type="checkstyle"/>
-        <summaryresult date="2006-09-02" filecount="4" module="default"
-            project="default" statvalue="40" type="simian"/>
-        <summaryresult date="2006-09-02" filecount="17" module="default"
-            project="default" statvalue="86" type="cobertura-line"/>
-        <summaryresult date="2006-09-02" filecount="17" module="default"
-            project="default" statvalue="88" type="cobertura-branch"/>
-        <summaryresult date="2006-09-04" filecount="18" module="default"
-            project="default" statvalue="10" type="checkstyle"/>
-        <summaryresult date="2006-09-04" filecount="4" module="default"
-            project="default" statvalue="40" type="simian"/>
-        <summaryresult date="2006-09-04" filecount="17" module="default"
-            project="default" statvalue="84" type="cobertura-line"/>
-        <summaryresult date="2006-09-04" filecount="17" module="default"
-            project="default" statvalue="87" type="cobertura-branch"/>
-        <summaryresult date="2006-09-05" filecount="4" module="default"
-            project="default" statvalue="40" type="simian"/>
-        <summaryresult date="2006-09-05" filecount="17" module="default"
-            project="default" statvalue="91" type="cobertura-line"/>
-        <summaryresult date="2006-09-05" filecount="17" module="default"
-            project="default" statvalue="93" type="cobertura-branch"/>
-        <summaryresult date="2006-09-06" filecount="19" module="default"
-            project="default" statvalue="95" type="cobertura-line"/>
-        <summaryresult date="2006-09-06" filecount="19" module="default"
-            project="default" statvalue="96" type="cobertura-branch"/>
-        <summaryresult date="2006-09-07" filecount="19" module="default"
-            project="default" statvalue="94" type="cobertura-line"/>
-        <summaryresult date="2006-09-07" filecount="19" module="default"
-            project="default" statvalue="93" type="cobertura-branch"/>
-        <summaryresult date="2006-09-09" filecount="19" module="default"
-            project="default" statvalue="96" type="cobertura-line"/>
-        <summaryresult date="2006-09-09" filecount="19" module="default"
-            project="default" statvalue="96" type="cobertura-branch"/>
-        <summaryresult date="2006-09-12" filecount="20" module="default"
-            project="default" statvalue="2" type="checkstyle"/>
-        <summaryresult date="2006-09-12" filecount="2" module="default"
-            project="default" statvalue="2" type="pmd"/>
-        <summaryresult date="2006-09-12" filecount="19" module="default"
-            project="default" statvalue="98" type="cobertura-line"/>
-        <summaryresult date="2006-09-12" filecount="19" module="default"
-            project="default" statvalue="100" type="cobertura-branch"/>
-        <summaryresult date="2006-09-14" filecount="19" module="default"
-            project="default" statvalue="98" type="cobertura-line"/>
-        <summaryresult date="2006-09-14" filecount="19" module="default"
-            project="default" statvalue="100" type="cobertura-branch"/>
-        <summaryresult date="2006-09-18" filecount="19" module="default"
-            project="default" statvalue="98" type="cobertura-line"/>
-        <summaryresult date="2006-09-18" filecount="19" module="default"
-            project="default" statvalue="100" type="cobertura-branch"/>
-        <summaryresult date="2006-09-20" filecount="19" module="default"
-            project="default" statvalue="98" type="cobertura-line"/>
-        <summaryresult date="2006-09-20" filecount="19" module="default"
-            project="default" statvalue="100" type="cobertura-branch"/>
-        <summaryresult date="2006-09-21" filecount="19" module="default"
-            project="default" statvalue="98" type="cobertura-line"/>
-        <summaryresult date="2006-09-21" filecount="19" module="default"
-            project="default" statvalue="100" type="cobertura-branch"/>
-        <summaryresult date="2006-09-22" filecount="19" module="default"
-            project="default" statvalue="98" type="cobertura-line"/>
-        <summaryresult date="2006-09-22" filecount="19" module="default"
-            project="default" statvalue="100" type="cobertura-branch"/>
-        <summaryresult date="2006-10-10" filecount="19" module="default"
-            project="default" statvalue="98" type="cobertura-line"/>
-        <summaryresult date="2006-10-10" filecount="19" module="default"
-            project="default" statvalue="100" type="cobertura-branch"/>
-        <summaryresult date="2006-10-12" filecount="19" module="default"
-            project="default" statvalue="98" type="cobertura-line"/>
-        <summaryresult date="2006-10-12" filecount="19" module="default"
-            project="default" statvalue="100" type="cobertura-branch"/>
-        <summaryresult date="2006-10-13" filecount="19" module="default"
-            project="default" statvalue="98" type="cobertura-line"/>
-        <summaryresult date="2006-10-13" filecount="19" module="default"
-            project="default" statvalue="100" type="cobertura-branch"/>
-        <summaryresult date="2006-10-14" filecount="19" module="default"
-            project="default" statvalue="98" type="cobertura-line"/>
-        <summaryresult date="2006-10-14" filecount="19" module="default"
-            project="default" statvalue="100" type="cobertura-branch"/>
-        <summaryresult date="2006-10-15" filecount="19" module="default"
-            project="default" statvalue="98" type="cobertura-line"/>
-        <summaryresult date="2006-10-15" filecount="19" module="default"
-            project="default" statvalue="100" type="cobertura-branch"/>
-        <summaryresult date="2006-11-13" filecount="22" module="default"
-            project="default" statvalue="2" type="checkstyle"/>
-        <summaryresult date="2006-11-13" filecount="21" module="default"
-            project="default" statvalue="98" type="cobertura-line"/>
-        <summaryresult date="2006-11-13" filecount="21" module="default"
-            project="default" statvalue="100" type="cobertura-branch"/>
-        <summaryresult date="2007-01-03" filecount="22" module="default"
-            project="default" statvalue="2" type="checkstyle"/>
-        <summaryresult date="2007-01-03" filecount="21" module="default"
-            project="default" statvalue="98" type="cobertura-line"/>
-        <summaryresult date="2007-01-03" filecount="21" module="default"
-            project="default" statvalue="100" type="cobertura-branch"/>
+        <summaryresult date="2006-08-08" filecount="13" module="joda"
+            project="objectlabkit" statvalue="43" type="checkstyle"/>
+        <summaryresult date="2006-08-08" filecount="6" module="joda"
+            project="objectlabkit" statvalue="15" type="pmd"/>
+        <summaryresult date="2006-08-08" filecount="2" module="joda"
+            project="objectlabkit" statvalue="2" type="findbugs"/>
+        <summaryresult date="2006-08-08" filecount="12" module="joda"
+            project="objectlabkit" statvalue="69" type="cobertura-line"/>
+        <summaryresult date="2006-08-08" filecount="12" module="joda"
+            project="objectlabkit" statvalue="72" type="cobertura-branch"/>
+        <summaryresult date="2006-08-09" filecount="13" module="joda"
+            project="objectlabkit" statvalue="45" type="checkstyle"/>
+        <summaryresult date="2006-08-09" filecount="6" module="joda"
+            project="objectlabkit" statvalue="18" type="pmd"/>
+        <summaryresult date="2006-08-09" filecount="2" module="joda"
+            project="objectlabkit" statvalue="2" type="findbugs"/>
+        <summaryresult date="2006-08-09" filecount="12" module="joda"
+            project="objectlabkit" statvalue="73" type="cobertura-line"/>
+        <summaryresult date="2006-08-09" filecount="12" module="joda"
+            project="objectlabkit" statvalue="76" type="cobertura-branch"/>
+        <summaryresult date="2006-08-10" filecount="13" module="joda"
+            project="objectlabkit" statvalue="34" type="checkstyle"/>
+        <summaryresult date="2006-08-10" filecount="3" module="joda"
+            project="objectlabkit" statvalue="6" type="pmd"/>
+        <summaryresult date="2006-08-10" filecount="2" module="joda"
+            project="objectlabkit" statvalue="2" type="findbugs"/>
+        <summaryresult date="2006-08-10" filecount="12" module="joda"
+            project="objectlabkit" statvalue="84" type="cobertura-line"/>
+        <summaryresult date="2006-08-10" filecount="12" module="joda"
+            project="objectlabkit" statvalue="86" type="cobertura-branch"/>
+        <summaryresult date="2006-08-19" filecount="13" module="joda"
+            project="objectlabkit" statvalue="1" type="checkstyle"/>
+        <summaryresult date="2006-08-19" filecount="3" module="joda"
+            project="objectlabkit" statvalue="6" type="pmd"/>
+        <summaryresult date="2006-08-19" filecount="12" module="joda"
+            project="objectlabkit" statvalue="89" type="cobertura-line"/>
+        <summaryresult date="2006-08-19" filecount="12" module="joda"
+            project="objectlabkit" statvalue="92" type="cobertura-branch"/>
+        <summaryresult date="2006-08-20" filecount="13" module="joda"
+            project="objectlabkit" statvalue="2" type="checkstyle"/>
+        <summaryresult date="2006-08-20" filecount="1" module="joda"
+            project="objectlabkit" statvalue="1" type="pmd"/>
+        <summaryresult date="2006-08-20" filecount="12" module="joda"
+            project="objectlabkit" statvalue="86" type="cobertura-line"/>
+        <summaryresult date="2006-08-20" filecount="12" module="joda"
+            project="objectlabkit" statvalue="88" type="cobertura-branch"/>
+        <summaryresult date="2006-08-23" filecount="11" module="joda"
+            project="objectlabkit" statvalue="1" type="checkstyle"/>
+        <summaryresult date="2006-08-23" filecount="10" module="joda"
+            project="objectlabkit" statvalue="93" type="cobertura-line"/>
+        <summaryresult date="2006-08-23" filecount="10" module="joda"
+            project="objectlabkit" statvalue="95" type="cobertura-branch"/>
+        <summaryresult date="2006-08-24" filecount="10" module="joda"
+            project="objectlabkit" statvalue="93" type="cobertura-line"/>
+        <summaryresult date="2006-08-24" filecount="10" module="joda"
+            project="objectlabkit" statvalue="94" type="cobertura-branch"/>
+        <summaryresult date="2006-08-28" filecount="1" module="joda"
+            project="objectlabkit" statvalue="1" type="findbugs"/>
+        <summaryresult date="2006-08-28" filecount="8" module="joda"
+            project="objectlabkit" statvalue="93" type="cobertura-line"/>
+        <summaryresult date="2006-08-28" filecount="8" module="joda"
+            project="objectlabkit" statvalue="94" type="cobertura-branch"/>
+        <summaryresult date="2006-09-02" filecount="18" module="joda"
+            project="objectlabkit" statvalue="4" type="checkstyle"/>
+        <summaryresult date="2006-09-02" filecount="4" module="joda"
+            project="objectlabkit" statvalue="40" type="simian"/>
+        <summaryresult date="2006-09-02" filecount="17" module="joda"
+            project="objectlabkit" statvalue="86" type="cobertura-line"/>
+        <summaryresult date="2006-09-02" filecount="17" module="joda"
+            project="objectlabkit" statvalue="88" type="cobertura-branch"/>
+        <summaryresult date="2006-09-04" filecount="18" module="joda"
+            project="objectlabkit" statvalue="10" type="checkstyle"/>
+        <summaryresult date="2006-09-04" filecount="4" module="joda"
+            project="objectlabkit" statvalue="40" type="simian"/>
+        <summaryresult date="2006-09-04" filecount="17" module="joda"
+            project="objectlabkit" statvalue="84" type="cobertura-line"/>
+        <summaryresult date="2006-09-04" filecount="17" module="joda"
+            project="objectlabkit" statvalue="87" type="cobertura-branch"/>
+        <summaryresult date="2006-09-05" filecount="4" module="joda"
+            project="objectlabkit" statvalue="40" type="simian"/>
+        <summaryresult date="2006-09-05" filecount="17" module="joda"
+            project="objectlabkit" statvalue="91" type="cobertura-line"/>
+        <summaryresult date="2006-09-05" filecount="17" module="joda"
+            project="objectlabkit" statvalue="93" type="cobertura-branch"/>
+        <summaryresult date="2006-09-06" filecount="19" module="joda"
+            project="objectlabkit" statvalue="95" type="cobertura-line"/>
+        <summaryresult date="2006-09-06" filecount="19" module="joda"
+            project="objectlabkit" statvalue="96" type="cobertura-branch"/>
+        <summaryresult date="2006-09-07" filecount="19" module="joda"
+            project="objectlabkit" statvalue="94" type="cobertura-line"/>
+        <summaryresult date="2006-09-07" filecount="19" module="joda"
+            project="objectlabkit" statvalue="93" type="cobertura-branch"/>
+        <summaryresult date="2006-09-09" filecount="19" module="joda"
+            project="objectlabkit" statvalue="96" type="cobertura-line"/>
+        <summaryresult date="2006-09-09" filecount="19" module="joda"
+            project="objectlabkit" statvalue="96" type="cobertura-branch"/>
+        <summaryresult date="2006-09-12" filecount="20" module="joda"
+            project="objectlabkit" statvalue="2" type="checkstyle"/>
+        <summaryresult date="2006-09-12" filecount="2" module="joda"
+            project="objectlabkit" statvalue="2" type="pmd"/>
+        <summaryresult date="2006-09-12" filecount="19" module="joda"
+            project="objectlabkit" statvalue="98" type="cobertura-line"/>
+        <summaryresult date="2006-09-12" filecount="19" module="joda"
+            project="objectlabkit" statvalue="100" type="cobertura-branch"/>
+        <summaryresult date="2006-09-14" filecount="19" module="joda"
+            project="objectlabkit" statvalue="98" type="cobertura-line"/>
+        <summaryresult date="2006-09-14" filecount="19" module="joda"
+            project="objectlabkit" statvalue="100" type="cobertura-branch"/>
+        <summaryresult date="2006-09-18" filecount="19" module="joda"
+            project="objectlabkit" statvalue="98" type="cobertura-line"/>
+        <summaryresult date="2006-09-18" filecount="19" module="joda"
+            project="objectlabkit" statvalue="100" type="cobertura-branch"/>
+        <summaryresult date="2006-09-20" filecount="19" module="joda"
+            project="objectlabkit" statvalue="98" type="cobertura-line"/>
+        <summaryresult date="2006-09-20" filecount="19" module="joda"
+            project="objectlabkit" statvalue="100" type="cobertura-branch"/>
+        <summaryresult date="2006-09-21" filecount="19" module="joda"
+            project="objectlabkit" statvalue="98" type="cobertura-line"/>
+        <summaryresult date="2006-09-21" filecount="19" module="joda"
+            project="objectlabkit" statvalue="100" type="cobertura-branch"/>
+        <summaryresult date="2006-09-22" filecount="19" module="joda"
+            project="objectlabkit" statvalue="98" type="cobertura-line"/>
+        <summaryresult date="2006-09-22" filecount="19" module="joda"
+            project="objectlabkit" statvalue="100" type="cobertura-branch"/>
+        <summaryresult date="2006-10-10" filecount="19" module="joda"
+            project="objectlabkit" statvalue="98" type="cobertura-line"/>
+        <summaryresult date="2006-10-10" filecount="19" module="joda"
+            project="objectlabkit" statvalue="100" type="cobertura-branch"/>
+        <summaryresult date="2006-10-12" filecount="19" module="joda"
+            project="objectlabkit" statvalue="98" type="cobertura-line"/>
+        <summaryresult date="2006-10-12" filecount="19" module="joda"
+            project="objectlabkit" statvalue="100" type="cobertura-branch"/>
+        <summaryresult date="2006-10-13" filecount="19" module="joda"
+            project="objectlabkit" statvalue="98" type="cobertura-line"/>
+        <summaryresult date="2006-10-13" filecount="19" module="joda"
+            project="objectlabkit" statvalue="100" type="cobertura-branch"/>
+        <summaryresult date="2006-10-14" filecount="19" module="joda"
+            project="objectlabkit" statvalue="98" type="cobertura-line"/>
+        <summaryresult date="2006-10-14" filecount="19" module="joda"
+            project="objectlabkit" statvalue="100" type="cobertura-branch"/>
+        <summaryresult date="2006-10-15" filecount="19" module="joda"
+            project="objectlabkit" statvalue="98" type="cobertura-line"/>
+        <summaryresult date="2006-10-15" filecount="19" module="joda"
+            project="objectlabkit" statvalue="100" type="cobertura-branch"/>
+        <summaryresult date="2006-11-13" filecount="22" module="joda"
+            project="objectlabkit" statvalue="2" type="checkstyle"/>
+        <summaryresult date="2006-11-13" filecount="21" module="joda"
+            project="objectlabkit" statvalue="98" type="cobertura-line"/>
+        <summaryresult date="2006-11-13" filecount="21" module="joda"
+            project="objectlabkit" statvalue="100" type="cobertura-branch"/>
+        <summaryresult date="2007-01-03" filecount="22" module="joda"
+            project="objectlabkit" statvalue="2" type="checkstyle"/>
+        <summaryresult date="2007-01-03" filecount="21" module="joda"
+            project="objectlabkit" statvalue="98" type="cobertura-line"/>
+        <summaryresult date="2007-01-03" filecount="21" module="joda"
+            project="objectlabkit" statvalue="100" type="cobertura-branch"/>
+        <summaryresult date="2007-01-04" filecount="21" module="joda"
+            project="objectlabkit" statvalue="95" type="cobertura-line"/>
+        <summaryresult date="2007-01-04" filecount="21" module="joda"
+            project="objectlabkit" statvalue="100" type="cobertura-branch"/>
     </summary>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_package.html"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/package.html" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/package.html" project="objectlabkit">
         <result date="2006-08-08" statvalue="1" type="checkstyle"/>
         <result date="2006-08-09" statvalue="1" type="checkstyle"/>
         <result date="2006-08-10" statvalue="1" type="checkstyle"/>
@@ -191,8 +195,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_BaseDateCalculator.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/BaseDateCalculator.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/BaseDateCalculator.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="9" type="checkstyle"/>
         <result date="2006-08-08" statvalue="1" type="findbugs"/>
         <result date="2006-08-08" statvalue="79" type="cobertura-line"/>
@@ -220,8 +224,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_DefaultDateCalculatorFactory.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/DefaultDateCalculatorFactory.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/DefaultDateCalculatorFactory.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="1" type="checkstyle"/>
         <result date="2006-08-08" statvalue="85" type="cobertura-line"/>
         <result date="2006-08-08" statvalue="80" type="cobertura-branch"/>
@@ -245,8 +249,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_DefaultPeriodCountCalculator.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/DefaultPeriodCountCalculator.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/DefaultPeriodCountCalculator.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="31" type="checkstyle"/>
         <result date="2006-08-08" statvalue="1" type="findbugs"/>
         <result date="2006-08-08" statvalue="66" type="cobertura-line"/>
@@ -272,8 +276,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_JodaWorkingWeek.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/JodaWorkingWeek.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/JodaWorkingWeek.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="1" type="checkstyle"/>
         <result date="2006-08-08" statvalue="100" type="cobertura-line"/>
         <result date="2006-08-08" statvalue="100" type="cobertura-branch"/>
@@ -335,8 +339,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_BackwardHandler.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/BackwardHandler.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/BackwardHandler.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="28" type="cobertura-line"/>
         <result date="2006-08-09" statvalue="28" type="cobertura-line"/>
         <result date="2006-08-10" statvalue="28" type="cobertura-line"/>
@@ -353,8 +357,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_DateCalculator.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/DateCalculator.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/DateCalculator.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="100" type="cobertura-line"/>
         <result date="2006-08-08" statvalue="100" type="cobertura-branch"/>
         <result date="2006-08-09" statvalue="100" type="cobertura-line"/>
@@ -368,8 +372,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_DateCalculatorFactory.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/DateCalculatorFactory.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/DateCalculatorFactory.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="100" type="cobertura-line"/>
         <result date="2006-08-08" statvalue="100" type="cobertura-branch"/>
         <result date="2006-08-09" statvalue="100" type="cobertura-line"/>
@@ -387,8 +391,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_ForwardHandler.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/ForwardHandler.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/ForwardHandler.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="100" type="cobertura-line"/>
         <result date="2006-08-08" statvalue="100" type="cobertura-branch"/>
         <result date="2006-08-09" statvalue="100" type="cobertura-line"/>
@@ -408,8 +412,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_HolidayHandler.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/HolidayHandler.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/HolidayHandler.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="100" type="cobertura-line"/>
         <result date="2006-08-08" statvalue="100" type="cobertura-branch"/>
         <result date="2006-08-09" statvalue="100" type="cobertura-line"/>
@@ -423,8 +427,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_PeriodCountCalculator.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/PeriodCountCalculator.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/PeriodCountCalculator.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="100" type="cobertura-line"/>
         <result date="2006-08-08" statvalue="100" type="cobertura-branch"/>
         <result date="2006-08-09" statvalue="100" type="cobertura-line"/>
@@ -442,8 +446,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_ModifiedFollowingHandler.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/ModifiedFollowingHandler.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/ModifiedFollowingHandler.java" project="objectlabkit">
         <result date="2006-08-09" statvalue="16" type="cobertura-line"/>
         <result date="2006-08-10" statvalue="16" type="cobertura-line"/>
         <result date="2006-08-19" statvalue="16" type="cobertura-line"/>
@@ -457,8 +461,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_ModifiedPreceedingHandler.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/ModifiedPreceedingHandler.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/ModifiedPreceedingHandler.java" project="objectlabkit">
         <result date="2006-08-09" statvalue="16" type="cobertura-line"/>
         <result date="2006-08-10" statvalue="16" type="cobertura-line"/>
         <result date="2006-08-19" statvalue="16" type="cobertura-line"/>
@@ -472,15 +476,15 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_ExcelDateUtil.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/ExcelDateUtil.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/ExcelDateUtil.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="4" type="checkstyle"/>
         <result date="2006-09-04" statvalue="4" type="checkstyle"/>
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_DefaultLocalDateCalculatorFactory.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/DefaultLocalDateCalculatorFactory.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/DefaultLocalDateCalculatorFactory.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-02" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-04" statvalue="100" type="cobertura-line"/>
@@ -494,8 +498,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_DefaultLocalDatePeriodCountCalculator.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/DefaultLocalDatePeriodCountCalculator.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/DefaultLocalDatePeriodCountCalculator.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="81" type="cobertura-line"/>
         <result date="2006-09-02" statvalue="84" type="cobertura-branch"/>
         <result date="2006-09-04" statvalue="81" type="cobertura-line"/>
@@ -509,8 +513,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_DefaultYearMonthDayCalculatorFactory.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/DefaultYearMonthDayCalculatorFactory.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/DefaultYearMonthDayCalculatorFactory.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="94" type="cobertura-line"/>
         <result date="2006-09-02" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-04" statvalue="94" type="cobertura-line"/>
@@ -524,8 +528,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_DefaultYearMonthDayPeriodCountCalculator.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/DefaultYearMonthDayPeriodCountCalculator.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/DefaultYearMonthDayPeriodCountCalculator.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="40" type="cobertura-line"/>
         <result date="2006-09-02" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-04" statvalue="40" type="cobertura-line"/>
@@ -539,8 +543,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_HolidayHandlerYearMonthDayWrapper.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/HolidayHandlerYearMonthDayWrapper.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/HolidayHandlerYearMonthDayWrapper.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="83" type="cobertura-line"/>
         <result date="2006-09-02" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-04" statvalue="83" type="cobertura-line"/>
@@ -582,8 +586,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_LocalDateBackwardHandler.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/LocalDateBackwardHandler.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/LocalDateBackwardHandler.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-02" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-04" statvalue="100" type="cobertura-line"/>
@@ -625,8 +629,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_LocalDateCalculator.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/LocalDateCalculator.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/LocalDateCalculator.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-02" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-04" statvalue="4" type="checkstyle"/>
@@ -669,8 +673,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_LocalDateForwardHandler.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/LocalDateForwardHandler.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/LocalDateForwardHandler.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-02" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-04" statvalue="100" type="cobertura-line"/>
@@ -712,8 +716,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_LocalDateModifiedFollowingHandler.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/LocalDateModifiedFollowingHandler.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/LocalDateModifiedFollowingHandler.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-02" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-04" statvalue="100" type="cobertura-line"/>
@@ -755,8 +759,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_LocalDateModifiedPreceedingHandler.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/LocalDateModifiedPreceedingHandler.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/LocalDateModifiedPreceedingHandler.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-02" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-04" statvalue="100" type="cobertura-line"/>
@@ -798,8 +802,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_YearMonthDayBackwardHandler.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/YearMonthDayBackwardHandler.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/YearMonthDayBackwardHandler.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-02" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-04" statvalue="100" type="cobertura-line"/>
@@ -841,8 +845,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_YearMonthDayDateCalculator.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/YearMonthDayDateCalculator.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/YearMonthDayDateCalculator.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="78" type="cobertura-line"/>
         <result date="2006-09-02" statvalue="83" type="cobertura-branch"/>
         <result date="2006-09-04" statvalue="64" type="cobertura-line"/>
@@ -884,8 +888,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_YearMonthDayForwardHandler.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/YearMonthDayForwardHandler.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/YearMonthDayForwardHandler.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-02" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-04" statvalue="100" type="cobertura-line"/>
@@ -927,8 +931,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_YearMonthDayModifiedFollowingHandler.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/YearMonthDayModifiedFollowingHandler.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/YearMonthDayModifiedFollowingHandler.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-02" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-04" statvalue="100" type="cobertura-line"/>
@@ -970,8 +974,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_YearMonthDayModifiedPreceedingHandler.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/YearMonthDayModifiedPreceedingHandler.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/YearMonthDayModifiedPreceedingHandler.java" project="objectlabkit">
         <result date="2006-09-02" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-02" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-04" statvalue="100" type="cobertura-line"/>
@@ -1013,8 +1017,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_JodaExcelDateUtil.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/JodaExcelDateUtil.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/JodaExcelDateUtil.java" project="objectlabkit">
         <result date="2006-09-05" statvalue="85" type="cobertura-line"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-06" statvalue="85" type="cobertura-line"/>
@@ -1052,8 +1056,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_LocalDateIMMDateCalculator.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/LocalDateIMMDateCalculator.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/LocalDateIMMDateCalculator.java" project="objectlabkit">
         <result date="2006-09-06" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-06" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-07" statvalue="100" type="cobertura-line"/>
@@ -1091,8 +1095,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_YearMonthDayIMMDateCalculator.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/YearMonthDayIMMDateCalculator.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/YearMonthDayIMMDateCalculator.java" project="objectlabkit">
         <result date="2006-09-06" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-06" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-07" statvalue="100" type="cobertura-line"/>
@@ -1130,8 +1134,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_LocalDateKitCalculatorsFactory.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/LocalDateKitCalculatorsFactory.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/LocalDateKitCalculatorsFactory.java" project="objectlabkit">
         <result date="2006-09-09" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-09" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-12" statvalue="100" type="cobertura-line"/>
@@ -1163,8 +1167,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_LocalDatePeriodCountCalculator.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/LocalDatePeriodCountCalculator.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/LocalDatePeriodCountCalculator.java" project="objectlabkit">
         <result date="2006-09-09" statvalue="81" type="cobertura-line"/>
         <result date="2006-09-09" statvalue="84" type="cobertura-branch"/>
         <result date="2006-09-12" statvalue="100" type="cobertura-line"/>
@@ -1196,8 +1200,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_YearMonthDayKitCalculatorsFactory.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/YearMonthDayKitCalculatorsFactory.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/YearMonthDayKitCalculatorsFactory.java" project="objectlabkit">
         <result date="2006-09-09" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-09" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-12" statvalue="100" type="cobertura-line"/>
@@ -1229,8 +1233,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_YearMonthDayPeriodCountCalculator.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/YearMonthDayPeriodCountCalculator.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/YearMonthDayPeriodCountCalculator.java" project="objectlabkit">
         <result date="2006-09-09" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-09" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-12" statvalue="100" type="cobertura-line"/>
@@ -1262,8 +1266,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_LocalDateForwardUnlessNegativeHandler.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/LocalDateForwardUnlessNegativeHandler.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/LocalDateForwardUnlessNegativeHandler.java" project="objectlabkit">
         <result date="2006-11-13" statvalue="2" type="checkstyle"/>
         <result date="2006-11-13" statvalue="100" type="cobertura-line"/>
         <result date="2006-11-13" statvalue="100" type="cobertura-branch"/>
@@ -1273,11 +1277,158 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_joda_YearMonthDayForwardUnlessNegativeHandler.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/joda/YearMonthDayForwardUnlessNegativeHandler.java" project="default">
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/YearMonthDayForwardUnlessNegativeHandler.java" project="objectlabkit">
         <result date="2006-11-13" statvalue="100" type="cobertura-line"/>
         <result date="2006-11-13" statvalue="100" type="cobertura-branch"/>
         <result date="2007-01-03" statvalue="100" type="cobertura-line"/>
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_LocalDateForwardUnlessNegativeHandler.java"
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/LocalDateForwardUnlessNegativeHandler.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_HolidayHandlerYearMonthDayWrapper.java"
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/HolidayHandlerYearMonthDayWrapper.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="91" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_JodaExcelDateUtil.java"
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/JodaExcelDateUtil.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="90" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_JodaWorkingWeek.java"
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/JodaWorkingWeek.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_LocalDateBackwardHandler.java"
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/LocalDateBackwardHandler.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_LocalDateCalculator.java"
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/LocalDateCalculator.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="84" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_LocalDateForwardHandler.java"
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/LocalDateForwardHandler.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_LocalDateIMMDateCalculator.java"
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/LocalDateIMMDateCalculator.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="95" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_LocalDateKitCalculatorsFactory.java"
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/LocalDateKitCalculatorsFactory.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_LocalDateModifiedFollowingHandler.java"
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/LocalDateModifiedFollowingHandler.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_LocalDateModifiedPreceedingHandler.java"
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/LocalDateModifiedPreceedingHandler.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_LocalDatePeriodCountCalculator.java"
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/LocalDatePeriodCountCalculator.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_YearMonthDayBackwardHandler.java"
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/YearMonthDayBackwardHandler.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_YearMonthDayDateCalculator.java"
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/YearMonthDayDateCalculator.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="89" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_YearMonthDayForwardHandler.java"
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/YearMonthDayForwardHandler.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_YearMonthDayForwardUnlessNegativeHandler.java"
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/YearMonthDayForwardUnlessNegativeHandler.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_YearMonthDayIMMDateCalculator.java"
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/YearMonthDayIMMDateCalculator.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_YearMonthDayKitCalculatorsFactory.java"
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/YearMonthDayKitCalculatorsFactory.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="96" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_YearMonthDayModifiedFollowingHandler.java"
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/YearMonthDayModifiedFollowingHandler.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_YearMonthDayModifiedPreceedingHandler.java"
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/YearMonthDayModifiedPreceedingHandler.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_YearMonthDayPeriodCountCalculator.java"
+        module="joda"
+        path="net/objectlab/kit/datecalc/joda/YearMonthDayPeriodCountCalculator.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
     </file>
 </qalab>

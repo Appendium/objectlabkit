@@ -38,6 +38,8 @@ import java.util.Set;
 
 import net.objectlab.kit.datecalc.common.AbstractDateCalculator;
 import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.DefaultHolidayCalendar;
+import net.objectlab.kit.datecalc.common.HolidayCalendar;
 import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.Utils;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
@@ -57,12 +59,25 @@ public class CalendarDateCalculator extends AbstractDateCalculator<Calendar> {
 
     @SuppressWarnings("unchecked")
     public CalendarDateCalculator() {
-        this(null, null, Collections.EMPTY_SET, null);
+        this(null, null, new DefaultHolidayCalendar<Calendar>(Collections.EMPTY_SET), null);
     }
 
+    /**
+     * @deprecated should use the constructor with HolidayCalendar.
+     * @param name
+     * @param startDate
+     * @param nonWorkingDays
+     * @param holidayHandler
+     */
+    @Deprecated
     public CalendarDateCalculator(final String name, final Calendar startDate, final Set<Calendar> nonWorkingDays,
             final HolidayHandler<Calendar> holidayHandler) {
-        super(name, nonWorkingDays, holidayHandler);
+        this(name, startDate, new DefaultHolidayCalendar<Calendar>(nonWorkingDays), holidayHandler);
+    }
+
+    public CalendarDateCalculator(final String name, final Calendar startDate, final HolidayCalendar<Calendar> holidayCalendar,
+            final HolidayHandler<Calendar> holidayHandler) {
+        super(name, holidayCalendar, holidayHandler);
         Calendar date = startDate;
         if (date == null) {
             date = getToday();
@@ -118,13 +133,38 @@ public class CalendarDateCalculator extends AbstractDateCalculator<Calendar> {
 
     @Override
     protected DateCalculator<Calendar> createNewCalculator(final String name, final Calendar startDate,
-            final Set<Calendar> holidays, final HolidayHandler<Calendar> handler) {
+            final HolidayCalendar<Calendar> holidays, final HolidayHandler<Calendar> handler) {
         return new CalendarDateCalculator(name, startDate, holidays, handler);
     }
 
     @Override
     protected Calendar getToday() {
         return Utils.blastTime(Calendar.getInstance());
+    }
+
+    @Override
+    protected Calendar compareDate(final Calendar date1, final Calendar date2, final boolean returnEarliest) {
+        if (date1 == null || date2 == null) {
+            return null;
+        }
+        if (returnEarliest) {
+            return date1.after(date2) ? date2 : date1;
+        } else {
+            return date2.after(date1) ? date2 : date1;
+        }
+    }
+
+    @Override
+    protected void checkBoundary(final Calendar date) {
+        final Calendar early = getHolidayCalendar().getEarlyBoundary();
+        if (early != null && early.after(date)) {
+            throw new IndexOutOfBoundsException(date + " is before the early boundary " + early);
+        }
+
+        final Calendar late = getHolidayCalendar().getLateBoundary();
+        if (late != null && late.before(date)) {
+            throw new IndexOutOfBoundsException(date + " is after the late boundary " + late);
+        }
     }
 }
 

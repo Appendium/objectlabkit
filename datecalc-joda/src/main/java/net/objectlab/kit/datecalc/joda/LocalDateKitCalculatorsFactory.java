@@ -33,7 +33,6 @@
 package net.objectlab.kit.datecalc.joda;
 
 import net.objectlab.kit.datecalc.common.AbstractKitCalculatorsFactory;
-import net.objectlab.kit.datecalc.common.HolidayCalendar;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 import net.objectlab.kit.datecalc.common.IMMDateCalculator;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
@@ -107,25 +106,6 @@ public class LocalDateKitCalculatorsFactory extends AbstractKitCalculatorsFactor
 
     public IMMDateCalculator<LocalDate> getIMMDateCalculator() {
         return IMMDC;
-    }
-
-    /**
-     * Picks up the first and last days of the set as the early and late boundaries. 
-     */
-    @Override
-    protected void calculateDefaultBoundaries(HolidayCalendar<LocalDate> holidaysCalendar) {
-        LocalDate min = holidaysCalendar.getHolidays().iterator().next();
-        LocalDate max = min;
-        for (LocalDate days : holidaysCalendar.getHolidays()) {
-            min = days.isBefore(min) ? days : min;
-            max = days.isAfter(max) ? days : max;
-        }
-        if (holidaysCalendar.getEarlyBoundary() == null) {
-            holidaysCalendar.setEarlyBoundary(min);
-        }
-        if (holidaysCalendar.getLateBoundary() == null) {
-            holidaysCalendar.setLateBoundary(max);
-        }
     }
 }
 

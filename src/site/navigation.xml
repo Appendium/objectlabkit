@@ -21,8 +21,11 @@
       </menu>
       <sitemap/>
       <search/>
-      <menu name="Links">
-         <item name="QALab"  href="http://qalab.sourceforge.net/" />
+      <menu name="Interesting Projects">
+         <item name="QALab" href="http://qalab.sourceforge.net/" />
+         <item name="JTreeMap" href="http://jtreemap.sourceforge.net/" />
+         <item name="PZFileReader" href="http://pzfilereader.sourceforge.net/" />
+         <item name="StatSVN"  href="http://www.StatSVN.org/" />
          <item name="ObjectLab"  href="http://www.objectlab.co.uk" />
          <item name="Joda-time"  href="http://joda-time.sourceforge.net" />
       </menu>

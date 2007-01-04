@@ -45,20 +45,33 @@ import java.util.Set;
  * 
  */
 public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
+    private static final long serialVersionUID = -8558686840806739645L;
+
     private Set<E> holidays;
 
-    private E earlyBoundary;
+    private E earlyBoundary = null;
 
-    private E lateBoundary;
+    private E lateBoundary = null;
 
-    public DefaultHolidayCalendar(Set<E> holidays, E earlyBoundary, E lateBoundary) {
+    public DefaultHolidayCalendar() {
         super();
-        this.holidays = holidays;
+        holidays = Collections.emptySet();
+    }
+
+    public DefaultHolidayCalendar(final Set<E> holidays, final E earlyBoundary, final E lateBoundary) {
+        super();
+        if (holidays != null) {
+            final Set<E> newSet = new HashSet<E>();
+            newSet.addAll(holidays);
+            this.holidays = Collections.unmodifiableSet(newSet);
+        } else {
+            this.holidays = Collections.emptySet();
+        }
         this.earlyBoundary = earlyBoundary;
         this.lateBoundary = lateBoundary;
     }
 
-    public DefaultHolidayCalendar(Set<E> holidays) {
+    public DefaultHolidayCalendar(final Set<E> holidays) {
         super();
         this.holidays = holidays;
     }
@@ -105,7 +118,7 @@ public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
      * @see net.objectlab.kit.datecalc.common.HolidayCalendar#setHolidays(java.util.Set)
      */
     public void setHolidays(final Set<E> holidays) {
-        Set<E> s = new HashSet<E>();
+        final Set<E> s = new HashSet<E>();
         s.addAll(holidays);
 
         this.holidays = Collections.unmodifiableSet(s);
@@ -118,5 +131,9 @@ public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
      */
     public void setLateBoundary(final E lateBoundary) {
         this.lateBoundary = lateBoundary;
+    }
+
+    public boolean isHoliday(final E date) {
+        return holidays.contains(date);
     }
 }

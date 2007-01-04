@@ -55,6 +55,10 @@ public abstract class AbstractDateTestCase<E> extends TestCase {
         return holidays;
     }
 
+    protected HolidayCalendar<E> newHolidaysCalendar() {
+        return new DefaultHolidayCalendar<E>(newHolidaysSet());
+    }
+
     protected Set<E> createUKHolidays() {
         final Set<E> uk = new HashSet<E>();
         uk.add(newDate("2006-01-01"));
@@ -62,6 +66,22 @@ public abstract class AbstractDateTestCase<E> extends TestCase {
         uk.add(newDate("2006-12-25"));
         uk.add(newDate("2006-12-26"));
         return uk;
+    }
+
+    /**
+     * Creates a UK Holiday Calendar for 2006!
+     * @return
+     */
+    protected HolidayCalendar<E> createUKHolidayCalendar() {
+        return new DefaultHolidayCalendar<E>(createUKHolidays(), newDate("2006-01-01"), newDate("2020-12-31"));
+    }
+
+    /**
+     * Creates a US Holiday Calendar for 2006!
+     * @return
+     */
+    protected HolidayCalendar<E> createUSHolidayCalendar() {
+        return new DefaultHolidayCalendar<E>(createUSHolidays(), newDate("2005-01-01"), newDate("2007-12-31"));
     }
 
     // -----------------------------------------------------------------------
@@ -80,7 +100,7 @@ public abstract class AbstractDateTestCase<E> extends TestCase {
         return us;
     }
 
-    protected void registerHolidays(final String name, final Set<E> holidays) {
+    protected void registerHolidays(final String name, final HolidayCalendar<E> holidays) {
         getDateCalculatorFactory().registerHolidays(name, holidays);
     }
 
@@ -104,7 +124,7 @@ public abstract class AbstractDateTestCase<E> extends TestCase {
     protected void checkMoveByTenor(final String startDate, final Tenor tenor, final int spotLag, final String expectedDate,
             final String holidayHandlerType) {
         final DateCalculator<E> cal = newDateCalculator("bla", holidayHandlerType);
-        cal.setNonWorkingDays(createUKHolidays());
+        cal.setHolidayCalendar(createUKHolidayCalendar());
         cal.setStartDate(newDate(startDate));
         checkDate("Move start:" + startDate + " tenor:" + tenor + " daysToSpot:" + spotLag, cal.moveByTenor(tenor, spotLag),
                 expectedDate);
