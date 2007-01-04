@@ -42,7 +42,7 @@ public abstract class AbstractModifiedPreceedingDateCalculatorTest<E> extends Ab
     public void testSimpleForwardWithWeekend() {
         final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.MODIFIED_PRECEEDING);
         Assert.assertEquals("Name", "bla", cal.getName());
-        Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
+        Assert.assertEquals("Holidays size", 0, cal.getHolidayCalendar().getHolidays().size());
 
         final E startDate = newDate("2006-08-01");
         cal.setStartDate(startDate);
@@ -56,7 +56,7 @@ public abstract class AbstractModifiedPreceedingDateCalculatorTest<E> extends Ab
     public void testSimpleForwardStartDateWithWeekend() {
         final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.MODIFIED_PRECEEDING);
         Assert.assertEquals("Name", "bla", cal.getName());
-        Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
+        Assert.assertEquals("Holidays size", 0, cal.getHolidayCalendar().getHolidays().size());
 
         cal.setStartDate(newDate("2006-07-31")); // start date Monday
         checkDate("start date Monday", cal, "2006-07-31");
@@ -88,7 +88,7 @@ public abstract class AbstractModifiedPreceedingDateCalculatorTest<E> extends Ab
 
         cal.setWorkingWeek(getWorkingWeek(ww));
         Assert.assertEquals("Name", "bla", cal.getName());
-        Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
+        Assert.assertEquals("Holidays size", 0, cal.getHolidayCalendar().getHolidays().size());
 
         cal.setStartDate(newDate("2006-07-31")); // start date Monday
         checkDate("start date Monday", cal, "2006-07-31");
@@ -115,7 +115,7 @@ public abstract class AbstractModifiedPreceedingDateCalculatorTest<E> extends Ab
     public void testSimpleForwardStartDateWhackyWeek() {
         final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.MODIFIED_PRECEEDING);
         Assert.assertEquals("Name", "bla", cal.getName());
-        Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
+        Assert.assertEquals("Holidays size", 0, cal.getHolidayCalendar().getHolidays().size());
 
         final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(false, Calendar.MONDAY).withWorkingDayFromCalendar(
                 true, Calendar.TUESDAY).withWorkingDayFromCalendar(false, Calendar.WEDNESDAY).withWorkingDayFromCalendar(true,
@@ -148,7 +148,7 @@ public abstract class AbstractModifiedPreceedingDateCalculatorTest<E> extends Ab
     public void testSimpleForwardStartDateIdealWeekend() {
         final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.MODIFIED_PRECEEDING);
         Assert.assertEquals("Name", "bla", cal.getName());
-        Assert.assertEquals("Holidays size", 0, cal.getNonWorkingDays().size());
+        Assert.assertEquals("Holidays size", 0, cal.getHolidayCalendar().getHolidays().size());
 
         final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(false, Calendar.MONDAY).withWorkingDayFromCalendar(
                 true, Calendar.TUESDAY).withWorkingDayFromCalendar(true, Calendar.WEDNESDAY).withWorkingDayFromCalendar(true,
@@ -188,14 +188,14 @@ public abstract class AbstractModifiedPreceedingDateCalculatorTest<E> extends Ab
 
     public void testSimpleForwardWithHolidays() {
         final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.MODIFIED_PRECEEDING);
-        final Set<E> holidays = newHolidaysSet();
+        final HolidayCalendar<E> holidays = newHolidaysCalendar();
         Assert.assertEquals("Name", "bla", cal.getName());
-        cal.setNonWorkingDays(holidays);
-        Assert.assertEquals("Holidays", holidays, cal.getNonWorkingDays());
-        Assert.assertEquals("Holidays size", 3, cal.getNonWorkingDays().size());
+        cal.setHolidayCalendar(holidays);
+        Assert.assertEquals("Holidays", holidays.getHolidays(), cal.getHolidayCalendar().getHolidays());
+        Assert.assertEquals("Holidays size", 3, cal.getHolidayCalendar().getHolidays().size());
 
-        Assert.assertTrue("contains", holidays.contains(newDate("2006-08-28")));
-        Assert.assertTrue("contains", cal.getNonWorkingDays().contains(newDate("2006-08-28")));
+        Assert.assertTrue("contains", holidays.isHoliday(newDate("2006-08-28")));
+        Assert.assertTrue("contains", cal.getHolidayCalendar().isHoliday(newDate("2006-08-28")));
 
         cal.setStartDate(newDate("2006-08-28"));
         checkDate("Move given Bank Holiday", cal, "2006-08-25");
@@ -222,11 +222,11 @@ public abstract class AbstractModifiedPreceedingDateCalculatorTest<E> extends Ab
      */
     public void testMoveByBusinessDays() {
         final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.MODIFIED_PRECEEDING);
-        final Set<E> holidays = newHolidaysSet();
+        final HolidayCalendar<E> holidays = newHolidaysCalendar();
         Assert.assertEquals("Name", "bla", cal.getName());
-        cal.setNonWorkingDays(holidays);
-        Assert.assertEquals("Holidays", holidays, cal.getNonWorkingDays());
-        Assert.assertEquals("Holidays size", 3, cal.getNonWorkingDays().size());
+        cal.setHolidayCalendar(holidays);
+        Assert.assertEquals("Holidays", holidays.getHolidays(), cal.getHolidayCalendar().getHolidays());
+        Assert.assertEquals("Holidays size", 3, cal.getHolidayCalendar().getHolidays().size());
 
         // cal.setStartDate(newDate("2006-08-24"));
         // checkDate("Move 1 BD", cal.moveByBusinessDays(1), "2006-08-25");
@@ -260,7 +260,7 @@ public abstract class AbstractModifiedPreceedingDateCalculatorTest<E> extends Ab
         final Set<E> holidays = newHolidaysSet();
         holidays.clear();
         holidays.add(newDate("2006-08-01"));
-        cal.setNonWorkingDays(holidays);
+        cal.setHolidayCalendar(new DefaultHolidayCalendar<E>(holidays));
         cal.moveByDays(-1);
 
         checkDate("do NOT move to next month", cal, "2006-08-02");

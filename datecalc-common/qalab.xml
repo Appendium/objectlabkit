@@ -21,155 +21,161 @@
 ]>
 <qalab version="1.2">
     <summary>
-        <summaryresult date="2006-08-08" filecount="7" module="default"
-            project="default" statvalue="5" type="checkstyle"/>
-        <summaryresult date="2006-08-08" filecount="2" module="default"
-            project="default" statvalue="3" type="pmd"/>
-        <summaryresult date="2006-08-08" filecount="1" module="default"
-            project="default" statvalue="1" type="findbugs"/>
-        <summaryresult date="2006-08-08" filecount="6" module="default"
-            project="default" statvalue="47" type="cobertura-line"/>
-        <summaryresult date="2006-08-08" filecount="6" module="default"
-            project="default" statvalue="57" type="cobertura-branch"/>
-        <summaryresult date="2006-08-09" filecount="7" module="default"
-            project="default" statvalue="5" type="checkstyle"/>
-        <summaryresult date="2006-08-09" filecount="6" module="default"
-            project="default" statvalue="86" type="cobertura-line"/>
-        <summaryresult date="2006-08-09" filecount="6" module="default"
-            project="default" statvalue="91" type="cobertura-branch"/>
-        <summaryresult date="2006-08-10" filecount="7" module="default"
-            project="default" statvalue="4" type="checkstyle"/>
-        <summaryresult date="2006-08-10" filecount="6" module="default"
-            project="default" statvalue="90" type="cobertura-line"/>
-        <summaryresult date="2006-08-10" filecount="6" module="default"
-            project="default" statvalue="100" type="cobertura-branch"/>
-        <summaryresult date="2006-08-19" filecount="7" module="default"
-            project="default" statvalue="1" type="checkstyle"/>
-        <summaryresult date="2006-08-19" filecount="6" module="default"
-            project="default" statvalue="91" type="cobertura-line"/>
-        <summaryresult date="2006-08-19" filecount="6" module="default"
-            project="default" statvalue="96" type="cobertura-branch"/>
-        <summaryresult date="2006-08-20" filecount="7" module="default"
-            project="default" statvalue="1" type="checkstyle"/>
-        <summaryresult date="2006-08-20" filecount="6" module="default"
-            project="default" statvalue="90" type="cobertura-line"/>
-        <summaryresult date="2006-08-20" filecount="6" module="default"
-            project="default" statvalue="100" type="cobertura-branch"/>
-        <summaryresult date="2006-08-23" filecount="10" module="default"
-            project="default" statvalue="25" type="checkstyle"/>
-        <summaryresult date="2006-08-23" filecount="9" module="default"
-            project="default" statvalue="74" type="cobertura-line"/>
-        <summaryresult date="2006-08-23" filecount="9" module="default"
-            project="default" statvalue="87" type="cobertura-branch"/>
-        <summaryresult date="2006-08-24" filecount="10" module="default"
-            project="default" statvalue="1" type="checkstyle"/>
-        <summaryresult date="2006-08-24" filecount="9" module="default"
-            project="default" statvalue="62" type="cobertura-line"/>
-        <summaryresult date="2006-08-24" filecount="9" module="default"
-            project="default" statvalue="65" type="cobertura-branch"/>
-        <summaryresult date="2006-08-28" filecount="13" module="default"
-            project="default" statvalue="3" type="checkstyle"/>
-        <summaryresult date="2006-08-28" filecount="12" module="default"
-            project="default" statvalue="60" type="cobertura-line"/>
-        <summaryresult date="2006-08-28" filecount="12" module="default"
-            project="default" statvalue="65" type="cobertura-branch"/>
-        <summaryresult date="2006-09-02" filecount="13" module="default"
-            project="default" statvalue="9" type="checkstyle"/>
-        <summaryresult date="2006-09-02" filecount="12" module="default"
-            project="default" statvalue="59" type="cobertura-line"/>
-        <summaryresult date="2006-09-02" filecount="12" module="default"
-            project="default" statvalue="61" type="cobertura-branch"/>
-        <summaryresult date="2006-09-04" filecount="15" module="default"
-            project="default" statvalue="12" type="checkstyle"/>
-        <summaryresult date="2006-09-04" filecount="1" module="default"
-            project="default" statvalue="1" type="findbugs"/>
-        <summaryresult date="2006-09-04" filecount="14" module="default"
-            project="default" statvalue="61" type="cobertura-line"/>
-        <summaryresult date="2006-09-04" filecount="14" module="default"
-            project="default" statvalue="64" type="cobertura-branch"/>
-        <summaryresult date="2006-09-05" filecount="16" module="default"
-            project="default" statvalue="9" type="checkstyle"/>
-        <summaryresult date="2006-09-05" filecount="1" module="default"
-            project="default" statvalue="1" type="findbugs"/>
-        <summaryresult date="2006-09-05" filecount="15" module="default"
-            project="default" statvalue="63" type="cobertura-line"/>
-        <summaryresult date="2006-09-05" filecount="15" module="default"
-            project="default" statvalue="67" type="cobertura-branch"/>
-        <summaryresult date="2006-09-06" filecount="18" module="default"
-            project="default" statvalue="1" type="checkstyle"/>
-        <summaryresult date="2006-09-06" filecount="17" module="default"
-            project="default" statvalue="66" type="cobertura-line"/>
-        <summaryresult date="2006-09-06" filecount="17" module="default"
-            project="default" statvalue="68" type="cobertura-branch"/>
-        <summaryresult date="2006-09-07" filecount="17" module="default"
-            project="default" statvalue="64" type="cobertura-line"/>
-        <summaryresult date="2006-09-07" filecount="17" module="default"
-            project="default" statvalue="64" type="cobertura-branch"/>
-        <summaryresult date="2006-09-09" filecount="17" module="default"
-            project="default" statvalue="63" type="cobertura-line"/>
-        <summaryresult date="2006-09-09" filecount="17" module="default"
-            project="default" statvalue="64" type="cobertura-branch"/>
-        <summaryresult date="2006-09-12" filecount="17" module="default"
-            project="default" statvalue="59" type="cobertura-line"/>
-        <summaryresult date="2006-09-12" filecount="17" module="default"
-            project="default" statvalue="62" type="cobertura-branch"/>
-        <summaryresult date="2006-09-14" filecount="17" module="default"
-            project="default" statvalue="57" type="cobertura-line"/>
-        <summaryresult date="2006-09-14" filecount="17" module="default"
-            project="default" statvalue="60" type="cobertura-branch"/>
-        <summaryresult date="2006-09-18" filecount="17" module="default"
-            project="default" statvalue="57" type="cobertura-line"/>
-        <summaryresult date="2006-09-18" filecount="17" module="default"
-            project="default" statvalue="60" type="cobertura-branch"/>
-        <summaryresult date="2006-09-20" filecount="17" module="default"
-            project="default" statvalue="57" type="cobertura-line"/>
-        <summaryresult date="2006-09-20" filecount="17" module="default"
-            project="default" statvalue="60" type="cobertura-branch"/>
-        <summaryresult date="2006-09-21" filecount="17" module="default"
-            project="default" statvalue="57" type="cobertura-line"/>
-        <summaryresult date="2006-09-21" filecount="17" module="default"
-            project="default" statvalue="60" type="cobertura-branch"/>
-        <summaryresult date="2006-09-22" filecount="17" module="default"
-            project="default" statvalue="57" type="cobertura-line"/>
-        <summaryresult date="2006-09-22" filecount="17" module="default"
-            project="default" statvalue="60" type="cobertura-branch"/>
-        <summaryresult date="2006-10-10" filecount="17" module="default"
-            project="default" statvalue="58" type="cobertura-line"/>
-        <summaryresult date="2006-10-10" filecount="17" module="default"
-            project="default" statvalue="60" type="cobertura-branch"/>
-        <summaryresult date="2006-10-11" filecount="17" module="default"
-            project="default" statvalue="58" type="cobertura-line"/>
-        <summaryresult date="2006-10-11" filecount="17" module="default"
-            project="default" statvalue="60" type="cobertura-branch"/>
-        <summaryresult date="2006-10-12" filecount="17" module="default"
-            project="default" statvalue="58" type="cobertura-line"/>
-        <summaryresult date="2006-10-12" filecount="17" module="default"
-            project="default" statvalue="60" type="cobertura-branch"/>
-        <summaryresult date="2006-10-13" filecount="17" module="default"
-            project="default" statvalue="58" type="cobertura-line"/>
-        <summaryresult date="2006-10-13" filecount="17" module="default"
-            project="default" statvalue="60" type="cobertura-branch"/>
-        <summaryresult date="2006-10-14" filecount="17" module="default"
-            project="default" statvalue="58" type="cobertura-line"/>
-        <summaryresult date="2006-10-14" filecount="17" module="default"
-            project="default" statvalue="60" type="cobertura-branch"/>
-        <summaryresult date="2006-10-15" filecount="17" module="default"
-            project="default" statvalue="58" type="cobertura-line"/>
-        <summaryresult date="2006-10-15" filecount="17" module="default"
-            project="default" statvalue="60" type="cobertura-branch"/>
-        <summaryresult date="2006-11-13" filecount="17" module="default"
-            project="default" statvalue="56" type="cobertura-line"/>
-        <summaryresult date="2006-11-13" filecount="17" module="default"
-            project="default" statvalue="60" type="cobertura-branch"/>
-        <summaryresult date="2007-01-03" filecount="19" module="default"
-            project="default" statvalue="54" type="cobertura-line"/>
-        <summaryresult date="2007-01-03" filecount="19" module="default"
-            project="default" statvalue="58" type="cobertura-branch"/>
+        <summaryresult date="2006-08-08" filecount="7" module="common"
+            project="objectlabkit" statvalue="5" type="checkstyle"/>
+        <summaryresult date="2006-08-08" filecount="2" module="common"
+            project="objectlabkit" statvalue="3" type="pmd"/>
+        <summaryresult date="2006-08-08" filecount="1" module="common"
+            project="objectlabkit" statvalue="1" type="findbugs"/>
+        <summaryresult date="2006-08-08" filecount="6" module="common"
+            project="objectlabkit" statvalue="47" type="cobertura-line"/>
+        <summaryresult date="2006-08-08" filecount="6" module="common"
+            project="objectlabkit" statvalue="57" type="cobertura-branch"/>
+        <summaryresult date="2006-08-09" filecount="7" module="common"
+            project="objectlabkit" statvalue="5" type="checkstyle"/>
+        <summaryresult date="2006-08-09" filecount="6" module="common"
+            project="objectlabkit" statvalue="86" type="cobertura-line"/>
+        <summaryresult date="2006-08-09" filecount="6" module="common"
+            project="objectlabkit" statvalue="91" type="cobertura-branch"/>
+        <summaryresult date="2006-08-10" filecount="7" module="common"
+            project="objectlabkit" statvalue="4" type="checkstyle"/>
+        <summaryresult date="2006-08-10" filecount="6" module="common"
+            project="objectlabkit" statvalue="90" type="cobertura-line"/>
+        <summaryresult date="2006-08-10" filecount="6" module="common"
+            project="objectlabkit" statvalue="100" type="cobertura-branch"/>
+        <summaryresult date="2006-08-19" filecount="7" module="common"
+            project="objectlabkit" statvalue="1" type="checkstyle"/>
+        <summaryresult date="2006-08-19" filecount="6" module="common"
+            project="objectlabkit" statvalue="91" type="cobertura-line"/>
+        <summaryresult date="2006-08-19" filecount="6" module="common"
+            project="objectlabkit" statvalue="96" type="cobertura-branch"/>
+        <summaryresult date="2006-08-20" filecount="7" module="common"
+            project="objectlabkit" statvalue="1" type="checkstyle"/>
+        <summaryresult date="2006-08-20" filecount="6" module="common"
+            project="objectlabkit" statvalue="90" type="cobertura-line"/>
+        <summaryresult date="2006-08-20" filecount="6" module="common"
+            project="objectlabkit" statvalue="100" type="cobertura-branch"/>
+        <summaryresult date="2006-08-23" filecount="10" module="common"
+            project="objectlabkit" statvalue="25" type="checkstyle"/>
+        <summaryresult date="2006-08-23" filecount="9" module="common"
+            project="objectlabkit" statvalue="74" type="cobertura-line"/>
+        <summaryresult date="2006-08-23" filecount="9" module="common"
+            project="objectlabkit" statvalue="87" type="cobertura-branch"/>
+        <summaryresult date="2006-08-24" filecount="10" module="common"
+            project="objectlabkit" statvalue="1" type="checkstyle"/>
+        <summaryresult date="2006-08-24" filecount="9" module="common"
+            project="objectlabkit" statvalue="62" type="cobertura-line"/>
+        <summaryresult date="2006-08-24" filecount="9" module="common"
+            project="objectlabkit" statvalue="65" type="cobertura-branch"/>
+        <summaryresult date="2006-08-28" filecount="13" module="common"
+            project="objectlabkit" statvalue="3" type="checkstyle"/>
+        <summaryresult date="2006-08-28" filecount="12" module="common"
+            project="objectlabkit" statvalue="60" type="cobertura-line"/>
+        <summaryresult date="2006-08-28" filecount="12" module="common"
+            project="objectlabkit" statvalue="65" type="cobertura-branch"/>
+        <summaryresult date="2006-09-02" filecount="13" module="common"
+            project="objectlabkit" statvalue="9" type="checkstyle"/>
+        <summaryresult date="2006-09-02" filecount="12" module="common"
+            project="objectlabkit" statvalue="59" type="cobertura-line"/>
+        <summaryresult date="2006-09-02" filecount="12" module="common"
+            project="objectlabkit" statvalue="61" type="cobertura-branch"/>
+        <summaryresult date="2006-09-04" filecount="15" module="common"
+            project="objectlabkit" statvalue="12" type="checkstyle"/>
+        <summaryresult date="2006-09-04" filecount="1" module="common"
+            project="objectlabkit" statvalue="1" type="findbugs"/>
+        <summaryresult date="2006-09-04" filecount="14" module="common"
+            project="objectlabkit" statvalue="61" type="cobertura-line"/>
+        <summaryresult date="2006-09-04" filecount="14" module="common"
+            project="objectlabkit" statvalue="64" type="cobertura-branch"/>
+        <summaryresult date="2006-09-05" filecount="16" module="common"
+            project="objectlabkit" statvalue="9" type="checkstyle"/>
+        <summaryresult date="2006-09-05" filecount="1" module="common"
+            project="objectlabkit" statvalue="1" type="findbugs"/>
+        <summaryresult date="2006-09-05" filecount="15" module="common"
+            project="objectlabkit" statvalue="63" type="cobertura-line"/>
+        <summaryresult date="2006-09-05" filecount="15" module="common"
+            project="objectlabkit" statvalue="67" type="cobertura-branch"/>
+        <summaryresult date="2006-09-06" filecount="18" module="common"
+            project="objectlabkit" statvalue="1" type="checkstyle"/>
+        <summaryresult date="2006-09-06" filecount="17" module="common"
+            project="objectlabkit" statvalue="66" type="cobertura-line"/>
+        <summaryresult date="2006-09-06" filecount="17" module="common"
+            project="objectlabkit" statvalue="68" type="cobertura-branch"/>
+        <summaryresult date="2006-09-07" filecount="17" module="common"
+            project="objectlabkit" statvalue="64" type="cobertura-line"/>
+        <summaryresult date="2006-09-07" filecount="17" module="common"
+            project="objectlabkit" statvalue="64" type="cobertura-branch"/>
+        <summaryresult date="2006-09-09" filecount="17" module="common"
+            project="objectlabkit" statvalue="63" type="cobertura-line"/>
+        <summaryresult date="2006-09-09" filecount="17" module="common"
+            project="objectlabkit" statvalue="64" type="cobertura-branch"/>
+        <summaryresult date="2006-09-12" filecount="17" module="common"
+            project="objectlabkit" statvalue="59" type="cobertura-line"/>
+        <summaryresult date="2006-09-12" filecount="17" module="common"
+            project="objectlabkit" statvalue="62" type="cobertura-branch"/>
+        <summaryresult date="2006-09-14" filecount="17" module="common"
+            project="objectlabkit" statvalue="57" type="cobertura-line"/>
+        <summaryresult date="2006-09-14" filecount="17" module="common"
+            project="objectlabkit" statvalue="60" type="cobertura-branch"/>
+        <summaryresult date="2006-09-18" filecount="17" module="common"
+            project="objectlabkit" statvalue="57" type="cobertura-line"/>
+        <summaryresult date="2006-09-18" filecount="17" module="common"
+            project="objectlabkit" statvalue="60" type="cobertura-branch"/>
+        <summaryresult date="2006-09-20" filecount="17" module="common"
+            project="objectlabkit" statvalue="57" type="cobertura-line"/>
+        <summaryresult date="2006-09-20" filecount="17" module="common"
+            project="objectlabkit" statvalue="60" type="cobertura-branch"/>
+        <summaryresult date="2006-09-21" filecount="17" module="common"
+            project="objectlabkit" statvalue="57" type="cobertura-line"/>
+        <summaryresult date="2006-09-21" filecount="17" module="common"
+            project="objectlabkit" statvalue="60" type="cobertura-branch"/>
+        <summaryresult date="2006-09-22" filecount="17" module="common"
+            project="objectlabkit" statvalue="57" type="cobertura-line"/>
+        <summaryresult date="2006-09-22" filecount="17" module="common"
+            project="objectlabkit" statvalue="60" type="cobertura-branch"/>
+        <summaryresult date="2006-10-10" filecount="17" module="common"
+            project="objectlabkit" statvalue="58" type="cobertura-line"/>
+        <summaryresult date="2006-10-10" filecount="17" module="common"
+            project="objectlabkit" statvalue="60" type="cobertura-branch"/>
+        <summaryresult date="2006-10-11" filecount="17" module="common"
+            project="objectlabkit" statvalue="58" type="cobertura-line"/>
+        <summaryresult date="2006-10-11" filecount="17" module="common"
+            project="objectlabkit" statvalue="60" type="cobertura-branch"/>
+        <summaryresult date="2006-10-12" filecount="17" module="common"
+            project="objectlabkit" statvalue="58" type="cobertura-line"/>
+        <summaryresult date="2006-10-12" filecount="17" module="common"
+            project="objectlabkit" statvalue="60" type="cobertura-branch"/>
+        <summaryresult date="2006-10-13" filecount="17" module="common"
+            project="objectlabkit" statvalue="58" type="cobertura-line"/>
+        <summaryresult date="2006-10-13" filecount="17" module="common"
+            project="objectlabkit" statvalue="60" type="cobertura-branch"/>
+        <summaryresult date="2006-10-14" filecount="17" module="common"
+            project="objectlabkit" statvalue="58" type="cobertura-line"/>
+        <summaryresult date="2006-10-14" filecount="17" module="common"
+            project="objectlabkit" statvalue="60" type="cobertura-branch"/>
+        <summaryresult date="2006-10-15" filecount="17" module="common"
+            project="objectlabkit" statvalue="58" type="cobertura-line"/>
+        <summaryresult date="2006-10-15" filecount="17" module="common"
+            project="objectlabkit" statvalue="60" type="cobertura-branch"/>
+        <summaryresult date="2006-11-13" filecount="17" module="common"
+            project="objectlabkit" statvalue="56" type="cobertura-line"/>
+        <summaryresult date="2006-11-13" filecount="17" module="common"
+            project="objectlabkit" statvalue="60" type="cobertura-branch"/>
+        <summaryresult date="2007-01-03" filecount="19" module="common"
+            project="objectlabkit" statvalue="54" type="cobertura-line"/>
+        <summaryresult date="2007-01-03" filecount="19" module="common"
+            project="objectlabkit" statvalue="58" type="cobertura-branch"/>
+        <summaryresult date="2007-01-04" filecount="21" module="common"
+            project="objectlabkit" statvalue="1" type="checkstyle"/>
+        <summaryresult date="2007-01-04" filecount="20" module="common"
+            project="objectlabkit" statvalue="34" type="cobertura-line"/>
+        <summaryresult date="2007-01-04" filecount="20" module="common"
+            project="objectlabkit" statvalue="30" type="cobertura-branch"/>
     </summary>
     <file
         id="default-default-net_objectlab_kit_datecalc_common_package.html"
-        module="default"
-        path="net/objectlab/kit/datecalc/common/package.html" project="default">
+        module="common"
+        path="net/objectlab/kit/datecalc/common/package.html" project="objectlabkit">
         <result date="2006-08-08" statvalue="1" type="checkstyle"/>
         <result date="2006-08-09" statvalue="1" type="checkstyle"/>
         <result date="2006-08-10" statvalue="1" type="checkstyle"/>
@@ -184,8 +190,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_common_Tenor.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/common/Tenor.java" project="default">
+        module="common"
+        path="net/objectlab/kit/datecalc/common/Tenor.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="1" type="checkstyle"/>
         <result date="2006-08-08" statvalue="55" type="cobertura-line"/>
         <result date="2006-08-08" statvalue="43" type="cobertura-branch"/>
@@ -248,8 +254,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_common_WorkingWeek.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/common/WorkingWeek.java" project="default">
+        module="common"
+        path="net/objectlab/kit/datecalc/common/WorkingWeek.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="3" type="checkstyle"/>
         <result date="2006-08-08" statvalue="1" type="findbugs"/>
         <result date="2006-08-08" statvalue="82" type="cobertura-line"/>
@@ -317,8 +323,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_common_TenorCode.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/common/TenorCode.java" project="default">
+        module="common"
+        path="net/objectlab/kit/datecalc/common/TenorCode.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="100" type="cobertura-line"/>
         <result date="2006-08-08" statvalue="100" type="cobertura-branch"/>
         <result date="2006-08-09" statvalue="100" type="cobertura-line"/>
@@ -378,8 +384,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_common_HolidayHandlerType.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/common/HolidayHandlerType.java" project="default">
+        module="common"
+        path="net/objectlab/kit/datecalc/common/HolidayHandlerType.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="100" type="cobertura-branch"/>
         <result date="2006-08-09" statvalue="100" type="cobertura-branch"/>
         <result date="2006-08-10" statvalue="100" type="cobertura-branch"/>
@@ -411,8 +417,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_common_PeriodCountBasis.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/common/PeriodCountBasis.java" project="default">
+        module="common"
+        path="net/objectlab/kit/datecalc/common/PeriodCountBasis.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="100" type="cobertura-branch"/>
         <result date="2006-08-10" statvalue="100" type="cobertura-branch"/>
         <result date="2006-08-20" statvalue="100" type="cobertura-branch"/>
@@ -442,8 +448,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_common_StandardTenor.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/common/StandardTenor.java" project="default">
+        module="common"
+        path="net/objectlab/kit/datecalc/common/StandardTenor.java" project="objectlabkit">
         <result date="2006-08-08" statvalue="100" type="cobertura-branch"/>
         <result date="2006-08-09" statvalue="92" type="cobertura-line"/>
         <result date="2006-08-09" statvalue="100" type="cobertura-branch"/>
@@ -502,18 +508,18 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_common_AbstractDateCalculator.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/common/AbstractDateCalculator.java" project="default">
+        module="common"
+        path="net/objectlab/kit/datecalc/common/AbstractDateCalculator.java" project="objectlabkit">
         <result date="2006-08-23" statvalue="5" type="checkstyle"/>
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_common_DateCalculatorGeneric.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/common/DateCalculatorGeneric.java" project="default"/>
+        module="common"
+        path="net/objectlab/kit/datecalc/common/DateCalculatorGeneric.java" project="objectlabkit"/>
     <file
         id="default-default-net_objectlab_kit_datecalc_common_DateCalculator.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/common/DateCalculator.java" project="default">
+        module="common"
+        path="net/objectlab/kit/datecalc/common/DateCalculator.java" project="objectlabkit">
         <result date="2006-08-23" statvalue="19" type="checkstyle"/>
         <result date="2006-08-23" statvalue="100" type="cobertura-line"/>
         <result date="2006-08-23" statvalue="100" type="cobertura-branch"/>
@@ -564,8 +570,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_common_HolidayHandler.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/common/HolidayHandler.java" project="default">
+        module="common"
+        path="net/objectlab/kit/datecalc/common/HolidayHandler.java" project="objectlabkit">
         <result date="2006-08-23" statvalue="100" type="cobertura-line"/>
         <result date="2006-08-23" statvalue="100" type="cobertura-branch"/>
         <result date="2006-08-24" statvalue="100" type="cobertura-line"/>
@@ -615,8 +621,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_common_AbstractDateCalculatorFactory.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/common/AbstractDateCalculatorFactory.java" project="default">
+        module="common"
+        path="net/objectlab/kit/datecalc/common/AbstractDateCalculatorFactory.java" project="objectlabkit">
         <result date="2006-08-28" statvalue="2" type="checkstyle"/>
         <result date="2006-08-28" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-02" statvalue="2" type="checkstyle"/>
@@ -630,8 +636,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_common_DateCalculatorFactory.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/common/DateCalculatorFactory.java" project="default">
+        module="common"
+        path="net/objectlab/kit/datecalc/common/DateCalculatorFactory.java" project="objectlabkit">
         <result date="2006-08-28" statvalue="100" type="cobertura-line"/>
         <result date="2006-08-28" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-02" statvalue="100" type="cobertura-line"/>
@@ -647,8 +653,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_common_PeriodCountCalculator.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/common/PeriodCountCalculator.java" project="default">
+        module="common"
+        path="net/objectlab/kit/datecalc/common/PeriodCountCalculator.java" project="objectlabkit">
         <result date="2006-08-28" statvalue="100" type="cobertura-line"/>
         <result date="2006-08-28" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-02" statvalue="6" type="checkstyle"/>
@@ -697,8 +703,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_common_Utils.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/common/Utils.java" project="default">
+        module="common"
+        path="net/objectlab/kit/datecalc/common/Utils.java" project="objectlabkit">
         <result date="2006-09-04" statvalue="2" type="checkstyle"/>
         <result date="2006-09-04" statvalue="90" type="cobertura-line"/>
         <result date="2006-09-04" statvalue="100" type="cobertura-branch"/>
@@ -741,8 +747,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_common_IMMPeriod.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/common/IMMPeriod.java" project="default">
+        module="common"
+        path="net/objectlab/kit/datecalc/common/IMMPeriod.java" project="objectlabkit">
         <result date="2006-09-04" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-05" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-06" statvalue="100" type="cobertura-branch"/>
@@ -765,8 +771,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_common_ExcelDateUtil.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/common/ExcelDateUtil.java" project="default">
+        module="common"
+        path="net/objectlab/kit/datecalc/common/ExcelDateUtil.java" project="objectlabkit">
         <result date="2006-09-05" statvalue="84" type="cobertura-line"/>
         <result date="2006-09-05" statvalue="83" type="cobertura-branch"/>
         <result date="2006-09-06" statvalue="93" type="cobertura-line"/>
@@ -806,8 +812,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_common_IMMDateCalculator.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/common/IMMDateCalculator.java" project="default">
+        module="common"
+        path="net/objectlab/kit/datecalc/common/IMMDateCalculator.java" project="objectlabkit">
         <result date="2006-09-06" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-06" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-07" statvalue="100" type="cobertura-line"/>
@@ -845,8 +851,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_common_AbstractIMMDateCalculator.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/common/AbstractIMMDateCalculator.java" project="default">
+        module="common"
+        path="net/objectlab/kit/datecalc/common/AbstractIMMDateCalculator.java" project="objectlabkit">
         <result date="2006-09-06" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-07" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-09" statvalue="100" type="cobertura-branch"/>
@@ -867,8 +873,8 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_common_KitCalculatorsFactory.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/common/KitCalculatorsFactory.java" project="default">
+        module="common"
+        path="net/objectlab/kit/datecalc/common/KitCalculatorsFactory.java" project="objectlabkit">
         <result date="2006-09-09" statvalue="100" type="cobertura-line"/>
         <result date="2006-09-09" statvalue="100" type="cobertura-branch"/>
         <result date="2006-09-12" statvalue="100" type="cobertura-line"/>
@@ -902,15 +908,143 @@
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_common_HolidayCalendar.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/common/HolidayCalendar.java" project="default">
+        module="common"
+        path="net/objectlab/kit/datecalc/common/HolidayCalendar.java" project="objectlabkit">
         <result date="2007-01-03" statvalue="100" type="cobertura-line"/>
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="default-default-net_objectlab_kit_datecalc_common_DefaultHolidayCalendar.java"
-        module="default"
-        path="net/objectlab/kit/datecalc/common/DefaultHolidayCalendar.java" project="default">
+        module="common"
+        path="net/objectlab/kit/datecalc/common/DefaultHolidayCalendar.java" project="objectlabkit">
         <result date="2007-01-03" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="default-default-net_objectlab_kit_datecalc_common_ImmutableHolidayCalendar.java"
+        module="common"
+        path="net/objectlab/kit/datecalc/common/ImmutableHolidayCalendar.java" project="objectlabkit"/>
+    <file
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_AbstractDateCalculator.java"
+        module="common"
+        path="net/objectlab/kit/datecalc/common/AbstractDateCalculator.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="1" type="checkstyle"/>
+    </file>
+    <file
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_DefaultHolidayCalendar.java"
+        module="common"
+        path="net/objectlab/kit/datecalc/common/DefaultHolidayCalendar.java" project="objectlabkit"/>
+    <file
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_ImmutableHolidayCalendar.java"
+        module="common"
+        path="net/objectlab/kit/datecalc/common/ImmutableHolidayCalendar.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_DateCalculator.java"
+        module="common"
+        path="net/objectlab/kit/datecalc/common/DateCalculator.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_ExcelDateUtil.java"
+        module="common"
+        path="net/objectlab/kit/datecalc/common/ExcelDateUtil.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="82" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="83" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_HolidayCalendar.java"
+        module="common"
+        path="net/objectlab/kit/datecalc/common/HolidayCalendar.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_HolidayHandler.java"
+        module="common"
+        path="net/objectlab/kit/datecalc/common/HolidayHandler.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_IMMDateCalculator.java"
+        module="common"
+        path="net/objectlab/kit/datecalc/common/IMMDateCalculator.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_KitCalculatorsFactory.java"
+        module="common"
+        path="net/objectlab/kit/datecalc/common/KitCalculatorsFactory.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_PeriodCountCalculator.java"
+        module="common"
+        path="net/objectlab/kit/datecalc/common/PeriodCountCalculator.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_StandardTenor.java"
+        module="common"
+        path="net/objectlab/kit/datecalc/common/StandardTenor.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="91" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_Tenor.java"
+        module="common"
+        path="net/objectlab/kit/datecalc/common/Tenor.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_TenorCode.java"
+        module="common"
+        path="net/objectlab/kit/datecalc/common/TenorCode.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_Utils.java"
+        module="common"
+        path="net/objectlab/kit/datecalc/common/Utils.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="76" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="85" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_WorkingWeek.java"
+        module="common"
+        path="net/objectlab/kit/datecalc/common/WorkingWeek.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="95" type="cobertura-line"/>
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_AbstractIMMDateCalculator.java"
+        module="common"
+        path="net/objectlab/kit/datecalc/common/AbstractIMMDateCalculator.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_HolidayHandlerType.java"
+        module="common"
+        path="net/objectlab/kit/datecalc/common/HolidayHandlerType.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_IMMPeriod.java"
+        module="common"
+        path="net/objectlab/kit/datecalc/common/IMMPeriod.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
+    </file>
+    <file
+        id="objectlabkit-common-net_objectlab_kit_datecalc_common_PeriodCountBasis.java"
+        module="common"
+        path="net/objectlab/kit/datecalc/common/PeriodCountBasis.java" project="objectlabkit">
+        <result date="2007-01-04" statvalue="100" type="cobertura-branch"/>
     </file>
 </qalab>

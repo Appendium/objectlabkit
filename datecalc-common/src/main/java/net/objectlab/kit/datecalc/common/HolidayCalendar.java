@@ -32,6 +32,7 @@
  */
 package net.objectlab.kit.datecalc.common;
 
+import java.io.Serializable;
 import java.util.Set;
 
 /**
@@ -43,14 +44,14 @@ import java.util.Set;
  * @author Benoit Xhenseval
  * @author $LastChangedBy: benoitx $
  * @version $Revision: 200 $ $Date: 2006-10-10 21:15:58 +0100 (Tue, 10 Oct 2006) $
- * @since 1.1
+ * @since 1.1.0
  * 
  * @param <E>
  *            a representation of a date, typically JDK: Date, Calendar;
  *            Joda:LocalDate, YearMonthDay
  * 
  */
-public interface HolidayCalendar<E> {
+public interface HolidayCalendar<E> extends Serializable {
     /**
      * Returns an immutable set of holidays.
      * 
@@ -59,11 +60,8 @@ public interface HolidayCalendar<E> {
     Set<E> getHolidays();
 
     /**
-     * Returns an immutable set of holidays.
-     * 
-     * @return an immutable copy of the holiday set.
-     * @throws IllegalArgumentException if the holidays contains dates outside 
-     * the range defined by earliest/latest dates.
+     * Takes a copy of the holidays and store it in an immutable
+     * set.
      */
     void setHolidays(final Set<E> holidays);
 
@@ -90,6 +88,13 @@ public interface HolidayCalendar<E> {
      * @param lateBoundary
      */
     void setLateBoundary(final E lateBoundary);
+    
+    /**
+     * Check if a date is a holiday.
+     * @param date
+     * @return true if the given date is in the holiday set.
+     */
+    boolean isHoliday(final E date);
 }
 
 /*

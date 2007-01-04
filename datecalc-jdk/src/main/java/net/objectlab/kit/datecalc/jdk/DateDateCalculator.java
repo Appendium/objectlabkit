@@ -39,6 +39,8 @@ import java.util.Set;
 
 import net.objectlab.kit.datecalc.common.AbstractDateCalculator;
 import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.DefaultHolidayCalendar;
+import net.objectlab.kit.datecalc.common.HolidayCalendar;
 import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.Utils;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
@@ -58,16 +60,29 @@ public class DateDateCalculator extends AbstractDateCalculator<Date> {
 
     @SuppressWarnings("unchecked")
     public DateDateCalculator() {
-        this(null, null, Collections.EMPTY_SET, null);
+        this(null, null, new DefaultHolidayCalendar<Date>(Collections.EMPTY_SET), null);
     }
 
+    /**
+     * @deprecated should use the constructor with HolidayCalendar.
+     * @param name
+     * @param startDate
+     * @param nonWorkingDays
+     * @param holidayHandler
+     */
+    @Deprecated
     public DateDateCalculator(final String name, final Date startDate, final Set<Date> nonWorkingDays,
             final HolidayHandler<Date> holidayHandler) {
-        super(name, nonWorkingDays, holidayHandler);
+        this(name, startDate, new DefaultHolidayCalendar<Date>(nonWorkingDays), holidayHandler);
+    }
+
+    public DateDateCalculator(final String name, final Date startDate, final HolidayCalendar<Date> holidayCalendar,
+            final HolidayHandler<Date> holidayHandler) {
+        super(name, holidayCalendar, holidayHandler);
         Date date = startDate;
         final HolidayHandler<Calendar> locDate = new HolidayHandlerDateWrapper(holidayHandler, this);
 
-        final Set<Calendar> nonWorkingCalendars = Utils.toCalendarSet(nonWorkingDays);
+        final HolidayCalendar<Calendar> nonWorkingCalendars = Utils.toHolidayCalendarSet(holidayCalendar);
         if (date == null) {
             date = getToday();
         }
@@ -85,7 +100,7 @@ public class DateDateCalculator extends AbstractDateCalculator<Date> {
     //
     // -----------------------------------------------------------------------
 
-   // TODO throw an exception if the type is incorrect
+    // TODO throw an exception if the type is incorrect
     public void setWorkingWeek(final WorkingWeek week) {
         delegate.setWorkingWeek(week);
     }
@@ -109,8 +124,8 @@ public class DateDateCalculator extends AbstractDateCalculator<Date> {
     }
 
     @Override
-    protected DateCalculator<Date> createNewCalculator(final String name, final Date startDate, final Set<Date> holidays,
-            final HolidayHandler<Date> handler) {
+    protected DateCalculator<Date> createNewCalculator(final String name, final Date startDate,
+            final HolidayCalendar<Date> holidays, final HolidayHandler<Date> handler) {
         return new DateDateCalculator(name, startDate, holidays, handler);
     }
 
@@ -134,6 +149,31 @@ public class DateDateCalculator extends AbstractDateCalculator<Date> {
         delegate.setCurrentBusinessDate(Utils.getCal(getCurrentBusinessDate()));
         setCurrentBusinessDate(delegate.moveByMonths(months).getCurrentBusinessDate().getTime());
         return this;
+    }
+
+    @Override
+    protected Date compareDate(final Date date1, final Date date2, final boolean returnEarliest) {
+        if (date1 == null || date2 == null) {
+            return null;
+        }
+        if (returnEarliest) {
+            return date1.after(date2) ? date2 : date1;
+        } else {
+            return date2.after(date1) ? date2 : date1;
+        }
+    }
+
+    @Override
+    protected void checkBoundary(final Date date) {
+        final Date early = getHolidayCalendar().getEarlyBoundary();
+        if (early != null && early.after(date)) {
+            throw new IndexOutOfBoundsException(date + " is before the early boundary " + early);
+        }
+
+        final Date late = getHolidayCalendar().getLateBoundary();
+        if (late != null && late.before(date)) {
+            throw new IndexOutOfBoundsException(date + " is after the late boundary " + late);
+        }
     }
 }
 

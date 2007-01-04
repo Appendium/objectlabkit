@@ -32,9 +32,8 @@
  */
 package net.objectlab.kit.datecalc.joda;
 
-import java.util.Set;
-
 import net.objectlab.kit.datecalc.common.AbstractModifiedPreceedingDateCalculatorTest;
+import net.objectlab.kit.datecalc.common.HolidayCalendar;
 import net.objectlab.kit.datecalc.common.KitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
@@ -48,7 +47,7 @@ public class YearMonthDayModifiedFollowingDateCalculatorTest extends AbstractMod
     }
 
     @Override
-    protected void registerHolidays(final String name, final Set<YearMonthDay> holidays) {
+    protected void registerHolidays(final String name, final HolidayCalendar<YearMonthDay> holidays) {
         YearMonthDayKitCalculatorsFactory.getDefaultInstance().registerHolidays(name, holidays);
     }
 

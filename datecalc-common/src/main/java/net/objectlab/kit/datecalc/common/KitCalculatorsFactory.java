@@ -75,7 +75,9 @@ public interface KitCalculatorsFactory<E> {
      *            the calendar name to register these holidays under.
      * @param holidays
      *            the set of holidays (non-working days).
+     * @deprecated should use the registerHolidays with HolidayCalendar
      */
+    @Deprecated
     void registerHolidays(final String name, Set<E> holidays);
 
     /**

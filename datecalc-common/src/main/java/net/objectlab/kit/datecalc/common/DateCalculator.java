@@ -121,8 +121,21 @@ public interface DateCalculator<E> {
      * 
      * @param holidays
      *            the holiday (if null, an empty set will be put in place)
+     * @deprecated should use setHolidayCalendar
      */
+    @Deprecated
     void setNonWorkingDays(final Set<E> holidays);
+
+    /**
+     * This is typically used at the construction of a DateCalculator to give a
+     * reference to a Holiday Calendar, if not the case, the calculator will 
+     * make an immutable copy of the HolidayCalendar.
+     * 
+     * @param holidays
+     *            the holiday calendar (if null, no holidays taken into account)
+     * @since 1.1.0
+     */
+    void setHolidayCalendar(final HolidayCalendar<E> calendar);
 
     // -----------------------------------------------------------------------
     //
@@ -136,8 +149,17 @@ public interface DateCalculator<E> {
      * Gives a immutable copy of the set of registered holidays.
      * 
      * @return an immutable copy of the holiday set.
+     * @deprecated use getHolidayCalendar, likely to be REMOVED next release.
      */
+    @Deprecated
     Set<E> getNonWorkingDays();
+    
+    /**
+     * Returns an immutable version of the HolidayCalendar.
+     * @return a copy of the holiday calendar
+     * @since 1.1.0
+     */
+    HolidayCalendar<E> getHolidayCalendar();
 
     /**
      * Allows user to define what their Working Week should be (default is
@@ -200,13 +222,17 @@ public interface DateCalculator<E> {
      * Allows DateCalculators to be combined into a new one, the startDate and
      * currentBusinessDate will be the ones from the existing calendar (not the
      * parameter one). The name will be combined name1+"/"+calendar.getName().
+     * If the Calendars have Early or Late boundaries, the result is the
+     * narrowest interval (e.g. the later Early boundary and the earliest
+     * Late boundary).
      * 
      * @param calculator
      *            return the same DateCalculator if calender is null or the
      *            original calendar (but why would you want to do that?)
      * @throws IllegalArgumentException
      *             if both calendars have different types of HolidayHandlers or
-     *             WorkingWeek;
+     *             WorkingWeek; Also, it is required that BOTH calendars either
+     *             have Early/Late Boundaries or none.
      */
     DateCalculator<E> combine(DateCalculator<E> calculator);
 
@@ -221,7 +247,7 @@ public interface DateCalculator<E> {
      *            the Tenor to reach.
      * @param spotLag
      *            number of days to "spot" days, this can vary from one market
-     *            to the other.
+     *            to the other. It is sometimes called "settlement interval".
      * @return the current DateCalculator
      */
     DateCalculator<E> moveByTenor(final Tenor tenor, final int spotLag);

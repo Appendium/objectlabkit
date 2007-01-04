@@ -150,7 +150,7 @@ public final class ExcelDateUtil {
      * @see java.util.TimeZone
      */
     public static Date getJavaDate(final double excelDate, final boolean use1904windowing) {
-        Calendar cal = getJavaCalendar(excelDate, use1904windowing);
+        final Calendar cal = getJavaCalendar(excelDate, use1904windowing);
         return (cal == null ? null : cal.getTime());
     }
 

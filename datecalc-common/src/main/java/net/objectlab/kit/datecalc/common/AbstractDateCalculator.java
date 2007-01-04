@@ -42,7 +42,7 @@ import java.util.Set;
  * but basically <code>Date</code> and <code>LocalDate</code> are the only
  * viable values for it for now.
  * 
- * @author Marcin Jekot
+ * @author Marcin Jekot and Benoit Xhenseval
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
  * 
@@ -62,16 +62,33 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
 
     private E currentBusinessDate;
 
-    private Set<E> nonWorkingDays;
+    private HolidayCalendar<E> holidayCalendar;
 
     private HolidayHandler<E> holidayHandler;
-    
+
     private int currentIncrement = 0;
 
-    protected AbstractDateCalculator(final String name, final Set<E> nonWorkingDays, final HolidayHandler<E> holidayHandler) {
+    protected AbstractDateCalculator(final String name, final HolidayCalendar<E> holidayCalendar,
+            final HolidayHandler<E> holidayHandler) {
         this.name = name;
-        this.nonWorkingDays = nonWorkingDays;
+        if (holidayCalendar != null) {
+            this.holidayCalendar = new ImmutableHolidayCalendar<E>(holidayCalendar);
+        } else {
+            this.holidayCalendar = new ImmutableHolidayCalendar<E>(new DefaultHolidayCalendar<E>());
+        }
         this.holidayHandler = holidayHandler;
+    }
+
+    public void setHolidayCalendar(final HolidayCalendar<E> calendar) {
+        if (calendar != null) {
+            if (calendar instanceof ImmutableHolidayCalendar) {
+                holidayCalendar = calendar;
+            } else {
+                holidayCalendar = new ImmutableHolidayCalendar<E>(calendar);
+            }
+        } else {
+            holidayCalendar = new ImmutableHolidayCalendar<E>(new DefaultHolidayCalendar<E>());
+        }
     }
 
     public String getName() {
@@ -102,15 +119,24 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         return currentBusinessDate;
     }
 
+    /**
+     * @deprecated should use getHolidayCalendar
+     */
+    @Deprecated
     public Set<E> getNonWorkingDays() {
-        return Collections.unmodifiableSet(nonWorkingDays);
+        return Collections.unmodifiableSet(holidayCalendar.getHolidays());
     }
 
+    /**
+     * @deprecated use the HolidayCalendar
+     */
+    @Deprecated
     public void setNonWorkingDays(final Set<E> holidays) {
         if (holidays == null) {
-            nonWorkingDays = Collections.emptySet();
+            final Set<E> col = Collections.emptySet();
+            holidayCalendar = new DefaultHolidayCalendar<E>(col);
         } else {
-            nonWorkingDays = holidays;
+            holidayCalendar = new DefaultHolidayCalendar<E>(holidays);
         }
     }
 
@@ -192,8 +218,18 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
      * is the given date a non working day?
      */
     public boolean isNonWorkingDay(final E date) {
-        return (isWeekend(date) || nonWorkingDays.contains(date));
+        if (date != null && (holidayCalendar.getEarlyBoundary() != null || holidayCalendar.getLateBoundary() != null)) {
+            checkBoundary(date);
+        }
+        return (isWeekend(date) || holidayCalendar.isHoliday(date));
     }
+
+    /**
+     * This may throw an {@link IndexOutOfBoundsException} if the date is not within the
+     * boundaries.
+     * @param date
+     */
+    protected abstract void checkBoundary(E date);
 
     public boolean isCurrentDateNonWorking() {
         if (currentBusinessDate == null) {
@@ -206,6 +242,9 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         currentBusinessDate = date;
         if (holidayHandler != null && date != null) {
             currentBusinessDate = holidayHandler.moveCurrentDate(this);
+        }
+        if (date != null && (holidayCalendar.getEarlyBoundary() != null || holidayCalendar.getLateBoundary() != null)) {
+            checkBoundary(date);
         }
         return currentBusinessDate;
     }
@@ -262,14 +301,30 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         }
 
         final Set<E> newSet = new HashSet<E>();
-        if (nonWorkingDays != null) {
-            newSet.addAll(nonWorkingDays);
-        }
-        if (calculator.getNonWorkingDays() != null) {
-            newSet.addAll(calculator.getNonWorkingDays());
+        if (holidayCalendar != null) {
+            newSet.addAll(holidayCalendar.getHolidays());
         }
 
-        final DateCalculator<E> cal = createNewCalculator(getName() + "/" + calculator.getName(), getStartDate(), newSet,
+        final HolidayCalendar<E> calendarToCombine = calculator.getHolidayCalendar();
+        if (calendarToCombine.getEarlyBoundary() != null && holidayCalendar.getEarlyBoundary() == null
+                || calendarToCombine.getEarlyBoundary() == null && holidayCalendar.getEarlyBoundary() != null) {
+            throw new IllegalArgumentException("Both Calendar to be combined must either have each Early boundaries or None.");
+        }
+
+        if (calendarToCombine.getLateBoundary() != null && holidayCalendar.getLateBoundary() == null
+                || calendarToCombine.getLateBoundary() == null && holidayCalendar.getLateBoundary() != null) {
+            throw new IllegalArgumentException("Both Calendar to be combined must either have each Late boundaries or None.");
+        }
+
+        if (calendarToCombine.getHolidays() != null) {
+            newSet.addAll(calendarToCombine.getHolidays());
+        }
+
+        final HolidayCalendar<E> newCal = new DefaultHolidayCalendar<E>(newSet, compareDate(holidayCalendar.getEarlyBoundary(),
+                calendarToCombine.getEarlyBoundary(), false), compareDate(holidayCalendar.getLateBoundary(), calendarToCombine
+                .getLateBoundary(), true));
+
+        final DateCalculator<E> cal = createNewCalculator(getName() + "/" + calculator.getName(), getStartDate(), newCal,
                 holidayHandler);
 
         return cal;
@@ -277,7 +332,9 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
 
     protected abstract E getToday();
 
-    protected abstract DateCalculator<E> createNewCalculator(String calcName, E theStartDate, Set<E> holidays,
+    protected abstract E compareDate(E date1, E date2, boolean returnEarliest);
+
+    protected abstract DateCalculator<E> createNewCalculator(String calcName, E theStartDate, HolidayCalendar<E> holidays,
             HolidayHandler<E> handler);
 
     /**
@@ -290,8 +347,15 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     /**
      * @param currentIncrement The currentIncrement to set.
      */
-    public void setCurrentIncrement(int currentIncrement) {
+    public void setCurrentIncrement(final int currentIncrement) {
         this.currentIncrement = currentIncrement;
+    }
+
+    /**
+     * @return Returns the holidayCalendar.
+     */
+    public HolidayCalendar<E> getHolidayCalendar() {
+        return holidayCalendar;
     }
 }
 

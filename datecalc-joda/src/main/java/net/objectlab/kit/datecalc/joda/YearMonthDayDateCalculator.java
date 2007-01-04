@@ -38,6 +38,8 @@ import java.util.Set;
 
 import net.objectlab.kit.datecalc.common.AbstractDateCalculator;
 import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.DefaultHolidayCalendar;
+import net.objectlab.kit.datecalc.common.HolidayCalendar;
 import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
@@ -60,21 +62,39 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
 
     @SuppressWarnings("unchecked")
     public YearMonthDayDateCalculator() {
-        this(null, null, Collections.EMPTY_SET, null);
+        this(null, null, new DefaultHolidayCalendar<YearMonthDay>(Collections.EMPTY_SET), null);
     }
 
+    /**
+     * @deprecated should use the constructor with HolidayCalendar.
+     * @param name
+     * @param startDate
+     * @param nonWorkingDays
+     * @param holidayHandler
+     */
+    @Deprecated
     public YearMonthDayDateCalculator(final String name, final YearMonthDay startDate, final Set<YearMonthDay> nonWorkingDays,
             final HolidayHandler<YearMonthDay> holidayHandler) {
+        this(name, startDate, new DefaultHolidayCalendar<YearMonthDay>(nonWorkingDays), holidayHandler);
+    }
+
+    public YearMonthDayDateCalculator(final String name, final YearMonthDay startDate,
+            final HolidayCalendar<YearMonthDay> nonWorkingDays, final HolidayHandler<YearMonthDay> holidayHandler) {
         super(name, nonWorkingDays, holidayHandler);
 
         final Set<LocalDate> dates = new HashSet<LocalDate>();
-        for (final YearMonthDay d : nonWorkingDays) {
+        for (final YearMonthDay d : nonWorkingDays.getHolidays()) {
             dates.add(d.toLocalDate());
         }
 
+        final YearMonthDay early = nonWorkingDays.getEarlyBoundary();
+        final YearMonthDay late = nonWorkingDays.getLateBoundary();
+        final DefaultHolidayCalendar<LocalDate> cal = new DefaultHolidayCalendar<LocalDate>(dates, early != null ? new LocalDate(
+                early) : null, late != null ? new LocalDate(late) : null);
+
         final HolidayHandler<LocalDate> locDate = new HolidayHandlerYearMonthDayWrapper(holidayHandler, this);
 
-        delegate = new LocalDateCalculator(name, (startDate != null ? startDate.toLocalDate() : null), dates, locDate);
+        delegate = new LocalDateCalculator(name, (startDate != null ? startDate.toLocalDate() : null), cal, locDate);
         setStartDate(startDate);
     }
 
@@ -111,7 +131,7 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
 
     @Override
     protected DateCalculator<YearMonthDay> createNewCalculator(final String name, final YearMonthDay startDate,
-            final Set<YearMonthDay> holidays, final HolidayHandler<YearMonthDay> handler) {
+            final HolidayCalendar<YearMonthDay> holidays, final HolidayHandler<YearMonthDay> handler) {
         return new YearMonthDayDateCalculator(name, startDate, holidays, handler);
     }
 
@@ -135,6 +155,31 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
         delegate.setCurrentBusinessDate(getCurrentBusinessDate().toLocalDate());
         setCurrentBusinessDate(new YearMonthDay(delegate.moveByMonths(months).getCurrentBusinessDate()));
         return this;
+    }
+
+    @Override
+    protected YearMonthDay compareDate(final YearMonthDay date1, final YearMonthDay date2, final boolean returnEarliest) {
+        if (date1 == null || date2 == null) {
+            return null;
+        }
+        if (returnEarliest) {
+            return date1.isAfter(date2) ? date2 : date1;
+        } else {
+            return date2.isAfter(date1) ? date2 : date1;
+        }
+    }
+
+    @Override
+    protected void checkBoundary(final YearMonthDay date) {
+        final YearMonthDay early = getHolidayCalendar().getEarlyBoundary();
+        if (early != null && early.isAfter(date)) {
+            throw new IndexOutOfBoundsException(date + " is before the early boundary " + early);
+        }
+
+        final YearMonthDay late = getHolidayCalendar().getLateBoundary();
+        if (late != null && late.isBefore(date)) {
+            throw new IndexOutOfBoundsException(date + " is after the late boundary " + late);
+        }
     }
 }
 

@@ -32,6 +32,9 @@
  */
 package net.objectlab.kit.datecalc.common;
 
+import java.util.Collections;
+import java.util.Set;
+
 import junit.framework.Assert;
 
 public abstract class AbstractDateCalculatorCombinationTest<E> extends AbstractDateTestCase<E> {
@@ -81,8 +84,13 @@ public abstract class AbstractDateCalculatorCombinationTest<E> extends AbstractD
     // -----------------------------------------------------------------------
 
     public void testValidCombinationOneEmptySet() {
-        registerHolidays("UK", createUKHolidays());
+        registerHolidays("UK", createUKHolidayCalendar());
         final DateCalculator<E> cal1 = newDateCalculator("bla", HolidayHandlerType.FORWARD);
+
+        // we MUST provide a set with boundaries.
+        Set<E> emptySet = Collections.emptySet();
+        final HolidayCalendar<E> hol = new DefaultHolidayCalendar<E>(emptySet, newDate("2006-01-01"), newDate("2020-12-31"));
+        cal1.setHolidayCalendar(hol);
 
         final E localDate = newDate("2006-08-08");
         cal1.setStartDate(localDate);
@@ -93,12 +101,12 @@ public abstract class AbstractDateCalculatorCombinationTest<E> extends AbstractD
         Assert.assertEquals("Combo type", HolidayHandlerType.FORWARD, combo.getHolidayHandlerType());
         Assert.assertEquals("start", localDate, combo.getStartDate());
         Assert.assertEquals("currentDate", localDate, combo.getCurrentBusinessDate());
-        Assert.assertEquals("Holidays", 4, combo.getNonWorkingDays().size());
+        Assert.assertEquals("Holidays", 4, combo.getHolidayCalendar().getHolidays().size());
     }
 
     public void testValidCombination() {
-        registerHolidays("UK", createUKHolidays());
-        registerHolidays("UK", createUKHolidays());
+        registerHolidays("UK", createUKHolidayCalendar());
+        registerHolidays("UK", createUKHolidayCalendar());
         final DateCalculator<E> cal1 = newDateCalculator("UK", HolidayHandlerType.FORWARD);
         final E localDate = newDate("2006-08-08");
         cal1.setStartDate(localDate);
@@ -109,12 +117,14 @@ public abstract class AbstractDateCalculatorCombinationTest<E> extends AbstractD
         Assert.assertEquals("Combo type", HolidayHandlerType.FORWARD, combo.getHolidayHandlerType());
         Assert.assertEquals("start", localDate, combo.getStartDate());
         Assert.assertEquals("currentDate", localDate, combo.getCurrentBusinessDate());
-        Assert.assertEquals("Holidays", 4, combo.getNonWorkingDays().size());
+        Assert.assertEquals("Holidays", 4, combo.getHolidayCalendar().getHolidays().size());
+        Assert.assertEquals("Early Boundary", newDate("2006-01-01"), combo.getHolidayCalendar().getEarlyBoundary());
+        Assert.assertEquals("Late Boundary", newDate("2020-12-31"), combo.getHolidayCalendar().getLateBoundary());
     }
 
     public void testValidCombination2Sets() {
-        registerHolidays("UK", createUKHolidays());
-        registerHolidays("US", createUSHolidays());
+        registerHolidays("UK", createUKHolidayCalendar());
+        registerHolidays("US", createUSHolidayCalendar());
         final DateCalculator<E> cal1 = newDateCalculator("US", HolidayHandlerType.FORWARD);
         final E localDate = newDate("2006-08-08");
         cal1.setStartDate(localDate);
@@ -125,11 +135,13 @@ public abstract class AbstractDateCalculatorCombinationTest<E> extends AbstractD
         Assert.assertEquals("Combo type", HolidayHandlerType.FORWARD, combo.getHolidayHandlerType());
         Assert.assertEquals("start", localDate, combo.getStartDate());
         Assert.assertEquals("currentDate", localDate, combo.getCurrentBusinessDate());
-        Assert.assertEquals("Holidays", 6, combo.getNonWorkingDays().size());
+        Assert.assertEquals("Holidays", 6, combo.getHolidayCalendar().getHolidays().size());
+        Assert.assertEquals("Early Boundary", newDate("2006-01-01"), combo.getHolidayCalendar().getEarlyBoundary());
+        Assert.assertEquals("Late Boundary", newDate("2007-12-31"), combo.getHolidayCalendar().getLateBoundary());
     }
 
     public void testNullCombination() {
-        registerHolidays("US", createUSHolidays());
+        registerHolidays("US", createUSHolidayCalendar());
         final DateCalculator<E> cal1 = newDateCalculator("US", HolidayHandlerType.FORWARD);
         final E localDate = newDate("2006-08-08");
         cal1.setStartDate(localDate);
@@ -140,11 +152,11 @@ public abstract class AbstractDateCalculatorCombinationTest<E> extends AbstractD
         Assert.assertEquals("Combo type", HolidayHandlerType.FORWARD, combo.getHolidayHandlerType());
         Assert.assertEquals("start", localDate, combo.getStartDate());
         Assert.assertEquals("currentDate", localDate, combo.getCurrentBusinessDate());
-        Assert.assertEquals("Holidays", 3, combo.getNonWorkingDays().size());
+        Assert.assertEquals("Holidays", 3, combo.getHolidayCalendar().getHolidays().size());
     }
 
     public void testSameCombination() {
-        registerHolidays("US", createUSHolidays());
+        registerHolidays("US", createUSHolidayCalendar());
         final DateCalculator<E> cal1 = newDateCalculator("US", HolidayHandlerType.FORWARD);
         final E localDate = newDate("2006-08-08");
         cal1.setStartDate(localDate);
@@ -155,7 +167,105 @@ public abstract class AbstractDateCalculatorCombinationTest<E> extends AbstractD
         Assert.assertEquals("Combo type", HolidayHandlerType.FORWARD, combo.getHolidayHandlerType());
         Assert.assertEquals("start", localDate, combo.getStartDate());
         Assert.assertEquals("currentDate", localDate, combo.getCurrentBusinessDate());
-        Assert.assertEquals("Holidays", 3, combo.getNonWorkingDays().size());
+        Assert.assertEquals("Holidays", 3, combo.getHolidayCalendar().getHolidays().size());
+        Assert.assertEquals("Early Boundary", newDate("2005-01-01"), combo.getHolidayCalendar().getEarlyBoundary());
+        Assert.assertEquals("Late Boundary", newDate("2007-12-31"), combo.getHolidayCalendar().getLateBoundary());
+    }
+
+    public void testInvalidEarlyBoundary() {
+        checkInvalidEarlyBoundary(HolidayHandlerType.FORWARD);
+        checkInvalidEarlyBoundary(HolidayHandlerType.BACKWARD);
+        checkInvalidEarlyBoundary(HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
+        checkInvalidEarlyBoundary(HolidayHandlerType.MODIFIED_FOLLOWING);
+        checkInvalidEarlyBoundary(HolidayHandlerType.MODIFIED_PRECEEDING);
+    }
+
+    public void checkInvalidEarlyBoundary(final String type) {
+        registerHolidays("US", createUSHolidayCalendar());
+        final DateCalculator<E> cal1 = newDateCalculator("US", type);
+        final E localDate = newDate("2006-08-08");
+        cal1.setStartDate(localDate);
+
+        final DateCalculator<E> cal2 = newDateCalculator("BLA", type);
+        cal1.setStartDate(localDate);
+
+        try {
+            cal2.combine(cal1);
+            fail("Combination should have thrown an exception because of boundary");
+        } catch (IllegalArgumentException e) {
+            // all ok
+        }
+
+        try {
+            cal1.combine(cal2);
+            fail("Combination should have thrown an exception because of boundary");
+        } catch (IllegalArgumentException e) {
+            // all ok
+        }
+    }
+
+    public void testInvalidLateBoundary() {
+        checkInvalidLateBoundary(HolidayHandlerType.FORWARD);
+        checkInvalidLateBoundary(HolidayHandlerType.BACKWARD);
+        checkInvalidLateBoundary(HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
+        checkInvalidLateBoundary(HolidayHandlerType.MODIFIED_FOLLOWING);
+        checkInvalidLateBoundary(HolidayHandlerType.MODIFIED_PRECEEDING);
+    }
+
+    public void checkInvalidLateBoundary(final String type) {
+        registerHolidays("US", createUSHolidayCalendar());
+        final DateCalculator<E> cal1 = newDateCalculator("US", type);
+        final E localDate = newDate("2006-08-08");
+        cal1.setStartDate(localDate);
+
+        final DateCalculator<E> cal2 = newDateCalculator("BLA", type);
+        // we MUST provide a set with boundaries.
+        Set<E> emptySet = Collections.emptySet();
+        final HolidayCalendar<E> hol = new DefaultHolidayCalendar<E>(emptySet, newDate("2006-01-01"), null);
+        cal2.setHolidayCalendar(hol);
+        cal2.setStartDate(localDate);
+
+        try {
+            cal2.combine(cal1);
+            fail("Combination should have thrown an exception because of boundary");
+        } catch (IllegalArgumentException e) {
+            // all ok
+        }
+
+        try {
+            cal1.combine(cal2);
+            fail("Combination should have thrown an exception because of boundary");
+        } catch (IllegalArgumentException e) {
+            // all ok
+        }
+    }
+
+    public void testInvalidExplicitEarlyBoundary() {
+        registerHolidays("US", createUSHolidayCalendar());
+        final DateCalculator<E> cal1 = newDateCalculator("US", HolidayHandlerType.FORWARD);
+        final E localDate = newDate("2006-08-08");
+        cal1.setStartDate(localDate);
+
+        final DateCalculator<E> cal2 = newDateCalculator("BLA", HolidayHandlerType.FORWARD);
+        // we MUST provide a set with boundaries.
+        Set<E> emptySet = Collections.emptySet();
+        final HolidayCalendar<E> hol = new DefaultHolidayCalendar<E>(emptySet, null, newDate("2006-12-31"));
+        cal2.setHolidayCalendar(hol);
+        cal2.setStartDate(localDate);
+
+        try {
+            cal2.combine(cal1);
+            fail("Combination should have thrown an exception because of boundary");
+        } catch (IllegalArgumentException e) {
+            // all ok
+        }
+
+        try {
+            cal1.combine(cal2);
+            fail("Combination should have thrown an exception because of boundary");
+        } catch (IllegalArgumentException e) {
+            // all ok
+        }
     }
 }
 

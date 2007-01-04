@@ -63,9 +63,6 @@ public class LocalDateForwardUnlessNegativeHandler implements HolidayHandler<Loc
 
     protected LocalDate move(final DateCalculator<LocalDate> calculator, final int step) {
         LocalDate date = calculator.getCurrentBusinessDate();
-        if (calculator.getCurrentIncrement()<0) {
-        System.err.println(calculator.getCurrentBusinessDate()+" increment "+calculator.getCurrentIncrement()+ " step "+step);
-        }
         while (calculator.isNonWorkingDay(date)) {
             if (calculator.getCurrentIncrement() < 0) {
                 // act as a Backward calendar
@@ -74,9 +71,6 @@ public class LocalDateForwardUnlessNegativeHandler implements HolidayHandler<Loc
                 // move forward by a day!
                 date = date.plusDays(step);
             }
-            if (calculator.getCurrentIncrement()<0) {
-                System.err.println("CAlc "+date);
-                }
         }
         return date;
     }
