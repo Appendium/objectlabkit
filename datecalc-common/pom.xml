@@ -16,12 +16,12 @@
    <parent>
       <groupId>net.objectlab.kit.datecalc</groupId>
       <artifactId>datecalc</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>1.1-SNAPSHOT</version>
    </parent>
 
    <artifactId>datecalc-common</artifactId>
    <packaging>jar</packaging>
    <name>DateCalc commons</name>
-   <description>Common Date Calculator methods</description>
+   <description>Common Date Calculator Code</description>
 
 </project>
