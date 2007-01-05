@@ -32,7 +32,10 @@
  */
 package net.objectlab.kit.datecalc.common;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
+import java.util.List;
 
 import junit.framework.Assert;
 
@@ -372,6 +375,87 @@ public abstract class AbstractForwardUnlessNegativeCalculatorTest<E> extends Abs
         checkMoveByTenor("2006-08-25", StandardTenor.OVERNIGHT, 2, "2006-08-29", HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
         checkMoveByTenor("2006-08-31", StandardTenor.OVERNIGHT, 2, "2006-09-01", HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
         checkMoveByTenor("2006-08-28", StandardTenor.OVERNIGHT, 2, "2006-08-30", HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
+    }
+
+
+    public void testCalculateTenorsZeroDaysToSpot() {
+        List<Tenor> list = new ArrayList<Tenor>();
+        list.add(StandardTenor.OVERNIGHT);
+        list.add(StandardTenor.SPOT);
+        list.add(StandardTenor.T_1D);
+        list.add(StandardTenor.T_2D);
+        list.add(StandardTenor.T_1W);
+        list.add(StandardTenor.T_1M);
+        list.add(StandardTenor.T_2M);
+        list.add(StandardTenor.T_3M);
+        list.add(StandardTenor.T_6M);
+        list.add(StandardTenor.T_9M);
+        list.add(StandardTenor.T_1Y);
+
+        final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
+        cal.setHolidayCalendar(createUKHolidayCalendar());
+        String startDate = "2006-08-24";
+        cal.setStartDate(newDate(startDate));
+        List<E> expectedResults = new ArrayList<E>();
+        expectedResults.add(newDate("2006-08-25")); // ON
+        expectedResults.add(newDate("2006-08-24")); // SPOT
+        expectedResults.add(newDate("2006-08-25")); // 1D
+        expectedResults.add(newDate("2006-08-29")); // 2D
+        expectedResults.add(newDate("2006-08-31")); // 1W
+        expectedResults.add(newDate("2006-09-25")); // 1M
+        expectedResults.add(newDate("2006-10-24")); // 2M
+        expectedResults.add(newDate("2006-11-24")); // 3M
+        expectedResults.add(newDate("2007-02-26")); // 6M
+        expectedResults.add(newDate("2007-05-24")); // 9M
+        expectedResults.add(newDate("2007-08-24")); // 1Y
+
+        List<E> results = cal.calculateTenorDates(list);
+        assertEquals("Same size as tenor", list.size(), results.size());
+        Iterator<E> it = results.iterator();
+        Iterator<E> expected = expectedResults.iterator();
+        for (Tenor tenor : list) {
+            assertEquals("Move start:" + startDate + " tenor:" + tenor, expected.next(), it.next());
+        }
+    }
+
+    public void testCalculateTenorsTwoDaysToSpot() {
+        List<Tenor> list = new ArrayList<Tenor>();
+        list.add(StandardTenor.OVERNIGHT);
+        list.add(StandardTenor.SPOT);
+        list.add(StandardTenor.T_1D);
+        list.add(StandardTenor.T_2D);
+        list.add(StandardTenor.T_1W);
+        list.add(StandardTenor.T_1M);
+        list.add(StandardTenor.T_2M);
+        list.add(StandardTenor.T_3M);
+        list.add(StandardTenor.T_6M);
+        list.add(StandardTenor.T_9M);
+        list.add(StandardTenor.T_1Y);
+
+        final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
+        cal.setHolidayCalendar(createUKHolidayCalendar());
+        String startDate = "2006-08-24";
+        cal.setStartDate(newDate(startDate));
+        List<E> expectedResults = new ArrayList<E>();
+        expectedResults.add(newDate("2006-08-25")); // ON
+        expectedResults.add(newDate("2006-08-29")); // SPOT
+        expectedResults.add(newDate("2006-08-30")); // 1D
+        expectedResults.add(newDate("2006-08-31")); // 2D
+        expectedResults.add(newDate("2006-09-05")); // 1W
+        expectedResults.add(newDate("2006-09-29")); // 1M
+        expectedResults.add(newDate("2006-10-30")); // 2M
+        expectedResults.add(newDate("2006-11-29")); // 3M
+        expectedResults.add(newDate("2007-02-28")); // 6M - is this correct?
+        expectedResults.add(newDate("2007-05-29")); // 9M
+        expectedResults.add(newDate("2007-08-29")); // 1Y
+
+        List<E> results = cal.calculateTenorDates(list, 2);
+        assertEquals("Same size as tenor", list.size(), results.size());
+        Iterator<E> it = results.iterator();
+        Iterator<E> expected = expectedResults.iterator();
+        for (Tenor tenor : list) {
+            assertEquals("Move start:" + startDate + " tenor:" + tenor, expected.next(), it.next());
+        }
     }
 }
 
