@@ -8,7 +8,7 @@
    <artifactId>datecalc</artifactId>
    <packaging>pom</packaging>
    <name>ObjectLab Kit</name>
-   <version>1.0-SNAPSHOT</version>
+   <version>1.1-SNAPSHOT</version>
    <url>http://objectlabkit.sourceforge.net/</url>
    <description>
       ObjectLab Kit provides a generic Business Calendar for calculating dates given set(s) of holidays. Why
