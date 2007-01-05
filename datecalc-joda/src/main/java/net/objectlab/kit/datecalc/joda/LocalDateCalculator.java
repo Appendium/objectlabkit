@@ -171,6 +171,11 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
             throw new IndexOutOfBoundsException(date + " is after the late boundary " + late);
         }
     }
+
+    @Override
+    protected LocalDate clone(LocalDate date) {
+        return date;
+    }
 }
 
 /*

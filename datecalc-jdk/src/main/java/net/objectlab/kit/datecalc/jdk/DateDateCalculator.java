@@ -175,6 +175,11 @@ public class DateDateCalculator extends AbstractDateCalculator<Date> {
             throw new IndexOutOfBoundsException(date + " is after the late boundary " + late);
         }
     }
+
+    @Override
+    protected Date clone(Date date) {
+        return new Date(date.getTime());
+    }
 }
 
 /*

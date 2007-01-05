@@ -129,6 +129,23 @@ public abstract class AbstractDateTestCase<E> extends TestCase {
         checkDate("Move start:" + startDate + " tenor:" + tenor + " daysToSpot:" + spotLag, cal.moveByTenor(tenor, spotLag),
                 expectedDate);
     }
+
+    /**
+     * Based on UK Holidays for Aug 2006.
+     * 
+     * @param startDate
+     * @param tenor
+     * @param spotLag
+     * @param expectedDate
+     * @param holidayHandlerType
+     */
+    protected void checkMoveByTenor(final String startDate, final Tenor tenor, final String expectedDate,
+            final String holidayHandlerType) {
+        final DateCalculator<E> cal = newDateCalculator("bla", holidayHandlerType);
+        cal.setHolidayCalendar(createUKHolidayCalendar());
+        cal.setStartDate(newDate(startDate));
+        checkDate("Move start:" + startDate + " tenor:" + tenor, cal.moveByTenor(tenor), expectedDate);
+    }
 }
 
 /*

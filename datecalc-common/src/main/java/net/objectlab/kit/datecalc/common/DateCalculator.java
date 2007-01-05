@@ -32,6 +32,7 @@
  */
 package net.objectlab.kit.datecalc.common;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -247,10 +248,40 @@ public interface DateCalculator<E> {
      *            the Tenor to reach.
      * @param spotLag
      *            number of days to "spot" days, this can vary from one market
-     *            to the other. It is sometimes called "settlement interval".
+     *            to the other. It is sometimes called "settlement interval"
+     *            or "offset".
      * @return the current DateCalculator
      */
     DateCalculator<E> moveByTenor(final Tenor tenor, final int spotLag);
+
+    /**
+     * Move the current date by a given tenor, please note that all tenors are
+     * relative to the CURRENT day (and NOT from spot).
+     * 
+     * @param tenor
+     *            the Tenor to reach.
+     * @return the current DateCalculator
+     * @since 1.1.0
+     */
+    DateCalculator<E> moveByTenor(final Tenor tenor);
+    
+    /**
+     * Calculate a series of Tenor codes in one go based on current day, 
+     * this does NOT change the current business date.
+     * 
+     * @return list of dates in same order as tenors.
+     * @since 1.1.0
+     */
+    List<E> calculateTenorDates(final List<Tenor> tenors);
+    
+    /**
+     * Calculate a series of Tenor codes in one go based on SPOT day (calculated
+     * with the spot lag), this does NOT change the current business date.
+     * 
+     * @return list of dates in same order as tenors.
+     * @since 1.1.0
+     */
+    List<E> calculateTenorDates(final List<Tenor> tenors, final int spotLag);
     
     /**
      * return the current increment in the calculator, this is used by the 
