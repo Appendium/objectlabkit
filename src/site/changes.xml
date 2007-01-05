@@ -9,6 +9,8 @@
   </properties>
   <body>
     <release version="1.1.0" date="in SVN" description="Maintenance">
+      <action dev="benoitx" type="add">Added method calculateTenorDates with/without a spot lag to enable calculation of a series of Tenor dates without changing the current business date in the calculator.</action>
+      <action dev="benoitx" type="add">Added method moveByTenor without a spot lag to allow tenor calculation based on the CURRENT date and not the spot lag.</action>
       <action dev="benoitx" type="add" issue="1575498" due-to="Paul Hill">Valid Range via HolidayCalendar.  HolidayCalendar should replace the simple Set&lt;E&gt; of dates
       for holidays.  A HolidayCalendar MAY contain an eraly and late boundary, if the calculation break a boundary, an exception is thrown, if there are no
       boundaries no exception would be thrown. This would ensure that calculations are not going outside the valid set of holidays.</action>

@@ -32,6 +32,10 @@
  */
 package net.objectlab.kit.datecalc.common;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * A series of Standard Tenors used by the financial industry.
  * 
@@ -43,7 +47,9 @@ package net.objectlab.kit.datecalc.common;
 public final class StandardTenor {
     private StandardTenor() {
     }
-
+    
+    private static final List<Tenor> ALL;
+    
     public static final Tenor SPOT = new Tenor(0, TenorCode.SPOT);
 
     public static final Tenor OVERNIGHT = new Tenor(0, TenorCode.OVERNIGHT);
@@ -93,6 +99,36 @@ public final class StandardTenor {
     public static final Tenor T_30Y = new Tenor(30, TenorCode.YEAR);
 
     public static final Tenor T_50Y = new Tenor(50, TenorCode.YEAR);
+    
+    public static List<Tenor> getAll() {
+        return ALL;
+    }
+
+    static {
+        List<Tenor> list = new ArrayList<Tenor>();
+        list.add(OVERNIGHT);
+        list.add(SPOT);
+        list.add(T_1D);
+        list.add(T_2D);
+        list.add(T_1W);
+        list.add(T_1M);
+        list.add(T_2M);
+        list.add(T_3M);
+        list.add(T_6M);
+        list.add(T_6M);
+        list.add(T_9M);
+        list.add(T_1Y);
+        list.add(T_2Y);
+        list.add(T_3Y);
+        list.add(T_4Y);
+        list.add(T_5Y);
+        list.add(T_7Y);
+        list.add(T_10Y);
+        list.add(T_20Y);
+        list.add(T_30Y);
+        list.add(T_50Y);
+        ALL = Collections.unmodifiableList(list);
+    }
 }
 
 /*

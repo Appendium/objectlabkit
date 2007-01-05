@@ -32,7 +32,10 @@
  */
 package net.objectlab.kit.datecalc.common;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
+import java.util.List;
 
 import junit.framework.Assert;
 
@@ -231,7 +234,7 @@ public abstract class AbstractForwardDateCalculatorTest<E> extends AbstractDateT
 
     }
 
-    public void testMoveByTenorDays() {
+    public void testMoveByTenorDaysZeroDayToSpot() {
         checkMoveByTenor("2006-08-08", StandardTenor.T_1D, 0, "2006-08-09", HolidayHandlerType.FORWARD);
         checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.DAY), 0, "2006-08-10", HolidayHandlerType.FORWARD);
         checkMoveByTenor("2006-08-08", new Tenor(10, TenorCode.DAY), 0, "2006-08-18", HolidayHandlerType.FORWARD);
@@ -239,6 +242,14 @@ public abstract class AbstractForwardDateCalculatorTest<E> extends AbstractDateT
         checkMoveByTenor("2006-08-08", new Tenor(12, TenorCode.DAY), 0, "2006-08-21", HolidayHandlerType.FORWARD);
         checkMoveByTenor("2006-08-08", new Tenor(13, TenorCode.DAY), 0, "2006-08-21", HolidayHandlerType.FORWARD);
         checkMoveByTenor("2006-09-26", new Tenor(4, TenorCode.DAY), 0, "2006-10-02", HolidayHandlerType.FORWARD);
+
+        checkMoveByTenor("2006-08-08", StandardTenor.T_1D, 0, "2006-08-09", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.DAY), "2006-08-10", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-08-08", new Tenor(10, TenorCode.DAY), "2006-08-18", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-08-08", new Tenor(11, TenorCode.DAY), "2006-08-21", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-08-08", new Tenor(12, TenorCode.DAY), "2006-08-21", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-08-08", new Tenor(13, TenorCode.DAY), "2006-08-21", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-09-26", new Tenor(4, TenorCode.DAY), "2006-10-02", HolidayHandlerType.FORWARD);
     }
 
     public void testMoveByTenorDaysOneDayToSpot() {
@@ -259,10 +270,14 @@ public abstract class AbstractForwardDateCalculatorTest<E> extends AbstractDateT
         checkMoveByTenor("2006-08-07", new Tenor(13, TenorCode.DAY), 2, "2006-08-22", HolidayHandlerType.FORWARD);
     }
 
-    public void testMoveByTenorWeek() {
+    public void testMoveByTenorWeekZeroDayToSpot() {
         checkMoveByTenor("2006-08-08", StandardTenor.T_1W, 0, "2006-08-15", HolidayHandlerType.FORWARD);
         checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.WEEK), 0, "2006-08-22", HolidayHandlerType.FORWARD);
         checkMoveByTenor("2006-08-08", new Tenor(4, TenorCode.WEEK), 0, "2006-09-05", HolidayHandlerType.FORWARD);
+
+        checkMoveByTenor("2006-08-08", StandardTenor.T_1W, "2006-08-15", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.WEEK), "2006-08-22", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-08-08", new Tenor(4, TenorCode.WEEK), "2006-09-05", HolidayHandlerType.FORWARD);
     }
 
     public void testMoveByTenorWeekOneDayToSpot() {
@@ -277,7 +292,7 @@ public abstract class AbstractForwardDateCalculatorTest<E> extends AbstractDateT
         checkMoveByTenor("2006-08-08", new Tenor(4, TenorCode.WEEK), 2, "2006-09-07", HolidayHandlerType.FORWARD);
     }
 
-    public void testMoveByTenorMonth() {
+    public void testMoveByTenorMonthZeroDayToSpot() {
         checkMoveByTenor("2006-08-31", StandardTenor.T_1M, 0, "2006-10-02", HolidayHandlerType.FORWARD);
         checkMoveByTenor("2006-08-31", StandardTenor.T_2M, 0, "2006-10-31", HolidayHandlerType.FORWARD);
         checkMoveByTenor("2006-01-31", StandardTenor.T_1M, 0, "2006-02-28", HolidayHandlerType.FORWARD);
@@ -287,6 +302,16 @@ public abstract class AbstractForwardDateCalculatorTest<E> extends AbstractDateT
         checkMoveByTenor("2006-08-09", StandardTenor.T_1M, 0, "2006-09-11", HolidayHandlerType.FORWARD);
         checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.MONTH), 0, "2006-10-09", HolidayHandlerType.FORWARD);
         checkMoveByTenor("2006-08-08", new Tenor(5, TenorCode.MONTH), 0, "2007-01-08", HolidayHandlerType.FORWARD);
+
+        checkMoveByTenor("2006-08-31", StandardTenor.T_1M, "2006-10-02", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-08-31", StandardTenor.T_2M, "2006-10-31", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-01-31", StandardTenor.T_1M, "2006-02-28", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2008-01-31", StandardTenor.T_1M, "2008-02-29", HolidayHandlerType.FORWARD);
+
+        checkMoveByTenor("2006-08-08", StandardTenor.T_1M, "2006-09-08", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-08-09", StandardTenor.T_1M, "2006-09-11", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-08-08", new Tenor(2, TenorCode.MONTH), "2006-10-09", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-08-08", new Tenor(5, TenorCode.MONTH), "2007-01-08", HolidayHandlerType.FORWARD);
     }
 
     public void testMoveByTenorMonthOneDayToSpot() {
@@ -313,11 +338,16 @@ public abstract class AbstractForwardDateCalculatorTest<E> extends AbstractDateT
         checkMoveByTenor("2006-08-08", new Tenor(5, TenorCode.MONTH), 2, "2007-01-10", HolidayHandlerType.FORWARD);
     }
 
-    public void testMoveByTenorYear() {
+    public void testMoveByTenorYearZeroDayToSpot() {
         checkMoveByTenor("2006-08-31", StandardTenor.T_1Y, 0, "2007-08-31", HolidayHandlerType.FORWARD);
         checkMoveByTenor("2006-08-31", StandardTenor.T_2Y, 0, "2008-09-01", HolidayHandlerType.FORWARD);
         checkMoveByTenor("2008-02-29", StandardTenor.T_1Y, 0, "2009-03-02", HolidayHandlerType.FORWARD);
         checkMoveByTenor("2008-02-29", StandardTenor.T_4Y, 0, "2012-02-29", HolidayHandlerType.FORWARD);
+
+        checkMoveByTenor("2006-08-31", StandardTenor.T_1Y, "2007-08-31", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-08-31", StandardTenor.T_2Y, "2008-09-01", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2008-02-29", StandardTenor.T_1Y, "2009-03-02", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2008-02-29", StandardTenor.T_4Y, "2012-02-29", HolidayHandlerType.FORWARD);
     }
 
     public void testMoveByTenorYearOneDayToSpot() {
@@ -334,10 +364,14 @@ public abstract class AbstractForwardDateCalculatorTest<E> extends AbstractDateT
         checkMoveByTenor("2008-02-29", StandardTenor.T_4Y, 2, "2012-03-05", HolidayHandlerType.FORWARD);
     }
 
-    public void testMoveByTenorSpot() {
+    public void testMoveByTenorSpotZeroDayToSpot() {
         checkMoveByTenor("2006-08-31", StandardTenor.SPOT, 0, "2006-08-31", HolidayHandlerType.FORWARD);
         checkMoveByTenor("2006-08-28", StandardTenor.SPOT, 0, "2006-08-29", HolidayHandlerType.FORWARD);
         checkMoveByTenor("2006-08-25", StandardTenor.SPOT, 0, "2006-08-25", HolidayHandlerType.FORWARD);
+
+        checkMoveByTenor("2006-08-31", StandardTenor.SPOT, "2006-08-31", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-08-28", StandardTenor.SPOT, "2006-08-29", HolidayHandlerType.FORWARD);
+        checkMoveByTenor("2006-08-25", StandardTenor.SPOT, "2006-08-25", HolidayHandlerType.FORWARD);
     }
 
     public void testMoveByTenorSpotOneDayToSpot() {
@@ -371,6 +405,86 @@ public abstract class AbstractForwardDateCalculatorTest<E> extends AbstractDateT
         checkMoveByTenor("2006-08-25", StandardTenor.OVERNIGHT, 2, "2006-08-29", HolidayHandlerType.FORWARD);
         checkMoveByTenor("2006-08-31", StandardTenor.OVERNIGHT, 2, "2006-09-01", HolidayHandlerType.FORWARD);
         checkMoveByTenor("2006-08-28", StandardTenor.OVERNIGHT, 2, "2006-08-30", HolidayHandlerType.FORWARD);
+    }
+
+    public void testCalculateTenorsZeroDaysToSpot() {
+        List<Tenor> list = new ArrayList<Tenor>();
+        list.add(StandardTenor.OVERNIGHT);
+        list.add(StandardTenor.SPOT);
+        list.add(StandardTenor.T_1D);
+        list.add(StandardTenor.T_2D);
+        list.add(StandardTenor.T_1W);
+        list.add(StandardTenor.T_1M);
+        list.add(StandardTenor.T_2M);
+        list.add(StandardTenor.T_3M);
+        list.add(StandardTenor.T_6M);
+        list.add(StandardTenor.T_9M);
+        list.add(StandardTenor.T_1Y);
+
+        final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.FORWARD);
+        cal.setHolidayCalendar(createUKHolidayCalendar());
+        String startDate = "2006-08-24";
+        cal.setStartDate(newDate(startDate));
+        List<E> expectedResults = new ArrayList<E>();
+        expectedResults.add(newDate("2006-08-25")); // ON
+        expectedResults.add(newDate("2006-08-24")); // SPOT
+        expectedResults.add(newDate("2006-08-25")); // 1D
+        expectedResults.add(newDate("2006-08-29")); // 2D
+        expectedResults.add(newDate("2006-08-31")); // 1W
+        expectedResults.add(newDate("2006-09-25")); // 1M
+        expectedResults.add(newDate("2006-10-24")); // 2M
+        expectedResults.add(newDate("2006-11-24")); // 3M
+        expectedResults.add(newDate("2007-02-26")); // 6M
+        expectedResults.add(newDate("2007-05-24")); // 9M
+        expectedResults.add(newDate("2007-08-24")); // 1Y
+
+        List<E> results = cal.calculateTenorDates(list);
+        assertEquals("Same size as tenor", list.size(), results.size());
+        Iterator<E> it = results.iterator();
+        Iterator<E> expected = expectedResults.iterator();
+        for (Tenor tenor : list) {
+            assertEquals("Move start:" + startDate + " tenor:" + tenor, expected.next(), it.next());
+        }
+    }
+
+    public void testCalculateTenorsTwoDaysToSpot() {
+        List<Tenor> list = new ArrayList<Tenor>();
+        list.add(StandardTenor.OVERNIGHT);
+        list.add(StandardTenor.SPOT);
+        list.add(StandardTenor.T_1D);
+        list.add(StandardTenor.T_2D);
+        list.add(StandardTenor.T_1W);
+        list.add(StandardTenor.T_1M);
+        list.add(StandardTenor.T_2M);
+        list.add(StandardTenor.T_3M);
+        list.add(StandardTenor.T_6M);
+        list.add(StandardTenor.T_9M);
+        list.add(StandardTenor.T_1Y);
+
+        final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.FORWARD);
+        cal.setHolidayCalendar(createUKHolidayCalendar());
+        String startDate = "2006-08-24";
+        cal.setStartDate(newDate(startDate));
+        List<E> expectedResults = new ArrayList<E>();
+        expectedResults.add(newDate("2006-08-25")); // ON
+        expectedResults.add(newDate("2006-08-29")); // SPOT
+        expectedResults.add(newDate("2006-08-30")); // 1D
+        expectedResults.add(newDate("2006-08-31")); // 2D
+        expectedResults.add(newDate("2006-09-05")); // 1W
+        expectedResults.add(newDate("2006-09-29")); // 1M
+        expectedResults.add(newDate("2006-10-30")); // 2M
+        expectedResults.add(newDate("2006-11-29")); // 3M
+        expectedResults.add(newDate("2007-02-28")); // 6M - is this correct?
+        expectedResults.add(newDate("2007-05-29")); // 9M
+        expectedResults.add(newDate("2007-08-29")); // 1Y
+
+        List<E> results = cal.calculateTenorDates(list, 2);
+        assertEquals("Same size as tenor", list.size(), results.size());
+        Iterator<E> it = results.iterator();
+        Iterator<E> expected = expectedResults.iterator();
+        for (Tenor tenor : list) {
+            assertEquals("Move start:" + startDate + " tenor:" + tenor, expected.next(), it.next());
+        }
     }
 }
 

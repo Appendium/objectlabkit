@@ -166,6 +166,13 @@ public class CalendarDateCalculator extends AbstractDateCalculator<Calendar> {
             throw new IndexOutOfBoundsException(date + " is after the late boundary " + late);
         }
     }
+
+    @Override
+    protected Calendar clone(Calendar date) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date.getTime());
+        return cal;
+    }
 }
 
 /*

@@ -32,8 +32,10 @@
  */
 package net.objectlab.kit.datecalc.common;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -158,7 +160,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         }
 
         TenorCode tenorCode = tenor.getCode();
-        if (tenorCode != TenorCode.OVERNIGHT) {
+        if (tenorCode != TenorCode.OVERNIGHT && spotLag != 0) {
             // get to the Spot date first:
             moveByBusinessDays(spotLag);
         }
@@ -194,6 +196,52 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         }
 
         return calc;
+    }
+
+    /**
+     * Move the current date by a given tenor, please note that all tenors are
+     * relative to the CURRENT day (and NOT from spot).
+     * 
+     * @param tenor
+     *            the Tenor to reach.
+     * @return the current DateCalculator
+     * @since 1.1.0
+     */
+    public DateCalculator<E> moveByTenor(final Tenor tenor) {
+        return moveByTenor(tenor, 0);
+    }
+
+    /**
+     * Calculate a series of Tenor codes in one go based on current day, 
+     * this does NOT change the current business date.
+     * 
+     * @return list of dates in same order as tenors.
+     * @since 1.1.0
+     */
+    public List<E> calculateTenorDates(final List<Tenor> tenors) {
+        return calculateTenorDates(tenors, 0);
+    }
+
+    /**
+     * Calculate a series of Tenor codes in one go based on SPOT day (calculated
+     * with the spot lag), this does NOT change the current business date.
+     * 
+     * @return list of dates in same order as tenors.
+     * @since 1.1.0
+     */
+    public List<E> calculateTenorDates(final List<Tenor> tenors, final int spotLag) {
+        List<E> list = new ArrayList<E>();
+
+        if (tenors != null) {
+            final E date = clone(getCurrentBusinessDate());
+            for (Tenor tenor : tenors) {
+                moveByTenor(tenor, spotLag);
+                list.add(getCurrentBusinessDate());
+                setCurrentBusinessDate(date);
+            }
+        }
+
+        return list;
     }
 
     // -----------------------------------------------------------------------
@@ -357,6 +405,8 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     public HolidayCalendar<E> getHolidayCalendar() {
         return holidayCalendar;
     }
+    
+    protected abstract E clone(final E date);
 }
 
 /*

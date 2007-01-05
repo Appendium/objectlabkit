@@ -181,6 +181,11 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
             throw new IndexOutOfBoundsException(date + " is after the late boundary " + late);
         }
     }
+
+    @Override
+    protected YearMonthDay clone(YearMonthDay date) {
+        return date;
+    }
 }
 
 /*
