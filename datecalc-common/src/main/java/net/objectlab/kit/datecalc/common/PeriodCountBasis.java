@@ -35,6 +35,9 @@ package net.objectlab.kit.datecalc.common;
 /**
  * Defines some standard Day Count basis.
  * 
+ * You can refer to the following document to read about the most common Day Count conventions:
+ * {@link http://www.fincad.com/support/developerfunc/mathref/Daycount.htm}
+ * 
  * @author Benoit Xhenseval
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
@@ -90,7 +93,19 @@ public enum PeriodCountBasis {
      * the day count fraction is equal to the number of days between the last
      * payment date and the next date divided by 365.
      */
-    ACT_365, ACT_UST, END_365
+    ACT_365, 
+    
+    /**
+     * @deprecated this is not a common convention, and won't be included in future releases
+     */
+    @Deprecated
+    ACT_UST,
+    
+    /**
+     * @deprecated this is not a common convention, and won't be included in future releases
+     */
+    @Deprecated
+    END_365
 }
 
 /*
