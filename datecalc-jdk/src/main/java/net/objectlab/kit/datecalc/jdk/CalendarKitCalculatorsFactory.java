@@ -32,6 +32,12 @@
  */
 package net.objectlab.kit.datecalc.jdk;
 
+import static net.objectlab.kit.datecalc.common.HolidayHandlerType.BACKWARD;
+import static net.objectlab.kit.datecalc.common.HolidayHandlerType.FORWARD;
+import static net.objectlab.kit.datecalc.common.HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK;
+import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_FOLLOWING;
+import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_PRECEEDING;
+
 import java.util.Calendar;
 
 import net.objectlab.kit.datecalc.common.AbstractKitCalculatorsFactory;
@@ -81,15 +87,15 @@ public class CalendarKitCalculatorsFactory extends AbstractKitCalculatorsFactory
 
         if (holidayHandlerType == null) {
             return cal;
-        } else if (HolidayHandlerType.FORWARD.equals(holidayHandlerType)) {
+        } else if (FORWARD.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new CalendarForwardHandler());
-        } else if (HolidayHandlerType.BACKWARD.equals(holidayHandlerType)) {
+        } else if (BACKWARD.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new CalendarBackwardHandler());
-        } else if (HolidayHandlerType.MODIFIED_FOLLOWING.equals(holidayHandlerType)) {
+        } else if (MODIFIED_FOLLOWING.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new CalendarModifiedFollowingHandler());
-        } else if (HolidayHandlerType.MODIFIED_PRECEEDING.equals(holidayHandlerType)) {
+        } else if (MODIFIED_PRECEEDING.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new CalendarModifiedPreceedingHandler());
-        } else if (HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK.equals(holidayHandlerType)) {
+        } else if (FORWARD_UNLESS_MOVING_BACK.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new CalendarForwardUnlessNegativeHandler());
         } else {
             throw new IllegalArgumentException("Unsupported HolidayHandler: " + holidayHandlerType);

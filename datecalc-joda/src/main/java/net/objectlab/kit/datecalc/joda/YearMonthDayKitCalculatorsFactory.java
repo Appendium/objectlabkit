@@ -32,9 +32,13 @@
  */
 package net.objectlab.kit.datecalc.joda;
 
+import static net.objectlab.kit.datecalc.common.HolidayHandlerType.BACKWARD;
+import static net.objectlab.kit.datecalc.common.HolidayHandlerType.FORWARD;
+import static net.objectlab.kit.datecalc.common.HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK;
+import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_FOLLOWING;
+import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_PRECEEDING;
 import net.objectlab.kit.datecalc.common.AbstractKitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.DateCalculator;
-import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 import net.objectlab.kit.datecalc.common.IMMDateCalculator;
 import net.objectlab.kit.datecalc.common.KitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
@@ -90,15 +94,15 @@ public class YearMonthDayKitCalculatorsFactory extends AbstractKitCalculatorsFac
         cal.setName(name);
         setHolidays(name, cal);
 
-        if (HolidayHandlerType.FORWARD.equals(holidayHandlerType)) {
+        if (FORWARD.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new YearMonthDayForwardHandler());
-        } else if (HolidayHandlerType.BACKWARD.equals(holidayHandlerType)) {
+        } else if (BACKWARD.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new YearMonthDayBackwardHandler());
-        } else if (HolidayHandlerType.MODIFIED_FOLLOWING.equals(holidayHandlerType)) {
+        } else if (MODIFIED_FOLLOWING.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new YearMonthDayModifiedFollowingHandler());
-        } else if (HolidayHandlerType.MODIFIED_PRECEEDING.equals(holidayHandlerType)) {
+        } else if (MODIFIED_PRECEEDING.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new YearMonthDayModifiedPreceedingHandler());
-        } else if (HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK.equals(holidayHandlerType)) {
+        } else if (FORWARD_UNLESS_MOVING_BACK.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new YearMonthDayForwardUnlessNegativeHandler());
         } else if (holidayHandlerType != null) {
             throw new IllegalArgumentException("Unsupported HolidayHandler: " + holidayHandlerType);

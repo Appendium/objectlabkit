@@ -32,6 +32,11 @@
  */
 package net.objectlab.kit.datecalc.common;
 
+import static net.objectlab.kit.datecalc.common.HolidayHandlerType.BACKWARD;
+import static net.objectlab.kit.datecalc.common.HolidayHandlerType.FORWARD;
+import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_FOLLOWING;
+import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_PRECEEDING;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -302,17 +307,13 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     }
 
     public DateCalculator<E> moveByBusinessDays(final int businessDays) {
-        if (businessDays > 0
-                && holidayHandler != null
-                && (holidayHandler.getType().equals(HolidayHandlerType.BACKWARD) || holidayHandler.getType().equals(
-                        HolidayHandlerType.MODIFIED_PRECEEDING))) {
-            throw new IllegalArgumentException("A " + HolidayHandlerType.MODIFIED_PRECEEDING + " or "
-                    + HolidayHandlerType.BACKWARD + " does not allow positive steps for moveByBusinessDays");
-        } else if (businessDays < 0
-                && holidayHandler != null
-                && (holidayHandler.getType().equals(HolidayHandlerType.FORWARD) || holidayHandler.getType().equals(
-                        HolidayHandlerType.MODIFIED_FOLLOWING))) {
-            throw new IllegalArgumentException("A " + HolidayHandlerType.MODIFIED_FOLLOWING + " or " + HolidayHandlerType.FORWARD
+        if (businessDays > 0 && holidayHandler != null
+                && (holidayHandler.getType().equals(BACKWARD) || holidayHandler.getType().equals(MODIFIED_PRECEEDING))) {
+            throw new IllegalArgumentException("A " + MODIFIED_PRECEEDING + " or " + BACKWARD
+                    + " does not allow positive steps for moveByBusinessDays");
+        } else if (businessDays < 0 && holidayHandler != null
+                && (holidayHandler.getType().equals(FORWARD) || holidayHandler.getType().equals(MODIFIED_FOLLOWING))) {
+            throw new IllegalArgumentException("A " + MODIFIED_FOLLOWING + " or " + FORWARD
                     + " does not allow negative steps for moveByBusinessDays");
         }
 
@@ -405,7 +406,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     public HolidayCalendar<E> getHolidayCalendar() {
         return holidayCalendar;
     }
-    
+
     protected abstract E clone(final E date);
 }
 
