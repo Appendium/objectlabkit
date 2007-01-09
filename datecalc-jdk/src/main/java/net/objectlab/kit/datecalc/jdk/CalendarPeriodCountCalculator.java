@@ -53,10 +53,13 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
     public int dayDiff(final Calendar start, final Calendar end, final PeriodCountBasis basis) {
 
         int diff = 0;
-
-        if (basis == PeriodCountBasis.CONV_30_360) {
-            int dayStart = start.get(Calendar.DAY_OF_MONTH);
-            int dayEnd = end.get(Calendar.DAY_OF_MONTH);
+        int dayStart;
+        int dayEnd;
+        
+        switch (basis) {
+        case CONV_30_360:
+            dayStart = start.get(Calendar.DAY_OF_MONTH);
+            dayEnd = end.get(Calendar.DAY_OF_MONTH);
             if (dayEnd == MONTH_31_DAYS && dayStart >= MONTH_30_DAYS) {
                 dayEnd = MONTH_30_DAYS;
             }
@@ -65,10 +68,11 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
             }
             diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * YEAR_360
                     + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * MONTH_30_DAYS + dayEnd - dayStart;
+            break;
 
-        } else if (basis == PeriodCountBasis.CONV_360E_ISDA) {
-            int dayStart = start.get(Calendar.DAY_OF_MONTH);
-            int dayEnd = end.get(Calendar.DAY_OF_MONTH);
+        case CONV_360E_ISDA:
+            dayStart = start.get(Calendar.DAY_OF_MONTH);
+            dayEnd = end.get(Calendar.DAY_OF_MONTH);
             final int monthStart = start.get(Calendar.MONTH);
             if ((monthStart == 2 && start.getActualMaximum(Calendar.DAY_OF_MONTH) == dayStart) || dayEnd == MONTH_31_DAYS) {
                 dayEnd = MONTH_30_DAYS;
@@ -79,10 +83,11 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
 
             diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * YEAR_360
                     + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * MONTH_30_DAYS + dayEnd - dayStart;
+            break;
 
-        } else if (basis == PeriodCountBasis.CONV_360E_ISMA) {
-            int dayStart = start.get(Calendar.DAY_OF_MONTH);
-            int dayEnd = end.get(Calendar.DAY_OF_MONTH);
+        case CONV_360E_ISMA:
+            dayStart = start.get(Calendar.DAY_OF_MONTH);
+            dayEnd = end.get(Calendar.DAY_OF_MONTH);
             if (dayEnd == MONTH_31_DAYS) {
                 dayEnd = MONTH_30_DAYS;
             }
@@ -91,9 +96,12 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
             }
             diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * YEAR_360
                     + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * MONTH_30_DAYS + dayEnd - dayStart;
-        } else {
+            break;
+            
+        default:
             diff = dayDiff(start, end);
         }
+        
         return diff;
     }
 
@@ -117,7 +125,9 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
 
     public double yearDiff(final Calendar start, final Calendar end, final PeriodCountBasis basis) {
         double diff = 0.0;
-        if (basis == PeriodCountBasis.ACT_ACT) {
+        
+        switch (basis) {
+        case ACT_ACT:
             final int startYear = start.get(Calendar.YEAR);
             final int endYear = end.get(Calendar.YEAR);
             if (startYear != endYear) {
@@ -132,16 +142,24 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
                 diff = (diff1 + 1.0) / start.getActualMaximum(Calendar.DAY_OF_YEAR) + (endYear - startYear - 1.0) + (diff2)
                         / (double) end.getActualMaximum(Calendar.DAY_OF_YEAR);
             }
+            break;
 
-        } else if (basis == PeriodCountBasis.CONV_30_360 || basis == PeriodCountBasis.CONV_360E_ISDA
-                || basis == PeriodCountBasis.CONV_360E_ISMA || basis == PeriodCountBasis.ACT_360) {
+        case CONV_30_360:
+        case CONV_360E_ISDA:
+        case CONV_360E_ISMA:
+        case ACT_360:
             diff = (dayDiff(start, end, basis)) / YEAR_360_0;
+            break;
 
-        } else if (basis == PeriodCountBasis.ACT_365 || basis == PeriodCountBasis.END_365) {
+        case ACT_365:
+        case END_365:
             diff = (dayDiff(start, end, basis)) / YEAR_365_0;
-        } else {
+            break;
+            
+        default:
             throw new UnsupportedOperationException("Sorry no ACT_UST yet");
         }
+        
         return diff;
     }
 

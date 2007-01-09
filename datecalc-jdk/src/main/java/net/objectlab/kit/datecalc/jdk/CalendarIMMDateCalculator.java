@@ -32,6 +32,15 @@
  */
 package net.objectlab.kit.datecalc.jdk;
 
+import static java.util.Calendar.DAY_OF_MONTH;
+import static java.util.Calendar.DECEMBER;
+import static java.util.Calendar.JUNE;
+import static java.util.Calendar.MARCH;
+import static java.util.Calendar.MONTH;
+import static java.util.Calendar.SEPTEMBER;
+import static java.util.Calendar.WEDNESDAY;
+import static net.objectlab.kit.datecalc.common.IMMPeriod.QUARTERLY;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -97,25 +106,38 @@ public class CalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calenda
 
         final int delta = (requestNextIMM ? 1 : -1);
         do {
-            cal.add(Calendar.MONTH, delta);
+            cal.add(MONTH, delta);
         } while (!isIMMMonth(cal));
 
         moveToIMMDay(cal);
 
-        final int month = cal.get(Calendar.MONTH);
-        if ((period == IMMPeriod.BI_ANNUALY_JUN_DEC && (Calendar.MARCH == month || Calendar.SEPTEMBER == month))
-                || (period == IMMPeriod.BI_ANNUALY_MAR_SEP && (Calendar.JUNE == month || Calendar.DECEMBER == month))) {
-            // need to move to the next one.
-            cal = getNextIMMDate(requestNextIMM, cal, period);
-        } else if (period == IMMPeriod.ANNUALLY) {
+        final int month = cal.get(MONTH);
+        
+        switch (period) {
+        case BI_ANNUALY_JUN_DEC:
+            if (month == MARCH || month == SEPTEMBER) {
+                // need to move to the next one.
+                cal = getNextIMMDate(requestNextIMM, cal, period);
+            }
+            break;
+            
+        case BI_ANNUALY_MAR_SEP:
+            if (month == JUNE || month == DECEMBER) {
+                // need to move to the next one.
+                cal = getNextIMMDate(requestNextIMM, cal, period);
+            }
+            break;
+            
+        case ANNUALLY:
             // second jump
-            cal = getNextIMMDate(requestNextIMM, cal, IMMPeriod.QUARTERLY);
+            cal = getNextIMMDate(requestNextIMM, cal, QUARTERLY);
             // third jump
-            cal = getNextIMMDate(requestNextIMM, cal, IMMPeriod.QUARTERLY);
+            cal = getNextIMMDate(requestNextIMM, cal, QUARTERLY);
             // fourth jump
-            cal = getNextIMMDate(requestNextIMM, cal, IMMPeriod.QUARTERLY);
+            cal = getNextIMMDate(requestNextIMM, cal, QUARTERLY);
             // fifth jump
-            cal = getNextIMMDate(requestNextIMM, cal, IMMPeriod.QUARTERLY);
+            cal = getNextIMMDate(requestNextIMM, cal, QUARTERLY);
+            break;
         }
 
         return cal;
@@ -130,13 +152,13 @@ public class CalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calenda
     // -----------------------------------------------------------------------
 
     private boolean isIMMMonth(final Calendar cal) {
-        final int month = cal.get(Calendar.MONTH);
+        final int month = cal.get(MONTH);
 
         switch (month) {
-        case Calendar.MARCH:
-        case Calendar.JUNE:
-        case Calendar.SEPTEMBER:
-        case Calendar.DECEMBER:
+        case MARCH:
+        case JUNE:
+        case SEPTEMBER:
+        case DECEMBER:
             return true;
         default:
             return false;
@@ -149,18 +171,18 @@ public class CalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calenda
      * @param cal 
      */
     private void moveToIMMDay(final Calendar cal) {
-        cal.set(Calendar.DAY_OF_MONTH, 1);
+        cal.set(DAY_OF_MONTH, 1);
 
         // go to 1st wed
         final int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
-        if (dayOfWeek < Calendar.WEDNESDAY) {
-            cal.add(Calendar.DAY_OF_MONTH, Calendar.WEDNESDAY - dayOfWeek);
-        } else if (dayOfWeek > Calendar.WEDNESDAY) {
-            cal.add(Calendar.DAY_OF_MONTH, (Calendar.WEDNESDAY + NUMBER_DAYS_IN_WEEK) - dayOfWeek);
+        if (dayOfWeek < WEDNESDAY) {
+            cal.add(DAY_OF_MONTH, WEDNESDAY - dayOfWeek);
+        } else if (dayOfWeek > WEDNESDAY) {
+            cal.add(DAY_OF_MONTH, (WEDNESDAY + NUMBER_DAYS_IN_WEEK) - dayOfWeek);
         }
 
         // go to 3rd wednesday - i.e. move 2 weeks forward
-        cal.add(Calendar.DAY_OF_MONTH, NUMBER_DAYS_IN_WEEK * 2);
+        cal.add(DAY_OF_MONTH, NUMBER_DAYS_IN_WEEK * 2);
     }
 
     public boolean isIMMDate(final Calendar date) {

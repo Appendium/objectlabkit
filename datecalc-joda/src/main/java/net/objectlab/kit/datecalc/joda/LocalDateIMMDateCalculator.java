@@ -32,6 +32,12 @@
  */
 package net.objectlab.kit.datecalc.joda;
 
+import static net.objectlab.kit.datecalc.common.IMMPeriod.QUARTERLY;
+import static org.joda.time.DateTimeConstants.DECEMBER;
+import static org.joda.time.DateTimeConstants.JUNE;
+import static org.joda.time.DateTimeConstants.MARCH;
+import static org.joda.time.DateTimeConstants.SEPTEMBER;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -95,19 +101,32 @@ public class LocalDateIMMDateCalculator extends AbstractIMMDateCalculator<LocalD
 
         LocalDate imm = calculate3rdWednesday(date);
         final int immMonth = imm.getMonthOfYear();
-        final boolean isMarchSept = DateTimeConstants.MARCH == immMonth || DateTimeConstants.SEPTEMBER == immMonth;
+        final boolean isMarchSept = immMonth == MARCH || immMonth == SEPTEMBER;
 
-        if (period == IMMPeriod.BI_ANNUALY_JUN_DEC && isMarchSept || period == IMMPeriod.BI_ANNUALY_MAR_SEP && !isMarchSept) {
-            imm = getNextIMMDate(requestNextIMM, imm, period);
-        } else if (period == IMMPeriod.ANNUALLY) {
+        switch (period) {
+        
+        case BI_ANNUALY_JUN_DEC:
+            if (isMarchSept) {
+                imm = getNextIMMDate(requestNextIMM, imm, period);
+            }
+            break;
+            
+        case BI_ANNUALY_MAR_SEP:
+            if (!isMarchSept) {
+                imm = getNextIMMDate(requestNextIMM, imm, period);
+            }
+            break;
+            
+        case ANNUALLY:
             // second jump
-            imm = getNextIMMDate(requestNextIMM, imm, IMMPeriod.QUARTERLY);
+            imm = getNextIMMDate(requestNextIMM, imm, QUARTERLY);
             // third jump
-            imm = getNextIMMDate(requestNextIMM, imm, IMMPeriod.QUARTERLY);
+            imm = getNextIMMDate(requestNextIMM, imm, QUARTERLY);
             // fourth jump
-            imm = getNextIMMDate(requestNextIMM, imm, IMMPeriod.QUARTERLY);
+            imm = getNextIMMDate(requestNextIMM, imm, QUARTERLY);
             // fifth jump
-            imm = getNextIMMDate(requestNextIMM, imm, IMMPeriod.QUARTERLY);
+            imm = getNextIMMDate(requestNextIMM, imm, QUARTERLY);
+            break;
         }
 
         return imm;
@@ -125,10 +144,10 @@ public class LocalDateIMMDateCalculator extends AbstractIMMDateCalculator<LocalD
         int monthOffset = 0;
 
         switch (month) {
-        case DateTimeConstants.MARCH:
-        case DateTimeConstants.JUNE:
-        case DateTimeConstants.SEPTEMBER:
-        case DateTimeConstants.DECEMBER:
+        case MARCH:
+        case JUNE:
+        case SEPTEMBER:
+        case DECEMBER:
             final LocalDate immDate = calculate3rdWednesday(date);
             if (requestNextIMM && !date.isBefore(immDate)) {
                 date = date.plusMonths(MONTHS_IN_QUARTER);
@@ -176,7 +195,7 @@ public class LocalDateIMMDateCalculator extends AbstractIMMDateCalculator<LocalD
     public boolean isIMMDate(final LocalDate date) {
         boolean same = false;
 
-        final List<LocalDate> dates = getIMMDates(date.minusDays(1), date, IMMPeriod.QUARTERLY);
+        final List<LocalDate> dates = getIMMDates(date.minusDays(1), date, QUARTERLY);
 
         if (!dates.isEmpty()) {
             same = date.equals(dates.get(0));

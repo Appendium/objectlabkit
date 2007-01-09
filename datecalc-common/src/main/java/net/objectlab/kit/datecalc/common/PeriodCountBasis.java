@@ -33,10 +33,13 @@
 package net.objectlab.kit.datecalc.common;
 
 /**
- * Defines some standard Day Count basis.
+ * Defines some standard Day Count bases.
  * 
- * You can refer to the following document to read about the most common Day Count conventions:
- * {@link http://www.fincad.com/support/developerfunc/mathref/Daycount.htm}
+ * <p/>
+ *
+ * To read about the most common Day Count Conventions, you can refer to the 
+ * <a href="http://www.fincad.com/support/developerfunc/mathref/Daycount.htm">
+ * following document</a>.
  * 
  * @author Benoit Xhenseval
  * @author $LastChangedBy$

@@ -52,10 +52,13 @@ public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<Loc
 
     public int dayDiff(final LocalDate start, final LocalDate end, final PeriodCountBasis basis) {
         int diff = 0;
+        int dayStart;
+        int dayEnd;
 
-        if (basis == PeriodCountBasis.CONV_30_360) {
-            int dayStart = start.getDayOfMonth();
-            int dayEnd = end.getDayOfMonth();
+        switch (basis) {
+        case CONV_30_360:
+            dayStart = start.getDayOfMonth();
+            dayEnd = end.getDayOfMonth();
             if (dayEnd == MONTH_31_DAYS && dayStart >= MONTH_30_DAYS) {
                 dayEnd = MONTH_30_DAYS;
             }
@@ -64,10 +67,11 @@ public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<Loc
             }
             diff = (end.getYear() - start.getYear()) * YEAR_360 + (end.getMonthOfYear() - start.getMonthOfYear()) * MONTH_30_DAYS
                     + dayEnd - dayStart;
+            break;
 
-        } else if (basis == PeriodCountBasis.CONV_360E_ISDA) {
-            int dayStart = start.getDayOfMonth();
-            int dayEnd = end.getDayOfMonth();
+        case CONV_360E_ISDA:
+            dayStart = start.getDayOfMonth();
+            dayEnd = end.getDayOfMonth();
             final int monthStart = start.getMonthOfYear();
             if ((monthStart == 2 && start.monthOfYear().getMaximumValue() == dayStart) || dayEnd == MONTH_31_DAYS) {
                 dayEnd = MONTH_30_DAYS;
@@ -78,10 +82,11 @@ public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<Loc
 
             diff = (end.getYear() - start.getYear()) * YEAR_360 + (end.getMonthOfYear() - start.getMonthOfYear()) * MONTH_30_DAYS
                     + dayEnd - dayStart;
+            break;
 
-        } else if (basis == PeriodCountBasis.CONV_360E_ISMA) {
-            int dayStart = start.getDayOfMonth();
-            int dayEnd = end.getDayOfMonth();
+        case CONV_360E_ISMA:
+            dayStart = start.getDayOfMonth();
+            dayEnd = end.getDayOfMonth();
             if (dayEnd == MONTH_31_DAYS) {
                 dayEnd = MONTH_30_DAYS;
             }
@@ -90,11 +95,12 @@ public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<Loc
             }
             diff = (end.getYear() - start.getYear()) * YEAR_360 + (end.getMonthOfYear() - start.getMonthOfYear()) * MONTH_30_DAYS
                     + dayEnd - dayStart;
-        } else {
-
+            break;
+        default:
             final Period p = new Period(start, end, PeriodType.days());
             diff = p.getDays();
         }
+
         return diff;
     }
 
@@ -106,14 +112,15 @@ public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<Loc
     //
     // -----------------------------------------------------------------------
 
-   public double monthDiff(final LocalDate start, final LocalDate end, final PeriodCountBasis basis) {
+    public double monthDiff(final LocalDate start, final LocalDate end, final PeriodCountBasis basis) {
         return yearDiff(start, end, basis) * MONTHS_IN_YEAR;
     }
 
     public double yearDiff(final LocalDate start, final LocalDate end, final PeriodCountBasis basis) {
         double diff = 0.0;
 
-        if (basis == PeriodCountBasis.ACT_ACT) {
+        switch (basis) {
+        case ACT_ACT:
             final int startYear = start.getYear();
             final int endYear = end.getYear();
             if (startYear != endYear) {
@@ -125,16 +132,24 @@ public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<Loc
                 diff = ((diff1 + 1.0)) / start.dayOfYear().getMaximumValue() + ((endYear - startYear - 1.0)) + ((double) (diff2))
                         / (double) end.dayOfYear().getMaximumValue();
             }
+            break;
 
-        } else if (basis == PeriodCountBasis.CONV_30_360 || basis == PeriodCountBasis.CONV_360E_ISDA
-                || basis == PeriodCountBasis.CONV_360E_ISMA || basis == PeriodCountBasis.ACT_360) {
+        case CONV_30_360:
+        case CONV_360E_ISDA:
+        case CONV_360E_ISMA:
+        case ACT_360:
             diff = (dayDiff(start, end, basis)) / YEAR_360_0;
-
-        } else if (basis == PeriodCountBasis.ACT_365 || basis == PeriodCountBasis.END_365) {
+            break;
+            
+        case ACT_365:
+        case END_365:
             diff = (dayDiff(start, end, basis)) / YEAR_365_0;
-        } else {
-            throw new UnsupportedOperationException("Sorry no ACT_UST yet");
+            break;
+
+        default:
+            throw new UnsupportedOperationException("Sorry ACT_UST is not supported");
         }
+
         return diff;
     }
 }
