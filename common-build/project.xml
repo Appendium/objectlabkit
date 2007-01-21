@@ -80,6 +80,19 @@
    <!-- any mailing lists for the project -->
    <mailingLists>
       <mailingList>
+         <name>News about ObjectLab's projects (Alerts online)</name>
+         <subscribe>
+            http://lists.sourceforge.net/lists/listinfo/objectlabkit-news
+         </subscribe>
+         <unsubscribe>
+            http://lists.sourceforge.net/lists/listinfo/objectlabkit-news
+         </unsubscribe>
+         <post/>
+         <archive>
+            http://sourceforge.net/mailarchive/forum.php?forum=objectlabkit-news
+         </archive>
+      </mailingList>
+      <mailingList>
          <name>Kit Announcements</name>
          <subscribe>
             http://lists.sourceforge.net/lists/listinfo/objectlabkit-announce
@@ -91,7 +104,6 @@
          <archive>
             http://sourceforge.net/mailarchive/forum.php?forum=objectlabkit-announce
          </archive>
-
       </mailingList>
       <mailingList>
          <name>Kit User</name>
