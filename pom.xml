@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
    <modelVersion>4.0.0</modelVersion>
 
@@ -8,7 +7,7 @@
    <artifactId>datecalc</artifactId>
    <packaging>pom</packaging>
    <name>ObjectLab Kit</name>
-   <version>1.1.0-SNAPSHOT</version>
+   <version>1.1.0</version>
    <url>http://objectlabkit.sourceforge.net/</url>
    <description>
       ObjectLab Kit provides a generic Business Calendar for calculating dates given set(s) of holidays. Why
@@ -120,13 +119,9 @@
    </profiles>
 	   
   <scm>
-      <connection>
-         scm:svn:https://svn.sourceforge.net/svnroot/objectlabkit/trunk
-      </connection>
-      <developerConnection>
-         scm:svn:https://svn.sourceforge.net/svnroot/objectlabkit/trunk
-      </developerConnection>
-      <url>http://svn.sourceforge.net/objectlabkit</url>
+      <connection>scm:svn:https://svn.sourceforge.net/svnroot/objectlabkit/tags/1.1.0</connection>
+      <developerConnection>scm:svn:https://svn.sourceforge.net/svnroot/objectlabkit/tags/1.1.0</developerConnection>
+      <url>http://svn.sourceforge.net/objectlabkit/tags/1.1.0</url>
   </scm>
   
   <distributionManagement>
