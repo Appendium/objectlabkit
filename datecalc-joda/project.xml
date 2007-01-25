@@ -34,10 +34,10 @@
    </description>
    <repository>
       <connection>
-         scm:svn:https://svn.sourceforge.net/svnroot/objectlabkit/trunk/datecalc-joda
+         scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk/datecalc-joda
       </connection>
       <developerConnection>
-         scm:svn:https://svn.sourceforge.net/svnroot/objectlabkit/trunk/datecalc-joda
+         scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk/datecalc-joda
       </developerConnection>
    </repository>
    <dependencies>
