@@ -34,10 +34,10 @@
    </description>
    <repository>
       <connection>
-         scm:svn:https://svn.sourceforge.net/svnroot/objectlabkit/trunk/datecalc-common
+         scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk/datecalc-common
       </connection>
       <developerConnection>
-         scm:svn:https://svn.sourceforge.net/svnroot/objectlabkit/trunk/datecalc-common
+         scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk/datecalc-common
       </developerConnection>
    </repository>
    <dependencies />
