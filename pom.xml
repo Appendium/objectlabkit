@@ -129,6 +129,25 @@
       <url>http://svn.sourceforge.net/objectlabkit</url>
   </scm>
   
+  <distributionManagement>
+  <repository>
+  <id>sourceforge.net</id>
+  <name>SourceForge</name>
+  <url>scpexe://ssh.sourceforge.net/home/groups/o/ob/objectlabkit/htdocs/m2-repo</url>
+  </repository>
+  <snapshotRepository>
+  <id>sourceforge.net</id>
+  <name>SourceForge</name>
+  <url>scpexe://ssh.sourceforge.net/home/groups/o/ob/objectlabkit/htdocs/m2-repo</url>
+  </snapshotRepository>
+  <site>
+  <id>sourceforge.net</id>
+  <name>SourceForge</name>
+  <url>scpexe://ssh.sourceforge.net/home/groups/o/ob/objectlabkit/htdocs</url>
+  </site>
+  </distributionManagement>
+
+  
    <!--       
       <dependencyManagement>
       <dependencies>
