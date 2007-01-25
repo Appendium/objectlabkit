@@ -119,6 +119,16 @@
       </profile>
    </profiles>
 	   
+  <scm>
+      <connection>
+         scm:svn:https://svn.sourceforge.net/svnroot/objectlabkit/trunk
+      </connection>
+      <developerConnection>
+         scm:svn:https://svn.sourceforge.net/svnroot/objectlabkit/trunk
+      </developerConnection>
+      <url>http://svn.sourceforge.net/objectlabkit</url>
+  </scm>
+  
    <!--       
       <dependencyManagement>
       <dependencies>
