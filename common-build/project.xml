@@ -45,12 +45,12 @@
       /var/www/solutions/website/objectlab.co.uk/
    </siteDirectory>
    <repository>
-      <url>http://svn.sourceforge.net/objectlabkit</url>
+      <url>http://objectlabkit.svn.sourceforge.net/objectlabkit</url>
       <connection>
-         scm:svn:https://svn.sourceforge.net/svnroot/objectlabkit/trunk
+         scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk
       </connection>
       <developerConnection>
-         scm:svn:https://svn.sourceforge.net/svnroot/objectlabkit/trunk
+         scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk
       </developerConnection>
    </repository>
    <developers>
