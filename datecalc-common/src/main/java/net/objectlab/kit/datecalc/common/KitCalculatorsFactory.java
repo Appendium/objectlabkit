@@ -89,6 +89,16 @@ public interface KitCalculatorsFactory<E> {
      *            the holiday calendar (non-working days with boundaries).
      */
     void registerHolidays(final String name, HolidayCalendar<E> holidaysCalendar);
+    
+    /**
+     * @return true if the holiday name is registered.
+     */
+    boolean isHolidayCalendarRegistered(final String name);
+    
+    /**
+     * @return an immutable Holiday Calendar that is registered.
+     */
+    HolidayCalendar<E> getHolidayCalendar(final String name);
 
     // -----------------------------------------------------------------------
     //

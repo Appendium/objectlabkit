@@ -105,6 +105,21 @@ public abstract class AbstractKitCalculatorsFactory<E> implements KitCalculators
     }
 
     /**
+     * @return true if the holiday name is registered.
+     */
+    public boolean isHolidayCalendarRegistered(final String name) {
+        return this.holidays.containsKey(name);
+    }
+    
+    /**
+     * @return an immutable Holiday Calendar that is registered, null if not registered.
+     */
+    public HolidayCalendar<E> getHolidayCalendar(final String name) {
+        return holidays.get(name);
+    }
+
+    
+    /**
      * Used by extensions to set holidays in a DateCalculator.
      * 
      * @param name
