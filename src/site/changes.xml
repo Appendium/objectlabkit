@@ -10,7 +10,7 @@
   <body>
     <release version="1.1.0" date="in SVN" description="Maintenance">
       <action dev="benoitx" type="fix">fix NPE issue if the calendar name is null.</action>
-      <action dev="benoitx" type="add" issue="1832345" due-to="vyadh">Feature Requests item #1832345, make the Tenor Serializable</action>
+      <action dev="benoitx" type="add" issue="1832345" due-to="Kieron Wilkinson">Feature Requests item #1832345, make the Tenor Serializable</action>
       <action dev="benoitx" type="add">Added 2 methods on factory to check if a calendar is registered.</action>
       <action dev="marchy" type="fix">Deprecated ACT/UST and END/365 Day Count Conventions, which weren't very common. Also added a link to some documentation.</action>
       <action dev="benoitx" type="add">Added method calculateTenorDates with/without a spot lag to enable calculation of a series of Tenor dates without changing the current business date in the calculator.</action>
