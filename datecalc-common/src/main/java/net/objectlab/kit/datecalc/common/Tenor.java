@@ -41,7 +41,8 @@ package net.objectlab.kit.datecalc.common;
  * @version $Revision$ $Date$
  * 
  */
-public class Tenor {
+public class Tenor implements Serializable {
+    private static final long serialVersionUID = 1L;
     private int units = 0;
 
     private TenorCode code;
