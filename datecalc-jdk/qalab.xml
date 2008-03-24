@@ -200,7 +200,7 @@
         <summaryresult date="2008-03-24" filecount="19" module="jdk"
             project="objectlabkit" statvalue="96" type="cobertura-line"/>
         <summaryresult date="2008-03-24" filecount="19" module="jdk"
-            project="objectlabkit" statvalue="81" type="cobertura-branch"/>
+            project="objectlabkit" statvalue="82" type="cobertura-branch"/>
         <summaryresult date="2008-03-24" filecount="1" module="jdk"
             project="objectlabkit" statvalue="1" type="pmd"/>
     </summary>
@@ -1196,7 +1196,7 @@
         <result date="2007-01-22" statvalue="88" type="cobertura-line"/>
         <result date="2007-01-22" statvalue="100" type="cobertura-branch"/>
         <result date="2008-03-24" statvalue="88" type="cobertura-line"/>
-        <result date="2008-03-24" statvalue="73" type="cobertura-branch"/>
+        <result date="2008-03-24" statvalue="76" type="cobertura-branch"/>
     </file>
     <file
         id="objectlabkit-jdk-net_objectlab_kit_datecalc_jdk_CalendarIMMDateCalculator.java"
@@ -1335,7 +1335,7 @@
         <result date="2007-01-09" statvalue="100" type="cobertura-branch"/>
         <result date="2007-01-22" statvalue="89" type="cobertura-line"/>
         <result date="2007-01-22" statvalue="100" type="cobertura-branch"/>
-        <result date="2008-03-24" statvalue="91" type="cobertura-line"/>
+        <result date="2008-03-24" statvalue="89" type="cobertura-line"/>
         <result date="2008-03-24" statvalue="78" type="cobertura-branch"/>
     </file>
     <file
