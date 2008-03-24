@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -77,7 +77,7 @@ public abstract class AbstractDateCalculatorCombinationTest<E> extends AbstractD
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
+    //    ObjectLab, world leaders in the design and development of bespoke
     //          applications for the securities financing markets.
     //                         www.ObjectLab.co.uk
     //
@@ -137,7 +137,7 @@ public abstract class AbstractDateCalculatorCombinationTest<E> extends AbstractD
         Assert.assertEquals("currentDate", localDate, combo.getCurrentBusinessDate());
         Assert.assertEquals("Holidays", 6, combo.getHolidayCalendar().getHolidays().size());
         Assert.assertEquals("Early Boundary", newDate("2006-01-01"), combo.getHolidayCalendar().getEarlyBoundary());
-        Assert.assertEquals("Late Boundary", newDate("2007-12-31"), combo.getHolidayCalendar().getLateBoundary());
+        Assert.assertEquals("Late Boundary", newDate("2020-12-31"), combo.getHolidayCalendar().getLateBoundary());
     }
 
     public void testNullCombination() {
@@ -169,7 +169,7 @@ public abstract class AbstractDateCalculatorCombinationTest<E> extends AbstractD
         Assert.assertEquals("currentDate", localDate, combo.getCurrentBusinessDate());
         Assert.assertEquals("Holidays", 3, combo.getHolidayCalendar().getHolidays().size());
         Assert.assertEquals("Early Boundary", newDate("2005-01-01"), combo.getHolidayCalendar().getEarlyBoundary());
-        Assert.assertEquals("Late Boundary", newDate("2007-12-31"), combo.getHolidayCalendar().getLateBoundary());
+        Assert.assertEquals("Late Boundary", newDate("2021-12-31"), combo.getHolidayCalendar().getLateBoundary());
     }
 
     public void testInvalidEarlyBoundary() {
@@ -271,10 +271,10 @@ public abstract class AbstractDateCalculatorCombinationTest<E> extends AbstractD
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
