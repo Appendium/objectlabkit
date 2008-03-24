@@ -204,7 +204,7 @@
         <summaryresult date="2008-03-24" filecount="22" module="joda"
             project="objectlabkit" statvalue="2" type="checkstyle"/>
         <summaryresult date="2008-03-24" filecount="21" module="joda"
-            project="objectlabkit" statvalue="96" type="cobertura-line"/>
+            project="objectlabkit" statvalue="95" type="cobertura-line"/>
         <summaryresult date="2008-03-24" filecount="21" module="joda"
             project="objectlabkit" statvalue="84" type="cobertura-branch"/>
         <summaryresult date="2008-03-24" filecount="1" module="joda"
@@ -729,7 +729,7 @@
         <result date="2007-01-22" statvalue="85" type="cobertura-line"/>
         <result date="2007-01-22" statvalue="100" type="cobertura-branch"/>
         <result date="2008-03-24" statvalue="85" type="cobertura-line"/>
-        <result date="2008-03-24" statvalue="70" type="cobertura-branch"/>
+        <result date="2008-03-24" statvalue="73" type="cobertura-branch"/>
     </file>
     <file
         id="objectlabkit-joda-net_objectlab_kit_datecalc_joda_LocalDateForwardHandler.java"
@@ -983,7 +983,7 @@
         <result date="2007-01-09" statvalue="100" type="cobertura-branch"/>
         <result date="2007-01-22" statvalue="90" type="cobertura-line"/>
         <result date="2007-01-22" statvalue="100" type="cobertura-branch"/>
-        <result date="2008-03-24" statvalue="92" type="cobertura-line"/>
+        <result date="2008-03-24" statvalue="90" type="cobertura-line"/>
         <result date="2008-03-24" statvalue="82" type="cobertura-branch"/>
     </file>
     <file
