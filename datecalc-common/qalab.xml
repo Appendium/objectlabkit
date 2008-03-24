@@ -189,6 +189,14 @@
             project="objectlabkit" statvalue="45" type="cobertura-line"/>
         <summaryresult date="2007-01-22" filecount="20" module="common"
             project="objectlabkit" statvalue="46" type="cobertura-branch"/>
+        <summaryresult date="2008-03-24" filecount="21" module="common"
+            project="objectlabkit" statvalue="1" type="checkstyle"/>
+        <summaryresult date="2008-03-24" filecount="2" module="common"
+            project="objectlabkit" statvalue="2" type="findbugs"/>
+        <summaryresult date="2008-03-24" filecount="20" module="common"
+            project="objectlabkit" statvalue="45" type="cobertura-line"/>
+        <summaryresult date="2008-03-24" filecount="20" module="common"
+            project="objectlabkit" statvalue="33" type="cobertura-branch"/>
     </summary>
     <file
         id="objectlabkit-common-net_objectlab_kit_datecalc_common_package.html"
@@ -275,6 +283,9 @@
         <result date="2007-01-09" statvalue="100" type="cobertura-branch"/>
         <result date="2007-01-22" statvalue="100" type="cobertura-line"/>
         <result date="2007-01-22" statvalue="100" type="cobertura-branch"/>
+        <result date="2008-03-24" statvalue="1" type="findbugs"/>
+        <result date="2008-03-24" statvalue="100" type="cobertura-line"/>
+        <result date="2008-03-24" statvalue="92" type="cobertura-branch"/>
     </file>
     <file
         id="objectlabkit-common-net_objectlab_kit_datecalc_common_WorkingWeek.java"
@@ -350,6 +361,8 @@
         <result date="2007-01-09" statvalue="100" type="cobertura-branch"/>
         <result date="2007-01-22" statvalue="95" type="cobertura-line"/>
         <result date="2007-01-22" statvalue="100" type="cobertura-branch"/>
+        <result date="2008-03-24" statvalue="95" type="cobertura-line"/>
+        <result date="2008-03-24" statvalue="90" type="cobertura-branch"/>
     </file>
     <file
         id="objectlabkit-common-net_objectlab_kit_datecalc_common_TenorCode.java"
@@ -417,6 +430,8 @@
         <result date="2007-01-09" statvalue="100" type="cobertura-branch"/>
         <result date="2007-01-22" statvalue="100" type="cobertura-line"/>
         <result date="2007-01-22" statvalue="100" type="cobertura-branch"/>
+        <result date="2008-03-24" statvalue="100" type="cobertura-line"/>
+        <result date="2008-03-24" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="objectlabkit-common-net_objectlab_kit_datecalc_common_HolidayHandlerType.java"
@@ -453,6 +468,7 @@
         <result date="2007-01-05" statvalue="100" type="cobertura-branch"/>
         <result date="2007-01-09" statvalue="100" type="cobertura-branch"/>
         <result date="2007-01-22" statvalue="100" type="cobertura-branch"/>
+        <result date="2008-03-24" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="objectlabkit-common-net_objectlab_kit_datecalc_common_PeriodCountBasis.java"
@@ -487,6 +503,7 @@
         <result date="2007-01-05" statvalue="100" type="cobertura-branch"/>
         <result date="2007-01-09" statvalue="100" type="cobertura-branch"/>
         <result date="2007-01-22" statvalue="100" type="cobertura-branch"/>
+        <result date="2008-03-24" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="objectlabkit-common-net_objectlab_kit_datecalc_common_StandardTenor.java"
@@ -553,6 +570,8 @@
         <result date="2007-01-09" statvalue="100" type="cobertura-branch"/>
         <result date="2007-01-22" statvalue="93" type="cobertura-line"/>
         <result date="2007-01-22" statvalue="100" type="cobertura-branch"/>
+        <result date="2008-03-24" statvalue="93" type="cobertura-line"/>
+        <result date="2008-03-24" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="objectlabkit-common-net_objectlab_kit_datecalc_common_AbstractDateCalculator.java"
@@ -562,6 +581,8 @@
         <result date="2007-01-05" statvalue="1" type="checkstyle"/>
         <result date="2007-01-09" statvalue="1" type="checkstyle"/>
         <result date="2007-01-22" statvalue="1" type="checkstyle"/>
+        <result date="2008-03-24" statvalue="1" type="checkstyle"/>
+        <result date="2008-03-24" statvalue="1" type="findbugs"/>
     </file>
     <file
         id="objectlabkit-common-net_objectlab_kit_datecalc_common_DateCalculatorGeneric.java"
@@ -624,6 +645,8 @@
         <result date="2007-01-09" statvalue="100" type="cobertura-branch"/>
         <result date="2007-01-22" statvalue="100" type="cobertura-line"/>
         <result date="2007-01-22" statvalue="100" type="cobertura-branch"/>
+        <result date="2008-03-24" statvalue="100" type="cobertura-line"/>
+        <result date="2008-03-24" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="objectlabkit-common-net_objectlab_kit_datecalc_common_HolidayHandler.java"
@@ -681,6 +704,8 @@
         <result date="2007-01-09" statvalue="100" type="cobertura-branch"/>
         <result date="2007-01-22" statvalue="100" type="cobertura-line"/>
         <result date="2007-01-22" statvalue="100" type="cobertura-branch"/>
+        <result date="2008-03-24" statvalue="100" type="cobertura-line"/>
+        <result date="2008-03-24" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="objectlabkit-common-net_objectlab_kit_datecalc_common_AbstractDateCalculatorFactory.java"
@@ -769,6 +794,8 @@
         <result date="2007-01-09" statvalue="100" type="cobertura-branch"/>
         <result date="2007-01-22" statvalue="100" type="cobertura-line"/>
         <result date="2007-01-22" statvalue="100" type="cobertura-branch"/>
+        <result date="2008-03-24" statvalue="100" type="cobertura-line"/>
+        <result date="2008-03-24" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="objectlabkit-common-net_objectlab_kit_datecalc_common_Utils.java"
@@ -819,6 +846,8 @@
         <result date="2007-01-09" statvalue="85" type="cobertura-branch"/>
         <result date="2007-01-22" statvalue="77" type="cobertura-line"/>
         <result date="2007-01-22" statvalue="85" type="cobertura-branch"/>
+        <result date="2008-03-24" statvalue="77" type="cobertura-line"/>
+        <result date="2008-03-24" statvalue="64" type="cobertura-branch"/>
     </file>
     <file
         id="objectlabkit-common-net_objectlab_kit_datecalc_common_IMMPeriod.java"
@@ -846,6 +875,7 @@
         <result date="2007-01-05" statvalue="100" type="cobertura-branch"/>
         <result date="2007-01-09" statvalue="100" type="cobertura-branch"/>
         <result date="2007-01-22" statvalue="100" type="cobertura-branch"/>
+        <result date="2008-03-24" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="objectlabkit-common-net_objectlab_kit_datecalc_common_ExcelDateUtil.java"
@@ -893,6 +923,8 @@
         <result date="2007-01-09" statvalue="83" type="cobertura-branch"/>
         <result date="2007-01-22" statvalue="82" type="cobertura-line"/>
         <result date="2007-01-22" statvalue="83" type="cobertura-branch"/>
+        <result date="2008-03-24" statvalue="82" type="cobertura-line"/>
+        <result date="2008-03-24" statvalue="83" type="cobertura-branch"/>
     </file>
     <file
         id="objectlabkit-common-net_objectlab_kit_datecalc_common_IMMDateCalculator.java"
@@ -938,6 +970,8 @@
         <result date="2007-01-09" statvalue="100" type="cobertura-branch"/>
         <result date="2007-01-22" statvalue="100" type="cobertura-line"/>
         <result date="2007-01-22" statvalue="100" type="cobertura-branch"/>
+        <result date="2008-03-24" statvalue="100" type="cobertura-line"/>
+        <result date="2008-03-24" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="objectlabkit-common-net_objectlab_kit_datecalc_common_AbstractIMMDateCalculator.java"
@@ -963,6 +997,7 @@
         <result date="2007-01-05" statvalue="100" type="cobertura-branch"/>
         <result date="2007-01-09" statvalue="100" type="cobertura-branch"/>
         <result date="2007-01-22" statvalue="100" type="cobertura-branch"/>
+        <result date="2008-03-24" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="objectlabkit-common-net_objectlab_kit_datecalc_common_KitCalculatorsFactory.java"
@@ -1004,6 +1039,8 @@
         <result date="2007-01-09" statvalue="100" type="cobertura-branch"/>
         <result date="2007-01-22" statvalue="100" type="cobertura-line"/>
         <result date="2007-01-22" statvalue="100" type="cobertura-branch"/>
+        <result date="2008-03-24" statvalue="100" type="cobertura-line"/>
+        <result date="2008-03-24" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="objectlabkit-common-net_objectlab_kit_datecalc_common_HolidayCalendar.java"
@@ -1017,6 +1054,8 @@
         <result date="2007-01-09" statvalue="100" type="cobertura-branch"/>
         <result date="2007-01-22" statvalue="100" type="cobertura-line"/>
         <result date="2007-01-22" statvalue="100" type="cobertura-branch"/>
+        <result date="2008-03-24" statvalue="100" type="cobertura-line"/>
+        <result date="2008-03-24" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="objectlabkit-common-net_objectlab_kit_datecalc_common_DefaultHolidayCalendar.java"
@@ -1031,6 +1070,7 @@
         <result date="2007-01-05" statvalue="100" type="cobertura-branch"/>
         <result date="2007-01-09" statvalue="100" type="cobertura-branch"/>
         <result date="2007-01-22" statvalue="100" type="cobertura-branch"/>
+        <result date="2008-03-24" statvalue="100" type="cobertura-branch"/>
     </file>
     <file
         id="objectlabkit-common-net_objectlab_kit_datecalc_common_AbstractDateCalculator.java"
