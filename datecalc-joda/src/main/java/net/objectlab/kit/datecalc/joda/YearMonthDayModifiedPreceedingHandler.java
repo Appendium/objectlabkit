@@ -38,7 +38,7 @@ import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 import org.joda.time.YearMonthDay;
 
 /**
- * A modified preceeding handler will move the date backward if it falls on a
+ * A modified preceding handler will move the date backward if it falls on a
  * non working day BUT, if the new date falls into another month, it will revert
  * to moving forward until it finds a working day.
  * 
@@ -69,7 +69,7 @@ public class YearMonthDayModifiedPreceedingHandler extends YearMonthDayModifiedF
      */
     @Override
     public String getType() {
-        return HolidayHandlerType.MODIFIED_PRECEEDING;
+        return HolidayHandlerType.MODIFIED_PRECEDING;
     }
 }
 

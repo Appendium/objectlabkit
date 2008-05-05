@@ -32,10 +32,7 @@
  */
 package net.objectlab.kit.datecalc.joda;
 
-import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
-
-import org.joda.time.LocalDate;
 
 /**
  * A modified preceeding handler will move the date backward if it falls on a
@@ -47,7 +44,8 @@ import org.joda.time.LocalDate;
  * @version $Revision$ $Date$
  * 
  */
-public class LocalDateModifiedPreceedingHandler extends LocalDateModifiedFollowingHandler {
+@Deprecated
+public class LocalDateModifiedPreceedingHandler extends LocalDateModifiedPrecedingHandler {
 
     /**
      * Give the type name for this algorithm.
@@ -57,19 +55,6 @@ public class LocalDateModifiedPreceedingHandler extends LocalDateModifiedFollowi
     @Override
     public String getType() {
         return HolidayHandlerType.MODIFIED_PRECEEDING;
-    }
-
-    /**
-     * If the current date of the give calculator is a non-working day, it will
-     * be moved according to the algorithm implemented.
-     * 
-     * @param calculator
-     *            the calculator
-     * @return the date which may have moved.
-     */
-    @Override
-    public LocalDate moveCurrentDate(final DateCalculator<LocalDate> calculator) {
-        return move(calculator, -1);
     }
 }
 

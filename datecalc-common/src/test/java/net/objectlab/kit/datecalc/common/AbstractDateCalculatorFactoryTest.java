@@ -87,8 +87,8 @@ public abstract class AbstractDateCalculatorFactoryTest<E> extends AbstractDateT
         cal1 = getDateCalculatorFactory().getDateCalculator("bla", HolidayHandlerType.MODIFIED_FOLLOWING);
         Assert.assertEquals("Type", HolidayHandlerType.MODIFIED_FOLLOWING, cal1.getHolidayHandlerType());
 
-        cal1 = getDateCalculatorFactory().getDateCalculator("bla", HolidayHandlerType.MODIFIED_PRECEEDING);
-        Assert.assertEquals("Type", HolidayHandlerType.MODIFIED_PRECEEDING, cal1.getHolidayHandlerType());
+        cal1 = getDateCalculatorFactory().getDateCalculator("bla", HolidayHandlerType.MODIFIED_PRECEDING);
+        Assert.assertEquals("Type", HolidayHandlerType.MODIFIED_PRECEDING, cal1.getHolidayHandlerType());
     }
 
     public void testGetIncorrectAlgo() {

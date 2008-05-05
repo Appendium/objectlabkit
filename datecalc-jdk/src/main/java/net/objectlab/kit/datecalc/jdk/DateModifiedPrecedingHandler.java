@@ -14,7 +14,7 @@
  *
  *                     www.ObjectLab.co.uk
  *
- * $Id$
+ * $Id: DateModifiedPreceedingHandler.java 203 2006-10-11 12:53:07Z benoitx $
  * 
  * Copyright 2006 the original author or authors.
  *
@@ -43,11 +43,11 @@ import net.objectlab.kit.datecalc.common.HolidayHandlerType;
  * <strong>Modified Preceeding</strong> algorithm.
  * 
  * @author Marcin Jekot
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
+ * @author $LastChangedBy: benoitx $
+ * @version $Revision: 203 $ $Date: 2006-10-11 13:53:07 +0100 (Wed, 11 Oct 2006) $
  * 
  */
-public class DateModifiedPreceedingHandler extends DateModifiedFollowingHandler {
+public class DateModifiedPrecedingHandler extends DateModifiedFollowingHandler {
 
     /**
      * If the current date of the give calculator is a non-working day, it will

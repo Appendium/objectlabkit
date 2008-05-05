@@ -36,6 +36,7 @@ import static net.objectlab.kit.datecalc.common.HolidayHandlerType.BACKWARD;
 import static net.objectlab.kit.datecalc.common.HolidayHandlerType.FORWARD;
 import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_FOLLOWING;
 import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_PRECEEDING;
+import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_PRECEDING;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -75,8 +76,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
 
     private int currentIncrement = 0;
 
-    protected AbstractDateCalculator(final String name, final HolidayCalendar<E> holidayCalendar,
-            final HolidayHandler<E> holidayHandler) {
+    protected AbstractDateCalculator(final String name, final HolidayCalendar<E> holidayCalendar, final HolidayHandler<E> holidayHandler) {
         this.name = name;
         if (holidayCalendar != null) {
             this.holidayCalendar = new ImmutableHolidayCalendar<E>(holidayCalendar);
@@ -307,14 +307,14 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     }
 
     public DateCalculator<E> moveByBusinessDays(final int businessDays) {
-        if (businessDays > 0 && holidayHandler != null
-                && (holidayHandler.getType().equals(BACKWARD) || holidayHandler.getType().equals(MODIFIED_PRECEEDING))) {
-            throw new IllegalArgumentException("A " + MODIFIED_PRECEEDING + " or " + BACKWARD
-                    + " does not allow positive steps for moveByBusinessDays");
+        if (businessDays > 0
+                && holidayHandler != null
+                && (holidayHandler.getType().equals(BACKWARD) || holidayHandler.getType().equals(MODIFIED_PRECEEDING) || holidayHandler.getType().equals(
+                        MODIFIED_PRECEDING))) {
+            throw new IllegalArgumentException("A " + MODIFIED_PRECEDING + " or " + BACKWARD + " does not allow positive steps for moveByBusinessDays");
         } else if (businessDays < 0 && holidayHandler != null
                 && (holidayHandler.getType().equals(FORWARD) || holidayHandler.getType().equals(MODIFIED_FOLLOWING))) {
-            throw new IllegalArgumentException("A " + MODIFIED_FOLLOWING + " or " + FORWARD
-                    + " does not allow negative steps for moveByBusinessDays");
+            throw new IllegalArgumentException("A " + MODIFIED_FOLLOWING + " or " + FORWARD + " does not allow negative steps for moveByBusinessDays");
         }
 
         final int numberOfStepsLeft = Math.abs(businessDays);
@@ -355,13 +355,13 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         }
 
         final HolidayCalendar<E> calendarToCombine = calculator.getHolidayCalendar();
-        if (calendarToCombine.getEarlyBoundary() != null && holidayCalendar.getEarlyBoundary() == null
-                || calendarToCombine.getEarlyBoundary() == null && holidayCalendar.getEarlyBoundary() != null) {
+        if (calendarToCombine.getEarlyBoundary() != null && holidayCalendar.getEarlyBoundary() == null || calendarToCombine.getEarlyBoundary() == null
+                && holidayCalendar.getEarlyBoundary() != null) {
             throw new IllegalArgumentException("Both Calendar to be combined must either have each Early boundaries or None.");
         }
 
-        if (calendarToCombine.getLateBoundary() != null && holidayCalendar.getLateBoundary() == null
-                || calendarToCombine.getLateBoundary() == null && holidayCalendar.getLateBoundary() != null) {
+        if (calendarToCombine.getLateBoundary() != null && holidayCalendar.getLateBoundary() == null || calendarToCombine.getLateBoundary() == null
+                && holidayCalendar.getLateBoundary() != null) {
             throw new IllegalArgumentException("Both Calendar to be combined must either have each Late boundaries or None.");
         }
 
@@ -369,12 +369,10 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
             newSet.addAll(calendarToCombine.getHolidays());
         }
 
-        final HolidayCalendar<E> newCal = new DefaultHolidayCalendar<E>(newSet, compareDate(holidayCalendar.getEarlyBoundary(),
-                calendarToCombine.getEarlyBoundary(), false), compareDate(holidayCalendar.getLateBoundary(), calendarToCombine
-                .getLateBoundary(), true));
+        final HolidayCalendar<E> newCal = new DefaultHolidayCalendar<E>(newSet, compareDate(holidayCalendar.getEarlyBoundary(), calendarToCombine
+                .getEarlyBoundary(), false), compareDate(holidayCalendar.getLateBoundary(), calendarToCombine.getLateBoundary(), true));
 
-        final DateCalculator<E> cal = createNewCalculator(getName() + "/" + calculator.getName(), getStartDate(), newCal,
-                holidayHandler);
+        final DateCalculator<E> cal = createNewCalculator(getName() + "/" + calculator.getName(), getStartDate(), newCal, holidayHandler);
 
         return cal;
     }
@@ -383,8 +381,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
 
     protected abstract E compareDate(E date1, E date2, boolean returnEarliest);
 
-    protected abstract DateCalculator<E> createNewCalculator(String calcName, E theStartDate, HolidayCalendar<E> holidays,
-            HolidayHandler<E> handler);
+    protected abstract DateCalculator<E> createNewCalculator(String calcName, E theStartDate, HolidayCalendar<E> holidays, HolidayHandler<E> handler);
 
     /**
      * @return Returns the currentIncrement.

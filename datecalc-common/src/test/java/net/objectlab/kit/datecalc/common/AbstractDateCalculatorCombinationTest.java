@@ -177,7 +177,7 @@ public abstract class AbstractDateCalculatorCombinationTest<E> extends AbstractD
         checkInvalidEarlyBoundary(HolidayHandlerType.BACKWARD);
         checkInvalidEarlyBoundary(HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
         checkInvalidEarlyBoundary(HolidayHandlerType.MODIFIED_FOLLOWING);
-        checkInvalidEarlyBoundary(HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkInvalidEarlyBoundary(HolidayHandlerType.MODIFIED_PRECEDING);
     }
 
     public void checkInvalidEarlyBoundary(final String type) {
@@ -209,7 +209,7 @@ public abstract class AbstractDateCalculatorCombinationTest<E> extends AbstractD
         checkInvalidLateBoundary(HolidayHandlerType.BACKWARD);
         checkInvalidLateBoundary(HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
         checkInvalidLateBoundary(HolidayHandlerType.MODIFIED_FOLLOWING);
-        checkInvalidLateBoundary(HolidayHandlerType.MODIFIED_PRECEEDING);
+        checkInvalidLateBoundary(HolidayHandlerType.MODIFIED_PRECEDING);
     }
 
     public void checkInvalidLateBoundary(final String type) {
