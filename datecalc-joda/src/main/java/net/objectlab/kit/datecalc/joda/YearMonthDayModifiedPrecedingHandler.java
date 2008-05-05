@@ -14,7 +14,7 @@
  *
  *                     www.ObjectLab.co.uk
  *
- * $Id$
+ * $Id: YearMonthDayModifiedPreceedingHandler.java 203 2006-10-11 12:53:07Z benoitx $
  * 
  * Copyright 2006 the original author or authors.
  *
@@ -30,24 +30,24 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package net.objectlab.kit.datecalc.jdk;
-
-import java.util.Date;
+package net.objectlab.kit.datecalc.joda;
 
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
+import org.joda.time.YearMonthDay;
+
 /**
- * A Jdk <code>Date</code> implementation of the
- * {@link net.objectlab.kit.datecalc.common.HolidayHandler}, for the
- * <strong>Modified Preceeding</strong> algorithm.
+ * A modified preceding handler will move the date backward if it falls on a
+ * non working day BUT, if the new date falls into another month, it will revert
+ * to moving forward until it finds a working day.
  * 
- * @author Marcin Jekot
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
+ * @author Benoit Xhenseval
+ * @author $LastChangedBy: benoitx $
+ * @version $Revision: 203 $ $Date: 2006-10-11 13:53:07 +0100 (Wed, 11 Oct 2006) $
  * 
  */
-public class DateModifiedPreceedingHandler extends DateModifiedFollowingHandler {
+public class YearMonthDayModifiedPrecedingHandler extends YearMonthDayModifiedFollowingHandler {
 
     /**
      * If the current date of the give calculator is a non-working day, it will
@@ -58,17 +58,9 @@ public class DateModifiedPreceedingHandler extends DateModifiedFollowingHandler 
      * @return the date which may have moved.
      */
     @Override
-    public Date moveCurrentDate(final DateCalculator<Date> calculator) {
+    public YearMonthDay moveCurrentDate(final DateCalculator<YearMonthDay> calculator) {
         return move(calculator, -1);
     }
-
-    // -----------------------------------------------------------------------
-    //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
-    //
-    // -----------------------------------------------------------------------
 
     /**
      * Give the type name for this algorithm.

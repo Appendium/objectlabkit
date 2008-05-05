@@ -1,12 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <projectDescription>
   <name>datecalc-jdk</name>
-  <comment>Date Calculator methods for JDK</comment>
-  <projects>
-    <project>datecalc-common</project>
-  </projects>
+  <comment>This library provides pure JDK implementation of the Kit Calculators.</comment>
+  <projects></projects>
   <buildSpec>
     <buildCommand>
       <name>org.eclipse.jdt.core.javabuilder</name>
+      <arguments></arguments>
     </buildCommand>
   </buildSpec>
   <natures>

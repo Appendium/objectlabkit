@@ -37,6 +37,7 @@ import static net.objectlab.kit.datecalc.common.HolidayHandlerType.FORWARD;
 import static net.objectlab.kit.datecalc.common.HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK;
 import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_FOLLOWING;
 import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_PRECEEDING;
+import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_PRECEDING;
 import net.objectlab.kit.datecalc.common.AbstractKitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.IMMDateCalculator;
@@ -102,6 +103,8 @@ public class YearMonthDayKitCalculatorsFactory extends AbstractKitCalculatorsFac
             cal.setHolidayHandler(new YearMonthDayModifiedFollowingHandler());
         } else if (MODIFIED_PRECEEDING.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new YearMonthDayModifiedPreceedingHandler());
+        } else if (MODIFIED_PRECEDING.equals(holidayHandlerType)) {
+            cal.setHolidayHandler(new YearMonthDayModifiedPrecedingHandler());
         } else if (FORWARD_UNLESS_MOVING_BACK.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new YearMonthDayForwardUnlessNegativeHandler());
         } else if (holidayHandlerType != null) {

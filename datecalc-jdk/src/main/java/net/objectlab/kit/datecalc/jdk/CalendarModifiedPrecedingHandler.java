@@ -14,7 +14,7 @@
  *
  *                     www.ObjectLab.co.uk
  *
- * $Id$
+ * $Id: CalendarModifiedPreceedingHandler.java 203 2006-10-11 12:53:07Z benoitx $
  * 
  * Copyright 2006 the original author or authors.
  *
@@ -29,25 +29,24 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
  * License for the specific language governing permissions and limitations under
  * the License.
- */
-package net.objectlab.kit.datecalc.jdk;
+ */package net.objectlab.kit.datecalc.jdk;
 
-import java.util.Date;
+import java.util.Calendar;
 
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
 /**
- * A Jdk <code>Date</code> implementation of the
+ * A Jdk <code>Calendar</code> implementation of the
  * {@link net.objectlab.kit.datecalc.common.HolidayHandler}, for the
  * <strong>Modified Preceeding</strong> algorithm.
  * 
  * @author Marcin Jekot
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
+ * @author $LastChangedBy: benoitx $
+ * @version $Revision: 203 $ $Date: 2006-10-11 13:53:07 +0100 (Wed, 11 Oct 2006) $
  * 
  */
-public class DateModifiedPreceedingHandler extends DateModifiedFollowingHandler {
+public class CalendarModifiedPrecedingHandler extends CalendarModifiedFollowingHandler {
 
     /**
      * If the current date of the give calculator is a non-working day, it will
@@ -58,17 +57,9 @@ public class DateModifiedPreceedingHandler extends DateModifiedFollowingHandler 
      * @return the date which may have moved.
      */
     @Override
-    public Date moveCurrentDate(final DateCalculator<Date> calculator) {
+    public Calendar moveCurrentDate(final DateCalculator<Calendar> calculator) {
         return move(calculator, -1);
     }
-
-    // -----------------------------------------------------------------------
-    //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
-    //
-    // -----------------------------------------------------------------------
 
     /**
      * Give the type name for this algorithm.

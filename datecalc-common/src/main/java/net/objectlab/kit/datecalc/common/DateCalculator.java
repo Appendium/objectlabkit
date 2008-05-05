@@ -213,7 +213,7 @@ public interface DateCalculator<E> {
      * @return the current DateCalculator (so one can do
      *         calendar.moveByBusinessDays(2).getCurrentBusinessDate();)
      * @exception IllegalArgumentException
-     *                if the HolidayHandlerType is (MODIFIED_PRECEEDING or
+     *                if the HolidayHandlerType is (MODIFIED_PRECEDING or
      *                BACKWARD) and businessDays > 0 or (MODIFIED_FOLLOWING or
      *                FORWARD) and businessDays < 0
      */

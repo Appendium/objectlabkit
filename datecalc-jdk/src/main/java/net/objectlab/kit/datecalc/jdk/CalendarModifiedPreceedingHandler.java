@@ -46,20 +46,8 @@ import net.objectlab.kit.datecalc.common.HolidayHandlerType;
  * @version $Revision$ $Date$
  * 
  */
-public class CalendarModifiedPreceedingHandler extends CalendarModifiedFollowingHandler {
-
-    /**
-     * If the current date of the give calculator is a non-working day, it will
-     * be moved according to the algorithm implemented.
-     * 
-     * @param calculator
-     *            the calculator
-     * @return the date which may have moved.
-     */
-    @Override
-    public Calendar moveCurrentDate(final DateCalculator<Calendar> calculator) {
-        return move(calculator, -1);
-    }
+@Deprecated
+public class CalendarModifiedPreceedingHandler extends CalendarModifiedPrecedingHandler {
 
     /**
      * Give the type name for this algorithm.

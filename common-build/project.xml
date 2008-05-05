@@ -1,171 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-   /*  
-   * ========================================================================
-   * $Id$
-   * 
-   * Copyright 2006 the original author or authors.
-   *
-   * Licensed under the Apache License, Version 2.0 (the "License"); you may not
-   * use this file except in compliance with the License. You may obtain a copy of
-   * the License at
-   *
-   * http://www.apache.org/licenses/LICENSE-2.0
-   *
-   * Unless required by applicable law or agreed to in writing, software
-   * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-   * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
-   * License for the specific language governing permissions and limitations under
-   * the License.
-   * ========================================================================
-   */
+    /*  
+    * ========================================================================
+    * $Id$
+    * 
+    * Copyright 2006 the original author or authors.
+    *
+    * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+    * use this file except in compliance with the License. You may obtain a copy of
+    * the License at
+    *
+    * http://www.apache.org/licenses/LICENSE-2.0
+    *
+    * Unless required by applicable law or agreed to in writing, software
+    * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+    * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+    * License for the specific language governing permissions and limitations under
+    * the License.
+    * ========================================================================
+    */
 -->
 
-<project xmlns="http://maven.apache.org/POM/3.0.0"
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xsi:schemaLocation="http://maven.apache.org/POM/3.0.0 http://maven.apache.org/maven-v3_0_0.xsd">
-   <pomVersion>3</pomVersion>
-   <groupId>net.objectlab.kit.datecalc</groupId>
-   <currentVersion>1.1.0</currentVersion>
-   <organization>
-      <name>ObjectLab Financial Ltd</name>
-      <url>http://www.objectlab.co.uk</url>
-      <logo>
-         http://www.objectlab.co.uk/images/objectlab-web-noblue.gif
-      </logo>
-   </organization>
-   <inceptionYear>2006</inceptionYear>
-   <url>http://objectlabkit.sourceforge.net</url>
-   <issueTrackingUrl>
-         http://www.sourceforge.net/tracker/?group_id=175139
-   </issueTrackingUrl>
-   <siteAddress>objectlabkit.sourceforge.net</siteAddress>
-   <siteDirectory>
-      /var/www/solutions/website/objectlab.co.uk/
-   </siteDirectory>
-   <repository>
-      <url>http://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit</url>
-      <connection>
-         scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk
-      </connection>
-      <developerConnection>
-         scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk
-      </developerConnection>
-   </repository>
-   <developers>
-      <developer>
-         <name>Benoit Xhenseval</name>
-         <id>benoitx</id>
-         <email>kit AT objectlab DOT co dOt uk</email>
-         <organization>ObjectLab Financial Ltd</organization>
-         <roles>
-            <role>Team Leader</role>
-            <role>Developer</role>
-         </roles>
-         <url>http://www.xhenseval.com</url>
-         <timezone>+0</timezone>
-      </developer>
-      <developer>
-         <name>Marcin Jekot</name>
-         <id>marchy</id>
-         <email>marchy at users dot sourceforge dot net</email>
-         <organization>ObjectLab Financial Ltd</organization>
-         <roles>
-            <role>Developer</role>
-         </roles>
-         <timezone>+0</timezone>
-      </developer>
-   </developers>
-   <!-- any mailing lists for the project -->
-   <mailingLists>
-      <mailingList>
-         <name>News about ObjectLab's projects (Alerts online)</name>
-         <subscribe>
-            http://lists.sourceforge.net/lists/listinfo/objectlabkit-news
-         </subscribe>
-         <unsubscribe>
-            http://lists.sourceforge.net/lists/listinfo/objectlabkit-news
-         </unsubscribe>
-         <post/>
-         <archive>
-            http://sourceforge.net/mailarchive/forum.php?forum=objectlabkit-news
-         </archive>
-      </mailingList>
-      <mailingList>
-         <name>Kit Announcements</name>
-         <subscribe>
-            http://lists.sourceforge.net/lists/listinfo/objectlabkit-announce
-         </subscribe>
-         <unsubscribe>
-            http://lists.sourceforge.net/lists/listinfo/objectlabkit-announce
-         </unsubscribe>
-         <post/>
-         <archive>
-            http://sourceforge.net/mailarchive/forum.php?forum=objectlabkit-announce
-         </archive>
-      </mailingList>
-      <mailingList>
-         <name>Kit User</name>
-         <subscribe>
-            http://lists.sourceforge.net/lists/listinfo/objectlabkit-user
-         </subscribe>
-         <unsubscribe>
-            http://lists.sourceforge.net/lists/listinfo/objectlabkit-user
-         </unsubscribe>
-         <post>objectlabkit-user@lists.sourceforge.net</post>
-         <archive>
-            http://sourceforge.net/mailarchive/forum.php?forum=objectlabkit-user
-         </archive>
-      </mailingList>
-      <mailingList>
-         <name>Kit Developers (SVN checkins)</name>
-         <subscribe>
-            http://lists.sourceforge.net/lists/listinfo/objectlabkit-svn
-         </subscribe>
-         <unsubscribe>
-            http://lists.sourceforge.net/lists/listinfo/objectlabkit-svn
-         </unsubscribe>
-         <post/>
-         <archive>
-            http://sourceforge.net/mailarchive/forum.php?forum=objectlabkit-svn
-         </archive>
-      </mailingList>
-   </mailingLists>
+<project xmlns="http://maven.apache.org/POM/3.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/3.0.0 http://maven.apache.org/maven-v3_0_0.xsd">
+    <pomVersion>3</pomVersion>
+    <groupId>net.objectlab.kit.datecalc</groupId>
+    <currentVersion>1.2.0</currentVersion>
+    <organization>
+        <name>Appendium - Portfolio Financing Platform</name>
+        <url>http://www.appendium.com/</url>
+        <logo>http://www.appendium.com/openimages/appendium_logo.jpg</logo>
+    </organization>
+    <inceptionYear>2006</inceptionYear>
+    <url>http://objectlabkit.sourceforge.net</url>
+    <issueTrackingUrl>http://www.sourceforge.net/tracker/?group_id=175139</issueTrackingUrl>
+    <siteAddress>objectlabkit.sourceforge.net</siteAddress>
+    <siteDirectory>/var/www/solutions/website/objectlab.co.uk/</siteDirectory>
+    <repository>
+        <url>http://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit</url>
+        <connection>scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk</connection>
+        <developerConnection>scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk</developerConnection>
+    </repository>
+    <developers>
+        <developer>
+            <name>Benoit Xhenseval</name>
+            <id>benoitx</id>
+            <email>kit AT appendium DOT com</email>
+            <organization>Appendium Ltd</organization>
+            <roles>
+                <role>Team Leader</role>
+                <role>Developer</role>
+            </roles>
+            <url>http://www.xhenseval.com</url>
+            <timezone>+0</timezone>
+        </developer>
+        <developer>
+            <name>Marcin Jekot</name>
+            <id>marchy</id>
+            <email>marchy at users dot sourceforge dot net</email>
+            <organization>ObjectLab Financial Ltd</organization>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <timezone>+0</timezone>
+        </developer>
+    </developers>
+    <!-- any mailing lists for the project -->
+    <mailingLists>
+        <mailingList>
+            <name>News about ObjectLab's projects (Alerts online)</name>
+            <subscribe>http://lists.sourceforge.net/lists/listinfo/objectlabkit-news</subscribe>
+            <unsubscribe>http://lists.sourceforge.net/lists/listinfo/objectlabkit-news</unsubscribe>
+            <post />
+            <archive>http://sourceforge.net/mailarchive/forum.php?forum=objectlabkit-news</archive>
+        </mailingList>
+        <mailingList>
+            <name>Kit Announcements</name>
+            <subscribe>http://lists.sourceforge.net/lists/listinfo/objectlabkit-announce</subscribe>
+            <unsubscribe>http://lists.sourceforge.net/lists/listinfo/objectlabkit-announce</unsubscribe>
+            <post />
+            <archive>http://sourceforge.net/mailarchive/forum.php?forum=objectlabkit-announce</archive>
+        </mailingList>
+        <mailingList>
+            <name>Kit User</name>
+            <subscribe>http://lists.sourceforge.net/lists/listinfo/objectlabkit-user</subscribe>
+            <unsubscribe>http://lists.sourceforge.net/lists/listinfo/objectlabkit-user</unsubscribe>
+            <post>objectlabkit-user@lists.sourceforge.net</post>
+            <archive>http://sourceforge.net/mailarchive/forum.php?forum=objectlabkit-user</archive>
+        </mailingList>
+        <mailingList>
+            <name>Kit Developers (SVN checkins)</name>
+            <subscribe>http://lists.sourceforge.net/lists/listinfo/objectlabkit-svn</subscribe>
+            <unsubscribe>http://lists.sourceforge.net/lists/listinfo/objectlabkit-svn</unsubscribe>
+            <post />
+            <archive>http://sourceforge.net/mailarchive/forum.php?forum=objectlabkit-svn</archive>
+        </mailingList>
+    </mailingLists>
 
-   <build>
-      <!-- We need to put here something other when we release it or I'll receive the emails from
-         everyone who tries to use the project... -->
-      <nagEmailAddress>kit@objectlab.co.uk</nagEmailAddress>
-      <defaultGoal>kit:build</defaultGoal>
-   </build>
+    <build>
+        <!-- We need to put here something other when we release it or I'll receive the emails from
+            everyone who tries to use the project... -->
+        <nagEmailAddress>kit@objectlab.co.uk</nagEmailAddress>
+        <defaultGoal>kit:build</defaultGoal>
+    </build>
 
-   <reports>
-      <report>maven-checkstyle-plugin</report>
-      <report>maven-findbugs-plugin</report>
-      <report>maven-pmd-plugin</report>
-      <report>maven-simian-plugin</report>
-      <report>maven-cobertura-plugin</report>
-      <report>maven-qalab-plugin</report>
-      <report>maven-ydoc-plugin</report>
-      <report>maven-jdepend-plugin</report>
-      <report>maven-faq-plugin</report>
-      <report>maven-junit-report-plugin</report>
-      <report>maven-jxr-plugin</report>
-      <report>maven-tasklist-plugin</report>
-   </reports>
+    <reports>
+        <report>maven-checkstyle-plugin</report>
+        <report>maven-findbugs-plugin</report>
+        <report>maven-pmd-plugin</report>
+        <report>maven-simian-plugin</report>
+        <report>maven-cobertura-plugin</report>
+        <report>maven-qalab-plugin</report>
+        <report>maven-ydoc-plugin</report>
+        <report>maven-jdepend-plugin</report>
+        <report>maven-faq-plugin</report>
+        <report>maven-junit-report-plugin</report>
+        <report>maven-jxr-plugin</report>
+        <report>maven-tasklist-plugin</report>
+    </reports>
 
-   <versions>
-      <version>
-         <id>1.1.0</id>
-         <name>1.1.0</name>
-         <tag>v1.1.0</tag>
-      </version>
-      <version>
-         <id>1.0.1</id>
-         <name>1.0.1</name>
-         <tag>v1.0.1</tag>
-      </version>
-   </versions>
+    <versions>
+        <version>
+            <id>1.1.0</id>
+            <name>1.1.0</name>
+            <tag>v1.1.0</tag>
+        </version>
+        <version>
+            <id>1.2.0</id>
+            <name>1.2.0</name>
+            <tag>v1.2.0</tag>
+        </version>
+        <version>
+            <id>1.0.1</id>
+            <name>1.0.1</name>
+            <tag>v1.0.1</tag>
+        </version>
+    </versions>
 </project>
 
