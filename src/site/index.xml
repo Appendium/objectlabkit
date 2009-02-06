@@ -22,6 +22,24 @@
     <!-- The body of the document contains a number of sections -->
     <section name="Quick News">
 	<p style="margin-top:10px; margin-bottom:0; padding-bottom:0; text-align:center; line-height:0"><a href="http://feeds.feedburner.com/~r/ObjectlabOpenSourceNews/~6/1"><img src="http://feeds.feedburner.com/ObjectlabOpenSourceNews.1.gif" alt="ObjectLab Open Source News" style="border:0"/></a></p><p style="margin-top:5px; padding-top:0; font-size:x-small; text-align:center"><a href="http://www.feedburner.com/fb/a/headlineanimator/install?id=829470&amp;w=1" onclick="window.open(this.href, 'haHowto', 'width=520,height=600,toolbar=no,address=no,resizable=yes,scrollbars'); return false" target="_blank">Grab this Headline Animator</a></p>    
+    <p>2009-02-xx: version 1.2.0 is out and contains a couple of changes, including the ability to see the registered calendar and unregistering calendars (useful if calendars are dynamic). 
+	More info on the changes <a href="changes-report.html">here</a>. Also... one of the author is on Twitter, follow your favourite Belgian at <a href="http://twitter.com/benooitx">http://twitter.com/benooitx</a>.</p>
+	
+	<p>
+	<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,124,0" width="424" height="350" id="TwitterWidget" align="middle">
+		<param name="allowScriptAccess" value="sameDomain" />
+		<param name="allowFullScreen" value="false" />
+		<param name="movie" value="http://static.twitter.com/flash/widgets/profile/TwitterWidget.swf" />
+		<param name="quality" value="high" />
+		<param name="bgcolor" value="#000000" />
+		<param name="FlashVars" value="userID=18722145&amp;styleURL=http://static.twitter.com/flash/widgets/profile/velvetica.xml"/>
+		<embed src="http://static.twitter.com/flash/widgets/profile/TwitterWidget.swf" quality="high" bgcolor="#000000" width="424" 
+		height="350" name="TwitterWidget" align="middle" allowScriptAccess="sameDomain" allowFullScreen="false" 
+		type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" 
+		FlashVars="userID=18722145&amp;styleURL=http://static.twitter.com/flash/widgets/profile/velvetica.xml"/>
+	</object>
+	</p>
+
     <p>2007-01-xx: version 1.1.0 is out and contains a couple of changes, a new HolidayHandler and the ability to define a valid range for the holiday (and
     if the calculation is beyond that range, an exception is thrown).  This is done via HolidayCalendar which should replace the simple Set&lt;E&gt; for holidays.
     More info on the changes <a href="changes-report.html">here</a>.</p>

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <classpath>
-  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"></classpathentry>
-  <classpathentry excluding="" kind="src" path="src/main/java"></classpathentry>
-  <classpathentry output="target/test-classes" kind="src" path="src/test/java"></classpathentry>
-  <classpathentry kind="var" path="MAVEN_REPO/junit/jars/junit-3.8.2.jar"></classpathentry>
-  <classpathentry kind="output" path="target/classes"></classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" output="target/test-classes" path="src/test/java"/>
+	<classpathentry kind="var" path="MAVEN_REPO/junit/jars/junit-3.8.2.jar"/>
+	<classpathentry kind="output" path="targetEclipse/classes"/>
 </classpath>
