@@ -66,7 +66,7 @@ public interface KitCalculatorsFactory<E> {
      * @exception IllegalArgumentException
      *                if the type is not null or a valid value.
      */
-    DateCalculator<E> getDateCalculator(final String name, final String holidayHandlerType);
+    DateCalculator<E> getDateCalculator(String name, String holidayHandlerType);
 
     /**
      * Use this method to register a set of holidays for a given calendar.
@@ -78,28 +78,44 @@ public interface KitCalculatorsFactory<E> {
      * @deprecated should use the registerHolidays with HolidayCalendar
      */
     @Deprecated
-    void registerHolidays(final String name, Set<E> holidays);
+    void registerHolidays(String name, Set<E> holidays);
 
     /**
      * Use this method to register a holidays calendar.
      * 
-     * @param name
+     * @param calendarName
      *            the calendar name to register these holidays under.
      * @param holidaysCalendar
      *            the holiday calendar (non-working days with boundaries).
      */
-    void registerHolidays(final String name, HolidayCalendar<E> holidaysCalendar);
+    void registerHolidays(String calendarName, HolidayCalendar<E> holidaysCalendar);
     
     /**
-     * @return true if the holiday name is registered.
+     * @return true if the holiday calendar name is registered.
      */
-    boolean isHolidayCalendarRegistered(final String name);
+    boolean isHolidayCalendarRegistered(String calendarName);
     
     /**
-     * @return an immutable Holiday Calendar that is registered.
+     * @return an immutable Holiday Calendar name that is registered.
      */
-    HolidayCalendar<E> getHolidayCalendar(final String name);
+    HolidayCalendar<E> getHolidayCalendar(String calendarName);
 
+    /**
+     * @return an immutable set of registered calendar names 
+     */
+    Set<String> getRegisteredHolidayCalendarNames();
+    
+    /**
+     * Unregister a given holiday calendar
+     * @param calendarName
+     *          the calendar name to unregister.
+     */
+    void unregisterHolidayCalendar(String calendarName);
+    
+    /**
+     * unregister all holiday calendars;
+     */
+    void unregisterAllHolidayCalendars();
     // -----------------------------------------------------------------------
     //
     //    ObjectLab, world leaders in the design and development of bespoke 

@@ -32,6 +32,7 @@
  */
 package net.objectlab.kit.datecalc.common;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -130,6 +131,29 @@ public abstract class AbstractKitCalculatorsFactory<E> implements KitCalculators
         if (name != null) {
             dc.setHolidayCalendar(holidays.get(name));
         }
+    }
+
+    /**
+     * @return an immutable set of registered calendar names 
+     */
+    public Set<String> getRegisteredHolidayCalendarNames() {
+        return Collections.unmodifiableSet(holidays.keySet());
+    }
+
+    /**
+     * Unregister a given holiday calendar
+     * @param calendarName
+     *          the calendar name to unregister.
+     */
+    public void unregisterHolidayCalendar(final String calendarName) {
+        holidays.remove(calendarName);
+    }
+
+    /**
+     * unregister all holiday calendars;
+     */
+    public void unregisterAllHolidayCalendars() {
+        holidays.clear();
     }
 }
 

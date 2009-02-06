@@ -66,6 +66,67 @@ public abstract class AbstractDateCalculatorFactoryTest<E> extends AbstractDateT
         Assert.assertNotSame(cal1, cal2);
     }
 
+    public void testGetCalendarsNames() {
+        getDateCalculatorFactory().registerHolidays("UK", createUKHolidayCalendar());
+        getDateCalculatorFactory().registerHolidays("US", createUSHolidayCalendar());
+
+        {
+            final Set<String> cals = getDateCalculatorFactory().getRegisteredHolidayCalendarNames();
+            Assert.assertNotNull("cal1", cals);
+            Assert.assertEquals("cals size", 2, cals.size());
+            Assert.assertTrue("UK", cals.contains("UK"));
+            Assert.assertTrue("US", cals.contains("US"));
+            Assert.assertTrue("BLA", !cals.contains("BLA"));
+        }
+        // unregister 1 name that does not exist
+        getDateCalculatorFactory().unregisterHolidayCalendar("ZZZ");
+        {
+            final Set<String> cals = getDateCalculatorFactory().getRegisteredHolidayCalendarNames();
+            Assert.assertNotNull("cal1", cals);
+            Assert.assertEquals("cals size", 2, cals.size());
+            Assert.assertTrue("UK", cals.contains("UK"));
+            Assert.assertTrue("US", cals.contains("US"));
+            Assert.assertTrue("BLA", !cals.contains("BLA"));
+        }
+        // unregister 1 name that does exist
+        getDateCalculatorFactory().unregisterHolidayCalendar("UK");
+        {
+            final Set<String> cals = getDateCalculatorFactory().getRegisteredHolidayCalendarNames();
+            Assert.assertNotNull("cal1", cals);
+            Assert.assertEquals("cals size", 1, cals.size());
+            Assert.assertTrue("UK", !cals.contains("UK"));
+            Assert.assertTrue("US", cals.contains("US"));
+            Assert.assertTrue("BLA", !cals.contains("BLA"));
+        }
+        // unregister 1 name that does exist
+        getDateCalculatorFactory().unregisterHolidayCalendar("US");
+        {
+            final Set<String> cals = getDateCalculatorFactory().getRegisteredHolidayCalendarNames();
+            Assert.assertNotNull("cal1", cals);
+            Assert.assertEquals("cals size", 0, cals.size());
+        }
+
+        // re-register
+        getDateCalculatorFactory().registerHolidays("UK", createUKHolidayCalendar());
+        getDateCalculatorFactory().registerHolidays("US", createUSHolidayCalendar());
+        {
+            final Set<String> cals = getDateCalculatorFactory().getRegisteredHolidayCalendarNames();
+            Assert.assertNotNull("cal1", cals);
+            Assert.assertEquals("cals size", 2, cals.size());
+            Assert.assertTrue("UK", cals.contains("UK"));
+            Assert.assertTrue("US", cals.contains("US"));
+            Assert.assertTrue("BLA", !cals.contains("BLA"));
+        }
+
+        // unregister all
+        getDateCalculatorFactory().unregisterAllHolidayCalendars();
+        {
+            final Set<String> cals = getDateCalculatorFactory().getRegisteredHolidayCalendarNames();
+            Assert.assertNotNull("cal1", cals);
+            Assert.assertEquals("cals size", 0, cals.size());
+        }
+}
+
     // -----------------------------------------------------------------------
     //
     //    ObjectLab, world leaders in the design and development of bespoke 
