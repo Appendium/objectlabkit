@@ -55,30 +55,6 @@ public abstract class AbstractKitCalculatorsFactory<E> implements KitCalculators
     private final ConcurrentMap<String, HolidayCalendar<E>> holidays = new ConcurrentHashMap<String, HolidayCalendar<E>>();
 
     /**
-     * Use this method to register a set of holidays for a given calendar, it
-     * will replace any existing set. It won't update any existing
-     * DateCalculator as these should not be amended whilst in existence (we
-     * could otherwise get inconsistent results).
-     * 
-     * @param name
-     *            the calendar name to register these holidays under.
-     * @param holidaysSet
-     *            the set of holidays (non-working days).
-     * @deprecated use the HolidayCalendar
-     */
-    @Deprecated
-    public void registerHolidays(final String name, final Set<E> holidaysSet) {
-        if (name != null) {
-            final Set<E> hol = new HashSet<E>();
-            if (holidaysSet != null) {
-                hol.addAll(holidaysSet);
-            }
-            final DefaultHolidayCalendar<E> defaultHolidayCalendar = new DefaultHolidayCalendar<E>(hol);
-            this.holidays.put(name, new ImmutableHolidayCalendar<E>(defaultHolidayCalendar));
-        }
-    }
-
-    /**
      * Use this method to register a given calendar, it will replace any
      * existing one with the same name. An immutable copy is made so that any changes outside this class
      * will have no affect. It won't update any existing DateCalculator as these should

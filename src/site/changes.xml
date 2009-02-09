@@ -11,6 +11,7 @@
     <release version="1.2.0" date="in SVN" description="Maintenance">
       <action dev="benoitx" type="fix" issue="1929838" due-to="Anthony Whitford">Spelling for "PRECEEDING" corrected to PRECEDING, deprecated the mispelt name.</action>
       <action dev="benoitx" type="add">Enhanced the KitCalculatorsFactory to be able to get the holidayCalendar names and unregister calendars.</action>
+      <action dev="benoitx" type="fix">The deprecated method KitCalculatorsFactory.registerHolidays(Set holidays) has been removed!</action>
     </release>
     <release version="1.1.0" date="2008-03-25" description="Maintenance">
       <action dev="benoitx" type="add">Changed JODA dependency to 1.5</action>
