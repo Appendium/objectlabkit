@@ -69,18 +69,6 @@ public interface KitCalculatorsFactory<E> {
     DateCalculator<E> getDateCalculator(String name, String holidayHandlerType);
 
     /**
-     * Use this method to register a set of holidays for a given calendar.
-     * 
-     * @param name
-     *            the calendar name to register these holidays under.
-     * @param holidays
-     *            the set of holidays (non-working days).
-     * @deprecated should use the registerHolidays with HolidayCalendar
-     */
-    @Deprecated
-    void registerHolidays(String name, Set<E> holidays);
-
-    /**
      * Use this method to register a holidays calendar.
      * 
      * @param calendarName
