@@ -41,8 +41,13 @@ import junit.framework.Assert;
 
 public abstract class AbstractForwardUnlessNegativeCalculatorTest<E> extends AbstractDateTestCase<E> {
 
+    public void testType() {
+        final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
+        assertEquals(HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK, cal.getHolidayHandlerType());
+    }
+
     public void testSimpleForwardWithWeekend() {
-        final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.FORWARD);
+        final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getHolidayCalendar().getHolidays().size());
 
@@ -236,6 +241,15 @@ public abstract class AbstractForwardUnlessNegativeCalculatorTest<E> extends Abs
         checkDate("Add 1 week", cal.moveByDays(7), "2006-08-31");
         cal.setStartDate(newDate("2006-08-24"));
         checkDate("Move by 1W with 1 bank holiday", cal.moveByBusinessDays(7), "2006-09-05");
+        
+        cal.setStartDate(newDate("2006-08-17"));
+        checkDate("Negative move by 1 day", cal.moveByBusinessDays(-1), "2006-08-16");
+        
+        cal.setStartDate(newDate("2006-08-25"));
+        checkDate("Negative move by 4 days", cal.moveByBusinessDays(-4), "2006-08-21");
+
+        cal.setStartDate(newDate("2006-08-29"));
+        checkDate("Negative move by x days, across weekend, and bank holiday", cal.moveByBusinessDays(-5), "2006-08-21");
     }
 
     public void testMoveByTenorDays() {
