@@ -89,7 +89,7 @@ public class YearMonthDayForwardUnlessNegativeHandler implements HolidayHandler<
      * @return algorithm name.
      */
     public String getType() {
-        return HolidayHandlerType.FORWARD;
+        return HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK;
     }
 }
 
