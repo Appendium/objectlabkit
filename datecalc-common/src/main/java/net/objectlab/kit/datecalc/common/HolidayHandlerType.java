@@ -70,15 +70,6 @@ public final class HolidayHandlerType {
     public static final String MODIFIED_FOLLOWING = "modifiedFollowing";
 
     /**
-     * A modified preceeding handler will move the date backward if it falls on
-     * a non working day BUT, if the new date falls into another month, it will
-     * revert to moving forward until it finds a working day.
-     * @deprecated uses MODIFIED_PRECEDING (spelling...)
-     */
-    @Deprecated
-    public static final String MODIFIED_PRECEEDING = "modifiedPreceeding";
-
-    /**
      * A modified preceding handler will move the date backward if it falls on
      * a non working day BUT, if the new date falls into another month, it will
      * revert to moving forward until it finds a working day.

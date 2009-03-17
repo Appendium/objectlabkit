@@ -35,7 +35,6 @@ package net.objectlab.kit.datecalc.common;
 import static net.objectlab.kit.datecalc.common.HolidayHandlerType.BACKWARD;
 import static net.objectlab.kit.datecalc.common.HolidayHandlerType.FORWARD;
 import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_FOLLOWING;
-import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_PRECEEDING;
 import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_PRECEDING;
 
 import java.util.ArrayList;
@@ -309,8 +308,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     public DateCalculator<E> moveByBusinessDays(final int businessDays) {
         if (businessDays > 0
                 && holidayHandler != null
-                && (holidayHandler.getType().equals(BACKWARD) || holidayHandler.getType().equals(MODIFIED_PRECEEDING) || holidayHandler.getType().equals(
-                        MODIFIED_PRECEDING))) {
+                && (holidayHandler.getType().equals(BACKWARD) || holidayHandler.getType().equals(MODIFIED_PRECEDING))) {
             throw new IllegalArgumentException("A " + MODIFIED_PRECEDING + " or " + BACKWARD + " does not allow positive steps for moveByBusinessDays");
         } else if (businessDays < 0 && holidayHandler != null
                 && (holidayHandler.getType().equals(FORWARD) || holidayHandler.getType().equals(MODIFIED_FOLLOWING))) {

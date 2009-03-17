@@ -36,7 +36,6 @@ import static net.objectlab.kit.datecalc.common.HolidayHandlerType.BACKWARD;
 import static net.objectlab.kit.datecalc.common.HolidayHandlerType.FORWARD;
 import static net.objectlab.kit.datecalc.common.HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK;
 import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_FOLLOWING;
-import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_PRECEEDING;
 import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_PRECEDING;
 
 import java.util.Calendar;
@@ -94,8 +93,6 @@ public class CalendarKitCalculatorsFactory extends AbstractKitCalculatorsFactory
             cal.setHolidayHandler(new CalendarBackwardHandler());
         } else if (MODIFIED_FOLLOWING.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new CalendarModifiedFollowingHandler());
-        } else if (MODIFIED_PRECEEDING.equals(holidayHandlerType)) {
-            cal.setHolidayHandler(new CalendarModifiedPreceedingHandler());
         } else if (MODIFIED_PRECEDING.equals(holidayHandlerType)) {
             cal.setHolidayHandler(new CalendarModifiedPrecedingHandler());
         } else if (FORWARD_UNLESS_MOVING_BACK.equals(holidayHandlerType)) {
