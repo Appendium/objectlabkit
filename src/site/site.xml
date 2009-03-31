@@ -11,7 +11,17 @@
     <src>images/objectlab_logo.gif</src>
     <href>http://www.objectlab.co.uk/</href>
   </bannerRight>
-  <publishDate position="left" format="yyyy-MM-dd hh:mm Z" />
+    <poweredBy>
+      <logo name="Maven" href="http://maven.apache.org/"
+            img="http://maven.apache.org/images/logos/maven-feather.png"/>
+    </poweredBy>
+  <skin>
+    <groupId>org.apache.maven.skins</groupId>
+    <artifactId>maven-stylus-skin</artifactId>
+    <version>1.0</version>
+  </skin>
+
+  <publishDate position="left" format="yyyy-MM-dd HH:mm Z" />
   <version position="left" />
   <body>
     <links>
@@ -27,9 +37,9 @@
       <item name="Tenor Handling" href="tenor.html" />
       <item name="JavaDoc" class="newWindow" target="_new"
         href="apidocs/index.html" />
-      <item name="Stat SVN" href="statsvn/index.html" />
+      <!--<item name="Stat SVN" href="statsvn/index.html" />-->
       <item name="In the press" href="press/index.html" />
-      <item name="Sitemap" href="sitemap.html" />
+      <!--<item name="Sitemap" href="sitemap.html" />-->
       <item name="FAQ" href="faq.html" />
     </menu>
 
@@ -44,7 +54,7 @@
       <item name="ObjectLab" href="http://www.objectlab.co.uk" />
       <item name="Joda-time" href="http://joda-time.sourceforge.net" />
     </menu>
-
   </body>
+  <footer>Hello Marcin</footer>
 
 </project>
