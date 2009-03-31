@@ -1,37 +1,35 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
+  <parent>
+    <groupId>net.objectlab.kit.datecalc</groupId>
+    <artifactId>datecalc</artifactId>
+    <version>1.2.0-SNAPSHOT</version>
+  </parent>
 
-   <modelVersion>4.0.0</modelVersion>
-   <parent>
+  <artifactId>datecalc-jdk</artifactId>
+  <packaging>jar</packaging>
+
+  <name>Date Calculator for JDK</name>
+  <description>Date Calculator methods for JDK</description>
+
+  <dependencies>
+    <dependency>
       <groupId>net.objectlab.kit.datecalc</groupId>
-      <artifactId>datecalc</artifactId>
-      <version>1.1.0</version>
-   </parent>
+      <artifactId>datecalc-common</artifactId>
+    </dependency>
+  </dependencies>
 
-   <artifactId>datecalc-jdk</artifactId>
-   <packaging>jar</packaging>
-   <name>Date Calculator for JDK</name>
-   <description>Date Calculator methods for JDK</description>
-
-   <dependencies>
-      <dependency>
-         <groupId>net.objectlab.kit.datecalc</groupId>
-         <artifactId>datecalc-common</artifactId>
-         <version>${project.version}</version>
-      </dependency>
-   </dependencies>
-
-   <build>
-      <testResources>
-         <testResource>
-            <directory>
-               ../datecalc-common/target/test-classes
-            </directory>
-            <includes>
-               <include>**/*.class</include>
-            </includes>
-         </testResource>
-      </testResources>
-   </build>
+  <build>
+    <testResources>
+      <testResource>
+        <directory>../datecalc-common/target/test-classes</directory>
+        <includes>
+          <include>**/*.class</include>
+        </includes>
+      </testResource>
+    </testResources>
+  </build>
 
 </project>

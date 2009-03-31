@@ -38,10 +38,10 @@
     <img src="backward.png"/>
     </subsection>
     
-    <subsection name="Modified Preceeding">
+    <subsection name="Modified Preceding">
     <p>If the date is a non-working day, move backward to the previous working day, 
     	UNLESS it crosses over a new month, in which case we revert to find the next working day of the current month.</p>
-    <img src="modif-preceeding.png"/>
+    <img src="modif-preceding.png"/>
     </subsection>
 
     </section>

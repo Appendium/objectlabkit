@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ObjectLab-Kit">
+  <title>ObjectLab Kit</title>
+  <bannerLeft>
+    <name>Appendium</name>
+    <src>images/appendium_logo.jpg</src>
+    <href>http://www.appendium.com</href>
+  </bannerLeft>
+  <bannerRight>
+    <name>ObjectLab Financial Ltd</name>
+    <src>images/objectlab_logo.gif</src>
+    <href>http://www.objectlab.co.uk/</href>
+  </bannerRight>
+  <publishDate position="left" format="yyyy-MM-dd hh:mm Z" />
+  <version position="left" />
+  <body>
+    <links>
+      <item name="home" href="./index.html" />
+      <item name="datecalc-common" href="./datecalc-common/index.html" />
+      <item name="datecalc-jdk" href="./datecalc-jdk/index.html" />
+      <item name="datecalc-joda" href="./datecalc-joda/index.html" />
+      <item name="sourceforge.net/projects/objectlabkit" href="http://sourceforge.net/projects/objectlabkit" />
+    </links>
+
+    <menu name="Kit">
+      <item name="Holiday Handling" href="algo.html" />
+      <item name="Tenor Handling" href="tenor.html" />
+      <item name="JavaDoc" class="newWindow" target="_new"
+        href="apidocs/index.html" />
+      <item name="Stat SVN" href="statsvn/index.html" />
+      <item name="In the press" href="press/index.html" />
+      <item name="Sitemap" href="sitemap.html" />
+      <item name="FAQ" href="faq.html" />
+    </menu>
+
+    <menu ref="modules" />
+    <menu ref="reports" />
+
+    <menu name="Interesting Projects">
+      <item name="QALab" href="http://qalab.sourceforge.net/" />
+      <item name="JTreeMap" href="http://jtreemap.sourceforge.net/" />
+      <item name="PZFileReader" href="http://pzfilereader.sourceforge.net/" />
+      <item name="StatSVN" href="http://www.statsvn.org/" />
+      <item name="ObjectLab" href="http://www.objectlab.co.uk" />
+      <item name="Joda-time" href="http://joda-time.sourceforge.net" />
+    </menu>
+
+  </body>
+
+</project>
