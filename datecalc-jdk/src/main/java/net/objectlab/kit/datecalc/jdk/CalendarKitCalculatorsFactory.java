@@ -42,7 +42,6 @@ import java.util.Calendar;
 
 import net.objectlab.kit.datecalc.common.AbstractKitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.DateCalculator;
-import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 import net.objectlab.kit.datecalc.common.IMMDateCalculator;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 

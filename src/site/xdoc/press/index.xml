@@ -29,51 +29,51 @@
 
     <subsection name="On the web">
 	<ul>
-		<li><a href="press-release-1.0.1.txt">Original 'press' release</a></li>
+		<li><a href="./press-release-1.0.1.txt">Original 'press' release</a></li>
 	</ul>
     </subsection>
 
     <subsection name="JavaLobby">
 	<ul>
 		<li><a href="http://www.javalobby.org/java/forums/t82598.html">JavaLobby.org notice</a></li>
-		<li><a href="homepage-javalobby2.png">JavaLobby.org homepage image</a></li>
-		<li><a href="homepage-javalobby.pdf">JavaLobby.org homepage PDF</a></li>
+		<li><a href="./homepage-javalobby2.png">JavaLobby.org homepage image</a></li>
+		<li><a href="./homepage-javalobby.pdf">JavaLobby.org homepage PDF</a></li>
 	</ul>
     </subsection>
 
     <subsection name="The Server Side">
 	<ul>
 		<li><a href="http://www.theserverside.com/news/thread.tss?thread_id=42572">TheServerSide.com notice</a></li>
-		<li><a href="homepage-theserverside.png">TheServerSide.com homepage image</a></li>
-		<li><a href="homepage-theserverside.pdf">TheServerSide.com homepage PDF</a></li>
+		<li><a href="./homepage-theserverside.png">TheServerSide.com homepage image</a></li>
+		<li><a href="./homepage-theserverside.pdf">TheServerSide.com homepage PDF</a></li>
 	</ul>
     </subsection>
 
     <subsection name="Java.Net">
 	<ul>
 		<li><a href="http://today.java.net/pub/n/ObjectLabKit">The Java.net notice</a></li>
-		<li><a href="newspage-javanet.png">Java.net News page image</a></li>
-		<li><a href="newspage-javanet.pdf">Java.net News page PDF</a></li>
+		<li><a href="./newspage-javanet.png">Java.net News page image</a></li>
+		<li><a href="./newspage-javanet.pdf">Java.net News page PDF</a></li>
 	</ul>
     </subsection>
 
     <subsection name="JavaRSS.com">
 	<ul>
-		<li><a href="homepage-javarss.png">JavaRSS.com homepage image</a></li>
-		<li><a href="homepage-javarss.pdf">JavaRSS.com homepage PDF</a></li>
+		<li><a href="./homepage-javarss.png">JavaRSS.com homepage image</a></li>
+		<li><a href="./homepage-javarss.pdf">JavaRSS.com homepage PDF</a></li>
 	</ul>
     </subsection>
 
     <subsection name="Where are you all?">
 	<ul>
-		<li><a href="visits-map-20061010-12.png">A Google Analytics Map for the week of our first release</a></li>
+		<li><a href="./visits-map-20061010-12.png">A Google Analytics Map for the week of our first release</a></li>
 	</ul>
     </subsection>
 
     <subsection name="dZone.com">
 	<ul>
-		<li><a href="homepage-dzone.png">dzone.com homepage image</a></li>
-		<li><a href="homepage-dzone.pdf">dzone.com homepage PDF</a></li>
+		<li><a href="./homepage-dzone.png">dzone.com homepage image</a></li>
+		<li><a href="./homepage-dzone.pdf">dzone.com homepage PDF</a></li>
 	</ul>
     </subsection>
 

@@ -1,6 +1,4 @@
 <?xml version="1.0"?>
-<!-- 
- -->
 
 <document>
   <properties>
@@ -9,26 +7,26 @@
   </properties>
   <body>
     <release version="1.2.0" date="in SVN" description="Maintenance">
-      <action dev="benoitx" type="fix" issue="1929838" due-to="Anthony Whitford">Spelling for "PRECEEDING" corrected to PRECEDING, deprecated the mispelt name.</action>
+      <action dev="benoitx" type="fix" issue="atid=872033&amp;aid=1929838" due-to="Anthony Whitford">Spelling for "PRECEEDING" corrected to PRECEDING, deprecated the mispelt name.</action>
       <action dev="benoitx" type="add">Enhanced the KitCalculatorsFactory to be able to get the holidayCalendar names and unregister calendars.</action>
       <action dev="benoitx" type="fix">Removed the deprecated method KitCalculatorsFactory.registerHolidays(Set holidays).</action>
-      <action dev="marchy" type="fix" issue="2389053" due-to="Didier L.">Fixed negative moves with Forward Unless Moving Back Handler.</action>
+      <action dev="marchy" type="fix" issue="atid=872033&amp;aid=2389053" due-to="Didier L.">Fixed negative moves with Forward Unless Moving Back Handler.</action>
       <action dev="marchy" type="fix">Removed the deprecated constant MODIFIED_PRECEEDING, and related classes.</action>
     </release>
     <release version="1.1.0" date="2008-03-25" description="Maintenance">
       <action dev="benoitx" type="add">Changed JODA dependency to 1.5</action>
       <action dev="benoitx" type="fix">fix NPE issue if the calendar name is null.</action>
-      <action dev="benoitx" type="add" issue="1832345" due-to="Kieron Wilkinson">Feature Requests item #1832345, make the Tenor Serializable</action>
+      <action dev="benoitx" type="add" issue="atid=872036&amp;aid=1832345" due-to="Kieron Wilkinson">Feature Requests item #1832345, make the Tenor Serializable</action>
       <action dev="benoitx" type="add">Added 2 methods on factory to check if a calendar is registered.</action>
       <action dev="marchy" type="fix">Deprecated ACT/UST and END/365 Day Count Conventions, which weren't very common. Also added a link to some documentation.</action>
       <action dev="benoitx" type="add">Added method calculateTenorDates with/without a spot lag to enable calculation of a series of Tenor dates without changing the current business date in the calculator.</action>
       <action dev="benoitx" type="add">Added method moveByTenor without a spot lag to allow tenor calculation based on the CURRENT date and not the spot lag.</action>
-      <action dev="benoitx" type="add" issue="1575498" due-to="Paul Hill">Valid Range via HolidayCalendar.  HolidayCalendar should replace the simple Set&lt;E&gt; of dates
+      <action dev="benoitx" type="add" issue="atid=872036&amp;aid=1575498" due-to="Paul Hill">Valid Range via HolidayCalendar.  HolidayCalendar should replace the simple Set&lt;E&gt; of dates
       for holidays.  A HolidayCalendar MAY contain an eraly and late boundary, if the calculation break a boundary, an exception is thrown, if there are no
       boundaries no exception would be thrown. This would ensure that calculations are not going outside the valid set of holidays.</action>
       <action dev="benoitx" type="fix" due-to="David Owen">The calculation of Spot date should take into account holidays BETWEEN now and spot (aka moveByBusinessDay).</action>
-      <action dev="benoitx" type="add" issue="1601540" due-to="Anthony Whitford">Added a standard Tenor 2D.</action>
-      <action dev="benoitx" type="fix" issue="1601542" due-to="Anthony Whitford">Spelling mistake in the code, 
+      <action dev="benoitx" type="add" issue="atid=872036&amp;aid=1601540" due-to="Anthony Whitford">Added a standard Tenor 2D.</action>
+      <action dev="benoitx" type="fix" issue="atid=872033&amp;aid=1601542" due-to="Anthony Whitford">Spelling mistake in the code, 
       sorry for breaking your code with this release.</action>
       <action dev="benoitx" type="add">Added new handler type ForwardUnlessNegative: a handler that acts like a Forward handler
       if the increment is positive otherwise acts like a Backward handler.</action>
