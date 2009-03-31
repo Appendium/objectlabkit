@@ -55,6 +55,14 @@
     </developer>
   </developers>
 
+ <licenses>
+	<license>
+		<name>The Apache Software License, Version 2.0</name>
+		<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+  		<distribution>repo</distribution>
+  	</license>
+  </licenses>
+
   <mailingLists>
     <mailingList>
       <name>News about ObjectLab's projects (Alerts online)</name>
@@ -118,6 +126,7 @@
         <configuration>
           <source>1.5</source>
           <target>1.5</target>
+          <source>${compileSource}</source>
         </configuration>
       </plugin>
     </plugins>
@@ -151,17 +160,20 @@
 
   <reporting>
     <plugins>
+    <!--
       <plugin>
-        <artifactId>maven-javadoc-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
         <configuration>
-          <aggregate>true</aggregate>
+          <configLocation>/common_build/checkstyle_checks.xml</configLocation>
         </configuration>
-      </plugin>
+      </plugin>      
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jxr-maven-plugin</artifactId>
       </plugin>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jxr-plugin</artifactId>
       </plugin>
       <plugin>
@@ -177,13 +189,25 @@
       <plugin>
         <artifactId>maven-pmd-plugin</artifactId>
         <configuration>
-          <targetjdk>1.5</targetjdk>
+          <targetJdk>1.5</targetJdk>
           <rulesets>
             <ruleset>/rulesets/basic.xml</ruleset>
             <ruleset>/rulesets/controversial.xml</ruleset>
           </rulesets>
           <linkXref>true</linkXref>
           <minimumTokens>100</minimumTokens>
+        </configuration>
+      </plugin>
+-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+      </plugin>
+    
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration>
+          <aggregate>true</aggregate>
         </configuration>
       </plugin>
       <plugin>
@@ -199,10 +223,13 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>dashboard-maven-plugin</artifactId>
       </plugin>
+
+<!--
       <plugin>
         <groupId>net.sf</groupId>
         <artifactId>stat-scm</artifactId>
       </plugin>
+      -->
     </plugins>
   </reporting>
 
