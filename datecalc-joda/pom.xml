@@ -9,7 +9,7 @@
   </parent>
 
   <artifactId>datecalc-joda</artifactId>
-  <packaging>jar</packaging>
+  <packaging>bundle</packaging>
 
   <name>Date Calculator for Joda</name>
   <description>Date Calculator methods for Joda</description>
@@ -24,9 +24,33 @@
       <artifactId>joda-time</artifactId>
       <version>1.6</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>org.osgi.core</artifactId>
+      <version>1.0.0</version>
+    </dependency>
   </dependencies>
 
   <build>
+     <plugins>
+      <plugin>    <!-- (2) OSGi START -->
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <Export-Package>net.objectlab.kit.datecalc.*;version="${pom.version}"</Export-Package>
+            <Private-Package/>
+            <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
+            <Bundle-Version>${pom.version}</Bundle-Version>
+            <Bundle-RequiredExecutionEnvironment>J2SE-1.5</Bundle-RequiredExecutionEnvironment>
+
+            <!--<Private-Package>com.my.company.*</Private-Package>-->
+            <!--<Bundle-Activator>com.my.company.Activator</Bundle-Activator>-->
+          </instructions>
+        </configuration>
+      </plugin>    <!-- (2) END -->
+     </plugins>
     <testResources>
       <testResource>
         <directory>../datecalc-common/target/test-classes</directory>

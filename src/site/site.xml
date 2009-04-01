@@ -2,20 +2,20 @@
 <project name="ObjectLab-Kit">
   <title>ObjectLab Kit</title>
   <bannerLeft>
-    <name>Appendium</name>
+    <name>Appendium Ltd</name>
     <src>images/appendium_logo.jpg</src>
     <href>http://www.appendium.com</href>
   </bannerLeft>
   <bannerRight>
-    <name>ObjectLab Financial Ltd</name>
+    <name>ObjectLab Ltd</name>
     <src>images/objectlab_logo.gif</src>
     <href>http://www.objectlab.co.uk/</href>
   </bannerRight>
     <poweredBy>
-      <logo name="Hosted on SourceForge.net" href="http://sourceforge.net"
-   img="http://sflogo.sourceforge.net/sflogo.php?group_id=175139&amp;type=2"/>
-   <logo name="Build with Maven 2" href="http://maven.apache.org/"
-   img="images/logos/maven-feather.png"/>
+      	<logo name="Hosted on SourceForge.net" href="http://sourceforge.net"
+  	 	img="http://sflogo.sourceforge.net/sflogo.php?group_id=175139&amp;type=2"/>
+   	<logo name="Build with Maven 2" href="http://maven.apache.org/"
+   		img="http://maven.apache.org/images/logos/maven-feather.png"/>
     </poweredBy>
     <skin>
     	<groupId>org.springframework.maven.skins</groupId>

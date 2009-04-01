@@ -8,10 +8,39 @@
    </parent>
 
    <artifactId>datecalc-common</artifactId>
-   <packaging>jar</packaging>
+   <packaging>bundle</packaging> <!-- (1) OSGi -->
    
    <name>DateCalc Commons</name>
    <description>Common Date Calculator Code</description>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>org.osgi.core</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>    <!-- (2) OSGi START -->
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <Export-Package>net.objectlab.kit.datecalc.*;version="${pom.version}"</Export-Package>
+            <Private-Package/>
+            <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
+            <Bundle-Version>${pom.version}</Bundle-Version>
+            <Bundle-RequiredExecutionEnvironment>J2SE-1.5</Bundle-RequiredExecutionEnvironment>
+
+            <!--<Private-Package>com.my.company.*</Private-Package>-->
+            <!--<Bundle-Activator>com.my.company.Activator</Bundle-Activator>-->
+          </instructions>
+        </configuration>
+      </plugin>    <!-- (2) END -->
+    </plugins>
+  </build>
 
   <reporting>
     <plugins>
