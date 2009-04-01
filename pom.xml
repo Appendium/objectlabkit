@@ -224,12 +224,12 @@
         <artifactId>dashboard-maven-plugin</artifactId>
       </plugin>
 
-<!--
+
       <plugin>
         <groupId>net.sf</groupId>
         <artifactId>stat-scm</artifactId>
       </plugin>
-      -->
+      
     </plugins>
   </reporting>
 
