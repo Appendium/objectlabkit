@@ -3,6 +3,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java"/>
-	<classpathentry kind="var" path="MAVEN_REPO/junit/jars/junit-3.8.2.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/junit/jars/junit-4.5.jar"/>
 	<classpathentry kind="output" path="targetEclipse/classes"/>
 </classpath>

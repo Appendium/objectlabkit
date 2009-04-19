@@ -14,7 +14,7 @@
  *
  *                     www.ObjectLab.co.uk
  *
- * $Id$
+ * $Id: YearMonthDayForwardDateCalculatorTest.java 235 2007-01-04 18:31:58Z benoitx $
  * 
  * Copyright 2006 the original author or authors.
  *
@@ -32,25 +32,23 @@
  */
 package net.objectlab.kit.datecalc.joda;
 
-import net.objectlab.kit.datecalc.common.AbstractForwardDateCalculatorTest;
+import net.objectlab.kit.datecalc.common.AbstractPerformanceDateCalculatorTest;
+import net.objectlab.kit.datecalc.common.HolidayCalendar;
 import net.objectlab.kit.datecalc.common.KitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
-import org.joda.time.LocalDate;
+import org.joda.time.YearMonthDay;
 
-public class LocalDateForwardDateCalculatorTest extends AbstractForwardDateCalculatorTest<LocalDate> {
-
-//    public LocalDateForwardDateCalculatorTest() {
-//        super();
-//    }
-//
-//    public LocalDateForwardDateCalculatorTest(final java.lang.String name) {
-//        super(name);
-//    }
+public class YearMonthDayPerformanceCalculatorTest extends AbstractPerformanceDateCalculatorTest<YearMonthDay> {
 
     @Override
-    protected LocalDate newDate(final String date) {
-        return new LocalDate(date);
+    protected YearMonthDay newDate(final String date) {
+        return new YearMonthDay(date);
+    }
+
+    @Override
+    protected void registerHolidays(final String name, final HolidayCalendar<YearMonthDay> holidays) {
+        YearMonthDayKitCalculatorsFactory.getDefaultInstance().registerHolidays(name, holidays);
     }
 
     @Override
@@ -59,8 +57,8 @@ public class LocalDateForwardDateCalculatorTest extends AbstractForwardDateCalcu
     }
 
     @Override
-    protected KitCalculatorsFactory<LocalDate> getDateCalculatorFactory() {
-        return LocalDateKitCalculatorsFactory.getDefaultInstance();
+    protected KitCalculatorsFactory<YearMonthDay> getDateCalculatorFactory() {
+        return YearMonthDayKitCalculatorsFactory.getDefaultInstance();
     }
 }
 

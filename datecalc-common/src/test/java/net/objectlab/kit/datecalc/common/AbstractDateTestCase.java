@@ -39,6 +39,15 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 
 public abstract class AbstractDateTestCase<E> extends TestCase {
+    
+    public AbstractDateTestCase() {
+        super();
+    }
+
+    public AbstractDateTestCase(final java.lang.String name) {
+        super(name);
+    }
+
     protected abstract E newDate(final String date);
 
     protected abstract KitCalculatorsFactory<E> getDateCalculatorFactory();

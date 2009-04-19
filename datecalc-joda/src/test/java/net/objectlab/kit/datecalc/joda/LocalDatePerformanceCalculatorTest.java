@@ -14,7 +14,7 @@
  *
  *                     www.ObjectLab.co.uk
  *
- * $Id$
+ * $Id: LocalDateForwardDateCalculatorTest.java 203 2006-10-11 12:53:07Z benoitx $
  * 
  * Copyright 2006 the original author or authors.
  *
@@ -32,13 +32,13 @@
  */
 package net.objectlab.kit.datecalc.joda;
 
-import net.objectlab.kit.datecalc.common.AbstractForwardDateCalculatorTest;
+import net.objectlab.kit.datecalc.common.AbstractPerformanceDateCalculatorTest;
 import net.objectlab.kit.datecalc.common.KitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
 import org.joda.time.LocalDate;
 
-public class LocalDateForwardDateCalculatorTest extends AbstractForwardDateCalculatorTest<LocalDate> {
+public class LocalDatePerformanceCalculatorTest extends AbstractPerformanceDateCalculatorTest<LocalDate> {
 
 //    public LocalDateForwardDateCalculatorTest() {
 //        super();
