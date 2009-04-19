@@ -14,7 +14,7 @@
  *
  *                     www.ObjectLab.co.uk
  *
- * $Id$
+ * $Id: JdkCalendarForwardDateCalculatorTest.java 203 2006-10-11 12:53:07Z benoitx $
  * 
  * Copyright 2006 the original author or authors.
  *
@@ -30,38 +30,26 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package net.objectlab.kit.datecalc.joda;
+package net.objectlab.kit.datecalc.jdk;
 
-import net.objectlab.kit.datecalc.common.AbstractForwardDateCalculatorTest;
+import java.util.Calendar;
+
+import net.objectlab.kit.datecalc.common.AbstractPerformanceDateCalculatorTest;
 import net.objectlab.kit.datecalc.common.KitCalculatorsFactory;
-import net.objectlab.kit.datecalc.common.WorkingWeek;
+import net.objectlab.kit.datecalc.common.Utils;
 
-import org.joda.time.LocalDate;
-
-public class LocalDateForwardDateCalculatorTest extends AbstractForwardDateCalculatorTest<LocalDate> {
-
-//    public LocalDateForwardDateCalculatorTest() {
-//        super();
-//    }
-//
-//    public LocalDateForwardDateCalculatorTest(final java.lang.String name) {
-//        super(name);
-//    }
+public class JdkCalendarPerformanceCalculatorTest extends AbstractPerformanceDateCalculatorTest<Calendar> {
 
     @Override
-    protected LocalDate newDate(final String date) {
-        return new LocalDate(date);
+    protected Calendar newDate(final String date) {
+        return Utils.createCalendar(date);
     }
 
     @Override
-    protected WorkingWeek getWorkingWeek(final WorkingWeek ww) {
-        return new JodaWorkingWeek(ww);
+    protected KitCalculatorsFactory<Calendar> getDateCalculatorFactory() {
+        return CalendarKitCalculatorsFactory.getDefaultInstance();
     }
 
-    @Override
-    protected KitCalculatorsFactory<LocalDate> getDateCalculatorFactory() {
-        return LocalDateKitCalculatorsFactory.getDefaultInstance();
-    }
 }
 
 /*
