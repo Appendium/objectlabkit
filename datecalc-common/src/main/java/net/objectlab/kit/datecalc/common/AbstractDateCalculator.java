@@ -164,7 +164,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         }
 
         TenorCode tenorCode = tenor.getCode();
-        if (tenorCode != TenorCode.OVERNIGHT && spotLag != 0) {
+        if (tenorCode != TenorCode.OVERNIGHT && tenorCode != TenorCode.TOM_NEXT && spotLag != 0) {
             // get to the Spot date first:
             moveByBusinessDays(spotLag);
         }
@@ -184,6 +184,13 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         // move by tenor
         switch (tenorCode) {
         case OVERNIGHT:
+            calc = moveByDays(1);
+            break;
+        case TOM_NEXT: // it would have NOT moved by 
+            calc = moveByDays(1); // calculate Tomorrow
+            calc = moveByDays(1); // then the next!
+            break;
+        case SPOT_NEXT:
             calc = moveByDays(1);
             break;
         case SPOT:
@@ -306,9 +313,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     }
 
     public DateCalculator<E> moveByBusinessDays(final int businessDays) {
-        if (businessDays > 0
-                && holidayHandler != null
-                && (holidayHandler.getType().equals(BACKWARD) || holidayHandler.getType().equals(MODIFIED_PRECEDING))) {
+        if (businessDays > 0 && holidayHandler != null && (holidayHandler.getType().equals(BACKWARD) || holidayHandler.getType().equals(MODIFIED_PRECEDING))) {
             throw new IllegalArgumentException("A " + MODIFIED_PRECEDING + " or " + BACKWARD + " does not allow positive steps for moveByBusinessDays");
         } else if (businessDays < 0 && holidayHandler != null
                 && (holidayHandler.getType().equals(FORWARD) || holidayHandler.getType().equals(MODIFIED_FOLLOWING))) {
