@@ -40,13 +40,13 @@ import org.joda.time.LocalDate;
 
 public class LocalDateForwardDateCalculatorTest extends AbstractForwardDateCalculatorTest<LocalDate> {
 
-//    public LocalDateForwardDateCalculatorTest() {
-//        super();
-//    }
-//
-//    public LocalDateForwardDateCalculatorTest(final java.lang.String name) {
-//        super(name);
-//    }
+    public LocalDateForwardDateCalculatorTest() {
+        super();
+    }
+
+    public LocalDateForwardDateCalculatorTest(final java.lang.String name) {
+        super(name);
+    }
 
     @Override
     protected LocalDate newDate(final String date) {
