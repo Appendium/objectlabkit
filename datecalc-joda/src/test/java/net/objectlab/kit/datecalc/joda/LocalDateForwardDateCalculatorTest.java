@@ -44,10 +44,6 @@ public class LocalDateForwardDateCalculatorTest extends AbstractForwardDateCalcu
         super();
     }
 
-    public LocalDateForwardDateCalculatorTest(final java.lang.String name) {
-        super(name);
-    }
-
     @Override
     protected LocalDate newDate(final String date) {
         return new LocalDate(date);
