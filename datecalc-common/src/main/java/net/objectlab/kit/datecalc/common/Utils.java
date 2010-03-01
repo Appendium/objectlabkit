@@ -88,13 +88,7 @@ public final class Utils {
         if (dateStr == null) {
             return createCalendar(null).getTime();
         }
-        try {
-            final Date date = SDF.parse(dateStr);
-            final Calendar cal = getCal(date);
-            return cal.getTime();
-        } catch (final ParseException e) {
-            throw new IllegalArgumentException("\"" + dateStr + "\"" + " is an invalid date, the pattern is : " + DATE_PATTERN);
-        }
+        return getCal(dateStr).getTime();
     }
 
     // -----------------------------------------------------------------------
@@ -107,25 +101,29 @@ public final class Utils {
 
     /**
      * get a new Calendar based on the string date.
-     * @param str
+     * @param dateStr
      *            the date string
      * @return a new Calendar
      * @throws IllegalArgumentException
      *             if the string cannot be parsed.
      */
-    public static Calendar createCalendar(final String str) {
-        if (str == null) {
+    public static Calendar createCalendar(final String dateStr) {
+        if (dateStr == null) {
             return blastTime(Calendar.getInstance());
         }
+        return getCal(dateStr);
+    }
+
+    public static Calendar getCal(final String dateStr) {
         try {
-            final Date date = SDF.parse(str);
+            final Date date = SDF.parse(dateStr);
             final Calendar cal = getCal(date);
             return cal;
         } catch (final ParseException e) {
-            throw new IllegalArgumentException("\"" + str + "\"" + " is an invalid date, the pattern is : " + DATE_PATTERN);
-        }
+            throw new IllegalArgumentException("\"" + dateStr + "\"" + " is an invalid date, the pattern is : " + DATE_PATTERN);
+        }        
     }
-
+    
     /**
      * Get a Calendar object for a given Date representation.
      * 
