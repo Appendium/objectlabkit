@@ -23,6 +23,12 @@
             <artifactId>joda-time</artifactId>
             <version>1.6</version>
         </dependency>
+        <dependency>
+            <groupId>net.objectlab.kit.datecalc</groupId>
+            <artifactId>datecalc-common</artifactId>
+            <scope>test</scope>
+            <classifier>tests</classifier>
+        </dependency>        
     </dependencies>
 
     <build>
@@ -45,14 +51,6 @@
                 </configuration>
             </plugin>    <!-- (2) END -->
         </plugins>
-        <testResources>
-            <testResource>
-                <directory>../datecalc-common/target/test-classes</directory>
-                <includes>
-                    <include>**/*.class</include>
-                </includes>
-            </testResource>
-        </testResources>
     </build>
     <reporting>
         <plugins>

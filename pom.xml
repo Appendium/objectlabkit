@@ -113,7 +113,14 @@
             <dependency>
                 <groupId>net.objectlab.kit.datecalc</groupId>
                 <artifactId>datecalc-common</artifactId>
-                <version>${project.version}</version>
+                <version>${pom.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.objectlab.kit.datecalc</groupId>
+                <artifactId>datecalc-common</artifactId>
+                <version>${pom.version}</version>
+                <scope>test</scope>
+                <classifier>tests</classifier>
             </dependency>
             <dependency>
                 <groupId>org.apache.felix</groupId>
@@ -179,7 +186,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <configuration>
@@ -192,24 +198,21 @@
                 <configuration>
                     <issueLinkTemplatePerSystem>
                         <default>%URL%/?func=detail&amp;group_id=175139&amp;%ISSUE%</default>
-                        </issueLinkTemplatePerSystem>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-changelog-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>dashboard-maven-plugin</artifactId>
-      </plugin>
-
-
-      <plugin>
-        <groupId>net.sf</groupId>
-        <artifactId>stat-scm</artifactId>
-      </plugin>
-      
-    </plugins>
-  </reporting>
+                    </issueLinkTemplatePerSystem>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-changelog-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>dashboard-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>net.sf</groupId>
+                <artifactId>stat-scm</artifactId>
+            </plugin>
+        </plugins>
+    </reporting>
 
 </project>
