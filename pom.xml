@@ -4,7 +4,7 @@
 
     <groupId>net.objectlab.kit.datecalc</groupId>
     <artifactId>datecalc</artifactId>
-    <version>1.2.0</version>
+    <version>1.2.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -135,6 +135,23 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <executions>
+                	<execution>
+                		<id>sign-artifacts</id>
+                		<phase>verify</phase>
+                		<goals>
+                			<goal>sign</goal>
+                		</goals>
+                	</execution>
+                </executions>
                 <configuration>
                     <source>1.5</source>
                     <target>1.5</target>
