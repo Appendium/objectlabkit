@@ -32,9 +32,17 @@
  */
 package net.objectlab.kit.datecalc.common;
 
+import static java.util.Calendar.DAY_OF_MONTH;
+import static java.util.Calendar.MONTH;
+import static java.util.Calendar.YEAR;
+
+import java.util.Calendar;
 import java.util.Collections;
-import java.util.HashSet;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * @TODO javadoc
@@ -45,6 +53,30 @@ import java.util.Set;
  * 
  */
 public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
+    
+    private Comparator<Calendar> calCmp = new Comparator<Calendar>() {
+        public int compare(Calendar cal1, Calendar cal2) {
+            return 
+            (cal1.get(YEAR) - cal2.get(YEAR)) * 10000
+            +
+            (cal1.get(MONTH) - cal2.get(MONTH)) * 100
+            +
+            (cal1.get(DAY_OF_MONTH) - cal2.get(DAY_OF_MONTH));
+        }
+    };
+    
+    private Comparator<Date> dateCmp = new Comparator<Date>() {
+        public int compare(Date date1, Date date2) {
+            
+            Calendar cal1 = Calendar.getInstance();
+            cal1.setTime(date1);
+            Calendar cal2 = Calendar.getInstance();
+            cal2.setTime(date2);
+            
+            return calCmp.compare(cal1, cal2);
+        }
+    };
+    
     private static final long serialVersionUID = -8558686840806739645L;
 
     private Set<E> holidays;
@@ -60,20 +92,15 @@ public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
 
     public DefaultHolidayCalendar(final Set<E> holidays, final E earlyBoundary, final E lateBoundary) {
         super();
-        if (holidays != null) {
-            final Set<E> newSet = new HashSet<E>();
-            newSet.addAll(holidays);
-            this.holidays = Collections.unmodifiableSet(newSet);
-        } else {
-            this.holidays = Collections.emptySet();
-        }
+        setHolidays(holidays);
+
         this.earlyBoundary = earlyBoundary;
         this.lateBoundary = lateBoundary;
     }
 
     public DefaultHolidayCalendar(final Set<E> holidays) {
         super();
-        this.holidays = holidays;
+        setHolidays(holidays);
     }
 
     /*
@@ -117,11 +144,31 @@ public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
      * 
      * @see net.objectlab.kit.datecalc.common.HolidayCalendar#setHolidays(java.util.Set)
      */
+    @SuppressWarnings("unchecked")
     public void setHolidays(final Set<E> holidays) {
-        final Set<E> s = new HashSet<E>();
-        s.addAll(holidays);
+        
+        if (holidays == null) {
+            this.holidays = Collections.emptySet();
+            return;
+        }
+        
+        Set<E> newSet = new TreeSet<E>();
 
-        this.holidays = Collections.unmodifiableSet(s);
+        // this 'hack' is for Date/Calendar objects to be
+        // 'equal' on the same day even if time fields differ
+        Iterator<E> it = holidays.iterator();
+        if (it.hasNext()) {
+            E obj = it.next();
+            
+            if (obj instanceof Date) {
+                newSet = new TreeSet(dateCmp);
+            } else if (obj instanceof Calendar) {
+                newSet = new TreeSet(calCmp);
+            } 
+        }
+        
+        newSet.addAll(holidays);
+        this.holidays = Collections.unmodifiableSet(newSet);
     }
 
     /*
