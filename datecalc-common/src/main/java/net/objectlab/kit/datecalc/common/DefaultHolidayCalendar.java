@@ -40,6 +40,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
@@ -152,7 +153,7 @@ public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
             return;
         }
         
-        Set<E> newSet = new TreeSet<E>();
+        Set<E> newSet = null;
 
         // this 'hack' is for Date/Calendar objects to be
         // 'equal' on the same day even if time fields differ
@@ -165,6 +166,10 @@ public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
             } else if (obj instanceof Calendar) {
                 newSet = new TreeSet(calCmp);
             } 
+        }
+        
+        if (newSet == null) {
+            newSet = new HashSet<E>();
         }
         
         newSet.addAll(holidays);
