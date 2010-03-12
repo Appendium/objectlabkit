@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -14,8 +14,8 @@
  *
  *                     www.ObjectLab.co.uk
  *
- * $Id: JdkDateForwardDateCalculatorTest.java 224 2006-11-24 16:02:47Z marchy $
- * 
+ * $Id: JdkCalendarForwardDateCalculatorTest.java 203 2006-10-11 12:53:07Z benoitx $
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -30,33 +30,35 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package net.objectlab.kit.datecalc.jdk;
+package net.objectlab.kit.datecalc.jdk.perf;
 
-import java.util.Date;
+import java.util.Calendar;
 
 import net.objectlab.kit.datecalc.common.AbstractPerformanceDateCalculatorTest;
 import net.objectlab.kit.datecalc.common.KitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.Utils;
+import net.objectlab.kit.datecalc.jdk.CalendarKitCalculatorsFactory;
 
-public class JdkDatePerformanceCalculatorTest extends AbstractPerformanceDateCalculatorTest<Date> {
+public class JdkCalendarPerformanceCalculatorTest extends AbstractPerformanceDateCalculatorTest<Calendar> {
 
     @Override
-    protected Date newDate(final String date) {
-        return Utils.createDate(date);
+    protected Calendar newDate(final String date) {
+        return Utils.createCalendar(date);
     }
 
     @Override
-    protected KitCalculatorsFactory getDateCalculatorFactory() {
-        return DateKitCalculatorsFactory.getDefaultInstance();
+    protected KitCalculatorsFactory<Calendar> getDateCalculatorFactory() {
+        return CalendarKitCalculatorsFactory.getDefaultInstance();
     }
+
 }
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
