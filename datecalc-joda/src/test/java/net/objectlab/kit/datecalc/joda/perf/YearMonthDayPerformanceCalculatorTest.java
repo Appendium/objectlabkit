@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -14,8 +14,8 @@
  *
  *                     www.ObjectLab.co.uk
  *
- * $Id: JdkCalendarForwardDateCalculatorTest.java 203 2006-10-11 12:53:07Z benoitx $
- * 
+ * $Id: YearMonthDayForwardDateCalculatorTest.java 235 2007-01-04 18:31:58Z benoitx $
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -30,34 +30,46 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package net.objectlab.kit.datecalc.jdk;
-
-import java.util.Calendar;
+package net.objectlab.kit.datecalc.joda.perf;
 
 import net.objectlab.kit.datecalc.common.AbstractPerformanceDateCalculatorTest;
+import net.objectlab.kit.datecalc.common.HolidayCalendar;
 import net.objectlab.kit.datecalc.common.KitCalculatorsFactory;
-import net.objectlab.kit.datecalc.common.Utils;
+import net.objectlab.kit.datecalc.common.WorkingWeek;
+import net.objectlab.kit.datecalc.joda.JodaWorkingWeek;
+import net.objectlab.kit.datecalc.joda.YearMonthDayKitCalculatorsFactory;
 
-public class JdkCalendarPerformanceCalculatorTest extends AbstractPerformanceDateCalculatorTest<Calendar> {
+import org.joda.time.YearMonthDay;
+
+public class YearMonthDayPerformanceCalculatorTest extends AbstractPerformanceDateCalculatorTest<YearMonthDay> {
 
     @Override
-    protected Calendar newDate(final String date) {
-        return Utils.createCalendar(date);
+    protected YearMonthDay newDate(final String date) {
+        return new YearMonthDay(date);
     }
 
     @Override
-    protected KitCalculatorsFactory<Calendar> getDateCalculatorFactory() {
-        return CalendarKitCalculatorsFactory.getDefaultInstance();
+    protected void registerHolidays(final String name, final HolidayCalendar<YearMonthDay> holidays) {
+        YearMonthDayKitCalculatorsFactory.getDefaultInstance().registerHolidays(name, holidays);
     }
 
+    @Override
+    protected WorkingWeek getWorkingWeek(final WorkingWeek ww) {
+        return new JodaWorkingWeek(ww);
+    }
+
+    @Override
+    protected KitCalculatorsFactory<YearMonthDay> getDateCalculatorFactory() {
+        return YearMonthDayKitCalculatorsFactory.getDefaultInstance();
+    }
 }
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
