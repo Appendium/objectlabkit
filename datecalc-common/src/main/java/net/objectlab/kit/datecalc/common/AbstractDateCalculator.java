@@ -179,8 +179,11 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
             unit *= MONTHS_IN_YEAR;
         }
 
-        DateCalculator<E> calc;
+        return applyTenor(tenorCode, unit);
+    }
 
+    private DateCalculator<E> applyTenor(final TenorCode tenorCode, final int unit) {
+        DateCalculator<E> calc;
         // move by tenor
         switch (tenorCode) {
         case OVERNIGHT:
@@ -205,7 +208,6 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         default:
             throw new UnsupportedOperationException("Sorry not yet...");
         }
-
         return calc;
     }
 
@@ -241,11 +243,11 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
      * @since 1.1.0
      */
     public List<E> calculateTenorDates(final List<Tenor> tenors, final int spotLag) {
-        List<E> list = new ArrayList<E>();
+        final List<E> list = new ArrayList<E>();
 
         if (tenors != null) {
             final E date = clone(getCurrentBusinessDate());
-            for (Tenor tenor : tenors) {
+            for (final Tenor tenor : tenors) {
                 moveByTenor(tenor, spotLag);
                 list.add(getCurrentBusinessDate());
                 setCurrentBusinessDate(date);
@@ -313,12 +315,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     }
 
     public DateCalculator<E> moveByBusinessDays(final int businessDays) {
-        if (businessDays > 0 && holidayHandler != null && (holidayHandler.getType().equals(BACKWARD) || holidayHandler.getType().equals(MODIFIED_PRECEDING))) {
-            throw new IllegalArgumentException("A " + MODIFIED_PRECEDING + " or " + BACKWARD + " does not allow positive steps for moveByBusinessDays");
-        } else if (businessDays < 0 && holidayHandler != null
-                && (holidayHandler.getType().equals(FORWARD) || holidayHandler.getType().equals(MODIFIED_FOLLOWING))) {
-            throw new IllegalArgumentException("A " + MODIFIED_FOLLOWING + " or " + FORWARD + " does not allow negative steps for moveByBusinessDays");
-        }
+        checkHolidayValidity(businessDays);
 
         final int numberOfStepsLeft = Math.abs(businessDays);
         final int step = (businessDays < 0 ? -1 : 1);
@@ -328,6 +325,15 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         }
 
         return this;
+    }
+
+    private void checkHolidayValidity(final int businessDays) {
+        if (businessDays > 0 && holidayHandler != null && (holidayHandler.getType().equals(BACKWARD) || holidayHandler.getType().equals(MODIFIED_PRECEDING))) {
+            throw new IllegalArgumentException("A " + MODIFIED_PRECEDING + " or " + BACKWARD + " does not allow positive steps for moveByBusinessDays");
+        } else if (businessDays < 0 && holidayHandler != null
+                && (holidayHandler.getType().equals(FORWARD) || holidayHandler.getType().equals(MODIFIED_FOLLOWING))) {
+            throw new IllegalArgumentException("A " + MODIFIED_FOLLOWING + " or " + FORWARD + " does not allow negative steps for moveByBusinessDays");
+        }
     }
 
     /**
@@ -347,10 +353,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
             return this;
         }
 
-        if (holidayHandler == null && calculator.getHolidayHandlerType() != null || holidayHandler != null
-                && !holidayHandler.getType().equals(calculator.getHolidayHandlerType())) {
-            throw new IllegalArgumentException("Combined Calendars cannot have different handler types");
-        }
+        checkHolidayHandlerValidity(calculator);
 
         final Set<E> newSet = new HashSet<E>();
         if (holidayCalendar != null) {
@@ -358,15 +361,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         }
 
         final HolidayCalendar<E> calendarToCombine = calculator.getHolidayCalendar();
-        if (calendarToCombine.getEarlyBoundary() != null && holidayCalendar.getEarlyBoundary() == null || calendarToCombine.getEarlyBoundary() == null
-                && holidayCalendar.getEarlyBoundary() != null) {
-            throw new IllegalArgumentException("Both Calendar to be combined must either have each Early boundaries or None.");
-        }
-
-        if (calendarToCombine.getLateBoundary() != null && holidayCalendar.getLateBoundary() == null || calendarToCombine.getLateBoundary() == null
-                && holidayCalendar.getLateBoundary() != null) {
-            throw new IllegalArgumentException("Both Calendar to be combined must either have each Late boundaries or None.");
-        }
+        checkBoundaries(calendarToCombine);
 
         if (calendarToCombine.getHolidays() != null) {
             newSet.addAll(calendarToCombine.getHolidays());
@@ -378,6 +373,25 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         final DateCalculator<E> cal = createNewCalculator(getName() + "/" + calculator.getName(), getStartDate(), newCal, holidayHandler);
 
         return cal;
+    }
+
+    private void checkHolidayHandlerValidity(final DateCalculator<E> calculator) {
+        if (holidayHandler == null && calculator.getHolidayHandlerType() != null || holidayHandler != null
+                && !holidayHandler.getType().equals(calculator.getHolidayHandlerType())) {
+            throw new IllegalArgumentException("Combined Calendars cannot have different handler types");
+        }
+    }
+
+    private void checkBoundaries(final HolidayCalendar<E> calendarToCombine) {
+        if (calendarToCombine.getEarlyBoundary() != null && holidayCalendar.getEarlyBoundary() == null || calendarToCombine.getEarlyBoundary() == null
+                && holidayCalendar.getEarlyBoundary() != null) {
+            throw new IllegalArgumentException("Both Calendar to be combined must either have each Early boundaries or None.");
+        }
+
+        if (calendarToCombine.getLateBoundary() != null && holidayCalendar.getLateBoundary() == null || calendarToCombine.getLateBoundary() == null
+                && holidayCalendar.getLateBoundary() != null) {
+            throw new IllegalArgumentException("Both Calendar to be combined must either have each Late boundaries or None.");
+        }
     }
 
     protected abstract E getToday();
