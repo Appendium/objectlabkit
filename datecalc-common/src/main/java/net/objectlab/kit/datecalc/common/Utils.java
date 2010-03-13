@@ -50,10 +50,7 @@ import java.util.Set;
  * 
  */
 public final class Utils {
-
     private static final String DATE_PATTERN = "yyyy-MM-dd";
-
-    private static final SimpleDateFormat SDF = new SimpleDateFormat(DATE_PATTERN);
 
     private Utils() {
     }
@@ -116,11 +113,10 @@ public final class Utils {
 
     public static Calendar getCal(final String dateStr) {
         try {
-            final Date date = SDF.parse(dateStr);
-            final Calendar cal = getCal(date);
-            return cal;
+            final Date date = new SimpleDateFormat(DATE_PATTERN).parse(dateStr);
+            return getCal(date);
         } catch (final ParseException e) {
-            throw new IllegalArgumentException("\"" + dateStr + "\"" + " is an invalid date, the pattern is : " + DATE_PATTERN);
+            throw new IllegalArgumentException("\"" + dateStr + "\"" + " is an invalid date, the pattern is : " + DATE_PATTERN, e);
         }        
     }
     

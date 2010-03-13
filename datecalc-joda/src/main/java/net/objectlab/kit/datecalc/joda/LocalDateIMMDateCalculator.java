@@ -44,7 +44,6 @@ import java.util.List;
 import net.objectlab.kit.datecalc.common.AbstractIMMDateCalculator;
 import net.objectlab.kit.datecalc.common.IMMPeriod;
 
-import org.joda.time.DateTimeConstants;
 import org.joda.time.LocalDate;
 
 /**
@@ -140,9 +139,9 @@ public class LocalDateIMMDateCalculator extends AbstractIMMDateCalculator<LocalD
     //
     // -----------------------------------------------------------------------
 
-    private LocalDate calculateIMMMonth(final boolean requestNextIMM, LocalDate date, final int month) {
+    private LocalDate calculateIMMMonth(final boolean requestNextIMM, final LocalDate startDate, final int month) {
         int monthOffset = 0;
-
+        LocalDate date = startDate;
         switch (month) {
         case MARCH:
         case JUNE:
