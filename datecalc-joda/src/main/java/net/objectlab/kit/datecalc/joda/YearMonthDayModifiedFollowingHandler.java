@@ -79,15 +79,16 @@ public class YearMonthDayModifiedFollowingHandler implements HolidayHandler<Year
     //
     // -----------------------------------------------------------------------
 
-    protected YearMonthDay move(final DateCalculator<YearMonthDay> calculator, int step) {
+    protected YearMonthDay move(final DateCalculator<YearMonthDay> calculator, final int step) {
         YearMonthDay date = calculator.getCurrentBusinessDate();
         final int month = date.getMonthOfYear();
+        int stepToUse = step;
         while (calculator.isNonWorkingDay(date)) {
-            date = date.plusDays(step);
+            date = date.plusDays(stepToUse);
             if (date.getMonthOfYear() != month) {
                 // flick to backward
-                step *= -1;
-                date = date.plusDays(step);
+                stepToUse *= -1;
+                date = date.plusDays(stepToUse);
             }
         }
         return date;

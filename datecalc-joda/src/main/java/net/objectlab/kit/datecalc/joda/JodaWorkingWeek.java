@@ -41,7 +41,8 @@ import org.joda.time.LocalDate;
  * 
  * @author Benoit Xhenseval
  * @author $LastChangedBy$
- * @version $Revision$ $Date$
+ * @version $Revision$ $Date: 2006-10-11 13:53:07 +0100 (Wed, 11 Oct 2006)
+ *          $
  * 
  */
 public class JodaWorkingWeek extends WorkingWeek {
@@ -64,13 +65,13 @@ public class JodaWorkingWeek extends WorkingWeek {
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
-   public boolean isWorkingDay(final LocalDate date) {
+    public boolean isWorkingDay(final LocalDate date) {
         final int dayOfWeek = jodaToCalendarDayConstant(date.getDayOfWeek());
         return isWorkingDayFromCalendar(dayOfWeek);
     }
@@ -83,8 +84,8 @@ public class JodaWorkingWeek extends WorkingWeek {
      * @param dayOfWeek
      *            e.g. DateTimeConstants.MONDAY, DateTimeConstants.TUESDAY, etc
      */
-    public JodaWorkingWeek withWorkingDayFromDateTimeConstant(final boolean working, int dayOfWeek) {
-        dayOfWeek = jodaToCalendarDayConstant(dayOfWeek);
+    public JodaWorkingWeek withWorkingDayFromDateTimeConstant(final boolean working, int givenDayOfWeek) {
+        int dayOfWeek = jodaToCalendarDayConstant(givenDayOfWeek);
         return new JodaWorkingWeek(super.withWorkingDayFromCalendar(working, dayOfWeek));
     }
 
@@ -92,8 +93,8 @@ public class JodaWorkingWeek extends WorkingWeek {
         return isWorkingDayFromCalendar(jodaToCalendarDayConstant(dayOfWeek));
     }
 
-    public int jodaToCalendarDayConstant(int dayOfWeek) {
-        dayOfWeek++;
+    public int jodaToCalendarDayConstant(final int givenDayOfWeek) {
+        int dayOfWeek = givenDayOfWeek + 1;
         return (dayOfWeek <= MAX_WEEKDAY_INDEX ? dayOfWeek : dayOfWeek % MAX_WEEKDAY_INDEX);
     }
 }
@@ -101,16 +102,13 @@ public class JodaWorkingWeek extends WorkingWeek {
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
  * 
- * Based in London, we are world leaders in the design and development 
- * of bespoke applications for the securities financing markets.
+ * Based in London, we are world leaders in the design and development of
+ * bespoke applications for the securities financing markets.
  * 
- * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
- *           ___  _     _           _   _          _
- *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
- *         | | | | '_ \| |/ _ \/ __| __| |   / _` | '_ \
- *         | |_| | |_) | |  __/ (__| |_| |__| (_| | |_) |
- *          \___/|_.__// |\___|\___|\__|_____\__,_|_.__/
- *                   |__/
- *
- *                     www.ObjectLab.co.uk
+ * <a href="http://www.objectlab.co.uk/open">Click here to learn more about
+ * us</a> ___ _ _ _ _ _ / _ \| |__ (_) ___ ___| |_| | __ _| |__ | | | | '_ \| |/
+ * _ \/ __| __| | / _` | '_ \ | |_| | |_) | | __/ (__| |_| |__| (_| | |_) |
+ * \___/|_.__// |\___|\___|\__|_____\__,_|_.__/ |__/
+ * 
+ * www.ObjectLab.co.uk
  */

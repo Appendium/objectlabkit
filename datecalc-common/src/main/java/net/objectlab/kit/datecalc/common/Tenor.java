@@ -91,19 +91,7 @@ public class Tenor implements Serializable {
         boolean invalid = false;
         final int size = tenor.length();
 
-        for (int i = 0; i < size && !invalid; i++) {
-            final char c = tenor.charAt(i);
-
-            if (c >= '0' && c <= '9') {
-                if (codeBuf.length() != 0) {
-                    throw new IllegalArgumentException("[" + tenor + "] is not a valid tenor");
-                } else {
-                    unitsBuf.append(c);
-                }
-            } else {
-                codeBuf.append(c);
-            }
-        }
+        parseCode(tenor, unitsBuf, codeBuf, invalid, size);
 
         int parsedUnits = 0;
         if (unitsBuf.length() > 0) {
@@ -123,6 +111,22 @@ public class Tenor implements Serializable {
         }
 
         return new Tenor(parsedUnits, parsedCode);
+    }
+
+    private static void parseCode(final String tenor, final StringBuffer unitsBuf, final StringBuffer codeBuf, boolean invalid, final int size) {
+        for (int i = 0; i < size && !invalid; i++) {
+            final char c = tenor.charAt(i);
+
+            if (c >= '0' && c <= '9') {
+                if (codeBuf.length() != 0) {
+                    throw new IllegalArgumentException("[" + tenor + "] is not a valid tenor");
+                } else {
+                    unitsBuf.append(c);
+                }
+            } else {
+                codeBuf.append(c);
+            }
+        }
     }
 
     @Override

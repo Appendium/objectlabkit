@@ -70,15 +70,16 @@ public class LocalDateModifiedFollowingHandler implements HolidayHandler<LocalDa
     //
     // -----------------------------------------------------------------------
 
-   protected LocalDate move(final DateCalculator<LocalDate> calculator, int step) {
+   protected LocalDate move(final DateCalculator<LocalDate> calculator, final int step) {
         LocalDate date = calculator.getCurrentBusinessDate();
         final int month = date.getMonthOfYear();
+        int stepToUse = step;
         while (calculator.isNonWorkingDay(date)) {
-            date = date.plusDays(step);
+            date = date.plusDays(stepToUse);
             if (date.getMonthOfYear() != month) {
                 // flick to backward
-                step *= -1;
-                date = date.plusDays(step);
+                stepToUse *= -1;
+                date = date.plusDays(stepToUse);
             }
         }
         return date;

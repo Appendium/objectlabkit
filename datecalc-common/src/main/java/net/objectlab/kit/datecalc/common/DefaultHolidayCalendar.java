@@ -36,6 +36,7 @@ import static java.util.Calendar.DAY_OF_MONTH;
 import static java.util.Calendar.MONTH;
 import static java.util.Calendar.YEAR;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
@@ -54,31 +55,32 @@ import java.util.TreeSet;
  * 
  */
 public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
-    
-    private Comparator<Calendar> calCmp = new Comparator<Calendar>() {
-        public int compare(Calendar cal1, Calendar cal2) {
-            return 
-            (cal1.get(YEAR) - cal2.get(YEAR)) * 10000
-            +
-            (cal1.get(MONTH) - cal2.get(MONTH)) * 100
-            +
-            (cal1.get(DAY_OF_MONTH) - cal2.get(DAY_OF_MONTH));
-        }
-    };
-    
-    private Comparator<Date> dateCmp = new Comparator<Date>() {
-        public int compare(Date date1, Date date2) {
-            
-            Calendar cal1 = Calendar.getInstance();
-            cal1.setTime(date1);
-            Calendar cal2 = Calendar.getInstance();
-            cal2.setTime(date2);
-            
-            return calCmp.compare(cal1, cal2);
-        }
-    };
-    
     private static final long serialVersionUID = -8558686840806739645L;
+
+    private static final class DateComp implements Comparator<Date>, Serializable {
+        private static final long serialVersionUID = 9079672835911375957L;
+
+        public int compare(final Date date1, final Date date2) {
+
+            final Calendar cal1 = Calendar.getInstance();
+            cal1.setTime(date1);
+            final Calendar cal2 = Calendar.getInstance();
+            cal2.setTime(date2);
+
+            return CALENDAR_COMP.compare(cal1, cal2);
+        }
+    }
+
+    private static final class CalendarComp implements Comparator<Calendar>, Serializable {
+        private static final long serialVersionUID = 4783236154150397685L;
+
+        public int compare(final Calendar cal1, final Calendar cal2) {
+            return (cal1.get(YEAR) - cal2.get(YEAR)) * 10000 + (cal1.get(MONTH) - cal2.get(MONTH)) * 100 + (cal1.get(DAY_OF_MONTH) - cal2.get(DAY_OF_MONTH));
+        }
+    }
+
+    private static final CalendarComp CALENDAR_COMP = new CalendarComp();
+    private static final DateComp DATE_COMP = new DateComp();
 
     private Set<E> holidays;
 
@@ -146,32 +148,32 @@ public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
      * @see net.objectlab.kit.datecalc.common.HolidayCalendar#setHolidays(java.util.Set)
      */
     @SuppressWarnings("unchecked")
-    public void setHolidays(final Set<E> holidays) {
-        
+    public final void setHolidays(final Set<E> holidays) {
+
         if (holidays == null) {
             this.holidays = Collections.emptySet();
             return;
         }
-        
+
         Set<E> newSet = null;
 
         // this 'hack' is for Date/Calendar objects to be
         // 'equal' on the same day even if time fields differ
-        Iterator<E> it = holidays.iterator();
+        final Iterator<E> it = holidays.iterator();
         if (it.hasNext()) {
-            E obj = it.next();
-            
+            final E obj = it.next();
+
             if (obj instanceof Date) {
-                newSet = new TreeSet(dateCmp);
+                newSet = new TreeSet(DATE_COMP);
             } else if (obj instanceof Calendar) {
-                newSet = new TreeSet(calCmp);
-            } 
+                newSet = new TreeSet(CALENDAR_COMP);
+            }
         }
-        
+
         if (newSet == null) {
             newSet = new HashSet<E>();
         }
-        
+
         newSet.addAll(holidays);
         this.holidays = Collections.unmodifiableSet(newSet);
     }
