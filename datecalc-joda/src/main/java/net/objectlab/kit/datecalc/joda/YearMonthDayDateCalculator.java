@@ -136,7 +136,7 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
     }
 
     @Override
-    public void setStartDate(final YearMonthDay startDate) {
+    public final void setStartDate(final YearMonthDay startDate) {
         if (delegate != null) {
             delegate.setStartDate(startDate != null ? startDate.toLocalDate() : null);
         }
