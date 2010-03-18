@@ -435,28 +435,6 @@ public abstract class AbstractPeriodCountCalculatorTest<E> extends TestCase {
         runtests(ACT_ACT);
     }
 
-    public void testUnsupportedType() {
-        Assert.assertNotNull(cal);
-
-        final PeriodCountBasis pcount = PeriodCountBasis.ACT_UST;
-        final E start = getDate();
-        final E end = getDate();
-
-        try {
-            cal.yearDiff(start, end, pcount);
-            Assert.fail("Should have refused the algo...");
-        } catch (final UnsupportedOperationException e) {
-            // ok
-        }
-
-        try {
-            cal.monthDiff(start, end, pcount);
-            Assert.fail("Should have refused the algo...");
-        } catch (final UnsupportedOperationException e) {
-            // ok
-        }
-    }
-
     private void runtests(final String[][] tests) {
         for (final String[] test : tests) {
             runtest(cal, test);

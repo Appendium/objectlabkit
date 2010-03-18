@@ -63,19 +63,6 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
         this(null, null, new DefaultHolidayCalendar<LocalDate>(Collections.EMPTY_SET), null);
     }
 
-    /**
-     * @deprecated should use the constructor with HolidayCalendar.
-     * @param name
-     * @param startDate
-     * @param nonWorkingDays
-     * @param holidayHandler
-     */
-    @Deprecated
-    public LocalDateCalculator(final String name, final LocalDate startDate, final Set<LocalDate> nonWorkingDays,
-            final HolidayHandler<LocalDate> holidayHandler) {
-        this(name, startDate, new DefaultHolidayCalendar<LocalDate>(nonWorkingDays), holidayHandler);
-    }
-
     public LocalDateCalculator(final String name, final LocalDate startDate, final HolidayCalendar<LocalDate> holidayCalendar,
             final HolidayHandler<LocalDate> holidayHandler) {
         super(name, holidayCalendar, holidayHandler);

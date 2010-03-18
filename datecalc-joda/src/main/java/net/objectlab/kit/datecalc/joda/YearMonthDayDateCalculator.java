@@ -65,21 +65,8 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
         this(null, null, new DefaultHolidayCalendar<YearMonthDay>(Collections.EMPTY_SET), null);
     }
 
-    /**
-     * @deprecated should use the constructor with HolidayCalendar.
-     * @param name
-     * @param startDate
-     * @param nonWorkingDays
-     * @param holidayHandler
-     */
-    @Deprecated
-    public YearMonthDayDateCalculator(final String name, final YearMonthDay startDate, final Set<YearMonthDay> nonWorkingDays,
+    public YearMonthDayDateCalculator(final String name, final YearMonthDay startDate, final HolidayCalendar<YearMonthDay> nonWorkingDays,
             final HolidayHandler<YearMonthDay> holidayHandler) {
-        this(name, startDate, new DefaultHolidayCalendar<YearMonthDay>(nonWorkingDays), holidayHandler);
-    }
-
-    public YearMonthDayDateCalculator(final String name, final YearMonthDay startDate,
-            final HolidayCalendar<YearMonthDay> nonWorkingDays, final HolidayHandler<YearMonthDay> holidayHandler) {
         super(name, nonWorkingDays, holidayHandler);
 
         final Set<LocalDate> dates = new HashSet<LocalDate>();
@@ -89,8 +76,8 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
 
         final YearMonthDay early = nonWorkingDays.getEarlyBoundary();
         final YearMonthDay late = nonWorkingDays.getLateBoundary();
-        final DefaultHolidayCalendar<LocalDate> cal = new DefaultHolidayCalendar<LocalDate>(dates, early != null ? new LocalDate(
-                early) : null, late != null ? new LocalDate(late) : null);
+        final DefaultHolidayCalendar<LocalDate> cal = new DefaultHolidayCalendar<LocalDate>(dates, early != null ? new LocalDate(early) : null,
+                late != null ? new LocalDate(late) : null);
 
         final HolidayHandler<LocalDate> locDate = new HolidayHandlerYearMonthDayWrapper(holidayHandler, this);
 
@@ -130,8 +117,8 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
     }
 
     @Override
-    protected DateCalculator<YearMonthDay> createNewCalculator(final String name, final YearMonthDay startDate,
-            final HolidayCalendar<YearMonthDay> holidays, final HolidayHandler<YearMonthDay> handler) {
+    protected DateCalculator<YearMonthDay> createNewCalculator(final String name, final YearMonthDay startDate, final HolidayCalendar<YearMonthDay> holidays,
+            final HolidayHandler<YearMonthDay> handler) {
         return new YearMonthDayDateCalculator(name, startDate, holidays, handler);
     }
 

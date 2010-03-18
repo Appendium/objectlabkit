@@ -96,19 +96,7 @@ public enum PeriodCountBasis {
      * the day count fraction is equal to the number of days between the last
      * payment date and the next date divided by 365.
      */
-    ACT_365, 
-    
-    /**
-     * @deprecated this is not a common convention, and won't be included in future releases
-     */
-    @Deprecated
-    ACT_UST,
-    
-    /**
-     * @deprecated this is not a common convention, and won't be included in future releases
-     */
-    @Deprecated
-    END_365
+    ACT_365
 }
 
 /*

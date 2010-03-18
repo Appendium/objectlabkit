@@ -118,17 +118,6 @@ public interface DateCalculator<E> {
 
     /**
      * This is typically used at the construction of a DateCalculator to give a
-     * reference to a set of holidays.
-     * 
-     * @param holidays
-     *            the holiday (if null, an empty set will be put in place)
-     * @deprecated should use setHolidayCalendar
-     */
-    @Deprecated
-    void setNonWorkingDays(final Set<E> holidays);
-
-    /**
-     * This is typically used at the construction of a DateCalculator to give a
      * reference to a Holiday Calendar, if not the case, the calculator will 
      * make an immutable copy of the HolidayCalendar.
      * 
@@ -146,15 +135,6 @@ public interface DateCalculator<E> {
     //
     // -----------------------------------------------------------------------
 
-    /**
-     * Gives a immutable copy of the set of registered holidays.
-     * 
-     * @return an immutable copy of the holiday set.
-     * @deprecated use getHolidayCalendar, likely to be REMOVED next release.
-     */
-    @Deprecated
-    Set<E> getNonWorkingDays();
-    
     /**
      * Returns an immutable version of the HolidayCalendar.
      * @return a copy of the holiday calendar

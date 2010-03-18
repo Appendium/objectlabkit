@@ -126,27 +126,6 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     }
 
     /**
-     * @deprecated should use getHolidayCalendar
-     */
-    @Deprecated
-    public Set<E> getNonWorkingDays() {
-        return Collections.unmodifiableSet(holidayCalendar.getHolidays());
-    }
-
-    /**
-     * @deprecated use the HolidayCalendar
-     */
-    @Deprecated
-    public void setNonWorkingDays(final Set<E> holidays) {
-        if (holidays == null) {
-            final Set<E> col = Collections.emptySet();
-            holidayCalendar = new DefaultHolidayCalendar<E>(col);
-        } else {
-            holidayCalendar = new DefaultHolidayCalendar<E>(holidays);
-        }
-    }
-
-    /**
      * move the current date by a given tenor, this means that if a date is
      * either a 'weekend' or holiday, it will be skipped acording to the holiday
      * handler and not count towards the number of days to move.

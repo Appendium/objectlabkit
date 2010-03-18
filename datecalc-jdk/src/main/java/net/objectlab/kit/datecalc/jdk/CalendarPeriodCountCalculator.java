@@ -53,55 +53,71 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
     public int dayDiff(final Calendar start, final Calendar end, final PeriodCountBasis basis) {
 
         int diff = 0;
-        int dayStart;
-        int dayEnd;
-        
+
         switch (basis) {
         case CONV_30_360:
-            dayStart = start.get(Calendar.DAY_OF_MONTH);
-            dayEnd = end.get(Calendar.DAY_OF_MONTH);
-            if (dayEnd == MONTH_31_DAYS && dayStart >= MONTH_30_DAYS) {
-                dayEnd = MONTH_30_DAYS;
-            }
-            if (dayStart == MONTH_31_DAYS) {
-                dayStart = MONTH_30_DAYS;
-            }
-            diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * YEAR_360
-                    + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * MONTH_30_DAYS + dayEnd - dayStart;
+            diff = calculateConv30360(start, end);
             break;
 
         case CONV_360E_ISDA:
-            dayStart = start.get(Calendar.DAY_OF_MONTH);
-            dayEnd = end.get(Calendar.DAY_OF_MONTH);
-            final int monthStart = start.get(Calendar.MONTH);
-            if ((monthStart == 2 && start.getActualMaximum(Calendar.DAY_OF_MONTH) == dayStart) || dayEnd == MONTH_31_DAYS) {
-                dayEnd = MONTH_30_DAYS;
-            }
-            if (dayStart == MONTH_31_DAYS) {
-                dayStart = MONTH_30_DAYS;
-            }
-
-            diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * YEAR_360
-                    + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * MONTH_30_DAYS + dayEnd - dayStart;
+            diff = calculateConv360EIsda(start, end);
             break;
 
         case CONV_360E_ISMA:
-            dayStart = start.get(Calendar.DAY_OF_MONTH);
-            dayEnd = end.get(Calendar.DAY_OF_MONTH);
-            if (dayEnd == MONTH_31_DAYS) {
-                dayEnd = MONTH_30_DAYS;
-            }
-            if (dayStart == MONTH_31_DAYS) {
-                dayStart = MONTH_30_DAYS;
-            }
-            diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * YEAR_360
-                    + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * MONTH_30_DAYS + dayEnd - dayStart;
+            diff = calculateConv360EIsma(start, end);
             break;
-            
+
         default:
             diff = dayDiff(start, end);
         }
-        
+
+        return diff;
+    }
+
+    private int calculateConv360EIsma(final Calendar start, final Calendar end) {
+        int diff;
+        int dayStart = start.get(Calendar.DAY_OF_MONTH);
+        int dayEnd = end.get(Calendar.DAY_OF_MONTH);
+        if (dayEnd == MONTH_31_DAYS) {
+            dayEnd = MONTH_30_DAYS;
+        }
+        if (dayStart == MONTH_31_DAYS) {
+            dayStart = MONTH_30_DAYS;
+        }
+        diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * YEAR_360 + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * MONTH_30_DAYS + dayEnd
+                - dayStart;
+        return diff;
+    }
+
+    private int calculateConv360EIsda(final Calendar start, final Calendar end) {
+        int diff;
+        int dayStart = start.get(Calendar.DAY_OF_MONTH);
+        int dayEnd = end.get(Calendar.DAY_OF_MONTH);
+        final int monthStart = start.get(Calendar.MONTH);
+        if ((monthStart == 2 && start.getActualMaximum(Calendar.DAY_OF_MONTH) == dayStart) || dayEnd == MONTH_31_DAYS) {
+            dayEnd = MONTH_30_DAYS;
+        }
+        if (dayStart == MONTH_31_DAYS) {
+            dayStart = MONTH_30_DAYS;
+        }
+
+        diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * YEAR_360 + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * MONTH_30_DAYS + dayEnd
+                - dayStart;
+        return diff;
+    }
+
+    private int calculateConv30360(final Calendar start, final Calendar end) {
+        int diff;
+        int dayStart = start.get(Calendar.DAY_OF_MONTH);
+        int dayEnd = end.get(Calendar.DAY_OF_MONTH);
+        if (dayEnd == MONTH_31_DAYS && dayStart >= MONTH_30_DAYS) {
+            dayEnd = MONTH_30_DAYS;
+        }
+        if (dayStart == MONTH_31_DAYS) {
+            dayStart = MONTH_30_DAYS;
+        }
+        diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * YEAR_360 + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * MONTH_30_DAYS + dayEnd
+                - dayStart;
         return diff;
     }
 
@@ -113,7 +129,7 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
     //
     // -----------------------------------------------------------------------
 
-   private int dayDiff(final Calendar start, final Calendar end) {
+    private int dayDiff(final Calendar start, final Calendar end) {
         final long diff = Math.abs(start.getTimeInMillis() - end.getTimeInMillis());
         final double dayDiff = ((double) diff) / MILLIS_IN_DAY;
         return (int) Math.round(dayDiff);
@@ -125,7 +141,7 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
 
     public double yearDiff(final Calendar start, final Calendar end, final PeriodCountBasis basis) {
         double diff = 0.0;
-        
+
         switch (basis) {
         case ACT_ACT:
             final int startYear = start.get(Calendar.YEAR);
@@ -152,14 +168,13 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
             break;
 
         case ACT_365:
-        case END_365:
             diff = (dayDiff(start, end, basis)) / YEAR_365_0;
             break;
-            
+
         default:
             throw new UnsupportedOperationException("Sorry no ACT_UST yet");
         }
-        
+
         return diff;
     }
 
