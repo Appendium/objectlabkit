@@ -111,8 +111,14 @@ public class CalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calenda
 
         moveToIMMDay(cal);
 
+        cal = handlePeriod(requestNextIMM, period, cal);
+
+        return cal;
+    }
+
+    private Calendar handlePeriod(final boolean requestNextIMM, final IMMPeriod period, final Calendar givenCal) {
+        Calendar cal = givenCal;
         final int month = cal.get(MONTH);
-        
         switch (period) {
         case BI_ANNUALY_JUN_DEC:
             if (month == MARCH || month == SEPTEMBER) {
@@ -139,7 +145,6 @@ public class CalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calenda
             cal = getNextIMMDate(requestNextIMM, cal, QUARTERLY);
             break;
         }
-
         return cal;
     }
 

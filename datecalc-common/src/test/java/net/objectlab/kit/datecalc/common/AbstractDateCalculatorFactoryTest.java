@@ -161,18 +161,6 @@ public abstract class AbstractDateCalculatorFactoryTest<E> extends AbstractDateT
         }
     }
 
-    public void testSetHol() {
-        final DateCalculator<E> cal1 = getDateCalculatorFactory().getDateCalculator("bla", null);
-
-        Assert.assertNotNull("No algo", cal1);
-        Assert.assertNotNull("No hol", cal1.getHolidayCalendar().getHolidays());
-        Assert.assertTrue("empty hol", cal1.getHolidayCalendar().getHolidays().isEmpty());
-
-        cal1.setNonWorkingDays(null);
-        Assert.assertNotNull("empty", cal1.getHolidayCalendar().getHolidays());
-        Assert.assertTrue("empty hol", cal1.getHolidayCalendar().getHolidays().isEmpty());
-    }
-
     public void testSetHolCal() {
         final DateCalculator<E> cal1 = getDateCalculatorFactory().getDateCalculator("bla", null);
 

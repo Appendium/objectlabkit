@@ -69,9 +69,9 @@ public class CalendarModifiedFollowingHandler implements HolidayHandler<Calendar
     //
     // -----------------------------------------------------------------------
 
-   protected Calendar move(final DateCalculator<Calendar> calculator, int step) {
+    protected Calendar move(final DateCalculator<Calendar> calculator, final int givenStep) {
         final Calendar cal = (Calendar) calculator.getCurrentBusinessDate().clone();
-
+        int step = givenStep;
         final int month = cal.get(Calendar.MONTH);
 
         while (calculator.isNonWorkingDay(cal)) {

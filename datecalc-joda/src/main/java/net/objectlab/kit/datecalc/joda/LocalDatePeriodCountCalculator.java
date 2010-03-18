@@ -151,7 +151,6 @@ public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<Loc
             break;
 
         case ACT_365:
-        case END_365:
             diff = (dayDiff(start, end, basis)) / YEAR_365_0;
             break;
 

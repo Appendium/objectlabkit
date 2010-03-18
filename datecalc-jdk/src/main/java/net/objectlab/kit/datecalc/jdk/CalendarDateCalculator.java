@@ -62,19 +62,6 @@ public class CalendarDateCalculator extends AbstractDateCalculator<Calendar> {
         this(null, null, new DefaultHolidayCalendar<Calendar>(Collections.EMPTY_SET), null);
     }
 
-    /**
-     * @deprecated should use the constructor with HolidayCalendar.
-     * @param name
-     * @param startDate
-     * @param nonWorkingDays
-     * @param holidayHandler
-     */
-    @Deprecated
-    public CalendarDateCalculator(final String name, final Calendar startDate, final Set<Calendar> nonWorkingDays,
-            final HolidayHandler<Calendar> holidayHandler) {
-        this(name, startDate, new DefaultHolidayCalendar<Calendar>(nonWorkingDays), holidayHandler);
-    }
-
     public CalendarDateCalculator(final String name, final Calendar startDate, final HolidayCalendar<Calendar> holidayCalendar,
             final HolidayHandler<Calendar> holidayHandler) {
         super(name, holidayCalendar, holidayHandler);
@@ -138,7 +125,7 @@ public class CalendarDateCalculator extends AbstractDateCalculator<Calendar> {
     }
 
     @Override
-    protected Calendar getToday() {
+    protected final Calendar getToday() {
         return Utils.blastTime(Calendar.getInstance());
     }
 

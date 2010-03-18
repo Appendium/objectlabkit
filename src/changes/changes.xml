@@ -7,6 +7,8 @@
   </properties>
   <body>
     <release version="1.2.0" date="in SVN" description="Maintenance">
+      <action dev="benoitx" type="fix">Removed the deprecated constructors that used to take Set of "Date", use the HolidayCalendar.</action>
+      <action dev="benoitx" type="fix">Removed the deprecated method DateCalculator.setNonWorkingDays and getNonWorkingDays.</action>
       <action dev="benoitx" type="add" due-to="Neil Bartlett">The ObjectLab Kit is now an OSGi Bundle!</action>
       <action dev="benoitx" type="fix" issue="atid=872033&amp;aid=1929838" due-to="Anthony Whitford">Spelling for "PRECEEDING" corrected to PRECEDING, deprecated the mispelt name.</action>
       <action dev="benoitx" type="add">Enhanced the KitCalculatorsFactory to be able to get the holidayCalendar names and unregister calendars.</action>
