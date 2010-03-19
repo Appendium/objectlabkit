@@ -52,8 +52,6 @@ public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<Loc
 
     public int dayDiff(final LocalDate start, final LocalDate end, final PeriodCountBasis basis) {
         int diff = 0;
-        //        int dayStart;
-        //        int dayEnd;
 
         switch (basis) {
         case CONV_30_360:
