@@ -191,10 +191,11 @@
 			<id>sourceforge.net</id>
 			<url>scp://shell.sourceforge.net/home/groups/o/ob/objectlabkit/htdocs/m2-repo</url>
 		</repository>
-		<snapshotRepository>
-			<id>sourceforge.net</id>
-			<url>scp://shell.sourceforge.net/home/groups/o/ob/objectlabkit/htdocs/m2-snapshot-repo</url>
-		</snapshotRepository>
+    <snapshotRepository>
+      <id>sonatype-nexus-snapshots</id>
+      <name>Sonatype Nexus Snapshots</name>
+      <url>http://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
 		<site>
 			<id>objectlabkit.sf.net</id>
 			<url>scp://shell.sourceforge.net/home/groups/o/ob/objectlabkit/htdocs/test</url>
