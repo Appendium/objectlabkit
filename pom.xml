@@ -148,7 +148,10 @@
     <profile>
       <id>code-sign</id>
       <activation>
-        <activeByDefault>false</activeByDefault>
+        <property>
+          <name>performRelease</name>
+          <value>true</value>
+        </property>
       </activation>
       <build>
         <plugins>
