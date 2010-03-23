@@ -38,7 +38,6 @@ import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_FOLL
 import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_PRECEDING;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -85,6 +84,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         this.holidayHandler = holidayHandler;
     }
 
+    @SuppressWarnings("unchecked")
     public void setHolidayCalendar(final HolidayCalendar<E> calendar) {
         if (calendar != null) {
             if (calendar instanceof ImmutableHolidayCalendar) {

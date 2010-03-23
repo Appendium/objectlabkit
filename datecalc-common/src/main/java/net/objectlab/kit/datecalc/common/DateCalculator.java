@@ -33,7 +33,6 @@
 package net.objectlab.kit.datecalc.common;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * A DateCalculator is a lightweight container with an optional reference to a
