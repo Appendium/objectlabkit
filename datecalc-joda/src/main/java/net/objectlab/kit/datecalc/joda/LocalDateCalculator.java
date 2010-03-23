@@ -33,7 +33,6 @@
 package net.objectlab.kit.datecalc.joda;
 
 import java.util.Collections;
-import java.util.Set;
 
 import net.objectlab.kit.datecalc.common.AbstractDateCalculator;
 import net.objectlab.kit.datecalc.common.DateCalculator;

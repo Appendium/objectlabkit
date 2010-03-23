@@ -35,7 +35,6 @@ package net.objectlab.kit.datecalc.jdk;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
-import java.util.Set;
 
 import net.objectlab.kit.datecalc.common.AbstractDateCalculator;
 import net.objectlab.kit.datecalc.common.DateCalculator;

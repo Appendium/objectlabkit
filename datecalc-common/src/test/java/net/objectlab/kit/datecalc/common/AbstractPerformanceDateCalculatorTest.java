@@ -35,8 +35,6 @@ package net.objectlab.kit.datecalc.common;
 import java.util.Map;
 import java.util.TreeMap;
 
-import junit.framework.Assert;
-
 public abstract class AbstractPerformanceDateCalculatorTest<E> extends AbstractDateTestCase<E> {
     private static final int REPEAT = 100000;
     private static final Map<String, String> RESULTS = new TreeMap<String, String>();
