@@ -9,7 +9,7 @@
   </parent>
 
   <artifactId>datecalc-common</artifactId>
-  <packaging>bundle</packaging> <!-- (1) OSGi -->
+  <packaging>bundle</packaging>
 
   <name>DateCalc Commons</name>
   <description>Common Date Calculator Code</description>
