@@ -7,6 +7,7 @@
   </properties>
   <body>
     <release version="1.2.0" date="in SVN" description="Maintenance">
+      <action dev="marchy" type="fix" issue="atid=872033&amp;aid=2963607" due-to="Aldo Tamburini">Fixed DefaultHolidayCalendar when used with java.util.Date / java.util.Calendar holidays.</action>
       <action dev="benoitx" type="fix">Removed the deprecated constructors that used to take Set of "Date", use the HolidayCalendar.</action>
       <action dev="benoitx" type="fix">Removed the deprecated method DateCalculator.setNonWorkingDays and getNonWorkingDays.</action>
       <action dev="benoitx" type="add" due-to="Neil Bartlett">The ObjectLab Kit is now an OSGi Bundle!</action>
