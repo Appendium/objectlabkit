@@ -42,6 +42,10 @@ import java.math.BigDecimal;
  */
 public class Sum implements Serializable {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
     private BigDecimal value = BigDecimal.ZERO;
     private int count = 0;
 
@@ -55,7 +59,7 @@ public class Sum implements Serializable {
         }
     }
 
-    public Sum(final BigDecimal start, int scale) {
+    public Sum(final BigDecimal start, final int scale) {
         if (start != null) {
             value = start.setScale(scale, BigDecimal.ROUND_HALF_UP);
         }
@@ -87,7 +91,7 @@ public class Sum implements Serializable {
     }
 
     public Sum subtract(final BigDecimal... value) {
-        this.value = BigDecimalUtil.subtract(this.value, value); 
+        this.value = BigDecimalUtil.subtract(this.value, value);
         count += value.length;
         return this;
     }
