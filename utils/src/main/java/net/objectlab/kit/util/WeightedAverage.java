@@ -40,7 +40,7 @@ import java.math.BigDecimal;
  *
  */
 public class WeightedAverage implements Serializable {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 4687472725716492770L;
     private final Sum total = new Sum();
     private final Sum totalExpanded = new Sum();
     private int count = 0;
