@@ -41,11 +41,7 @@ import java.math.BigDecimal;
  *
  */
 public class Sum implements Serializable {
-
-    /**
-     * 
-     */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -8583271171731930344L;
     private BigDecimal value = BigDecimal.ZERO;
     private int count = 0;
 

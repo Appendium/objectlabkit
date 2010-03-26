@@ -32,13 +32,15 @@
  */
 package net.objectlab.kit.util;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
  * @author Benoit
  *
  */
-public final class Average {
+public final class Average implements Serializable {
+    private static final long serialVersionUID = 4630559777899225672L;
     private Sum sum = new Sum();
     private int count = 0;
 
