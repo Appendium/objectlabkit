@@ -119,7 +119,7 @@ public final class BigDecimalUtil {
     /**
      * Add 2 BigDecimal safely (i.e. handles nulls)
      */
-    public static BigDecimal add(final BigDecimal v1, final BigDecimal v2) {
+    private static BigDecimal doAdd(final BigDecimal v1, final BigDecimal v2) {
         BigDecimal total = v1;
         if (v1 != null && v2 != null) {
             total = v1.add(v2);
@@ -133,21 +133,23 @@ public final class BigDecimalUtil {
      * Add n BigDecimal safely (i.e. handles nulls)
      */
     public static BigDecimal add(final BigDecimal start, final BigDecimal... values) {
-        BigDecimal total = start;
-        for (final BigDecimal v : values) {
-            total = add(total, v);
+        BigDecimal total = start != null ? start : BigDecimal.ZERO;
+        if (values != null) {
+            for (final BigDecimal v : values) {
+                total = doAdd(total, v);
+            }
         }
         return total;
     }
 
     /**
-     * Subtract n BigDecimal safely (i.e. handles nulls)
+     * Subtract n BigDecimal safely (i.e. handles nulls), returns 0
      */
     public static BigDecimal subtract(final BigDecimal start, final BigDecimal... values) {
-        BigDecimal total = start;
+        BigDecimal total = start != null ? start : BigDecimal.ZERO;
         if (values != null) {
             for (final BigDecimal v : values) {
-                total = subtract(total, v);
+                total = doSubtract(total, v);
             }
         }
         return total;
@@ -156,7 +158,7 @@ public final class BigDecimalUtil {
     /**
      * Subtract 2 BigDecimal safely (i.e. handles nulls) v1 - v2
      */
-    public static BigDecimal subtract(final BigDecimal v1, final BigDecimal v2) {
+    private static BigDecimal doSubtract(final BigDecimal v1, final BigDecimal v2) {
         BigDecimal diff = v1;
         if (v1 != null && v2 != null) {
             diff = v1.subtract(v2);
@@ -295,7 +297,7 @@ public final class BigDecimalUtil {
      * @return true if the ABS( ABS(v1) - ABS(v2) )
      */
     public static BigDecimal absDiff(final BigDecimal v1, final BigDecimal v2) {
-        return abs(subtract(abs(v1), abs(v2)));
+        return abs(doSubtract(abs(v1), abs(v2)));
     }
 
     /**
@@ -422,7 +424,7 @@ public final class BigDecimalUtil {
      */
     public static BigDecimal addWeightedConstituent(final BigDecimal runningWeightedVal, final BigDecimal valueToAdd, final BigDecimal weightForValueToAdd,
             final BigDecimal totalWeight) {
-        return BigDecimalUtil.add(runningWeightedVal, BigDecimalUtil.divide(BigDecimalUtil.multiply(valueToAdd, BigDecimalUtil.abs(weightForValueToAdd)),
+        return BigDecimalUtil.doAdd(runningWeightedVal, BigDecimalUtil.divide(BigDecimalUtil.multiply(valueToAdd, BigDecimalUtil.abs(weightForValueToAdd)),
                 BigDecimalUtil.abs(totalWeight), BigDecimal.ROUND_HALF_UP));
     }
 
@@ -475,7 +477,7 @@ public final class BigDecimalUtil {
     public static boolean movedStrictlyOutsideThresholdPercentage(final BigDecimal startValue, final BigDecimal newValue, final BigDecimal thresholdPercent) {
         final BigDecimal s = BigDecimalUtil.setScale(startValue, 10);
         final BigDecimal n = BigDecimalUtil.setScale(newValue, 10);
-        final BigDecimal diff = BigDecimalUtil.divide(BigDecimalUtil.subtract(s, n), s, BigDecimal.ROUND_HALF_UP);
+        final BigDecimal diff = BigDecimalUtil.divide(BigDecimalUtil.doSubtract(s, n), s, BigDecimal.ROUND_HALF_UP);
         //        diff = BigDecimalUtil.safeAbsDiff(diff, MagicNumbers.ONE);
 
         return BigDecimalUtil.absCompareTo(diff, thresholdPercent) > 0;

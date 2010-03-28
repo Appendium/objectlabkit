@@ -1,6 +1,9 @@
 package net.objectlab.kit.util;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
+import java.util.HashSet;
 
 import org.junit.Test;
 
@@ -8,7 +11,8 @@ public class CollectionUtilTest {
 
     @Test
     public void testIsEmpty() {
-        fail("Not yet implemented");
+        assertTrue("null", CollectionUtil.isEmpty(null));
+        assertTrue("empty set", CollectionUtil.isEmpty(new HashSet()));
     }
 
     @Test
