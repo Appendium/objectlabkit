@@ -103,6 +103,9 @@ public final class CollectionUtil {
      * @return true if none of the collections are empty or null
      */
     public static boolean noneEmpty(final Collection... collections) {
+        if (collections == null) {
+            return false;
+        }
         for (final Collection col : collections) {
             if (isEmpty(col)) {
                 return false;
@@ -112,8 +115,11 @@ public final class CollectionUtil {
     }
 
     public static boolean sameContent(final Collection c1, final Collection c2) {
-        boolean same = c1 != null && c2 != null || c1 == c2 || c1 == null && c2 == null;
-        if (same && c1 != null) {
+        if (c1 == c2 || (isEmpty(c2) && isEmpty(c1))) {
+            return true;
+        }
+        boolean same = false;
+        if (c1 != null && c2 != null) {
             same = c1.size() == c2.size();
             if (same) {
                 same = c1.equals(c2);
