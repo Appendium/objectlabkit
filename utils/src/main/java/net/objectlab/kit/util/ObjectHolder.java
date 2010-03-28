@@ -33,15 +33,21 @@
 package net.objectlab.kit.util;
 
 /**
+ * An object holder just in case one needs to give it as an argement to a method.
  * @author Benoit Xhenseval
- *
  */
 public class ObjectHolder<T> {
     private T value;
 
+    /**
+     * value is null
+     */
     public ObjectHolder() {
     }
 
+    /**
+     * with a default value
+     */
     public ObjectHolder(final T value) {
         this.value = value;
     }
