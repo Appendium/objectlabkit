@@ -1,11 +1,11 @@
 <document>
   <properties>
-    <author email="Kit@objectlab.co.uk">Benoit Xhenseval</author>
-    <title>DateCalc Common Intro</title>
+    <author email="kit@objectlab.co.uk">Benoit Xhenseval</author>
+    <title>DateCalc Common Introduction</title>
   </properties>
   <head>
     <meta name="description"
-	content="ObjectLab Kit offers free and open source Date calculators, released under the business-friendly Apache 2.0 license."
+	    content="ObjectLab Kit offers free and open source Date calculators, released under the business-friendly Apache 2.0 license."
 	/>
 
     <meta name="keywords"
@@ -23,8 +23,8 @@
     <section name="DateCalc Common Introduction">
 
     <p>DateCalc Common defines the common functionalities (implementation using some generics).</p>
-    <p>Check out the <a href="apidocs/index.html">UML diagrams here</a></p>
-    <p>Also look at the <a href="maven-reports.html">Project Reports</a> menu on the left for project specific items, unit tests, QA etc.</p>
+    <p>Check out the <a href="../apidocs/index.html?net/objectlab/kit/datecalc/common/package-summary.html">UML diagrams and JavaDocs here</a>.</p>
+    <p>Also look at the <a href="project-reports.html">Project Reports</a> menu on the left for project specific items, unit tests, QA etc.</p>
     </section>
 
   </body>
