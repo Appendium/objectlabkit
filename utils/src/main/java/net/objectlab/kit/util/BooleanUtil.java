@@ -52,7 +52,7 @@ public final class BooleanUtil {
      * @return true if string is Y,y,YES,yes,TRUE,true,T,t
      */
     public static boolean isTrue(final String str) {
-        return str == null ? false : StringUtil.equalsAnyIgnoreCase(str, "yes", "y", "TRUE", "t");
+        return str == null ? false : StringUtil.equalsAnyIgnoreCase(StringUtil.trim(str), "yes", "y", "TRUE", "t");
     }
 
     public static boolean isFalse(final Boolean b) {
