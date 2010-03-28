@@ -17,6 +17,34 @@ import org.junit.Test;
 public class BigDecimalUtilTest {
 
     /**
+     * Test method for {@link net.objectlab.kit.util.BigDecimalUtil#divide(java.math.BigDecimal, java.math.BigDecimal, int, int)}.
+     */
+    @Test
+    public void testDivideBigDecimalBigDecimalIntInt() {
+        assertEquals("3 null", null, BigDecimalUtil.divide(null, null, BigDecimal.ROUND_HALF_UP));
+        assertEquals("2a null", null, BigDecimalUtil.divide(BigDecimal.ONE, null, BigDecimal.ROUND_HALF_UP));
+        assertEquals("2c null", null, BigDecimalUtil.divide(null, BigDecimal.ONE, BigDecimal.ROUND_HALF_UP));
+        assertEquals("2d null", null, BigDecimalUtil.divide(null, BigDecimal.ONE, BigDecimal.ROUND_HALF_UP));
+        assertEquals("ONE 2", BigDecimal.ONE, BigDecimalUtil.divide(BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ROUND_HALF_UP));
+        assertEquals("ONE 3", BigDecimal.ONE, BigDecimalUtil.divide(BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ROUND_HALF_UP));
+    }
+
+    /**
+     * Test method for {@link net.objectlab.kit.util.BigDecimalUtil#setScale(java.math.BigDecimal, int)}.
+     */
+    @Test
+    public void testSetScaleBigDecimalInt() {
+        assertEquals("null", null, BigDecimalUtil.setScale(null, 3));
+        assertEquals("1.000", new BigDecimal("1.000"), BigDecimalUtil.setScale(BigDecimal.ONE, 3));
+        assertEquals("1.000 same", new BigDecimal("1.000"), BigDecimalUtil.setScale(new BigDecimal("1.000"), 3));
+        assertEquals("1.00 to 3dp", new BigDecimal("1.000"), BigDecimalUtil.setScale(new BigDecimal("1.00"), 3));
+        assertEquals("1.000 to -1dp", new BigDecimal("0E+1"), BigDecimalUtil.setScale(new BigDecimal("1.000"), -1));
+        assertEquals("1.236 to 2", new BigDecimal("1.24"), BigDecimalUtil.setScale(new BigDecimal("1.236"), 2));
+        assertEquals("1.235 to 2", new BigDecimal("1.24"), BigDecimalUtil.setScale(new BigDecimal("1.235"), 2));
+        assertEquals("1.234 to 2", new BigDecimal("1.23"), BigDecimalUtil.setScale(new BigDecimal("1.23"), 2));
+    }
+
+    /**
      * Test method for {@link net.objectlab.kit.util.BigDecimalUtil#inverse(java.math.BigDecimal, int)}.
      */
     @Test
@@ -89,19 +117,19 @@ public class BigDecimalUtilTest {
     }
 
     /**
-     * Test method for {@link net.objectlab.kit.util.BigDecimalUtil#add(java.math.BigDecimal, java.math.BigDecimal)}.
-     */
-    @Test
-    public void testAddBigDecimalBigDecimal() {
-        fail("Not yet implemented");
-    }
-
-    /**
      * Test method for {@link net.objectlab.kit.util.BigDecimalUtil#add(java.math.BigDecimal, java.math.BigDecimal[])}.
      */
     @Test
     public void testAddBigDecimalBigDecimalArray() {
-        fail("Not yet implemented");
+        assertEquals("null", BigDecimal.ZERO, BigDecimalUtil.add(null));
+        assertEquals("null+null", BigDecimal.ZERO, BigDecimalUtil.add(null, null));
+        assertEquals("null+null+0", BigDecimal.ZERO, BigDecimalUtil.add(null, null, BigDecimal.ZERO));
+        assertEquals("null+1", BigDecimal.ONE, BigDecimalUtil.add(null, BigDecimal.ONE));
+        assertEquals("1+null", BigDecimal.ONE, BigDecimalUtil.add(BigDecimal.ONE, null));
+        assertEquals("1+null+0", BigDecimal.ONE, BigDecimalUtil.add(BigDecimal.ONE, null, BigDecimal.ZERO));
+        assertEquals("1+null+1", new BigDecimal(2), BigDecimalUtil.add(BigDecimal.ONE, null, BigDecimal.ONE));
+        assertEquals("1+0+1", new BigDecimal(2), BigDecimalUtil.add(BigDecimal.ONE, BigDecimal.ZERO, BigDecimal.ONE));
+        assertEquals("1+1+1", new BigDecimal(3), BigDecimalUtil.add(BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ONE));
     }
 
     /**
@@ -110,14 +138,14 @@ public class BigDecimalUtilTest {
     @Test
     public void testSubtractBigDecimalBigDecimalArray() {
         assertEquals("2 null", BigDecimal.ZERO, BigDecimalUtil.subtract(null, (BigDecimal[]) null));
-    }
-
-    /**
-     * Test method for {@link net.objectlab.kit.util.BigDecimalUtil#subtract(java.math.BigDecimal, java.math.BigDecimal)}.
-     */
-    @Test
-    public void testSubtractBigDecimalBigDecimal() {
-        fail("Not yet implemented");
+        assertEquals("3 null", BigDecimal.ZERO, BigDecimalUtil.subtract(null, null, null));
+        assertEquals("0 -null -null", BigDecimal.ZERO, BigDecimalUtil.subtract(BigDecimal.ZERO, null, null));
+        assertEquals("null 0 -null", BigDecimal.ZERO, BigDecimalUtil.subtract(null, BigDecimal.ZERO, null));
+        assertEquals("1 -null", BigDecimal.ONE, BigDecimalUtil.subtract(BigDecimal.ONE, null));
+        assertEquals("1 -null -0", BigDecimal.ONE, BigDecimalUtil.subtract(BigDecimal.ONE, null, BigDecimal.ZERO));
+        assertEquals("1 -0 -null", BigDecimal.ONE, BigDecimalUtil.subtract(BigDecimal.ONE, BigDecimal.ZERO, null));
+        assertEquals("1 -0 -1", BigDecimal.ZERO, BigDecimalUtil.subtract(BigDecimal.ONE, BigDecimal.ZERO, BigDecimal.ONE));
+        assertEquals("1 -null -1", BigDecimal.ZERO, BigDecimalUtil.subtract(BigDecimal.ONE, null, BigDecimal.ONE));
     }
 
     /**
@@ -141,14 +169,6 @@ public class BigDecimalUtilTest {
      */
     @Test
     public void testDivideIntBigDecimalBigDecimalInt() {
-        fail("Not yet implemented");
-    }
-
-    /**
-     * Test method for {@link net.objectlab.kit.util.BigDecimalUtil#divide(java.math.BigDecimal, java.math.BigDecimal, int, int)}.
-     */
-    @Test
-    public void testDivideBigDecimalBigDecimalIntInt() {
         fail("Not yet implemented");
     }
 
@@ -253,14 +273,6 @@ public class BigDecimalUtilTest {
      */
     @Test
     public void testRoundTo() {
-        fail("Not yet implemented");
-    }
-
-    /**
-     * Test method for {@link net.objectlab.kit.util.BigDecimalUtil#setScale(java.math.BigDecimal, int)}.
-     */
-    @Test
-    public void testSetScaleBigDecimalInt() {
         fail("Not yet implemented");
     }
 
