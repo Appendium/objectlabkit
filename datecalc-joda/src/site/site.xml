@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="ObjectLab-Kit" xmlns="http://maven.apache.org/DECORATION/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
-  <title>DateCalc JODA</title>
   <body>
-    <menu name="DateCalc JODA">
-      <item name="Sitemap" href="sitemap.html" />
-    </menu>
+  
+    <breadcrumbs>
+      <item name="Joda" href="http://objectlabkit.sourceforge.net/datecalc-joda/"/>
+    </breadcrumbs>
+
+    <menu ref="reports" />
+
     <menu name="Interesting Projects">
       <item name="QALab" href="http://qalab.sourceforge.net/" />
       <item name="JTreeMap" href="http://jtreemap.sourceforge.net/" />
       <item name="PZFileReader" href="http://pzfilereader.sourceforge.net/" />
-      <item name="StatSVN" href="http://www.StatSVN.org/" />
+      <item name="StatSVN" href="http://www.statsvn.org/" />
       <item name="ObjectLab" href="http://www.objectlab.co.uk" />
-      <item name="Joda-time" href="http://joda-time.sourceforge.net" />
+      <item name="Joda Time" href="http://joda-time.sourceforge.net" />
     </menu>
-  </body>
-</project>
+
+  </body></project>

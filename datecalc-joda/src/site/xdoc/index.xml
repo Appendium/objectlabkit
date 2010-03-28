@@ -23,8 +23,8 @@
     <section name="DateCalc JODA Introduction">
 
     <p>DateCalc Joda provides an implementation based on <a href="http://joda-time.sourceforge.net">Joda Time</a>.</p>
-    <p>Check out the <a href="apidocs/index.html">UML diagrams here</a></p>
-    <p>Also look at the <a href="maven-reports.html">Project Reports</a> menu on the left for project specific items, unit tests, QA etc.</p>
+    <p>Check out the <a href="../apidocs/index.html?net/objectlab/kit/datecalc/joda/package-summary.html">UML diagrams and JavaDocs here</a>.</p>
+    <p>Also look at the <a href="project-reports.html">Project Reports</a> menu on the left for project specific items, unit tests, QA etc.</p>
     <p>Finally, this jar requires Joda time 1.3+, the website is <a href="http://joda-time.sourceforge.net">here</a>.</p>
     </section>
 
