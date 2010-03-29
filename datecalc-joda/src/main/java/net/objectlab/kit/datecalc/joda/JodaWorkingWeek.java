@@ -53,7 +53,7 @@ public class JodaWorkingWeek extends WorkingWeek {
         super();
     }
 
-    private JodaWorkingWeek(final byte workingDays) {
+    protected JodaWorkingWeek(final byte workingDays) {
         super(workingDays);
     }
 
