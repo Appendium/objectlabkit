@@ -26,7 +26,7 @@
     <p><b>2010-03-xx</b>: version 1.2.0 is out and contains a couple of changes, including the ability to see the registered calendar and unregistering calendars (useful if calendars are dynamic). 
     More info on the changes <a href="changes-report.html">here</a>. Also, one of the authors is on Twitter, follow your favorite Belgian at <a href="http://twitter.com/benoitx">http://twitter.com/benoitx</a>.</p>
     
-    <p><b>2007-03-24</b>: version 1.1.0 is out and contains a couple of changes, a new HolidayHandler and the ability to define a valid range for the holiday (and
+    <p><b>2007-03-25</b>: version 1.1.0 is out and contains a couple of changes, a new HolidayHandler and the ability to define a valid range for the holiday (and
     if the calculation is beyond that range, an exception is thrown).  This is done via HolidayCalendar which should replace the simple Set&lt;E&gt; for holidays.
     More info on the changes <a href="changes-report.html">here</a>.</p>
     </section>
