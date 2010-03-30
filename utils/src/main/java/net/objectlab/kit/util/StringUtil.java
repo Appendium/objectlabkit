@@ -517,4 +517,38 @@ public final class StringUtil {
         }
         return EMPTY;
     }
+
+    /**
+    *
+    * @param strings
+    * @return true if any are empty
+    */
+   public static boolean anyEmpty(final String... strings) {
+       if (strings != null) {
+           for (final String object : strings) {
+               if (StringUtils.isEmpty(object)) {
+                   return true;
+               }
+           }
+           return strings.length == 0 ? true : false;
+       }
+       return true;
+   }
+
+  
+   /**
+    * Does equalsIgnoreCase call but if the value is '*', immediately returns true.
+    */
+   public static boolean equalsIgnoreCaseOrValueIsWildcard(final String value, final String toCheck) {
+       if (value == null && toCheck == null) {
+           return true;
+       }
+       if (value != null && StringUtil.WILDCARD.equals(value)) {
+           return true;
+       }
+       if (value != null && toCheck != null) {
+           return value.equalsIgnoreCase(toCheck);
+       }
+       return false;
+   }
 }

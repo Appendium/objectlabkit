@@ -41,19 +41,19 @@ import java.math.BigDecimal;
  */
 public final class Average implements Serializable {
     private static final long serialVersionUID = 4630559777899225672L;
-    private Sum sum = new Sum();
+    private Total sum = new Total();
     private int count = 0;
 
     public Average() {
     }
 
     public Average(final BigDecimal start) {
-        sum = new Sum(start);
+        sum = new Total(start);
     }
 
     public Average(final int scale) {
         final BigDecimal bd = new BigDecimal(0);
-        sum = new Sum(bd.setScale(scale));
+        sum = new Total(bd.setScale(scale));
     }
 
     public void add(final BigDecimal val) {
