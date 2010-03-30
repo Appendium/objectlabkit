@@ -40,28 +40,28 @@ import java.math.BigDecimal;
  * @author Benoit Xhenseval
  *
  */
-public class Sum implements Serializable {
+public class Total implements Serializable {
     private static final long serialVersionUID = -8583271171731930344L;
     private BigDecimal value = BigDecimal.ZERO;
     private int count = 0;
 
-    public Sum() {
+    public Total() {
         this(BigDecimal.ZERO, 2);
     }
 
-    public Sum(final BigDecimal start) {
+    public Total(final BigDecimal start) {
         if (start != null) {
-            value = start;
+            value = start.setScale(2);
         }
     }
 
-    public Sum(final BigDecimal start, final int scale) {
+    public Total(final BigDecimal start, final int scale) {
         if (start != null) {
             value = start.setScale(scale, BigDecimal.ROUND_HALF_UP);
         }
     }
 
-    public Sum(final Sum start) {
+    public Total(final Total start) {
         if (start != null) {
             value = start.getTotal();
         }
@@ -80,19 +80,19 @@ public class Sum implements Serializable {
     /**
      * @return the current Sum with new total.
      */
-    public Sum add(final BigDecimal... value) {
+    public Total add(final BigDecimal... value) {
         this.value = BigDecimalUtil.add(this.value, value);
         count += value.length;
         return this;
     }
 
-    public Sum subtract(final BigDecimal... value) {
+    public Total subtract(final BigDecimal... value) {
         this.value = BigDecimalUtil.subtract(this.value, value);
         count += value.length;
         return this;
     }
 
-    public Sum add(final Integer value) {
+    public Total add(final Integer value) {
         this.value = BigDecimalUtil.add(this.value, new BigDecimal(value));
         count++;
         return this;
@@ -101,7 +101,7 @@ public class Sum implements Serializable {
     /**
      * @return the current Sum with new total.
      */
-    public Sum add(final Sum value) {
+    public Total add(final Total value) {
         if (value != null) {
             this.value = BigDecimalUtil.add(this.value, value.getTotal());
             count++;
@@ -112,7 +112,7 @@ public class Sum implements Serializable {
     /**
      * @return the current Sum with new total.
      */
-    public Sum minus(final BigDecimal... value) {
+    public Total minus(final BigDecimal... value) {
         this.value = BigDecimalUtil.subtract(this.value, value);
         count += value.length;
         return this;
@@ -121,7 +121,7 @@ public class Sum implements Serializable {
     /**
      * @return the current Sum with new total.
      */
-    public Sum minus(final Sum value) {
+    public Total minus(final Total value) {
         if (value != null) {
             this.value = BigDecimalUtil.subtract(this.value, value.getTotal());
             count++;
