@@ -153,19 +153,9 @@
             <version>4.6</version>
           </docletArtifact>
           <additionalparam>
-            -inferrel
-            -inferdep
-            -quiet
-            -constructors
-            -visibility
-            -types
-            -postfixpackage
-            -nodefontsize 9
-            -nodefontpackagesize 7
-            -hide java.*
-            -collpackages java.util.*
-            -link http://java.sun.com/j2se/1.5.0/docs/api/
-            -link http://joda-time.sourceforge.net/api-release/
+            -inferrel -inferdep -quiet -constructors -visibility -types -postfixpackage
+            -nodefontsize 9 -nodefontpackagesize 7 -hide java.* -collpackages java.util.*
+            -link http://java.sun.com/j2se/1.5.0/docs/api/ -link http://joda-time.sourceforge.net/api-release/
           </additionalparam>
         </configuration>
         <executions>
