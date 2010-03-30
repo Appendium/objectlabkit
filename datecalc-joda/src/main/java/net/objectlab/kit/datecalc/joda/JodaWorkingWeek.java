@@ -79,7 +79,7 @@ public class JodaWorkingWeek extends WorkingWeek {
      * 
      * @param working
      *            true if working day
-     * @param dayOfWeek
+     * @param givenDayOfWeek
      *            e.g. DateTimeConstants.MONDAY, DateTimeConstants.TUESDAY, etc
      */
     public JodaWorkingWeek withWorkingDayFromDateTimeConstant(final boolean working, int givenDayOfWeek) {

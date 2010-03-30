@@ -120,7 +120,7 @@ public interface DateCalculator<E> {
      * reference to a Holiday Calendar, if not the case, the calculator will 
      * make an immutable copy of the HolidayCalendar.
      * 
-     * @param holidays
+     * @param calendar
      *            the holiday calendar (if null, no holidays taken into account)
      * @since 1.1.0
      */
