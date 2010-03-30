@@ -39,7 +39,7 @@ public class ImmutableHolidayCalendar<E> implements HolidayCalendar<E> {
     }
 
     /**
-     * @return
+     * @return the early (start) boundary of the holiday range
      * @see net.objectlab.kit.datecalc.common.HolidayCalendar#getEarlyBoundary()
      */
     public E getEarlyBoundary() {
@@ -47,7 +47,7 @@ public class ImmutableHolidayCalendar<E> implements HolidayCalendar<E> {
     }
 
     /**
-     * @return
+     * @return the set of holidays
      * @see net.objectlab.kit.datecalc.common.HolidayCalendar#getHolidays()
      */
     public Set<E> getHolidays() {
@@ -55,7 +55,7 @@ public class ImmutableHolidayCalendar<E> implements HolidayCalendar<E> {
     }
 
     /**
-     * @return
+     * @return the late (end) boundary of the holiday range
      * @see net.objectlab.kit.datecalc.common.HolidayCalendar#getLateBoundary()
      */
     public E getLateBoundary() {
