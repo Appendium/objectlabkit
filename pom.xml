@@ -173,6 +173,7 @@
   
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <site.deploy.url>file:///tmp/site</site.deploy.url>
   </properties>
 
   <profiles>
@@ -223,6 +224,19 @@
         </plugins>
       </reporting>
     </profile>
+    <profile>
+      <id>deploy-site</id>
+      <activation>
+        <property>
+          <name>performRelease</name>
+          <value>true</value>
+        </property>
+      </activation>
+      <properties>
+        <!-- the real site deploy url, this is a hack because site:stage (v2.1) doesn't work properly -->
+        <site.deploy.url>scp://shell.sourceforge.net/home/groups/o/ob/objectlabkit/htdocs</site.deploy.url>
+      </properties>
+    </profile>
   </profiles>
 
   <scm>
@@ -249,7 +263,7 @@
     </snapshotRepository>
     <site>
       <id>objectlabkit.sf.net</id>
-      <url>scp://shell.sourceforge.net/home/groups/o/ob/objectlabkit/htdocs/test</url>
+      <url>${site.deploy.url}</url>
     </site>
   </distributionManagement>
 
@@ -290,7 +304,6 @@
           <targetJdk>1.5</targetJdk>
           <rulesets>
             <ruleset>/rulesets/basic.xml</ruleset>
-            <ruleset>/rulesets/controversial.xml</ruleset>
           </rulesets> 
           <minimumTokens>100</minimumTokens>
           <linkXref>true</linkXref>
