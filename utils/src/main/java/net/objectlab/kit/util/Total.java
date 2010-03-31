@@ -46,12 +46,12 @@ public class Total implements Serializable {
     private int count = 0;
 
     public Total() {
-        this(BigDecimal.ZERO, 2);
+        this(BigDecimal.ZERO, 0);
     }
 
     public Total(final BigDecimal start) {
         if (start != null) {
-            value = start.setScale(2);
+            value = start;
         }
     }
 
@@ -82,19 +82,25 @@ public class Total implements Serializable {
      */
     public Total add(final BigDecimal... value) {
         this.value = BigDecimalUtil.add(this.value, value);
-        count += value.length;
+        if (value != null) {
+            count += value.length;
+        }
         return this;
     }
 
     public Total subtract(final BigDecimal... value) {
         this.value = BigDecimalUtil.subtract(this.value, value);
-        count += value.length;
+        if (value != null) {
+            count += value.length;
+        }
         return this;
     }
 
     public Total add(final Integer value) {
-        this.value = BigDecimalUtil.add(this.value, new BigDecimal(value));
-        count++;
+        if (value != null) {
+            this.value = BigDecimalUtil.add(this.value, new BigDecimal(value));
+            count++;
+        }
         return this;
     }
 
@@ -113,8 +119,10 @@ public class Total implements Serializable {
      * @return the current Sum with new total.
      */
     public Total minus(final BigDecimal... value) {
-        this.value = BigDecimalUtil.subtract(this.value, value);
-        count += value.length;
+        if (value != null) {
+            this.value = BigDecimalUtil.subtract(this.value, value);
+            count += value.length;
+        }
         return this;
     }
 
