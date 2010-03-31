@@ -56,6 +56,6 @@ public final class BooleanUtil {
     }
 
     public static boolean isFalse(final Boolean b) {
-        return b == null ? true : !b;
+        return b == null ? false : !b;
     }
 }
