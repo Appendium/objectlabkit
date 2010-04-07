@@ -510,7 +510,7 @@ public final class StringUtil {
             final StringBuilder b = new StringBuilder();
             b.append(NEW_LINE);
             final String line = StringUtils.repeat(String.valueOf(boxing), text.length() + 4);
-            b.append(line);
+            b.append(line).append(NEW_LINE);
             b.append(boxing).append(SPACE).append(text).append(SPACE).append(boxing).append(NEW_LINE);
             b.append(line).append(NEW_LINE);
             return b.toString();
