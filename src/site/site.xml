@@ -57,9 +57,9 @@
     </head>
   
     <links>
-      <item name="common" href="datecalc-common/index.html" />
-      <item name="jdk" href="datecalc-jdk/index.html" />
-      <item name="joda" href="datecalc-joda/index.html" />
+      <item name="datecalc-common" href="datecalc-common/index.html" />
+      <item name="datecalc-jdk" href="datecalc-jdk/index.html" />
+      <item name="datecalc-joda" href="datecalc-joda/index.html" />
       <item name="sf.net/projects/objectlabkit" href="https://sourceforge.net/projects/objectlabkit/" />
     </links>
 
@@ -82,7 +82,7 @@
     
     <menu ref="reports" />
 
-    <menu name="Interesting Projects">
+    <menu name="Interesting Projects" inherit="bottom">
       <item name="QALab" href="http://qalab.sourceforge.net/" />
       <item name="JTreeMap" href="http://jtreemap.sourceforge.net/" />
       <item name="PZFileReader" href="http://pzfilereader.sourceforge.net/" />
