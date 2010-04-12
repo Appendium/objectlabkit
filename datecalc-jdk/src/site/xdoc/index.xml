@@ -1,15 +1,13 @@
 <document>
+
   <properties>
     <author email="Kit@objectlab.co.uk">Benoit Xhenseval</author>
-    <title>DateCalc JDK Intro</title>
+    <title>DateCalc JDK</title>
   </properties>
+  
   <head>
-    <meta name="description"
-	content="ObjectLab Kit offers free and open source Date calculators, released under the business-friendly Apache 2.0 license."
-	/>
-
-    <meta name="keywords"
-        content="Date calculator, IMM Dates, Period Calculator, Financial Calendar, Business Calendar, java, open source" />
+    <meta name="description" content="ObjectLab Kit offers free and open source Date calculators, released under the business-friendly Apache 2.0 license."/>
+    <meta name="keywords" content="Date calculator, IMM Dates, Period Calculator, Financial Calendar, Business Calendar, java, open source" />
     <meta name="Subject" content="Date Calculators" />
     <meta name="Copyright" content="ObjectLab Financial Ltd" />
     <meta name="Language" content="English" />
@@ -18,15 +16,16 @@
     <meta name="robots" content="ALL"/>
     <meta name="Revisit-After" content="20 Days" />
   </head>
+
   <body>
-    <!-- The body of the document contains a number of sections -->
+  
     <section name="DateCalc JDK Introduction">
-
-    <p>DateCalc JDK provides a pure Java implementation, without any dependencies.</p>
-    <p>So if your requirements are to not have further dependencies, namely on Joda-Time, use this module. Otherwise, we encourage you to use the Joda implementation - it's faster and more robust.</p>
-    <p>Check out the <a href="../apidocs/index.html?net/objectlab/kit/datecalc/jdk/package-summary.html">UML diagrams and JavaDocs here</a>.</p>
-    <p>Also look at the <a href="../project-reports.html">Project Reports</a> menu on the left for project specific items, unit tests, QA etc.</p>
+      <p>DateCalc JDK provides a pure Java implementation, without any dependencies.</p>
+      <p>So if your requirements are to not have further dependencies, namely on Joda Time, use this module. Otherwise, we encourage you to use the Joda implementation - it's faster and more robust.</p>
+      <p>Check out the <a href="../apidocs/index.html?net/objectlab/kit/datecalc/jdk/package-summary.html">UML diagrams and JavaDocs here</a>.</p>
+      <p>Also, take a look at this module's <a href="project-reports.html">Project Reports</a> menu on the left, and the aggregated <a href="../project-reports.html">Project Reports</a>.</p>
     </section>
-
+    
   </body>
+  
 </document>
