@@ -1,15 +1,13 @@
 <document>
+
   <properties>
     <author email="kit@objectlab.co.uk">Benoit Xhenseval</author>
     <title>Introduction</title>
   </properties>
+  
   <head>
-    <meta name="description"
-        content="ObjectLab Kit offers free and open source Date calculators, released under the business-friendly Apache 2.0 license."
-    />
-
-    <meta name="keywords"
-        content="Date calculator, IMM Dates, Period Calculator, Financial Calendar, Business Calendar, java, open source" />
+    <meta name="description" content="ObjectLab Kit offers free and open source Date calculators, released under the business-friendly Apache 2.0 license." />
+    <meta name="keywords" content="Date calculator, IMM Dates, Period Calculator, Financial Calendar, Business Calendar, java, open source" />
     <meta name="Subject" content="Date Calculators" />
     <meta name="Copyright" content="ObjectLab Financial Ltd" />
     <meta name="Language" content="English" />
@@ -18,8 +16,9 @@
     <meta name="robots" content="ALL"/>
     <meta name="Revisit-After" content="20 Days" />
   </head>
+  
   <body>
-    <!-- The body of the document contains a number of sections -->
+  
     <section name="Quick News">
     <p style="margin-top:10px; margin-bottom:0; padding-bottom:0; text-align:center; line-height:0"><a href="http://feeds.feedburner.com/~r/ObjectlabOpenSourceNews/~6/1"><img src="http://feeds.feedburner.com/ObjectlabOpenSourceNews.1.gif" alt="ObjectLab Open Source News" style="border:0"/></a></p>
   
