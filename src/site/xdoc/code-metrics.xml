@@ -20,17 +20,26 @@
   <body>
 
     <subsection name="Code Metrics">
-      <div id="">
-        <a href="http://nemo.sonarsource.org/project/index/net.objectlab.kit.datecalc:datecalc"><img src="images/sonar_logo.png"/>View Code Metrics by Sonar</a>
+      <div id="sonar">
+        <a href="http://nemo.sonarsource.org/project/index/net.objectlab.kit.datecalc:datecalc">
+        <span>
+          <img src="images/sonar_logo.png"/>
+        </span>
+        <span>
+           View Code Metrics by Sonar
+        </span>
+        </a>        
       </div>
     </subsection>
           
-    <subsection name="Ohloh stats">
-      <div id="">
-        <script type="text/javascript" src="http://www.ohloh.net/p/4682/widgets/project_factoids.js"></script>
-      </div>
-      <div id="">
-        <script type="text/javascript" src="http://www.ohloh.net/p/4682/widgets/project_cocomo.js"></script>
+    <subsection name="Ohloh Stats">
+      <div id="ohloh">
+        <div id="cocomo">
+          <script type="text/javascript" src="http://www.ohloh.net/p/4682/widgets/project_cocomo.js"></script>
+        </div>
+        <div id="factoids">
+          <script type="text/javascript" src="http://www.ohloh.net/p/4682/widgets/project_factoids.js"></script>
+        </div>
       </div>
     </subsection>
 
