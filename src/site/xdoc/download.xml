@@ -1,0 +1,53 @@
+<document>
+  
+  <properties>
+    <author email="kit@objectlab.co.uk">Benoit Xhenseval</author>
+    <title>Download</title>
+  </properties>
+  
+  <head>
+    <meta name="description" content="ObjectLab Kit offers free and open source Date calculators, released under the business-friendly Apache 2.0 license." />
+    <meta name="keywords" content="Date calculator, IMM Dates, Period Calculator, Financial Calendar, Business Calendar, java, open source" />
+    <meta name="Subject" content="Date Calculators" />
+    <meta name="Copyright" content="ObjectLab Financial Ltd" />
+    <meta name="Language" content="English" />
+    <meta name="Designer" content="ObjectLab Financial Ltd" />
+    <meta name="Distribution" content="Global" />
+    <meta name="robots" content="ALL"/>
+    <meta name="Revisit-After" content="20 Days" />
+  </head>
+  
+  <body>
+
+    <section name="Maven Dependency">
+      <p>
+        We're in Maven Central Repo, so if you're using Maven, you can just insert this dependency in your project's pom.xml:
+        <subsection name="Joda Time (recommended)">
+        <pre class="brush: xml; gutter: false;">
+    &lt;dependency&gt;
+      &lt;groupId&gt;net.objectlab.kit.datecalc&lt;/groupId&gt;
+      &lt;artifactId&gt;datecalc-joda&lt;/artifactId&gt;
+      &lt;version&gt;1.2.0&lt;/version&gt;
+    &lt;/dependency&gt;
+        </pre>
+        </subsection>
+
+        <subsection name="JDK">
+        <pre class="brush: xml; gutter: false;">
+    &lt;dependency&gt;
+      &lt;groupId&gt;net.objectlab.kit.datecalc&lt;/groupId&gt;
+      &lt;artifactId&gt;datecalc-jdk&lt;/artifactId&gt;
+      &lt;version&gt;1.2.0&lt;/version&gt;
+    &lt;/dependency&gt;
+        </pre>
+        </subsection>
+      </p>
+    </section>
+
+    <section name="Download the jars">
+      <p>Alternatively, you can <a href="https://sourceforge.net/projects/objectlabkit/files/">download the zip file</a> which contains all of the jars.</p>
+    </section>
+
+  </body>
+  
+</document>

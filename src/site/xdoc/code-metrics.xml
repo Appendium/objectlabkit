@@ -1,0 +1,39 @@
+<document>
+  
+  <properties>
+    <author email="kit@objectlab.co.uk">Benoit Xhenseval</author>
+    <title>Code Metrics</title>
+  </properties>
+  
+  <head>
+    <meta name="description" content="ObjectLab Kit offers free and open source Date calculators, released under the business-friendly Apache 2.0 license." />
+    <meta name="keywords" content="Date calculator, IMM Dates, Period Calculator, Financial Calendar, Business Calendar, java, open source" />
+    <meta name="Subject" content="Date Calculators" />
+    <meta name="Copyright" content="ObjectLab Financial Ltd" />
+    <meta name="Language" content="English" />
+    <meta name="Designer" content="ObjectLab Financial Ltd" />
+    <meta name="Distribution" content="Global" />
+    <meta name="robots" content="ALL"/>
+    <meta name="Revisit-After" content="20 Days" />
+  </head>
+  
+  <body>
+
+    <subsection name="Code Metrics">
+      <div id="">
+        <a href="http://nemo.sonarsource.org/project/index/net.objectlab.kit.datecalc:datecalc"><img src="images/sonar_logo.png"/>View Code Metrics by Sonar</a>
+      </div>
+    </subsection>
+          
+    <subsection name="Ohloh stats">
+      <div id="">
+        <script type="text/javascript" src="http://www.ohloh.net/p/4682/widgets/project_factoids.js"></script>
+      </div>
+      <div id="">
+        <script type="text/javascript" src="http://www.ohloh.net/p/4682/widgets/project_cocomo.js"></script>
+      </div>
+    </subsection>
+
+  </body>
+  
+</document>
