@@ -47,9 +47,10 @@
       <!-- BEGIN: Syntax Highlighting -->
       <script type="text/javascript" src="js/shCore.js"></script>
       <script type="text/javascript" src="js/shBrushJava.js"></script>
+      <script type="text/javascript" src="js/shBrushXml.js"></script>
 
       <link href="css/shCore.css" rel="stylesheet" type="text/css" />
-      <link href="css/shThemeMidnight.css" rel="stylesheet" type="text/css" />
+      <link href="css/shThemeDefault.css" rel="stylesheet" type="text/css" />
       <script type="text/javascript">
         SyntaxHighlighter.all()
       </script>
@@ -72,8 +73,8 @@
       <item name="Holiday Handling" href="algo.html" />
       <item name="Tenor Handling" href="tenor.html" />
       <item name="JavaDocs" href="apidocs/index.html" />
-      <item name="Code Metrics" href="http://nemo.sonarsource.org/project/index/net.objectlab.kit.datecalc:datecalc" />      
-      <item name="Download" href="https://sourceforge.net/projects/objectlabkit/files/" />
+      <item name="Code Metrics" href="code-metrics.html" />      
+      <item name="Download" href="download.html" />
       <item name="In the press" href="press/index.html" />
       <item name="FAQ" href="faq.html" />
     </menu>

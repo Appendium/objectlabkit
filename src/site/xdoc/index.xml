@@ -47,9 +47,11 @@
     <li>and either <strong>datecalc-jdk.jar</strong> OR <strong>datecalc-joda.jar</strong></li>
     </ul>
     
-    <p>the <a href="datecalc-jdk/index.html">datecalc-jdk.jar</a> has no dependencies other than JDK 1.5+.  
+    <p>The <a href="datecalc-jdk/index.html">datecalc-jdk.jar</a> has no dependencies other than JDK 1.5+.  
     <a href="datecalc-joda/index.html">datecalc-joda.jar</a> is based on the powerful 
     <a href="http://joda-time.sourceforge.net">Joda Time</a> library (we recommend it!)</p>
+    
+    <p>See the <a href="download.html">Download</a> page for details.</p>
     </subsection>
     
     <subsection name ="Date Calculations? What is that?">
@@ -104,30 +106,26 @@
     <p>2 implementations for Pure JDK have been released</p>
     <ol>
       <li><strong><code>Calendar</code></strong>:
-        <pre class="brush: java">
-DateCalculator&lt;Calendar> calc = CalendarKitCalculatorsFactory.getDefaultInstance()
+        <pre class="brush: java; gutter: false">
+DateCalculator&lt;Calendar> calc1 = CalendarKitCalculatorsFactory.getDefaultInstance()
         .getDateCalculator("UK", HolidayHandlerType.FORWARD);
-        </pre>
-        <pre class="brush: java">        
-PeriodCountCalculator&lt;Calendar> calc = CalendarKitCalculatorsFactory.getDefaultInstance()
+        
+PeriodCountCalculator&lt;Calendar> calc2 = CalendarKitCalculatorsFactory.getDefaultInstance()
         .getPeriodCountCalculator();
-        </pre>
-        <pre class="brush: java">
-IMMDateCalculator&lt;Calendar> calc = CalendarKitCalculatorsFactory.getDefaultInstance()
+
+IMMDateCalculator&lt;Calendar> calc3 = CalendarKitCalculatorsFactory.getDefaultInstance()
         .getIMMDateCalculator();
         </pre>
       </li>
       <li><strong><code>Date</code></strong>:
-        <pre class="brush: java">
-DateCalculator&lt;Date> calc = DateKitCalculatorsFactory.getDefaultInstance()
+        <pre class="brush: java; gutter: false">
+DateCalculator&lt;Date> calc1 = DateKitCalculatorsFactory.getDefaultInstance()
         .getDateCalculator("UK", HolidayHandlerType.FORWARD);
-        </pre>
-        <pre class="brush: java">
-PeriodCountCalculator&lt;Date> calc = DateKitCalculatorsFactory.getDefaultInstance()
+
+PeriodCountCalculator&lt;Date> calc2 = DateKitCalculatorsFactory.getDefaultInstance()
         .getPeriodCountCalculator();
-        </pre>
-        <pre class="brush: java">        
-IMMDateCalculator&lt;Date> calc = DateKitCalculatorsFactory.getDefaultInstance()
+
+IMMDateCalculator&lt;Date> calc3 = DateKitCalculatorsFactory.getDefaultInstance()
         .getIMMDateCalculator();
         </pre>
       </li>
@@ -136,31 +134,27 @@ IMMDateCalculator&lt;Date> calc = DateKitCalculatorsFactory.getDefaultInstance()
     <h4>JODA</h4>
     <p>2 implementations for Joda have been released</p>
     <ol>
-      <li><strong><code>LocalDate</code></strong> (preferred):
-        <pre class="brush: java">
-DateCalculator&lt;LocalDate> calc = LocalDateKitCalculatorsFactory.getDefaultInstance()
+      <li><strong><code>LocalDate</code></strong> (recommended):
+        <pre class="brush: java; gutter: false">
+DateCalculator&lt;LocalDate> calc1 = LocalDateKitCalculatorsFactory.getDefaultInstance()
         .getDateCalculator("UK", HolidayHandlerType.FORWARD);
-        </pre>
-        <pre class="brush: java">        
-PeriodCountCalculator&lt;LocalDate> calc = LocalDateKitCalculatorsFactory.getDefaultInstance()
+
+PeriodCountCalculator&lt;LocalDate> calc2 = LocalDateKitCalculatorsFactory.getDefaultInstance()
         .getPeriodCountCalculator();
-        </pre>
-        <pre class="brush: java">
-IMMDateCalculator&lt;LocalDate> calc = LocalDateKitCalculatorsFactory.getDefaultInstance()
+
+IMMDateCalculator&lt;LocalDate> calc3 = LocalDateKitCalculatorsFactory.getDefaultInstance()
         .getIMMDateCalculator();
         </pre>
       </li>
       <li><strong><code>YearMonthDay</code></strong>:
-        <pre class="brush: java">
-DateCalculator&lt;YearMonthDay> calc = YearMonthDayKitCalculatorsFactory.getDefaultInstance()
+        <pre class="brush: java; gutter: false">
+DateCalculator&lt;YearMonthDay> calc1 = YearMonthDayKitCalculatorsFactory.getDefaultInstance()
         .getDateCalculator("UK", HolidayHandlerType.FORWARD);
-        </pre>
-        <pre class="brush: java">        
-PeriodCountCalculator&lt;YearMonthDay> calc = YearMonthDayKitCalculatorsFactory.getDefaultInstance()
+
+PeriodCountCalculator&lt;YearMonthDay> calc2 = YearMonthDayKitCalculatorsFactory.getDefaultInstance()
         .getPeriodCountCalculator();
-        </pre>
-        <pre class="brush: java">
-IMMDateCalculator&lt;YearMonthDay> calc = YearMonthDayKitCalculatorsFactory.getDefaultInstance()
+
+IMMDateCalculator&lt;YearMonthDay> calc3 = YearMonthDayKitCalculatorsFactory.getDefaultInstance()
         .getIMMDateCalculator();
         </pre>
       </li>
