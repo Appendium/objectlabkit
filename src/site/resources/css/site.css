@@ -16,8 +16,8 @@ h3 {
 
 h4 {
     color: #2872B4;
-    font-size:12px;
-    font-weight:bold;
+    font-size: 12px;
+    font-weight: bold;
 }
 
 #navcolumn h5 {
@@ -27,4 +27,21 @@ h4 {
 
 #footer {
     border-top: 1px solid #2872B4;
+}
+
+#sonar {
+    padding: 20px 20px 20px 20px;
+    text-align: center;
+}
+
+#ohloh {
+}
+
+#cocomo {
+    float:left;
+    margin:10px 0 0 10px;
+}
+
+#factoids {
+    margin:0 0 10px 320px;
 }
