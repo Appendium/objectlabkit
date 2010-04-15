@@ -238,6 +238,13 @@
         <site.deploy.url>scp://shell.sourceforge.net/home/groups/o/ob/objectlabkit/htdocs</site.deploy.url>
       </properties>
     </profile>
+    <profile>
+      <id>stage-site</id>
+      <properties>
+        <!-- stage the site in the /test folder on sourceforge -->
+        <site.deploy.url>scp://shell.sourceforge.net/home/groups/o/ob/objectlabkit/htdocs/test</site.deploy.url>
+      </properties>
+    </profile>    
   </profiles>
 
   <scm>
