@@ -220,6 +220,7 @@
           <plugin>
             <groupId>net.sf</groupId>
             <artifactId>stat-scm</artifactId>
+            <inherited>false</inherited>
           </plugin>
         </plugins>
       </reporting>
