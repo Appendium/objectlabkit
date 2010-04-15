@@ -3,8 +3,8 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>net.objectlab.kit.datecalc</groupId>
-    <artifactId>datecalc</artifactId>
+    <groupId>net.objectlab.kit</groupId>
+    <artifactId>kit-parent</artifactId>
     <version>1.2.0-SNAPSHOT</version>
   </parent>
 
@@ -16,7 +16,7 @@
 
   <dependencies>
     <dependency>
-      <groupId>net.objectlab.kit.datecalc</groupId>
+      <groupId>net.objectlab.kit</groupId>
       <artifactId>datecalc-common</artifactId>
     </dependency>
     <dependency>
@@ -25,7 +25,7 @@
       <version>1.6</version>
     </dependency>
     <dependency>
-      <groupId>net.objectlab.kit.datecalc</groupId>
+      <groupId>net.objectlab.kit</groupId>
       <artifactId>datecalc-common</artifactId>
       <scope>test</scope>
       <classifier>tests</classifier>
@@ -64,7 +64,7 @@
         <extensions>true</extensions>
         <configuration>
           <instructions>
-            <Export-Package>net.objectlab.kit.datecalc.*;version="${pom.version}"</Export-Package>
+            <Export-Package>net.objectlab.kit.*;version="${pom.version}"</Export-Package>
             <Private-Package />
             <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
             <Bundle-Version>${pom.version}</Bundle-Version>

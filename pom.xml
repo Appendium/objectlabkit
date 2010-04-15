@@ -3,8 +3,8 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>net.objectlab.kit.datecalc</groupId>
-  <artifactId>datecalc</artifactId>
+  <groupId>net.objectlab.kit</groupId>
+  <artifactId>kit-parent</artifactId>
   <version>1.2.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
@@ -112,12 +112,12 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>net.objectlab.kit.datecalc</groupId>
+        <groupId>net.objectlab.kit</groupId>
         <artifactId>datecalc-common</artifactId>
         <version>${pom.version}</version>
       </dependency>
       <dependency>
-        <groupId>net.objectlab.kit.datecalc</groupId>
+        <groupId>net.objectlab.kit</groupId>
         <artifactId>datecalc-common</artifactId>
         <version>${pom.version}</version>
         <scope>test</scope>
@@ -333,7 +333,7 @@
           <xrefLocation>${project.reporting.outputDirectory}/../xref</xrefLocation>
         </configuration>
       </plugin>
-            <plugin>
+      <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>dashboard-maven-plugin</artifactId>
       </plugin>
