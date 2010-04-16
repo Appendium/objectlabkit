@@ -21,7 +21,7 @@
 
     <subsection name="Code Metrics">
       <div id="sonar">
-        <a href="http://nemo.sonarsource.org/project/index/net.objectlab.kit.datecalc:datecalc">
+        <a href="http://nemo.sonarsource.org/project/index/net.objectlab.kit:kit-parent">
         <span>
           <img src="images/sonar_logo.png"/>
         </span>
