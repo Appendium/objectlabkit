@@ -108,25 +108,47 @@ new TWTR.Widget({
     <p>ObjectLab Kit came out of our frustration to have to re-do the same kind of code over and over each time we
     joined a new company and Bank.  Most banks will require basic Date calculation, we did spot another open source
     project for this but their licence forbids most financial institution from using it.  This one is released under
-    the business-friendly Apache 2.0 license.     <a href="http://digg.com/submit?phase=2&amp;url=objectlabkit.sourceforge.net&amp;title=ObjectLab%20Kit%3A%20Open%20Source%20Date%20Calculators%20for%20Business%20and%20Finance&amp;bodytext=ObjectLab%20released%20version%201%2E1%2E0%20of%20ObjectLab%20Kit%20for%20Java%201%2E5,%20available%20for%20download%20via%20SourceForge%20or%20the%20Maven%20Central%20Repository%2E%20The%20Kit%20provides%20a%20Date%20Calculator%20that%20handle%20holidays,%20a%20IMM%20Date%20and%20Period%20Count%20Calculator%20and%20comes%20in%20two%20versions%3A%20one%20based%20on%20pure%20JDK%20(1%2E5)%20and%20one%20based%20on%20the%20Joda-time%20library%20(1%2E3%2B,%20JDK%201%2E5)%2E&amp;topic=programming">
+    the business-friendly Apache 2.0 license.     <a href="http://digg.com/submit?phase=2&amp;url=objectlabkit.sourceforge.net&amp;title=ObjectLab%20Kit%3A%20Open%20Source%20Date%20Calculators%20for%20Business%20and%20Finance&amp;bodytext=ObjectLab%20released%20version%201%2E2%2E0%20of%20ObjectLab%20Kit%20for%20Java%201%2E5,%20available%20for%20download%20via%20SourceForge%20or%20the%20Maven%20Central%20Repository%2E%20The%20Kit%20provides%20a%20Date%20Calculator%20that%20handle%20holidays,%20a%20IMM%20Date%20and%20Period%20Count%20Calculator%20and%20comes%20in%20two%20versions%3A%20one%20based%20on%20pure%20JDK%20(1%2E5)%20and%20one%20based%20on%20the%20Joda-time%20library%20(1%2E3%2B,%20JDK%201%2E5)%2E&amp;topic=programming">
     <img src="http://digg.com/img/badges/91x17-digg-button.png" width="91" height="17" alt="Digg!" style="vertical-align:middle" /></a></p>
-    
 
-    <subsection name="So, what is on offer?">
-    <p>The initial release provides 2 implementations for <strong>Date calculations</strong>, both depend on the classes in datecalc-common. So, 
-    you need to include:</p>
+    <subsection name="Getting Started">
+    <p>DateCalc comes in 2 different implementations, both run on <strong>JDK 1.5 or higher</strong>:
     <ul>
-    <li><strong>datecalc-common.jar</strong> (mandatory)</li>
-    <li>and either <strong>datecalc-jdk.jar</strong> OR <strong>datecalc-joda.jar</strong></li>
+       <li>The vanilla <a href="datecalc-jdk/index.html">JDK implementation</a> has no external dependencies.</li>
+       <li>The <a href="datecalc-jdk/index.html">Joda Time implementation</a>, which depends on the <a href="http://joda-time.sourceforge.net">Joda Time library</a> (we recommend using this one).</li>
     </ul>
+    </p>
+    <p>If you're using Maven, setup is easy, as DateCalc is in the Maven Central Repository.</p>
+    <p>To use the JDK Version:</p>
+    <pre class="brush: xml; gutter: false">
+       &lt;dependency>
+         &lt;groupId>net.objectlab.kit&lt;/groupId>
+         &lt;artifactId>datecalc-common&lt;/artifactId>
+         &lt;version>1.2.0&lt;/version>
+       &lt;/dependency>
+       &lt;dependency>
+         &lt;groupId>net.objectlab.kit&lt;/groupId>
+         &lt;artifactId>datecalc-jdk&lt;/artifactId>
+         &lt;version>1.2.0&lt;/version>
+       &lt;/dependency>
+    </pre>
     
-    <p>The <a href="datecalc-jdk/index.html">datecalc-jdk.jar</a> has no dependencies other than JDK 1.5+.  
-    <a href="datecalc-joda/index.html">datecalc-joda.jar</a> is based on the powerful 
-    <a href="http://joda-time.sourceforge.net">Joda Time</a> library (we recommend it!)</p>
-    
-    <p>See the <a href="download.html">Download</a> page for details.</p>
+    <p>To use the JODA Version (recommended):</p>
+    <pre class="brush: xml; gutter: false">
+       &lt;dependency>
+         &lt;groupId>net.objectlab.kit&lt;/groupId>
+         &lt;artifactId>datecalc-common&lt;/artifactId>
+         &lt;version>1.2.0&lt;/version>
+       &lt;/dependency>
+       &lt;dependency>
+         &lt;groupId>net.objectlab.kit&lt;/groupId>
+         &lt;artifactId>datecalc-joda&lt;/artifactId>
+         &lt;version>1.2.0&lt;/version>
+       &lt;/dependency>
+    </pre>
+    <p>If you are not using Maven, you can <a href="https://sourceforge.net/projects/objectlabkit/files/">download the jars here</a>.</p>
     </subsection>
-    
+
     <subsection name ="Date Calculations? What is that?">
     <p>Apart from the very basic "add days" features, most business have to <strong>deal with Holidays</strong> and what to do when a
     <strong>calculated day falls on a holiday</strong>.  This library does <strong>not</strong> attempt to create or guess the holidays, we
@@ -136,7 +158,7 @@ new TWTR.Widget({
     Friday, our library provides you with full flexibility to design a Working Week.</p>
     <p>As such a Non-working Day can be a holiday or a 'weekend'.</p>       
     </subsection>
-
+        
 
     <subsection name ="Ok, what algorithm for handling a holiday do you support?">
     <p>At the moment, we support the following 6 algorithms:</p>
@@ -151,41 +173,6 @@ new TWTR.Widget({
     	<li><strong>ForwardUnlessNegative</strong> (new with v1.1.0), acts like a Forward algo unless the increment is negative, in which case it behaves like Backward.</li>
     </ol>
     <p>See this page for some <a href="algo.html">examples</a>.</p>
-    </subsection>
-    
-    <subsection name="Which JDK?">
-    <p>1.5 or above.</p>
-    </subsection>
-    
-    <subsection name="Maven Repository">
-    <p>The ObjectLab Kit should be in the Maven Central Repository.</p>
-    <p>To use the JDK Version:</p>
-    <pre class="brush: xml">
-       <dependency>
-           <groupId>net.objectlab.kit</groupId>
-           <artifactId>datecalc-common</artifactId>
-           <version>1.2.0</version>
-       </dependency>
-       <dependency>
-           <groupId>net.objectlab.kit</groupId>
-           <artifactId>datecalc-jdk</artifactId>
-           <version>1.2.0</version>
-       </dependency>
-    </pre>
-    
-    <p>To use the JODA Version:</p>
-    <pre class="brush: xml">
-       <dependency>
-           <groupId>net.objectlab.kit</groupId>
-           <artifactId>datecalc-common</artifactId>
-           <version>1.2.0</version>
-       </dependency>
-       <dependency>
-           <groupId>net.objectlab.kit</groupId>
-           <artifactId>datecalc-joda</artifactId>
-           <version>1.2.0</version>
-       </dependency>
-    </pre>
     </subsection>
     
     <subsection name="UML?">
