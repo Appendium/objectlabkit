@@ -24,24 +24,24 @@
 
     <subsection name="Forward">
     <p>If the date is a non-working day, move forward to the next working day.</p>
-    <img src="forward.png"/>
+    <img src="images/forward.png"/>
     </subsection>
     
     <subsection name="Modified Following">
     <p>If the date is a non-working day, move forward to the next working day, 
     UNLESS it crosses over a new month, in which case we revert to find the last working day of the current month.</p>
-    <img src="modif-following.png"/>
+    <img src="images/modif-following.png"/>
     </subsection>
     
     <subsection name="Backward">
     <p>If the date is a non-working day, move backward to the previous working day.</p>
-    <img src="backward.png"/>
+    <img src="images/backward.png"/>
     </subsection>
     
     <subsection name="Modified Preceding">
     <p>If the date is a non-working day, move backward to the previous working day, 
     	UNLESS it crosses over a new month, in which case we revert to find the next working day of the current month.</p>
-    <img src="modif-preceding.png"/>
+    <img src="images/modif-preceding.png"/>
     </subsection>
 
     </section>
