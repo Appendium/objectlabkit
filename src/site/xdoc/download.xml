@@ -20,7 +20,7 @@
   <body>
 
     <subsection name="Maven">
-      <p>The ObjectLab Kit is in the Maven Central Repository.</p>
+      <p>If you're using Maven, setup is easy, as DateCalc is in the Maven Central Repository.</p>
       <p>To use the JDK Version:</p>
       <pre class="brush: xml; gutter: false">
          &lt;dependency>
@@ -50,7 +50,7 @@
       </pre>
     </subsection>
 
-    <subsection name="Download the jars">
+    <subsection name="Download the Jars">
       <p>If you are not using Maven, you can <a href="https://sourceforge.net/projects/objectlabkit/files/">download the jars here</a>.</p>
     </subsection>
 

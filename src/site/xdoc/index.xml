@@ -20,86 +20,15 @@
   <body>
   
     <section name="Quick News">
+    
     <p style="margin-top:10px; margin-bottom:0; padding-bottom:0; text-align:center; line-height:0"><a href="http://feeds.feedburner.com/~r/ObjectlabOpenSourceNews/~6/1"><img src="http://feeds.feedburner.com/ObjectlabOpenSourceNews.1.gif" alt="ObjectLab Open Source News" style="border:0"/></a></p>
   
-    <p><script type="text/javascript" src="http://www.ohloh.net/p/4682/widgets/project_users.js?style=blue"></script><b>2010-03-xx</b>: version 1.2.0 is out and contains a couple of changes, including the ability to see the registered calendar and unregistering calendars (useful if calendars are dynamic). 
+    <p><b>2010-05-10</b>: version 1.2.0 is out and contains a couple of changes, including the ability to see the registered calendar and unregistering calendars (useful if calendars are dynamic). 
     More info on the changes <a href="changes-report.html">here</a>. Also, one of the authors is on Twitter, follow your favorite Belgian at <a href="http://twitter.com/benoitx">http://twitter.com/benoitx</a>.</p>
     
     <p><b>2007-03-25</b>: version 1.1.0 is out and contains a couple of changes, a new HolidayHandler and the ability to define a valid range for the holiday (and
     if the calculation is beyond that range, an exception is thrown).  This is done via HolidayCalendar which should replace the simple Set&lt;E&gt; for holidays.
     More info on the changes <a href="changes-report.html">here</a>.</p>
-    
-    
-<script src="http://widgets.twimg.com/j/2/widget.js"></script>
-<table>
-<tr><td valign='top'>
-<script>
-new TWTR.Widget({
-  version: 2,
-  type: 'profile',
-  rpp: 5,
-  interval: 6000,
-  width: 300,
-  height: 300,
-  theme: {
-    shell: {
-      background: '#8ec1da',
-      color: '#ffffff'
-    },
-    tweets: {
-      background: '#ffffff',
-      color: '#444444',
-      links: '#1985b5'
-    }
-  },
-  features: {
-    scrollbar: false,
-    loop: false,
-    live: false,
-    hashtags: true,
-    timestamp: true,
-    avatars: true,
-    behavior: 'all'
-  }
-}).render().setUser('benoitx').start();
-</script>
-</td>
-<td valign='top'>
-
-<script>
-new TWTR.Widget({
-  version: 2,
-  type: 'search',
-  search: 'objectlab OR Appendium',
-  interval: 6000,
-  title: 'Excitement is in the air...',
-  subject: 'ObjectLab',
-  width: 300,
-  height: 300,
-  theme: {
-    shell: {
-      background: '#8ec1da',
-      color: '#ffffff'
-    },
-    tweets: {
-      background: '#ffffff',
-      color: '#444444',
-      links: '#1985b5'
-    }
-  },
-  features: {
-    scrollbar: false,
-    loop: true,
-    live: true,
-    hashtags: true,
-    timestamp: true,
-    avatars: true,
-    behavior: 'default'
-  }
-}).render().start();
-</script>
-</td></tr>
-</table>
     
     </section>
     
@@ -118,37 +47,43 @@ new TWTR.Widget({
        <li>The <a href="datecalc-jdk/index.html">Joda Time implementation</a>, which depends on the <a href="http://joda-time.sourceforge.net">Joda Time library</a> (we recommend using this one).</li>
     </ul>
     </p>
-    <p>If you're using Maven, setup is easy, as DateCalc is in the Maven Central Repository.</p>
-    <p>To use the JDK Version:</p>
-    <pre class="brush: xml; gutter: false">
-       &lt;dependency>
-         &lt;groupId>net.objectlab.kit&lt;/groupId>
-         &lt;artifactId>datecalc-common&lt;/artifactId>
-         &lt;version>1.2.0&lt;/version>
-       &lt;/dependency>
-       &lt;dependency>
-         &lt;groupId>net.objectlab.kit&lt;/groupId>
-         &lt;artifactId>datecalc-jdk&lt;/artifactId>
-         &lt;version>1.2.0&lt;/version>
-       &lt;/dependency>
-    </pre>
-    
-    <p>To use the JODA Version (recommended):</p>
-    <pre class="brush: xml; gutter: false">
-       &lt;dependency>
-         &lt;groupId>net.objectlab.kit&lt;/groupId>
-         &lt;artifactId>datecalc-common&lt;/artifactId>
-         &lt;version>1.2.0&lt;/version>
-       &lt;/dependency>
-       &lt;dependency>
-         &lt;groupId>net.objectlab.kit&lt;/groupId>
-         &lt;artifactId>datecalc-joda&lt;/artifactId>
-         &lt;version>1.2.0&lt;/version>
-       &lt;/dependency>
-    </pre>
-    <p>If you are not using Maven, you can <a href="https://sourceforge.net/projects/objectlabkit/files/">download the jars here</a>.</p>
     </subsection>
 
+    <subsection name="Maven">
+      <p>If you're using Maven, setup is easy, as DateCalc is in the Maven Central Repository.</p>
+      <p>To use the JDK Version:</p>
+      <pre class="brush: xml; gutter: false">
+         &lt;dependency>
+           &lt;groupId>net.objectlab.kit&lt;/groupId>
+           &lt;artifactId>datecalc-common&lt;/artifactId>
+           &lt;version>1.2.0&lt;/version>
+         &lt;/dependency>
+         &lt;dependency>
+           &lt;groupId>net.objectlab.kit&lt;/groupId>
+           &lt;artifactId>datecalc-jdk&lt;/artifactId>
+           &lt;version>1.2.0&lt;/version>
+         &lt;/dependency>
+      </pre>
+      
+      <p>To use the JODA Version (recommended):</p>
+      <pre class="brush: xml; gutter: false">
+         &lt;dependency>
+           &lt;groupId>net.objectlab.kit&lt;/groupId>
+           &lt;artifactId>datecalc-common&lt;/artifactId>
+           &lt;version>1.2.0&lt;/version>
+         &lt;/dependency>
+         &lt;dependency>
+           &lt;groupId>net.objectlab.kit&lt;/groupId>
+           &lt;artifactId>datecalc-joda&lt;/artifactId>
+           &lt;version>1.2.0&lt;/version>
+         &lt;/dependency>
+      </pre>
+    </subsection>
+
+    <subsection name="Download the Jars">
+      <p>If you are not using Maven, you can <a href="https://sourceforge.net/projects/objectlabkit/files/">download the jars here</a>.</p>
+    </subsection>    
+    
     <subsection name ="Date Calculations? What is that?">
     <p>Apart from the very basic "add days" features, most business have to <strong>deal with Holidays</strong> and what to do when a
     <strong>calculated day falls on a holiday</strong>.  This library does <strong>not</strong> attempt to create or guess the holidays, we
