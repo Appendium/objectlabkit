@@ -4,7 +4,7 @@
 
   <groupId>net.objectlab.kit</groupId>
   <artifactId>kit-parent</artifactId>
-  <version>1.2.0-SNAPSHOT</version>
+  <version>1.2.0</version>
   <packaging>pom</packaging>
 
   <modules>
@@ -260,9 +260,9 @@
   </profiles>
 
   <scm>
-    <connection>scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk/</connection>
-    <developerConnection>scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk/</developerConnection>
-    <url>http://objectlabkit.svn.sourceforge.net/viewvc/objectlabkit/</url>
+    <connection>scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/tags/1.2.0</connection>
+    <developerConnection>scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/tags/1.2.0</developerConnection>
+    <url>http://objectlabkit.svn.sourceforge.net/viewvc/objectlabkit/tags/1.2.0</url>
   </scm>
 
   <issueManagement>
