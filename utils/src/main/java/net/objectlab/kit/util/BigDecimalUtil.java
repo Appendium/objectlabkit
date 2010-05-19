@@ -682,4 +682,12 @@ public final class BigDecimalUtil {
     public static boolean isZeroOrLess(final BigDecimal value) {
         return value != null && value.signum() <= 0;
     }
+    
+    /**
+     * Return the decimal part of the value.
+     * @param val
+     */
+    public static BigDecimal decimalPart(final BigDecimal val) {
+        return BigDecimalUtil.subtract(val, val.setScale(0, BigDecimal.ROUND_DOWN));
+    }
 }

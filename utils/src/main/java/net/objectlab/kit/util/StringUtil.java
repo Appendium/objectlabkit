@@ -418,8 +418,12 @@ public final class StringUtil {
         return b.toString();
     }
 
-    public static Object emptyIfNull(final Object txt) {
-        return txt != null ? txt : EMPTY;
+    /**
+     * Returns "" if obj is null, obj.toString() otherwise.
+     * @param obj
+     */
+    public static String emptyIfNull(final Object obj) {
+        return obj != null ? obj.toString() : EMPTY;
     }
 
     public static boolean isWildcardOrNull(final String txt) {
