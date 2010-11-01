@@ -132,7 +132,6 @@ public final class Util {
         final PrintWriter out = new PrintWriter(sout);
         Util.listAllThreads(out);
         out.flush();
-
         return sout.toString();
     }
 
