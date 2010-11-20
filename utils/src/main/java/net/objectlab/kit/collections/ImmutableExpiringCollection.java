@@ -17,4 +17,6 @@ public interface ImmutableExpiringCollection {
     void setReloadWhenExpired(boolean loadWhenExpired);
 
     void start();
+    
+    void reload();
 }

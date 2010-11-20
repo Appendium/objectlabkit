@@ -93,4 +93,8 @@ public class ImmutableExpiringHashMap<K, V> extends AbstractImmutabeExpiringColl
     protected void doClear() {
         delegate.clear();
     }
+
+    public void reload() {
+        doLoad();
+    }
 }

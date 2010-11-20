@@ -97,4 +97,8 @@ public class ImmutableExpiringHashSet<T> extends AbstractImmutabeExpiringCollect
     protected void doClear() {
         delegate.clear();
     }
+
+    public void reload() {
+        doLoad();
+    }
 }
