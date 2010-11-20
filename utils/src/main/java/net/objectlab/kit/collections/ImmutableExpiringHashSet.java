@@ -18,15 +18,17 @@ public class ImmutableExpiringHashSet<T> extends AbstractImmutabeExpiringCollect
 
     public ImmutableExpiringHashSet(final ImmutableExpiringHashSetBuilder<T> builder) {
         this.loader = builder.getLoader();
+        setId(builder.getId());
         setExpiryTimeoutMilliseconds(builder.getExpiryTimeoutMilliseconds());
-        setLoadOnExpiry(builder.isLoadOnExpiry());
+        setReloadOnExpiry(builder.isReloadOnExpiry());
         setLoadOnFirstAccess(builder.isLoadOnFirstAccess());
+        setReloadWhenExpired(builder.isReloadWhenExpired());
         start();
     }
 
     @Override
     protected void doLoad() {
-        final SetBuilder<T> builder = new SetBuilder<T>();
+        final DefaultSetBuilder<T> builder = new DefaultSetBuilder<T>(getId());
         loader.load(builder);
         delegate = builder.build();
     }
@@ -89,5 +91,10 @@ public class ImmutableExpiringHashSet<T> extends AbstractImmutabeExpiringCollect
     public <T> T[] toArray(final T[] a) {
         validateOnAccess();
         return delegate.toArray(a);
+    }
+
+    @Override
+    protected void doClear() {
+        delegate.clear();
     }
 }

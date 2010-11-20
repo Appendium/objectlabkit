@@ -8,14 +8,23 @@ import java.util.TimerTask;
 
 /**
  * @author xhensevalb
- *
  */
 public abstract class AbstractImmutabeExpiringCollection {
     private long expiryTimeoutMilliseconds;
-    private boolean loadOnExpiry = true;
+    private boolean reloadOnExpiry = true;
+    private boolean reloadWhenExpired = true;
     private boolean loadOnFirstAccess = true;
     private long lastLoadingTime;
+    private String id;
     private Timer timer;
+
+    protected void setId(final String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
 
     protected void setLastLoadingTime(final long lastLoadingTime) {
         this.lastLoadingTime = lastLoadingTime;
@@ -25,12 +34,16 @@ public abstract class AbstractImmutabeExpiringCollection {
         this.expiryTimeoutMilliseconds = milliseconds;
     }
 
-    public void setLoadOnExpiry(final boolean loadOnExpiry) {
-        this.loadOnExpiry = loadOnExpiry;
+    public void setReloadOnExpiry(final boolean reloadOnExpiry) {
+        this.reloadOnExpiry = reloadOnExpiry;
     }
 
     public void setLoadOnFirstAccess(final boolean loadOnFirstAccess) {
         this.loadOnFirstAccess = loadOnFirstAccess;
+    }
+
+    public void setReloadWhenExpired(final boolean reloadWhenExpired) {
+        this.reloadWhenExpired = reloadWhenExpired;
     }
 
     protected boolean hasExpired() {
@@ -38,7 +51,7 @@ public abstract class AbstractImmutabeExpiringCollection {
     }
 
     public void start() {
-        if (loadOnExpiry) {
+        if (reloadOnExpiry) {
             // start timer
             timer = new Timer();
             timer.scheduleAtFixedRate(new TimerTask() {
@@ -55,7 +68,11 @@ public abstract class AbstractImmutabeExpiringCollection {
 
     protected void validateOnAccess() {
         if (hasExpired()) {
-            load();
+            if (reloadWhenExpired || loadOnFirstAccess && lastLoadingTime == 0) {
+                load();
+            } else {
+                doClear();
+            }
         }
     }
 
@@ -66,12 +83,14 @@ public abstract class AbstractImmutabeExpiringCollection {
 
     protected abstract void doLoad();
 
+    protected abstract void doClear();
+
     protected long getExpiryTimeoutMilliseconds() {
         return expiryTimeoutMilliseconds;
     }
 
-    protected boolean isLoadOnExpiry() {
-        return loadOnExpiry;
+    protected boolean isReloadOnExpiry() {
+        return reloadOnExpiry;
     }
 
     protected boolean isLoadOnFirstAccess() {

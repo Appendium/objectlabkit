@@ -12,7 +12,9 @@ public interface ImmutableExpiringCollection {
 
     void setLoadOnFirstAccess(boolean loadOnFirstAccess);
 
-    void setLoadOnExpiry(boolean loadOnExpiry);
+    void setReloadOnExpiry(boolean loadOnExpiry);
+
+    void setReloadWhenExpired(boolean loadWhenExpired);
 
     void start();
 }

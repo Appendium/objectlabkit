@@ -18,15 +18,17 @@ public class ImmutableExpiringHashMap<K, V> extends AbstractImmutabeExpiringColl
 
     public ImmutableExpiringHashMap(final ImmutableExpiringHashMapBuilder<K, V> builder) {
         loader = builder.getLoader();
+        setId(builder.getId());
         setExpiryTimeoutMilliseconds(builder.getExpiryTimeoutMilliseconds());
-        setLoadOnExpiry(builder.isLoadOnExpiry());
+        setReloadOnExpiry(builder.isReloadOnExpiry());
         setLoadOnFirstAccess(builder.isLoadOnFirstAccess());
+        setReloadWhenExpired(builder.isReloadWhenExpired());
         start();
     }
 
     @Override
     protected void doLoad() {
-        final MapBuilder<K, V> builder = new MapBuilder<K, V>();
+        final DefaultMapBuilder<K, V> builder = new DefaultMapBuilder<K, V>(getId());
         loader.load(builder);
         delegate = builder.build();
     }
@@ -85,5 +87,10 @@ public class ImmutableExpiringHashMap<K, V> extends AbstractImmutabeExpiringColl
     public Collection<V> values() {
         validateOnAccess();
         return delegate.values();
+    }
+
+    @Override
+    protected void doClear() {
+        delegate.clear();
     }
 }

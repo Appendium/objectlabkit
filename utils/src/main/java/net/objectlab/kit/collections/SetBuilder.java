@@ -3,21 +3,16 @@
  */
 package net.objectlab.kit.collections;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Collection;
 
 /**
  * @author xhensevalb
  *
  */
-public class SetBuilder<T> {
-    private final Set<T> set = new HashSet<T>();
+public interface SetBuilder<T> {
+    String getId();
 
-    public void add(final T t) {
-        set.add(t);
-    }
+    void add(final T t);
 
-    public Set<T> build() {
-        return new HashSet<T>(set);
-    }
+    void addAll(final Collection<T> t);
 }
