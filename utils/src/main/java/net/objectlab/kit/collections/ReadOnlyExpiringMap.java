@@ -9,5 +9,5 @@ import java.util.Map;
  * @author xhensevalb
  *
  */
-public interface ImmutableExpiringMap<K, V> extends ImmutableExpiringCollection, Map<K, V> {
+public interface ReadOnlyExpiringMap<K, V> extends ReadOnlyExpiringCollection, Map<K, V> {
 }

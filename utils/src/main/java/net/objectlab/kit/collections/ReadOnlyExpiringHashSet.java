@@ -12,11 +12,11 @@ import java.util.Set;
  * @author xhensevalb
  *
  */
-public class ImmutableExpiringHashSet<T> extends AbstractImmutabeExpiringCollection implements ImmutableExpiringSet<T> {
+public class ReadOnlyExpiringHashSet<T> extends AbstractReadOnlyExpiringCollection implements ReadOnlyExpiringSet<T> {
     private final SetLoader<T> loader;
     private Set<T> delegate = new HashSet<T>();
 
-    public ImmutableExpiringHashSet(final ImmutableExpiringHashSetBuilder<T> builder) {
+    public ReadOnlyExpiringHashSet(final ReadOnlyExpiringHashSetBuilder<T> builder) {
         this.loader = builder.getLoader();
         setId(builder.getId());
         setExpiryTimeoutMilliseconds(builder.getExpiryTimeoutMilliseconds());
@@ -39,11 +39,11 @@ public class ImmutableExpiringHashSet<T> extends AbstractImmutabeExpiringCollect
     }
 
     public boolean addAll(final Collection<? extends T> c) {
-        throw new IllegalAccessError("Collection is immutable");
+        throw new UnsupportedOperationException("Collection is immutable");
     }
 
     public void clear() {
-        throw new IllegalAccessError("Collection is immutable");
+        throw new UnsupportedOperationException("Collection is immutable");
     }
 
     public boolean contains(final Object o) {
@@ -67,15 +67,15 @@ public class ImmutableExpiringHashSet<T> extends AbstractImmutabeExpiringCollect
     }
 
     public boolean remove(final Object o) {
-        throw new IllegalAccessError("Collection is immutable");
+        throw new UnsupportedOperationException("Collection is immutable");
     }
 
     public boolean removeAll(final Collection<?> c) {
-        throw new IllegalAccessError("Collection is immutable");
+        throw new UnsupportedOperationException("Collection is immutable");
     }
 
     public boolean retainAll(final Collection<?> c) {
-        throw new IllegalAccessError("Collection is immutable");
+        throw new UnsupportedOperationException("Collection is immutable");
     }
 
     public int size() {

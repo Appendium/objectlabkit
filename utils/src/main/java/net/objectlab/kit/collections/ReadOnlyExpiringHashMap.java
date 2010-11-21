@@ -12,11 +12,11 @@ import java.util.Set;
  * @author xhensevalb
  *
  */
-public class ImmutableExpiringHashMap<K, V> extends AbstractImmutabeExpiringCollection implements ImmutableExpiringMap<K, V> {
+public class ReadOnlyExpiringHashMap<K, V> extends AbstractReadOnlyExpiringCollection implements ReadOnlyExpiringMap<K, V> {
     private Map<K, V> delegate = new HashMap<K, V>();
     private final MapLoader<K, V> loader;
 
-    public ImmutableExpiringHashMap(final ImmutableExpiringHashMapBuilder<K, V> builder) {
+    public ReadOnlyExpiringHashMap(final ReadOnlyExpiringHashMapBuilder<K, V> builder) {
         loader = builder.getLoader();
         setId(builder.getId());
         setExpiryTimeoutMilliseconds(builder.getExpiryTimeoutMilliseconds());
@@ -34,7 +34,7 @@ public class ImmutableExpiringHashMap<K, V> extends AbstractImmutabeExpiringColl
     }
 
     public void clear() {
-        throw new IllegalAccessError("Collection is immutable");
+        throw new UnsupportedOperationException("Collection is immutable");
     }
 
     public boolean containsKey(final Object key) {
@@ -68,15 +68,15 @@ public class ImmutableExpiringHashMap<K, V> extends AbstractImmutabeExpiringColl
     }
 
     public V put(final K key, final V value) {
-        throw new IllegalAccessError("Collection is immutable");
+        throw new UnsupportedOperationException("Collection is immutable");
     }
 
     public void putAll(final Map<? extends K, ? extends V> m) {
-        throw new IllegalAccessError("Collection is immutable");
+        throw new UnsupportedOperationException("Collection is immutable");
     }
 
     public V remove(final Object key) {
-        throw new IllegalAccessError("Collection is immutable");
+        throw new UnsupportedOperationException("Collection is immutable");
     }
 
     public int size() {

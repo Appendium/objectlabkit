@@ -9,5 +9,5 @@ import java.util.Set;
  * @author xhensevalb
  *
  */
-public interface ImmutableExpiringSet<T> extends ImmutableExpiringCollection, Set<T> {
+public interface ReadOnlyExpiringSet<T> extends ReadOnlyExpiringCollection, Set<T> {
 }

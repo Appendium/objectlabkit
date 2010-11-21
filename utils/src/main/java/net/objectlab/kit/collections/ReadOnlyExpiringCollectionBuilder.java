@@ -12,19 +12,25 @@ import net.objectlab.kit.util.PeriodBuilder;
  * @author xhensevalb
  *
  */
-public class ImmutableExpiringCollectionBuilder {
+public class ReadOnlyExpiringCollectionBuilder {
     private long expiryTimeoutMilliseconds = -1;
     private boolean reloadOnExpiry = true;
     private boolean reloadWhenExpired = true;
     private boolean loadOnFirstAccess = true;
     private String id;
+    private TimeProvider timeProvider;
 
-    public ImmutableExpiringCollectionBuilder id(final String id) {
+    public ReadOnlyExpiringCollectionBuilder timeProvider(final TimeProvider timeProvider) {
+        this.timeProvider = timeProvider;
+        return this;
+    }
+
+    public ReadOnlyExpiringCollectionBuilder id(final String id) {
         this.id = id;
         return this;
     }
 
-    public ImmutableExpiringCollectionBuilder expiryTimeout(final PeriodBuilder expiryTimeout) {
+    public ReadOnlyExpiringCollectionBuilder expiryTimeout(final PeriodBuilder expiryTimeout) {
         assert expiryTimeout != null;
         if (expiryTimeout != null) {
             this.expiryTimeoutMilliseconds = expiryTimeout.calculateMilliseconds();
@@ -32,22 +38,22 @@ public class ImmutableExpiringCollectionBuilder {
         return this;
     }
 
-    public ImmutableExpiringCollectionBuilder expiryTimeoutMilliseconds(final long expiryTimeoutMilliseconds) {
+    public ReadOnlyExpiringCollectionBuilder expiryTimeoutMilliseconds(final long expiryTimeoutMilliseconds) {
         this.expiryTimeoutMilliseconds = expiryTimeoutMilliseconds;
         return this;
     }
 
-    public ImmutableExpiringCollectionBuilder reloadWhenExpired(final boolean reloadWhenExpired) {
+    public ReadOnlyExpiringCollectionBuilder reloadWhenExpired(final boolean reloadWhenExpired) {
         this.reloadWhenExpired = reloadWhenExpired;
         return this;
     }
 
-    public ImmutableExpiringCollectionBuilder reloadOnExpiry(final boolean loadOnExpiry) {
+    public ReadOnlyExpiringCollectionBuilder reloadOnExpiry(final boolean loadOnExpiry) {
         this.reloadOnExpiry = loadOnExpiry;
         return this;
     }
 
-    public ImmutableExpiringCollectionBuilder loadOnFirstAccess(final boolean loadOnFirstAccess) {
+    public ReadOnlyExpiringCollectionBuilder loadOnFirstAccess(final boolean loadOnFirstAccess) {
         this.loadOnFirstAccess = loadOnFirstAccess;
         return this;
     }
@@ -70,5 +76,9 @@ public class ImmutableExpiringCollectionBuilder {
 
     final String getId() {
         return id;
+    }
+
+    final TimeProvider getTimeProvider() {
+        return timeProvider;
     }
 }

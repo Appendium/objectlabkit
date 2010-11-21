@@ -9,7 +9,8 @@ import java.util.TimerTask;
 /**
  * @author xhensevalb
  */
-public abstract class AbstractImmutabeExpiringCollection {
+public abstract class AbstractReadOnlyExpiringCollection {
+    private TimeProvider timeProvider;
     private long expiryTimeoutMilliseconds;
     private boolean reloadOnExpiry = true;
     private boolean reloadWhenExpired = true;
@@ -22,12 +23,12 @@ public abstract class AbstractImmutabeExpiringCollection {
         this.id = id;
     }
 
-    public String getId() {
-        return id;
+    protected void setTimeProvider(final TimeProvider timeProvider) {
+        this.timeProvider = timeProvider != null ? timeProvider : new SystemTimeProvider();
     }
 
-    protected void setLastLoadingTime(final long lastLoadingTime) {
-        this.lastLoadingTime = lastLoadingTime;
+    public String getId() {
+        return id;
     }
 
     public void setExpiryTimeoutMilliseconds(final long milliseconds) {
@@ -47,7 +48,7 @@ public abstract class AbstractImmutabeExpiringCollection {
     }
 
     protected boolean hasExpired() {
-        return System.currentTimeMillis() - lastLoadingTime > expiryTimeoutMilliseconds;
+        return timeProvider.getCurrentTimeMillis() - lastLoadingTime > expiryTimeoutMilliseconds;
     }
 
     public void start() {
@@ -66,6 +67,20 @@ public abstract class AbstractImmutabeExpiringCollection {
         }
     }
 
+    public void stop() {
+        if (timer != null) {
+            timer.cancel();
+            timer.purge();
+            timer = null;
+        }
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+        stop();
+    }
+
     protected void validateOnAccess() {
         if (hasExpired()) {
             if (reloadWhenExpired || loadOnFirstAccess && lastLoadingTime == 0) {
@@ -76,9 +91,11 @@ public abstract class AbstractImmutabeExpiringCollection {
         }
     }
 
-    private void load() {
-        doLoad();
-        lastLoadingTime = System.currentTimeMillis();
+    private synchronized void load() {
+        if (hasExpired()) {
+            doLoad();
+            lastLoadingTime = timeProvider.getCurrentTimeMillis();
+        }
     }
 
     protected abstract void doLoad();

@@ -7,10 +7,10 @@ package net.objectlab.kit.collections;
  *
  * @param <T>
  */
-public class ImmutableExpiringHashSetBuilder<T> extends ImmutableExpiringCollectionBuilder {
+public class ReadOnlyExpiringHashSetBuilder<T> extends ReadOnlyExpiringCollectionBuilder {
     private final SetLoader<T> loader;
 
-    public ImmutableExpiringHashSetBuilder(final SetLoader<T> loader) {
+    public ReadOnlyExpiringHashSetBuilder(final SetLoader<T> loader) {
         super();
         this.loader = loader;
     }

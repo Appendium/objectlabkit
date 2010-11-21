@@ -1,9 +1,9 @@
 package net.objectlab.kit.collections;
 
-public class ImmutableExpiringHashMapBuilder<K, V> extends ImmutableExpiringCollectionBuilder {
+public class ReadOnlyExpiringHashMapBuilder<K, V> extends ReadOnlyExpiringCollectionBuilder {
     private final MapLoader<K, V> loader;
 
-    public ImmutableExpiringHashMapBuilder(final MapLoader<K, V> loader) {
+    public ReadOnlyExpiringHashMapBuilder(final MapLoader<K, V> loader) {
         super();
         this.loader = loader;
     }

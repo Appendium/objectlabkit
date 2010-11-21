@@ -15,7 +15,7 @@ import org.junit.Test;
  * @author xhensevalb
  *
  */
-public class ImmutableExpiringHashMapTest implements MapLoader<String, Integer> {
+public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer> {
 
     private int reloadCount;
 
@@ -26,14 +26,14 @@ public class ImmutableExpiringHashMapTest implements MapLoader<String, Integer> 
 
     @Test
     public void basicConstructorNoReload() {
-        final ImmutableExpiringHashMapBuilder<String, Integer> builder = new ImmutableExpiringHashMapBuilder<String, Integer>(this);
+        final ReadOnlyExpiringHashMapBuilder<String, Integer> builder = new ReadOnlyExpiringHashMapBuilder<String, Integer>(this);
         builder.expiryTimeoutMilliseconds(1000);
         builder.loadOnFirstAccess(true);
         builder.reloadOnExpiry(false);
         builder.reloadWhenExpired(false);
         builder.id("Greetings");
 
-        final ImmutableExpiringMap<String, Integer> ims = new ImmutableExpiringHashMap<String, Integer>(builder);
+        final ReadOnlyExpiringMap<String, Integer> ims = new ReadOnlyExpiringHashMap<String, Integer>(builder);
 
         assertEquals("Should not call load until called", 0, reloadCount);
 
@@ -74,14 +74,14 @@ public class ImmutableExpiringHashMapTest implements MapLoader<String, Integer> 
 
     @Test
     public void basicConstructorWithReloadWhenCalled() {
-        final ImmutableExpiringHashMapBuilder<String, Integer> builder = new ImmutableExpiringHashMapBuilder<String, Integer>(this);
+        final ReadOnlyExpiringHashMapBuilder<String, Integer> builder = new ReadOnlyExpiringHashMapBuilder<String, Integer>(this);
         builder.expiryTimeoutMilliseconds(1000);
         builder.loadOnFirstAccess(true);
         builder.reloadOnExpiry(false);
         builder.reloadWhenExpired(true);
         builder.id("Greetings");
 
-        final ImmutableExpiringMap<String, Integer> ims = new ImmutableExpiringHashMap<String, Integer>(builder);
+        final ReadOnlyExpiringMap<String, Integer> ims = new ReadOnlyExpiringHashMap<String, Integer>(builder);
 
         assertEquals("Should not call load until called", 0, reloadCount);
 
@@ -124,14 +124,14 @@ public class ImmutableExpiringHashMapTest implements MapLoader<String, Integer> 
 
     @Test
     public void basicConstructorWithImmediateLoadAndWhenExpired() {
-        final ImmutableExpiringHashMapBuilder<String, Integer> builder = new ImmutableExpiringHashMapBuilder<String, Integer>(this);
+        final ReadOnlyExpiringHashMapBuilder<String, Integer> builder = new ReadOnlyExpiringHashMapBuilder<String, Integer>(this);
         builder.expiryTimeoutMilliseconds(1000);
         builder.loadOnFirstAccess(false);
         builder.reloadOnExpiry(false);
         builder.reloadWhenExpired(true);
         builder.id("Greetings");
 
-        final ImmutableExpiringMap<String, Integer> ims = new ImmutableExpiringHashMap<String, Integer>(builder);
+        final ReadOnlyExpiringMap<String, Integer> ims = new ReadOnlyExpiringHashMap<String, Integer>(builder);
 
         assertEquals("Should not call load until called", 1, reloadCount);
 
@@ -174,14 +174,14 @@ public class ImmutableExpiringHashMapTest implements MapLoader<String, Integer> 
 
     @Test
     public void basicConstructorWithReloadOnExpiry() {
-        final ImmutableExpiringHashMapBuilder<String, Integer> builder = new ImmutableExpiringHashMapBuilder<String, Integer>(this);
+        final ReadOnlyExpiringHashMapBuilder<String, Integer> builder = new ReadOnlyExpiringHashMapBuilder<String, Integer>(this);
         builder.expiryTimeoutMilliseconds(1000);
         builder.loadOnFirstAccess(false);
         builder.reloadOnExpiry(true);
         builder.reloadWhenExpired(false);
         builder.id("Greetings");
 
-        final ImmutableExpiringMap<String, Integer> ims = new ImmutableExpiringHashMap<String, Integer>(builder);
+        final ReadOnlyExpiringMap<String, Integer> ims = new ReadOnlyExpiringHashMap<String, Integer>(builder);
 
         assertEquals("Should not call load until called", 1, reloadCount);
 
