@@ -23,6 +23,7 @@ public class ReadOnlyExpiringHashSet<T> extends AbstractReadOnlyExpiringCollecti
         setReloadOnExpiry(builder.isReloadOnExpiry());
         setLoadOnFirstAccess(builder.isLoadOnFirstAccess());
         setReloadWhenExpired(builder.isReloadWhenExpired());
+        setTimeProvider(builder.getTimeProvider());
         start();
     }
 

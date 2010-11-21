@@ -48,7 +48,7 @@ public abstract class AbstractReadOnlyExpiringCollection {
     }
 
     protected boolean hasExpired() {
-        return timeProvider.getCurrentTimeMillis() - lastLoadingTime > expiryTimeoutMilliseconds;
+        return lastLoadingTime == 0 || timeProvider.getCurrentTimeMillis() - lastLoadingTime > expiryTimeoutMilliseconds;
     }
 
     public void start() {

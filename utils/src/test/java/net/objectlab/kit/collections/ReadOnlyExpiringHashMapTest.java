@@ -15,13 +15,15 @@ import org.junit.Test;
  * @author xhensevalb
  *
  */
-public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer> {
+public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer>, TimeProvider {
 
     private int reloadCount;
+    private long time;
 
     @Before
     public void reset() {
         reloadCount = 0;
+        time = System.currentTimeMillis();
     }
 
     @Test
@@ -31,6 +33,7 @@ public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer> {
         builder.loadOnFirstAccess(true);
         builder.reloadOnExpiry(false);
         builder.reloadWhenExpired(false);
+        builder.timeProvider(this);
         builder.id("Greetings");
 
         final ReadOnlyExpiringMap<String, Integer> ims = new ReadOnlyExpiringHashMap<String, Integer>(builder);
@@ -44,10 +47,9 @@ public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer> {
         assertTrue("Correct key", ims.containsKey("Hello"));
         assertNull("diff key", ims.get("Hi"));
         assertEquals(Integer.valueOf(2), ims.get("Yo"));
-        try {
-            Thread.sleep(101);
-        } catch (final InterruptedException e) {
-        }
+
+        
+        time += 101; // simulate 101 ms
 
         // second call
         assertFalse(ims.isEmpty());
@@ -57,10 +59,8 @@ public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer> {
         assertTrue("Correct key", ims.containsKey("Hello"));
         assertNull("diff key", ims.get("Hi"));
         assertEquals(Integer.valueOf(2), ims.get("Yo"));
-        try {
-            Thread.sleep(901);
-        } catch (final InterruptedException e) {
-        }
+
+        time += 901; // simulate 901 ms
 
         // should be gone
         assertTrue(ims.isEmpty());
@@ -79,6 +79,7 @@ public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer> {
         builder.loadOnFirstAccess(true);
         builder.reloadOnExpiry(false);
         builder.reloadWhenExpired(true);
+        builder.timeProvider(this);
         builder.id("Greetings");
 
         final ReadOnlyExpiringMap<String, Integer> ims = new ReadOnlyExpiringHashMap<String, Integer>(builder);
@@ -92,10 +93,8 @@ public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer> {
         assertTrue("Correct key", ims.containsKey("Hello"));
         assertNull("diff key", ims.get("Hi"));
         assertEquals(Integer.valueOf(2), ims.get("Yo"));
-        try {
-            Thread.sleep(101);
-        } catch (final InterruptedException e) {
-        }
+
+        time += 101; // simulate 101 ms
 
         // second call
         assertFalse(ims.isEmpty());
@@ -105,10 +104,8 @@ public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer> {
         assertTrue("Correct key", ims.containsKey("Hello"));
         assertNull("diff key", ims.get("Hi"));
         assertEquals(Integer.valueOf(2), ims.get("Yo"));
-        try {
-            Thread.sleep(901);
-        } catch (final InterruptedException e) {
-        }
+
+        time += 901; // simulate 901 ms
 
         assertEquals("2) Should not call load until called", 1, reloadCount);
 
@@ -129,6 +126,7 @@ public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer> {
         builder.loadOnFirstAccess(false);
         builder.reloadOnExpiry(false);
         builder.reloadWhenExpired(true);
+        builder.timeProvider(this);
         builder.id("Greetings");
 
         final ReadOnlyExpiringMap<String, Integer> ims = new ReadOnlyExpiringHashMap<String, Integer>(builder);
@@ -142,10 +140,8 @@ public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer> {
         assertTrue("Correct key", ims.containsKey("Hello"));
         assertNull("diff key", ims.get("Hi"));
         assertEquals(Integer.valueOf(2), ims.get("Yo"));
-        try {
-            Thread.sleep(101);
-        } catch (final InterruptedException e) {
-        }
+
+        time += 101; // simulate 101 ms
 
         // second call
         assertFalse(ims.isEmpty());
@@ -155,10 +151,8 @@ public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer> {
         assertTrue("Correct key", ims.containsKey("Hello"));
         assertNull("diff key", ims.get("Hi"));
         assertEquals(Integer.valueOf(2), ims.get("Yo"));
-        try {
-            Thread.sleep(901);
-        } catch (final InterruptedException e) {
-        }
+
+        time += 901; // simulate 901 ms
 
         assertEquals("2) Should not call load until called", 1, reloadCount);
 
@@ -179,6 +173,7 @@ public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer> {
         builder.loadOnFirstAccess(false);
         builder.reloadOnExpiry(true);
         builder.reloadWhenExpired(false);
+        builder.timeProvider(this);
         builder.id("Greetings");
 
         final ReadOnlyExpiringMap<String, Integer> ims = new ReadOnlyExpiringHashMap<String, Integer>(builder);
@@ -193,6 +188,8 @@ public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer> {
         assertNull("diff key", ims.get("Hi"));
         assertEquals(Integer.valueOf(2), ims.get("Yo"));
 
+        time += 101; // simulate 101 ms
+
         // second call
         assertFalse(ims.isEmpty());
         assertEquals(2, ims.size());
@@ -201,8 +198,11 @@ public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer> {
         assertTrue("Correct key", ims.containsKey("Hello"));
         assertNull("diff key", ims.get("Hi"));
         assertEquals(Integer.valueOf(2), ims.get("Yo"));
+
+        time += 901; // simulate 901 ms
+
         try {
-            Thread.sleep(901);
+            Thread.sleep(1001);
         } catch (final InterruptedException e) {
         }
 
@@ -223,6 +223,10 @@ public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer> {
         builder.put("Hello", 1);
         builder.put("Yo", 2);
         reloadCount++;
+    }
+
+    public long getCurrentTimeMillis() {
+        return time;
     }
 
 }

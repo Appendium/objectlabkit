@@ -23,6 +23,7 @@ public class ReadOnlyExpiringHashMap<K, V> extends AbstractReadOnlyExpiringColle
         setReloadOnExpiry(builder.isReloadOnExpiry());
         setLoadOnFirstAccess(builder.isLoadOnFirstAccess());
         setReloadWhenExpired(builder.isReloadWhenExpired());
+        setTimeProvider(builder.getTimeProvider());
         start();
     }
 

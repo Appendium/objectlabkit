@@ -14,13 +14,15 @@ import org.junit.Test;
  * @author xhensevalb
  *
  */
-public class ReadOnlyExpiringHashSetTest implements SetLoader<String> {
+public class ReadOnlyExpiringHashSetTest implements SetLoader<String>, TimeProvider {
 
     private int reloadCount;
+    private long time;
 
     @Before
     public void reset() {
         reloadCount = 0;
+        time = System.currentTimeMillis();
     }
 
     @Test
@@ -30,10 +32,10 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String> {
         builder.loadOnFirstAccess(true);
         builder.reloadOnExpiry(false);
         builder.reloadWhenExpired(false);
+        builder.timeProvider(this);
         builder.id("Greetings");
 
         final ReadOnlyExpiringSet<String> ims = new ReadOnlyExpiringHashSet<String>(builder);
-
         assertEquals("Should not call load until called", 0, reloadCount);
 
         assertFalse(ims.isEmpty());
@@ -41,10 +43,8 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String> {
         assertEquals(1, reloadCount);
         assertFalse("diff key", ims.contains("Hi"));
         assertTrue("Correct key", ims.contains("Hello"));
-        try {
-            Thread.sleep(101);
-        } catch (final InterruptedException e) {
-        }
+
+        time += 100; // simulate 100 ms 
 
         // second call
         assertFalse(ims.isEmpty());
@@ -52,10 +52,8 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String> {
         assertEquals(1, reloadCount);
         assertFalse("diff key", ims.contains("Hi"));
         assertTrue("Correct key", ims.contains("Hello"));
-        try {
-            Thread.sleep(901);
-        } catch (final InterruptedException e) {
-        }
+
+        time += 901;
 
         // should be gone
         assertTrue(ims.isEmpty());
@@ -72,6 +70,7 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String> {
         builder.loadOnFirstAccess(true);
         builder.reloadOnExpiry(false);
         builder.reloadWhenExpired(true);
+        builder.timeProvider(this);
         builder.id("Greetings");
 
         final ReadOnlyExpiringSet<String> ims = new ReadOnlyExpiringHashSet<String>(builder);
@@ -83,10 +82,7 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String> {
         assertEquals(1, reloadCount);
         assertFalse("diff key", ims.contains("Hi"));
         assertTrue("Correct key", ims.contains("Hello"));
-        try {
-            Thread.sleep(101);
-        } catch (final InterruptedException e) {
-        }
+        time += 100; // simulate 100 ms 
 
         // second call
         assertFalse(ims.isEmpty());
@@ -94,10 +90,7 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String> {
         assertEquals(1, reloadCount);
         assertFalse("diff key", ims.contains("Hi"));
         assertTrue("Correct key", ims.contains("Hello"));
-        try {
-            Thread.sleep(901);
-        } catch (final InterruptedException e) {
-        }
+        time += 901; // simulate 901 ms 
 
         assertEquals("Should NOT have reloaded until called!", 1, reloadCount);
 
@@ -116,6 +109,7 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String> {
         builder.loadOnFirstAccess(false);
         builder.reloadOnExpiry(false);
         builder.reloadWhenExpired(true);
+        builder.timeProvider(this);
         builder.id("Greetings");
 
         final ReadOnlyExpiringSet<String> ims = new ReadOnlyExpiringHashSet<String>(builder);
@@ -123,14 +117,12 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String> {
         assertEquals("Should call load immediately", 1, reloadCount);
 
         assertFalse(ims.isEmpty());
+        assertEquals(1, reloadCount);
         assertEquals(1, ims.size());
         assertEquals(1, reloadCount);
         assertFalse("diff key", ims.contains("Hi"));
         assertTrue("Correct key", ims.contains("Hello"));
-        try {
-            Thread.sleep(101);
-        } catch (final InterruptedException e) {
-        }
+        time += 100; // simulate 100 ms 
 
         // second call
         assertFalse(ims.isEmpty());
@@ -138,10 +130,7 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String> {
         assertEquals(1, reloadCount);
         assertFalse("diff key", ims.contains("Hi"));
         assertTrue("Correct key", ims.contains("Hello"));
-        try {
-            Thread.sleep(901);
-        } catch (final InterruptedException e) {
-        }
+        time += 901; // simulate 901 ms 
 
         assertEquals("Should NOT have reloaded until called!", 1, reloadCount);
 
@@ -160,6 +149,7 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String> {
         builder.loadOnFirstAccess(false);
         builder.reloadOnExpiry(true);
         builder.reloadWhenExpired(false); // but does not matter
+        builder.timeProvider(this);
         builder.id("Greetings");
 
         final ReadOnlyExpiringSet<String> ims = new ReadOnlyExpiringHashSet<String>(builder);
@@ -171,20 +161,20 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String> {
         assertEquals(1, reloadCount);
         assertFalse("diff key", ims.contains("Hi"));
         assertTrue("Correct key", ims.contains("Hello"));
-        //        try {
-        //            Thread.sleep(101);
-        //        } catch (final InterruptedException e) {
-        //        }
 
+        time += 101;
+        
         // second call
         assertFalse(ims.isEmpty());
         assertEquals(1, ims.size());
         assertEquals(1, reloadCount);
         assertFalse("diff key", ims.contains("Hi"));
         assertTrue("Correct key", ims.contains("Hello"));
+        time += 901; // simulate 901 ms 
+        
         try {
-            Thread.sleep(901);
-        } catch (final InterruptedException e) {
+            Thread.sleep(1000); // ensure that the timer can catch up.
+        } catch (InterruptedException e) {
         }
 
         assertEquals("Should have reloaded until called!", 2, reloadCount);
@@ -201,5 +191,9 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String> {
         assertEquals("Greetings", builder.getId());
         builder.add("Hello");
         reloadCount++;
+    }
+
+    public long getCurrentTimeMillis() {
+        return time;
     }
 }
