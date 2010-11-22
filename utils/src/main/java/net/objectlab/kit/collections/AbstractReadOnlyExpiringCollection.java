@@ -52,7 +52,7 @@ public abstract class AbstractReadOnlyExpiringCollection {
     }
 
     public void start() {
-        if (reloadOnExpiry) {
+        if (reloadOnExpiry && expiryTimeoutMilliseconds > 0) {
             // start timer
             timer = new Timer();
             timer.scheduleAtFixedRate(new TimerTask() {

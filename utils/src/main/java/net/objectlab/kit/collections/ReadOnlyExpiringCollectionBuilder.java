@@ -15,7 +15,7 @@ import net.objectlab.kit.util.PeriodBuilder;
 public class ReadOnlyExpiringCollectionBuilder {
     private long expiryTimeoutMilliseconds = -1;
     private boolean reloadOnExpiry = true;
-    private boolean reloadWhenExpired = true;
+    private boolean reloadWhenExpired = false;
     private boolean loadOnFirstAccess = true;
     private String id;
     private TimeProvider timeProvider;
