@@ -44,13 +44,22 @@ public class WeightedAverage implements Serializable {
     private final Total total = new Total();
     private final Total totalExpanded = new Total();
     private int count = 0;
+    private final boolean includeZeros;
+    
+    public WeightedAverage() {
+    	this.includeZeros = true;
+    }
+    
+    public WeightedAverage(final boolean includeZeros) {
+    	this.includeZeros = includeZeros;
+    }
 
     public BigDecimal getTotal() {
         return total.getTotal();
     }
 
     public void add(final BigDecimal value, final BigDecimal weightAsAValue) {
-        if (BigDecimalUtil.isNotZero(value)) {
+        if (includeZeros || BigDecimalUtil.isNotZero(value)) {
             count++;
             total.add(weightAsAValue);
             totalExpanded.add(BigDecimalUtil.multiply(value, weightAsAValue));
