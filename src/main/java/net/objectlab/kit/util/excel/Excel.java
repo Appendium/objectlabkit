@@ -1,114 +1,106 @@
 package net.objectlab.kit.util.excel;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.util.AreaReference;
+import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.ss.util.CellReference;
+
 import java.io.InputStream;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFName;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.hssf.util.RangeAddress;
-import org.apache.poi.poifs.filesystem.POIFSFileSystem;
+import java.util.*;
 
 public class Excel {
 
-    private HSSFWorkbook workbook;
-
-    private InputStream inputStream;
-
-    public Excel() {
-    }
+    private Workbook workbook;
 
     public Excel(InputStream in) {
-        setInputStream(in);
-        init();
+        init(in);
     }
 
-    public void init() throws RuntimeException {
+    private void init(InputStream inputStream) throws RuntimeException {
 
-        POIFSFileSystem fs;
         try {
-            fs = new POIFSFileSystem(inputStream);
-            workbook = new HSSFWorkbook(fs);
+            workbook = WorkbookFactory.create(inputStream);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    public <E> E readValue(String cellAddress, Class<E> type) {
+    public <E> E readValueAt(String cellAddress, Class<E> type) {
+        return readCell(cellAt(cellAddress), type);
+    }
 
-        Object[][] result = readBlock(cellAddress, true, type);
-        return (E) result[0][0];
+    public <E> List<E> readColumn(String rangeOrStartAddress, Class<E> type) {
+
+        Object[][] arr = readBlock(rangeOrStartAddress, type);
+
+        List<E> result = new LinkedList<E>();
+        for (int i = 0; i < arr.length; i++) {
+            result.add((E)arr[i][0]);
+        }
+
+        return result;
+    }
+
+    public String namedRangeToRangeAddress(String namedRange) {
+        int namedCellIndex = getWorkbook().getNameIndex(namedRange);
+        Name namedCell = getWorkbook().getNameAt(namedCellIndex);
+
+        return namedCell.getRefersToFormula();
+    }
+
+    public Cell cellAt(String cellAddr) {
+        CellReference cr = new CellReference(cellAddr);
+
+        return workbook
+                .getSheet(cr.getSheetName())
+                .getRow(cr.getRow())
+                .getCell((int) cr.getCol());
     }
 
     /**
-     * 
-     * @param range
-     *            either the range of the entire block to be read, or just the
-     *            top row of the cells, in which case the method will stop when
-     *            the first empty cell is reached in the first column
-     * @param colTypes
-     *            classes of the result types, per column
-     * @return 2 dimensional array, containing the data read, cast as per
-     *         colTypes
+     * @param range either the range of the entire block to be read, or just the
+     *              top row of the cells, in which case the method will stop when
+     *              the first empty cell is reached in the first column
+     * @param colTypes An array of data types expected at each column.
+     *                 If this array is shorter than the number of column, then the last
+     *                 data type is used until the end. So if only one value is given,
+     *                 then that is used for the entire block.
      */
     public Object[][] readBlock(String range, Class... colTypes) {
-        return readBlock(range, false, colTypes);
-    }
 
-        
-    private Object[][] readBlock(String range, boolean oneLiner, Class... colTypes) {
+        CellRangeAddress cra = CellRangeAddress.valueOf(range);
+        AreaReference ar = new AreaReference(range);
+        Sheet sheet = workbook.getSheet(ar.getFirstCell().getSheetName());
 
-        RangeAddress ra = new RangeAddress(range);
-        HSSFSheet sheet = workbook.getSheet(ra.getSheetName());
-
-        oneLiner = (ra.getHeight() == 1 && oneLiner);
+        int firstColumn = cra.getFirstColumn();
+        int firstRow = cra.getFirstRow();
+        int lastRow = cra.getLastRow();
+        int height = lastRow - firstRow + 1;
+        int width = cra.getLastColumn() - firstColumn + 1;
 
         List<Object> result;
-        if (ra.getHeight() == 1) {
+        if (height == 1) {
             result = new LinkedList<Object>();
         } else {
-            result = new ArrayList<Object>(ra.getHeight());
+            result = new ArrayList<Object>(height);
         }
 
-        int x = ra.getXPosition(ra.getFromCell());
-        int y = ra.getYPosition(ra.getFromCell());
-        
-        Class colType = colTypes[0];
-        for (int i = 0; (isMoreToRead(sheet, oneLiner, x, y, i)); i++) {
-            HSSFRow row = sheet.getRow(y + i - 1);
-            Object[] resultRow = new Object[ra.getWidth()];
+        for (int rowNum = 0; moreDataToRead(sheet, firstColumn, firstRow, lastRow, rowNum); rowNum++) {
+            Row row = sheet.getRow(firstRow + rowNum);
+            Object[] resultRow = new Object[width];
             result.add(resultRow);
-            for (int j = 0; j < ra.getWidth(); j++) {
-                HSSFCell cell = row.getCell((short) (x + j - 1));
+            for (int colNum = 0; colNum < width; colNum++) {
 
-                if (colTypes.length > j) {
-                    colType = colTypes[j];
+                Class colType;
+                if (colNum < colTypes.length - 1) {
+                    colType = colTypes[colNum];
+                } else {
+                    colType = colTypes[colTypes.length - 1];
                 }
 
-                if (colType == Date.class) {
-                    resultRow[j] = cell.getDateCellValue();
-                } else if (colType == Calendar.class) {
-                    Calendar cal = Calendar.getInstance();
-                    cal.setTime(cell.getDateCellValue());
-                    resultRow[j] = cal;
-                } else if (colType == Integer.class) {
-                    resultRow[j] = ((Double) cell.getNumericCellValue()).intValue();
-                } else if (colType == Double.class) {
-                    resultRow[j] = (Double) cell.getNumericCellValue();
-                } else if (colType == BigDecimal.class) {
-                    resultRow[j] = new BigDecimal(String.valueOf(cell.getNumericCellValue()));
-                } else if (colType == String.class) {
-                    resultRow[j] = cell.getRichStringCellValue().getString();
-                }
+                Cell cell = row.getCell(firstColumn + colNum);
+                resultRow[colNum] = readCell(cell, colType);
             }
 
         }
@@ -116,19 +108,42 @@ public class Excel {
         return result.toArray(new Object[][] {});
     }
 
-    private boolean isMoreToRead(HSSFSheet sheet, boolean oneLiner, int x, int y, int i) {
+    private <E> E readCell(Cell cell, Class<E> colType) {
 
-        if (oneLiner) {
-            return (i < 1);
+        if (colType == Date.class) {
+            return (E) cell.getDateCellValue();
+        } else if (colType == Calendar.class) {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(cell.getDateCellValue());
+            return (E) cal;
+        } else if (colType == Integer.class) {
+            return (E) ((Integer) ((Double) cell.getNumericCellValue()).intValue());
+        } else if (colType == Double.class) {
+            return (E) (Double) cell.getNumericCellValue();
+        } else if (colType == BigDecimal.class) {
+            return (E) new BigDecimal(String.valueOf(cell.getNumericCellValue()));
+        } else if (colType == String.class) {
+            return (E) cell.getRichStringCellValue().getString();
+        } else {
+            throw new RuntimeException("Column type not supported: " + colType);
         }
-        
+
+    }
+
+    private boolean moreDataToRead(Sheet sheet, int firstColumn, int firstRow, int lastRow, int rowNum) {
+
+        int height = lastRow - firstRow + 1;
+        if (height > 1 && firstRow + rowNum > lastRow) {
+            return false;
+        }
+
         // check if the cell is empty
-        HSSFRow row = sheet.getRow(y + i - 1);
+        Row row = sheet.getRow(firstRow + rowNum);
         if (row == null) {
             return false;
         }
-        
-        HSSFCell cell = row.getCell((short) (x - 1));
+
+        Cell cell = row.getCell(firstColumn);
         if (cell == null) {
             return false;
         }
@@ -136,49 +151,7 @@ public class Excel {
         return !(str == null || "".equals(str));
     }
 
-    public <E> List<E> readColumn(String rangeOrStartAddress, Class<E> type) {
-
-        Object[][] arr = readBlock(rangeOrStartAddress, false, type);
-        
-        List<E> result = new LinkedList<E>();
-        for (int i = 0; i < arr.length; i++) {
-            result.add((E)arr[i][0]);
-        }
-        
-        return result;
-    }
-
-    public String namedRangeToRangeAddress(String namedRange) {
-        int namedCellIndex = getWorkbook().getNameIndex(namedRange);
-        HSSFName namedCell = getWorkbook().getNameAt(namedCellIndex);
-
-        return namedCell.getReference();
-    }
-
-    public HSSFCell getCell(String cellAddr) {
-        RangeAddress ra = new RangeAddress(cellAddr);
-
-        return workbook.getSheet(ra.getSheetName()).getRow(ra.getYPosition(ra.getFromCell()) - 1).getCell(
-                (short) (ra.getXPosition(ra.getFromCell()) - 1));
-    }
-
-    public HSSFWorkbook getWorkbook() {
+    public Workbook getWorkbook() {
         return workbook;
-    }
-
-    public void setWorkbook(HSSFWorkbook workbook) {
-        this.workbook = workbook;
-    }
-
-    public void setInputStream(InputStream inputStream) {
-        this.inputStream = inputStream;
-    }
-
-    public void setFilename(String filename) {
-        try {
-            inputStream = new FileInputStream(filename);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
     }
 }
