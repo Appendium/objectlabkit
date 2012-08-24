@@ -36,5 +36,9 @@
       </plugin>
     </plugins>
   </build>
+  
+  <scm>
+    <developerConnection>scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk/utils-excel/</developerConnection>
+  </scm>
 
 </project>
