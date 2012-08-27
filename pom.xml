@@ -3,12 +3,20 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>net.objectlab.kit</groupId>
-  <artifactId>objectlab-utils-excel</artifactId>
-  <version>1.1-SNAPSHOT</version>
+  <artifactId>utils-excel</artifactId>
+  <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>ObjectLab Kit - Excel Utility</name>
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+  </parent>
 
+  <name>ObjectLab Kit - Excel Utility</name>
+  <description>A utility which makes reading ranges, columns and cells from Excel files a breeze. Just use an excel style reference like 'SheetName'!A1:E20</description>
+  <url>http://</url>
+    
   <dependencies>
     <dependency>
       <groupId>org.apache.poi</groupId>
@@ -37,25 +45,14 @@
   </build>
   
   <scm>
+    <connection>scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk/utils-excel/</connection>
     <developerConnection>scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk/utils-excel/</developerConnection>
+    <url>https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk/utils-excel/</url>
   </scm>
   
   <issueManagement>
     <system>sourceforge</system>
     <url>https://sourceforge.net/tracker/?group_id=175139</url>
   </issueManagement>
-
-  <distributionManagement>
-    <repository>
-      <id>sonatype-nexus-staging</id>
-      <name>Sonatype Nexus Staging Repository</name>
-      <url>http://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-    </repository>
-    <snapshotRepository>
-      <id>sonatype-nexus-snapshots</id>
-      <name>Sonatype Nexus Snapshots Repository</name>
-      <url>http://oss.sonatype.org/content/repositories/snapshots/</url>
-    </snapshotRepository>
-  </distributionManagement>
 
 </project>
