@@ -19,6 +19,10 @@ public class Excel {
 
     private void init(InputStream inputStream) throws RuntimeException {
 
+        if (inputStream == null) {
+            throw new NullPointerException("inputStream cannot be null");
+        }
+
         try {
             workbook = WorkbookFactory.create(inputStream);
         } catch (Exception e) {
@@ -62,12 +66,16 @@ public class Excel {
      * @param range either the range of the entire block to be read, or just the
      *              top row of the cells, in which case the method will stop when
      *              the first empty cell is reached in the first column
-     * @param colTypes An array of data types expected at each column.
+     * @param columnTypes An array of data types expected at each column.
      *                 If this array is shorter than the number of column, then the last
      *                 data type is used until the end. So if only one value is given,
      *                 then that is used for the entire block.
      */
-    public Object[][] readBlock(String range, Class... colTypes) {
+    public Object[][] readBlock(String range, Class... columnTypes) {
+
+        if (columnTypes == null || columnTypes.length == 0) {
+            throw new RuntimeException("columnTypes cannot be null / empty");
+        }
 
         CellRangeAddress cra = CellRangeAddress.valueOf(range);
         AreaReference ar = new AreaReference(range);
@@ -93,10 +101,10 @@ public class Excel {
             for (int colNum = 0; colNum < width; colNum++) {
 
                 Class colType;
-                if (colNum < colTypes.length - 1) {
-                    colType = colTypes[colNum];
+                if (colNum < columnTypes.length - 1) {
+                    colType = columnTypes[colNum];
                 } else {
-                    colType = colTypes[colTypes.length - 1];
+                    colType = columnTypes[columnTypes.length - 1];
                 }
 
                 Cell cell = row.getCell(firstColumn + colNum);
