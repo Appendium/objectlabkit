@@ -14,8 +14,11 @@
   </parent>
 
   <name>ObjectLab Kit - Excel Utility</name>
-  <description>A utility which makes reading ranges, columns and cells from Excel files a breeze. Just use an excel style reference like 'SheetName'!A1:E20</description>
-  <url>http://</url>
+  <description>
+    A utility which makes reading ranges, columns and cells from Excel files a breeze. 
+    Just use an excel style reference like 'SheetName'!A1:E20
+  </description>
+  <url>http://objectlabkit.sourceforge.net/</url>
     
   <dependencies>
     <dependency>
