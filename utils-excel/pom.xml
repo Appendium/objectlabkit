@@ -4,7 +4,7 @@
 
   <groupId>net.objectlab.kit</groupId>
   <artifactId>utils-excel</artifactId>
-  <version>1.0</version>
+  <version>1.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <parent>
@@ -45,9 +45,9 @@
   </build>
   
   <scm>
-    <connection>scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/tags/utils-excel-1.0</connection>
-    <developerConnection>scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/tags/utils-excel-1.0</developerConnection>
-    <url>https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/tags/utils-excel-1.0</url>
+    <connection>scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk/utils-excel/</connection>
+    <developerConnection>scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk/utils-excel/</developerConnection>
+    <url>https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk/utils-excel/</url>
   </scm>
   
   <issueManagement>
