@@ -73,7 +73,7 @@ public interface DateCalculator<E> {
      *            date is also updated and may be moved if it falls on a non
      *            working day (holiday/weekend).
      */
-    void setStartDate(final E startDate);
+    DateCalculator<E> setStartDate(final E startDate);
 
     /**
      * Gives the startDate of this calculator (immutable once set via
@@ -124,7 +124,7 @@ public interface DateCalculator<E> {
      *            the holiday calendar (if null, no holidays taken into account)
      * @since 1.1.0
      */
-    void setHolidayCalendar(final HolidayCalendar<E> calendar);
+    DateCalculator<E> setHolidayCalendar(final HolidayCalendar<E> calendar);
 
     // -----------------------------------------------------------------------
     //
@@ -148,10 +148,10 @@ public interface DateCalculator<E> {
      * @param week
      *            an immutable definition of a week.
      */
-    void setWorkingWeek(final WorkingWeek week);
+    DateCalculator<E> setWorkingWeek(final WorkingWeek week);
 
     /**
-     * Gives a current business date, it may be moved acording to the
+     * Gives a current business date, it may be moved according to the
      * HolidayHandler algorithm if it falls on a non-working day.
      * 
      * @param date
@@ -274,7 +274,7 @@ public interface DateCalculator<E> {
      * that can act as Forward if positive and Backward if negative).
      * @param increment
      */
-    void setCurrentIncrement(final int increment);
+    DateCalculator<E> setCurrentIncrement(final int increment);
 }
 
 /*

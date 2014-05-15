@@ -86,8 +86,9 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
     }
 
     // TODO throw an exception if the type is incorrect
-    public void setWorkingWeek(final WorkingWeek week) {
+    public DateCalculator<YearMonthDay> setWorkingWeek(final WorkingWeek week) {
         delegate.setWorkingWeek(week);
+        return this;
     }
 
     // -----------------------------------------------------------------------
@@ -123,11 +124,12 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
     }
 
     @Override
-    public final void setStartDate(final YearMonthDay startDate) {
+    public final DateCalculator<YearMonthDay> setStartDate(final YearMonthDay startDate) {
         if (delegate != null) {
             delegate.setStartDate(startDate != null ? startDate.toLocalDate() : null);
         }
         super.setStartDate(startDate);
+        return this;
     }
 
     @Override

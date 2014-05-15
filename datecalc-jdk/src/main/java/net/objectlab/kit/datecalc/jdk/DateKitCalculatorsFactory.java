@@ -41,7 +41,7 @@ import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_PREC
 import java.util.Date;
 
 import net.objectlab.kit.datecalc.common.AbstractKitCalculatorsFactory;
-import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 import net.objectlab.kit.datecalc.common.IMMDateCalculator;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
@@ -65,6 +65,27 @@ public class DateKitCalculatorsFactory extends AbstractKitCalculatorsFactory<Dat
         return DEFAULT;
     }
 
+    public static DateDateCalculator forwardCalculator(final String name) {
+        return DEFAULT.getDateCalculator(name, HolidayHandlerType.FORWARD);
+    }
+    
+    public static DateDateCalculator backwardCalculator(final String name) {
+        return DEFAULT.getDateCalculator(name, HolidayHandlerType.BACKWARD);
+    }
+    
+    public static DateDateCalculator forwardUnlessMovingBackCalculator(final String name) {
+        return DEFAULT.getDateCalculator(name, HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
+    }
+    
+    public static DateDateCalculator modifiedFollowingCalculator(final String name) {
+        return DEFAULT.getDateCalculator(name, HolidayHandlerType.MODIFIED_FOLLOWING);
+    }
+    
+    public static DateDateCalculator modifiedPrecedingCalculator(final String name) {
+        return DEFAULT.getDateCalculator(name, HolidayHandlerType.MODIFIED_PRECEDING);
+    }
+
+
     // -----------------------------------------------------------------------
     //
     //    ObjectLab, world leaders in the design and development of bespoke 
@@ -79,7 +100,7 @@ public class DateKitCalculatorsFactory extends AbstractKitCalculatorsFactory<Dat
      * @see net.objectlab.kit.datecalc.jdk.JdkDateCalculatorFactory#getDateCalculator(java.lang.String,
      *      java.lang.String)
      */
-    public DateCalculator<Date> getDateCalculator(final String name, final String holidayHandlerType) {
+    public DateDateCalculator getDateCalculator(final String name, final String holidayHandlerType) {
         final DateDateCalculator cal = new DateDateCalculator();
         cal.setName(name);
         setHolidays(name, cal);

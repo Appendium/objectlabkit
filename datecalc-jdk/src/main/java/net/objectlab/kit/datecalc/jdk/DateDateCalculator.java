@@ -87,8 +87,9 @@ public class DateDateCalculator extends AbstractDateCalculator<Date> {
     // -----------------------------------------------------------------------
 
     // TODO throw an exception if the type is incorrect
-    public void setWorkingWeek(final WorkingWeek week) {
+    public DateCalculator<Date> setWorkingWeek(final WorkingWeek week) {
         delegate.setWorkingWeek(week);
+        return this;
     }
 
     /**
@@ -116,11 +117,12 @@ public class DateDateCalculator extends AbstractDateCalculator<Date> {
     }
 
     @Override
-    public final void setStartDate(final Date startDate) {
+    public final DateCalculator<Date> setStartDate(final Date startDate) {
         if (delegate != null) {
             delegate.setStartDate(startDate != null ? Utils.getCal(startDate) : null);
         }
         super.setStartDate(startDate);
+        return this;
     }
 
     @Override

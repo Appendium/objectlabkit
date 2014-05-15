@@ -71,8 +71,9 @@ public class CalendarDateCalculator extends AbstractDateCalculator<Calendar> {
         setStartDate(date);
     }
 
-    public void setWorkingWeek(final WorkingWeek week) {
+    public DateCalculator<Calendar> setWorkingWeek(final WorkingWeek week) {
         workingWeek = week;
+        return this;
     }
 
     /**

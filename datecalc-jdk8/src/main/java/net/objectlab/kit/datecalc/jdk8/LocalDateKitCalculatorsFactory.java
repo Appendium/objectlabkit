@@ -64,6 +64,28 @@ public class LocalDateKitCalculatorsFactory extends AbstractKitCalculatorsFactor
         return DEFAULT;
     }
 
+    public static LocalDateCalculator forwardCalculator(final String name) {
+        return DEFAULT.getDateCalculator(name, HolidayHandlerType.FORWARD);
+    }
+    
+    public static LocalDateCalculator backwardCalculator(final String name) {
+        return DEFAULT.getDateCalculator(name, HolidayHandlerType.BACKWARD);
+    }
+    
+    public static LocalDateCalculator forwardUnlessMovingBackCalculator(final String name) {
+        return DEFAULT.getDateCalculator(name, HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
+    }
+    
+    public static LocalDateCalculator modifiedFollowingCalculator(final String name) {
+        return DEFAULT.getDateCalculator(name, HolidayHandlerType.MODIFIED_FOLLOWING);
+    }
+    
+    public static LocalDateCalculator modifiedPrecedingCalculator(final String name) {
+        return DEFAULT.getDateCalculator(name, HolidayHandlerType.MODIFIED_PRECEDING);
+    }
+    
+    
+    
     // -----------------------------------------------------------------------
     //
     //    ObjectLab, world leaders in the design and development of bespoke 

@@ -32,6 +32,7 @@
  */
 package net.objectlab.kit.datecalc.jdk8;
 
+import java.util.Calendar;
 import java.util.Collections;
 
 import net.objectlab.kit.datecalc.common.AbstractDateCalculator;
@@ -73,12 +74,12 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
      * @param week the JodaWorkingWeek
      * @throws IllegalArgumentException if the week is not a JodaWorkingWeek.
      */
-    public void setWorkingWeek(final WorkingWeek week) {
+    public DateCalculator<LocalDate> setWorkingWeek(final WorkingWeek week) {
         if (week instanceof Jdk8WorkingWeek) {
             workingWeek = (Jdk8WorkingWeek) week;
-        } else {
-            throw new IllegalArgumentException("Please give an instance of JodaWorkingWeek");
+            return this;
         }
+        throw new IllegalArgumentException("Please give an instance of JodaWorkingWeek");
     }
 
     /**
@@ -91,9 +92,9 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
@@ -123,8 +124,8 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
     }
 
     @Override
-    protected DateCalculator<LocalDate> createNewCalculator(final String name, final LocalDate startDate,
-            final HolidayCalendar<LocalDate> holidays, final HolidayHandler<LocalDate> handler) {
+    protected DateCalculator<LocalDate> createNewCalculator(final String name, final LocalDate startDate, final HolidayCalendar<LocalDate> holidays,
+            final HolidayHandler<LocalDate> handler) {
         return new LocalDateCalculator(name, startDate, holidays, handler);
     }
 

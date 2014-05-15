@@ -63,7 +63,7 @@ public interface HolidayCalendar<E> extends Serializable {
      * Takes a copy of the holidays and store it in an immutable
      * set.
      */
-    void setHolidays(final Set<E> holidays);
+    HolidayCalendar<E> setHolidays(final Set<E> holidays);
 
     /**
      * Returns the earliest date covered by this HolidayCalendar.
@@ -75,7 +75,7 @@ public interface HolidayCalendar<E> extends Serializable {
      * Sets the earliest date (must be <= first date in holiday set)
      * @param earlyBoundary
      */
-    void setEarlyBoundary(final E earlyBoundary);
+    HolidayCalendar<E> setEarlyBoundary(final E earlyBoundary);
 
     /**
      * Returns the latest date covered by this HolidayCalendar.
@@ -87,7 +87,7 @@ public interface HolidayCalendar<E> extends Serializable {
      * Sets the latest date (must be <= first date in holiday set)
      * @param lateBoundary
      */
-    void setLateBoundary(final E lateBoundary);
+    HolidayCalendar<E> setLateBoundary(final E lateBoundary);
     
     /**
      * Check if a date is a holiday.

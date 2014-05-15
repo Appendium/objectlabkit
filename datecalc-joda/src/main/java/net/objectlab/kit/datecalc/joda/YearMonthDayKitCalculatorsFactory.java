@@ -39,6 +39,7 @@ import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_FOLL
 import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_PRECEDING;
 import net.objectlab.kit.datecalc.common.AbstractKitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 import net.objectlab.kit.datecalc.common.IMMDateCalculator;
 import net.objectlab.kit.datecalc.common.KitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
@@ -56,14 +57,34 @@ import org.joda.time.YearMonthDay;
  */
 public class YearMonthDayKitCalculatorsFactory extends AbstractKitCalculatorsFactory<YearMonthDay> {
 
-    private static final KitCalculatorsFactory<YearMonthDay> DEFAULT = new YearMonthDayKitCalculatorsFactory();
+    private static final YearMonthDayKitCalculatorsFactory DEFAULT = new YearMonthDayKitCalculatorsFactory();
 
     private static final PeriodCountCalculator<YearMonthDay> PCC = new YearMonthDayPeriodCountCalculator();
 
     private static final IMMDateCalculator<YearMonthDay> IMMDC = new YearMonthDayIMMDateCalculator();
 
-    public static KitCalculatorsFactory<YearMonthDay> getDefaultInstance() {
+    public static YearMonthDayKitCalculatorsFactory getDefaultInstance() {
         return DEFAULT;
+    }
+    
+    public static YearMonthDayDateCalculator forwardCalculator(final String name) {
+        return DEFAULT.getDateCalculator(name, HolidayHandlerType.FORWARD);
+    }
+    
+    public static YearMonthDayDateCalculator backwardCalculator(final String name) {
+        return DEFAULT.getDateCalculator(name, HolidayHandlerType.BACKWARD);
+    }
+    
+    public static YearMonthDayDateCalculator forwardUnlessMovingBackCalculator(final String name) {
+        return DEFAULT.getDateCalculator(name, HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
+    }
+    
+    public static YearMonthDayDateCalculator modifiedFollowingCalculator(final String name) {
+        return DEFAULT.getDateCalculator(name, HolidayHandlerType.MODIFIED_FOLLOWING);
+    }
+    
+    public static YearMonthDayDateCalculator modifiedPrecedingCalculator(final String name) {
+        return DEFAULT.getDateCalculator(name, HolidayHandlerType.MODIFIED_PRECEDING);
     }
 
     // -----------------------------------------------------------------------
@@ -86,7 +107,7 @@ public class YearMonthDayKitCalculatorsFactory extends AbstractKitCalculatorsFac
      * @return a new DateCalculator
      * @throws IllegalArgumentException if name is null
      */
-    public DateCalculator<YearMonthDay> getDateCalculator(final String name, final String holidayHandlerType) {
+    public YearMonthDayDateCalculator getDateCalculator(final String name, final String holidayHandlerType) {
         if (name == null) {
             throw new IllegalArgumentException("name cannot be null, use anything.");
         }

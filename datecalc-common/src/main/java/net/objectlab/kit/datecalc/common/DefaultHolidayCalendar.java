@@ -138,8 +138,9 @@ public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
      * 
      * @see net.objectlab.kit.datecalc.common.HolidayCalendar#setEarlyBoundary(java.lang.Object)
      */
-    public void setEarlyBoundary(final E earlyBoundary) {
+    public HolidayCalendar<E> setEarlyBoundary(final E earlyBoundary) {
         this.earlyBoundary = earlyBoundary;
+        return this;
     }
 
     /*
@@ -148,11 +149,11 @@ public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
      * @see net.objectlab.kit.datecalc.common.HolidayCalendar#setHolidays(java.util.Set)
      */
     @SuppressWarnings("unchecked")
-    public final void setHolidays(final Set<E> holidays) {
+    public final HolidayCalendar<E> setHolidays(final Set<E> holidays) {
 
         if (holidays == null) {
             this.holidays = Collections.emptySet();
-            return;
+            return this;
         }
 
         Set<E> newSet = null;
@@ -176,6 +177,7 @@ public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
 
         newSet.addAll(holidays);
         this.holidays = Collections.unmodifiableSet(newSet);
+        return this;
     }
 
     /*
@@ -183,8 +185,9 @@ public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
      * 
      * @see net.objectlab.kit.datecalc.common.HolidayCalendar#setLateBoundary(java.lang.Object)
      */
-    public void setLateBoundary(final E lateBoundary) {
+    public HolidayCalendar<E> setLateBoundary(final E lateBoundary) {
         this.lateBoundary = lateBoundary;
+        return this;
     }
 
     public boolean isHoliday(final E date) {

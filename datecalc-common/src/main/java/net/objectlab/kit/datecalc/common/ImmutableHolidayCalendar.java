@@ -67,7 +67,7 @@ public class ImmutableHolidayCalendar<E> implements HolidayCalendar<E> {
      * @see net.objectlab.kit.datecalc.common.HolidayCalendar#setEarlyBoundary(java.lang.Object)
      * @throws UnsupportedOperationException You cannot modify the early boundary, you need to use a new HolidayCalendar.
      */
-    public void setEarlyBoundary(final E earlyBoundary) {
+    public HolidayCalendar<E> setEarlyBoundary(final E earlyBoundary) {
         throw new UnsupportedOperationException("You cannot modify the early boundary, you need to use a new HolidayCalendar.");
     }
 
@@ -76,7 +76,7 @@ public class ImmutableHolidayCalendar<E> implements HolidayCalendar<E> {
      * @see net.objectlab.kit.datecalc.common.HolidayCalendar#setHolidays(java.util.Set)
      * @throws UnsupportedOperationException("You cannot modify the holidays, you need to use a new HolidayCalendar.");
      */
-    public void setHolidays(final Set<E> holidays) {
+    public HolidayCalendar<E> setHolidays(final Set<E> holidays) {
         throw new UnsupportedOperationException("You cannot modify the holidays, you need to use a new HolidayCalendar.");
     }
 
@@ -85,7 +85,7 @@ public class ImmutableHolidayCalendar<E> implements HolidayCalendar<E> {
      * @see net.objectlab.kit.datecalc.common.HolidayCalendar#setLateBoundary(java.lang.Object)
      * @throws UnsupportedOperationException You cannot modify the late boundary, you need to use a new HolidayCalendar.
      */
-    public void setLateBoundary(final E lateBoundary) {
+    public HolidayCalendar<E> setLateBoundary(final E lateBoundary) {
         throw new UnsupportedOperationException("You cannot modify the early boundary, you need to use a new HolidayCalendar.");
     }
 

@@ -85,7 +85,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     }
 
     @SuppressWarnings("unchecked")
-    public void setHolidayCalendar(final HolidayCalendar<E> calendar) {
+    public DateCalculator<E> setHolidayCalendar(final HolidayCalendar<E> calendar) {
         if (calendar != null) {
             if (calendar instanceof ImmutableHolidayCalendar) {
                 holidayCalendar = calendar;
@@ -95,6 +95,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         } else {
             holidayCalendar = new ImmutableHolidayCalendar<E>(new DefaultHolidayCalendar<E>());
         }
+        return this;
     }
 
     public String getName() {
@@ -113,9 +114,10 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     }
 
     /** Set both start date and current date */
-    public void setStartDate(final E startDate) {
+    public DateCalculator<E> setStartDate(final E startDate) {
         this.startDate = startDate;
         setCurrentBusinessDate(startDate);
+        return this;
     }
 
     public E getCurrentBusinessDate() {
@@ -246,8 +248,9 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
 
     protected abstract DateCalculator<E> moveByMonths(int months);
 
-    public void setHolidayHandler(final HolidayHandler<E> holidayHandler) {
+    public DateCalculator<E> setHolidayHandler(final HolidayHandler<E> holidayHandler) {
         this.holidayHandler = holidayHandler;
+        return this;
     }
 
     public String getHolidayHandlerType() {
@@ -389,8 +392,9 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     /**
      * @param currentIncrement The currentIncrement to set.
      */
-    public void setCurrentIncrement(final int currentIncrement) {
+    public DateCalculator<E> setCurrentIncrement(final int currentIncrement) {
         this.currentIncrement = currentIncrement;
+        return this;
     }
 
     /**
