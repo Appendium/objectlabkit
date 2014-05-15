@@ -76,7 +76,7 @@ public interface KitCalculatorsFactory<E> {
      * @param holidaysCalendar
      *            the holiday calendar (non-working days with boundaries).
      */
-    void registerHolidays(String calendarName, HolidayCalendar<E> holidaysCalendar);
+    KitCalculatorsFactory<E> registerHolidays(String calendarName, HolidayCalendar<E> holidaysCalendar);
     
     /**
      * @return true if the holiday calendar name is registered.
@@ -98,12 +98,12 @@ public interface KitCalculatorsFactory<E> {
      * @param calendarName
      *          the calendar name to unregister.
      */
-    void unregisterHolidayCalendar(String calendarName);
+    KitCalculatorsFactory<E> unregisterHolidayCalendar(String calendarName);
     
     /**
      * unregister all holiday calendars;
      */
-    void unregisterAllHolidayCalendars();
+    KitCalculatorsFactory<E> unregisterAllHolidayCalendars();
     // -----------------------------------------------------------------------
     //
     //    ObjectLab, world leaders in the design and development of bespoke 

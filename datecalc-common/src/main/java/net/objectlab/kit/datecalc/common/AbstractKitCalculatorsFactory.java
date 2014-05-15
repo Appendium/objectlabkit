@@ -66,7 +66,7 @@ public abstract class AbstractKitCalculatorsFactory<E> implements KitCalculators
      * @param holidaysCalendar
      *            a calendar containing a set of holidays (non-working days).
      */
-    public void registerHolidays(final String name, final HolidayCalendar<E> holidaysCalendar) {
+    public KitCalculatorsFactory<E> registerHolidays(final String name, final HolidayCalendar<E> holidaysCalendar) {
         if (name != null) {
             final Set<E> hol = new HashSet<E>();
             if (holidaysCalendar != null && holidaysCalendar.getHolidays() != null) {
@@ -79,6 +79,7 @@ public abstract class AbstractKitCalculatorsFactory<E> implements KitCalculators
             }
             this.holidays.put(name, new ImmutableHolidayCalendar<E>(holidaysCalendar));
         }
+        return this;
     }
 
     /**
@@ -121,15 +122,17 @@ public abstract class AbstractKitCalculatorsFactory<E> implements KitCalculators
      * @param calendarName
      *          the calendar name to unregister.
      */
-    public void unregisterHolidayCalendar(final String calendarName) {
+    public KitCalculatorsFactory<E> unregisterHolidayCalendar(final String calendarName) {
         holidays.remove(calendarName);
+        return this;
     }
 
     /**
      * unregister all holiday calendars;
      */
-    public void unregisterAllHolidayCalendars() {
+    public KitCalculatorsFactory<E> unregisterAllHolidayCalendars() {
         holidays.clear();
+        return this;
     }
 }
 
