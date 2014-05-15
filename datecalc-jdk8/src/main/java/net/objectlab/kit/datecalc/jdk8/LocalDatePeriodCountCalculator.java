@@ -30,16 +30,15 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package net.objectlab.kit.datecalc.joda;
+package net.objectlab.kit.datecalc.jdk8;
 
+import java.time.LocalDate;
 import java.time.Month;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAdjusters;
 
 import net.objectlab.kit.datecalc.common.PeriodCountBasis;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
-
-import org.joda.time.LocalDate;
-import org.joda.time.Period;
-import org.joda.time.PeriodType;
 
 /**
  * Joda <code>LocalDatePeriod</code> based implementation of the
@@ -68,8 +67,7 @@ public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<Loc
             diff = diff360EIsma(start, end);
             break;
         default:
-            final Period p = new Period(start, end, PeriodType.days());
-            diff = p.getDays();
+            diff = (int) ChronoUnit.DAYS.between(start, end);
         }
 
         return diff;
@@ -84,26 +82,25 @@ public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<Loc
         if (dayStart == MONTH_31_DAYS) {
             dayStart = MONTH_30_DAYS;
         }
-        return (end.getYear() - start.getYear()) * YEAR_360 + (end.getMonthOfYear() - start.getMonthOfYear()) * MONTH_30_DAYS + dayEnd - dayStart;
+        return (end.getYear() - start.getYear()) * YEAR_360 + (end.getMonthValue() - start.getMonthValue()) * MONTH_30_DAYS + dayEnd - dayStart;
     }
 
+    // See https://en.wikipedia.org/wiki/Day_count_convention#30E.2F360_ISDA
     private int diff360EIsda(final LocalDate start, final LocalDate end) {
         if (start.equals(end)) {
             return 0;
         }
         int dayStart = start.getDayOfMonth();
         int dayEnd = end.getDayOfMonth();
-        
-        if (start.dayOfMonth().getMaximumValue() == dayStart) {
-        	dayStart = MONTH_30_DAYS;
+        if (start.getMonth().length(start.isLeapYear()) == dayStart) {
+            dayStart = MONTH_30_DAYS;
         }
-        if ((end.getMonthOfYear() != 2 && end.dayOfMonth().getMaximumValue() == dayEnd)) {
-        	dayEnd = MONTH_30_DAYS;
+        if (end.getMonth() != Month.FEBRUARY && end.getMonth().length(end.isLeapYear()) == dayEnd) {
+            dayEnd = MONTH_30_DAYS;
         }
-
-        return (end.getYear() - start.getYear()) * YEAR_360 + (end.getMonthOfYear() - start.getMonthOfYear()) * MONTH_30_DAYS + dayEnd - dayStart;
+        return (end.getYear() - start.getYear()) * YEAR_360 + (end.getMonthValue() - start.getMonthValue()) * MONTH_30_DAYS + dayEnd - dayStart;
     }
-    
+
     private int diffConv30v360(final LocalDate start, final LocalDate end) {
         int dayStart = start.getDayOfMonth();
         int dayEnd = end.getDayOfMonth();
@@ -113,14 +110,14 @@ public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<Loc
         if (dayStart == MONTH_31_DAYS) {
             dayStart = MONTH_30_DAYS;
         }
-        return (end.getYear() - start.getYear()) * YEAR_360 + (end.getMonthOfYear() - start.getMonthOfYear()) * MONTH_30_DAYS + dayEnd - dayStart;
+        return (end.getYear() - start.getYear()) * YEAR_360 + (end.getMonthValue() - start.getMonthValue()) * MONTH_30_DAYS + dayEnd - dayStart;
     }
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
@@ -136,13 +133,13 @@ public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<Loc
             final int startYear = start.getYear();
             final int endYear = end.getYear();
             if (startYear != endYear) {
-                final LocalDate endOfStartYear = start.dayOfYear().withMaximumValue();
+
+                final LocalDate endOfStartYear = start.with(TemporalAdjusters.lastDayOfYear());
                 final LocalDate startOfEndYear = end.withDayOfYear(1);
 
-                final int diff1 = new Period(start, endOfStartYear, PeriodType.days()).getDays();
-                final int diff2 = new Period(startOfEndYear, end, PeriodType.days()).getDays();
-                diff = ((diff1 + 1.0)) / start.dayOfYear().getMaximumValue() + ((endYear - startYear - 1.0)) + ((double) (diff2))
-                        / (double) end.dayOfYear().getMaximumValue();
+                final long diff1 = ChronoUnit.DAYS.between(start, endOfStartYear);
+                final long diff2 = ChronoUnit.DAYS.between(startOfEndYear, end);
+                diff = ((diff1 + 1.0)) / start.lengthOfYear() + ((endYear - startYear - 1.0)) + ((double) (diff2)) / (double) end.lengthOfYear();
             }
             break;
 
@@ -168,16 +165,13 @@ public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<Loc
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
  * 
- * Based in London, we are world leaders in the design and development 
- * of bespoke applications for the securities financing markets.
+ * Based in London, we are world leaders in the design and development of
+ * bespoke applications for the securities financing markets.
  * 
- * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
- *           ___  _     _           _   _          _
- *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
- *         | | | | '_ \| |/ _ \/ __| __| |   / _` | '_ \
- *         | |_| | |_) | |  __/ (__| |_| |__| (_| | |_) |
- *          \___/|_.__// |\___|\___|\__|_____\__,_|_.__/
- *                   |__/
- *
- *                     www.ObjectLab.co.uk
+ * <a href="http://www.objectlab.co.uk/open">Click here to learn more about
+ * us</a> ___ _ _ _ _ _ / _ \| |__ (_) ___ ___| |_| | __ _| |__ | | | | '_ \| |/
+ * _ \/ __| __| | / _` | '_ \ | |_| | |_) | | __/ (__| |_| |__| (_| | |_) |
+ * \___/|_.__// |\___|\___|\__|_____\__,_|_.__/ |__/
+ * 
+ * www.ObjectLab.co.uk
  */

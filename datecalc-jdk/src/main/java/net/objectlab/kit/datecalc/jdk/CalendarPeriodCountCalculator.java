@@ -90,15 +90,17 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
     }
 
     private int calculateConv360EIsda(final Calendar start, final Calendar end) {
-        int diff;
+        if (start.equals(end)) {
+            return 0;
+        }
+    	int diff;
         int dayStart = start.get(Calendar.DAY_OF_MONTH);
         int dayEnd = end.get(Calendar.DAY_OF_MONTH);
-        final int monthStart = start.get(Calendar.MONTH);
-        if ((monthStart == 2 && start.getActualMaximum(Calendar.DAY_OF_MONTH) == dayStart) || dayEnd == MONTH_31_DAYS) {
-            dayEnd = MONTH_30_DAYS;
+        if (start.getActualMaximum(Calendar.DAY_OF_MONTH) == dayStart) {
+        	dayStart = MONTH_30_DAYS;
         }
-        if (dayStart == MONTH_31_DAYS) {
-            dayStart = MONTH_30_DAYS;
+        if (end.get(Calendar.MONTH)!=Calendar.FEBRUARY && end.getActualMaximum(Calendar.DAY_OF_MONTH) == dayEnd) {
+        	dayEnd = MONTH_30_DAYS;
         }
 
         diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * YEAR_360 + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * MONTH_30_DAYS + dayEnd

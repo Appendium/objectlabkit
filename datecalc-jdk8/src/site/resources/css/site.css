@@ -1,0 +1,30 @@
+#banner {
+    background: transparent url(../../images/banner_background.jpg) repeat scroll 0 0;
+    height: 80px;
+}
+
+h2 {
+    color: #2872B4;
+}
+
+h3 {
+    color: #2872B4;
+    background-color: #FFFFFF;
+    background-image: url(../../images/h3_white.png);
+    border-bottom: 1px solid #CCCCCC;
+}
+
+h4 {
+    color: #2872B4;
+    font-size:12px;
+    font-weight:bold;
+}
+
+#navcolumn h5 {
+    color: #2872B4;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+#footer {
+    border-top: 1px solid #2872B4;
+}

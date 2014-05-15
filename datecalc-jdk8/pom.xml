@@ -4,24 +4,19 @@
   <parent>
     <groupId>net.objectlab.kit</groupId>
     <artifactId>kit-parent</artifactId>
-    <version>1.3.0-SNAPSHOT</version>
+  <version>1.3.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>datecalc-joda</artifactId>
+  <artifactId>datecalc-jdk8</artifactId>
   <packaging>bundle</packaging>
 
-  <name>Date Calculator for Joda</name>
-  <description>Date Calculator methods for Joda</description>
+  <name>Date Calculator for JDK8</name>
+  <description>Date Calculator methods for JDK8</description>
 
   <dependencies>
     <dependency>
       <groupId>net.objectlab.kit</groupId>
       <artifactId>datecalc-common</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>joda-time</groupId>
-      <artifactId>joda-time</artifactId>
-      <version>1.6</version>
     </dependency>
     <dependency>
       <groupId>net.objectlab.kit</groupId>
@@ -33,6 +28,14 @@
 
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
       <!-- UNIT tests -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

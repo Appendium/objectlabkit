@@ -1,0 +1,33 @@
+<document>
+
+  <properties>
+    <author email="kit@objectlab.co.uk">Benoit Xhenseval</author>
+    <title>DateCalc JODA</title>
+  </properties>
+
+  <head>
+    <meta name="description" content="ObjectLab Kit offers free and open source Date calculators, released under the business-friendly Apache 2.0 license."/>
+    <meta name="keywords" content="Date calculator, IMM Dates, Period Calculator, Financial Calendar, Business Calendar, java, open source" />
+    <meta name="Subject" content="Date Calculators" />
+    <meta name="Copyright" content="ObjectLab Financial Ltd" />
+    <meta name="Language" content="English" />
+    <meta name="Designer" content="ObjectLab Financial Ltd" />
+    <meta name="Distribution" content="Global" />
+    <meta name="robots" content="ALL"/>
+    <meta name="Revisit-After" content="20 Days" />
+  </head>
+  
+  <body>
+  
+    <section name="DateCalc JODA Introduction">
+      <p>
+         DateCalc Joda provides an implementation based on <a href="http://joda-time.sourceforge.net">Joda Time.</a>
+         It requires Joda Time 1.3+, the website is: <a href="http://joda-time.sourceforge.net">http://joda-time.sourceforge.net</a>.
+      </p>
+      <p>Check out the <a href="../apidocs/index.html?net/objectlab/kit/datecalc/joda/package-summary.html">UML diagrams and JavaDocs here</a>.</p>
+      <p>Also, take a look at this module's <a href="project-reports.html">Project Reports</a> menu on the left, and the aggregated <a href="../project-reports.html">Project Reports</a>.</p>
+    </section>
+
+  </body>
+  
+</document>

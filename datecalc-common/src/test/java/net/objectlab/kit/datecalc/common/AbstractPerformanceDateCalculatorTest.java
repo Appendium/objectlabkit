@@ -120,14 +120,14 @@ public abstract class AbstractPerformanceDateCalculatorTest<E> extends AbstractD
     @Override
     protected HolidayCalendar<E> createUKHolidayCalendar() {
         HolidayCalendar<E> cal = super.createUKHolidayCalendar();
-        cal.setLateBoundary(newDate("10000-12-31"));
+        cal.setLateBoundary(newDate("9999-12-31"));
         return cal;
     }
 
     @Override
     protected HolidayCalendar<E> createUSHolidayCalendar() {
         HolidayCalendar<E> cal = super.createUSHolidayCalendar();
-        cal.setLateBoundary(newDate("10000-12-31"));
+        cal.setLateBoundary(newDate("9999-12-31"));
         return cal;
     }
 }
