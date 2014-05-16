@@ -32,8 +32,6 @@
  */
 package net.objectlab.kit.datecalc.joda;
 
-import java.time.Month;
-
 import net.objectlab.kit.datecalc.common.PeriodCountBasis;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
