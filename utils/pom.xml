@@ -67,6 +67,8 @@
     <url>https://sourceforge.net/tracker/?group_id=175139</url>
   </issueManagement>
 
+
+<!-- 
   <distributionManagement>
     <repository>
       <id>sonatype-nexus-staging</id>
@@ -79,6 +81,7 @@
       <url>http://oss.sonatype.org/content/repositories/snapshots/</url>
     </snapshotRepository>
   </distributionManagement>
+ -->
   
 
 </project>

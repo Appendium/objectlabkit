@@ -23,6 +23,10 @@
     
     <p style="margin-top:10px; margin-bottom:0; padding-bottom:0; text-align:center; line-height:0"><a href="http://feeds.feedburner.com/~r/ObjectlabOpenSourceNews/~6/1"><img src="http://feeds.feedburner.com/ObjectlabOpenSourceNews.1.gif" alt="ObjectLab Open Source News" style="border:0"/></a></p>
   
+    <p><b>2014-05-19</b>: version 1.3.0 is out and contains a couple of changes to make the usage of the interfaces more fluent but mainly
+    include a NEW MODULE FOR JDK8. More info on the changes <a href="changes-report.html">here</a>. Also, one of the authors is on
+     Twitter, follow your favorite Belgian at <a href="http://twitter.com/benoitx">http://twitter.com/benoitx</a>.</p>
+    
     <p><b>2010-05-10</b>: version 1.2.0 is out and contains a couple of changes, including the ability to see the registered calendar and unregistering calendars (useful if calendars are dynamic). 
     More info on the changes <a href="changes-report.html">here</a>. Also, one of the authors is on Twitter, follow your favorite Belgian at <a href="http://twitter.com/benoitx">http://twitter.com/benoitx</a>.</p>
     
