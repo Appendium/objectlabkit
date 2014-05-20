@@ -44,8 +44,6 @@ import org.joda.time.YearMonthDay;
  * moving backward until it finds a working day.
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  */
 public class YearMonthDayModifiedFollowingHandler implements HolidayHandler<YearMonthDay> {

@@ -44,8 +44,6 @@ import org.joda.time.LocalDate;
  * moving backward until it finds a working day.
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  */
 public class LocalDateModifiedFollowingHandler implements HolidayHandler<LocalDate> {

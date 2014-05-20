@@ -40,12 +40,10 @@ import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.Utils;
 
 /**
- * A Wrapper to handle any HolidayHandler<Calendar> types via a HolidayHandler<Date>
+ * A Wrapper to handle any HolidayHandler&lt;Calendar&gt; types via a HolidayHandler&lt;Date&gt;
  * delegate
  * 
  * @author Marcin Jekot
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  */
 public class HolidayHandlerDateWrapper implements HolidayHandler<Calendar> {

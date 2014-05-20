@@ -39,14 +39,12 @@ import java.util.List;
  * set of holidays, a WorkingWeek (Mon-Fri by default), a startDate and a
  * current business date. The Calculator also uses a HolidayHandler to determine
  * what to do when the calculated current Business Date falls on a weekend or
- * holiday (non-working day). The CurrentDate date is changed everytime that the
+ * holiday (non-working day). The CurrentDate date is changed every time that the
  * moveByDays or moveByBusinessDays methods are called. 'E' will be
  * parameterized to be a Date-like class, i.e. java.util.Date or
- * java.util.Calendar (and LocalDate or YearMonthDay for Joda-time).
+ * java.util.Calendar (and LocalDate or YearMonthDay for Joda-time / JDK8).
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  * @param <E>
  *            a representation of a date, typically JDK: Date, Calendar;
@@ -174,7 +172,7 @@ public interface DateCalculator<E> {
      * given in this DateCalculator.
      * 
      * @param days
-     *            number of days (can be <0 or >0)
+     *            number of days (can be &lt;0 or &gt;0)
      * @return the DateCalculator (so one can do
      *         calendar.moveByDays(-2).getCurrentBusinessDate();)
      */
@@ -188,13 +186,13 @@ public interface DateCalculator<E> {
      * to move.
      * 
      * @param businessDays
-     *            (can be <0 or >0)
+     *            (can be &lt;0 or &gt;0)
      * @return the current DateCalculator (so one can do
      *         calendar.moveByBusinessDays(2).getCurrentBusinessDate();)
      * @exception IllegalArgumentException
      *                if the HolidayHandlerType is (MODIFIED_PRECEDING or
-     *                BACKWARD) and businessDays > 0 or (MODIFIED_FOLLOWING or
-     *                FORWARD) and businessDays < 0
+     *                BACKWARD) and businessDays &gt; 0 or (MODIFIED_FOLLOWING or
+     *                FORWARD) and businessDays &lt; 0
      */
     DateCalculator<E> moveByBusinessDays(final int businessDays);
 
@@ -207,7 +205,7 @@ public interface DateCalculator<E> {
      * Late boundary).
      * 
      * @param calculator
-     *            return the same DateCalculator if calender is null or the
+     *            return the same DateCalculator if calendar is null or the
      *            original calendar (but why would you want to do that?)
      * @throws IllegalArgumentException
      *             if both calendars have different types of HolidayHandlers or

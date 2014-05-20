@@ -50,8 +50,6 @@ import net.objectlab.kit.datecalc.common.IMMPeriod;
  * {@link net.objectlab.kit.datecalc.common.IMMDateCalculator}.
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  */
 public class LocalDateIMMDateCalculator extends AbstractIMMDateCalculator<LocalDate> {

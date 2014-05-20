@@ -38,8 +38,6 @@ package net.objectlab.kit.datecalc.common;
  * or Annually.
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  */
 public enum IMMPeriod {
     /** Bi-annually March and September */

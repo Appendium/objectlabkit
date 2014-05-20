@@ -43,8 +43,6 @@ import java.util.Set;
  * DateCalculator to get the new set.
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  * @param <E>
  *            a representation of a date, typically JDK: Date, Calendar;

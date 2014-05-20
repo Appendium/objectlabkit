@@ -50,8 +50,6 @@ import java.time.LocalDate;
  * will NOT move a date, even if it falls on a holiday or weekend.
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  */
 public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {

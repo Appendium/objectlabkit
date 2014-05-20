@@ -74,7 +74,7 @@ public class ImmutableHolidayCalendar<E> implements HolidayCalendar<E> {
     /**
      * @param holidays
      * @see net.objectlab.kit.datecalc.common.HolidayCalendar#setHolidays(java.util.Set)
-     * @throws UnsupportedOperationException("You cannot modify the holidays, you need to use a new HolidayCalendar.");
+     * @throws UnsupportedOperationException You cannot modify the holidays, you need to use a new HolidayCalendar.;
      */
     public HolidayCalendar<E> setHolidays(final Set<E> holidays) {
         throw new UnsupportedOperationException("You cannot modify the holidays, you need to use a new HolidayCalendar.");

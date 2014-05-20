@@ -45,8 +45,6 @@ import java.util.Set;
  * Utilities class for <code>Date/Calendar</code> conversions
  * 
  * @author Marcin Jekot
- * @author $LastModifiedBy$
- * @version $Revision$ $Date$
  * 
  */
 public final class Utils {
@@ -139,7 +137,7 @@ public final class Utils {
      * Converts a Set of Date objects to a Set of Calendar objects.
      * 
      * @param dates
-     * @return the converted Set<Calendar>
+     * @return the converted Set&lt;Calendar&gt;
      */
     public static Set<Calendar> toCalendarSet(final Set<Date> dates) {
         final Set<Calendar> calendars = new HashSet<Calendar>();
@@ -153,7 +151,7 @@ public final class Utils {
      * Converts a Set of Date objects to a Set of Calendar objects.
      * 
      * @param dates
-     * @return the converted Set<Calendar>
+     * @return the converted Set&lt;Calendar&gt;
      */
     public static HolidayCalendar<Calendar> toHolidayCalendarSet(final HolidayCalendar<Date> dates) {
         final Set<Calendar> calendars = new HashSet<Calendar>();
@@ -169,7 +167,7 @@ public final class Utils {
      * Converts a Set of Calendar objects to a Set of Date objects
      * 
      * @param calendars
-     * @return the converset Set<Date>
+     * @return the converset Set&lt;Date&gt;
      */
     public static Set<Date> toDateSet(final Set<Calendar> calendars) {
 
@@ -185,7 +183,7 @@ public final class Utils {
      * of dates
      * 
      * @param dates
-     * @return the converted List<Date> 
+     * @return the converted List&lt;Date&gt;
      */
     public static List<Date> toDateList(final List<Calendar> dates) {
 

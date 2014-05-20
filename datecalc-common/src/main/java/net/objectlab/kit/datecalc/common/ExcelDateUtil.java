@@ -40,8 +40,6 @@ import java.util.GregorianCalendar;
  * Convert Excel Date to Jdk <code>Date</code> or <code>Calendar</code>.
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  */
 public final class ExcelDateUtil {

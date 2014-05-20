@@ -36,13 +36,11 @@ import java.util.List;
 
 /**
  * Abstract implementation in order to encapsulate all the common functionality
- * between Jdk and Joda implementations. It is parametrized on <code><E></code>
+ * between Jdk and Joda implementations. It is parameterized on &lt;E&gt;
  * but basically <code>Date</code> and <code>LocalDate</code> are the only
  * viable values for it for now.
  * 
  * @author Marcin Jekot
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  * @param <E>
  *            a representation of a date, typically JDK: Date, Calendar;

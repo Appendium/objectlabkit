@@ -49,8 +49,6 @@ import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
  * The default factory for getting Jdk <code>Date</code> based calculators.
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  */
 public class DateKitCalculatorsFactory extends AbstractKitCalculatorsFactory<Date> {

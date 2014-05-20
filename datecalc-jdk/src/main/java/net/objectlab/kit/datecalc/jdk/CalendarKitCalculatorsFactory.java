@@ -50,8 +50,6 @@ import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
  * calculators.
  * 
  * @author Marcin Jekot
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  */
 public class CalendarKitCalculatorsFactory extends AbstractKitCalculatorsFactory<Calendar> {

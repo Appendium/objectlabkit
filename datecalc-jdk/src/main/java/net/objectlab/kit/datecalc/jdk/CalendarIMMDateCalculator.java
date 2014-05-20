@@ -53,8 +53,6 @@ import net.objectlab.kit.datecalc.common.IMMPeriod;
  * {@link net.objectlab.kit.datecalc.common.IMMDateCalculator}
  * 
  * @author Marcin Jekot
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  */
 public class CalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calendar> {

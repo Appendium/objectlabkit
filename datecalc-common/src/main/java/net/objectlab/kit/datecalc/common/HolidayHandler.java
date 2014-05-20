@@ -37,8 +37,6 @@ package net.objectlab.kit.datecalc.common;
  * to the special algorithm used.
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  * @param <E>
  *            a representation of a date, typically JDK: Date, Calendar;

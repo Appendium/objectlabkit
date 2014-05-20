@@ -36,8 +36,6 @@ package net.objectlab.kit.datecalc.common;
  * enum of Tenor Codes held by a {@link Tenor}
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  */
 public enum TenorCode {

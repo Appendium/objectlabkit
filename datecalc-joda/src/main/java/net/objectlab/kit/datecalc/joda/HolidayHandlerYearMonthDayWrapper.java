@@ -39,12 +39,10 @@ import org.joda.time.LocalDate;
 import org.joda.time.YearMonthDay;
 
 /**
- * A Wrapper to handle any HolidayHandler<LocalDate> types via a HolidayHandler<YearMonthDay>
+ * A Wrapper to handle any HolidayHandler&lt;LocalDate&gt; types via a HolidayHandler&lt;YearMonthDay&gt;
  * delegate
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  */
 public class HolidayHandlerYearMonthDayWrapper implements HolidayHandler<LocalDate> {

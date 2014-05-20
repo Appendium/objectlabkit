@@ -44,8 +44,6 @@ import org.joda.time.YearMonthDay;
  * Convert Excel Date to LocalDate, YearMonthDay or DateTime.
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  */
 public final class JodaExcelDateUtil {

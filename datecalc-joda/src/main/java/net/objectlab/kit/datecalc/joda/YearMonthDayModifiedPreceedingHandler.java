@@ -43,8 +43,6 @@ import org.joda.time.YearMonthDay;
  * to moving forward until it finds a working day.
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  */
 public class YearMonthDayModifiedPreceedingHandler extends YearMonthDayModifiedFollowingHandler {

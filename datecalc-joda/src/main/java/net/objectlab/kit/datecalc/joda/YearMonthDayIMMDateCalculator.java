@@ -46,8 +46,6 @@ import org.joda.time.YearMonthDay;
  * {@link net.objectlab.kit.datecalc.common.IMMDateCalculator}
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  */
 public class YearMonthDayIMMDateCalculator extends AbstractIMMDateCalculator<YearMonthDay> {

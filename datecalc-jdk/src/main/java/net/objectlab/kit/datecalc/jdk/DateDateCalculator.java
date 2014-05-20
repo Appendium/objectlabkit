@@ -50,8 +50,6 @@ import net.objectlab.kit.datecalc.common.WorkingWeek;
  * will NOT move a date, even if it falls on a holiday or weekend.
  * 
  * @author Marcin Jekot
- * @author $LastModifiedBy$
- * @version $Revision$ $Date$
  */
 public class DateDateCalculator extends AbstractDateCalculator<Date> {
 

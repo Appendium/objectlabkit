@@ -40,8 +40,6 @@ import org.joda.time.LocalDate;
  * Immutable class representing a WorkingWeek for the Joda implementation.
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  */
 public class JodaWorkingWeek extends WorkingWeek {
 

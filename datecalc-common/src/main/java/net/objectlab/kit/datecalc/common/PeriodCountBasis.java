@@ -35,15 +35,11 @@ package net.objectlab.kit.datecalc.common;
 /**
  * Defines some standard Day Count bases.
  * 
- * <p/>
- *
  * To read about the most common Day Count Conventions, you can refer to the 
  * <a href="http://www.fincad.com/support/developerfunc/mathref/Daycount.htm">
- * following document</a>.
+ * following document</a> or <a href="https://en.wikipedia.org/wiki/Day_count_convention">here</a>.
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  */
 public enum PeriodCountBasis {
     /**

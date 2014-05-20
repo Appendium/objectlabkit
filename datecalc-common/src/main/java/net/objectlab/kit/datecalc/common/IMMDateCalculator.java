@@ -39,8 +39,6 @@ import java.util.List;
  * December.
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * @param <E>
  *            a representation of a date, typically JDK: Date, Calendar;
  *            Joda:LocalDate, YearMonthDay

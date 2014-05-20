@@ -46,8 +46,6 @@ import net.objectlab.kit.datecalc.common.Utils;
  * <strong>Forward</strong> algorithm.
  * 
  * @author Marcin Jekot
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  */
 public class DateForwardHandler implements HolidayHandler<Date> {

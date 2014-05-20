@@ -39,8 +39,6 @@ import java.io.Serializable;
  * Spot.
  *
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  *
  */
 public class Tenor implements Serializable {

@@ -72,7 +72,7 @@ public interface HolidayCalendar<E> extends Serializable {
     E getEarlyBoundary();
 
     /**
-     * Sets the earliest date (must be <= first date in holiday set)
+     * Sets the earliest date (must be &lt;= first date in holiday set)
      * @param earlyBoundary
      */
     HolidayCalendar<E> setEarlyBoundary(final E earlyBoundary);
@@ -84,7 +84,7 @@ public interface HolidayCalendar<E> extends Serializable {
     E getLateBoundary();
 
     /**
-     * Sets the latest date (must be <= first date in holiday set)
+     * Sets the latest date (must be &lt;= first date in holiday set)
      * @param lateBoundary
      */
     HolidayCalendar<E> setLateBoundary(final E lateBoundary);

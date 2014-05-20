@@ -47,11 +47,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /**
- * @TODO javadoc
- * 
- * @author xhensevb
  * @author $LastChangedBy: marchy $
- * @version $Revision: 138 $ $Date: 2006-09-10 13:29:15 +0100 (Sun, 10 Sep 2006) $
  * 
  */
 public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {

@@ -36,11 +36,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Immutable Working Week, default is Mon->Friday.
+ * Immutable Working Week, default is Mon-&gt;Friday.
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  */
 public class WorkingWeek {
@@ -80,7 +78,7 @@ public class WorkingWeek {
     private byte workingDays = DEFAULT_WORKING_DAYS;
 
     /**
-     * Default Working Week Monday -> Friday.
+     * Default Working Week Monday -&gt; Friday.
      */
     public WorkingWeek() {
         this(DEFAULT_WORKING_DAYS);
