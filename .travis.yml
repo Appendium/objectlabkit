@@ -3,5 +3,7 @@ jdk:
   - oraclejdk8
 notifications:
   email: true
-    - opensource@appendium.com
+    recipients:
+       - opensource@appendium.com
+    on_success: always
     
