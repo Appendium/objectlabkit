@@ -7,7 +7,7 @@ package net.objectlab.kit.util;
  * A simple helper class that is NOT SCIENTIFIC but accurate enough
  * for the mere mortals, to calculate the number of milliseconds to
  * be used in say a timer but setup in a easier way...
- * @author xhensevalb
+ * @author Benoit Xhenseval
  *
  */
 public class PeriodBuilder {

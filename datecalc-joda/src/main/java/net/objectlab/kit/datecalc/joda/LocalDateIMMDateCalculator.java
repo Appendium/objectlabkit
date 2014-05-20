@@ -51,8 +51,6 @@ import org.joda.time.LocalDate;
  * {@link net.objectlab.kit.datecalc.common.IMMDateCalculator}.
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  */
 public class LocalDateIMMDateCalculator extends AbstractIMMDateCalculator<LocalDate> {

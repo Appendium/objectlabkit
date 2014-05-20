@@ -40,7 +40,7 @@ import org.apache.commons.lang.builder.StandardToStringStyle;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 /**
- * @author xhensevalb
+ * @author Benoit Xhenseval
  *
  */
 public class Triplet<E1, E2, E3> implements Serializable {

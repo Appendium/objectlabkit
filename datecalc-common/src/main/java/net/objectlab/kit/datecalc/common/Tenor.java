@@ -39,8 +39,6 @@ import java.io.Serializable;
  * Spot.
  *
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  *
  */
 public class Tenor implements Serializable {
@@ -86,8 +84,8 @@ public class Tenor implements Serializable {
      *                if the tenor is not a valid on
      */
     public static Tenor valueOf(final String tenor) {
-        final StringBuffer unitsBuf = new StringBuffer();
-        final StringBuffer codeBuf = new StringBuffer();
+        final StringBuilder unitsBuf = new StringBuilder();
+        final StringBuilder codeBuf = new StringBuilder();
         boolean invalid = false;
         final int size = tenor.length();
 
@@ -113,7 +111,7 @@ public class Tenor implements Serializable {
         return new Tenor(parsedUnits, parsedCode);
     }
 
-    private static void parseCode(final String tenor, final StringBuffer unitsBuf, final StringBuffer codeBuf, boolean invalid, final int size) {
+    private static void parseCode(final String tenor, final StringBuilder unitsBuf, final StringBuilder codeBuf, boolean invalid, final int size) {
         for (int i = 0; i < size && !invalid; i++) {
             final char c = tenor.charAt(i);
 

@@ -3,7 +3,7 @@ package net.objectlab.kit.collections;
 /**
  * The builder in charge of providing the parameters for the Set.
  * 
- * @author xhensevalb
+ * @author Benoit Xhenseval
  *
  * @param <T>
  */

@@ -53,8 +53,6 @@ import net.objectlab.kit.datecalc.common.IMMPeriod;
  * {@link net.objectlab.kit.datecalc.common.IMMDateCalculator}
  * 
  * @author Marcin Jekot
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  */
 public class CalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calendar> {
@@ -96,9 +94,6 @@ public class CalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calenda
 
         if (isIMMMonth(cal)) {
             moveToIMMDay(cal);
-            // TODO simplify this if condition
-            // if (forward ^ cal.getTime().before(startDate) ||
-            // cal.getTime().equals(startDate)) {
             if ((requestNextIMM && cal.after(startDate)) || (!requestNextIMM && cal.before(startDate))) {
                 return cal;
             }

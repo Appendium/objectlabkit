@@ -47,8 +47,6 @@ import net.objectlab.kit.datecalc.common.Utils;
  * delegates to the Calendar implementation.
  * 
  * @author Marcin Jekot
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  */
 public class DateIMMDateCalculator extends AbstractIMMDateCalculator<Date> {

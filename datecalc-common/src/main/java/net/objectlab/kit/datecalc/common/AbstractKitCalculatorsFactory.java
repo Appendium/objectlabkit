@@ -42,8 +42,6 @@ import java.util.concurrent.ConcurrentMap;
  * Base class for all calculator factories, it handles the holiday registration.
  * 
  * @author Marcin Jekot
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  * @param <E>
  *            a representation of a date, typically JDK: Date, Calendar;

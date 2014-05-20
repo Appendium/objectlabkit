@@ -46,8 +46,6 @@ import net.objectlab.kit.datecalc.common.Utils;
  * <strong>Modified Following</strong> algorithm.
  * 
  * @author Marcin Jekot
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  */
 public class DateModifiedFollowingHandler implements HolidayHandler<Date> {

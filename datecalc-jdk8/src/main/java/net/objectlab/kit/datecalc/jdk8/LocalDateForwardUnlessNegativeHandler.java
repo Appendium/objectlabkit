@@ -43,8 +43,6 @@ import java.time.LocalDate;
  * day.
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy: benoitx $
- * @version $Revision: 203 $ $Date: 2006-10-11 13:53:07 +0100 (Wed, 11 Oct 2006) $
  * 
  */
 public class LocalDateForwardUnlessNegativeHandler implements HolidayHandler<LocalDate> {

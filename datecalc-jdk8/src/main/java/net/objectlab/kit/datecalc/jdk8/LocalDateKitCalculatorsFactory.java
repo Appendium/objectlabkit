@@ -48,8 +48,6 @@ import java.time.LocalDate;
  * calculators.
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  */
 public class LocalDateKitCalculatorsFactory extends AbstractKitCalculatorsFactory<LocalDate> {

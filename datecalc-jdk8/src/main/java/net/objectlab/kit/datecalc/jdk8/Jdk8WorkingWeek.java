@@ -41,8 +41,6 @@ import net.objectlab.kit.datecalc.common.WorkingWeek;
  * Immutable class representing a WorkingWeek for the Joda implementation.
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  */
 public class Jdk8WorkingWeek extends WorkingWeek {
 

@@ -12,7 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * @author xhensevalb
+ * @author Benoit Xhenseval
  *
  */
 public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer>, TimeProvider {

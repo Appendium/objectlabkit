@@ -43,8 +43,6 @@ import net.objectlab.kit.datecalc.common.HolidayHandlerType;
  * <strong>Backward</strong> algorithm.
  * 
  * @author Marcin Jekot
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  */
 public class CalendarBackwardHandler extends CalendarForwardHandler {
 

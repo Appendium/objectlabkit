@@ -43,8 +43,6 @@ import org.joda.time.YearMonthDay;
  * day.
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  */
 public class YearMonthDayForwardHandler implements HolidayHandler<YearMonthDay> {

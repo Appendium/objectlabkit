@@ -6,7 +6,7 @@ package net.objectlab.kit.collections;
 import java.util.Collection;
 
 /**
- * @author xhensevalb
+ * @author Benoit Xhenseval
  *
  */
 public interface SetBuilder<T> {

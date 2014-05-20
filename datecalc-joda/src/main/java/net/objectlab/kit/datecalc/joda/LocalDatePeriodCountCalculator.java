@@ -44,8 +44,6 @@ import org.joda.time.PeriodType;
  * {@link net.objectlab.kit.datecalc.common.PeriodCountCalculator}.
  * 
  * @author Benoit Xhenseval
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  */
 public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<LocalDate> {

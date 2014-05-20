@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 /**
- * @author xhensevalb
+ * @author Benoit Xhenseval
  *
  */
 public class ReadOnlyExpiringHashSet<T> extends AbstractReadOnlyExpiringCollection implements ReadOnlyExpiringSet<T> {

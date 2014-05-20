@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * @author xhensevalb
+ * @author Benoit Xhenseval
  *
  */
 public class ReadOnlyExpiringHashMap<K, V> extends AbstractReadOnlyExpiringCollection implements ReadOnlyExpiringMap<K, V> {

@@ -42,8 +42,6 @@ import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
  * {@link net.objectlab.kit.datecalc.common.PeriodCountCalculator}.
  * 
  * @author Marcin Jekot
- * @author $LastChangedBy$
- * @version $Revision$ $Date$
  * 
  */
 public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Calendar> {

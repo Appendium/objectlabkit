@@ -4,7 +4,7 @@
 package net.objectlab.kit.collections;
 
 /**
- * @author xhensevalb
+ * @author Benoit Xhenseval
  *
  */
 public class SystemTimeProvider implements TimeProvider {
