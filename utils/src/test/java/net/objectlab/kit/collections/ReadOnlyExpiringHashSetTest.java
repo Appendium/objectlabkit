@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * @author xhensevalb
+ * @author Benoit Xhenseval
  *
  */
 public class ReadOnlyExpiringHashSetTest implements SetLoader<String>, TimeProvider {

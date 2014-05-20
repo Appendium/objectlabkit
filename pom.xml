@@ -287,22 +287,6 @@
 		<url>https://sourceforge.net/tracker/?group_id=175139</url>
 	</issueManagement>
 
-<!-- 
-	<distributionManagement>
-		<repository>
-			<id>nexus</id>
-			<name>nexus</name>
-			<url>http://192.168.171.12:8081/nexus/content/repositories/thirdparty/</url>
-		</repository>
-		<snapshotRepository>
-			<id>snapshots</id>
-			<name>snapshots</name>
-			<url>http://192.168.171.12:8081/nexus/content/repositories/thirdparty_snapshots/</url>
-		</snapshotRepository>
-
-	</distributionManagement>
- -->
-
 	<!-- <distributionManagement> <repository> <id>sonatype-nexus-staging</id> 
 		<name>Sonatype Nexus Staging Repository</name> <url>http://oss.sonatype.org/service/local/staging/deploy/maven2/</url> 
 		</repository> <snapshotRepository> <id>sonatype-nexus-snapshots</id> <name>Sonatype 

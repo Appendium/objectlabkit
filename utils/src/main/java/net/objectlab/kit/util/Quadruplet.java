@@ -40,7 +40,7 @@ import org.apache.commons.lang.builder.StandardToStringStyle;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 /**
- * @author xhensevalb
+ * @author Benoit Xhenseval
  *
  */
 public class Quadruplet<E1, E2, E3, E4> implements Serializable {

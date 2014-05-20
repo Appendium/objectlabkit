@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * @author xhensevalb
+ * @author Benoit Xhenseval
  *
  */
 public class DefaultSetBuilder<T> implements SetBuilder<T> {

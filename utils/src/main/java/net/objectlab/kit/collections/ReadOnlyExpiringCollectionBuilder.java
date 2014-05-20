@@ -9,7 +9,7 @@ import net.objectlab.kit.util.PeriodBuilder;
  * - reload on expiry: true
  * - load on first access only (ie not at construction time)
  * 
- * @author xhensevalb
+ * @author Benoit Xhenseval
  *
  */
 public class ReadOnlyExpiringCollectionBuilder {

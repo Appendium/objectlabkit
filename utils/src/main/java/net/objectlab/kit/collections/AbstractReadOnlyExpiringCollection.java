@@ -7,7 +7,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * @author xhensevalb
+ * @author Benoit Xhenseval
  */
 public abstract class AbstractReadOnlyExpiringCollection {
     private TimeProvider timeProvider;
