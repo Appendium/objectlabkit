@@ -48,6 +48,15 @@ public final class BigDecimalUtil {
     }
 
     /**
+     * Convenience method to create a BigDecimal with a String, can be statically imported.
+     * @param val a string representing the BigDecimal
+     * @return
+     */
+    public static BigDecimal bd(final String val) {
+        return new BigDecimal(val);
+    }
+
+    /**
      * Return the inverse of value, using scale
      */
     public static BigDecimal inverse(final BigDecimal value, final int scale) {
