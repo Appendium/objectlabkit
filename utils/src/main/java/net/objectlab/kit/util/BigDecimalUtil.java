@@ -68,7 +68,7 @@ public final class BigDecimalUtil {
     }
 
     /**
-     * @return true if value !=null and <> 0.
+     * @return true if value !=null and &lt;gt; 0.
      */
     public static boolean isNotZero(final BigDecimal value) {
         return value != null && value.signum() != 0;
@@ -82,14 +82,14 @@ public final class BigDecimalUtil {
     }
 
     /**
-     * @return true if value !=null and <0.
+     * @return true if value !=null and &lt; 0.
      */
     public static boolean isNegative(final BigDecimal value) {
         return value != null && value.signum() == -1;
     }
 
     /**
-     * @return true if value !=null and >0.
+     * @return true if value !=null and &gt;0.
      */
     public static boolean isStrictlyPositive(final BigDecimal value) {
         return value != null && value.signum() == 1;
@@ -270,9 +270,9 @@ public final class BigDecimalUtil {
     }
 
     /**
-     * @return 1 if v1 > v2 or v2==null and v2!=null
+     * @return 1 if v1 &gt; v2 or v2==null and v2!=null
      * @return 0 if v1 == v2 or v1==null and v2==null
-     * @return -1 if v1 < v2 or v1==null and v2!=null
+     * @return -1 if v1 &lt; v2 or v1==null and v2!=null
      */
     public static int compareTo(final BigDecimal v1, final BigDecimal v2) {
         int ret = 1;
@@ -287,7 +287,7 @@ public final class BigDecimalUtil {
     }
 
     /**
-     * @return true if the ABS(v1) > ABS(v2)
+     * @return true if the ABS(v1) &gt; ABS(v2)
      */
     public static int absCompareTo(final BigDecimal v1, final BigDecimal v2) {
         return compareTo(abs(v1), abs(v2));
@@ -301,7 +301,7 @@ public final class BigDecimalUtil {
     }
 
     /**
-     * Safe shift (check for null), shift RIGHT if shift>0.
+     * Safe shift (check for null), shift RIGHT if shift&gt;0.
      */
     public static BigDecimal movePoint(final BigDecimal v1, final int shift) {
         return v1 == null ? null : v1.movePointRight(shift);
@@ -312,7 +312,7 @@ public final class BigDecimalUtil {
      *
      * @param bd value
      * @param numberOfDecPlaces number of dec place to round to
-     * @param finalScale final scale of result (typically numberOfDecPlaces < finalScale);
+     * @param finalScale final scale of result (typically numberOfDecPlaces &lt; finalScale);
      * @return new bd or null
      */
     public static BigDecimal roundTo(final BigDecimal bd, final int numberOfDecPlaces, final int finalScale) {
@@ -457,7 +457,7 @@ public final class BigDecimalUtil {
     }
 
     /**
-     * true if ABS((startValue-newValue)/startValue) <= abs(thresholdPercent)
+     * true if ABS((startValue-newValue)/startValue) &lt;= abs(thresholdPercent)
      * @param startValue
      * @param newValue
      * @param thresholdPercent
@@ -468,7 +468,7 @@ public final class BigDecimalUtil {
     }
 
     /**
-     * true if ABS((startValue-newValue)/startValue) > abs(thresholdPercent)
+     * true if ABS((startValue-newValue)/startValue) &gt; abs(thresholdPercent)
      * @param startValue
      * @param newValue
      * @param thresholdPercent
@@ -607,7 +607,7 @@ public final class BigDecimalUtil {
     }
 
     /**
-     * Return minimum if the value is < minimum.
+     * Return minimum if the value is &lt; minimum.
      */
     public static BigDecimal ensureMin(final BigDecimal minimum, final BigDecimal value) {
         return BigDecimalUtil.compareTo(minimum, value) == 1 ? minimum : value;
@@ -665,7 +665,7 @@ public final class BigDecimalUtil {
     }
 
     /**
-     * @return true if abs(abs(v1)-abs(v2)) < abs(threshold)
+     * @return true if abs(abs(v1)-abs(v2)) &lt; abs(threshold)
      */
     public static boolean isDiffMoreThanAbsThreshold(final BigDecimal v1, final BigDecimal v2, final BigDecimal threshold) {
         final BigDecimal diff = BigDecimalUtil.absDiff(v1, v2);
@@ -677,7 +677,7 @@ public final class BigDecimalUtil {
     }
 
     /**
-     * @return true if value !=null and <=0.
+     * @return true if value !=null and &lt;=0.
      */
     public static boolean isZeroOrLess(final BigDecimal value) {
         return value != null && value.signum() <= 0;

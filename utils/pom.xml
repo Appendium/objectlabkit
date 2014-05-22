@@ -3,10 +3,14 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>net.objectlab.kit</groupId>
+  <parent>
+    <groupId>net.objectlab.kit</groupId>
+    <artifactId>kit-parent</artifactId>
+    <version>1.3.0-SNAPSHOT</version>
+  </parent>
+
   <artifactId>objectlab-utils</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>bundle</packaging>
+  <packaging>jar</packaging>
 
   <name>ObjectLab Kit - General Utilities</name>
 
@@ -37,20 +41,6 @@
         <configuration>
           <source>1.5</source>
           <target>1.5</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.felix</groupId>
-        <artifactId>maven-bundle-plugin</artifactId>
-        <extensions>true</extensions>
-        <configuration>
-          <instructions>
-            <Export-Package>net.objectlab.kit.*;version="${pom.version}"</Export-Package>
-            <Private-Package />
-            <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
-            <Bundle-Version>${pom.version}</Bundle-Version>
-            <Bundle-RequiredExecutionEnvironment>J2SE-1.5</Bundle-RequiredExecutionEnvironment>
-          </instructions>
         </configuration>
       </plugin>
     </plugins>

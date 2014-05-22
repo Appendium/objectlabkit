@@ -1,0 +1,52 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>net.objectlab.kit</groupId>
+		<artifactId>kit-parent</artifactId>
+		<version>1.3.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>datecalc-jdk-osgi</artifactId>
+	<packaging>bundle</packaging>
+
+	<name>Date Calculator for JDK OSGI Bundle</name>
+	<description>Date Calculator methods for JDK</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>net.objectlab.kit</groupId>
+			<artifactId>datecalc-jdk</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.objectlab.kit</groupId>
+			<artifactId>datecalc-common</artifactId>
+			<scope>test</scope>
+			<classifier>tests</classifier>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>2.4.0</version>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Export-Package>net.objectlab.kit.*;version="${project.version}"</Export-Package>
+						<Private-Package />
+						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+						<Bundle-Version>${project.version}</Bundle-Version>
+						<Bundle-RequiredExecutionEnvironment>J2SE-1.5</Bundle-RequiredExecutionEnvironment>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>

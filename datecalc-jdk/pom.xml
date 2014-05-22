@@ -8,7 +8,7 @@
   </parent>
 
   <artifactId>datecalc-jdk</artifactId>
-  <packaging>bundle</packaging>
+  <packaging>jar</packaging>
 
   <name>Date Calculator for JDK</name>
   <description>Date Calculator methods for JDK</description>
@@ -51,20 +51,6 @@
             </configuration>
           </execution>
         </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.felix</groupId>
-        <artifactId>maven-bundle-plugin</artifactId>
-        <extensions>true</extensions>
-        <configuration>
-          <instructions>
-            <Export-Package>net.objectlab.kit.*;version="${pom.version}"</Export-Package>
-            <Private-Package />
-            <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
-            <Bundle-Version>${pom.version}</Bundle-Version>
-            <Bundle-RequiredExecutionEnvironment>J2SE-1.5</Bundle-RequiredExecutionEnvironment>
-          </instructions>
-        </configuration>
       </plugin>
     </plugins>
   </build>

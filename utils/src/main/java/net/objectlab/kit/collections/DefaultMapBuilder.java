@@ -53,6 +53,7 @@ public class DefaultMapBuilder<K, V> implements MapBuilder<K, V> {
      * Returns a newly-created immutable map.
      *
      * @throws IllegalArgumentException if duplicate keys were added
+     * @return 
      */
     public Map<K, V> build() {
         return fromEntryList(entries);

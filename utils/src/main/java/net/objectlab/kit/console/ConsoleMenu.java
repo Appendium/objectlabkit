@@ -95,7 +95,7 @@ public class ConsoleMenu {
      *            how the entry will be displayed in the menu
      * @param methodName
      *            name of the public method
-     * @parem askForRepeat call back for repeat
+     * @param repeat call back for repeat
      */
     public void addMenuItem(final String menuDisplay, final String methodName, final boolean repeat) {
         menu.add(menuDisplay);
@@ -204,11 +204,11 @@ public class ConsoleMenu {
         }
     }
 
+
     /**
      * Gets an int from the System.in
-     * 
-     * @param title
-     *            for the command line
+     * @param title  for the command line
+     * @param defaultValue defaultValue if title not found
      * @return int as entered by the user of the console app
      */
     public static int getInt(final String title, final int defaultValue) {

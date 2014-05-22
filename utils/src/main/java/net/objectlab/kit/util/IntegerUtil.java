@@ -41,7 +41,7 @@ public final class IntegerUtil {
     }
 
     /**
-     * @return true if value !=null and <> 0.
+     * @return true if value !=null and &lt;&gt; 0.
      */
     public static boolean isNotZero(final Integer value) {
         return value != null && value.intValue() != 0;
