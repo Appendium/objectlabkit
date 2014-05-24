@@ -23,6 +23,8 @@
     
     <p style="margin-top:10px; margin-bottom:0; padding-bottom:0; text-align:center; line-height:0"><a href="http://feeds.feedburner.com/~r/ObjectlabOpenSourceNews/~6/1"><img src="http://feeds.feedburner.com/ObjectlabOpenSourceNews.1.gif" alt="ObjectLab Open Source News" style="border:0"/></a></p>
   
+	<p>Reminder: we have moved to <a href="http://www.github.com/appendium/objectlabkit">GitHub</a>.</p>
+
     <p><b>2014-05-19</b>: version 1.3.0 is out and contains a couple of changes to make the usage of the interfaces more fluent but mainly
     include a NEW MODULE FOR JDK8. More info on the changes <a href="changes-report.html">here</a>. Also, one of the authors is on
      Twitter, follow your favorite Belgian at <a href="http://twitter.com/benoitx">http://twitter.com/benoitx</a>.</p>
@@ -60,12 +62,12 @@
          &lt;dependency>
            &lt;groupId>net.objectlab.kit&lt;/groupId>
            &lt;artifactId>datecalc-common&lt;/artifactId>
-           &lt;version>1.2.0&lt;/version>
+           &lt;version>1.3.0&lt;/version>
          &lt;/dependency>
          &lt;dependency>
            &lt;groupId>net.objectlab.kit&lt;/groupId>
            &lt;artifactId>datecalc-jdk&lt;/artifactId>
-           &lt;version>1.2.0&lt;/version>
+           &lt;version>1.3.0&lt;/version>
          &lt;/dependency>
       </pre>
       
@@ -74,12 +76,12 @@
          &lt;dependency>
            &lt;groupId>net.objectlab.kit&lt;/groupId>
            &lt;artifactId>datecalc-common&lt;/artifactId>
-           &lt;version>1.2.0&lt;/version>
+           &lt;version>1.3.0&lt;/version>
          &lt;/dependency>
          &lt;dependency>
            &lt;groupId>net.objectlab.kit&lt;/groupId>
            &lt;artifactId>datecalc-joda&lt;/artifactId>
-           &lt;version>1.2.0&lt;/version>
+           &lt;version>1.3.0&lt;/version>
          &lt;/dependency>
       </pre>
     </subsection>
@@ -112,15 +114,6 @@
     	<li><strong>ForwardUnlessNegative</strong> (new with v1.1.0), acts like a Forward algo unless the increment is negative, in which case it behaves like Backward.</li>
     </ol>
     <p>See this page for some <a href="algo.html">examples</a>.</p>
-    </subsection>
-    
-    <subsection name="UML?">
-    <p>We generate our JavaDocs with the added twist of UML diagrams:</p>
-    <ul>
-      <li><a href="apidocs/index.html?net/objectlab/kit/datecalc/common/package-summary.html">UML for DateCalc Common</a></li>
-      <li><a href="apidocs/index.html?net/objectlab/kit/datecalc/jdk/package-summary.html">UML for DateCalc JDK</a></li>
-      <li><a href="apidocs/index.html?net/objectlab/kit/datecalc/joda/package-summary.html">UML for DateCalc JODA</a></li>
-    </ul>
     </subsection>
     
     <subsection name="Main interfaces">

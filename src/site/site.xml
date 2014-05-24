@@ -1,96 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="ObjectLab-Kit" xmlns="http://maven.apache.org/DECORATION/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
-  
-  <bannerLeft>
-    <name>Appendium Ltd</name>
-    <src>images/appendium_logo.jpg</src>
-    <href>http://www.appendium.com</href>
-  </bannerLeft>
-  <bannerRight>
-    <name>ObjectLab Ltd</name>
-    <src>images/objectlab_logo.jpg</src>
-    <href>http://www.objectlab.co.uk/</href>
-  </bannerRight>
+<project name="ObjectLab-Kit" xmlns="http://maven.apache.org/DECORATION/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
 
-  <poweredBy>
-    <logo name="Hosted on SourceForge.net" href="http://sourceforge.net"
-        img="http://sflogo.sourceforge.net/sflogo.php?group_id=175139&amp;type=2"/>
-    <logo name="Built by Maven" href="http://maven.apache.org/"
-        img="http://maven.apache.org/images/logos/maven-feather.png"/>
-  </poweredBy>
-    
-  <skin>
-    <groupId>org.apache.maven.skins</groupId>
-    <artifactId>maven-stylus-skin</artifactId>
-    <version>1.2</version>
-  </skin>
-  
-  <publishDate position="left" format="yyyy-MM-dd" />
-  <version position="left" />
-  
-  <body>
-    <head>
-      <!-- BEGIN: Google Analytics -->
-      <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-615747-1']);
-        _gaq.push(['_setDetectFlash', false]);
-        _gaq.push(['_trackPageview()']);
-        (function() {
-          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-      </script>
-      <!-- END: Google Analytics -->
-      
-      <!-- BEGIN: Syntax Highlighting -->
-      <script type="text/javascript" src="js/shCore.js"></script>
-      <script type="text/javascript" src="js/shBrushJava.js"></script>
-      <script type="text/javascript" src="js/shBrushXml.js"></script>
+	<bannerLeft>
+		<name>Appendium Ltd</name>
+		<src>images/appendium_logo.jpg</src>
+		<href>http://www.appendium.com</href>
+	</bannerLeft>
+	<bannerRight>
+		<name>ObjectLab Ltd</name>
+		<src>images/objectlab_logo.jpg</src>
+		<href>http://www.objectlab.co.uk/</href>
+	</bannerRight>
 
-      <link href="css/shCore.css" rel="stylesheet" type="text/css" />
-      <link href="css/shThemeDefault.css" rel="stylesheet" type="text/css" />
-      <script type="text/javascript">
-        SyntaxHighlighter.all()
-      </script>
-      <!-- END: Syntax Highlighting -->
-    </head>
-  
-    <links>
-      <item name="datecalc-common" href="datecalc-common/index.html" />
-      <item name="datecalc-jdk" href="datecalc-jdk/index.html" />
-      <item name="datecalc-joda" href="datecalc-joda/index.html" />
-      <item name="sf.net/projects/objectlabkit" href="https://sourceforge.net/projects/objectlabkit/" />
-    </links>
+	<poweredBy>
+		<logo name="Hosted on SourceForge.net" href="http://sourceforge.net" img="http://sflogo.sourceforge.net/sflogo.php?group_id=175139&amp;type=2" />
+		<logo name="Built by Maven" href="http://maven.apache.org/" img="http://maven.apache.org/images/logos/maven-feather.png" />
+	</poweredBy>
 
-    <breadcrumbs>
-      <item name="ObjectLab Kit" href="http://objectlabkit.sourceforge.net/index.html"/>
-    </breadcrumbs>
+	<skin>
+		<groupId>org.apache.maven.skins</groupId>
+		<artifactId>maven-stylus-skin</artifactId>
+		<version>1.2</version>
+	</skin>
 
-    <menu name="Kit">
-      <item name="Introduction" href="index.html" />
-      <item name="Holiday Handling" href="algo.html" />
-      <item name="Tenor Handling" href="tenor.html" />
-      <item name="JavaDocs" href="apidocs/index.html" />
-      <item name="Code Metrics" href="code-metrics.html" />      
-      <item name="Download" href="download.html" />
-      <item name="In the press" href="press/index.html" />
-      <item name="FAQ" href="faq.html" />
-    </menu>
+	<publishDate position="left" format="yyyy-MM-dd" />
+	<version position="left" />
 
-    <menu ref="modules" />
-    
-    <menu ref="reports" />
+	<body>
+		<head>
+			<!-- BEGIN: Google Analytics -->
+			<script type="text/javascript">
+				var _gaq = _gaq || [];
+				_gaq.push(['_setAccount', 'UA-615747-1']);
+				_gaq.push(['_setDetectFlash', false]);
+				_gaq.push(['_trackPageview()']);
+				(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+				})();
+			</script>
+			<!-- END: Google Analytics -->
 
-    <menu name="Interesting Projects" inherit="bottom">
-      <item name="QALab" href="http://qalab.sourceforge.net/" />
-      <item name="JTreeMap" href="http://jtreemap.sourceforge.net/" />
-      <item name="PZFileReader" href="http://pzfilereader.sourceforge.net/" />
-      <item name="StatSVN" href="http://www.statsvn.org/" />
-      <item name="ObjectLab" href="http://www.objectlab.co.uk" />
-      <item name="Joda Time" href="http://joda-time.sourceforge.net" />
-    </menu>
-  </body>
+			<!-- BEGIN: Syntax Highlighting -->
+			<script type="text/javascript" src="js/shCore.js"></script>
+			<script type="text/javascript" src="js/shBrushJava.js"></script>
+			<script type="text/javascript" src="js/shBrushXml.js"></script>
+
+			<link href="css/shCore.css" rel="stylesheet" type="text/css" />
+			<link href="css/shThemeDefault.css" rel="stylesheet" type="text/css" />
+			<script type="text/javascript">
+				SyntaxHighlighter.all()
+			</script>
+			<!-- END: Syntax Highlighting -->
+		</head>
+
+		<links>
+			<item name="datecalc-common" href="datecalc-common/index.html" />
+			<item name="datecalc-jdk" href="datecalc-jdk/index.html" />
+			<item name="datecalc-joda" href="datecalc-joda/index.html" />
+			<item name="utils" href="objectlab-utils/index.html" />
+			<item name="GitHub" href="http://www.github.com/appendium/objectlabkit" />
+			<item name="sf.net/projects/objectlabkit" href="https://sourceforge.net/projects/objectlabkit/" />
+		</links>
+
+		<breadcrumbs>
+			<item name="ObjectLab Kit" href="http://objectlabkit.sourceforge.net/index.html" />
+		</breadcrumbs>
+
+		<menu name="Kit">
+			<item name="Introduction" href="index.html" />
+			<item name="Holiday Handling" href="algo.html" />
+			<item name="Tenor Handling" href="tenor.html" />
+			<item name="JavaDocs" href="apidocs/index.html" />
+			<item name="Code Metrics" href="code-metrics.html" />
+			<item name="Download" href="download.html" />
+			<item name="In the press" href="press/index.html" />
+			<item name="at Ohloh.net" href="https://www.ohloh.net/p/objectlabkit" />
+			<item name="FAQ" href="faq.html" />
+		</menu>
+
+		<menu ref="modules" />
+
+		<menu ref="reports" />
+
+		<menu name="Interesting Projects" inherit="bottom">
+			<item name="QALab" href="http://qalab.sourceforge.net/" />
+			<item name="JTreeMap" href="http://jtreemap.sourceforge.net/" />
+			<item name="PZFileReader" href="http://pzfilereader.sourceforge.net/" />
+			<item name="StatSVN" href="http://www.statsvn.org/" />
+			<item name="ObjectLab" href="http://www.objectlab.co.uk" />
+			<item name="Joda Time" href="http://joda-time.sourceforge.net" />
+		</menu>
+	</body>
 
 </project>
