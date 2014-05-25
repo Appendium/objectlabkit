@@ -21,33 +21,7 @@
 
     <subsection name="Maven">
       <p>If you're using Maven, setup is easy, as DateCalc is in the Maven Central Repository.</p>
-      <p>To use the JDK Version:</p>
-      <pre class="brush: xml; gutter: false">
-         &lt;dependency>
-           &lt;groupId>net.objectlab.kit&lt;/groupId>
-           &lt;artifactId>datecalc-common&lt;/artifactId>
-           &lt;version>1.2.0&lt;/version>
-         &lt;/dependency>
-         &lt;dependency>
-           &lt;groupId>net.objectlab.kit&lt;/groupId>
-           &lt;artifactId>datecalc-jdk&lt;/artifactId>
-           &lt;version>1.2.0&lt;/version>
-         &lt;/dependency>
-      </pre>
-      
-      <p>To use the JODA Version (recommended):</p>
-      <pre class="brush: xml; gutter: false">
-         &lt;dependency>
-           &lt;groupId>net.objectlab.kit&lt;/groupId>
-           &lt;artifactId>datecalc-common&lt;/artifactId>
-           &lt;version>1.2.0&lt;/version>
-         &lt;/dependency>
-         &lt;dependency>
-           &lt;groupId>net.objectlab.kit&lt;/groupId>
-           &lt;artifactId>datecalc-joda&lt;/artifactId>
-           &lt;version>1.2.0&lt;/version>
-         &lt;/dependency>
-      </pre>
+      <p>See info <a href="dependency-info.html">Here</a>.</p>
     </subsection>
 
     <subsection name="Download the Jars">
