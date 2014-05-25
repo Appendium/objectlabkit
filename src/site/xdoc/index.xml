@@ -26,8 +26,8 @@
 	<p>Reminder: we have moved to <a href="http://www.github.com/appendium/objectlabkit">GitHub</a>.</p>
 
     <p><b>2014-05-19</b>: version 1.3.0 is out and contains a couple of changes to make the usage of the interfaces more fluent but mainly
-    include a NEW MODULE FOR JDK8. More info on the changes <a href="changes-report.html">here</a>. Also, one of the authors is on
-     Twitter, follow your favorite Belgian at <a href="http://twitter.com/benoitx">http://twitter.com/benoitx</a>.</p>
+    include a NEW MODULE FOR JDK8. We also officially release the objectlab-utils module for the first time, if you deal with BigDecimal, Collections etc and are fed
+    up with nulls, this is for you! More info on the changes <a href="changes-report.html">here</a>.</p>
     
     <p><b>2010-05-10</b>: version 1.2.0 is out and contains a couple of changes, including the ability to see the registered calendar and unregistering calendars (useful if calendars are dynamic). 
     More info on the changes <a href="changes-report.html">here</a>. Also, one of the authors is on Twitter, follow your favorite Belgian at <a href="http://twitter.com/benoitx">http://twitter.com/benoitx</a>.</p>
@@ -47,10 +47,11 @@
     <img src="http://digg.com/img/badges/91x17-digg-button.png" width="91" height="17" alt="Digg!" style="vertical-align:middle" /></a></p>
 
     <subsection name="Getting Started">
-    <p>DateCalc comes in 2 different implementations, both run on <strong>JDK 1.5 or higher</strong>:
+    <p>DateCalc comes in 3 different implementations, both run on <strong>JDK 1.5 or higher</strong>:
     <ul>
        <li>The vanilla <a href="datecalc-jdk/index.html">JDK implementation</a> has no external dependencies.</li>
        <li>The <a href="datecalc-jdk/index.html">Joda Time implementation</a>, which depends on the <a href="http://joda-time.sourceforge.net">Joda Time library</a> (we recommend using this one).</li>
+       <li>The <a href="datecalc-jdk8/index.html">JDK8 implementation</a>, which obviously is compiled with JDK8 and makes use of the new LocalDate.</li>
     </ul>
     </p>
     </subsection>
@@ -81,6 +82,19 @@
          &lt;dependency>
            &lt;groupId>net.objectlab.kit&lt;/groupId>
            &lt;artifactId>datecalc-joda&lt;/artifactId>
+           &lt;version>1.3.0&lt;/version>
+         &lt;/dependency>
+      </pre>
+      <p>To use the JDK8 Version:</p>
+      <pre class="brush: xml; gutter: false">
+         &lt;dependency>
+           &lt;groupId>net.objectlab.kit&lt;/groupId>
+           &lt;artifactId>datecalc-common&lt;/artifactId>
+           &lt;version>1.3.0&lt;/version>
+         &lt;/dependency>
+         &lt;dependency>
+           &lt;groupId>net.objectlab.kit&lt;/groupId>
+           &lt;artifactId>datecalc-jdk8&lt;/artifactId>
            &lt;version>1.3.0&lt;/version>
          &lt;/dependency>
       </pre>
@@ -126,12 +140,11 @@
     
     <p>Here are the examples of how to get a DateCalculator "forward" for the "UK" holidays (if you have registered the holidays). The WorkingWeek is Mon-Fri by default.</p>
     <h4>JDK</h4>
-    <p>2 implementations for Pure JDK have been released</p>
+    <p>2 implementations for Pure 'old' JDK have been released</p>
     <ol>
       <li><strong><code>Calendar</code></strong>:
         <pre class="brush: java; gutter: false">
-DateCalculator&lt;Calendar> calc1 = CalendarKitCalculatorsFactory.getDefaultInstance()
-        .getDateCalculator("UK", HolidayHandlerType.FORWARD);
+DateCalculator&lt;Calendar> calc1 = CalendarKitCalculatorsFactory.forwardCalculator("UK");
         
 PeriodCountCalculator&lt;Calendar> calc2 = CalendarKitCalculatorsFactory.getDefaultInstance()
         .getPeriodCountCalculator();
@@ -142,8 +155,7 @@ IMMDateCalculator&lt;Calendar> calc3 = CalendarKitCalculatorsFactory.getDefaultI
       </li>
       <li><strong><code>Date</code></strong>:
         <pre class="brush: java; gutter: false">
-DateCalculator&lt;Date> calc1 = DateKitCalculatorsFactory.getDefaultInstance()
-        .getDateCalculator("UK", HolidayHandlerType.FORWARD);
+DateCalculator&lt;Date> calc1 = DateKitCalculatorsFactory.forwardCalculator("UK");
 
 PeriodCountCalculator&lt;Date> calc2 = DateKitCalculatorsFactory.getDefaultInstance()
         .getPeriodCountCalculator();
@@ -159,8 +171,7 @@ IMMDateCalculator&lt;Date> calc3 = DateKitCalculatorsFactory.getDefaultInstance(
     <ol>
       <li><strong><code>LocalDate</code></strong> (recommended):
         <pre class="brush: java; gutter: false">
-DateCalculator&lt;LocalDate> calc1 = LocalDateKitCalculatorsFactory.getDefaultInstance()
-        .getDateCalculator("UK", HolidayHandlerType.FORWARD);
+DateCalculator&lt;LocalDate> calc1 = LocalDateKitCalculatorsFactory.forwardCalculator("UK");
 
 PeriodCountCalculator&lt;LocalDate> calc2 = LocalDateKitCalculatorsFactory.getDefaultInstance()
         .getPeriodCountCalculator();
@@ -171,8 +182,7 @@ IMMDateCalculator&lt;LocalDate> calc3 = LocalDateKitCalculatorsFactory.getDefaul
       </li>
       <li><strong><code>YearMonthDay</code></strong>:
         <pre class="brush: java; gutter: false">
-DateCalculator&lt;YearMonthDay> calc1 = YearMonthDayKitCalculatorsFactory.getDefaultInstance()
-        .getDateCalculator("UK", HolidayHandlerType.FORWARD);
+DateCalculator&lt;YearMonthDay> calc1 = YearMonthDayKitCalculatorsFactory.forwardCalculator("UK");
 
 PeriodCountCalculator&lt;YearMonthDay> calc2 = YearMonthDayKitCalculatorsFactory.getDefaultInstance()
         .getPeriodCountCalculator();
@@ -182,6 +192,26 @@ IMMDateCalculator&lt;YearMonthDay> calc3 = YearMonthDayKitCalculatorsFactory.get
         </pre>
       </li>
     </ol>
+
+
+    
+    <h4>JDK8</h4>
+    <p>1 implementations for JDK8 has been released</p>
+    <ol>
+      <li><strong><code>LocalDate</code></strong>:
+        <pre class="brush: java; gutter: false">
+DateCalculator&lt;LocalDate> calc1 = LocalDateKitCalculatorsFactory.forwardCalculator("UK");
+
+PeriodCountCalculator&lt;LocalDate> calc2 = LocalDateKitCalculatorsFactory.getDefaultInstance()
+        .getPeriodCountCalculator();
+
+IMMDateCalculator&lt;LocalDate> calc3 = LocalDateKitCalculatorsFactory.getDefaultInstance()
+        .getIMMDateCalculator();
+        </pre>
+      </li>
+    </ol>
+
+
     </subsection>
     </section>
     
@@ -211,8 +241,7 @@ LocalDateKitCalculatorsFactory.getDefaultInstance().registerHolidays("UK", calen
 
 // ask for a LocalDate calculator for "UK" 
 // (even if a new set of holidays is registered, this one calculator is not affected
-DateCalculator&lt;LocalDate> cal = LocalDateKitCalculatorsFactory.getDefaultInstance()
-        .getDateCalculator("UK", HolidayHandlerType.FORWARD);
+DateCalculator&lt;LocalDate> cal = LocalDateKitCalculatorsFactory.forwardCalculator("UK");
         
 // set startDate, this will also set the current business date.
 cal.setStartDate(new LocalDate("2006-08-28")); 
@@ -273,6 +302,41 @@ Calendar newCurrent = cal.moveByDays(4).getCurrentBusinessDate(); // 4 Sept 06 d
 Calendar date1WeekFromSpot = cal.moveByTenor(StandardTenor.T_1W, 2).getCurrentBusinessDate();
     </pre>     
     </subsection>
+
+    <subsection name="Using JDK8 LocalDate">
+    <pre class="brush: java">
+// create or get the Holidays
+final Set&lt;LocalDate> holidays = new HashSet&lt;LocalDate>();
+holidays.add(LocalDate.parse("2006-08-28"));
+//... keep adding all holidays for 2006
+
+// create the HolidayCalendar ASSUMING that the set covers 2006!
+final HolidayCalendar&lt;LocalDate> calendar = new DefaultHolidayCalendar&lt;LocalDate>
+        (holidays, LocalDate.parse("2006-01-01"), LocalDate.parse("2006-12-31"));
+  
+// register the holidays, any calculator with name "UK"
+// asked from now on will receive an IMMUTABLE reference to this calendar
+LocalDateKitCalculatorsFactory.getDefaultInstance().registerHolidays("UK", calendar);
+
+// ask for a LocalDate calculator for "UK" 
+// (even if a new set of holidays is registered, this one calculator is not affected
+DateCalculator&lt;LocalDate> cal = LocalDateKitCalculatorsFactory.forwardCalculator("UK");
+        
+// set startDate, this will also set the current business date.
+cal.setStartDate(LocalDate.parse("2006-08-28")); 
+
+// startDate stays 28 Aug 06 BUT the currentDate has moved, 
+// according to Forward handler to 29 Aug 2006.
+LocalDate start = cal.getStartDate();   // 28 Aug 06
+LocalDate current = cal.getCurrentBusinessDate(); // 29 Aug 06
+
+LocalDate newCurrent = cal.moveByDays(4).getCurrentBusinessDate(); // 4 Sept 06 due to weekend!
+
+// Example with Tenor, 1W with a 2 day spot lag
+LocalDate date1WeekFromSpot = cal.moveByTenor(StandardTenor.T_1W, 2).getCurrentBusinessDate();
+    </pre>
+    </subsection>
+
 
     </section>
 

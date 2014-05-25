@@ -39,7 +39,7 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 
 public abstract class AbstractDateTestCase<E> extends TestCase {
-    
+
     public AbstractDateTestCase() {
         super();
     }
@@ -95,9 +95,9 @@ public abstract class AbstractDateTestCase<E> extends TestCase {
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
@@ -135,8 +135,7 @@ public abstract class AbstractDateTestCase<E> extends TestCase {
         final DateCalculator<E> cal = newDateCalculator("bla", holidayHandlerType);
         cal.setHolidayCalendar(createUKHolidayCalendar());
         cal.setStartDate(newDate(startDate));
-        checkDate("Move start:" + startDate + " tenor:" + tenor + " daysToSpot:" + spotLag, cal.moveByTenor(tenor, spotLag),
-                expectedDate);
+        checkDate("Move start:" + startDate + " tenor:" + tenor + " daysToSpot:" + spotLag, cal.moveByTenor(tenor, spotLag), expectedDate);
     }
 
     /**
@@ -144,12 +143,10 @@ public abstract class AbstractDateTestCase<E> extends TestCase {
      *
      * @param startDate
      * @param tenor
-     * @param spotLag
      * @param expectedDate
      * @param holidayHandlerType
      */
-    protected void checkMoveByTenor(final String startDate, final Tenor tenor, final String expectedDate,
-            final String holidayHandlerType) {
+    protected void checkMoveByTenor(final String startDate, final Tenor tenor, final String expectedDate, final String holidayHandlerType) {
         final DateCalculator<E> cal = newDateCalculator("bla", holidayHandlerType);
         cal.setHolidayCalendar(createUKHolidayCalendar());
         cal.setStartDate(newDate(startDate));

@@ -46,6 +46,7 @@
     </plugins>
   </build>
   
+<!-- 
   <scm>
     <connection>scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk/utils</connection>
     <developerConnection>scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk/utils</developerConnection>
@@ -58,7 +59,6 @@
   </issueManagement>
 
 
-<!-- 
   <distributionManagement>
     <repository>
       <id>sonatype-nexus-staging</id>

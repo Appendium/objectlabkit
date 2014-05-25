@@ -27,10 +27,8 @@
 
     <name>ObjectLab Kit</name>
 
-    <description>
-        ObjectLab Kit provides a generic Business Calendar for calculating dates given set(s) of holidays.
-        Why re-invent the wheel?
-   </description>
+    <description>ObjectLab Kit provides a generic Business Calendar for calculating dates given set(s) of holidays.
+Why re-invent the wheel?</description>
 
     <inceptionYear>2006</inceptionYear>
     <url>http://objectlabkit.sourceforge.net/</url>
@@ -109,7 +107,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.5</version>
+            <version>4.8.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -231,58 +229,38 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <site.deploy.url>file:///tmp/site</site.deploy.url>
+        <site.deploy.url>http://objectlabkit.sf.net</site.deploy.url>
     </properties>
 
     <profiles>
-        <profile>
-            <id>code-sign</id>
-            <activation>
-                <property>
-                    <name>performRelease</name>
-                    <value>true</value>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <source>1.5</source>
-                            <target>1.5</target>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>stat-scm</id>
-            <activation>
-                <property>
-                    <name>performRelease</name>
-                    <value>true</value>
-                </property>
-            </activation>
-            <reporting>
-                <plugins>
-                    <plugin>
-                        <groupId>net.sf</groupId>
-                        <artifactId>stat-scm</artifactId>
-                        <inherited>false</inherited>
-                    </plugin>
-                </plugins>
-            </reporting>
-        </profile>
+		<profile>
+			<id>code-sign</id>
+			<activation>
+				<property>
+					<name>performRelease</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.5</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+<!-- 
         <profile>
             <id>deploy-site</id>
             <activation>
@@ -292,18 +270,16 @@
                 </property>
             </activation>
             <properties>
-                <!-- the real site deploy url, this is a hack because site:stage (v2.1)
-                    doesn't work properly -->
                 <site.deploy.url>scp://shell.sourceforge.net/home/groups/o/ob/objectlabkit/htdocs</site.deploy.url>
             </properties>
         </profile>
         <profile>
             <id>stage-site</id>
             <properties>
-                <!-- stage the site in the /test folder on sourceforge -->
                 <site.deploy.url>scp://shell.sourceforge.net/home/groups/o/ob/objectlabkit/htdocs/test</site.deploy.url>
             </properties>
         </profile>
+ -->
     </profiles>
 
     <scm>
@@ -311,9 +287,6 @@
         <developerConnection>scm:git:git@github.com:/Appendium/objectlabkit.git</developerConnection>
         <url>git@github.com:/Appendium/objectlabkit.git</url>
     </scm>
-    <!-- <scm> <connection>scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk/</connection>
-        <developerConnection>scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk/</developerConnection>
-        <url>http://objectlabkit.svn.sourceforge.net/viewvc/objectlabkit/</url> </scm> -->
 
     <issueManagement>
         <system>GitHub</system>
@@ -329,18 +302,39 @@
 
     <reporting>
         <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>cobertura-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <artifactId>maven-changes-plugin</artifactId>
-                <configuration>
-                    <issueLinkTemplatePerSystem>
-                        <default>%URL%/?group_id=175139&amp;func=detail&amp;%ISSUE%</default>
-                    </issueLinkTemplatePerSystem>
-                </configuration>
-            </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<code>javadoc:aggregate</code>
+					<source>1.8</source>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-changes-plugin</artifactId>
+				<version>2.10</version>
+				<configuration>
+					<configuration>
+						<githubAPIScheme>https</githubAPIScheme>
+						<githubAPIPort>443</githubAPIPort>
+					</configuration>
+					<issueManagementSystems>
+						<issueManagementSystem>GitHub</issueManagementSystem>
+						<url>https://github.com/appendium/flatpack/issues/</url>
+					</issueManagementSystems>
+				</configuration>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>changes-report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
@@ -382,13 +376,12 @@
                     <xrefLocation>${project.reporting.outputDirectory}/../xref</xrefLocation>
                 </configuration>
             </plugin>
--->            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <configuration>
-                    <!-- these do not currently work as they are in the old format <configLocation>${project.basedir}/../src/source-checks/checkstyle-checks.xml</configLocation>
-                        <configLocation>${project.basedir}/../src/source-checks/objectlab-checks.xml</configLocation> -->
+                    <! - - these do not currently work as they are in the old format <configLocation>${project.basedir}/../src/source-checks/checkstyle-checks.xml</configLocation>
+                        <configLocation>${project.basedir}/../src/source-checks/objectlab-checks.xml</configLocation> - ->
                     <xrefLocation>${project.reporting.outputDirectory}/../xref</xrefLocation>
                 </configuration>
             </plugin>
@@ -396,6 +389,7 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>dashboard-maven-plugin</artifactId>
             </plugin>
+-->            
         </plugins>
     </reporting>
 

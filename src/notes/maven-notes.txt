@@ -1,0 +1,106 @@
+Build site:
+======================
+from the objectlabkit root dir:
+mvn clean install site site:stage
+
+
+HOW to release to OSS Sonatype REPO
+===================================
+https://docs.sonatype.org/display/Repository/Sonatype+OSS+Maven+Repository+Usage+Guide
+
+
+SIGN as part of release
+========================
+https://maven.apache.org/plugins/maven-gpg-plugin/usage.html
+
+mvn release:prepare -DdryRun=true -Darguments="-Dgpg.passphrase=0bjectlabKit -Dgpg.keyname=8F656881"
+
+Where the keyname is the key ID you want to use, to see the keys
+gpg --list-secret-keys
+
+ironman:flatpack xhensevalb$ gpg --list-secret-keys
+/Users/xhensevalb/.gnupg/secring.gpg
+------------------------------------
+sec   2048R/F464BE85 2014-01-01 [expires: 2018-01-01]
+uid                  XXXXXXXXXXXXXXXX
+ssb   2048R/B9A710D1 2014-01-01
+
+sec   2048R/8F656881 2014-05-22
+uid                  Benoit Xhenseval (For Open Source Projects) <kit@objectlab.co.uk>
+
+DOING the RELEASE See http://j.mp/TC8Fdy
+========================================
+
+1) replace ~/.m2/settings.xml with only 
+
+It seems that the release will try to download the new release FROM central only!
+So you need to add the staging repo in settings.xml.
+
+	<profiles>
+        <profile>
+            <id>sonatype-nexus-staging</id>
+            <repositories>
+                <repository>
+                    <id>central</id>
+                    <url>http://central</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>staging</id>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>central</id>
+                    <url>http://central</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </pluginRepository>
+                <pluginRepository>
+                    <id>snapshots</id>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+
+	<servers>
+        <server>
+            <id>sonatype-nexus-snapshots</id>
+            <username>OSS-JIRA_NAME</username>
+            <password>XXXXXXX</password>
+        </server>
+        <server>
+            <id>sonatype-nexus-staging</id>
+            <username>OSS-JIRA_NAME</username>
+            <password>XXXXXXX</password>
+        </server>
+	</servers>
+
+2)
+mvn release:prepare release:perform -DrepositoryId=sonatype-nexus-staging 
+	-Darguments="-Dgpg.passphrase=XXXXXXXXX -Dgpg.keyname=8F656881" 
+	-DconnectionUrl=scm:git:git@github.com:appendium/objectlabkit.git
+	 -Psonatype-nexus-staging
+	 
+3) Go to target/checkout (where the latest release was checked out)
+mvn site site:stage
+
+4) Upload site to sf.net
+	 
