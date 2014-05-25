@@ -44,7 +44,7 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String>, TimeProvi
         assertFalse("diff key", ims.contains("Hi"));
         assertTrue("Correct key", ims.contains("Hello"));
 
-        time += 100; // simulate 100 ms 
+        time += 100; // simulate 100 ms
 
         // second call
         assertFalse(ims.isEmpty());
@@ -82,7 +82,7 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String>, TimeProvi
         assertEquals(1, reloadCount);
         assertFalse("diff key", ims.contains("Hi"));
         assertTrue("Correct key", ims.contains("Hello"));
-        time += 100; // simulate 100 ms 
+        time += 100; // simulate 100 ms
 
         // second call
         assertFalse(ims.isEmpty());
@@ -90,7 +90,7 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String>, TimeProvi
         assertEquals(1, reloadCount);
         assertFalse("diff key", ims.contains("Hi"));
         assertTrue("Correct key", ims.contains("Hello"));
-        time += 901; // simulate 901 ms 
+        time += 901; // simulate 901 ms
 
         assertEquals("Should NOT have reloaded until called!", 1, reloadCount);
 
@@ -122,7 +122,7 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String>, TimeProvi
         assertEquals(1, reloadCount);
         assertFalse("diff key", ims.contains("Hi"));
         assertTrue("Correct key", ims.contains("Hello"));
-        time += 100; // simulate 100 ms 
+        time += 100; // simulate 100 ms
 
         // second call
         assertFalse(ims.isEmpty());
@@ -130,7 +130,7 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String>, TimeProvi
         assertEquals(1, reloadCount);
         assertFalse("diff key", ims.contains("Hi"));
         assertTrue("Correct key", ims.contains("Hello"));
-        time += 901; // simulate 901 ms 
+        time += 901; // simulate 901 ms
 
         assertEquals("Should NOT have reloaded until called!", 1, reloadCount);
 
@@ -163,17 +163,17 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String>, TimeProvi
         assertTrue("Correct key", ims.contains("Hello"));
 
         time += 101;
-        
+
         // second call
         assertFalse(ims.isEmpty());
         assertEquals(1, ims.size());
         assertEquals(1, reloadCount);
         assertFalse("diff key", ims.contains("Hi"));
         assertTrue("Correct key", ims.contains("Hello"));
-        time += 901; // simulate 901 ms 
-        
+        time += 901; // simulate 901 ms
+
         try {
-            Thread.sleep(1000); // ensure that the timer can catch up.
+            Thread.sleep(1500); // ensure that the timer can catch up.
         } catch (InterruptedException e) {
         }
 
