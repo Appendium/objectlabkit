@@ -97,7 +97,7 @@ So you need to add the staging repo in settings.xml.
 mvn release:prepare release:perform -DrepositoryId=sonatype-nexus-staging 
 	-Darguments="-Dgpg.passphrase=XXXXXXXXX -Dgpg.keyname=8F656881" 
 	-DconnectionUrl=scm:git:git@github.com:appendium/objectlabkit.git
-	 -Psonatype-nexus-staging
+	 -Psonatype-nexus-staging -Dgoals=deploy
 	 
 3) Go to target/checkout (where the latest release was checked out)
 mvn site site:stage
