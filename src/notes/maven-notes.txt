@@ -102,5 +102,10 @@ mvn release:prepare release:perform -DrepositoryId=sonatype-nexus-staging
 3) Go to target/checkout (where the latest release was checked out)
 mvn site site:stage
 
+
 4) Upload site to sf.net
-	 
+
+HOW TO DELETE GIT TAG
+======================
+git tag -d 1.3.0
+git push origin :refs/tags/1.3.0	 
