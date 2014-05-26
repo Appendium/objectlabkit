@@ -325,7 +325,7 @@ Why re-invent the wheel?</description>
 					</configuration>
 					<issueManagementSystems>
 						<issueManagementSystem>GitHub</issueManagementSystem>
-						<url>https://github.com/appendium/flatpack/issues/</url>
+						<url>https://github.com/appendium/objectlabkit/issues/</url>
 					</issueManagementSystems>
 				</configuration>
 				<reportSets>
