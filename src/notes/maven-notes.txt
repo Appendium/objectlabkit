@@ -13,7 +13,7 @@ SIGN as part of release
 ========================
 https://maven.apache.org/plugins/maven-gpg-plugin/usage.html
 
-mvn release:prepare -DdryRun=true -Darguments="-Dgpg.passphrase=0bjectlabKit -Dgpg.keyname=8F656881"
+mvn release:prepare -DdryRun=true -Darguments="-Dgpg.passphrase=XXXXXXX -Dgpg.keyname=8F656881"
 
 Where the keyname is the key ID you want to use, to see the keys
 gpg --list-secret-keys
