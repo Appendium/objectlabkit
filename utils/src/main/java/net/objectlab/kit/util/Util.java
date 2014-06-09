@@ -40,8 +40,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import net.objectlab.kit.util.StringUtil;
-
 /**
  * Utility class for list generation and parsing.
  * 
@@ -87,7 +85,7 @@ public final class Util {
      * @return a String comma separated.
      */
     public static String listToCSVString(final List list) {
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
 
         if (list != null) {
             boolean first = true;

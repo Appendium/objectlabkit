@@ -109,7 +109,7 @@ public final class StringUtil {
             return originalString;
         }
 
-        final StringBuffer newString = new StringBuffer(originalString.length());
+        final StringBuilder newString = new StringBuilder(originalString.length());
         int index = 0;
         final int originalLength = originalPattern.length();
         int previousIndex = 0;
@@ -139,7 +139,7 @@ public final class StringUtil {
      *         null, then returns the <code>original</code> string.
      */
     public static String replaceToken(final String original, final String token, final String replacement) {
-        final StringBuffer tok = new StringBuffer(TOKEN);
+        final StringBuilder tok = new StringBuilder(TOKEN);
         tok.append(token).append(TOKEN);
 
         final String toReplace = replaceCRToken(original);
@@ -181,7 +181,7 @@ public final class StringUtil {
             return null;
         }
         final StringTokenizer lineTokenizer = new StringTokenizer(inString, newline, true);
-        final StringBuffer stringBuffer = new StringBuffer();
+        final StringBuilder StringBuilder = new StringBuilder();
 
         while (lineTokenizer.hasMoreTokens()) {
             try {
@@ -192,14 +192,14 @@ public final class StringUtil {
                     nextLine = wrapLine(nextLine, newline, wrapColumn);
                 }
 
-                stringBuffer.append(nextLine);
+                StringBuilder.append(nextLine);
             } catch (final NoSuchElementException nsee) {
                 // thrown by nextToken(), but I don't know why it would
                 break;
             }
         }
 
-        return stringBuffer.toString();
+        return StringBuilder.toString();
     }
 
     /**
@@ -214,7 +214,7 @@ public final class StringUtil {
      */
 
     private static String wrapLine(String line, final String newline, final int wrapColumn) {
-        final StringBuffer wrappedLine = new StringBuffer();
+        final StringBuilder wrappedLine = new StringBuilder();
 
         while (line.length() > wrapColumn) {
             int spaceToWrapAt = line.lastIndexOf(' ', wrapColumn);
@@ -527,32 +527,31 @@ public final class StringUtil {
     * @param strings
     * @return true if any are empty
     */
-   public static boolean anyEmpty(final String... strings) {
-       if (strings != null) {
-           for (final String object : strings) {
-               if (StringUtils.isEmpty(object)) {
-                   return true;
-               }
-           }
-           return strings.length == 0 ? true : false;
-       }
-       return true;
-   }
+    public static boolean anyEmpty(final String... strings) {
+        if (strings != null) {
+            for (final String object : strings) {
+                if (StringUtils.isEmpty(object)) {
+                    return true;
+                }
+            }
+            return strings.length == 0 ? true : false;
+        }
+        return true;
+    }
 
-  
-   /**
-    * Does equalsIgnoreCase call but if the value is '*', immediately returns true.
-    */
-   public static boolean equalsIgnoreCaseOrValueIsWildcard(final String value, final String toCheck) {
-       if (value == null && toCheck == null) {
-           return true;
-       }
-       if (value != null && StringUtil.WILDCARD.equals(value)) {
-           return true;
-       }
-       if (value != null && toCheck != null) {
-           return value.equalsIgnoreCase(toCheck);
-       }
-       return false;
-   }
+    /**
+     * Does equalsIgnoreCase call but if the value is '*', immediately returns true.
+     */
+    public static boolean equalsIgnoreCaseOrValueIsWildcard(final String value, final String toCheck) {
+        if (value == null && toCheck == null) {
+            return true;
+        }
+        if (value != null && StringUtil.WILDCARD.equals(value)) {
+            return true;
+        }
+        if (value != null && toCheck != null) {
+            return value.equalsIgnoreCase(toCheck);
+        }
+        return false;
+    }
 }

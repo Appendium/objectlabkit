@@ -189,8 +189,8 @@ public final class BigDecimalUtil {
     }
 
     public static BigDecimal calculateWeight(final BigDecimal value, final BigDecimal total) {
-        return BigDecimalUtil
-                .setScale(BigDecimalUtil.divide(BigDecimalUtil.setScale(value, 9), BigDecimalUtil.setScale(total, 9), BigDecimal.ROUND_HALF_UP), 9);
+        return BigDecimalUtil.setScale(
+                BigDecimalUtil.divide(BigDecimalUtil.setScale(value, 9), BigDecimalUtil.setScale(total, 9), BigDecimal.ROUND_HALF_UP), 9);
     }
 
     /**
@@ -401,7 +401,6 @@ public final class BigDecimalUtil {
      * @return true if outside the range
      */
     public static boolean isOutsideRange(final BigDecimal bd, final BigDecimal lowerLimit, final BigDecimal upperLimit) {
-        // TODO Auto-generated method stub
         return !isInsideInclusiveRange(bd, lowerLimit, upperLimit);
     }
 
@@ -431,10 +430,11 @@ public final class BigDecimalUtil {
      * @param totalWeight
      * @return
      */
-    public static BigDecimal addWeightedConstituent(final BigDecimal runningWeightedVal, final BigDecimal valueToAdd, final BigDecimal weightForValueToAdd,
-            final BigDecimal totalWeight) {
-        return BigDecimalUtil.doAdd(runningWeightedVal, BigDecimalUtil.divide(BigDecimalUtil.multiply(valueToAdd, BigDecimalUtil.abs(weightForValueToAdd)),
-                BigDecimalUtil.abs(totalWeight), BigDecimal.ROUND_HALF_UP));
+    public static BigDecimal addWeightedConstituent(final BigDecimal runningWeightedVal, final BigDecimal valueToAdd,
+            final BigDecimal weightForValueToAdd, final BigDecimal totalWeight) {
+        return BigDecimalUtil.doAdd(runningWeightedVal, BigDecimalUtil.divide(
+                BigDecimalUtil.multiply(valueToAdd, BigDecimalUtil.abs(weightForValueToAdd)), BigDecimalUtil.abs(totalWeight),
+                BigDecimal.ROUND_HALF_UP));
     }
 
     /**
@@ -483,11 +483,11 @@ public final class BigDecimalUtil {
      * @param thresholdPercent
      * @return
      */
-    public static boolean movedStrictlyOutsideThresholdPercentage(final BigDecimal startValue, final BigDecimal newValue, final BigDecimal thresholdPercent) {
+    public static boolean movedStrictlyOutsideThresholdPercentage(final BigDecimal startValue, final BigDecimal newValue,
+            final BigDecimal thresholdPercent) {
         final BigDecimal s = BigDecimalUtil.setScale(startValue, 10);
         final BigDecimal n = BigDecimalUtil.setScale(newValue, 10);
         final BigDecimal diff = BigDecimalUtil.divide(BigDecimalUtil.doSubtract(s, n), s, BigDecimal.ROUND_HALF_UP);
-        //        diff = BigDecimalUtil.safeAbsDiff(diff, MagicNumbers.ONE);
 
         return BigDecimalUtil.absCompareTo(diff, thresholdPercent) > 0;
     }
@@ -691,7 +691,7 @@ public final class BigDecimalUtil {
     public static boolean isZeroOrLess(final BigDecimal value) {
         return value != null && value.signum() <= 0;
     }
-    
+
     /**
      * Return the decimal part of the value.
      * @param val

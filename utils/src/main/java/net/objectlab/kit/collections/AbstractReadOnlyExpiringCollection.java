@@ -77,8 +77,8 @@ public abstract class AbstractReadOnlyExpiringCollection {
 
     @Override
     protected void finalize() throws Throwable {
-        super.finalize();
         stop();
+        super.finalize();
     }
 
     protected void validateOnAccess() {

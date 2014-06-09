@@ -160,7 +160,7 @@ public class ConsoleMenu {
 
     private void displayMenu(final int size) {
         for (int i = 0; i < (size / 2); i++) {
-            final StringBuffer line = new StringBuffer();
+            final StringBuilder line = new StringBuilder();
             final String col1 = menu.get(i);
 
             if ((i + 1) < COL) {
@@ -184,7 +184,7 @@ public class ConsoleMenu {
         }
 
         if (size % 2 != 0) {
-            final StringBuffer line = new StringBuffer();
+            final StringBuilder line = new StringBuilder();
             final String col1 = menu.get(size - 1);
 
             if (size < COL) {
@@ -203,7 +203,6 @@ public class ConsoleMenu {
             ConsoleMenu.println("   " + EXIT_CODE + ") Exit");
         }
     }
-
 
     /**
      * Gets an int from the System.in
@@ -238,8 +237,8 @@ public class ConsoleMenu {
      * @return boolean as selected by the user of the console app
      */
     public static boolean getBoolean(final String title, final boolean defaultValue) {
-        final String val = ConsoleMenu.selectOne(title, new String[] { "Yes", "No" }, new String[] { Boolean.TRUE.toString(), Boolean.FALSE.toString() },
-                defaultValue ? 1 : 2);
+        final String val = ConsoleMenu.selectOne(title, new String[] { "Yes", "No" },
+                new String[] { Boolean.TRUE.toString(), Boolean.FALSE.toString() }, defaultValue ? 1 : 2);
 
         return Boolean.valueOf(val);
     }
@@ -272,7 +271,8 @@ public class ConsoleMenu {
 
     public static Date getDate(final String title, final Date defaultValue) {
         final SimpleDateFormat fmt = new SimpleDateFormat("dd-MM-yyyy");
-        final String date = ConsoleMenu.getString(title + "(dd-MM-yyyy" + (defaultValue != null ? ", default:" + fmt.format(defaultValue) : "") + ")");
+        final String date = ConsoleMenu
+                .getString(title + "(dd-MM-yyyy" + (defaultValue != null ? ", default:" + fmt.format(defaultValue) : "") + ")");
         try {
             if (date == null || date.length() == 0) {
                 return defaultValue;
@@ -372,7 +372,7 @@ public class ConsoleMenu {
     public static String getPassword(final String prompt) {
         try {
             // password holder
-            final StringBuffer password = new StringBuffer();
+            final StringBuilder password = new StringBuilder();
             final PasswordHidingThread maskingthread = new PasswordHidingThread(prompt);
             final Thread thread = new Thread(maskingthread);
             thread.start();

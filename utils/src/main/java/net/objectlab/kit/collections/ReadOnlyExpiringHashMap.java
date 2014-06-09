@@ -13,6 +13,7 @@ import java.util.Set;
  *
  */
 public class ReadOnlyExpiringHashMap<K, V> extends AbstractReadOnlyExpiringCollection implements ReadOnlyExpiringMap<K, V> {
+    private static final String COLLECTION_IS_IMMUTABLE = "Collection is immutable";
     private Map<K, V> delegate = new HashMap<K, V>();
     private final MapLoader<K, V> loader;
 
@@ -35,7 +36,7 @@ public class ReadOnlyExpiringHashMap<K, V> extends AbstractReadOnlyExpiringColle
     }
 
     public void clear() {
-        throw new UnsupportedOperationException("Collection is immutable");
+        throw new UnsupportedOperationException(COLLECTION_IS_IMMUTABLE);
     }
 
     public boolean containsKey(final Object key) {
@@ -69,15 +70,15 @@ public class ReadOnlyExpiringHashMap<K, V> extends AbstractReadOnlyExpiringColle
     }
 
     public V put(final K key, final V value) {
-        throw new UnsupportedOperationException("Collection is immutable");
+        throw new UnsupportedOperationException(COLLECTION_IS_IMMUTABLE);
     }
 
     public void putAll(final Map<? extends K, ? extends V> m) {
-        throw new UnsupportedOperationException("Collection is immutable");
+        throw new UnsupportedOperationException(COLLECTION_IS_IMMUTABLE);
     }
 
     public V remove(final Object key) {
-        throw new UnsupportedOperationException("Collection is immutable");
+        throw new UnsupportedOperationException(COLLECTION_IS_IMMUTABLE);
     }
 
     public int size() {

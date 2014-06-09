@@ -61,15 +61,13 @@ public class DefaultMapBuilder<K, V> implements MapBuilder<K, V> {
 
     private static <K, V> Map<K, V> fromEntryList(final List<Pair<K, V>> entries) {
         final int size = entries.size();
-        switch (size) {
-        case 0:
+        if (size == 0) {
             return new HashMap<K, V>();
-        default:
-            final Map<K, V> m = new HashMap<K, V>();
-            for (final Pair<K, V> entry : entries) {
-                m.put(entry.getElement1(), entry.getElement2());
-            }
-            return m;
         }
+        final Map<K, V> m = new HashMap<K, V>();
+        for (final Pair<K, V> entry : entries) {
+            m.put(entry.getElement1(), entry.getElement2());
+        }
+        return m;
     }
 }
