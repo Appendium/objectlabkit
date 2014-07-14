@@ -80,8 +80,7 @@ public enum TenorCode {
     }
 
     /**
-     * @return true if the TenorCode can have units e.g. 1 Day, 3 Week but not 5
-     *         IMM or 6 SP
+     * @return true if the TenorCode can have units e.g. 1 Day, 3 Week but not 6 OVERNIGHT or 5 SPOT/SP
      */
     public boolean acceptUnits() {
         return acceptUnits;

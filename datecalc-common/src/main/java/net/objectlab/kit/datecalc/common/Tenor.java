@@ -35,7 +35,7 @@ package net.objectlab.kit.datecalc.common;
 import java.io.Serializable;
 
 /**
- * Holds only valid unit and TenorCode: Day, Week, Month, Year, IMM, Overnight,
+ * Holds only valid unit and TenorCode: Day, Week, Month, Year, Overnight,
  * Spot.
  *
  * @author Benoit Xhenseval
@@ -71,15 +71,15 @@ public class Tenor implements Serializable {
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
     /**
      * @param tenor
-     *            the tenor, e.g. 1D, 3W, SP, IMM etc
+     *            the tenor, e.g. 1D, 3W, SP etc
      * @exception IllegalArgumentException
      *                if the tenor is not a valid on
      */
