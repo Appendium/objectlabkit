@@ -38,39 +38,10 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
+          <source>1.8</source>
+          <target>1.8</target>
         </configuration>
       </plugin>
     </plugins>
   </build>
-  
-<!-- 
-  <scm>
-    <connection>scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk/utils</connection>
-    <developerConnection>scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk/utils</developerConnection>
-    <url>http://objectlabkit.svn.sourceforge.net/viewvc/objectlabkit/</url>
-  </scm>
-
-  <issueManagement>
-    <system>sourceforge</system>
-    <url>https://sourceforge.net/tracker/?group_id=175139</url>
-  </issueManagement>
-
-
-  <distributionManagement>
-    <repository>
-      <id>sonatype-nexus-staging</id>
-      <name>Sonatype Nexus Staging Repository</name>
-      <url>http://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-    </repository>
-    <snapshotRepository>
-      <id>sonatype-nexus-snapshots</id>
-      <name>Sonatype Nexus Snapshots Repository</name>
-      <url>http://oss.sonatype.org/content/repositories/snapshots/</url>
-    </snapshotRepository>
-  </distributionManagement>
- -->
-  
-
 </project>

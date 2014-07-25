@@ -36,6 +36,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
+import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -317,6 +318,20 @@ public final class StringUtil {
     public static boolean isNotBlank(final Object text) {
         if (text instanceof String) {
             return StringUtils.isNotBlank((String) text);
+        }
+        return false;
+    }
+
+    /**
+     * If the string is not blank call the consumer
+     * @param text
+     * @param consumer
+     * @return true if consumed
+     */
+    public static boolean ifNotBlank(final String text, final Consumer<String> consumer) {
+        if (StringUtils.isNotBlank(text)) {
+            consumer.accept(text);
+            return true;
         }
         return false;
     }
