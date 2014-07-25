@@ -1,4 +1,8 @@
 language: java
+env:
+  global:
+    - SONATYPE_USERNAME=benoitx
+    - secure: "MtZwtUKZtF83MDYsKbZeyJn0R9xvSFBA9jJpk1wQXJ/zZCQsNbBJGm8ez8l5x++tGwX5BvbEeH3rqWrul9gNLcNG5PXUnar5rAHUFAHnEr3OuPfKogkOGMXxK0xXWzeKIJx5nDAAPvqlMe7lGOogA60ZFfQM3CdHwbWlNo/xVVI="
 jdk:
   - oraclejdk8
 notifications:
@@ -6,3 +10,5 @@ notifications:
     recipients:
       - opensource@appendium.com
     on_success: always
+after_success:
+  - "[[ $TRAVIS_BRANCH == \"master\" ]] && { python travis/addServer.py; mvn clean deploy --settings ~/.m2/mySettings.xml; };"
