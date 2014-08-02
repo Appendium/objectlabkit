@@ -65,8 +65,9 @@ public class CalendarDateCalculator extends AbstractDateCalculator<Calendar> {
         Calendar date = startDate;
         if (date == null) {
             date = getToday();
+        } else {
+            setStartDate(date);
         }
-        setStartDate(date);
     }
 
     public DateCalculator<Calendar> setWorkingWeek(final WorkingWeek week) {
@@ -117,8 +118,8 @@ public class CalendarDateCalculator extends AbstractDateCalculator<Calendar> {
     }
 
     @Override
-    protected DateCalculator<Calendar> createNewCalculator(final String name, final Calendar startDate,
-            final HolidayCalendar<Calendar> holidays, final HolidayHandler<Calendar> handler) {
+    protected DateCalculator<Calendar> createNewCalculator(final String name, final Calendar startDate, final HolidayCalendar<Calendar> holidays,
+            final HolidayHandler<Calendar> handler) {
         return new CalendarDateCalculator(name, startDate, holidays, handler);
     }
 

@@ -126,9 +126,9 @@ public interface DateCalculator<E> {
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
@@ -241,7 +241,7 @@ public interface DateCalculator<E> {
      * @since 1.1.0
      */
     DateCalculator<E> moveByTenor(final Tenor tenor);
-    
+
     /**
      * Calculate a series of Tenor codes in one go based on current day, 
      * this does NOT change the current business date.
@@ -250,7 +250,7 @@ public interface DateCalculator<E> {
      * @since 1.1.0
      */
     List<E> calculateTenorDates(final List<Tenor> tenors);
-    
+
     /**
      * Calculate a series of Tenor codes in one go based on SPOT day (calculated
      * with the spot lag), this does NOT change the current business date.
@@ -259,13 +259,13 @@ public interface DateCalculator<E> {
      * @since 1.1.0
      */
     List<E> calculateTenorDates(final List<Tenor> tenors, final int spotLag);
-    
+
     /**
      * return the current increment in the calculator, this is used by the 
      * handler.
      */
     int getCurrentIncrement();
-    
+
     /**
      * This would be used by delegate methods to detect if the increment
      * if positive or negative (this will allow us to define a Handler

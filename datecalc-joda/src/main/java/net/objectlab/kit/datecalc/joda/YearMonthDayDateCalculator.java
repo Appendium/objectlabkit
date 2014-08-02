@@ -80,7 +80,9 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
         final HolidayHandler<LocalDate> locDate = new HolidayHandlerYearMonthDayWrapper(holidayHandler, this);
 
         delegate = new LocalDateCalculator(name, (startDate != null ? startDate.toLocalDate() : null), cal, locDate);
-        setStartDate(startDate);
+        if (startDate != null) {
+            setStartDate(startDate);
+        }
     }
 
     // TODO throw an exception if the type is incorrect
@@ -91,9 +93,9 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
@@ -116,8 +118,8 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
     }
 
     @Override
-    protected DateCalculator<YearMonthDay> createNewCalculator(final String name, final YearMonthDay startDate, final HolidayCalendar<YearMonthDay> holidays,
-            final HolidayHandler<YearMonthDay> handler) {
+    protected DateCalculator<YearMonthDay> createNewCalculator(final String name, final YearMonthDay startDate,
+            final HolidayCalendar<YearMonthDay> holidays, final HolidayHandler<YearMonthDay> handler) {
         return new YearMonthDayDateCalculator(name, startDate, holidays, handler);
     }
 

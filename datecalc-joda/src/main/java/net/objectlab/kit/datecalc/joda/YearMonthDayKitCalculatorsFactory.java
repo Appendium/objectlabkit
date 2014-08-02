@@ -38,10 +38,8 @@ import static net.objectlab.kit.datecalc.common.HolidayHandlerType.FORWARD_UNLES
 import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_FOLLOWING;
 import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_PRECEDING;
 import net.objectlab.kit.datecalc.common.AbstractKitCalculatorsFactory;
-import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 import net.objectlab.kit.datecalc.common.IMMDateCalculator;
-import net.objectlab.kit.datecalc.common.KitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
 import org.joda.time.YearMonthDay;
@@ -64,47 +62,58 @@ public class YearMonthDayKitCalculatorsFactory extends AbstractKitCalculatorsFac
     public static YearMonthDayKitCalculatorsFactory getDefaultInstance() {
         return DEFAULT;
     }
-    
+
+    public static YearMonthDayDateCalculator currencyCalculator(final String ccy1, final String ccy2) {
+        return DEFAULT.getCurrencyDateCalculator(ccy1, ccy2);
+    }
+
     public static YearMonthDayDateCalculator forwardCalculator(final String name) {
         return DEFAULT.getDateCalculator(name, HolidayHandlerType.FORWARD);
     }
-    
+
     public static YearMonthDayDateCalculator backwardCalculator(final String name) {
         return DEFAULT.getDateCalculator(name, HolidayHandlerType.BACKWARD);
     }
-    
+
     public static YearMonthDayDateCalculator forwardUnlessMovingBackCalculator(final String name) {
         return DEFAULT.getDateCalculator(name, HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
     }
-    
+
     public static YearMonthDayDateCalculator modifiedFollowingCalculator(final String name) {
         return DEFAULT.getDateCalculator(name, HolidayHandlerType.MODIFIED_FOLLOWING);
     }
-    
+
     public static YearMonthDayDateCalculator modifiedPrecedingCalculator(final String name) {
         return DEFAULT.getDateCalculator(name, HolidayHandlerType.MODIFIED_PRECEDING);
     }
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
-   /**
-     * Create a new DateCalculator for a given name and type of handling.
-     * 
-     * @param name
-     *            calendar name (holidays set interested in). If there is set of
-     *            holidays with that name, it will return a DateCalculator with
-     *            an empty holiday set (will work on Weekend only).
-     * @param holidayHandlerType
-     *            typically one of the value of HolidayHandlerType
-     * @return a new DateCalculator
-     * @throws IllegalArgumentException if name is null
-     */
+    public YearMonthDayDateCalculator getCurrencyDateCalculator(String ccy1, String ccy2) {
+        final CurrencyYearMonthDayCalculator cal = new CurrencyYearMonthDayCalculator(ccy1, ccy2);
+        cal.setHolidayHandler(new YearMonthDayForwardHandler());
+        cal.setHolidayCalendars(getHolidayCalendar(ccy1), getHolidayCalendar(ccy2), getHolidayCalendar("USD"));
+        return cal;
+    }
+
+    /**
+      * Create a new DateCalculator for a given name and type of handling.
+      * 
+      * @param name
+      *            calendar name (holidays set interested in). If there is set of
+      *            holidays with that name, it will return a DateCalculator with
+      *            an empty holiday set (will work on Weekend only).
+      * @param holidayHandlerType
+      *            typically one of the value of HolidayHandlerType
+      * @return a new DateCalculator
+      * @throws IllegalArgumentException if name is null
+      */
     public YearMonthDayDateCalculator getDateCalculator(final String name, final String holidayHandlerType) {
         if (name == null) {
             throw new IllegalArgumentException("name cannot be null, use anything.");

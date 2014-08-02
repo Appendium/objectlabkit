@@ -73,14 +73,16 @@ public class DateDateCalculator extends AbstractDateCalculator<Date> {
 
         delegate = new CalendarDateCalculator(name, Utils.getCal(date), nonWorkingCalendars, locDate);
         delegate.setStartDate(Utils.getCal(date));
-        setStartDate(date);
+        if (date != null) {
+            setStartDate(date);
+        }
     }
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
@@ -109,8 +111,8 @@ public class DateDateCalculator extends AbstractDateCalculator<Date> {
     }
 
     @Override
-    protected DateCalculator<Date> createNewCalculator(final String name, final Date startDate,
-            final HolidayCalendar<Date> holidays, final HolidayHandler<Date> handler) {
+    protected DateCalculator<Date> createNewCalculator(final String name, final Date startDate, final HolidayCalendar<Date> holidays,
+            final HolidayHandler<Date> handler) {
         return new DateDateCalculator(name, startDate, holidays, handler);
     }
 

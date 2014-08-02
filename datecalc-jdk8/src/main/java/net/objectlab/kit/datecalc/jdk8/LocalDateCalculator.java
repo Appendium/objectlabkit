@@ -32,7 +32,7 @@
  */
 package net.objectlab.kit.datecalc.jdk8;
 
-import java.util.Calendar;
+import java.time.LocalDate;
 import java.util.Collections;
 
 import net.objectlab.kit.datecalc.common.AbstractDateCalculator;
@@ -41,8 +41,6 @@ import net.objectlab.kit.datecalc.common.DefaultHolidayCalendar;
 import net.objectlab.kit.datecalc.common.HolidayCalendar;
 import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
-
-import java.time.LocalDate;
 
 /**
  * This class is used via the DateCalculator interface, it enables the handling
@@ -64,7 +62,9 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
     public LocalDateCalculator(final String name, final LocalDate startDate, final HolidayCalendar<LocalDate> holidayCalendar,
             final HolidayHandler<LocalDate> holidayHandler) {
         super(name, holidayCalendar, holidayHandler);
-        setStartDate(startDate);
+        if (startDate != null) {
+            setStartDate(startDate);
+        }
     }
 
     /**
@@ -72,6 +72,7 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
      * @param week the JodaWorkingWeek
      * @throws IllegalArgumentException if the week is not a JodaWorkingWeek.
      */
+    @Override
     public DateCalculator<LocalDate> setWorkingWeek(final WorkingWeek week) {
         if (week instanceof Jdk8WorkingWeek) {
             workingWeek = (Jdk8WorkingWeek) week;
@@ -83,6 +84,7 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
     /**
      * is the date a non-working day according to the WorkingWeek?
      */
+    @Override
     public boolean isWeekend(final LocalDate date) {
         assert workingWeek != null;
         return !workingWeek.isWorkingDay(date);
@@ -96,6 +98,7 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
     //
     // -----------------------------------------------------------------------
 
+    @Override
     public DateCalculator<LocalDate> moveByDays(final int days) {
         setCurrentIncrement(days);
 

@@ -52,6 +52,21 @@ import java.util.Set;
 public interface KitCalculatorsFactory<E> {
 
     /**
+     * Create a new DateCalculator specialised for 2 currencies, it is a Forward calculator by default.
+     * 
+     * NOTE that USD currency holiday must also be registered.
+     * 
+     * @param ccy1
+     *            first currency, will pickup the holiday set for this ccy.
+     * @param ccy2
+     *            second currency, will pick up the holiday set for this ccy.
+     * @return a new DateCalculator
+     * @exception IllegalArgumentException
+     *                if the type is not null or a valid value.
+     */
+    DateCalculator<E> getCurrencyDateCalculator(String ccy1, String ccy2);
+
+    /**
      * Create a new DateCalculator for a given name and type of handling.
      * 
      * @param name
@@ -75,12 +90,12 @@ public interface KitCalculatorsFactory<E> {
      *            the holiday calendar (non-working days with boundaries).
      */
     KitCalculatorsFactory<E> registerHolidays(String calendarName, HolidayCalendar<E> holidaysCalendar);
-    
+
     /**
      * @return true if the holiday calendar name is registered.
      */
     boolean isHolidayCalendarRegistered(String calendarName);
-    
+
     /**
      * @return an immutable Holiday Calendar name that is registered.
      */
@@ -90,23 +105,24 @@ public interface KitCalculatorsFactory<E> {
      * @return an immutable set of registered calendar names 
      */
     Set<String> getRegisteredHolidayCalendarNames();
-    
+
     /**
      * Unregister a given holiday calendar
      * @param calendarName
      *          the calendar name to unregister.
      */
     KitCalculatorsFactory<E> unregisterHolidayCalendar(String calendarName);
-    
+
     /**
      * unregister all holiday calendars;
      */
     KitCalculatorsFactory<E> unregisterAllHolidayCalendars();
+
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 

@@ -62,33 +62,44 @@ public class LocalDateKitCalculatorsFactory extends AbstractKitCalculatorsFactor
         return DEFAULT;
     }
 
+    public static LocalDateCalculator currencyCalculator(final String ccy1, final String ccy2) {
+        return DEFAULT.getCurrencyDateCalculator(ccy1, ccy2);
+    }
+
     public static LocalDateCalculator forwardCalculator(final String name) {
         return DEFAULT.getDateCalculator(name, HolidayHandlerType.FORWARD);
     }
-    
+
     public static LocalDateCalculator backwardCalculator(final String name) {
         return DEFAULT.getDateCalculator(name, HolidayHandlerType.BACKWARD);
     }
-    
+
     public static LocalDateCalculator forwardUnlessMovingBackCalculator(final String name) {
         return DEFAULT.getDateCalculator(name, HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
     }
-    
+
     public static LocalDateCalculator modifiedFollowingCalculator(final String name) {
         return DEFAULT.getDateCalculator(name, HolidayHandlerType.MODIFIED_FOLLOWING);
     }
-    
+
     public static LocalDateCalculator modifiedPrecedingCalculator(final String name) {
         return DEFAULT.getDateCalculator(name, HolidayHandlerType.MODIFIED_PRECEDING);
     }
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
+
+    public LocalDateCalculator getCurrencyDateCalculator(String ccy1, String ccy2) {
+        final CurrencyLocalDateCalculator cal = new CurrencyLocalDateCalculator(ccy1, ccy2);
+        cal.setHolidayHandler(new LocalDateForwardHandler());
+        cal.setHolidayCalendars(getHolidayCalendar(ccy1), getHolidayCalendar(ccy2), getHolidayCalendar("USD"));
+        return cal;
+    }
 
     /**
      * Create a new DateCalculator for a given name and type of handling.

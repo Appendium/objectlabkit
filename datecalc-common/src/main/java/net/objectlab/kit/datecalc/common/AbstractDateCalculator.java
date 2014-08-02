@@ -143,9 +143,9 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         }
 
         TenorCode tenorCode = tenor.getCode();
-        if (tenorCode != TenorCode.OVERNIGHT && tenorCode != TenorCode.TOM_NEXT && spotLag != 0) {
+        if (tenorCode != TenorCode.OVERNIGHT && tenorCode != TenorCode.TOM_NEXT /*&& spotLag != 0*/) {
             // get to the Spot date first:
-            moveByBusinessDays(spotLag);
+            moveToSpotDate(spotLag);
         }
         int unit = tenor.getUnits();
         if (tenorCode == TenorCode.WEEK) {
@@ -161,14 +161,14 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         return applyTenor(tenorCode, unit);
     }
 
-    private DateCalculator<E> applyTenor(final TenorCode tenorCode, final int unit) {
+    protected DateCalculator<E> applyTenor(final TenorCode tenorCode, final int unit) {
         DateCalculator<E> calc;
         // move by tenor
         switch (tenorCode) {
         case OVERNIGHT:
             calc = moveByDays(1);
             break;
-        case TOM_NEXT: // it would have NOT moved by 
+        case TOM_NEXT: // it would have NOT moved by
             calc = moveByDays(1); // calculate Tomorrow
             calc = moveByDays(1); // then the next!
             break;
@@ -225,11 +225,11 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         final List<E> list = new ArrayList<E>();
 
         if (tenors != null) {
-            final E date = clone(getCurrentBusinessDate());
+            final E originalDate = clone(getCurrentBusinessDate());
             for (final Tenor tenor : tenors) {
                 moveByTenor(tenor, spotLag);
                 list.add(getCurrentBusinessDate());
-                setCurrentBusinessDate(date);
+                setCurrentBusinessDate(originalDate);
             }
         }
 
@@ -238,9 +238,9 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
@@ -294,6 +294,10 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         return holidayHandler;
     }
 
+    protected void moveToSpotDate(final int spotLag) {
+        moveByBusinessDays(spotLag);
+    }
+
     public DateCalculator<E> moveByBusinessDays(final int businessDays) {
         checkHolidayValidity(businessDays);
 
@@ -308,8 +312,10 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     }
 
     private void checkHolidayValidity(final int businessDays) {
-        if (businessDays > 0 && holidayHandler != null && (holidayHandler.getType().equals(BACKWARD) || holidayHandler.getType().equals(MODIFIED_PRECEDING))) {
-            throw new IllegalArgumentException("A " + MODIFIED_PRECEDING + " or " + BACKWARD + " does not allow positive steps for moveByBusinessDays");
+        if (businessDays > 0 && holidayHandler != null
+                && (holidayHandler.getType().equals(BACKWARD) || holidayHandler.getType().equals(MODIFIED_PRECEDING))) {
+            throw new IllegalArgumentException("A " + MODIFIED_PRECEDING + " or " + BACKWARD
+                    + " does not allow positive steps for moveByBusinessDays");
         } else if (businessDays < 0 && holidayHandler != null
                 && (holidayHandler.getType().equals(FORWARD) || holidayHandler.getType().equals(MODIFIED_FOLLOWING))) {
             throw new IllegalArgumentException("A " + MODIFIED_FOLLOWING + " or " + FORWARD + " does not allow negative steps for moveByBusinessDays");
@@ -347,8 +353,9 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
             newSet.addAll(calendarToCombine.getHolidays());
         }
 
-        final HolidayCalendar<E> newCal = new DefaultHolidayCalendar<E>(newSet, compareDate(holidayCalendar.getEarlyBoundary(), calendarToCombine
-                .getEarlyBoundary(), false), compareDate(holidayCalendar.getLateBoundary(), calendarToCombine.getLateBoundary(), true));
+        final HolidayCalendar<E> newCal = new DefaultHolidayCalendar<E>(newSet, compareDate(holidayCalendar.getEarlyBoundary(),
+                calendarToCombine.getEarlyBoundary(), false), compareDate(holidayCalendar.getLateBoundary(), calendarToCombine.getLateBoundary(),
+                true));
 
         final DateCalculator<E> cal = createNewCalculator(getName() + "/" + calculator.getName(), getStartDate(), newCal, holidayHandler);
 
@@ -363,8 +370,8 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     }
 
     private void checkBoundaries(final HolidayCalendar<E> calendarToCombine) {
-        if (calendarToCombine.getEarlyBoundary() != null && holidayCalendar.getEarlyBoundary() == null || calendarToCombine.getEarlyBoundary() == null
-                && holidayCalendar.getEarlyBoundary() != null) {
+        if (calendarToCombine.getEarlyBoundary() != null && holidayCalendar.getEarlyBoundary() == null
+                || calendarToCombine.getEarlyBoundary() == null && holidayCalendar.getEarlyBoundary() != null) {
             throw new IllegalArgumentException("Both Calendar to be combined must either have each Early boundaries or None.");
         }
 

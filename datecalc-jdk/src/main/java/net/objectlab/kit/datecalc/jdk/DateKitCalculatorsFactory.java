@@ -63,34 +63,44 @@ public class DateKitCalculatorsFactory extends AbstractKitCalculatorsFactory<Dat
         return DEFAULT;
     }
 
+    public static DateDateCalculator currencyCalculator(final String ccy1, final String ccy2) {
+        return DEFAULT.getCurrencyDateCalculator(ccy1, ccy2);
+    }
+
     public static DateDateCalculator forwardCalculator(final String name) {
         return DEFAULT.getDateCalculator(name, HolidayHandlerType.FORWARD);
     }
-    
+
     public static DateDateCalculator backwardCalculator(final String name) {
         return DEFAULT.getDateCalculator(name, HolidayHandlerType.BACKWARD);
     }
-    
+
     public static DateDateCalculator forwardUnlessMovingBackCalculator(final String name) {
         return DEFAULT.getDateCalculator(name, HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
     }
-    
+
     public static DateDateCalculator modifiedFollowingCalculator(final String name) {
         return DEFAULT.getDateCalculator(name, HolidayHandlerType.MODIFIED_FOLLOWING);
     }
-    
+
     public static DateDateCalculator modifiedPrecedingCalculator(final String name) {
         return DEFAULT.getDateCalculator(name, HolidayHandlerType.MODIFIED_PRECEDING);
     }
 
+    // -----------------------------------------------------------------------
+    //
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
 
-    // -----------------------------------------------------------------------
-    //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
-    //
-    // -----------------------------------------------------------------------
+    public DateDateCalculator getCurrencyDateCalculator(String ccy1, String ccy2) {
+        final CurrencyDateDateCalculator cal = new CurrencyDateDateCalculator(ccy1, ccy2);
+        cal.setHolidayHandler(new DateForwardHandler());
+        cal.setHolidayCalendars(getHolidayCalendar(ccy1), getHolidayCalendar(ccy2), getHolidayCalendar("USD"));
+        return cal;
+    }
 
     /*
      * (non-Javadoc)

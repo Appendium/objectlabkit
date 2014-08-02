@@ -63,7 +63,9 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
     public LocalDateCalculator(final String name, final LocalDate startDate, final HolidayCalendar<LocalDate> holidayCalendar,
             final HolidayHandler<LocalDate> holidayHandler) {
         super(name, holidayCalendar, holidayHandler);
-        setStartDate(startDate);
+        if (startDate != null) {
+            setStartDate(startDate);
+        }
     }
 
     /**
@@ -75,7 +77,7 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
         if (week instanceof JodaWorkingWeek) {
             workingWeek = (JodaWorkingWeek) week;
             return this;
-        } 
+        }
         throw new IllegalArgumentException("Please give an instance of JodaWorkingWeek");
     }
 
@@ -89,9 +91,9 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
@@ -121,8 +123,8 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
     }
 
     @Override
-    protected DateCalculator<LocalDate> createNewCalculator(final String name, final LocalDate startDate,
-            final HolidayCalendar<LocalDate> holidays, final HolidayHandler<LocalDate> handler) {
+    protected DateCalculator<LocalDate> createNewCalculator(final String name, final LocalDate startDate, final HolidayCalendar<LocalDate> holidays,
+            final HolidayHandler<LocalDate> handler) {
         return new LocalDateCalculator(name, startDate, holidays, handler);
     }
 

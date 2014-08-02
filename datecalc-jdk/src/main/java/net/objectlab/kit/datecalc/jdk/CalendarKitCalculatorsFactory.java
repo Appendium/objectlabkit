@@ -63,25 +63,36 @@ public class CalendarKitCalculatorsFactory extends AbstractKitCalculatorsFactory
     public static CalendarKitCalculatorsFactory getDefaultInstance() {
         return DEFAULT;
     }
-    
+
+    public static CalendarDateCalculator currencyCalculator(final String ccy1, final String ccy2) {
+        return DEFAULT.getCurrencyDateCalculator(ccy1, ccy2);
+    }
+
     public static CalendarDateCalculator forwardCalculator(final String name) {
         return DEFAULT.getDateCalculator(name, HolidayHandlerType.FORWARD);
     }
-    
+
     public static CalendarDateCalculator backwardCalculator(final String name) {
         return DEFAULT.getDateCalculator(name, HolidayHandlerType.BACKWARD);
     }
-    
+
     public static CalendarDateCalculator forwardUnlessMovingBackCalculator(final String name) {
         return DEFAULT.getDateCalculator(name, HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
     }
-    
+
     public static CalendarDateCalculator modifiedFollowingCalculator(final String name) {
         return DEFAULT.getDateCalculator(name, HolidayHandlerType.MODIFIED_FOLLOWING);
     }
-    
+
     public static CalendarDateCalculator modifiedPrecedingCalculator(final String name) {
         return DEFAULT.getDateCalculator(name, HolidayHandlerType.MODIFIED_PRECEDING);
+    }
+
+    public CalendarDateCalculator getCurrencyDateCalculator(String ccy1, String ccy2) {
+        final CurrencyCalendarDateCalculator cal = new CurrencyCalendarDateCalculator(ccy1, ccy2);
+        cal.setHolidayHandler(new CalendarForwardHandler());
+        cal.setHolidayCalendars(getHolidayCalendar(ccy1), getHolidayCalendar(ccy2), getHolidayCalendar("USD"));
+        return cal;
     }
 
     /**
@@ -123,9 +134,9 @@ public class CalendarKitCalculatorsFactory extends AbstractKitCalculatorsFactory
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
