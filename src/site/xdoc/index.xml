@@ -34,6 +34,14 @@
 			</p>
 
 			<p>
+				<b>2014-08-26</b>
+				: version 1.4.0 is out and contains a new Currency Calculator. You should use this for any calculation for a currency pair, do not 
+				forget to register the holidays for each currency prior to getting the calculator. Spot rules for Latin American currencies on T+1
+				are handled. More info on the changes
+				<a href="changes-report.html">here</a>
+				.
+			</p>
+			<p>
 				<b>2014-05-26</b>
 				: version 1.3.0 is out and contains a couple of changes to make the usage of the interfaces more fluent but mainly
 				include a NEW MODULE FOR JDK8.

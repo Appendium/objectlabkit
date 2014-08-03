@@ -6,6 +6,9 @@
     <author email="kit@objectlab.co.uk">Benoit Xhenseval</author>
   </properties>
   <body>
+    <release version="1.4.0" date="2014-08-26" description="new Currrency Calculator">
+      <action dev="benoitx" type="add"  issue="2" due-to="celerite">Added new Currency calculator following issue raised by Ben CuthBert and Scott Sue (thanks guys).</action>
+    </release>
     <release version="1.3.0" date="2014-05-26" description="new JDK8 Module">
       <action dev="benoitx" type="add">Added new JDK8 module, very similar to Joda.  Only this module needs JDK8.</action>
       <action dev="benoitx" type="add">Releasing objectlab-utils module, BigDecimalUtil, Pair, Triplet, BooleanUtil etc.</action>
