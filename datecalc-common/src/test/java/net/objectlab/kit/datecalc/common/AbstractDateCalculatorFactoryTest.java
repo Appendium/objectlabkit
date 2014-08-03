@@ -125,13 +125,13 @@ public abstract class AbstractDateCalculatorFactoryTest<E> extends AbstractDateT
             Assert.assertNotNull("cal1", cals);
             Assert.assertEquals("cals size", 0, cals.size());
         }
-}
+    }
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 

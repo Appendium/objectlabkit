@@ -65,6 +65,11 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
         return new DefaultHolidayCalendar<E>(us, newDate("2005-01-01"), newDate("2021-12-31"));
     }
 
+    @Override
+    public void tearDown() {
+        getDateCalculatorFactory().unregisterAllHolidayCalendars();
+    }
+
     protected DateCalculator<E> newCurrencyCalculator(final String ccy1, final String ccy2) {
         getDateCalculatorFactory().registerHolidays("GBP", createUKHolidayCalendar());
         getDateCalculatorFactory().registerHolidays("USD", createUSHolidayCalendar());
