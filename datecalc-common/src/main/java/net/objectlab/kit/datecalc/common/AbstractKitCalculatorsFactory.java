@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -40,17 +40,34 @@ import java.util.concurrent.ConcurrentMap;
 
 /**
  * Base class for all calculator factories, it handles the holiday registration.
- * 
+ *
  * @author Marcin Jekot
- * 
+ *
  * @param <E>
  *            a representation of a date, typically JDK: Date, Calendar;
  *            Joda:LocalDate, YearMonthDay
- * 
+ *
  */
 public abstract class AbstractKitCalculatorsFactory<E> implements KitCalculatorsFactory<E> {
 
     private final ConcurrentMap<String, HolidayCalendar<E>> holidays = new ConcurrentHashMap<String, HolidayCalendar<E>>();
+
+    private CurrencyCalculatorConfig currencyCalculatorConfig = new DefaultCurrencyCalculatorConfig();
+
+    /**
+     * Use this method register a specific currency config, if not provided then the DefaultCurrencyCalculatorConfig will be given.
+     * @param config that specifies the set of currencies subject to USD T+1.
+     */
+    public void setCurrencyCalculatorConfig(final CurrencyCalculatorConfig config) {
+        currencyCalculatorConfig = config;
+    }
+
+    public CurrencyCalculatorConfig getCurrencyCalculatorConfig() {
+        if (currencyCalculatorConfig == null) {
+            currencyCalculatorConfig = new DefaultCurrencyCalculatorConfig();
+        }
+        return currencyCalculatorConfig;
+    }
 
     /**
      * Use this method to register a given calendar, it will replace any
@@ -58,7 +75,7 @@ public abstract class AbstractKitCalculatorsFactory<E> implements KitCalculators
      * will have no affect. It won't update any existing DateCalculator as these should
      * not be amended whilst in existence (we could otherwise get inconsistent
      * results).
-     * 
+     *
      * @param name
      *            the calendar name to register these holidays under.
      * @param holidaysCalendar
@@ -96,7 +113,7 @@ public abstract class AbstractKitCalculatorsFactory<E> implements KitCalculators
 
     /**
      * Used by extensions to set holidays in a DateCalculator.
-     * 
+     *
      * @param name
      *            holiday name
      * @param dc
@@ -109,7 +126,7 @@ public abstract class AbstractKitCalculatorsFactory<E> implements KitCalculators
     }
 
     /**
-     * @return an immutable set of registered calendar names 
+     * @return an immutable set of registered calendar names
      */
     public Set<String> getRegisteredHolidayCalendarNames() {
         return Collections.unmodifiableSet(holidays.keySet());
@@ -136,10 +153,10 @@ public abstract class AbstractKitCalculatorsFactory<E> implements KitCalculators
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

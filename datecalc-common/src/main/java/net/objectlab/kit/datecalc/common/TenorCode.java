@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -34,12 +34,19 @@ package net.objectlab.kit.datecalc.common;
 
 /**
  * enum of Tenor Codes held by a {@link Tenor}
- * 
+ *
  * @author Benoit Xhenseval
- * 
+ *
  */
 public enum TenorCode {
-    OVERNIGHT("ON", false), SPOT("SP", false), TOM_NEXT("TN", false), SPOT_NEXT("SN", false), DAY("D", true), WEEK("W", true), MONTH("M", true), YEAR("Y", true);
+    OVERNIGHT("ON", false),
+    SPOT("SP", false),
+    TOM_NEXT("TN", false),
+    SPOT_NEXT("SN", false),
+    DAY("D", true),
+    WEEK("W", true),
+    MONTH("M", true),
+    YEAR("Y", true);
 
     private final String code;
 
@@ -52,9 +59,9 @@ public enum TenorCode {
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
@@ -89,10 +96,10 @@ public enum TenorCode {
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

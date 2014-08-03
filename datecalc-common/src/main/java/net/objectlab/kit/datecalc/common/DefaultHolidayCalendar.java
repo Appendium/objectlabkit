@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id: DateCalculator.java 200 2006-10-10 20:15:58Z benoitx $
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -48,7 +48,7 @@ import java.util.TreeSet;
 
 /**
  * @author $LastChangedBy: marchy $
- * 
+ *
  */
 public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
     private static final long serialVersionUID = -8558686840806739645L;
@@ -71,7 +71,8 @@ public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
         private static final long serialVersionUID = 4783236154150397685L;
 
         public int compare(final Calendar cal1, final Calendar cal2) {
-            return (cal1.get(YEAR) - cal2.get(YEAR)) * 10000 + (cal1.get(MONTH) - cal2.get(MONTH)) * 100 + (cal1.get(DAY_OF_MONTH) - cal2.get(DAY_OF_MONTH));
+            return (cal1.get(YEAR) - cal2.get(YEAR)) * 10000 + (cal1.get(MONTH) - cal2.get(MONTH)) * 100 + cal1.get(DAY_OF_MONTH)
+                    - cal2.get(DAY_OF_MONTH);
         }
     }
 
@@ -104,7 +105,7 @@ public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see net.objectlab.kit.datecalc.common.HolidayCalendar#getEarlyBoundary()
      */
     public E getEarlyBoundary() {
@@ -113,7 +114,7 @@ public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see net.objectlab.kit.datecalc.common.HolidayCalendar#getHolidays()
      */
     public Set<E> getHolidays() {
@@ -122,7 +123,7 @@ public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see net.objectlab.kit.datecalc.common.HolidayCalendar#getLateBoundary()
      */
     public E getLateBoundary() {
@@ -131,7 +132,7 @@ public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see net.objectlab.kit.datecalc.common.HolidayCalendar#setEarlyBoundary(java.lang.Object)
      */
     public HolidayCalendar<E> setEarlyBoundary(final E earlyBoundary) {
@@ -141,7 +142,7 @@ public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see net.objectlab.kit.datecalc.common.HolidayCalendar#setHolidays(java.util.Set)
      */
     @SuppressWarnings("unchecked")
@@ -178,7 +179,7 @@ public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see net.objectlab.kit.datecalc.common.HolidayCalendar#setLateBoundary(java.lang.Object)
      */
     public HolidayCalendar<E> setLateBoundary(final E lateBoundary) {

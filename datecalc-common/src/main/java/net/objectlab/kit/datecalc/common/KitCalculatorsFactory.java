@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -41,21 +41,21 @@ import java.util.Set;
  * date and working week would be shared. Once created, the set of holidays will
  * NOT change even if a new set is registered; one needs to get a new
  * DateCalculator to get the new set.
- * 
+ *
  * @author Benoit Xhenseval
- * 
+ *
  * @param <E>
  *            a representation of a date, typically JDK: Date, Calendar;
  *            Joda:LocalDate, YearMonthDay
- * 
+ *
  */
 public interface KitCalculatorsFactory<E> {
 
     /**
      * Create a new DateCalculator specialised for 2 currencies, it is a Forward calculator by default.
-     * 
+     *
      * NOTE that USD currency holiday must also be registered.
-     * 
+     *
      * @param ccy1
      *            first currency, will pickup the holiday set for this ccy.
      * @param ccy2
@@ -67,8 +67,16 @@ public interface KitCalculatorsFactory<E> {
     DateCalculator<E> getCurrencyDateCalculator(String ccy1, String ccy2);
 
     /**
+     * Use this method register a specific currency config, if not provided then the DefaultCurrencyCalculatorConfig will be given.
+     * @param config that specifies the set of currencies subject to USD T+1.
+     */
+    void setCurrencyCalculatorConfig(CurrencyCalculatorConfig config);
+
+    CurrencyCalculatorConfig getCurrencyCalculatorConfig();
+
+    /**
      * Create a new DateCalculator for a given name and type of handling.
-     * 
+     *
      * @param name
      *            calendar name (holidays set interested in). If there is set of
      *            holidays with that name, it will return a DateCalculator with
@@ -83,7 +91,7 @@ public interface KitCalculatorsFactory<E> {
 
     /**
      * Use this method to register a holidays calendar.
-     * 
+     *
      * @param calendarName
      *            the calendar name to register these holidays under.
      * @param holidaysCalendar
@@ -102,7 +110,7 @@ public interface KitCalculatorsFactory<E> {
     HolidayCalendar<E> getHolidayCalendar(String calendarName);
 
     /**
-     * @return an immutable set of registered calendar names 
+     * @return an immutable set of registered calendar names
      */
     Set<String> getRegisteredHolidayCalendarNames();
 
@@ -128,14 +136,14 @@ public interface KitCalculatorsFactory<E> {
 
     /**
      * Create a new PeriodCountCalculator.
-     * 
+     *
      * @return a PeriodCountCalculator
      */
     PeriodCountCalculator<E> getPeriodCountCalculator();
 
     /**
      * Create a new IMMDateCalculator.
-     * 
+     *
      * @return an IMMDateCalculator
      */
     IMMDateCalculator<E> getIMMDateCalculator();
@@ -143,10 +151,10 @@ public interface KitCalculatorsFactory<E> {
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

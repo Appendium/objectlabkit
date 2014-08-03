@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -40,9 +40,9 @@ import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 /**
  * Jdk <code>Calendar</code> based implementation of the
  * {@link net.objectlab.kit.datecalc.common.PeriodCountCalculator}.
- * 
+ *
  * @author Marcin Jekot
- * 
+ *
  */
 public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Calendar> {
 
@@ -82,8 +82,8 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
         if (dayStart == MONTH_31_DAYS) {
             dayStart = MONTH_30_DAYS;
         }
-        diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * YEAR_360 + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * MONTH_30_DAYS + dayEnd
-                - dayStart;
+        diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * YEAR_360 + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * MONTH_30_DAYS
+                + dayEnd - dayStart;
         return diff;
     }
 
@@ -91,18 +91,18 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
         if (start.equals(end)) {
             return 0;
         }
-    	int diff;
+        int diff;
         int dayStart = start.get(Calendar.DAY_OF_MONTH);
         int dayEnd = end.get(Calendar.DAY_OF_MONTH);
         if (start.getActualMaximum(Calendar.DAY_OF_MONTH) == dayStart) {
-        	dayStart = MONTH_30_DAYS;
+            dayStart = MONTH_30_DAYS;
         }
-        if (end.get(Calendar.MONTH)!=Calendar.FEBRUARY && end.getActualMaximum(Calendar.DAY_OF_MONTH) == dayEnd) {
-        	dayEnd = MONTH_30_DAYS;
+        if (end.get(Calendar.MONTH) != Calendar.FEBRUARY && end.getActualMaximum(Calendar.DAY_OF_MONTH) == dayEnd) {
+            dayEnd = MONTH_30_DAYS;
         }
 
-        diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * YEAR_360 + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * MONTH_30_DAYS + dayEnd
-                - dayStart;
+        diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * YEAR_360 + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * MONTH_30_DAYS
+                + dayEnd - dayStart;
         return diff;
     }
 
@@ -116,22 +116,22 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
         if (dayStart == MONTH_31_DAYS) {
             dayStart = MONTH_30_DAYS;
         }
-        diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * YEAR_360 + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * MONTH_30_DAYS + dayEnd
-                - dayStart;
+        diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * YEAR_360 + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * MONTH_30_DAYS
+                + dayEnd - dayStart;
         return diff;
     }
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
     private int dayDiff(final Calendar start, final Calendar end) {
         final long diff = Math.abs(start.getTimeInMillis() - end.getTimeInMillis());
-        final double dayDiff = ((double) diff) / MILLIS_IN_DAY;
+        final double dayDiff = (double) diff / MILLIS_IN_DAY;
         return (int) Math.round(dayDiff);
     }
 
@@ -155,7 +155,7 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
                 final int diff1 = dayDiff(start, endOfStartYear);
                 final int diff2 = dayDiff(startOfEndYear, end);
 
-                diff = (diff1 + 1.0) / start.getActualMaximum(Calendar.DAY_OF_YEAR) + (endYear - startYear - 1.0) + (diff2)
+                diff = (diff1 + 1.0) / start.getActualMaximum(Calendar.DAY_OF_YEAR) + (endYear - startYear - 1.0) + diff2
                         / (double) end.getActualMaximum(Calendar.DAY_OF_YEAR);
             }
             break;
@@ -164,11 +164,11 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
         case CONV_360E_ISDA:
         case CONV_360E_ISMA:
         case ACT_360:
-            diff = (dayDiff(start, end, basis)) / YEAR_360_0;
+            diff = dayDiff(start, end, basis) / YEAR_360_0;
             break;
 
         case ACT_365:
-            diff = (dayDiff(start, end, basis)) / YEAR_365_0;
+            diff = dayDiff(start, end, basis) / YEAR_365_0;
             break;
 
         default:
@@ -182,10 +182,10 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

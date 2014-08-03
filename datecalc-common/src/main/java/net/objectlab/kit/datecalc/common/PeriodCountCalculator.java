@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -14,8 +14,8 @@
  *
  *                     www.ObjectLab.co.uk
  *
- * $Id$ 
- * 
+ * $Id$
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -35,13 +35,13 @@ package net.objectlab.kit.datecalc.common;
 /**
  * Interface that defines a financial market way of calculating difference in
  * days, month (or part of) and year (or part of).
- * 
+ *
  * @author Benoit Xhenseval
- * 
+ *
  * @param <E>
  *            a representation of a date, typically JDK: Date, Calendar;
  *            Joda:LocalDate, YearMonthDay
- * 
+ *
  */
 public interface PeriodCountCalculator<E> {
     int YEAR_360 = 360;
@@ -60,7 +60,7 @@ public interface PeriodCountCalculator<E> {
      * This calculates the number of days between 2 dates, it follows the given
      * basis which means that the result could vary between the same 2 dates if
      * the basis is different.
-     * 
+     *
      * @param start
      *            the start date
      * @param end
@@ -73,9 +73,9 @@ public interface PeriodCountCalculator<E> {
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
@@ -83,7 +83,7 @@ public interface PeriodCountCalculator<E> {
      * This calculates the number of months (or fraction) between 2 dates, it
      * follows the given basis which means that the result could vary between
      * the same 2 dates if the basis is different.
-     * 
+     *
      * @param start
      *            the start date
      * @param end
@@ -98,7 +98,7 @@ public interface PeriodCountCalculator<E> {
      * This calculates the number of years (or fraction) between 2 dates, it
      * follows the given basis which means that the result could vary between
      * the same 2 dates if the basis is different.
-     * 
+     *
      * @param start
      *            the start date
      * @param end
@@ -112,10 +112,10 @@ public interface PeriodCountCalculator<E> {
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

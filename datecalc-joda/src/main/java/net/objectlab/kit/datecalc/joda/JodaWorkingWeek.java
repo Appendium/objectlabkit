@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -38,7 +38,7 @@ import org.joda.time.LocalDate;
 
 /**
  * Immutable class representing a WorkingWeek for the Joda implementation.
- * 
+ *
  * @author Benoit Xhenseval
  */
 public class JodaWorkingWeek extends WorkingWeek {
@@ -74,14 +74,14 @@ public class JodaWorkingWeek extends WorkingWeek {
 
     /**
      * Return a new JodaWorkingWeek if the status for the given day has changed.
-     * 
+     *
      * @param working
      *            true if working day
      * @param givenDayOfWeek
      *            e.g. DateTimeConstants.MONDAY, DateTimeConstants.TUESDAY, etc
      */
-    public JodaWorkingWeek withWorkingDayFromDateTimeConstant(final boolean working, int givenDayOfWeek) {
-        int dayOfWeek = jodaToCalendarDayConstant(givenDayOfWeek);
+    public JodaWorkingWeek withWorkingDayFromDateTimeConstant(final boolean working, final int givenDayOfWeek) {
+        final int dayOfWeek = jodaToCalendarDayConstant(givenDayOfWeek);
         return new JodaWorkingWeek(super.withWorkingDayFromCalendar(working, dayOfWeek));
     }
 
@@ -90,17 +90,17 @@ public class JodaWorkingWeek extends WorkingWeek {
     }
 
     public int jodaToCalendarDayConstant(final int givenDayOfWeek) {
-        int dayOfWeek = givenDayOfWeek + 1;
-        return (dayOfWeek <= MAX_WEEKDAY_INDEX ? dayOfWeek : dayOfWeek % MAX_WEEKDAY_INDEX);
+        final int dayOfWeek = givenDayOfWeek + 1;
+        return dayOfWeek <= MAX_WEEKDAY_INDEX ? dayOfWeek : dayOfWeek % MAX_WEEKDAY_INDEX;
     }
 }
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

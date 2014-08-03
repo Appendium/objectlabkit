@@ -2,6 +2,7 @@ package net.objectlab.kit.datecalc.jdk;
 
 import java.util.Calendar;
 
+import net.objectlab.kit.datecalc.common.CurrencyCalculatorConfig;
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayCalendar;
 import net.objectlab.kit.datecalc.common.TenorCode;
@@ -9,9 +10,9 @@ import net.objectlab.kit.datecalc.common.TenorCode;
 public class CurrencyCalendarDateCalculator extends CalendarDateCalculator {
     private final CalendarDateCurrencyDateCalculator delegate;
 
-    public CurrencyCalendarDateCalculator(final String ccy1, final String ccy2) {
+    public CurrencyCalendarDateCalculator(final String ccy1, final String ccy2, final CurrencyCalculatorConfig config) {
         setName(ccy1 + "." + ccy2);
-        delegate = new CalendarDateCurrencyDateCalculator(ccy1, ccy2, this);
+        delegate = new CalendarDateCurrencyDateCalculator(ccy1, ccy2, this, config);
     }
 
     public CurrencyCalendarDateCalculator setHolidayCalendars(final HolidayCalendar<Calendar> ccy1HolidayCalendar,
@@ -21,12 +22,12 @@ public class CurrencyCalendarDateCalculator extends CalendarDateCalculator {
     }
 
     @Override
-    protected void moveToSpotDate(int spotLag) {
+    protected void moveToSpotDate(final int spotLag) {
         delegate.moveToSpotDate(spotLag);
     }
 
     @Override
-    public DateCalculator<Calendar> setHolidayCalendar(HolidayCalendar<Calendar> calendar) {
+    public DateCalculator<Calendar> setHolidayCalendar(final HolidayCalendar<Calendar> calendar) {
         throw new UnsupportedOperationException("Sorry do not set a single calendar for a Currency calculator, use setHolidayCalendars...");
     }
 
@@ -38,7 +39,7 @@ public class CurrencyCalendarDateCalculator extends CalendarDateCalculator {
     }
 
     @Override
-    protected DateCalculator<Calendar> applyTenor(TenorCode tenorCode, int unit) {
+    protected DateCalculator<Calendar> applyTenor(final TenorCode tenorCode, final int unit) {
         final DateCalculator<Calendar> d = super.applyTenor(tenorCode, unit);
         delegate.applyAllCcyCalendars();
         return d;

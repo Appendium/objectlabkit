@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -37,7 +37,6 @@ import static net.objectlab.kit.datecalc.common.IMMPeriod.QUARTERLY;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
-import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,9 +47,9 @@ import net.objectlab.kit.datecalc.common.IMMPeriod;
 /**
  * Joda <code>LocalDate</code> based implementation of the
  * {@link net.objectlab.kit.datecalc.common.IMMDateCalculator}.
- * 
+ *
  * @author Benoit Xhenseval
- * 
+ *
  */
 public class LocalDateIMMDateCalculator extends AbstractIMMDateCalculator<LocalDate> {
     protected static final int MONTHS_IN_QUARTER = 3;
@@ -62,7 +61,7 @@ public class LocalDateIMMDateCalculator extends AbstractIMMDateCalculator<LocalD
     /**
      * Returns a list of IMM dates between 2 dates, it will exclude the start
      * date if it is an IMM date but would include the end date if it is an IMM.
-     * 
+     *
      * @param start
      *            start of the interval, excluded
      * @param end
@@ -72,6 +71,7 @@ public class LocalDateIMMDateCalculator extends AbstractIMMDateCalculator<LocalD
      *            conventional algorithm.
      * @return list of IMM dates
      */
+    @Override
     public List<LocalDate> getIMMDates(final LocalDate start, final LocalDate end, final IMMPeriod period) {
         final List<LocalDate> dates = new ArrayList<LocalDate>();
 
@@ -166,7 +166,7 @@ public class LocalDateIMMDateCalculator extends AbstractIMMDateCalculator<LocalD
 
     /**
      * Assumes that the month is correct, get the day for the 2rd wednesday.
-     * 
+     *
      * @param original
      *            the start date
      * @return the 3rd Wednesday of the month
@@ -178,10 +178,11 @@ public class LocalDateIMMDateCalculator extends AbstractIMMDateCalculator<LocalD
     /**
      * Checks if a given date is an official IMM Date (3rd Wednesdays of
      * March/June/Sept/Dec.
-     * 
+     *
      * @param date
      * @return true if that date is an IMM date.
      */
+    @Override
     public boolean isIMMDate(final LocalDate date) {
         boolean same = false;
 
@@ -197,10 +198,10 @@ public class LocalDateIMMDateCalculator extends AbstractIMMDateCalculator<LocalD
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

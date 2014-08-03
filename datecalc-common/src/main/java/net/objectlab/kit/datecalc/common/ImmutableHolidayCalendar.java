@@ -1,6 +1,6 @@
 /*
  * $Id: org.eclipse.jdt.ui.prefs 138 2006-09-10 12:29:15Z marchy $
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -31,7 +31,7 @@ import java.util.Set;
 public class ImmutableHolidayCalendar<E> implements HolidayCalendar<E> {
     private static final long serialVersionUID = 1287613980146071460L;
 
-    private HolidayCalendar<E> delegate;
+    private final HolidayCalendar<E> delegate;
 
     public ImmutableHolidayCalendar(final HolidayCalendar<E> delegate) {
         super();

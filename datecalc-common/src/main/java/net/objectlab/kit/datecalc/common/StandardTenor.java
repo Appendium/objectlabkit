@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -38,16 +38,16 @@ import java.util.List;
 
 /**
  * A series of Standard Tenors used by the financial industry.
- * 
+ *
  * @author Benoit Xhenseval
- * 
+ *
  */
 public final class StandardTenor {
     private StandardTenor() {
     }
-    
+
     private static final List<Tenor> ALL;
-    
+
     public static final Tenor SPOT = new Tenor(0, TenorCode.SPOT);
 
     public static final Tenor OVERNIGHT = new Tenor(0, TenorCode.OVERNIGHT);
@@ -64,9 +64,9 @@ public final class StandardTenor {
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
@@ -97,13 +97,13 @@ public final class StandardTenor {
     public static final Tenor T_30Y = new Tenor(30, TenorCode.YEAR);
 
     public static final Tenor T_50Y = new Tenor(50, TenorCode.YEAR);
-    
+
     public static List<Tenor> getAll() {
         return ALL;
     }
 
     static {
-        List<Tenor> list = new ArrayList<Tenor>();
+        final List<Tenor> list = new ArrayList<Tenor>();
         list.add(OVERNIGHT);
         list.add(SPOT);
         list.add(T_1D);
@@ -131,10 +131,10 @@ public final class StandardTenor {
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

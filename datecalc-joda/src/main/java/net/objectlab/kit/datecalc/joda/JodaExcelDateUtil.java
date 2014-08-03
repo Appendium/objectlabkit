@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -42,9 +42,9 @@ import org.joda.time.YearMonthDay;
 
 /**
  * Convert Excel Date to LocalDate, YearMonthDay or DateTime.
- * 
+ *
  * @author Benoit Xhenseval
- * 
+ *
  */
 public final class JodaExcelDateUtil {
 
@@ -53,56 +53,50 @@ public final class JodaExcelDateUtil {
 
     public static LocalDate getLocalDate(final double date, final boolean use1904windowing) {
         final Calendar c = ExcelDateUtil.getJavaCalendar(date, use1904windowing);
-        
+
         if (c == null) {
             return null;
         }
-        
-        return new LocalDate()
-                .withYear(c.get(Calendar.YEAR))
-                .withMonthOfYear(c.get(Calendar.MONTH) + 1)
-                .withDayOfMonth(c.get(Calendar.DAY_OF_MONTH));
+
+        return new LocalDate().withYear(c.get(Calendar.YEAR)).withMonthOfYear(c.get(Calendar.MONTH) + 1).withDayOfMonth(c.get(Calendar.DAY_OF_MONTH));
     }
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
     public static YearMonthDay getYearMonthDay(final double date, final boolean use1904windowing) {
         final Calendar c = ExcelDateUtil.getJavaCalendar(date, use1904windowing);
-        
+
         if (c == null) {
             return null;
         }
-        
+
         return new YearMonthDay(c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1, c.get(Calendar.DAY_OF_MONTH));
     }
 
     public static DateTime getDateTime(final double date, final boolean use1904windowing) {
         final Calendar c = ExcelDateUtil.getJavaCalendar(date, use1904windowing);
-        
+
         if (c == null) {
             return null;
         }
-        
-        return new DateTime()
-                .withYear(c.get(Calendar.YEAR))
-                .withMonthOfYear(c.get(Calendar.MONTH) + 1)
-                .withDayOfMonth(c.get(Calendar.DAY_OF_MONTH))
-                .withMillisOfDay(0);
+
+        return new DateTime().withYear(c.get(Calendar.YEAR)).withMonthOfYear(c.get(Calendar.MONTH) + 1).withDayOfMonth(c.get(Calendar.DAY_OF_MONTH))
+        .withMillisOfDay(0);
     }
 }
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

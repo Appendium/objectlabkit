@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -35,19 +35,19 @@ package net.objectlab.kit.datecalc.common;
 /**
  * This will be called to determine whether the date should be moved according
  * to the special algorithm used.
- * 
+ *
  * @author Benoit Xhenseval
- * 
+ *
  * @param <E>
  *            a representation of a date, typically JDK: Date, Calendar;
  *            Joda:LocalDate, YearMonthDay
- * 
+ *
  */
 public interface HolidayHandler<E> {
     /**
      * If the current date of the give calculator is a non-working day, it will
      * be moved according to the algorithm implemented.
-     * 
+     *
      * @param calculator
      *            the calculator
      * @return the date which may have moved.
@@ -56,7 +56,7 @@ public interface HolidayHandler<E> {
 
     /**
      * Give the type name for this algorithm.
-     * 
+     *
      * @return algorithm name.
      */
     String getType();
@@ -64,10 +64,10 @@ public interface HolidayHandler<E> {
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

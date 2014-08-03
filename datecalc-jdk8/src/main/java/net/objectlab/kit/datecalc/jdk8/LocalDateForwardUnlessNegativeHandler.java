@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id: LocalDateForwardHandler.java 203 2006-10-11 12:53:07Z benoitx $
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -32,29 +32,30 @@
  */
 package net.objectlab.kit.datecalc.jdk8;
 
+import java.time.LocalDate;
+
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
-import java.time.LocalDate;
-
 /**
  * A Forward handler will move the date forward if it falls on a non working
  * day.
- * 
+ *
  * @author Benoit Xhenseval
- * 
+ *
  */
 public class LocalDateForwardUnlessNegativeHandler implements HolidayHandler<LocalDate> {
 
     /**
      * If the current date of the give calculator is a non-working day, it will
      * be moved according to the algorithm implemented.
-     * 
+     *
      * @param calculator
      *            the calculator
      * @return the date which may have moved.
      */
+    @Override
     public LocalDate moveCurrentDate(final DateCalculator<LocalDate> calculator) {
         return move(calculator, 1);
     }
@@ -75,9 +76,10 @@ public class LocalDateForwardUnlessNegativeHandler implements HolidayHandler<Loc
 
     /**
      * Give the type name for this algorithm.
-     * 
+     *
      * @return algorithm name.
      */
+    @Override
     public String getType() {
         return HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK;
     }
@@ -85,10 +87,10 @@ public class LocalDateForwardUnlessNegativeHandler implements HolidayHandler<Loc
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

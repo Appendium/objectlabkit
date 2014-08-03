@@ -1,13 +1,15 @@
 package net.objectlab.kit.datecalc.joda;
 
 import net.objectlab.kit.datecalc.common.AbstractCurrencyDateCalculator;
+import net.objectlab.kit.datecalc.common.CurrencyCalculatorConfig;
 import net.objectlab.kit.datecalc.common.DateCalculator;
 
 import org.joda.time.LocalDate;
 
 public class LocalDateCurrencyDateCalculator extends AbstractCurrencyDateCalculator<LocalDate> {
-    public LocalDateCurrencyDateCalculator(String ccy1, String ccy2, DateCalculator<LocalDate> calculator) {
-        super(ccy1, ccy2, calculator);
+    public LocalDateCurrencyDateCalculator(final String ccy1, final String ccy2, final DateCalculator<LocalDate> calculator,
+            final CurrencyCalculatorConfig config) {
+        super(ccy1, ccy2, calculator, config);
     }
 
     @Override

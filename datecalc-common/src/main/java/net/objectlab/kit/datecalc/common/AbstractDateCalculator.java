@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -47,13 +47,13 @@ import java.util.Set;
  * between Jdk and Joda implementations. It is parameterized on &lt;E&gt;
  * but basically <code>Date</code> and <code>LocalDate</code> are the only
  * viable values for it for now.
- * 
+ *
  * @author Marcin Jekot and Benoit Xhenseval
- * 
+ *
  * @param <E>
  *            a representation of a date, typically JDK: Date, Calendar;
  *            Joda:LocalDate, YearMonthDay
- * 
+ *
  */
 public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     private static final int MONTHS_IN_YEAR = 12;
@@ -129,7 +129,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
      * move the current date by a given tenor, this means that if a date is
      * either a 'weekend' or holiday, it will be skipped acording to the holiday
      * handler and not count towards the number of days to move.
-     * 
+     *
      * @param tenor the tenor.
      * @param spotLag
      *            number of days to "spot" days, this can vary from one market
@@ -193,7 +193,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     /**
      * Move the current date by a given tenor, please note that all tenors are
      * relative to the CURRENT day (and NOT from spot).
-     * 
+     *
      * @param tenor
      *            the Tenor to reach.
      * @return the current DateCalculator
@@ -204,9 +204,9 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     }
 
     /**
-     * Calculate a series of Tenor codes in one go based on current day, 
+     * Calculate a series of Tenor codes in one go based on current day,
      * this does NOT change the current business date.
-     * 
+     *
      * @return list of dates in same order as tenors.
      * @since 1.1.0
      */
@@ -217,7 +217,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     /**
      * Calculate a series of Tenor codes in one go based on SPOT day (calculated
      * with the spot lag), this does NOT change the current business date.
-     * 
+     *
      * @return list of dates in same order as tenors.
      * @since 1.1.0
      */
@@ -252,7 +252,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     }
 
     public String getHolidayHandlerType() {
-        return (holidayHandler != null ? holidayHandler.getType() : null);
+        return holidayHandler != null ? holidayHandler.getType() : null;
     }
 
     /**
@@ -262,7 +262,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         if (date != null && (holidayCalendar.getEarlyBoundary() != null || holidayCalendar.getLateBoundary() != null)) {
             checkBoundary(date);
         }
-        return (isWeekend(date) || holidayCalendar.isHoliday(date));
+        return isWeekend(date) || holidayCalendar.isHoliday(date);
     }
 
     /**
@@ -279,7 +279,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         return isNonWorkingDay(currentBusinessDate);
     }
 
-    public E forceCurrentDateNoAdjustment(E date) {
+    public E forceCurrentDateNoAdjustment(final E date) {
         currentBusinessDate = date;
         return currentBusinessDate;
     }
@@ -307,7 +307,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         checkHolidayValidity(businessDays);
 
         final int numberOfStepsLeft = Math.abs(businessDays);
-        final int step = (businessDays < 0 ? -1 : 1);
+        final int step = businessDays < 0 ? -1 : 1;
 
         for (int i = 0; i < numberOfStepsLeft; i++) {
             moveByDays(step);
@@ -331,7 +331,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
      * Allows DateCalculators to be combined into a new one, the startDate and
      * currentBusinessDate will be the ones from the existing calendar (not the
      * parameter one). The name will be combined name1+"/"+calendar.getName().
-     * 
+     *
      * @param calculator
      *            return the same DateCalculator if calendar is null or the
      *            original calendar (but why would you want to do that?)
@@ -360,7 +360,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
 
         final HolidayCalendar<E> newCal = new DefaultHolidayCalendar<E>(newSet, compareDate(holidayCalendar.getEarlyBoundary(),
                 calendarToCombine.getEarlyBoundary(), false), compareDate(holidayCalendar.getLateBoundary(), calendarToCombine.getLateBoundary(),
-                true));
+                        true));
 
         final DateCalculator<E> cal = createNewCalculator(getName() + "/" + calculator.getName(), getStartDate(), newCal, holidayHandler);
 
@@ -419,10 +419,10 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

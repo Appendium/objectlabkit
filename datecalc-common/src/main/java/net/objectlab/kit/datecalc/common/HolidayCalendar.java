@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id: HolidayHandler.java 200 2006-10-10 20:15:58Z benoitx $
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -40,21 +40,21 @@ import java.util.Set;
  * late boundary for these dates, e.g. putting the holidays for 2006 in a set
  * with limits of 1 Jan 2006 and 31 Dec 2006 means that 2006 is covered, not
  * that 31 Dec is a holiday itself.
- * 
+ *
  * @author Benoit Xhenseval
  * @author $LastChangedBy: benoitx $
  * @version $Revision: 200 $ $Date: 2006-10-10 21:15:58 +0100 (Tue, 10 Oct 2006) $
  * @since 1.1.0
- * 
+ *
  * @param <E>
  *            a representation of a date, typically JDK: Date, Calendar;
  *            Joda:LocalDate, YearMonthDay
- * 
+ *
  */
 public interface HolidayCalendar<E> extends Serializable {
     /**
      * Returns an immutable set of holidays.
-     * 
+     *
      * @return an immutable copy of the holiday set.
      */
     Set<E> getHolidays();
@@ -88,7 +88,7 @@ public interface HolidayCalendar<E> extends Serializable {
      * @param lateBoundary
      */
     HolidayCalendar<E> setLateBoundary(final E lateBoundary);
-    
+
     /**
      * Check if a date is a holiday.
      * @param date
@@ -99,12 +99,12 @@ public interface HolidayCalendar<E> extends Serializable {
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
+ *
  * Based in London, we are world leaders in the design and development of
  * bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
- * 
+ *
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
  *         | | | | '_ \| |/ _ \/ __| __| |   / _` | '_ \
@@ -112,6 +112,6 @@ public interface HolidayCalendar<E> extends Serializable {
  *          \___/|_.__// |\___|\___|\__|_____\__,_|_.__/
  *                   |__/
  *
- * 
+ *
  *                      www.ObjectLab.co.uk
  */

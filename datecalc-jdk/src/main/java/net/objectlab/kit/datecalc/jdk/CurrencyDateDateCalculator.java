@@ -2,6 +2,7 @@ package net.objectlab.kit.datecalc.jdk;
 
 import java.util.Date;
 
+import net.objectlab.kit.datecalc.common.CurrencyCalculatorConfig;
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayCalendar;
 import net.objectlab.kit.datecalc.common.TenorCode;
@@ -9,9 +10,9 @@ import net.objectlab.kit.datecalc.common.TenorCode;
 public class CurrencyDateDateCalculator extends DateDateCalculator {
     private final DateDateCurrencyDateCalculator delegate;
 
-    public CurrencyDateDateCalculator(final String ccy1, final String ccy2) {
+    public CurrencyDateDateCalculator(final String ccy1, final String ccy2, final CurrencyCalculatorConfig config) {
         setName(ccy1 + "." + ccy2);
-        delegate = new DateDateCurrencyDateCalculator(ccy1, ccy2, this);
+        delegate = new DateDateCurrencyDateCalculator(ccy1, ccy2, this, config);
     }
 
     public CurrencyDateDateCalculator setHolidayCalendars(final HolidayCalendar<Date> ccy1HolidayCalendar,
@@ -21,12 +22,12 @@ public class CurrencyDateDateCalculator extends DateDateCalculator {
     }
 
     @Override
-    protected void moveToSpotDate(int spotLag) {
+    protected void moveToSpotDate(final int spotLag) {
         delegate.moveToSpotDate(spotLag);
     }
 
     @Override
-    public DateCalculator<Date> setHolidayCalendar(HolidayCalendar<Date> calendar) {
+    public DateCalculator<Date> setHolidayCalendar(final HolidayCalendar<Date> calendar) {
         throw new UnsupportedOperationException("Sorry do not set a single calendar for a Currency calculator, use setHolidayCalendars...");
     }
 
@@ -40,7 +41,7 @@ public class CurrencyDateDateCalculator extends DateDateCalculator {
     }
 
     @Override
-    protected DateCalculator<Date> applyTenor(TenorCode tenorCode, int unit) {
+    protected DateCalculator<Date> applyTenor(final TenorCode tenorCode, final int unit) {
         final DateCalculator<Date> d = super.applyTenor(tenorCode, unit);
         delegate.applyAllCcyCalendars();
         return d;

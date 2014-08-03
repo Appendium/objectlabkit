@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -48,9 +48,9 @@ import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 /**
  * The default factory for getting Jdk <code>Calendar</code> based
  * calculators.
- * 
+ *
  * @author Marcin Jekot
- * 
+ *
  */
 public class CalendarKitCalculatorsFactory extends AbstractKitCalculatorsFactory<Calendar> {
 
@@ -88,8 +88,8 @@ public class CalendarKitCalculatorsFactory extends AbstractKitCalculatorsFactory
         return DEFAULT.getDateCalculator(name, HolidayHandlerType.MODIFIED_PRECEDING);
     }
 
-    public CalendarDateCalculator getCurrencyDateCalculator(String ccy1, String ccy2) {
-        final CurrencyCalendarDateCalculator cal = new CurrencyCalendarDateCalculator(ccy1, ccy2);
+    public CalendarDateCalculator getCurrencyDateCalculator(final String ccy1, final String ccy2) {
+        final CurrencyCalendarDateCalculator cal = new CurrencyCalendarDateCalculator(ccy1, ccy2, getCurrencyCalculatorConfig());
         cal.setHolidayHandler(new CalendarForwardHandler());
         cal.setHolidayCalendars(getHolidayCalendar(ccy1), getHolidayCalendar(ccy2), getHolidayCalendar("USD"));
         return cal;
@@ -97,7 +97,7 @@ public class CalendarKitCalculatorsFactory extends AbstractKitCalculatorsFactory
 
     /**
      * Create a new DateCalculator for a given name and type of handling.
-     * 
+     *
      * @param name
      *            calendar name (holidays set interested in). If there is set of
      *            holidays with that name, it will return a DateCalculator with
@@ -142,7 +142,7 @@ public class CalendarKitCalculatorsFactory extends AbstractKitCalculatorsFactory
 
     /**
      * Create a new PeriodCountCalculator.
-     * 
+     *
      * @return a PeriodCountCalculator
      */
     public PeriodCountCalculator<Calendar> getPeriodCountCalculator() {
@@ -151,7 +151,7 @@ public class CalendarKitCalculatorsFactory extends AbstractKitCalculatorsFactory
 
     /**
      * Create a new IMMDateCalculator.
-     * 
+     *
      * @return an IMMDateCalculator
      */
     public IMMDateCalculator<Calendar> getIMMDateCalculator() {
@@ -161,10 +161,10 @@ public class CalendarKitCalculatorsFactory extends AbstractKitCalculatorsFactory
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

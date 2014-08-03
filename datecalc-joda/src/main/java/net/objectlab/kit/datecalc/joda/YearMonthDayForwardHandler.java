@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -41,16 +41,16 @@ import org.joda.time.YearMonthDay;
 /**
  * A Forward handler will move the date forward if it falls on a non working
  * day.
- * 
+ *
  * @author Benoit Xhenseval
- * 
+ *
  */
 public class YearMonthDayForwardHandler implements HolidayHandler<YearMonthDay> {
 
     /**
      * If the current date of the give calculator is a non-working day, it will
      * be moved according to the algorithm implemented.
-     * 
+     *
      * @param calculator
      *            the calculator
      * @return the date which may have moved.
@@ -61,9 +61,9 @@ public class YearMonthDayForwardHandler implements HolidayHandler<YearMonthDay> 
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
@@ -77,7 +77,7 @@ public class YearMonthDayForwardHandler implements HolidayHandler<YearMonthDay> 
 
     /**
      * Give the type name for this algorithm.
-     * 
+     *
      * @return algorithm name.
      */
     public String getType() {
@@ -87,10 +87,10 @@ public class YearMonthDayForwardHandler implements HolidayHandler<YearMonthDay> 
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

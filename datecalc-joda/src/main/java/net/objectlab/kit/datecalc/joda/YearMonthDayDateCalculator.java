@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -50,13 +50,13 @@ import org.joda.time.YearMonthDay;
  * This class is used via the DateCalculator interface, it enables the handling
  * of different HolidayHandler, if no HolidayHandler is defined, the calendar
  * will NOT move a date, even if it falls on a holiday or weekend.
- * 
+ *
  * @author Benoit Xhenseval
- * 
+ *
  */
 public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonthDay> {
 
-    private LocalDateCalculator delegate;
+    private final LocalDateCalculator delegate;
 
     @SuppressWarnings("unchecked")
     public YearMonthDayDateCalculator() {
@@ -79,7 +79,7 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
 
         final HolidayHandler<LocalDate> locDate = new HolidayHandlerYearMonthDayWrapper(holidayHandler, this);
 
-        delegate = new LocalDateCalculator(name, (startDate != null ? startDate.toLocalDate() : null), cal, locDate);
+        delegate = new LocalDateCalculator(name, startDate != null ? startDate.toLocalDate() : null, cal, locDate);
         if (startDate != null) {
             setStartDate(startDate);
         }
@@ -172,17 +172,17 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
     }
 
     @Override
-    protected YearMonthDay clone(YearMonthDay date) {
+    protected YearMonthDay clone(final YearMonthDay date) {
         return date;
     }
 }
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

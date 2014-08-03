@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -38,9 +38,9 @@ import java.util.GregorianCalendar;
 
 /**
  * Convert Excel Date to Jdk <code>Date</code> or <code>Calendar</code>.
- * 
+ *
  * @author Benoit Xhenseval
- * 
+ *
  */
 public final class ExcelDateUtil {
     private static final double HALF_MILLISEC = 0.5;
@@ -59,14 +59,14 @@ public final class ExcelDateUtil {
     /**
      * Given an Excel date with either 1900 or 1904 date windowing, converts it
      * to a java.util.Date.
-     * 
+     *
      * @param excelDate
      *            The Excel date.
      * @param use1904windowing
      *            true if date uses 1904 windowing, or false if using 1900 date
      *            windowing.
      * @return Java representation of the date without any time.
-     * 
+     *
      * @see java.util.TimeZone
      */
     public static Calendar getJavaCalendar(final double excelDate, final boolean use1904windowing) {
@@ -93,28 +93,28 @@ public final class ExcelDateUtil {
         } else {
             return null;
         }
-        
+
     }
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
     /**
      * Given an Excel date with either 1900 or 1904 date windowing, converts it
      * to a java.util.Date.
-     * 
+     *
      * @param excelDate
      *            The Excel date.
      * @param use1904windowing
      *            true if date uses 1904 windowing, or false if using 1900 date
      *            windowing.
      * @return Java representation of the date without any time.
-     * 
+     *
      * @see java.util.TimeZone
      */
     public static Date getJavaDateOnly(final double excelDate, final boolean use1904windowing) {
@@ -128,7 +128,7 @@ public final class ExcelDateUtil {
     /**
      * Given an Excel date with either 1900 or 1904 date windowing, converts it
      * to a java.util.Date.
-     * 
+     *
      * NOTE: If the default <code>TimeZone</code> in Java uses Daylight Saving
      * Time then the conversion back to an Excel date may not give the same
      * value, that is the comparison <CODE>excelDate ==
@@ -137,7 +137,7 @@ public final class ExcelDateUtil {
      * 2004-03-28 the minute after 01:59 CET is 03:00 CEST, if the excel date
      * represents a time between 02:00 and 03:00 then it is converted to past
      * 03:00 summer time
-     * 
+     *
      * @param excelDate
      *            The Excel date.
      * @param use1904windowing
@@ -149,27 +149,27 @@ public final class ExcelDateUtil {
      */
     public static Date getJavaDate(final double excelDate, final boolean use1904windowing) {
         final Calendar cal = getJavaCalendar(excelDate, use1904windowing);
-        return (cal == null ? null : cal.getTime());
+        return cal == null ? null : cal.getTime();
     }
 
     /**
      * Given a double, checks if it is a valid Excel date.
-     * 
+     *
      * @return true if valid
      * @param excelDate
      *            the double value
      */
     public static boolean isValidExcelDate(final double excelDate) {
-        return (excelDate > -Double.MIN_VALUE);
+        return excelDate > -Double.MIN_VALUE;
     }
 }
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

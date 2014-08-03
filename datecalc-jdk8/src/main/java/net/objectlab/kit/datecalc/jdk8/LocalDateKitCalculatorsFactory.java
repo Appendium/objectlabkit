@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -47,9 +47,9 @@ import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 /**
  * The default factory for getting Joda <code>LocalDate</code> based
  * calculators.
- * 
+ *
  * @author Benoit Xhenseval
- * 
+ *
  */
 public class LocalDateKitCalculatorsFactory extends AbstractKitCalculatorsFactory<LocalDate> {
 
@@ -96,8 +96,8 @@ public class LocalDateKitCalculatorsFactory extends AbstractKitCalculatorsFactor
     // -----------------------------------------------------------------------
 
     @Override
-    public LocalDateCalculator getCurrencyDateCalculator(String ccy1, String ccy2) {
-        final CurrencyLocalDateCalculator cal = new CurrencyLocalDateCalculator(ccy1, ccy2);
+    public LocalDateCalculator getCurrencyDateCalculator(final String ccy1, final String ccy2) {
+        final CurrencyLocalDateCalculator cal = new CurrencyLocalDateCalculator(ccy1, ccy2, getCurrencyCalculatorConfig());
         cal.setHolidayHandler(new LocalDateForwardHandler());
         cal.setHolidayCalendars(getHolidayCalendar(ccy1), getHolidayCalendar(ccy2), getHolidayCalendar("USD"));
         return cal;
@@ -105,7 +105,7 @@ public class LocalDateKitCalculatorsFactory extends AbstractKitCalculatorsFactor
 
     /**
      * Create a new DateCalculator for a given name and type of handling.
-     * 
+     *
      * @param name
      *            calendar name (holidays set interested in). If there is set of
      *            holidays with that name, it will return a DateCalculator with
@@ -149,10 +149,10 @@ public class LocalDateKitCalculatorsFactory extends AbstractKitCalculatorsFactor
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

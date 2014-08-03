@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -42,9 +42,9 @@ import org.joda.time.PeriodType;
 /**
  * Joda <code>LocalDatePeriod</code> based implementation of the
  * {@link net.objectlab.kit.datecalc.common.PeriodCountCalculator}.
- * 
+ *
  * @author Benoit Xhenseval
- * 
+ *
  */
 public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<LocalDate> {
 
@@ -89,17 +89,17 @@ public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<Loc
         }
         int dayStart = start.getDayOfMonth();
         int dayEnd = end.getDayOfMonth();
-        
+
         if (start.dayOfMonth().getMaximumValue() == dayStart) {
-        	dayStart = MONTH_30_DAYS;
+            dayStart = MONTH_30_DAYS;
         }
-        if ((end.getMonthOfYear() != 2 && end.dayOfMonth().getMaximumValue() == dayEnd)) {
-        	dayEnd = MONTH_30_DAYS;
+        if (end.getMonthOfYear() != 2 && end.dayOfMonth().getMaximumValue() == dayEnd) {
+            dayEnd = MONTH_30_DAYS;
         }
 
         return (end.getYear() - start.getYear()) * YEAR_360 + (end.getMonthOfYear() - start.getMonthOfYear()) * MONTH_30_DAYS + dayEnd - dayStart;
     }
-    
+
     private int diffConv30v360(final LocalDate start, final LocalDate end) {
         int dayStart = start.getDayOfMonth();
         int dayEnd = end.getDayOfMonth();
@@ -114,9 +114,9 @@ public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<Loc
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
@@ -137,7 +137,7 @@ public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<Loc
 
                 final int diff1 = new Period(start, endOfStartYear, PeriodType.days()).getDays();
                 final int diff2 = new Period(startOfEndYear, end, PeriodType.days()).getDays();
-                diff = ((diff1 + 1.0)) / start.dayOfYear().getMaximumValue() + ((endYear - startYear - 1.0)) + ((double) (diff2))
+                diff = (diff1 + 1.0) / start.dayOfYear().getMaximumValue() + (endYear - startYear - 1.0) + (double) diff2
                         / (double) end.dayOfYear().getMaximumValue();
             }
             break;
@@ -146,11 +146,11 @@ public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<Loc
         case CONV_360E_ISDA:
         case CONV_360E_ISMA:
         case ACT_360:
-            diff = (dayDiff(start, end, basis)) / YEAR_360_0;
+            diff = dayDiff(start, end, basis) / YEAR_360_0;
             break;
 
         case ACT_365:
-            diff = (dayDiff(start, end, basis)) / YEAR_365_0;
+            diff = dayDiff(start, end, basis) / YEAR_365_0;
             break;
 
         default:
@@ -163,10 +163,10 @@ public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<Loc
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

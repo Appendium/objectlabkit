@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -43,19 +43,19 @@ import java.util.List;
  * moveByDays or moveByBusinessDays methods are called. 'E' will be
  * parameterized to be a Date-like class, i.e. java.util.Date or
  * java.util.Calendar (and LocalDate or YearMonthDay for Joda-time / JDK8).
- * 
+ *
  * @author Benoit Xhenseval
- * 
+ *
  * @param <E>
  *            a representation of a date, typically JDK: Date, Calendar;
  *            Joda:LocalDate, YearMonthDay
- * 
+ *
  */
 public interface DateCalculator<E> {
 
     /**
      * This is typically the name of the associated set of holidays.
-     * 
+     *
      * @return calculator name (Typically the name associated with the holiday
      *         set).
      */
@@ -65,7 +65,7 @@ public interface DateCalculator<E> {
      * Setting the start date also sets the current business date (and if this
      * is a non-working day, the current business date will be moved to the next
      * business day acording to the HolidayHandler algorithm given).
-     * 
+     *
      * @param startDate
      *            the reference date for this calculator, the current business
      *            date is also updated and may be moved if it falls on a non
@@ -76,21 +76,21 @@ public interface DateCalculator<E> {
     /**
      * Gives the startDate of this calculator (immutable once set via
      * setStartDate).
-     * 
+     *
      * @return startDate the reference date for this calculator.
      */
     E getStartDate();
 
     /**
      * Gives the current business date held by the calculator.
-     * 
+     *
      * @return a date.
      */
     E getCurrentBusinessDate();
 
     /**
      * Is the given date falling on a weekend, according to the WorkingWeek.
-     * 
+     *
      * @return true if the date falls on a weekend.
      */
     boolean isWeekend(E date);
@@ -98,7 +98,7 @@ public interface DateCalculator<E> {
     /**
      * Is the given date a non working day, i.e. either a "weekend" or a
      * holiday?
-     * 
+     *
      * @return true if the given date is non-working.
      */
     boolean isNonWorkingDay(E date);
@@ -108,16 +108,16 @@ public interface DateCalculator<E> {
      * calculator does not have any algorithm to change the date when it falls
      * on a non-working day. This method can then be used to show a warning to
      * the user.
-     * 
+     *
      * @return true if the current date is either a weekend or a holiday.
      */
     boolean isCurrentDateNonWorking();
 
     /**
      * This is typically used at the construction of a DateCalculator to give a
-     * reference to a Holiday Calendar, if not the case, the calculator will 
+     * reference to a Holiday Calendar, if not the case, the calculator will
      * make an immutable copy of the HolidayCalendar.
-     * 
+     *
      * @param calendar
      *            the holiday calendar (if null, no holidays taken into account)
      * @since 1.1.0
@@ -142,7 +142,7 @@ public interface DateCalculator<E> {
     /**
      * Allows user to define what their Working Week should be (default is
      * Mon-Fri).
-     * 
+     *
      * @param week
      *            an immutable definition of a week.
      */
@@ -151,7 +151,7 @@ public interface DateCalculator<E> {
     /**
      * Gives a current business date, it may be moved according to the
      * HolidayHandler algorithm if it falls on a non-working day.
-     * 
+     *
      * @param date
      * @return new current business date if moved.
      */
@@ -159,7 +159,7 @@ public interface DateCalculator<E> {
 
     /**
      * Gives a current business date, it will NOT be moved. Do NOT use this in 99.9% cases.
-     * 
+     *
      * @param date
      * @return new current business date if moved.
      */
@@ -168,7 +168,7 @@ public interface DateCalculator<E> {
     /**
      * Gives the name of the holiday handler algorithm, see HolidayHandlerType
      * for some standard values.
-     * 
+     *
      * @return the holiday handler type, can be null
      */
     String getHolidayHandlerType();
@@ -178,7 +178,7 @@ public interface DateCalculator<E> {
      * the new current business date by the number of days and, if it falls on a
      * weekend or holiday, moves it further according to the HolidayHandler
      * given in this DateCalculator.
-     * 
+     *
      * @param days
      *            number of days (can be &lt;0 or &gt;0)
      * @return the DateCalculator (so one can do
@@ -192,7 +192,7 @@ public interface DateCalculator<E> {
      * is either a 'weekend' or holiday along the way, it will be skipped
      * acording to the holiday handler and not count towards the number of days
      * to move.
-     * 
+     *
      * @param businessDays
      *            (can be &lt;0 or &gt;0)
      * @return the current DateCalculator (so one can do
@@ -211,7 +211,7 @@ public interface DateCalculator<E> {
      * If the Calendars have Early or Late boundaries, the result is the
      * narrowest interval (e.g. the later Early boundary and the earliest
      * Late boundary).
-     * 
+     *
      * @param calculator
      *            return the same DateCalculator if calendar is null or the
      *            original calendar (but why would you want to do that?)
@@ -228,7 +228,7 @@ public interface DateCalculator<E> {
      * This method therefore, calculates the SPOT day first, moves it if it
      * falls on a holiday and then goes to the calculated day according to the
      * Tenor.
-     * 
+     *
      * @param tenor
      *            the Tenor to reach.
      * @param spotLag
@@ -242,7 +242,7 @@ public interface DateCalculator<E> {
     /**
      * Move the current date by a given tenor, please note that all tenors are
      * relative to the CURRENT day (and NOT from spot).
-     * 
+     *
      * @param tenor
      *            the Tenor to reach.
      * @return the current DateCalculator
@@ -251,9 +251,9 @@ public interface DateCalculator<E> {
     DateCalculator<E> moveByTenor(Tenor tenor);
 
     /**
-     * Calculate a series of Tenor codes in one go based on current day, 
+     * Calculate a series of Tenor codes in one go based on current day,
      * this does NOT change the current business date.
-     * 
+     *
      * @return list of dates in same order as tenors.
      * @since 1.1.0
      */
@@ -262,14 +262,14 @@ public interface DateCalculator<E> {
     /**
      * Calculate a series of Tenor codes in one go based on SPOT day (calculated
      * with the spot lag), this does NOT change the current business date.
-     * 
+     *
      * @return list of dates in same order as tenors.
      * @since 1.1.0
      */
     List<E> calculateTenorDates(List<Tenor> tenors, int spotLag);
 
     /**
-     * return the current increment in the calculator, this is used by the 
+     * return the current increment in the calculator, this is used by the
      * handler.
      */
     int getCurrentIncrement();
@@ -285,10 +285,10 @@ public interface DateCalculator<E> {
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -43,12 +43,13 @@ import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 /**
  * Joda <code>LocalDatePeriod</code> based implementation of the
  * {@link net.objectlab.kit.datecalc.common.PeriodCountCalculator}.
- * 
+ *
  * @author Benoit Xhenseval
- * 
+ *
  */
 public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<LocalDate> {
 
+    @Override
     public int dayDiff(final LocalDate start, final LocalDate end, final PeriodCountBasis basis) {
         int diff = 0;
 
@@ -119,10 +120,12 @@ public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<Loc
     //
     // -----------------------------------------------------------------------
 
+    @Override
     public double monthDiff(final LocalDate start, final LocalDate end, final PeriodCountBasis basis) {
         return yearDiff(start, end, basis) * MONTHS_IN_YEAR;
     }
 
+    @Override
     public double yearDiff(final LocalDate start, final LocalDate end, final PeriodCountBasis basis) {
         double diff = 0.0;
 
@@ -137,7 +140,7 @@ public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<Loc
 
                 final long diff1 = ChronoUnit.DAYS.between(start, endOfStartYear);
                 final long diff2 = ChronoUnit.DAYS.between(startOfEndYear, end);
-                diff = ((diff1 + 1.0)) / start.lengthOfYear() + ((endYear - startYear - 1.0)) + ((double) (diff2)) / (double) end.lengthOfYear();
+                diff = (diff1 + 1.0) / start.lengthOfYear() + (endYear - startYear - 1.0) + (double) diff2 / (double) end.lengthOfYear();
             }
             break;
 
@@ -145,11 +148,11 @@ public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<Loc
         case CONV_360E_ISDA:
         case CONV_360E_ISMA:
         case ACT_360:
-            diff = (dayDiff(start, end, basis)) / YEAR_360_0;
+            diff = dayDiff(start, end, basis) / YEAR_360_0;
             break;
 
         case ACT_365:
-            diff = (dayDiff(start, end, basis)) / YEAR_365_0;
+            diff = dayDiff(start, end, basis) / YEAR_365_0;
             break;
 
         default:
@@ -162,14 +165,14 @@ public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<Loc
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
+ *
  * Based in London, we are world leaders in the design and development of
  * bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about
  * us</a> ___ _ _ _ _ _ / _ \| |__ (_) ___ ___| |_| | __ _| |__ | | | | '_ \| |/
  * _ \/ __| __| | / _` | '_ \ | |_| | |_) | | __/ (__| |_| |__| (_| | |_) |
  * \___/|_.__// |\___|\___|\__|_____\__,_|_.__/ |__/
- * 
+ *
  * www.ObjectLab.co.uk
  */

@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -37,9 +37,9 @@ import java.util.Date;
 
 /**
  * Immutable Working Week, default is Mon-&gt;Friday.
- * 
+ *
  * @author Benoit Xhenseval
- * 
+ *
  */
 public class WorkingWeek {
     private static final byte MONDAY = 1;
@@ -58,16 +58,15 @@ public class WorkingWeek {
 
     private static final byte DEFAULT_WORKING_DAYS = (byte) (MONDAY + TUESDAY + WEDNESDAY + THURSDAY + FRIDAY);
 
-    private static final byte[] WORKING_WEEK_DAYS_OFFSET = new byte[] { SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY,
-            SATURDAY };
+    private static final byte[] WORKING_WEEK_DAYS_OFFSET = new byte[] { SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY };
 
     public static final WorkingWeek DEFAULT = new WorkingWeek();
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
@@ -107,7 +106,7 @@ public class WorkingWeek {
 
     /**
      * If the value for the given day has changed, return a NEW WorkingWeek.
-     * 
+     *
      * @param working
      *            true if working day
      * @param dayOfWeek
@@ -118,7 +117,7 @@ public class WorkingWeek {
     public WorkingWeek withWorkingDayFromCalendar(final boolean working, final int dayOfWeek) {
         final int day = adjustDay(dayOfWeek);
         WorkingWeek ret = this;
-        if (working && (!isWorkingDayFromCalendar(dayOfWeek))) {
+        if (working && !isWorkingDayFromCalendar(dayOfWeek)) {
             ret = new WorkingWeek((byte) (workingDays + WORKING_WEEK_DAYS_OFFSET[day]));
         } else if (!working && isWorkingDayFromCalendar(dayOfWeek)) {
             ret = new WorkingWeek((byte) (workingDays - WORKING_WEEK_DAYS_OFFSET[day]));
@@ -133,10 +132,10 @@ public class WorkingWeek {
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

@@ -45,7 +45,7 @@ public class Tenor implements Serializable {
     private static final long serialVersionUID = 1L;
     private int units = 0;
 
-    private TenorCode code;
+    private final TenorCode code;
 
     public Tenor(final int units, final TenorCode code) {
         this.units = units;
@@ -86,7 +86,7 @@ public class Tenor implements Serializable {
     public static Tenor valueOf(final String tenor) {
         final StringBuilder unitsBuf = new StringBuilder();
         final StringBuilder codeBuf = new StringBuilder();
-        boolean invalid = false;
+        final boolean invalid = false;
         final int size = tenor.length();
 
         parseCode(tenor, unitsBuf, codeBuf, invalid, size);
@@ -111,7 +111,7 @@ public class Tenor implements Serializable {
         return new Tenor(parsedUnits, parsedCode);
     }
 
-    private static void parseCode(final String tenor, final StringBuilder unitsBuf, final StringBuilder codeBuf, boolean invalid, final int size) {
+    private static void parseCode(final String tenor, final StringBuilder unitsBuf, final StringBuilder codeBuf, final boolean invalid, final int size) {
         for (int i = 0; i < size && !invalid; i++) {
             final char c = tenor.charAt(i);
 
@@ -131,7 +131,7 @@ public class Tenor implements Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((code == null) ? 0 : code.hashCode());
+        result = prime * result + (code == null ? 0 : code.hashCode());
         result = prime * result + units;
         return result;
     }

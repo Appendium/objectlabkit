@@ -4,12 +4,14 @@ import java.util.Calendar;
 import java.util.Date;
 
 import net.objectlab.kit.datecalc.common.AbstractCurrencyDateCalculator;
+import net.objectlab.kit.datecalc.common.CurrencyCalculatorConfig;
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.Utils;
 
 public class DateDateCurrencyDateCalculator extends AbstractCurrencyDateCalculator<Date> {
-    public DateDateCurrencyDateCalculator(String ccy1, String ccy2, DateCalculator<Date> calculator) {
-        super(ccy1, ccy2, calculator);
+    public DateDateCurrencyDateCalculator(final String ccy1, final String ccy2, final DateCalculator<Date> calculator,
+            final CurrencyCalculatorConfig config) {
+        super(ccy1, ccy2, calculator, config);
     }
 
     @Override

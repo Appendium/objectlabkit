@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -51,9 +51,9 @@ import net.objectlab.kit.datecalc.common.IMMPeriod;
 /**
  * Jdk Calendar implementation of the
  * {@link net.objectlab.kit.datecalc.common.IMMDateCalculator}
- * 
+ *
  * @author Marcin Jekot
- * 
+ *
  */
 public class CalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calendar> {
     private static final int NUMBER_DAYS_IN_WEEK = 7;
@@ -61,7 +61,7 @@ public class CalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calenda
     /**
      * Returns a list of IMM dates between 2 dates, it will exclude the start
      * date if it is an IMM date but would include the end date if it is an IMM.
-     * 
+     *
      * @param start
      *            start of the interval, excluded
      * @param end
@@ -94,12 +94,12 @@ public class CalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calenda
 
         if (isIMMMonth(cal)) {
             moveToIMMDay(cal);
-            if ((requestNextIMM && cal.after(startDate)) || (!requestNextIMM && cal.before(startDate))) {
+            if (requestNextIMM && cal.after(startDate) || !requestNextIMM && cal.before(startDate)) {
                 return cal;
             }
         }
 
-        final int delta = (requestNextIMM ? 1 : -1);
+        final int delta = requestNextIMM ? 1 : -1;
         do {
             cal.add(MONTH, delta);
         } while (!isIMMMonth(cal));
@@ -121,14 +121,14 @@ public class CalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calenda
                 cal = getNextIMMDate(requestNextIMM, cal, period);
             }
             break;
-            
+
         case BI_ANNUALY_MAR_SEP:
             if (month == JUNE || month == DECEMBER) {
                 // need to move to the next one.
                 cal = getNextIMMDate(requestNextIMM, cal, period);
             }
             break;
-            
+
         case ANNUALLY:
             // second jump
             cal = getNextIMMDate(requestNextIMM, cal, QUARTERLY);
@@ -145,9 +145,9 @@ public class CalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calenda
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
@@ -167,8 +167,8 @@ public class CalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calenda
 
     /**
      * Assumes that the month is correct, get the day for the 3rd wednesday.
-     * 
-     * @param cal 
+     *
+     * @param cal
      */
     private void moveToIMMDay(final Calendar cal) {
         cal.set(DAY_OF_MONTH, 1);
@@ -178,7 +178,7 @@ public class CalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calenda
         if (dayOfWeek < WEDNESDAY) {
             cal.add(DAY_OF_MONTH, WEDNESDAY - dayOfWeek);
         } else if (dayOfWeek > WEDNESDAY) {
-            cal.add(DAY_OF_MONTH, (WEDNESDAY + NUMBER_DAYS_IN_WEEK) - dayOfWeek);
+            cal.add(DAY_OF_MONTH, WEDNESDAY + NUMBER_DAYS_IN_WEEK - dayOfWeek);
         }
 
         // go to 3rd wednesday - i.e. move 2 weeks forward
@@ -195,10 +195,10 @@ public class CalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calenda
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

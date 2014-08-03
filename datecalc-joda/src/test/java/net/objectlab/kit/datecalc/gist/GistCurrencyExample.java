@@ -7,6 +7,8 @@ import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.DefaultHolidayCalendar;
 import net.objectlab.kit.datecalc.common.HolidayCalendar;
 import net.objectlab.kit.datecalc.common.StandardTenor;
+import net.objectlab.kit.datecalc.common.Tenor;
+import net.objectlab.kit.datecalc.common.TenorCode;
 import net.objectlab.kit.datecalc.joda.LocalDateKitCalculatorsFactory;
 
 import org.joda.time.LocalDate;
@@ -40,6 +42,10 @@ public class GistCurrencyExample {
         // set startDate, to
         cal.setStartDate(new LocalDate("2006-06-30")); // Friday
         cal.moveByTenor(StandardTenor.SPOT, 2); // USD/EUR is 2 days to spot (spotLag)
+        System.out.println("Expect 5 Jul " + cal.getCurrentBusinessDate()); // 5 July 2006 as 4th is USD holiday
+
+        cal.setStartDate(new LocalDate("2006-05-02"));
+        cal.moveByTenor(new Tenor(2, TenorCode.MONTH), 2); // USD/EUR is 2 days to spot (spotLag); 2M falls on July 4
         System.out.println("Expect 5 Jul " + cal.getCurrentBusinessDate()); // 5 July 2006 as 4th is USD holiday
     }
 }

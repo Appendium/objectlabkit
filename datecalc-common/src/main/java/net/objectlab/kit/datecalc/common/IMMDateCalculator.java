@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -37,18 +37,18 @@ import java.util.List;
 /**
  * The IMMDates are defined as the 3rd Wednesday of March, June, September and
  * December.
- * 
+ *
  * @author Benoit Xhenseval
  * @param <E>
  *            a representation of a date, typically JDK: Date, Calendar;
  *            Joda:LocalDate, YearMonthDay
- * 
+ *
  */
 public interface IMMDateCalculator<E> {
     /**
      * Checks if a given date is an official IMM Date (3rd Wednesdays of
      * March/June/Sept/Dec.
-     * 
+     *
      * @param date
      * @return true if that date is an IMM date.
      */
@@ -58,7 +58,7 @@ public interface IMMDateCalculator<E> {
      * Given a start date, it will return the next IMM Date, even if the start
      * date is an IMM date (same as calling
      * getNextIMMDate(IMMPeriod.QUARTERLY)).
-     * 
+     *
      * @param startDate
      * @return the next IMMDate based on current business date.
      */
@@ -67,7 +67,7 @@ public interface IMMDateCalculator<E> {
     /**
      * Given a start date, it will return the next IMM Date based on the
      * IMMPeriod, even if the start date is an IMM date.
-     * 
+     *
      * @param startDate
      * @param period
      *            specify when the "next" IMM is, if quarterly then it is the
@@ -78,16 +78,16 @@ public interface IMMDateCalculator<E> {
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
     /**
      * Given a start date, it will return the previous IMM Date, even if the
      * start date is an IMM date.
-     * 
+     *
      * @param startDate
      * @return the previous IMMDate based on current date.
      */
@@ -96,7 +96,7 @@ public interface IMMDateCalculator<E> {
     /**
      * Given a start date, it will return the previous IMM Date based on the
      * IMMPeriod, even if the start date is an IMM date.
-     * 
+     *
      * @param period
      *            specify when the "previous" IMM is, if quarterly then it is
      *            the conventional algorithm.
@@ -108,7 +108,7 @@ public interface IMMDateCalculator<E> {
      * Returns a list of IMM dates between 2 dates, it will exclude the start
      * date if it is an IMM date but would include the end date if it is an IMM
      * (same as as calling getIMMDates(start,end,IMMPeriod.QUARTERLY)).
-     * 
+     *
      * @param start
      *            start of the interval, excluded
      * @param end
@@ -120,7 +120,7 @@ public interface IMMDateCalculator<E> {
     /**
      * Returns a list of IMM dates between 2 dates, it will exclude the start
      * date if it is an IMM date but would include the end date if it is an IMM.
-     * 
+     *
      * @param start
      *            start of the interval, excluded
      * @param end
@@ -135,10 +135,10 @@ public interface IMMDateCalculator<E> {
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

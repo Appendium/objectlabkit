@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -48,12 +48,12 @@ import net.objectlab.kit.datecalc.common.WorkingWeek;
  * This class is used via the DateCalculator interface, it enables the handling
  * of different HolidayHandler, if no HolidayHandler is defined, the calendar
  * will NOT move a date, even if it falls on a holiday or weekend.
- * 
+ *
  * @author Marcin Jekot
  */
 public class DateDateCalculator extends AbstractDateCalculator<Date> {
 
-    private CalendarDateCalculator delegate;
+    private final CalendarDateCalculator delegate;
 
     @SuppressWarnings("unchecked")
     public DateDateCalculator() {
@@ -165,17 +165,17 @@ public class DateDateCalculator extends AbstractDateCalculator<Date> {
     }
 
     @Override
-    protected Date clone(Date date) {
+    protected Date clone(final Date date) {
         return new Date(date.getTime());
     }
 }
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

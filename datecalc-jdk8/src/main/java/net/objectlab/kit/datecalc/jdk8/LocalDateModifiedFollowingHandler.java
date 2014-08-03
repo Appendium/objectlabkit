@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -32,45 +32,46 @@
  */
 package net.objectlab.kit.datecalc.jdk8;
 
+import java.time.LocalDate;
+
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
-
-import java.time.LocalDate;
 
 /**
  * A modified following handler will move the date forward if it falls on a non
  * working day BUT, if the new date falls into another month, it will revert to
  * moving backward until it finds a working day.
- * 
+ *
  * @author Benoit Xhenseval
- * 
+ *
  */
 public class LocalDateModifiedFollowingHandler implements HolidayHandler<LocalDate> {
 
     /**
      * If the current date of the give calculator is a non-working day, it will
      * be moved according to the algorithm implemented.
-     * 
+     *
      * @param calculator
      *            the calculator
      * @return the date which may have moved.
      */
+    @Override
     public LocalDate moveCurrentDate(final DateCalculator<LocalDate> calculator) {
         return move(calculator, 1);
     }
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
-   protected LocalDate move(final DateCalculator<LocalDate> calculator, final int step) {
+    protected LocalDate move(final DateCalculator<LocalDate> calculator, final int step) {
         LocalDate date = calculator.getCurrentBusinessDate();
-        final int month = date.getMonthValue(); 
+        final int month = date.getMonthValue();
         int stepToUse = step;
         while (calculator.isNonWorkingDay(date)) {
             date = date.plusDays(stepToUse);
@@ -85,9 +86,10 @@ public class LocalDateModifiedFollowingHandler implements HolidayHandler<LocalDa
 
     /**
      * Give the type name for this algorithm.
-     * 
+     *
      * @return algorithm name.
      */
+    @Override
     public String getType() {
         return HolidayHandlerType.MODIFIED_FOLLOWING;
     }
@@ -95,10 +97,10 @@ public class LocalDateModifiedFollowingHandler implements HolidayHandler<LocalDa
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

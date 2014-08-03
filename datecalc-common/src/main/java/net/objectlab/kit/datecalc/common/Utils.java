@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -43,9 +43,9 @@ import java.util.Set;
 
 /**
  * Utilities class for <code>Date/Calendar</code> conversions
- * 
+ *
  * @author Marcin Jekot
- * 
+ *
  */
 public final class Utils {
     private static final String DATE_PATTERN = "yyyy-MM-dd";
@@ -56,7 +56,7 @@ public final class Utils {
     /**
      * Removes set's all "time" fields to zero, leaving only the date portion of
      * the Calendar. The Calendar passe
-     * 
+     *
      * @param cal
      *            to Calendar object to blast, note, it will be modified
      * @return the calendar object modified (same instance)
@@ -71,7 +71,7 @@ public final class Utils {
 
     /**
      * Creates a Date object given a string representation of it
-     * 
+     *
      * @param dateStr
      *            string (return today if string is null)
      * @return today if string is null, a Date object representing the string
@@ -88,9 +88,9 @@ public final class Utils {
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
@@ -115,12 +115,12 @@ public final class Utils {
             return getCal(date);
         } catch (final ParseException e) {
             throw new IllegalArgumentException("\"" + dateStr + "\"" + " is an invalid date, the pattern is : " + DATE_PATTERN, e);
-        }        
+        }
     }
-    
+
     /**
      * Get a Calendar object for a given Date representation.
-     * 
+     *
      * @param date
      * @return the Calendar
      */
@@ -135,7 +135,7 @@ public final class Utils {
 
     /**
      * Converts a Set of Date objects to a Set of Calendar objects.
-     * 
+     *
      * @param dates
      * @return the converted Set&lt;Calendar&gt;
      */
@@ -149,7 +149,7 @@ public final class Utils {
 
     /**
      * Converts a Set of Date objects to a Set of Calendar objects.
-     * 
+     *
      * @param dates
      * @return the converted Set&lt;Calendar&gt;
      */
@@ -165,7 +165,7 @@ public final class Utils {
 
     /**
      * Converts a Set of Calendar objects to a Set of Date objects
-     * 
+     *
      * @param calendars
      * @return the converset Set&lt;Date&gt;
      */
@@ -181,7 +181,7 @@ public final class Utils {
     /**
      * Converts a <code>List</code> of Calendar objects to a <code>List</code>
      * of dates
-     * 
+     *
      * @param dates
      * @return the converted List&lt;Date&gt;
      */
@@ -198,10 +198,10 @@ public final class Utils {
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

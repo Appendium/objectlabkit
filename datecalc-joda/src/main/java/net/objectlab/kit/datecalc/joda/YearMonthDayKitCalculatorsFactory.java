@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -47,9 +47,9 @@ import org.joda.time.YearMonthDay;
 /**
  * The default factory for getting Joda <code>YearMonthDay</code> based
  * calculators.
- * 
+ *
  * @author Benoit Xhenseval
- * 
+ *
  */
 public class YearMonthDayKitCalculatorsFactory extends AbstractKitCalculatorsFactory<YearMonthDay> {
 
@@ -95,25 +95,25 @@ public class YearMonthDayKitCalculatorsFactory extends AbstractKitCalculatorsFac
     //
     // -----------------------------------------------------------------------
 
-    public YearMonthDayDateCalculator getCurrencyDateCalculator(String ccy1, String ccy2) {
-        final CurrencyYearMonthDayCalculator cal = new CurrencyYearMonthDayCalculator(ccy1, ccy2);
+    public YearMonthDayDateCalculator getCurrencyDateCalculator(final String ccy1, final String ccy2) {
+        final CurrencyYearMonthDayCalculator cal = new CurrencyYearMonthDayCalculator(ccy1, ccy2, getCurrencyCalculatorConfig());
         cal.setHolidayHandler(new YearMonthDayForwardHandler());
         cal.setHolidayCalendars(getHolidayCalendar(ccy1), getHolidayCalendar(ccy2), getHolidayCalendar("USD"));
         return cal;
     }
 
     /**
-      * Create a new DateCalculator for a given name and type of handling.
-      * 
-      * @param name
-      *            calendar name (holidays set interested in). If there is set of
-      *            holidays with that name, it will return a DateCalculator with
-      *            an empty holiday set (will work on Weekend only).
-      * @param holidayHandlerType
-      *            typically one of the value of HolidayHandlerType
-      * @return a new DateCalculator
-      * @throws IllegalArgumentException if name is null
-      */
+     * Create a new DateCalculator for a given name and type of handling.
+     *
+     * @param name
+     *            calendar name (holidays set interested in). If there is set of
+     *            holidays with that name, it will return a DateCalculator with
+     *            an empty holiday set (will work on Weekend only).
+     * @param holidayHandlerType
+     *            typically one of the value of HolidayHandlerType
+     * @return a new DateCalculator
+     * @throws IllegalArgumentException if name is null
+     */
     public YearMonthDayDateCalculator getDateCalculator(final String name, final String holidayHandlerType) {
         if (name == null) {
             throw new IllegalArgumentException("name cannot be null, use anything.");
@@ -149,10 +149,10 @@ public class YearMonthDayKitCalculatorsFactory extends AbstractKitCalculatorsFac
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
