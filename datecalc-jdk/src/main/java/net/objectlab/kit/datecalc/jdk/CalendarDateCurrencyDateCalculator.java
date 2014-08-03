@@ -12,9 +12,13 @@ public class CalendarDateCurrencyDateCalculator extends AbstractCurrencyDateCalc
 
     @Override
     protected void moveToNextWeekday() {
-        getCalculator().moveByDays(1);
+        final Calendar calendar = getCalculator().getCurrentBusinessDate();
+        calendar.add(Calendar.DAY_OF_MONTH, 1);
+        getCalculator().forceCurrentDateNoAdjustment(calendar);
         while (getCalculator().isWeekend(getCalculator().getCurrentBusinessDate())) {
-            getCalculator().moveByDays(1);
+            final Calendar calendar2 = getCalculator().getCurrentBusinessDate();
+            calendar2.add(Calendar.DAY_OF_MONTH, 1);
+            getCalculator().forceCurrentDateNoAdjustment(calendar2);
         }
     }
 }

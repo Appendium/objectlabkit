@@ -71,7 +71,7 @@ public interface DateCalculator<E> {
      *            date is also updated and may be moved if it falls on a non
      *            working day (holiday/weekend).
      */
-    DateCalculator<E> setStartDate(final E startDate);
+    DateCalculator<E> setStartDate(E startDate);
 
     /**
      * Gives the startDate of this calculator (immutable once set via
@@ -93,7 +93,7 @@ public interface DateCalculator<E> {
      * 
      * @return true if the date falls on a weekend.
      */
-    boolean isWeekend(final E date);
+    boolean isWeekend(E date);
 
     /**
      * Is the given date a non working day, i.e. either a "weekend" or a
@@ -101,7 +101,7 @@ public interface DateCalculator<E> {
      * 
      * @return true if the given date is non-working.
      */
-    boolean isNonWorkingDay(final E date);
+    boolean isNonWorkingDay(E date);
 
     /**
      * Is the current business day a non-working day, this is useful if the
@@ -122,7 +122,7 @@ public interface DateCalculator<E> {
      *            the holiday calendar (if null, no holidays taken into account)
      * @since 1.1.0
      */
-    DateCalculator<E> setHolidayCalendar(final HolidayCalendar<E> calendar);
+    DateCalculator<E> setHolidayCalendar(HolidayCalendar<E> calendar);
 
     // -----------------------------------------------------------------------
     //
@@ -146,7 +146,7 @@ public interface DateCalculator<E> {
      * @param week
      *            an immutable definition of a week.
      */
-    DateCalculator<E> setWorkingWeek(final WorkingWeek week);
+    DateCalculator<E> setWorkingWeek(WorkingWeek week);
 
     /**
      * Gives a current business date, it may be moved according to the
@@ -155,7 +155,15 @@ public interface DateCalculator<E> {
      * @param date
      * @return new current business date if moved.
      */
-    E setCurrentBusinessDate(final E date);
+    E setCurrentBusinessDate(E date);
+
+    /**
+     * Gives a current business date, it will NOT be moved. Do NOT use this in 99.9% cases.
+     * 
+     * @param date
+     * @return new current business date if moved.
+     */
+    E forceCurrentDateNoAdjustment(E date);
 
     /**
      * Gives the name of the holiday handler algorithm, see HolidayHandlerType
@@ -176,7 +184,7 @@ public interface DateCalculator<E> {
      * @return the DateCalculator (so one can do
      *         calendar.moveByDays(-2).getCurrentBusinessDate();)
      */
-    DateCalculator<E> moveByDays(final int days);
+    DateCalculator<E> moveByDays(int days);
 
     /**
      * This changes the current business date held in the calculator, it moves
@@ -194,7 +202,7 @@ public interface DateCalculator<E> {
      *                BACKWARD) and businessDays &gt; 0 or (MODIFIED_FOLLOWING or
      *                FORWARD) and businessDays &lt; 0
      */
-    DateCalculator<E> moveByBusinessDays(final int businessDays);
+    DateCalculator<E> moveByBusinessDays(int businessDays);
 
     /**
      * Allows DateCalculators to be combined into a new one, the startDate and
@@ -229,7 +237,7 @@ public interface DateCalculator<E> {
      *            or "offset".
      * @return the current DateCalculator
      */
-    DateCalculator<E> moveByTenor(final Tenor tenor, final int spotLag);
+    DateCalculator<E> moveByTenor(Tenor tenor, int spotLag);
 
     /**
      * Move the current date by a given tenor, please note that all tenors are
@@ -240,7 +248,7 @@ public interface DateCalculator<E> {
      * @return the current DateCalculator
      * @since 1.1.0
      */
-    DateCalculator<E> moveByTenor(final Tenor tenor);
+    DateCalculator<E> moveByTenor(Tenor tenor);
 
     /**
      * Calculate a series of Tenor codes in one go based on current day, 
@@ -249,7 +257,7 @@ public interface DateCalculator<E> {
      * @return list of dates in same order as tenors.
      * @since 1.1.0
      */
-    List<E> calculateTenorDates(final List<Tenor> tenors);
+    List<E> calculateTenorDates(List<Tenor> tenors);
 
     /**
      * Calculate a series of Tenor codes in one go based on SPOT day (calculated
@@ -258,7 +266,7 @@ public interface DateCalculator<E> {
      * @return list of dates in same order as tenors.
      * @since 1.1.0
      */
-    List<E> calculateTenorDates(final List<Tenor> tenors, final int spotLag);
+    List<E> calculateTenorDates(List<Tenor> tenors, int spotLag);
 
     /**
      * return the current increment in the calculator, this is used by the 
@@ -272,7 +280,7 @@ public interface DateCalculator<E> {
      * that can act as Forward if positive and Backward if negative).
      * @param increment
      */
-    DateCalculator<E> setCurrentIncrement(final int increment);
+    DateCalculator<E> setCurrentIncrement(int increment);
 }
 
 /*

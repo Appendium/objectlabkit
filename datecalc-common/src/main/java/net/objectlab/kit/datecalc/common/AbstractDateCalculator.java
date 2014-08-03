@@ -279,6 +279,11 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         return isNonWorkingDay(currentBusinessDate);
     }
 
+    public E forceCurrentDateNoAdjustment(E date) {
+        currentBusinessDate = date;
+        return currentBusinessDate;
+    }
+
     public E setCurrentBusinessDate(final E date) {
         currentBusinessDate = date;
         if (holidayHandler != null && date != null) {

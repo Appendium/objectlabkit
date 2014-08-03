@@ -12,9 +12,9 @@ public class YearMonthDayCurrencyDateCalculator extends AbstractCurrencyDateCalc
 
     @Override
     protected void moveToNextWeekday() {
-        getCalculator().setCurrentBusinessDate(getCalculator().getCurrentBusinessDate().plusDays(1));
+        getCalculator().forceCurrentDateNoAdjustment(getCalculator().getCurrentBusinessDate().plusDays(1));
         while (getCalculator().isWeekend(getCalculator().getCurrentBusinessDate())) {
-            getCalculator().setCurrentBusinessDate(getCalculator().getCurrentBusinessDate().plusDays(1));
+            getCalculator().forceCurrentDateNoAdjustment(getCalculator().getCurrentBusinessDate().plusDays(1));
         }
     }
 }

@@ -314,8 +314,8 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
         // US holiday on 4 July!
         checkMoveByTenor("USD", "EUR", "2006-06-30", StandardTenor.SPOT, 2, "2006-07-05");
         checkMoveByTenor("EUR", "USD", "2006-06-30", StandardTenor.SPOT, 2, "2006-07-05");
-        checkMoveByTenor("USD", "EUR", "2006-07-03", StandardTenor.SPOT, 2, "2006-07-06");
-        checkMoveByTenor("EUR", "USD", "2006-07-03", StandardTenor.SPOT, 2, "2006-07-06");
+        checkMoveByTenor("USD", "EUR", "2006-07-03", StandardTenor.SPOT, 2, "2006-07-05");
+        checkMoveByTenor("EUR", "USD", "2006-07-03", StandardTenor.SPOT, 2, "2006-07-05");
         checkMoveByTenor("USD", "EUR", "2006-07-04", StandardTenor.SPOT, 2, "2006-07-07");
         checkMoveByTenor("EUR", "USD", "2006-07-04", StandardTenor.SPOT, 2, "2006-07-07");
 

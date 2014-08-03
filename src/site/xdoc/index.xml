@@ -35,9 +35,10 @@
 
 			<p>
 				<b>2014-08-26</b>
-				: version 1.4.0 is out and contains a new Currency Calculator. You should use this for any calculation for a currency pair, do not 
+				: version 1.4.0 is out and contains a new Currency Calculator. You should use this for any calculation for a currency pair, do not
 				forget to register the holidays for each currency prior to getting the calculator. Spot rules for Latin American currencies on T+1
-				are handled. More info on the changes
+				are handled. More info
+				on the changes
 				<a href="changes-report.html">here</a>
 				.
 			</p>
@@ -123,43 +124,43 @@
 				<p>If you're using Maven, setup is easy, as DateCalc is in the Maven Central Repository.</p>
 				<p>To use the JDK Version:</p>
 				<pre class="brush: xml; gutter: false">
-&lt;dependency>
-	&lt;groupId>net.objectlab.kit&lt;/groupId>
-	&lt;artifactId>datecalc-common&lt;/artifactId>
-	&lt;version>1.3.0&lt;/version>
-&lt;/dependency>
-&lt;dependency>
-	&lt;groupId>net.objectlab.kit&lt;/groupId>
-	&lt;artifactId>datecalc-jdk&lt;/artifactId>
-	&lt;version>1.3.0&lt;/version>
-&lt;/dependency>
+					&lt;dependency>
+					&lt;groupId>net.objectlab.kit&lt;/groupId>
+					&lt;artifactId>datecalc-common&lt;/artifactId>
+					&lt;version>1.4.0&lt;/version>
+					&lt;/dependency>
+					&lt;dependency>
+					&lt;groupId>net.objectlab.kit&lt;/groupId>
+					&lt;artifactId>datecalc-jdk&lt;/artifactId>
+					&lt;version>1.4.0&lt;/version>
+					&lt;/dependency>
 				</pre>
 
 				<p>To use the JODA Version (recommended):</p>
 				<pre class="brush: xml; gutter: false">
-&lt;dependency>
-	&lt;groupId>net.objectlab.kit&lt;/groupId>
-	&lt;artifactId>datecalc-common&lt;/artifactId>
-	&lt;version>1.3.0&lt;/version>
-&lt;/dependency>
-&lt;dependency>
-	&lt;groupId>net.objectlab.kit&lt;/groupId>
-	&lt;artifactId>datecalc-joda&lt;/artifactId>
-	&lt;version>1.3.0&lt;/version>
-&lt;/dependency>
+					&lt;dependency>
+					&lt;groupId>net.objectlab.kit&lt;/groupId>
+					&lt;artifactId>datecalc-common&lt;/artifactId>
+					&lt;version>1.4.0&lt;/version>
+					&lt;/dependency>
+					&lt;dependency>
+					&lt;groupId>net.objectlab.kit&lt;/groupId>
+					&lt;artifactId>datecalc-joda&lt;/artifactId>
+					&lt;version>1.4.0&lt;/version>
+					&lt;/dependency>
 				</pre>
 				<p>To use the JDK8 Version:</p>
 				<pre class="brush: xml; gutter: false">
-&lt;dependency>
-	&lt;groupId>net.objectlab.kit&lt;/groupId>
-	&lt;artifactId>datecalc-common&lt;/artifactId>
-	&lt;version>1.3.0&lt;/version>
-&lt;/dependency>
-&lt;dependency>
-	&lt;groupId>net.objectlab.kit&lt;/groupId>
-	&lt;artifactId>datecalc-jdk8&lt;/artifactId>
-	&lt;version>1.3.0&lt;/version>
-&lt;/dependency>
+					&lt;dependency>
+					&lt;groupId>net.objectlab.kit&lt;/groupId>
+					&lt;artifactId>datecalc-common&lt;/artifactId>
+					&lt;version>1.4.0&lt;/version>
+					&lt;/dependency>
+					&lt;dependency>
+					&lt;groupId>net.objectlab.kit&lt;/groupId>
+					&lt;artifactId>datecalc-jdk8&lt;/artifactId>
+					&lt;version>1.4.0&lt;/version>
+					&lt;/dependency>
 				</pre>
 			</subsection>
 
@@ -258,13 +259,15 @@
 						<strong>
 							<code>Calendar</code>
 						</strong>
-						: <script src="https://gist.github.com/benoitx/8e735d9ede49a9858c60.js"></script>
+						:
+						<script src="https://gist.github.com/benoitx/8e735d9ede49a9858c60.js"></script>
 					</li>
 					<li>
 						<strong>
 							<code>Date</code>
 						</strong>
-						: <script src="https://gist.github.com/benoitx/066b425fe9f63971387c.js"></script>
+						:
+						<script src="https://gist.github.com/benoitx/066b425fe9f63971387c.js"></script>
 					</li>
 				</ol>
 
@@ -275,13 +278,15 @@
 						<strong>
 							<code>LocalDate</code>
 						</strong>
-						(recommended): <script src="https://gist.github.com/benoitx/2b820881b500a8c6c0d2.js"></script>
+						(recommended):
+						<script src="https://gist.github.com/benoitx/2b820881b500a8c6c0d2.js"></script>
 					</li>
 					<li>
 						<strong>
 							<code>YearMonthDay</code>
 						</strong>
-						: <script src="https://gist.github.com/benoitx/7e5cf0bb1db54aad6832.js"></script>
+						:
+						<script src="https://gist.github.com/benoitx/7e5cf0bb1db54aad6832.js"></script>
 					</li>
 				</ol>
 
@@ -294,7 +299,8 @@
 						<strong>
 							<code>LocalDate</code>
 						</strong>
-						: <script src="https://gist.github.com/benoitx/571316d6a0c5bbcddf14.js"></script>
+						:
+						<script src="https://gist.github.com/benoitx/571316d6a0c5bbcddf14.js"></script>
 					</li>
 				</ol>
 
@@ -316,6 +322,10 @@
 				</li>
 				<li>when you call moveByDays(..), moveByBusinessDays(..), moveByTenor the currentDate is moved in the Calculator.</li>
 			</ul>
+
+			<subsection name="Using Joda CurencyCalculator">
+				<script src="https://gist.github.com/benoitx/7f98237d27b8978ae9d8.js"></script>
+			</subsection>
 
 			<subsection name="Using Joda Time LocalDate">
 				<script src="https://gist.github.com/benoitx/0b05de796fe94ebc04c2.js"></script>
