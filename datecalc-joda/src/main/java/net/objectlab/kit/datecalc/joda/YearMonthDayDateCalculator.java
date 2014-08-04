@@ -60,7 +60,7 @@ public class YearMonthDayDateCalculator extends AbstractDateCalculator<YearMonth
 
     @SuppressWarnings("unchecked")
     public YearMonthDayDateCalculator() {
-        this(null, null, new DefaultHolidayCalendar<YearMonthDay>(Collections.EMPTY_SET), null);
+        this(null, null, new DefaultHolidayCalendar<YearMonthDay>(Collections.<YearMonthDay> emptySet()), null);
     }
 
     public YearMonthDayDateCalculator(final String name, final YearMonthDay startDate, final HolidayCalendar<YearMonthDay> nonWorkingDays,

@@ -43,9 +43,6 @@ import java.util.List;
  *
  */
 public final class StandardTenor {
-    private StandardTenor() {
-    }
-
     private static final List<Tenor> ALL;
 
     public static final Tenor SPOT = new Tenor(0, TenorCode.SPOT);
@@ -126,6 +123,9 @@ public final class StandardTenor {
         list.add(T_30Y);
         list.add(T_50Y);
         ALL = Collections.unmodifiableList(list);
+    }
+
+    private StandardTenor() {
     }
 }
 

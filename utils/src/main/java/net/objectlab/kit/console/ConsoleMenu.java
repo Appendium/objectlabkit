@@ -135,7 +135,7 @@ public class ConsoleMenu {
                         meth.invoke(target, new Object[0]);
                     }
                 } catch (final Exception e) {
-                    e.printStackTrace();
+                    log(e);
                 }
 
                 return;
@@ -153,9 +153,13 @@ public class ConsoleMenu {
                     meth.invoke(target, new Object[0]);
                 }
             } catch (final Exception e) {
-                e.printStackTrace();
+                log(e);
             }
         }
+    }
+
+    private static void log(final Exception e) {
+        e.printStackTrace();
     }
 
     private void displayMenu(final int size) {
@@ -279,8 +283,7 @@ public class ConsoleMenu {
             }
             return fmt.parse(date);
         } catch (final ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            log(e);
         }
         return null;
     }
@@ -310,7 +313,7 @@ public class ConsoleMenu {
             bufReader = new BufferedReader(new InputStreamReader(System.in));
             opt = bufReader.readLine();
         } catch (final IOException ex) {
-            ex.printStackTrace();
+            log(ex);
             System.exit(1);
         }
 
@@ -401,7 +404,7 @@ public class ConsoleMenu {
 
             return password.toString();
         } catch (final IOException e) {
-            e.printStackTrace();
+            log(e);
         }
 
         return null;
@@ -436,7 +439,7 @@ public class ConsoleMenu {
                     // attempt masking at this rate
                     Thread.sleep(1);
                 } catch (final InterruptedException iex) {
-                    iex.printStackTrace();
+                    log(iex);
                 }
 
                 if (!stop) {

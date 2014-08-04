@@ -56,7 +56,7 @@ public class CalendarDateCalculator extends AbstractDateCalculator<Calendar> {
 
     @SuppressWarnings("unchecked")
     public CalendarDateCalculator() {
-        this(null, null, new DefaultHolidayCalendar<Calendar>(Collections.EMPTY_SET), null);
+        this(null, null, new DefaultHolidayCalendar<Calendar>(Collections.<Calendar> emptySet()), null);
     }
 
     public CalendarDateCalculator(final String name, final Calendar startDate, final HolidayCalendar<Calendar> holidayCalendar,

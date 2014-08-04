@@ -97,8 +97,8 @@ public class CollectionUtilTest {
     public void testNoneEmpty() {
         assertFalse("1 null", CollectionUtil.noneEmpty(null));
         assertFalse("2 null", CollectionUtil.noneEmpty(null, null));
-        assertFalse("empty null", CollectionUtil.noneEmpty(Collections.EMPTY_LIST, null));
-        assertFalse("empty empty", CollectionUtil.noneEmpty(Collections.EMPTY_LIST, Collections.EMPTY_LIST));
+        assertFalse("empty null", CollectionUtil.noneEmpty(Collections.emptyList(), null));
+        assertFalse("empty empty", CollectionUtil.noneEmpty(Collections.emptyList(), Collections.emptyList()));
         final HashSet col = new HashSet();
         assertFalse("empty empty", CollectionUtil.noneEmpty(col, col));
         col.add(1);

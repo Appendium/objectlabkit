@@ -56,7 +56,7 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
 
     @SuppressWarnings("unchecked")
     public LocalDateCalculator() {
-        this(null, null, new DefaultHolidayCalendar<LocalDate>(Collections.EMPTY_SET), null);
+        this(null, null, new DefaultHolidayCalendar<LocalDate>(Collections.emptySet()), null);
     }
 
     public LocalDateCalculator(final String name, final LocalDate startDate, final HolidayCalendar<LocalDate> holidayCalendar,

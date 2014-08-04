@@ -182,7 +182,7 @@ public final class StringUtil {
             return null;
         }
         final StringTokenizer lineTokenizer = new StringTokenizer(inString, newline, true);
-        final StringBuilder StringBuilder = new StringBuilder();
+        final StringBuilder builder = new StringBuilder();
 
         while (lineTokenizer.hasMoreTokens()) {
             try {
@@ -193,14 +193,14 @@ public final class StringUtil {
                     nextLine = wrapLine(nextLine, newline, wrapColumn);
                 }
 
-                StringBuilder.append(nextLine);
+                builder.append(nextLine);
             } catch (final NoSuchElementException nsee) {
                 // thrown by nextToken(), but I don't know why it would
                 break;
             }
         }
 
-        return StringBuilder.toString();
+        return builder.toString();
     }
 
     /**
@@ -214,8 +214,9 @@ public final class StringUtil {
      * @return           A line with newlines inserted.
      */
 
-    private static String wrapLine(String line, final String newline, final int wrapColumn) {
+    private static String wrapLine(final String givenLine, final String newline, final int wrapColumn) {
         final StringBuilder wrappedLine = new StringBuilder();
+        String line = givenLine;
 
         while (line.length() > wrapColumn) {
             int spaceToWrapAt = line.lastIndexOf(' ', wrapColumn);
