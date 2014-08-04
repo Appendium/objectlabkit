@@ -69,7 +69,7 @@ public class Jdk8WorkingWeek extends WorkingWeek {
     // -----------------------------------------------------------------------
 
     public boolean isWorkingDay(final LocalDate date) {
-        final int dayOfWeek = jodaToCalendarDayConstant(date.getDayOfWeek());
+        final int dayOfWeek = jdk8ToCalendarDayConstant(date.getDayOfWeek());
         return isWorkingDayFromCalendar(dayOfWeek);
     }
 
@@ -82,15 +82,15 @@ public class Jdk8WorkingWeek extends WorkingWeek {
      *            e.g. DateTimeConstants.MONDAY, DateTimeConstants.TUESDAY, etc
      */
     public Jdk8WorkingWeek withWorkingDayFromDateTimeConstant(final boolean working, final DayOfWeek givenDayOfWeek) {
-        final int dayOfWeek = jodaToCalendarDayConstant(givenDayOfWeek);
+        final int dayOfWeek = jdk8ToCalendarDayConstant(givenDayOfWeek);
         return new Jdk8WorkingWeek(super.withWorkingDayFromCalendar(working, dayOfWeek));
     }
 
     public boolean isWorkingDayFromDateTimeConstant(final DayOfWeek dayOfWeek) {
-        return isWorkingDayFromCalendar(jodaToCalendarDayConstant(dayOfWeek));
+        return isWorkingDayFromCalendar(jdk8ToCalendarDayConstant(dayOfWeek));
     }
 
-    public int jodaToCalendarDayConstant(final DayOfWeek givenDayOfWeek) {
+    public int jdk8ToCalendarDayConstant(final DayOfWeek givenDayOfWeek) {
         final int dayOfWeek = givenDayOfWeek.getValue() + 1;
         return dayOfWeek <= MAX_WEEKDAY_INDEX ? dayOfWeek : dayOfWeek % MAX_WEEKDAY_INDEX;
     }

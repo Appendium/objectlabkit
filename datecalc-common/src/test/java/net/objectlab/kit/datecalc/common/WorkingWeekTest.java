@@ -116,6 +116,20 @@ public class WorkingWeekTest extends TestCase {
         // working day
         // do it twice
     }
+
+    public void testIntersection() {
+        final WorkingWeek w1 = WorkingWeek.DEFAULT;
+        final WorkingWeek w2 = WorkingWeek.ARAB_WEEK;
+        final WorkingWeek w3 = w1.intersection(w2);
+        // working day
+        Assert.assertTrue("Calendar.MONDAY", w3.isWorkingDayFromCalendar(Calendar.MONDAY));
+        Assert.assertTrue("Calendar.TUESDAY", w3.isWorkingDayFromCalendar(Calendar.TUESDAY));
+        Assert.assertTrue("Calendar.WEDNESDAY", w3.isWorkingDayFromCalendar(Calendar.WEDNESDAY));
+        Assert.assertTrue("Calendar.THURSDAY", w3.isWorkingDayFromCalendar(Calendar.THURSDAY));
+        Assert.assertFalse("Calendar.FRIDAY", w3.isWorkingDayFromCalendar(Calendar.FRIDAY));
+        Assert.assertFalse("Calendar.SATURDAY", w3.isWorkingDayFromCalendar(Calendar.SATURDAY));
+        Assert.assertFalse("Calendar.SUNDAY", w3.isWorkingDayFromCalendar(Calendar.SUNDAY));
+    }
 }
 
 /*
