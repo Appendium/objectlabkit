@@ -201,7 +201,7 @@ public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer>, 
         time += 901; // simulate 901 ms
 
         try {
-            Thread.sleep(1001);
+            Thread.sleep(2001);
         } catch (final InterruptedException e) {
         }
 
