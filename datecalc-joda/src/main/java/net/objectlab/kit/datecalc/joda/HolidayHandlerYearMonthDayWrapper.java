@@ -72,10 +72,10 @@ public class HolidayHandlerYearMonthDayWrapper implements HolidayHandler<LocalDa
     // -----------------------------------------------------------------------
 
     /*
-      * (non-Javadoc)
-      * 
-      * @see net.objectlab.kit.datecalc.common.HolidayHandler#getType()
-      */
+     * (non-Javadoc)
+     *
+     * @see net.objectlab.kit.datecalc.common.HolidayHandler#getType()
+     */
     public String getType() {
         return delegate.getType();
     }

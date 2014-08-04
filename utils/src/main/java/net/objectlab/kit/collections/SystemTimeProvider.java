@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package net.objectlab.kit.collections;
 
@@ -12,6 +12,7 @@ public class SystemTimeProvider implements TimeProvider {
     /* (non-Javadoc)
      * @see net.objectlab.kit.collections.TimeProvider#getCurrentMillis()
      */
+    @Override
     public long getCurrentTimeMillis() {
         return System.currentTimeMillis();
     }

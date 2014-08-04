@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package net.objectlab.kit.collections;
 
@@ -34,61 +34,74 @@ public class ReadOnlyExpiringHashSet<T> extends AbstractReadOnlyExpiringCollecti
         delegate = builder.build();
     }
 
+    @Override
     public boolean add(final T e) {
         validateOnAccess();
         return delegate.add(e);
     }
 
+    @Override
     public boolean addAll(final Collection<? extends T> c) {
         throw new UnsupportedOperationException("Collection is immutable");
     }
 
+    @Override
     public void clear() {
         throw new UnsupportedOperationException("Collection is immutable");
     }
 
+    @Override
     public boolean contains(final Object o) {
         validateOnAccess();
         return delegate.contains(o);
     }
 
+    @Override
     public boolean containsAll(final Collection<?> c) {
         validateOnAccess();
         return delegate.containsAll(c);
     }
 
+    @Override
     public boolean isEmpty() {
         validateOnAccess();
         return delegate.isEmpty();
     }
 
+    @Override
     public Iterator<T> iterator() {
         validateOnAccess();
         return delegate.iterator();
     }
 
+    @Override
     public boolean remove(final Object o) {
         throw new UnsupportedOperationException("Collection is immutable");
     }
 
+    @Override
     public boolean removeAll(final Collection<?> c) {
         throw new UnsupportedOperationException("Collection is immutable");
     }
 
+    @Override
     public boolean retainAll(final Collection<?> c) {
         throw new UnsupportedOperationException("Collection is immutable");
     }
 
+    @Override
     public int size() {
         validateOnAccess();
         return delegate.size();
     }
 
+    @Override
     public Object[] toArray() {
         validateOnAccess();
         return delegate.toArray();
     }
 
+    @Override
     public <T> T[] toArray(final T[] a) {
         validateOnAccess();
         return delegate.toArray(a);
@@ -99,6 +112,7 @@ public class ReadOnlyExpiringHashSet<T> extends AbstractReadOnlyExpiringCollecti
         delegate.clear();
     }
 
+    @Override
     public void reload() {
         doLoad();
     }

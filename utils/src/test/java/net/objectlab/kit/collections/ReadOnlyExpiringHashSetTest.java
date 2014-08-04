@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package net.objectlab.kit.collections;
 
@@ -174,7 +174,7 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String>, TimeProvi
 
         try {
             Thread.sleep(1500); // ensure that the timer can catch up.
-        } catch (InterruptedException e) {
+        } catch (final InterruptedException e) {
         }
 
         assertEquals("Should have reloaded until called!", 2, reloadCount);
@@ -187,12 +187,14 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String>, TimeProvi
         assertTrue("Correct key", ims.contains("Hello"));
     }
 
+    @Override
     public void load(final SetBuilder<String> builder) {
         assertEquals("Greetings", builder.getId());
         builder.add("Hello");
         reloadCount++;
     }
 
+    @Override
     public long getCurrentTimeMillis() {
         return time;
     }

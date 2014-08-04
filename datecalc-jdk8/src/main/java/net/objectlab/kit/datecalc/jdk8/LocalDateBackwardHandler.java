@@ -68,10 +68,10 @@ public class LocalDateBackwardHandler extends LocalDateForwardHandler {
     // -----------------------------------------------------------------------
 
     /**
-      * Give the type name for this algorithm.
-      * 
-      * @return algorithm name.
-      */
+     * Give the type name for this algorithm.
+     *
+     * @return algorithm name.
+     */
     @Override
     public String getType() {
         return HolidayHandlerType.BACKWARD;

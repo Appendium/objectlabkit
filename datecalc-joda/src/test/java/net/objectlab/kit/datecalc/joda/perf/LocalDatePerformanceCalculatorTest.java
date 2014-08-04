@@ -35,8 +35,8 @@ package net.objectlab.kit.datecalc.joda.perf;
 import net.objectlab.kit.datecalc.common.AbstractPerformanceDateCalculatorTest;
 import net.objectlab.kit.datecalc.common.KitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
-import net.objectlab.kit.datecalc.joda.LocalDateKitCalculatorsFactory;
 import net.objectlab.kit.datecalc.joda.JodaWorkingWeek;
+import net.objectlab.kit.datecalc.joda.LocalDateKitCalculatorsFactory;
 
 import org.joda.time.LocalDate;
 

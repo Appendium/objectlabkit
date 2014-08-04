@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -41,6 +41,7 @@ public abstract class AbstractIMMDateTest<E> extends TestCase {
 
     private IMMDateCalculator<E> cal;
 
+    @Override
     public void setUp() {
         cal = getDateCalculator("bla");
     }
@@ -125,53 +126,41 @@ public abstract class AbstractIMMDateTest<E> extends TestCase {
         IMMPeriod period = IMMPeriod.QUARTERLY;
 
         startDate = parseDate("2006-01-09");
-        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2006-03-15"), cal.getNextIMMDate(startDate,
-                period));
+        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2006-03-15"), cal.getNextIMMDate(startDate, period));
         period = IMMPeriod.BI_ANNUALY_JUN_DEC;
-        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2006-06-21"), cal.getNextIMMDate(startDate,
-                period));
+        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2006-06-21"), cal.getNextIMMDate(startDate, period));
         period = IMMPeriod.BI_ANNUALY_MAR_SEP;
-        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2006-03-15"), cal.getNextIMMDate(startDate,
-                period));
+        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2006-03-15"), cal.getNextIMMDate(startDate, period));
         period = IMMPeriod.ANNUALLY;
-        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2007-03-21"), cal.getNextIMMDate(startDate,
-                period));
+        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2007-03-21"), cal.getNextIMMDate(startDate, period));
 
         startDate = parseDate("2006-03-20");
         period = IMMPeriod.QUARTERLY;
-        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2006-06-21"), cal.getNextIMMDate(startDate,
-                period));
+        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2006-06-21"), cal.getNextIMMDate(startDate, period));
         period = IMMPeriod.BI_ANNUALY_JUN_DEC;
-        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2006-06-21"), cal.getNextIMMDate(startDate,
-                period));
+        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2006-06-21"), cal.getNextIMMDate(startDate, period));
         period = IMMPeriod.BI_ANNUALY_MAR_SEP;
-        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2006-09-20"), cal.getNextIMMDate(startDate,
-                period));
+        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2006-09-20"), cal.getNextIMMDate(startDate, period));
         period = IMMPeriod.ANNUALLY;
-        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2007-06-20"), cal.getNextIMMDate(startDate,
-                period));
+        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2007-06-20"), cal.getNextIMMDate(startDate, period));
 
         startDate = parseDate("2006-03-15");
         period = IMMPeriod.QUARTERLY;
-        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2006-06-21"), cal.getNextIMMDate(startDate,
-                period));
+        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2006-06-21"), cal.getNextIMMDate(startDate, period));
         period = IMMPeriod.BI_ANNUALY_JUN_DEC;
-        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2006-06-21"), cal.getNextIMMDate(startDate,
-                period));
+        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2006-06-21"), cal.getNextIMMDate(startDate, period));
         period = IMMPeriod.BI_ANNUALY_MAR_SEP;
-        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2006-09-20"), cal.getNextIMMDate(startDate,
-                period));
+        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2006-09-20"), cal.getNextIMMDate(startDate, period));
         startDate = parseDate("2006-03-15");
         period = IMMPeriod.ANNUALLY;
-        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2007-06-20"), cal.getNextIMMDate(startDate,
-                period));
+        Assert.assertEquals("From " + startDate + " period:" + period, parseDate("2007-06-20"), cal.getNextIMMDate(startDate, period));
     }
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
@@ -302,10 +291,10 @@ public abstract class AbstractIMMDateTest<E> extends TestCase {
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

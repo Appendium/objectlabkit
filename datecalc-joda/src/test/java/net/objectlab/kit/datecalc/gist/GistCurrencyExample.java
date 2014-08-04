@@ -14,7 +14,7 @@ import net.objectlab.kit.datecalc.joda.LocalDateKitCalculatorsFactory;
 import org.joda.time.LocalDate;
 
 public class GistCurrencyExample {
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         // create or get the Holidays
         final Set<LocalDate> holidays = new HashSet<LocalDate>();
         holidays.add(new LocalDate("2006-07-04"));
@@ -30,7 +30,7 @@ public class GistCurrencyExample {
 
         // ask for a Currency calculator for "USD/EUR"
         // (even if a new set of holidays is registered, this one calculator is not affected
-        DateCalculator<LocalDate> cal = LocalDateKitCalculatorsFactory.currencyCalculator("USD", "EUR");
+        final DateCalculator<LocalDate> cal = LocalDateKitCalculatorsFactory.currencyCalculator("USD", "EUR");
 
         // set startDate, this will also set the current business date.
         cal.setStartDate(new LocalDate("2006-07-03")); // Monday

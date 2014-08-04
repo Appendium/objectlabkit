@@ -1,8 +1,8 @@
 package net.objectlab.kit.util;
 
-import org.junit.Ignore;
-
 import static org.junit.Assert.fail;
+
+import org.junit.Ignore;
 
 @Ignore
 public class WeightedAverageTest {

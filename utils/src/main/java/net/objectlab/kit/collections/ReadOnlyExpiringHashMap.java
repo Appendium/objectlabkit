@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package net.objectlab.kit.collections;
 
@@ -35,57 +35,69 @@ public class ReadOnlyExpiringHashMap<K, V> extends AbstractReadOnlyExpiringColle
         delegate = builder.build();
     }
 
+    @Override
     public void clear() {
         throw new UnsupportedOperationException(COLLECTION_IS_IMMUTABLE);
     }
 
+    @Override
     public boolean containsKey(final Object key) {
         validateOnAccess();
         return delegate.containsKey(key);
     }
 
+    @Override
     public boolean containsValue(final Object value) {
         validateOnAccess();
         return delegate.containsValue(value);
     }
 
+    @Override
     public Set<java.util.Map.Entry<K, V>> entrySet() {
         validateOnAccess();
         return delegate.entrySet();
     }
 
+    @Override
     public V get(final Object key) {
         validateOnAccess();
         return delegate.get(key);
     }
 
+    @Override
     public boolean isEmpty() {
         validateOnAccess();
         return delegate.isEmpty();
     }
 
+    @Override
     public Set<K> keySet() {
         validateOnAccess();
         return delegate.keySet();
     }
 
+    @Override
     public V put(final K key, final V value) {
         throw new UnsupportedOperationException(COLLECTION_IS_IMMUTABLE);
     }
 
+    @Override
     public void putAll(final Map<? extends K, ? extends V> m) {
         throw new UnsupportedOperationException(COLLECTION_IS_IMMUTABLE);
     }
 
+    @Override
     public V remove(final Object key) {
         throw new UnsupportedOperationException(COLLECTION_IS_IMMUTABLE);
     }
 
+    @Override
     public int size() {
         validateOnAccess();
         return delegate.size();
     }
 
+    @Override
     public Collection<V> values() {
         validateOnAccess();
         return delegate.values();
@@ -96,6 +108,7 @@ public class ReadOnlyExpiringHashMap<K, V> extends AbstractReadOnlyExpiringColle
         delegate.clear();
     }
 
+    @Override
     public void reload() {
         doLoad();
     }

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package net.objectlab.kit.collections;
 

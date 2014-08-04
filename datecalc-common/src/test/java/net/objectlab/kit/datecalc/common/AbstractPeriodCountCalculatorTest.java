@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -377,6 +377,7 @@ public abstract class AbstractPeriodCountCalculatorTest<E> extends TestCase {
 
     private PeriodCountCalculator<E> cal;
 
+    @Override
     public void setUp() {
         cal = getPeriodCountCalculator();
     }
@@ -431,20 +432,20 @@ public abstract class AbstractPeriodCountCalculatorTest<E> extends TestCase {
 
         final BigDecimal yearDiff = new BigDecimal(cal.yearDiff(start, end, pcount)).setScale(6, BigDecimal.ROUND_HALF_UP);
         Assert.assertTrue(name + " Basis:" + pcount + " yearDiff expected:" + test[5] + " got:" + yearDiff,
-                (new BigDecimal(test[5])).compareTo(yearDiff) == 0);
+                new BigDecimal(test[5]).compareTo(yearDiff) == 0);
     }
 }
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
+ *
  * Based in London, we are world leaders in the design and development of
  * bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about
  * us</a> ___ _ _ _ _ _ / _ \| |__ (_) ___ ___| |_| | __ _| |__ | | | | '_ \| |/
  * _ \/ __| __| | / _` | '_ \ | |_| | |_) | | __/ (__| |_| |__| (_| | |_) |
  * \___/|_.__// |\___|\___|\__|_____\__,_|_.__/ |__/
- * 
+ *
  * www.ObjectLab.co.uk
  */

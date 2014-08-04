@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id: AbstractForwardDateCalculatorTest.java 200 2006-10-10 20:15:58Z benoitx $
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -91,8 +91,8 @@ public abstract class AbstractForwardUnlessNegativeCalculatorTest<E> extends Abs
 
     public void testSimpleForwardStartDateNoWeekend() {
         final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
-        final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(true, Calendar.SATURDAY).withWorkingDayFromCalendar(
-                true, Calendar.SUNDAY);
+        final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(true, Calendar.SATURDAY)
+                .withWorkingDayFromCalendar(true, Calendar.SUNDAY);
         cal.setWorkingWeek(getWorkingWeek(ww));
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getHolidayCalendar().getHolidays().size());
@@ -124,10 +124,10 @@ public abstract class AbstractForwardUnlessNegativeCalculatorTest<E> extends Abs
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getHolidayCalendar().getHolidays().size());
 
-        final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(false, Calendar.MONDAY).withWorkingDayFromCalendar(
-                true, Calendar.TUESDAY).withWorkingDayFromCalendar(false, Calendar.WEDNESDAY).withWorkingDayFromCalendar(true,
-                Calendar.THURSDAY).withWorkingDayFromCalendar(false, Calendar.FRIDAY).withWorkingDayFromCalendar(true,
-                Calendar.SATURDAY).withWorkingDayFromCalendar(false, Calendar.SUNDAY);
+        final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(false, Calendar.MONDAY)
+                .withWorkingDayFromCalendar(true, Calendar.TUESDAY).withWorkingDayFromCalendar(false, Calendar.WEDNESDAY)
+                .withWorkingDayFromCalendar(true, Calendar.THURSDAY).withWorkingDayFromCalendar(false, Calendar.FRIDAY)
+                .withWorkingDayFromCalendar(true, Calendar.SATURDAY).withWorkingDayFromCalendar(false, Calendar.SUNDAY);
         cal.setWorkingWeek(getWorkingWeek(ww));
 
         cal.setStartDate(newDate("2006-07-31")); // start date Monday
@@ -157,10 +157,10 @@ public abstract class AbstractForwardUnlessNegativeCalculatorTest<E> extends Abs
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getHolidayCalendar().getHolidays().size());
 
-        final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(false, Calendar.MONDAY).withWorkingDayFromCalendar(
-                true, Calendar.TUESDAY).withWorkingDayFromCalendar(true, Calendar.WEDNESDAY).withWorkingDayFromCalendar(true,
-                Calendar.THURSDAY).withWorkingDayFromCalendar(true, Calendar.FRIDAY).withWorkingDayFromCalendar(false,
-                Calendar.SATURDAY).withWorkingDayFromCalendar(false, Calendar.SUNDAY);
+        final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(false, Calendar.MONDAY)
+                .withWorkingDayFromCalendar(true, Calendar.TUESDAY).withWorkingDayFromCalendar(true, Calendar.WEDNESDAY)
+                .withWorkingDayFromCalendar(true, Calendar.THURSDAY).withWorkingDayFromCalendar(true, Calendar.FRIDAY)
+                .withWorkingDayFromCalendar(false, Calendar.SATURDAY).withWorkingDayFromCalendar(false, Calendar.SUNDAY);
         cal.setWorkingWeek(getWorkingWeek(ww));
 
         cal.setStartDate(newDate("2006-07-31")); // start date Monday
@@ -220,9 +220,9 @@ public abstract class AbstractForwardUnlessNegativeCalculatorTest<E> extends Abs
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
@@ -241,10 +241,10 @@ public abstract class AbstractForwardUnlessNegativeCalculatorTest<E> extends Abs
         checkDate("Add 1 week", cal.moveByDays(7), "2006-08-31");
         cal.setStartDate(newDate("2006-08-24"));
         checkDate("Move by 1W with 1 bank holiday", cal.moveByBusinessDays(7), "2006-09-05");
-        
+
         cal.setStartDate(newDate("2006-08-17"));
         checkDate("Negative move by 1 day", cal.moveByBusinessDays(-1), "2006-08-16");
-        
+
         cal.setStartDate(newDate("2006-08-25"));
         checkDate("Negative move by 4 days", cal.moveByBusinessDays(-4), "2006-08-21");
 
@@ -391,9 +391,8 @@ public abstract class AbstractForwardUnlessNegativeCalculatorTest<E> extends Abs
         checkMoveByTenor("2006-08-28", StandardTenor.OVERNIGHT, 2, "2006-08-30", HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
     }
 
-
     public void testCalculateTenorsZeroDaysToSpot() {
-        List<Tenor> list = new ArrayList<Tenor>();
+        final List<Tenor> list = new ArrayList<Tenor>();
         list.add(StandardTenor.OVERNIGHT);
         list.add(StandardTenor.SPOT);
         list.add(StandardTenor.T_1D);
@@ -408,9 +407,9 @@ public abstract class AbstractForwardUnlessNegativeCalculatorTest<E> extends Abs
 
         final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
         cal.setHolidayCalendar(createUKHolidayCalendar());
-        String startDate = "2006-08-24";
+        final String startDate = "2006-08-24";
         cal.setStartDate(newDate(startDate));
-        List<E> expectedResults = new ArrayList<E>();
+        final List<E> expectedResults = new ArrayList<E>();
         expectedResults.add(newDate("2006-08-25")); // ON
         expectedResults.add(newDate("2006-08-24")); // SPOT
         expectedResults.add(newDate("2006-08-25")); // 1D
@@ -423,17 +422,17 @@ public abstract class AbstractForwardUnlessNegativeCalculatorTest<E> extends Abs
         expectedResults.add(newDate("2007-05-24")); // 9M
         expectedResults.add(newDate("2007-08-24")); // 1Y
 
-        List<E> results = cal.calculateTenorDates(list);
+        final List<E> results = cal.calculateTenorDates(list);
         assertEquals("Same size as tenor", list.size(), results.size());
-        Iterator<E> it = results.iterator();
-        Iterator<E> expected = expectedResults.iterator();
-        for (Tenor tenor : list) {
+        final Iterator<E> it = results.iterator();
+        final Iterator<E> expected = expectedResults.iterator();
+        for (final Tenor tenor : list) {
             assertEquals("Move start:" + startDate + " tenor:" + tenor, expected.next(), it.next());
         }
     }
 
     public void testCalculateTenorsTwoDaysToSpot() {
-        List<Tenor> list = new ArrayList<Tenor>();
+        final List<Tenor> list = new ArrayList<Tenor>();
         list.add(StandardTenor.OVERNIGHT);
         list.add(StandardTenor.SPOT);
         list.add(StandardTenor.T_1D);
@@ -448,9 +447,9 @@ public abstract class AbstractForwardUnlessNegativeCalculatorTest<E> extends Abs
 
         final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
         cal.setHolidayCalendar(createUKHolidayCalendar());
-        String startDate = "2006-08-24";
+        final String startDate = "2006-08-24";
         cal.setStartDate(newDate(startDate));
-        List<E> expectedResults = new ArrayList<E>();
+        final List<E> expectedResults = new ArrayList<E>();
         expectedResults.add(newDate("2006-08-25")); // ON
         expectedResults.add(newDate("2006-08-29")); // SPOT
         expectedResults.add(newDate("2006-08-30")); // 1D
@@ -463,11 +462,11 @@ public abstract class AbstractForwardUnlessNegativeCalculatorTest<E> extends Abs
         expectedResults.add(newDate("2007-05-29")); // 9M
         expectedResults.add(newDate("2007-08-29")); // 1Y
 
-        List<E> results = cal.calculateTenorDates(list, 2);
+        final List<E> results = cal.calculateTenorDates(list, 2);
         assertEquals("Same size as tenor", list.size(), results.size());
-        Iterator<E> it = results.iterator();
-        Iterator<E> expected = expectedResults.iterator();
-        for (Tenor tenor : list) {
+        final Iterator<E> it = results.iterator();
+        final Iterator<E> expected = expectedResults.iterator();
+        for (final Tenor tenor : list) {
             assertEquals("Move start:" + startDate + " tenor:" + tenor, expected.next(), it.next());
         }
     }
@@ -475,10 +474,10 @@ public abstract class AbstractForwardUnlessNegativeCalculatorTest<E> extends Abs
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

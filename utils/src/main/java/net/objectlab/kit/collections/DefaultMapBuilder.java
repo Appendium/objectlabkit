@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package net.objectlab.kit.collections;
 
@@ -13,7 +13,7 @@ import net.objectlab.kit.util.Pair;
 
 /**
  * Inspired by the Google Collection builder.
- * 
+ *
  * @author Benoit Xhenseval
  *
  */
@@ -25,13 +25,15 @@ public class DefaultMapBuilder<K, V> implements MapBuilder<K, V> {
         this.id = id;
     }
 
+    @Override
     public String getId() {
         return id;
     }
 
     /**
-     * Associates {@code key} with {@code value} in the built map. 
+     * Associates {@code key} with {@code value} in the built map.
      */
+    @Override
     public DefaultMapBuilder<K, V> put(final K key, final V value) {
         entries.add(new Pair<K, V>(key, value));
         return this;
@@ -42,6 +44,7 @@ public class DefaultMapBuilder<K, V> implements MapBuilder<K, V> {
      *
      * @throws NullPointerException if any key or value in {@code map} is null
      */
+    @Override
     public DefaultMapBuilder<K, V> putAll(final Map<? extends K, ? extends V> map) {
         for (final Entry<? extends K, ? extends V> entry : map.entrySet()) {
             put(entry.getKey(), entry.getValue());
@@ -53,7 +56,7 @@ public class DefaultMapBuilder<K, V> implements MapBuilder<K, V> {
      * Returns a newly-created immutable map.
      *
      * @throws IllegalArgumentException if duplicate keys were added
-     * @return 
+     * @return
      */
     public Map<K, V> build() {
         return fromEntryList(entries);

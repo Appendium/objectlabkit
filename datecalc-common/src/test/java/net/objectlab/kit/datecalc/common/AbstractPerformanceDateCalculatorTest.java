@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id: AbstractForwardDateCalculatorTest.java 238 2007-01-05 20:45:33Z benoitx $
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -45,19 +45,19 @@ public abstract class AbstractPerformanceDateCalculatorTest<E> extends AbstractD
 
         final E startDate = newDate("2006-08-01");
         cal.setStartDate(startDate);
-        long start = System.currentTimeMillis();
+        final long start = System.currentTimeMillis();
         for (int i = 0; i < REPEAT; i++) {
             cal.moveByBusinessDays(1);
             cal.getCurrentBusinessDate();
         }
-        long stop = System.currentTimeMillis();
+        final long stop = System.currentTimeMillis();
         keepResults("testMoveByBusDate", start, stop);
     }
 
-    private void keepResults(String string, long start, long stop) {
+    private void keepResults(final String string, final long start, final long stop) {
         RESULTS.put(string + " " + getClass().getSimpleName(), REPEAT + " = " + (stop - start) + " ms");
         System.out.println("\nPERFORMANCE\n");
-        for (String str : RESULTS.keySet()) {
+        for (final String str : RESULTS.keySet()) {
             System.out.println("+++++++ " + str + " " + RESULTS.get(str));
         }
     }
@@ -67,13 +67,13 @@ public abstract class AbstractPerformanceDateCalculatorTest<E> extends AbstractD
         final DateCalculator<E> cal = newDateCalculator("UK", HolidayHandlerType.FORWARD);
 
         final E startDate = newDate("2006-08-01");
-        long start = System.currentTimeMillis();
+        final long start = System.currentTimeMillis();
         for (int i = 0; i < REPEAT; i++) {
             cal.setStartDate(startDate);
             cal.moveByBusinessDays(10);
             cal.getCurrentBusinessDate();
         }
-        long stop = System.currentTimeMillis();
+        final long stop = System.currentTimeMillis();
         keepResults("testSetDateThenMoveByBusDate", start, stop);
     }
 
@@ -88,12 +88,12 @@ public abstract class AbstractPerformanceDateCalculatorTest<E> extends AbstractD
         final E startDate = newDate("2006-08-01");
         final DateCalculator<E> cal = cal1.combine(cal2);
         cal.setStartDate(startDate);
-        long start = System.currentTimeMillis();
+        final long start = System.currentTimeMillis();
         for (int i = 0; i < REPEAT; i++) {
             cal.moveByBusinessDays(1);
             cal.getCurrentBusinessDate();
         }
-        long stop = System.currentTimeMillis();
+        final long stop = System.currentTimeMillis();
         keepResults("testMoveByBusDate2Calendars", start, stop);
     }
 
@@ -106,27 +106,27 @@ public abstract class AbstractPerformanceDateCalculatorTest<E> extends AbstractD
         final DateCalculator<E> cal2 = newDateCalculator("UK", HolidayHandlerType.FORWARD);
 
         final E startDate = newDate("2006-08-01");
-        long start = System.currentTimeMillis();
+        final long start = System.currentTimeMillis();
         for (int i = 0; i < REPEAT; i++) {
             final DateCalculator<E> cal = cal1.combine(cal2);
             cal.setStartDate(startDate);
             cal.moveByBusinessDays(10);
             cal.getCurrentBusinessDate();
         }
-        long stop = System.currentTimeMillis();
+        final long stop = System.currentTimeMillis();
         keepResults("testCombineCalThenMoveByBusDate", start, stop);
     }
 
     @Override
     protected HolidayCalendar<E> createUKHolidayCalendar() {
-        HolidayCalendar<E> cal = super.createUKHolidayCalendar();
+        final HolidayCalendar<E> cal = super.createUKHolidayCalendar();
         cal.setLateBoundary(newDate("9999-12-31"));
         return cal;
     }
 
     @Override
     protected HolidayCalendar<E> createUSHolidayCalendar() {
-        HolidayCalendar<E> cal = super.createUSHolidayCalendar();
+        final HolidayCalendar<E> cal = super.createUSHolidayCalendar();
         cal.setLateBoundary(newDate("9999-12-31"));
         return cal;
     }
@@ -134,10 +134,10 @@ public abstract class AbstractPerformanceDateCalculatorTest<E> extends AbstractD
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

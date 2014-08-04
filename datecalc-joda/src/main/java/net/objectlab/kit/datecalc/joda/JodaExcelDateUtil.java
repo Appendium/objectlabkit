@@ -87,7 +87,7 @@ public final class JodaExcelDateUtil {
         }
 
         return new DateTime().withYear(c.get(Calendar.YEAR)).withMonthOfYear(c.get(Calendar.MONTH) + 1).withDayOfMonth(c.get(Calendar.DAY_OF_MONTH))
-        .withMillisOfDay(0);
+                .withMillisOfDay(0);
     }
 }
 

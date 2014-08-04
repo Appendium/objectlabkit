@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import net.objectlab.kit.util.Average;
 
 public class AverageExample {
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         final Average avg = new Average(3); // scale for the result, otherwise it uses the scale of the first datapoint!
         avg.add(new BigDecimal(1));
         avg.add(new BigDecimal(2));

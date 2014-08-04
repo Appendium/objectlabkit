@@ -1,6 +1,7 @@
 package net.objectlab.kit.util;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -26,14 +27,14 @@ public class BooleanUtilTest {
 
     @Test
     public void testIsTrueBoolean() {
-        assertFalse("null", BooleanUtil.isTrue((Boolean)null));
+        assertFalse("null", BooleanUtil.isTrue((Boolean) null));
         assertTrue("Boolean.TRUE", BooleanUtil.isTrue(Boolean.TRUE));
         assertFalse("Boolean.FALSE", BooleanUtil.isTrue(Boolean.FALSE));
     }
 
     @Test
     public void testIsTrueString() {
-        assertFalse("null", BooleanUtil.isTrue((String)null));
+        assertFalse("null", BooleanUtil.isTrue((String) null));
         assertFalse("empty", BooleanUtil.isTrue(""));
         assertFalse("sjs", BooleanUtil.isTrue("sjs"));
         assertFalse("space", BooleanUtil.isTrue(" "));
@@ -51,7 +52,7 @@ public class BooleanUtilTest {
 
     @Test
     public void testIsFalse() {
-        assertFalse("null", BooleanUtil.isFalse((Boolean)null));
+        assertFalse("null", BooleanUtil.isFalse((Boolean) null));
         assertFalse("Boolean.TRUE", BooleanUtil.isFalse(Boolean.TRUE));
         assertTrue("Boolean.FALSE", BooleanUtil.isFalse(Boolean.FALSE));
     }

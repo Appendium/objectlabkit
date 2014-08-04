@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import net.objectlab.kit.util.WeightedAverage;
 
 public class WeightedAverageExample {
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         // Credit card weight
         // Credit Card 1: Rate 20% Balance $6,413
         // Credit Card 2: Rate 15% Balance $3,500

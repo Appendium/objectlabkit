@@ -4,11 +4,11 @@ import net.objectlab.kit.util.PeriodBuilder;
 
 /**
  * Builder for the immutable classes.
- * Default: 
+ * Default:
  * - no time out
  * - reload on expiry: true
  * - load on first access only (ie not at construction time)
- * 
+ *
  * @author Benoit Xhenseval
  *
  */

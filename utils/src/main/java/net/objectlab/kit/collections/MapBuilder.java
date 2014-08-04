@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package net.objectlab.kit.collections;
 
@@ -7,7 +7,7 @@ import java.util.Map;
 
 /**
  * Inspired by the Google Collection builder.
- * 
+ *
  * @author Benoit Xhenseval
  *
  */
@@ -16,7 +16,7 @@ public interface MapBuilder<K, V> {
 
     /**
      * Associates {@code key} with {@code value} in the built map.
-     * @param key key 
+     * @param key key
      * @param value value
      * @return a map builder
      */

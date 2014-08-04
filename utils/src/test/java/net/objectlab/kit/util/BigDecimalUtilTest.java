@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package net.objectlab.kit.util;
 
@@ -19,7 +19,7 @@ public class BigDecimalUtilTest {
     /**
      * Test method for {@link net.objectlab.kit.util.BigDecimalUtil#divide(java.math.BigDecimal, java.math.BigDecimal, int, int)}.
      */
-	@Test
+    @Test
     public void testDivideBigDecimalBigDecimalIntInt() {
         assertEquals("3 null", null, BigDecimalUtil.divide(null, null, BigDecimal.ROUND_HALF_UP));
         assertEquals("2a null", null, BigDecimalUtil.divide(BigDecimal.ONE, null, BigDecimal.ROUND_HALF_UP));

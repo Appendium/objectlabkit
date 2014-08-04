@@ -77,9 +77,9 @@ public abstract class AbstractDateCalculatorCombinationTest<E> extends AbstractD
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
@@ -88,7 +88,7 @@ public abstract class AbstractDateCalculatorCombinationTest<E> extends AbstractD
         final DateCalculator<E> cal1 = newDateCalculator("bla", HolidayHandlerType.FORWARD);
 
         // we MUST provide a set with boundaries.
-        Set<E> emptySet = Collections.emptySet();
+        final Set<E> emptySet = Collections.emptySet();
         final HolidayCalendar<E> hol = new DefaultHolidayCalendar<E>(emptySet, newDate("2006-01-01"), newDate("2020-12-31"));
         cal1.setHolidayCalendar(hol);
 
@@ -192,14 +192,14 @@ public abstract class AbstractDateCalculatorCombinationTest<E> extends AbstractD
         try {
             cal2.combine(cal1);
             fail("Combination should have thrown an exception because of boundary");
-        } catch (IllegalArgumentException e) {
+        } catch (final IllegalArgumentException e) {
             // all ok
         }
 
         try {
             cal1.combine(cal2);
             fail("Combination should have thrown an exception because of boundary");
-        } catch (IllegalArgumentException e) {
+        } catch (final IllegalArgumentException e) {
             // all ok
         }
     }
@@ -220,7 +220,7 @@ public abstract class AbstractDateCalculatorCombinationTest<E> extends AbstractD
 
         final DateCalculator<E> cal2 = newDateCalculator("BLA", type);
         // we MUST provide a set with boundaries.
-        Set<E> emptySet = Collections.emptySet();
+        final Set<E> emptySet = Collections.emptySet();
         final HolidayCalendar<E> hol = new DefaultHolidayCalendar<E>(emptySet, newDate("2006-01-01"), null);
         cal2.setHolidayCalendar(hol);
         cal2.setStartDate(localDate);
@@ -228,14 +228,14 @@ public abstract class AbstractDateCalculatorCombinationTest<E> extends AbstractD
         try {
             cal2.combine(cal1);
             fail("Combination should have thrown an exception because of boundary");
-        } catch (IllegalArgumentException e) {
+        } catch (final IllegalArgumentException e) {
             // all ok
         }
 
         try {
             cal1.combine(cal2);
             fail("Combination should have thrown an exception because of boundary");
-        } catch (IllegalArgumentException e) {
+        } catch (final IllegalArgumentException e) {
             // all ok
         }
     }
@@ -248,7 +248,7 @@ public abstract class AbstractDateCalculatorCombinationTest<E> extends AbstractD
 
         final DateCalculator<E> cal2 = newDateCalculator("BLA", HolidayHandlerType.FORWARD);
         // we MUST provide a set with boundaries.
-        Set<E> emptySet = Collections.emptySet();
+        final Set<E> emptySet = Collections.emptySet();
         final HolidayCalendar<E> hol = new DefaultHolidayCalendar<E>(emptySet, null, newDate("2006-12-31"));
         cal2.setHolidayCalendar(hol);
         cal2.setStartDate(localDate);
@@ -256,14 +256,14 @@ public abstract class AbstractDateCalculatorCombinationTest<E> extends AbstractD
         try {
             cal2.combine(cal1);
             fail("Combination should have thrown an exception because of boundary");
-        } catch (IllegalArgumentException e) {
+        } catch (final IllegalArgumentException e) {
             // all ok
         }
 
         try {
             cal1.combine(cal2);
             fail("Combination should have thrown an exception because of boundary");
-        } catch (IllegalArgumentException e) {
+        } catch (final IllegalArgumentException e) {
             // all ok
         }
     }

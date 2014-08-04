@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package net.objectlab.kit.collections;
 
@@ -48,7 +48,6 @@ public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer>, 
         assertNull("diff key", ims.get("Hi"));
         assertEquals(Integer.valueOf(2), ims.get("Yo"));
 
-        
         time += 101; // simulate 101 ms
 
         // second call
@@ -218,6 +217,7 @@ public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer>, 
         assertEquals(Integer.valueOf(2), ims.get("Yo"));
     }
 
+    @Override
     public void load(final MapBuilder<String, Integer> builder) {
         assertEquals("Greetings", builder.getId());
         builder.put("Hello", 1);
@@ -225,6 +225,7 @@ public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer>, 
         reloadCount++;
     }
 
+    @Override
     public long getCurrentTimeMillis() {
         return time;
     }

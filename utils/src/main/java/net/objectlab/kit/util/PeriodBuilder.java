@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package net.objectlab.kit.util;
 
@@ -25,7 +25,7 @@ public class PeriodBuilder {
                 + hours * 60L * 60L * 1000L //
                 + days * 24L * 60L * 60L * 1000L //
                 + weeks * 7L * 24L * 60L * 60L * 1000L //
-        ;
+                ;
     }
 
     public PeriodBuilder weeks(final int weeks) {

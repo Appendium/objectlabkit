@@ -32,13 +32,13 @@
  */
 package net.objectlab.kit.datecalc.jdk8.perf;
 
+import java.time.LocalDate;
+
 import net.objectlab.kit.datecalc.common.AbstractPerformanceDateCalculatorTest;
 import net.objectlab.kit.datecalc.common.KitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 import net.objectlab.kit.datecalc.jdk8.Jdk8WorkingWeek;
 import net.objectlab.kit.datecalc.jdk8.LocalDateKitCalculatorsFactory;
-
-import java.time.LocalDate;
 
 public class LocalDatePerformanceCalculatorTest extends AbstractPerformanceDateCalculatorTest<LocalDate> {
 

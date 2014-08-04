@@ -23,7 +23,7 @@ public class TotalTest {
         BigDecimalAssert.assertSameValue("ctor", BigDecimal.ZERO, sum.getTotal());
     }
 
-    //    @Test
+    // @Test
     public void testSumBigDecimal() {
         final Total sum = new Total(BigDecimal.TEN);
         assertEquals("scale", 2, sum.getTotal().scale());

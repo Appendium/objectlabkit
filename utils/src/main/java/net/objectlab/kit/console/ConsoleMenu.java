@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id: AbstractDateCalculator.java 309 2010-03-23 21:01:49Z marchy $
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -49,7 +49,7 @@ import org.joda.time.LocalDate;
 
 /**
  * @author Benoit Xhenseval
- * 
+ *
  */
 public class ConsoleMenu {
     private static final int EXIT_CODE = 0;
@@ -90,7 +90,7 @@ public class ConsoleMenu {
 
     /**
      * add an entry in the menu, sequentially
-     * 
+     *
      * @param menuDisplay
      *            how the entry will be displayed in the menu
      * @param methodName
@@ -125,7 +125,7 @@ public class ConsoleMenu {
 
             do {
                 opt = ConsoleMenu.getInt("Enter your choice:", -1);
-            } while (((opt <= 0) || (opt > methods.size())) && (opt != EXIT_CODE));
+            } while ((opt <= 0 || opt > methods.size()) && opt != EXIT_CODE);
 
             if (opt == EXIT_CODE) {
                 ConsoleMenu.println("Exiting menu");
@@ -159,24 +159,24 @@ public class ConsoleMenu {
     }
 
     private void displayMenu(final int size) {
-        for (int i = 0; i < (size / 2); i++) {
+        for (int i = 0; i < size / 2; i++) {
             final StringBuilder line = new StringBuilder();
             final String col1 = menu.get(i);
 
-            if ((i + 1) < COL) {
+            if (i + 1 < COL) {
                 line.append(" ");
             }
 
             final int pos = i + 1;
             line.append("   ").append(pos).append(") ").append(col1);
 
-            while (line.length() < (screenColumns / 2)) {
+            while (line.length() < screenColumns / 2) {
                 line.append(" ");
             }
 
-            if ((i + (size / 2)) < size) {
-                final String col2 = menu.get(i + (size / 2));
-                final int position = i + 1 + (size / 2);
+            if (i + size / 2 < size) {
+                final String col2 = menu.get(i + size / 2);
+                final int position = i + 1 + size / 2;
                 line.append("   ").append(position).append(") ").append(col2);
             }
 
@@ -193,7 +193,7 @@ public class ConsoleMenu {
 
             line.append("   ").append(size).append(") ").append(col1);
 
-            while (line.length() < (screenColumns / 2)) {
+            while (line.length() < screenColumns / 2) {
                 line.append(" ");
             }
 
@@ -231,7 +231,7 @@ public class ConsoleMenu {
 
     /**
      * Gets a boolean from the System.in
-     * 
+     *
      * @param title
      *            for the command line
      * @return boolean as selected by the user of the console app
@@ -245,7 +245,7 @@ public class ConsoleMenu {
 
     /**
      * Gets an BigDecimal from the System.in
-     * 
+     *
      * @param title
      *            for the command line
      * @return int as entered by the user of the console app
@@ -286,7 +286,7 @@ public class ConsoleMenu {
     }
 
     public static LocalDate getYMD(final String title, final LocalDate defaultValue) {
-        final Date dateStr = ConsoleMenu.getDate(title, (defaultValue != null ? defaultValue.toDateMidnight().toDate() : null));
+        final Date dateStr = ConsoleMenu.getDate(title, defaultValue != null ? defaultValue.toDateMidnight().toDate() : null);
         if (dateStr != null) {
             return new LocalDate(dateStr);
         }
@@ -295,7 +295,7 @@ public class ConsoleMenu {
 
     /**
      * Gets a String from the System.in
-     * 
+     *
      * @param msg
      *            for the command line
      * @return String as entered by the user of the console app
@@ -319,7 +319,7 @@ public class ConsoleMenu {
 
     /**
      * Gets a String from the System.in
-     * 
+     *
      * @param msg
      *            for the command line
      * @return String as entered by the user of the console app
@@ -335,7 +335,7 @@ public class ConsoleMenu {
 
     /**
      * Generates a menu with a list of options and return the value selected.
-     * 
+     *
      * @param title
      *            for the command line
      * @param optionNames
@@ -359,7 +359,7 @@ public class ConsoleMenu {
 
         do {
             choice = ConsoleMenu.getInt("Your Choice 1-" + optionNames.length + ": ", defaultOption);
-        } while ((choice <= 0) || (choice > optionNames.length));
+        } while (choice <= 0 || choice > optionNames.length);
 
         return optionValues[choice - 1];
     }

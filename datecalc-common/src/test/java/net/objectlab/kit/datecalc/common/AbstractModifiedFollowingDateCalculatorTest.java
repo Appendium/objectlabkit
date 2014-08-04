@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -85,8 +85,8 @@ public abstract class AbstractModifiedFollowingDateCalculatorTest<E> extends Abs
 
     public void testSimpleForwardStartDateNoWeekend() {
         final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.MODIFIED_FOLLOWING);
-        final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(true, Calendar.SATURDAY).withWorkingDayFromCalendar(
-                true, Calendar.SUNDAY);
+        final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(true, Calendar.SATURDAY)
+                .withWorkingDayFromCalendar(true, Calendar.SUNDAY);
         cal.setWorkingWeek(getWorkingWeek(ww));
 
         Assert.assertEquals("Name", "bla", cal.getName());
@@ -119,10 +119,10 @@ public abstract class AbstractModifiedFollowingDateCalculatorTest<E> extends Abs
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getHolidayCalendar().getHolidays().size());
 
-        final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(false, Calendar.MONDAY).withWorkingDayFromCalendar(
-                true, Calendar.TUESDAY).withWorkingDayFromCalendar(false, Calendar.WEDNESDAY).withWorkingDayFromCalendar(true,
-                Calendar.THURSDAY).withWorkingDayFromCalendar(false, Calendar.FRIDAY).withWorkingDayFromCalendar(true,
-                Calendar.SATURDAY).withWorkingDayFromCalendar(false, Calendar.SUNDAY);
+        final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(false, Calendar.MONDAY)
+                .withWorkingDayFromCalendar(true, Calendar.TUESDAY).withWorkingDayFromCalendar(false, Calendar.WEDNESDAY)
+                .withWorkingDayFromCalendar(true, Calendar.THURSDAY).withWorkingDayFromCalendar(false, Calendar.FRIDAY)
+                .withWorkingDayFromCalendar(true, Calendar.SATURDAY).withWorkingDayFromCalendar(false, Calendar.SUNDAY);
         cal.setWorkingWeek(getWorkingWeek(ww));
 
         cal.setStartDate(newDate("2006-07-31")); // start date Monday
@@ -152,10 +152,10 @@ public abstract class AbstractModifiedFollowingDateCalculatorTest<E> extends Abs
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getHolidayCalendar().getHolidays().size());
 
-        final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(false, Calendar.MONDAY).withWorkingDayFromCalendar(
-                true, Calendar.TUESDAY).withWorkingDayFromCalendar(true, Calendar.WEDNESDAY).withWorkingDayFromCalendar(true,
-                Calendar.THURSDAY).withWorkingDayFromCalendar(true, Calendar.FRIDAY).withWorkingDayFromCalendar(false,
-                Calendar.SATURDAY).withWorkingDayFromCalendar(false, Calendar.SUNDAY);
+        final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(false, Calendar.MONDAY)
+                .withWorkingDayFromCalendar(true, Calendar.TUESDAY).withWorkingDayFromCalendar(true, Calendar.WEDNESDAY)
+                .withWorkingDayFromCalendar(true, Calendar.THURSDAY).withWorkingDayFromCalendar(true, Calendar.FRIDAY)
+                .withWorkingDayFromCalendar(false, Calendar.SATURDAY).withWorkingDayFromCalendar(false, Calendar.SUNDAY);
         cal.setWorkingWeek(getWorkingWeek(ww));
 
         cal.setStartDate(newDate("2006-07-31")); // start date Monday
@@ -182,9 +182,9 @@ public abstract class AbstractModifiedFollowingDateCalculatorTest<E> extends Abs
 
     // -----------------------------------------------------------------------
     //
-    //    ObjectLab, world leaders in the design and development of bespoke 
-    //          applications for the securities financing markets.
-    //                         www.ObjectLab.co.uk
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
 
@@ -397,7 +397,7 @@ public abstract class AbstractModifiedFollowingDateCalculatorTest<E> extends Abs
     }
 
     public void testCalculateTenorsZeroDaysToSpot() {
-        List<Tenor> list = new ArrayList<Tenor>();
+        final List<Tenor> list = new ArrayList<Tenor>();
         list.add(StandardTenor.OVERNIGHT);
         list.add(StandardTenor.SPOT);
         list.add(StandardTenor.T_1D);
@@ -412,9 +412,9 @@ public abstract class AbstractModifiedFollowingDateCalculatorTest<E> extends Abs
 
         final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.MODIFIED_FOLLOWING);
         cal.setHolidayCalendar(createUKHolidayCalendar());
-        String startDate = "2006-08-24";
+        final String startDate = "2006-08-24";
         cal.setStartDate(newDate(startDate));
-        List<E> expectedResults = new ArrayList<E>();
+        final List<E> expectedResults = new ArrayList<E>();
         expectedResults.add(newDate("2006-08-25")); // ON
         expectedResults.add(newDate("2006-08-24")); // SPOT
         expectedResults.add(newDate("2006-08-25")); // 1D
@@ -427,17 +427,17 @@ public abstract class AbstractModifiedFollowingDateCalculatorTest<E> extends Abs
         expectedResults.add(newDate("2007-05-24")); // 9M
         expectedResults.add(newDate("2007-08-24")); // 1Y
 
-        List<E> results = cal.calculateTenorDates(list);
+        final List<E> results = cal.calculateTenorDates(list);
         assertEquals("Same size as tenor", list.size(), results.size());
-        Iterator<E> it = results.iterator();
-        Iterator<E> expected = expectedResults.iterator();
-        for (Tenor tenor : list) {
+        final Iterator<E> it = results.iterator();
+        final Iterator<E> expected = expectedResults.iterator();
+        for (final Tenor tenor : list) {
             assertEquals("Move start:" + startDate + " tenor:" + tenor, expected.next(), it.next());
         }
     }
 
     public void testCalculateTenorsTwoDaysToSpot() {
-        List<Tenor> list = new ArrayList<Tenor>();
+        final List<Tenor> list = new ArrayList<Tenor>();
         list.add(StandardTenor.OVERNIGHT);
         list.add(StandardTenor.SPOT);
         list.add(StandardTenor.T_1D);
@@ -452,9 +452,9 @@ public abstract class AbstractModifiedFollowingDateCalculatorTest<E> extends Abs
 
         final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.MODIFIED_FOLLOWING);
         cal.setHolidayCalendar(createUKHolidayCalendar());
-        String startDate = "2006-08-24";
+        final String startDate = "2006-08-24";
         cal.setStartDate(newDate(startDate));
-        List<E> expectedResults = new ArrayList<E>();
+        final List<E> expectedResults = new ArrayList<E>();
         expectedResults.add(newDate("2006-08-25")); // ON
         expectedResults.add(newDate("2006-08-29")); // SPOT
         expectedResults.add(newDate("2006-08-30")); // 1D
@@ -467,11 +467,11 @@ public abstract class AbstractModifiedFollowingDateCalculatorTest<E> extends Abs
         expectedResults.add(newDate("2007-05-29")); // 9M
         expectedResults.add(newDate("2007-08-29")); // 1Y
 
-        List<E> results = cal.calculateTenorDates(list, 2);
+        final List<E> results = cal.calculateTenorDates(list, 2);
         assertEquals("Same size as tenor", list.size(), results.size());
-        Iterator<E> it = results.iterator();
-        Iterator<E> expected = expectedResults.iterator();
-        for (Tenor tenor : list) {
+        final Iterator<E> it = results.iterator();
+        final Iterator<E> expected = expectedResults.iterator();
+        for (final Tenor tenor : list) {
             assertEquals("Move start:" + startDate + " tenor:" + tenor, expected.next(), it.next());
         }
     }
@@ -479,10 +479,10 @@ public abstract class AbstractModifiedFollowingDateCalculatorTest<E> extends Abs
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

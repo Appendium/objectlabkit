@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -300,7 +300,7 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
     13 14 15 16 17 18 19
     20 21 22 23 24 25 26
     27 28 29 30 31
-    */
+     */
     public void testMoveByTenorDaysOneDayToSpot() {
         checkMoveByTenor("USD", "CAD", "2006-07-05", StandardTenor.SPOT, 1, "2006-07-06");
         // US holiday on T+1
@@ -342,7 +342,7 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
     }
 
     public void testCalculateTenorsZeroDaysToSpot() {
-        List<Tenor> list = new ArrayList<Tenor>();
+        final List<Tenor> list = new ArrayList<Tenor>();
         list.add(StandardTenor.OVERNIGHT);
         list.add(StandardTenor.SPOT);
         list.add(StandardTenor.T_1D);
@@ -356,9 +356,9 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
         list.add(StandardTenor.T_1Y);
 
         final DateCalculator<E> cal = newCurrencyCalculator("USD", "GBP");
-        String startDate = "2006-08-24";
+        final String startDate = "2006-08-24";
         cal.setStartDate(newDate(startDate));
-        List<E> expectedResults = new ArrayList<E>();
+        final List<E> expectedResults = new ArrayList<E>();
         expectedResults.add(newDate("2006-08-25")); // ON
         expectedResults.add(newDate("2006-08-24")); // SPOT
         expectedResults.add(newDate("2006-08-25")); // 1D
@@ -371,17 +371,17 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
         expectedResults.add(newDate("2007-05-24")); // 9M
         expectedResults.add(newDate("2007-08-24")); // 1Y
 
-        List<E> results = cal.calculateTenorDates(list);
+        final List<E> results = cal.calculateTenorDates(list);
         assertEquals("Same size as tenor", list.size(), results.size());
-        Iterator<E> it = results.iterator();
-        Iterator<E> expected = expectedResults.iterator();
-        for (Tenor tenor : list) {
+        final Iterator<E> it = results.iterator();
+        final Iterator<E> expected = expectedResults.iterator();
+        for (final Tenor tenor : list) {
             assertEquals("Move start:" + startDate + " tenor:" + tenor, expected.next(), it.next());
         }
     }
 
     public void testCalculateTenorsTwoDaysToSpot() {
-        List<Tenor> list = new ArrayList<Tenor>();
+        final List<Tenor> list = new ArrayList<Tenor>();
         list.add(StandardTenor.OVERNIGHT);
         list.add(StandardTenor.SPOT);
         list.add(StandardTenor.T_1D);
@@ -395,9 +395,9 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
         list.add(StandardTenor.T_1Y);
 
         final DateCalculator<E> cal = newCurrencyCalculator("USD", "GBP");
-        String startDate = "2006-08-24";
+        final String startDate = "2006-08-24";
         cal.setStartDate(newDate(startDate));
-        List<E> expectedResults = new ArrayList<E>();
+        final List<E> expectedResults = new ArrayList<E>();
         expectedResults.add(newDate("2006-08-25")); // ON
         expectedResults.add(newDate("2006-08-29")); // SPOT
         expectedResults.add(newDate("2006-08-30")); // 1D
@@ -410,11 +410,11 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
         expectedResults.add(newDate("2007-05-29")); // 9M
         expectedResults.add(newDate("2007-08-29")); // 1Y
 
-        List<E> results = cal.calculateTenorDates(list, 2);
+        final List<E> results = cal.calculateTenorDates(list, 2);
         assertEquals("Same size as tenor", list.size(), results.size());
-        Iterator<E> it = results.iterator();
-        Iterator<E> expected = expectedResults.iterator();
-        for (Tenor tenor : list) {
+        final Iterator<E> it = results.iterator();
+        final Iterator<E> expected = expectedResults.iterator();
+        for (final Tenor tenor : list) {
             assertEquals("Move start:" + startDate + " tenor:" + tenor, expected.next(), it.next());
         }
     }
@@ -422,10 +422,10 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
 
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
