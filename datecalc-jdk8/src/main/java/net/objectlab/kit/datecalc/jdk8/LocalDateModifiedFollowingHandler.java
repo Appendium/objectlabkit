@@ -34,9 +34,10 @@ package net.objectlab.kit.datecalc.jdk8;
 
 import java.time.LocalDate;
 
-import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.BaseCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
+import net.objectlab.kit.datecalc.common.NonWorkingDayChecker;
 
 /**
  * A modified following handler will move the date forward if it falls on a non
@@ -57,8 +58,8 @@ public class LocalDateModifiedFollowingHandler implements HolidayHandler<LocalDa
      * @return the date which may have moved.
      */
     @Override
-    public LocalDate moveCurrentDate(final DateCalculator<LocalDate> calculator) {
-        return move(calculator, 1);
+    public LocalDate moveCurrentDate(final BaseCalculator<LocalDate> calculator) {
+        return adjustDate(calculator.getCurrentBusinessDate(), 1, calculator);
     }
 
     // -----------------------------------------------------------------------
@@ -68,12 +69,12 @@ public class LocalDateModifiedFollowingHandler implements HolidayHandler<LocalDa
     // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
-
-    protected LocalDate move(final DateCalculator<LocalDate> calculator, final int step) {
-        LocalDate date = calculator.getCurrentBusinessDate();
+    @Override
+    public LocalDate adjustDate(LocalDate startDate, int increment, NonWorkingDayChecker<LocalDate> checker) {
+        LocalDate date = startDate;
         final int month = date.getMonthValue();
-        int stepToUse = step;
-        while (calculator.isNonWorkingDay(date)) {
+        int stepToUse = increment;
+        while (checker.isNonWorkingDay(date)) {
             date = date.plusDays(stepToUse);
             if (date.getMonthValue() != month) {
                 // flick to backward

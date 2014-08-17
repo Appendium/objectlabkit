@@ -30,7 +30,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package net.objectlab.kit.datecalc.common;
+package net.objectlab.kit.datecalc.common.ccy;
 
 import static net.objectlab.kit.datecalc.common.HolidayHandlerType.BACKWARD;
 import static net.objectlab.kit.datecalc.common.HolidayHandlerType.FORWARD;
@@ -38,62 +38,95 @@ import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_FOLL
 import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_PRECEDING;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
+import net.objectlab.kit.datecalc.common.CurrencyDateCalculatorOldFashion;
+import net.objectlab.kit.datecalc.common.DefaultHolidayCalendar;
+import net.objectlab.kit.datecalc.common.HolidayCalendar;
+import net.objectlab.kit.datecalc.common.HolidayHandler;
+import net.objectlab.kit.datecalc.common.ImmutableHolidayCalendar;
+import net.objectlab.kit.datecalc.common.Tenor;
+import net.objectlab.kit.datecalc.common.TenorCode;
+import net.objectlab.kit.datecalc.common.WorkingWeek;
 
 /**
- * Abstract implementation in order to encapsulate all the common functionality
+ * Abstract implementation for a currency calculator in order to encapsulate all the common functionality
  * between Jdk and Joda implementations. It is parameterized on &lt;E&gt;
  * but basically <code>Date</code> and <code>LocalDate</code> are the only
  * viable values for it for now.
  *
- * @author Marcin Jekot and Benoit Xhenseval
+ * @author Benoit Xhenseval
  *
  * @param <E>
  *            a representation of a date, typically JDK: Date, Calendar;
  *            Joda:LocalDate, YearMonthDay
  *
+ * @since 1.4.0
+ *
  */
-public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
+@Deprecated
+public abstract class AbstractCurrencyDateCalculatorOldFashion<E> implements CurrencyDateCalculatorOldFashion<E> {
     private static final int MONTHS_IN_YEAR = 12;
 
     protected static final int DAYS_IN_WEEK = 7;
 
     private String name;
+    private final String ccy1;
+    private final String ccy2;
 
     private E startDate;
 
     private E currentBusinessDate;
 
-    private HolidayCalendar<E> holidayCalendar;
+    private HolidayCalendar<E> ccy1Calendar;
+    private HolidayCalendar<E> ccy2Calendar;
+    private HolidayCalendar<E> usdCalendar;
 
     private HolidayHandler<E> holidayHandler;
-
     private int currentIncrement = 0;
 
-    protected AbstractDateCalculator(final String name, final HolidayCalendar<E> holidayCalendar, final HolidayHandler<E> holidayHandler) {
-        this.name = name;
-        if (holidayCalendar != null) {
-            this.holidayCalendar = new ImmutableHolidayCalendar<E>(holidayCalendar);
-        } else {
-            this.holidayCalendar = new ImmutableHolidayCalendar<E>(new DefaultHolidayCalendar<E>());
-        }
-        this.holidayHandler = holidayHandler;
+    private WorkingWeek ccy1Week;
+    private WorkingWeek ccy2Week;
+    private WorkingWeek usdWeek;
+
+    /**
+     * @return Returns the currentIncrement.
+     */
+    public int getCurrentIncrement() {
+        return currentIncrement;
     }
 
-    @SuppressWarnings("unchecked")
-    public DateCalculator<E> setHolidayCalendar(final HolidayCalendar<E> calendar) {
-        if (calendar != null) {
-            if (calendar instanceof ImmutableHolidayCalendar) {
-                holidayCalendar = calendar;
-            } else {
-                holidayCalendar = new ImmutableHolidayCalendar<E>(calendar);
-            }
-        } else {
-            holidayCalendar = new ImmutableHolidayCalendar<E>(new DefaultHolidayCalendar<E>());
-        }
+    /**
+     * @param currentIncrement The currentIncrement to set.
+     */
+    public CurrencyDateCalculatorOldFashion<E> setCurrentIncrement(final int currentIncrement) {
+        this.currentIncrement = currentIncrement;
         return this;
+    }
+
+    public CurrencyDateCalculatorOldFashion<E> setHolidayCalendars(final HolidayCalendar<E> ccy1Calendar, final HolidayCalendar<E> ccy2Calendar,
+            final HolidayCalendar<E> usdCalendar) {
+        this.ccy1Calendar = ccy1Calendar != null ? new ImmutableHolidayCalendar<E>(ccy1Calendar) : new ImmutableHolidayCalendar<E>(
+                new DefaultHolidayCalendar<E>());
+        this.ccy2Calendar = ccy2Calendar != null ? new ImmutableHolidayCalendar<E>(ccy2Calendar) : new ImmutableHolidayCalendar<E>(
+                new DefaultHolidayCalendar<E>());
+        this.usdCalendar = usdCalendar != null ? new ImmutableHolidayCalendar<E>(usdCalendar) : new ImmutableHolidayCalendar<E>(
+                new DefaultHolidayCalendar<E>());
+        return this;
+    }
+
+    public CurrencyDateCalculatorOldFashion<E> setWorkingWeeks(final WorkingWeek ccy1Week, final WorkingWeek ccy2Week, final WorkingWeek usdWeek) {
+        this.ccy1Week = ccy1Week != null ? ccy1Week : new WorkingWeek();
+        this.ccy2Week = ccy2Week != null ? ccy2Week : new WorkingWeek();
+        this.usdWeek = usdWeek != null ? usdWeek : new WorkingWeek();
+        return this;
+    }
+
+    protected AbstractCurrencyDateCalculatorOldFashion(final String ccy1, final String ccy2, final HolidayHandler<E> holidayHandler) {
+        this.ccy1 = ccy1;
+        this.ccy2 = ccy2;
+        this.name = ccy1 + "." + ccy2;
+        this.holidayHandler = holidayHandler;
     }
 
     public String getName() {
@@ -112,7 +145,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     }
 
     /** Set both start date and current date */
-    public DateCalculator<E> setStartDate(final E startDate) {
+    public CurrencyDateCalculatorOldFashion<E> setStartDate(final E startDate) {
         this.startDate = startDate;
         setCurrentBusinessDate(startDate);
         return this;
@@ -137,7 +170,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
      * @return the current businessCalendar (so one can do
      *         calendar.moveByTenor(StandardTenor.T_2M).getCurrentBusinessDate();)
      */
-    public DateCalculator<E> moveByTenor(final Tenor tenor, final int spotLag) {
+    public CurrencyDateCalculatorOldFashion<E> moveByTenor(final Tenor tenor, final int spotLag) {
         if (tenor == null) {
             throw new IllegalArgumentException("Tenor cannot be null");
         }
@@ -145,7 +178,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         TenorCode tenorCode = tenor.getCode();
         if (tenorCode != TenorCode.OVERNIGHT && tenorCode != TenorCode.TOM_NEXT /*&& spotLag != 0*/) {
             // get to the Spot date first:
-            moveToSpotDate(spotLag);
+            // moveToSpotDate(spotLag);
         }
         int unit = tenor.getUnits();
         if (tenorCode == TenorCode.WEEK) {
@@ -161,8 +194,8 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         return applyTenor(tenorCode, unit);
     }
 
-    protected DateCalculator<E> applyTenor(final TenorCode tenorCode, final int unit) {
-        DateCalculator<E> calc;
+    protected CurrencyDateCalculatorOldFashion<E> applyTenor(final TenorCode tenorCode, final int unit) {
+        CurrencyDateCalculatorOldFashion<E> calc;
         // move by tenor
         switch (tenorCode) {
         case OVERNIGHT:
@@ -199,7 +232,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
      * @return the current DateCalculator
      * @since 1.1.0
      */
-    public DateCalculator<E> moveByTenor(final Tenor tenor) {
+    public CurrencyDateCalculatorOldFashion<E> moveByTenor(final Tenor tenor) {
         return moveByTenor(tenor, 0);
     }
 
@@ -244,9 +277,9 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     //
     // -----------------------------------------------------------------------
 
-    protected abstract DateCalculator<E> moveByMonths(int months);
+    protected abstract CurrencyDateCalculatorOldFashion<E> moveByMonths(int months);
 
-    public DateCalculator<E> setHolidayHandler(final HolidayHandler<E> holidayHandler) {
+    public CurrencyDateCalculatorOldFashion<E> setHolidayHandler(final HolidayHandler<E> holidayHandler) {
         this.holidayHandler = holidayHandler;
         return this;
     }
@@ -255,43 +288,33 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         return holidayHandler != null ? holidayHandler.getType() : null;
     }
 
-    /**
-     * is the given date a non working day?
-     */
     public boolean isNonWorkingDay(final E date) {
-        if (date != null && (holidayCalendar.getEarlyBoundary() != null || holidayCalendar.getLateBoundary() != null)) {
-            checkBoundary(date);
+        if (date != null && (ccy1Calendar.getEarlyBoundary() != null || ccy1Calendar.getLateBoundary() != null)) {
+            checkBoundary(date, ccy1Calendar);
         }
-        return isWeekend(date) || holidayCalendar.isHoliday(date);
+        if (date != null && (ccy2Calendar.getEarlyBoundary() != null || ccy2Calendar.getLateBoundary() != null)) {
+            checkBoundary(date, ccy2Calendar);
+        }
+        return isWeekend(date, ccy1Week) || isWeekend(date, ccy2Week) || ccy1Calendar.isHoliday(date) || ccy2Calendar.isHoliday(date);
     }
+
+    protected abstract boolean isWeekend(final E date, WorkingWeek workingWeek);
 
     /**
      * This may throw an {@link IndexOutOfBoundsException} if the date is not within the
      * boundaries.
      * @param date
      */
-    protected abstract void checkBoundary(E date);
-
-    public boolean isCurrentDateNonWorking() {
-        if (currentBusinessDate == null) {
-            currentBusinessDate = getToday();
-        }
-        return isNonWorkingDay(currentBusinessDate);
-    }
-
-    public E forceCurrentDateNoAdjustment(final E date) {
-        currentBusinessDate = date;
-        return currentBusinessDate;
-    }
+    protected abstract void checkBoundary(E date, HolidayCalendar<E> holiday);
 
     public E setCurrentBusinessDate(final E date) {
         currentBusinessDate = date;
         if (holidayHandler != null && date != null) {
             currentBusinessDate = holidayHandler.moveCurrentDate(this);
         }
-        if (date != null && (holidayCalendar.getEarlyBoundary() != null || holidayCalendar.getLateBoundary() != null)) {
-            checkBoundary(date);
-        }
+        // if (date != null && (holidayCalendar.getEarlyBoundary() != null || holidayCalendar.getLateBoundary() != null)) {
+        // checkBoundary(date);
+        // }
         return currentBusinessDate;
     }
 
@@ -299,11 +322,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         return holidayHandler;
     }
 
-    protected void moveToSpotDate(final int spotLag) {
-        moveByBusinessDays(spotLag);
-    }
-
-    public DateCalculator<E> moveByBusinessDays(final int businessDays) {
+    public CurrencyDateCalculatorOldFashion<E> moveByBusinessDays(final int businessDays) {
         checkHolidayValidity(businessDays);
 
         final int numberOfStepsLeft = Math.abs(businessDays);
@@ -327,54 +346,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         }
     }
 
-    /**
-     * Allows DateCalculators to be combined into a new one, the startDate and
-     * currentBusinessDate will be the ones from the existing calendar (not the
-     * parameter one). The name will be combined name1+"/"+calendar.getName().
-     *
-     * @param calculator
-     *            return the same DateCalculator if calendar is null or the
-     *            original calendar (but why would you want to do that?)
-     * @throws IllegalArgumentException
-     *             if both calendars have different types of HolidayHandlers or
-     *             WorkingWeek;
-     */
-    public DateCalculator<E> combine(final DateCalculator<E> calculator) {
-        if (calculator == null || calculator == this) {
-            return this;
-        }
-
-        checkHolidayHandlerValidity(calculator);
-
-        final Set<E> newSet = new HashSet<E>();
-        if (holidayCalendar != null) {
-            newSet.addAll(holidayCalendar.getHolidays());
-        }
-
-        final HolidayCalendar<E> calendarToCombine = calculator.getHolidayCalendar();
-        checkBoundaries(calendarToCombine);
-
-        if (calendarToCombine.getHolidays() != null) {
-            newSet.addAll(calendarToCombine.getHolidays());
-        }
-
-        final HolidayCalendar<E> newCal = new DefaultHolidayCalendar<E>(newSet, compareDate(holidayCalendar.getEarlyBoundary(),
-                calendarToCombine.getEarlyBoundary(), false), compareDate(holidayCalendar.getLateBoundary(), calendarToCombine.getLateBoundary(),
-                true));
-
-        final DateCalculator<E> cal = createNewCalculator(getName() + "/" + calculator.getName(), getStartDate(), newCal, holidayHandler);
-
-        return cal;
-    }
-
-    private void checkHolidayHandlerValidity(final DateCalculator<E> calculator) {
-        if (holidayHandler == null && calculator.getHolidayHandlerType() != null || holidayHandler != null
-                && !holidayHandler.getType().equals(calculator.getHolidayHandlerType())) {
-            throw new IllegalArgumentException("Combined Calendars cannot have different handler types");
-        }
-    }
-
-    private void checkBoundaries(final HolidayCalendar<E> calendarToCombine) {
+    private void checkBoundaries(final HolidayCalendar<E> calendarToCombine, final HolidayCalendar<E> holidayCalendar) {
         if (calendarToCombine.getEarlyBoundary() != null && holidayCalendar.getEarlyBoundary() == null
                 || calendarToCombine.getEarlyBoundary() == null && holidayCalendar.getEarlyBoundary() != null) {
             throw new IllegalArgumentException("Both Calendar to be combined must either have each Early boundaries or None.");
@@ -387,32 +359,6 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
     }
 
     protected abstract E getToday();
-
-    protected abstract E compareDate(E date1, E date2, boolean returnEarliest);
-
-    protected abstract DateCalculator<E> createNewCalculator(String calcName, E theStartDate, HolidayCalendar<E> holidays, HolidayHandler<E> handler);
-
-    /**
-     * @return Returns the currentIncrement.
-     */
-    public int getCurrentIncrement() {
-        return currentIncrement;
-    }
-
-    /**
-     * @param currentIncrement The currentIncrement to set.
-     */
-    public DateCalculator<E> setCurrentIncrement(final int currentIncrement) {
-        this.currentIncrement = currentIncrement;
-        return this;
-    }
-
-    /**
-     * @return Returns the holidayCalendar.
-     */
-    public HolidayCalendar<E> getHolidayCalendar() {
-        return holidayCalendar;
-    }
 
     protected abstract E clone(final E date);
 }

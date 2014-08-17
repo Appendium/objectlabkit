@@ -32,23 +32,21 @@
  */
 package net.objectlab.kit.datecalc.joda;
 
-import net.objectlab.kit.datecalc.common.AbstractModifiedPreceedingDateCalculatorTest;
-import net.objectlab.kit.datecalc.common.HolidayCalendar;
+import net.objectlab.kit.datecalc.common.AbstractCurrencyDateCalculatorTest;
 import net.objectlab.kit.datecalc.common.KitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
-import org.joda.time.YearMonthDay;
+import org.joda.time.LocalDate;
 
-public class YearMonthDayModifiedFollowingDateCalculatorTest extends AbstractModifiedPreceedingDateCalculatorTest<YearMonthDay> {
+public class LocalDateCurrencyDateCalculator2Test extends AbstractCurrencyDateCalculatorTest<LocalDate> {
 
-    @Override
-    protected YearMonthDay newDate(final String date) {
-        return new YearMonthDay(date);
+    public LocalDateCurrencyDateCalculator2Test() {
+        super();
     }
 
     @Override
-    protected void registerHolidays(final String name, final HolidayCalendar<YearMonthDay> holidays) {
-        YearMonthDayKitCalculatorsFactory.getDefaultInstance().registerHolidays(name, holidays);
+    protected LocalDate newDate(final String date) {
+        return new LocalDate(date);
     }
 
     @Override
@@ -57,8 +55,8 @@ public class YearMonthDayModifiedFollowingDateCalculatorTest extends AbstractMod
     }
 
     @Override
-    protected KitCalculatorsFactory<YearMonthDay> getDateCalculatorFactory() {
-        return YearMonthDayKitCalculatorsFactory.getDefaultInstance();
+    protected KitCalculatorsFactory<LocalDate> getDateCalculatorFactory() {
+        return LocalDateKitCalculatorsFactory.getDefaultInstance();
     }
 }
 

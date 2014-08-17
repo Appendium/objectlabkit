@@ -32,7 +32,6 @@
  */
 package net.objectlab.kit.datecalc.common;
 
-import java.io.Serializable;
 import java.util.Set;
 
 /**
@@ -51,14 +50,7 @@ import java.util.Set;
  *            Joda:LocalDate, YearMonthDay
  *
  */
-public interface HolidayCalendar<E> extends Serializable {
-    /**
-     * Returns an immutable set of holidays.
-     *
-     * @return an immutable copy of the holiday set.
-     */
-    Set<E> getHolidays();
-
+public interface HolidayCalendar<E> extends ReadOnlyHolidayCalendar<E> {
     /**
      * Takes a copy of the holidays and store it in an immutable
      * set.
@@ -66,22 +58,10 @@ public interface HolidayCalendar<E> extends Serializable {
     HolidayCalendar<E> setHolidays(final Set<E> holidays);
 
     /**
-     * Returns the earliest date covered by this HolidayCalendar.
-     * @return E the earliest date covered by this holiday calendar.
-     */
-    E getEarlyBoundary();
-
-    /**
      * Sets the earliest date (must be &lt;= first date in holiday set)
      * @param earlyBoundary
      */
     HolidayCalendar<E> setEarlyBoundary(final E earlyBoundary);
-
-    /**
-     * Returns the latest date covered by this HolidayCalendar.
-     * @return E the latest date covered by this holiday calendar.
-     */
-    E getLateBoundary();
 
     /**
      * Sets the latest date (must be &lt;= first date in holiday set)

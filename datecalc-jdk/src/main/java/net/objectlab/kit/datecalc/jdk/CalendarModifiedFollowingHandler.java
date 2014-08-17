@@ -31,82 +31,82 @@
  * the License.
  */package net.objectlab.kit.datecalc.jdk;
 
-import java.util.Calendar;
+ import java.util.Calendar;
 
- import net.objectlab.kit.datecalc.common.DateCalculator;
+ import net.objectlab.kit.datecalc.common.BaseCalculator;
  import net.objectlab.kit.datecalc.common.HolidayHandler;
  import net.objectlab.kit.datecalc.common.HolidayHandlerType;
+ import net.objectlab.kit.datecalc.common.NonWorkingDayChecker;
 
-/**
- * A Jdk <code>Calendar</code> implementation of the
- * {@link net.objectlab.kit.datecalc.common.HolidayHandler}, for the
- * <strong>Modified Following</strong> algorithm.
- *
- * @author Marcin Jekot
- *
- */
-public class CalendarModifiedFollowingHandler implements HolidayHandler<Calendar> {
+ /**
+  * A Jdk <code>Calendar</code> implementation of the
+  * {@link net.objectlab.kit.datecalc.common.HolidayHandler}, for the
+  * <strong>Modified Following</strong> algorithm.
+  *
+  * @author Marcin Jekot
+  *
+  */
+ public class CalendarModifiedFollowingHandler implements HolidayHandler<Calendar> {
 
-    /**
-     * If the current date of the give calculator is a non-working day, it will
-     * be moved according to the algorithm implemented.
-     *
-     * @param calculator
-     *            the calculator
-     * @return the date which may have moved.
-     */
-    public Calendar moveCurrentDate(final DateCalculator<Calendar> calculator) {
-        return move(calculator, 1);
-    }
+     /**
+      * If the current date of the give calculator is a non-working day, it will
+      * be moved according to the algorithm implemented.
+      *
+      * @param calculator
+      *            the calculator
+      * @return the date which may have moved.
+      */
+     public Calendar moveCurrentDate(final BaseCalculator<Calendar> calculator) {
+         return adjustDate(calculator.getCurrentBusinessDate(), 1, calculator);
+     }
 
-    // -----------------------------------------------------------------------
-    //
-    // ObjectLab, world leaders in the design and development of bespoke
+     // -----------------------------------------------------------------------
+     //
+     // ObjectLab, world leaders in the design and development of bespoke
      // applications for the securities financing markets.
-    // www.ObjectLab.co.uk
-    //
-    // -----------------------------------------------------------------------
+     // www.ObjectLab.co.uk
+     //
+     // -----------------------------------------------------------------------
+     public Calendar adjustDate(final Calendar startDate, final int increment, final NonWorkingDayChecker<Calendar> checker) {
+         final Calendar cal = (Calendar) startDate.clone();
+         int step = increment;
+         final int month = cal.get(Calendar.MONTH);
 
-    protected Calendar move(final DateCalculator<Calendar> calculator, final int givenStep) {
-        final Calendar cal = (Calendar) calculator.getCurrentBusinessDate().clone();
-        int step = givenStep;
-        final int month = cal.get(Calendar.MONTH);
+         while (checker.isNonWorkingDay(cal)) {
+             cal.add(Calendar.DAY_OF_MONTH, step);
+             if (month != cal.get(Calendar.MONTH)) {
+                 // switch direction and go back
+                 step *= -1;
+                 cal.add(Calendar.DAY_OF_MONTH, step);
+             }
+         }
 
-        while (calculator.isNonWorkingDay(cal)) {
-            cal.add(Calendar.DAY_OF_MONTH, step);
-            if (month != cal.get(Calendar.MONTH)) {
-                // switch direction and go back
-                step *= -1;
-                cal.add(Calendar.DAY_OF_MONTH, step);
-            }
-        }
+         return cal;
+     }
 
-        return cal;
-    }
+     /**
+      * Give the type name for this algorithm.
+      *
+      * @return algorithm name.
+      */
+     public String getType() {
+         return HolidayHandlerType.MODIFIED_FOLLOWING;
+     }
+ }
 
-    /**
-     * Give the type name for this algorithm.
-     *
-     * @return algorithm name.
-     */
-    public String getType() {
-        return HolidayHandlerType.MODIFIED_FOLLOWING;
-    }
-}
-
-/*
- * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
- *
- * Based in London, we are world leaders in the design and development
- * of bespoke applications for the securities financing markets.
- *
- * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
- *           ___  _     _           _   _          _
- *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
- *         | | | | '_ \| |/ _ \/ __| __| |   / _` | '_ \
- *         | |_| | |_) | |  __/ (__| |_| |__| (_| | |_) |
- *          \___/|_.__// |\___|\___|\__|_____\__,_|_.__/
- *                   |__/
- *
- *                     www.ObjectLab.co.uk
- */
+ /*
+  * ObjectLab, http://www.objectlab.co.uk/open is sponsoring the ObjectLab Kit.
+  *
+  * Based in London, we are world leaders in the design and development
+  * of bespoke applications for the securities financing markets.
+  *
+  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
+  *           ___  _     _           _   _          _
+  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
+  *         | | | | '_ \| |/ _ \/ __| __| |   / _` | '_ \
+  *         | |_| | |_) | |  __/ (__| |_| |__| (_| | |_) |
+  *          \___/|_.__// |\___|\___|\__|_____\__,_|_.__/
+  *                   |__/
+  *
+  *                     www.ObjectLab.co.uk
+  */

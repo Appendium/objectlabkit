@@ -90,7 +90,7 @@ public class Jdk8WorkingWeek extends WorkingWeek {
         return isWorkingDayFromCalendar(jdk8ToCalendarDayConstant(dayOfWeek));
     }
 
-    public int jdk8ToCalendarDayConstant(final DayOfWeek givenDayOfWeek) {
+    public static int jdk8ToCalendarDayConstant(final DayOfWeek givenDayOfWeek) {
         final int dayOfWeek = givenDayOfWeek.getValue() + 1;
         return dayOfWeek <= MAX_WEEKDAY_INDEX ? dayOfWeek : dayOfWeek % MAX_WEEKDAY_INDEX;
     }

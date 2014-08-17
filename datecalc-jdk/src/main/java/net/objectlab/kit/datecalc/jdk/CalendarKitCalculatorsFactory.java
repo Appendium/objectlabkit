@@ -41,9 +41,11 @@ import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_PREC
 import java.util.Calendar;
 
 import net.objectlab.kit.datecalc.common.AbstractKitCalculatorsFactory;
+import net.objectlab.kit.datecalc.common.CurrencyDateCalculatorBuilder;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 import net.objectlab.kit.datecalc.common.IMMDateCalculator;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
+import net.objectlab.kit.datecalc.common.SpotLag;
 
 /**
  * The default factory for getting Jdk <code>Calendar</code> based
@@ -64,8 +66,34 @@ public class CalendarKitCalculatorsFactory extends AbstractKitCalculatorsFactory
         return DEFAULT;
     }
 
-    public static CalendarDateCalculator currencyCalculator(final String ccy1, final String ccy2) {
-        return DEFAULT.getCurrencyDateCalculator(ccy1, ccy2);
+    /**
+     * Return a builder using the registered calendars/working weeks and a Forward Holiday handler for the currency pair; this
+     * does NOT copy the calendars or Currency Config.
+     *
+     * If you want to change some of the parameters, simply modify the Builder returned and pass it to the constructor of the
+     * calculator you are interested in.
+     */
+    public CurrencyDateCalculatorBuilder<Calendar> getDefaultCurrencyDateCalculatorBuilder(final String ccy1, final String ccy2, final SpotLag spotLag) {
+        final CurrencyDateCalculatorBuilder<Calendar> builder = new CurrencyDateCalculatorBuilder<Calendar>().currencyPair(ccy1, ccy2, spotLag);
+
+        return configureCurrencyCalculatorBuilder(builder).holidayHandler(new CalendarForwardHandler());
+    }
+
+    public static CurrencyDateCalculatorBuilder<Calendar> defaultCurrencyDateCalculatorBuilder(final String ccy1, final String ccy2,
+            final SpotLag spotLag) {
+        return DEFAULT.getDefaultCurrencyDateCalculatorBuilder(ccy1, ccy2, spotLag);
+    }
+
+    public CalendarCurrencyDateCalculator buildCurrencyDateCalculator(final CurrencyDateCalculatorBuilder<Calendar> builder) {
+        return new CalendarCurrencyDateCalculator(builder);
+    }
+
+    public static CalendarCurrencyDateCalculator forwardCurrencyDateCalculator(final String ccy1, final String ccy2, final SpotLag spotLag) {
+        return DEFAULT.getDefaultCurrencyDateCalculator(ccy1, ccy2, spotLag);
+    }
+
+    public CalendarCurrencyDateCalculator getDefaultCurrencyDateCalculator(final String ccy1, final String ccy2, final SpotLag spotLag) {
+        return new CalendarCurrencyDateCalculator(getDefaultCurrencyDateCalculatorBuilder(ccy1, ccy2, spotLag));
     }
 
     public static CalendarDateCalculator forwardCalculator(final String name) {
@@ -86,13 +114,6 @@ public class CalendarKitCalculatorsFactory extends AbstractKitCalculatorsFactory
 
     public static CalendarDateCalculator modifiedPrecedingCalculator(final String name) {
         return DEFAULT.getDateCalculator(name, HolidayHandlerType.MODIFIED_PRECEDING);
-    }
-
-    public CalendarDateCalculator getCurrencyDateCalculator(final String ccy1, final String ccy2) {
-        final CurrencyCalendarDateCalculator cal = new CurrencyCalendarDateCalculator(ccy1, ccy2, getCurrencyCalculatorConfig());
-        cal.setHolidayHandler(new CalendarForwardHandler());
-        cal.setHolidayCalendars(getHolidayCalendar(ccy1), getHolidayCalendar(ccy2), getHolidayCalendar("USD"));
-        return cal;
     }
 
     /**

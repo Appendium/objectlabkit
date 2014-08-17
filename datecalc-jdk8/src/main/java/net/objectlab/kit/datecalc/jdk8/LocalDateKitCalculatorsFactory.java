@@ -40,9 +40,11 @@ import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_PREC
 import java.time.LocalDate;
 
 import net.objectlab.kit.datecalc.common.AbstractKitCalculatorsFactory;
+import net.objectlab.kit.datecalc.common.CurrencyDateCalculatorBuilder;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 import net.objectlab.kit.datecalc.common.IMMDateCalculator;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
+import net.objectlab.kit.datecalc.common.SpotLag;
 
 /**
  * The default factory for getting Joda <code>LocalDate</code> based
@@ -63,8 +65,38 @@ public class LocalDateKitCalculatorsFactory extends AbstractKitCalculatorsFactor
         return DEFAULT;
     }
 
-    public static LocalDateCalculator currencyCalculator(final String ccy1, final String ccy2) {
-        return DEFAULT.getCurrencyDateCalculator(ccy1, ccy2);
+    /**
+     * Return a builder using the registered calendars/working weeks and a Forward Holiday handler for the currency pair; this
+     * does NOT copy the calendars or Currency Config.
+     *
+     * If you want to change some of the parameters, simply modify the Builder returned and pass it to the constructor of the
+     * calculator you are interested in.
+     */
+    @Override
+    public CurrencyDateCalculatorBuilder<LocalDate> getDefaultCurrencyDateCalculatorBuilder(final String ccy1, final String ccy2,
+            final SpotLag spotLag) {
+        final CurrencyDateCalculatorBuilder<LocalDate> builder = new CurrencyDateCalculatorBuilder<LocalDate>().currencyPair(ccy1, ccy2, spotLag);
+
+        return configureCurrencyCalculatorBuilder(builder).holidayHandler(new LocalDateForwardHandler());
+    }
+
+    public static CurrencyDateCalculatorBuilder<LocalDate> defaultCurrencyDateCalculatorBuilder(final String ccy1, final String ccy2,
+            final SpotLag spotLag) {
+        return DEFAULT.getDefaultCurrencyDateCalculatorBuilder(ccy1, ccy2, spotLag);
+    }
+
+    public static LocalDateCurrencyDateCalculator forwardCurrencyDateCalculator(final String ccy1, final String ccy2, final SpotLag spotLag) {
+        return DEFAULT.getDefaultCurrencyDateCalculator(ccy1, ccy2, spotLag);
+    }
+
+    @Override
+    public LocalDateCurrencyDateCalculator buildCurrencyDateCalculator(final CurrencyDateCalculatorBuilder<LocalDate> builder) {
+        return new LocalDateCurrencyDateCalculator(builder);
+    }
+
+    @Override
+    public LocalDateCurrencyDateCalculator getDefaultCurrencyDateCalculator(final String ccy1, final String ccy2, final SpotLag spotLag) {
+        return new LocalDateCurrencyDateCalculator(getDefaultCurrencyDateCalculatorBuilder(ccy1, ccy2, spotLag));
     }
 
     public static LocalDateCalculator forwardCalculator(final String name) {
@@ -94,14 +126,6 @@ public class LocalDateKitCalculatorsFactory extends AbstractKitCalculatorsFactor
     // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
-
-    @Override
-    public LocalDateCalculator getCurrencyDateCalculator(final String ccy1, final String ccy2) {
-        final CurrencyLocalDateCalculator cal = new CurrencyLocalDateCalculator(ccy1, ccy2, getCurrencyCalculatorConfig());
-        cal.setHolidayHandler(new LocalDateForwardHandler());
-        cal.setHolidayCalendars(getHolidayCalendar(ccy1), getHolidayCalendar(ccy2), getHolidayCalendar("USD"));
-        return cal;
-    }
 
     /**
      * Create a new DateCalculator for a given name and type of handling.

@@ -34,9 +34,10 @@ package net.objectlab.kit.datecalc.jdk;
 
 import java.util.Calendar;
 
-import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.BaseCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
+import net.objectlab.kit.datecalc.common.NonWorkingDayChecker;
 
 /**
  * A Jdk <code>Calendar</code> implementation of the
@@ -57,8 +58,8 @@ public class CalendarForwardUnlessNegativeHandler implements HolidayHandler<Cale
      *            the calculator
      * @return the date which may have moved.
      */
-    public Calendar moveCurrentDate(final DateCalculator<Calendar> calculator) {
-        return move(calculator, 1);
+    public Calendar moveCurrentDate(final BaseCalculator<Calendar> calculator) {
+        return adjustDate(calculator.getCurrentBusinessDate(), calculator.getCurrentIncrement(), calculator);
     }
 
     // -----------------------------------------------------------------------
@@ -69,14 +70,14 @@ public class CalendarForwardUnlessNegativeHandler implements HolidayHandler<Cale
     //
     // -----------------------------------------------------------------------
 
-    protected Calendar move(final DateCalculator<Calendar> calculator, final int step) {
-        final Calendar cal = (Calendar) calculator.getCurrentBusinessDate().clone();
+    public Calendar adjustDate(final Calendar startDate, final int increment, final NonWorkingDayChecker<Calendar> checker) {
+        final Calendar cal = (Calendar) startDate.clone();
 
-        while (calculator.isNonWorkingDay(cal)) {
-            if (calculator.getCurrentIncrement() < 0) {
-                cal.add(Calendar.DAY_OF_MONTH, -step);
+        while (checker.isNonWorkingDay(cal)) {
+            if (increment < 0) {
+                cal.add(Calendar.DAY_OF_MONTH, -1);
             } else {
-                cal.add(Calendar.DAY_OF_MONTH, step);
+                cal.add(Calendar.DAY_OF_MONTH, 1);
             }
         }
 

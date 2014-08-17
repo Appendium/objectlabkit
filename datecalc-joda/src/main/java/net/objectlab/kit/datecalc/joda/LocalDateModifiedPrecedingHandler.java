@@ -32,7 +32,7 @@
  */
 package net.objectlab.kit.datecalc.joda;
 
-import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.BaseCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
 import org.joda.time.LocalDate;
@@ -68,8 +68,8 @@ public class LocalDateModifiedPrecedingHandler extends LocalDateModifiedFollowin
      * @return the date which may have moved.
      */
     @Override
-    public LocalDate moveCurrentDate(final DateCalculator<LocalDate> calculator) {
-        return move(calculator, -1);
+    public LocalDate moveCurrentDate(final BaseCalculator<LocalDate> calculator) {
+        return adjustDate(calculator.getCurrentBusinessDate(), -1, calculator);
     }
 }
 

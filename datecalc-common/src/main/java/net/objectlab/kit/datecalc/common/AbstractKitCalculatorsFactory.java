@@ -38,6 +38,9 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+import net.objectlab.kit.datecalc.common.ccy.CurrencyCalculatorConfig;
+import net.objectlab.kit.datecalc.common.ccy.DefaultCurrencyCalculatorConfig;
+
 /**
  * Base class for all calculator factories, it handles the holiday registration.
  *
@@ -148,6 +151,29 @@ public abstract class AbstractKitCalculatorsFactory<E> implements KitCalculators
     public KitCalculatorsFactory<E> unregisterAllHolidayCalendars() {
         holidays.clear();
         return this;
+    }
+
+    /**
+     * Provide the default configuration for the currency pair.
+     * @param ccy1
+     * @param ccy2
+     * @param cal
+     */
+    protected void configureCurrencyCalculator(final String ccy1, final String ccy2, final CurrencyDateCalculatorOldFashion<E> cal) {
+        cal.setHolidayCalendars(getHolidayCalendar(ccy1), getHolidayCalendar(ccy2), getHolidayCalendar("USD"));
+        cal.setWorkingWeeks(getCurrencyCalculatorConfig().getWorkingWeek(ccy1), getCurrencyCalculatorConfig().getWorkingWeek(ccy2),
+                getCurrencyCalculatorConfig().getWorkingWeek("USD"));
+    }
+
+    protected CurrencyDateCalculatorBuilder<E> configureCurrencyCalculatorBuilder(final CurrencyDateCalculatorBuilder<E> builder) {
+        return builder//
+                .ccy1Calendar(getHolidayCalendar(builder.getCcy1())) //
+                .ccy1Week(getCurrencyCalculatorConfig().getWorkingWeek(builder.getCcy1())) //
+                .ccy2Calendar(getHolidayCalendar(builder.getCcy2())) //
+                .ccy2Week(getCurrencyCalculatorConfig().getWorkingWeek(builder.getCcy2())) //
+                .usdCalendar(getHolidayCalendar("USD")) //
+                .usdWeek(getCurrencyCalculatorConfig().getWorkingWeek("USD")) //
+                .currencyCalculatorConfig(getCurrencyCalculatorConfig());
     }
 }
 

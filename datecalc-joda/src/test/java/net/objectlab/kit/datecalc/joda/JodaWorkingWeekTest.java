@@ -119,13 +119,13 @@ public class JodaWorkingWeekTest extends TestCase {
     }
 
     public void testJodaToCalendarDayConstant() {
-        assertEquals("Monday", ww.jodaToCalendarDayConstant(DateTimeConstants.MONDAY), Calendar.MONDAY);
-        assertEquals("Tuesday", ww.jodaToCalendarDayConstant(DateTimeConstants.TUESDAY), Calendar.TUESDAY);
-        assertEquals("Wednesday", ww.jodaToCalendarDayConstant(DateTimeConstants.WEDNESDAY), Calendar.WEDNESDAY);
-        assertEquals("Thursday", ww.jodaToCalendarDayConstant(DateTimeConstants.THURSDAY), Calendar.THURSDAY);
-        assertEquals("Friday", ww.jodaToCalendarDayConstant(DateTimeConstants.FRIDAY), Calendar.FRIDAY);
-        assertEquals("Saturday", ww.jodaToCalendarDayConstant(DateTimeConstants.SATURDAY), Calendar.SATURDAY);
-        assertEquals("Sunday", ww.jodaToCalendarDayConstant(DateTimeConstants.SUNDAY), Calendar.SUNDAY);
+        assertEquals("Monday", JodaWorkingWeek.jodaToCalendarDayConstant(DateTimeConstants.MONDAY), Calendar.MONDAY);
+        assertEquals("Tuesday", JodaWorkingWeek.jodaToCalendarDayConstant(DateTimeConstants.TUESDAY), Calendar.TUESDAY);
+        assertEquals("Wednesday", JodaWorkingWeek.jodaToCalendarDayConstant(DateTimeConstants.WEDNESDAY), Calendar.WEDNESDAY);
+        assertEquals("Thursday", JodaWorkingWeek.jodaToCalendarDayConstant(DateTimeConstants.THURSDAY), Calendar.THURSDAY);
+        assertEquals("Friday", JodaWorkingWeek.jodaToCalendarDayConstant(DateTimeConstants.FRIDAY), Calendar.FRIDAY);
+        assertEquals("Saturday", JodaWorkingWeek.jodaToCalendarDayConstant(DateTimeConstants.SATURDAY), Calendar.SATURDAY);
+        assertEquals("Sunday", JodaWorkingWeek.jodaToCalendarDayConstant(DateTimeConstants.SUNDAY), Calendar.SUNDAY);
     }
 }
 

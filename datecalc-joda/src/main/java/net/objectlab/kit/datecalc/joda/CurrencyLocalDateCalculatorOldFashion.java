@@ -1,21 +1,21 @@
 package net.objectlab.kit.datecalc.joda;
 
-import net.objectlab.kit.datecalc.common.CurrencyCalculatorConfig;
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayCalendar;
 import net.objectlab.kit.datecalc.common.TenorCode;
+import net.objectlab.kit.datecalc.common.ccy.CurrencyCalculatorConfig;
 
 import org.joda.time.LocalDate;
 
-public class CurrencyLocalDateCalculator extends LocalDateCalculator {
-    private final LocalDateCurrencyDateCalculator delegate;
+public class CurrencyLocalDateCalculatorOldFashion extends LocalDateCalculator {
+    private final LocalDateCurrencyDateCalculator2 delegate;
 
-    public CurrencyLocalDateCalculator(final String ccy1, final String ccy2, final CurrencyCalculatorConfig config) {
+    public CurrencyLocalDateCalculatorOldFashion(final String ccy1, final String ccy2, final CurrencyCalculatorConfig config) {
         setName(ccy1 + "." + ccy2);
-        delegate = new LocalDateCurrencyDateCalculator(ccy1, ccy2, this, config);
+        delegate = new LocalDateCurrencyDateCalculator2(ccy1, ccy2, this, config);
     }
 
-    public CurrencyLocalDateCalculator setHolidayCalendars(final HolidayCalendar<LocalDate> ccy1HolidayCalendar,
+    public CurrencyLocalDateCalculatorOldFashion setHolidayCalendars(final HolidayCalendar<LocalDate> ccy1HolidayCalendar,
             final HolidayCalendar<LocalDate> ccy2HolidayCalendar, final HolidayCalendar<LocalDate> usdHolidayCalendar) {
         delegate.setHolidayCalendars(ccy1HolidayCalendar, ccy2HolidayCalendar, usdHolidayCalendar);
         return this;

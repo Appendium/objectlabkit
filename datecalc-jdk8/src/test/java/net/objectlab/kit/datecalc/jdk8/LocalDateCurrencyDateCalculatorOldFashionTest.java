@@ -30,23 +30,33 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package net.objectlab.kit.datecalc.joda;
+package net.objectlab.kit.datecalc.jdk8;
 
-import net.objectlab.kit.datecalc.common.AbstractIMMDateTest;
-import net.objectlab.kit.datecalc.common.IMMDateCalculator;
+import java.time.LocalDate;
 
-import org.joda.time.YearMonthDay;
+import net.objectlab.kit.datecalc.common.AbstractCurrencyDateCalculatorTest;
+import net.objectlab.kit.datecalc.common.KitCalculatorsFactory;
+import net.objectlab.kit.datecalc.common.WorkingWeek;
 
-public class YearMonthDayIMMDateTest extends AbstractIMMDateTest<YearMonthDay> {
+public class LocalDateCurrencyDateCalculatorOldFashionTest extends AbstractCurrencyDateCalculatorTest<LocalDate> {
 
-    @Override
-    protected IMMDateCalculator<YearMonthDay> getDateCalculator(final String name) {
-        return YearMonthDayKitCalculatorsFactory.getDefaultInstance().getIMMDateCalculator();
+    public LocalDateCurrencyDateCalculatorOldFashionTest() {
+        super();
     }
 
     @Override
-    protected YearMonthDay parseDate(final String string) {
-        return new YearMonthDay(string);
+    protected LocalDate newDate(final String date) {
+        return date != null ? LocalDate.parse(date) : LocalDate.now();
+    }
+
+    @Override
+    protected WorkingWeek getWorkingWeek(final WorkingWeek ww) {
+        return new Jdk8WorkingWeek(ww);
+    }
+
+    @Override
+    protected KitCalculatorsFactory<LocalDate> getDateCalculatorFactory() {
+        return LocalDateKitCalculatorsFactory.getDefaultInstance();
     }
 }
 

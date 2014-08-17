@@ -35,12 +35,11 @@ package net.objectlab.kit.datecalc.common;
 import java.util.List;
 
 /**
- * A DateCalculator is a lightweight container with an optional reference to a
- * set of holidays, a WorkingWeek (Mon-Fri by default), a startDate and a
- * current business date. The Calculator also uses a HolidayHandler to determine
+ * A DateCalculator specialised for a currency pair.
+ * The Calculator also uses a HolidayHandler to determine
  * what to do when the calculated current Business Date falls on a weekend or
  * holiday (non-working day). The CurrentDate date is changed every time that the
- * moveByDays or moveByBusinessDays methods are called. 'E' will be
+ * moveByDays or moveBy Tenor/moveByBusinessDays methods are called. 'E' will be
  * parameterized to be a Date-like class, i.e. java.util.Date or
  * java.util.Calendar (and LocalDate or YearMonthDay for Joda-time / JDK8).
  *
@@ -48,30 +47,57 @@ import java.util.List;
  *
  * @param <E>
  *            a representation of a date, typically JDK: Date, Calendar;
- *            Joda:LocalDate, YearMonthDay
- *
+ *            Joda:LocalDate, YearMonthDay; JDK8: LocalDate
+ * @since 1.4.0
  */
-public interface DateCalculator<E> extends BaseCalculator<E> {
+@Deprecated
+public interface CurrencyDateCalculatorOldFashion<E> extends BaseCalculator<E> {
+    /**
+     * This is typically used at the construction of a DateCalculator to give a
+     * reference to a Holiday Calendar, if not the case, the calculator will
+     * make an immutable copy of the HolidayCalendar.
+     *
+     * @param ccy1Calendar
+     *            the holiday calendar for ccy1 (if null, no holidays taken into account)
+     * @param ccy2Calendar
+     *            the holiday calendar for ccy2 (if null, no holidays taken into account)
+     * @param usdCalendar
+     *            the holiday calendar for USD (if null, no holidays taken into account)
+     */
+    CurrencyDateCalculatorOldFashion<E> setHolidayCalendars(HolidayCalendar<E> ccy1Calendar, HolidayCalendar<E> ccy2Calendar,
+            HolidayCalendar<E> usdCalendar);
 
     /**
-     * This is typically the name of the associated set of holidays.
+     * Allows user to define what their Working Weeks should be (default is
+     * Mon-Fri).
      *
-     * @return calculator name (Typically the name associated with the holiday
-     *         set).
+     * @param ccy1Week
+     *            an immutable definition of a week for ccy1.
+     * @param ccy2Week
+     *            an immutable definition of a week for ccy1.
+     * @param usdWeek
+     *            an immutable definition of a week for USD.
+     */
+    CurrencyDateCalculatorOldFashion<E> setWorkingWeeks(WorkingWeek ccy1Week, WorkingWeek ccy2Week, WorkingWeek usdWeek);
+
+    /**
+     * This is typically the name of the associated currency pair.
+     *
+     * @return calculator name (Typically the name associated with the currency pair).
      */
     String getName();
 
     /**
      * Setting the start date also sets the current business date (and if this
      * is a non-working day, the current business date will be moved to the next
-     * business day acording to the HolidayHandler algorithm given).
+     * business day according to the HolidayHandler algorithm given).
      *
      * @param startDate
      *            the reference date for this calculator, the current business
      *            date is also updated and may be moved if it falls on a non
      *            working day (holiday/weekend).
      */
-    DateCalculator<E> setStartDate(E startDate);
+    CurrencyDateCalculatorOldFashion<E> setStartDate(E startDate);
 
     /**
      * Gives the startDate of this calculator (immutable once set via
@@ -82,58 +108,6 @@ public interface DateCalculator<E> extends BaseCalculator<E> {
     E getStartDate();
 
     /**
-     * Is the given date falling on a weekend, according to the WorkingWeek.
-     *
-     * @return true if the date falls on a weekend.
-     */
-    boolean isWeekend(E date);
-
-    /**
-     * Is the current business day a non-working day, this is useful if the
-     * calculator does not have any algorithm to change the date when it falls
-     * on a non-working day. This method can then be used to show a warning to
-     * the user.
-     *
-     * @return true if the current date is either a weekend or a holiday.
-     */
-    boolean isCurrentDateNonWorking();
-
-    /**
-     * This is typically used at the construction of a DateCalculator to give a
-     * reference to a Holiday Calendar, if not the case, the calculator will
-     * make an immutable copy of the HolidayCalendar.
-     *
-     * @param calendar
-     *            the holiday calendar (if null, no holidays taken into account)
-     * @since 1.1.0
-     */
-    DateCalculator<E> setHolidayCalendar(HolidayCalendar<E> calendar);
-
-    // -----------------------------------------------------------------------
-    //
-    // ObjectLab, world leaders in the design and development of bespoke
-    // applications for the securities financing markets.
-    // www.ObjectLab.co.uk
-    //
-    // -----------------------------------------------------------------------
-
-    /**
-     * Returns an immutable version of the HolidayCalendar.
-     * @return a copy of the holiday calendar
-     * @since 1.1.0
-     */
-    HolidayCalendar<E> getHolidayCalendar();
-
-    /**
-     * Allows user to define what their Working Week should be (default is
-     * Mon-Fri).
-     *
-     * @param week
-     *            an immutable definition of a week.
-     */
-    DateCalculator<E> setWorkingWeek(WorkingWeek week);
-
-    /**
      * Gives a current business date, it may be moved according to the
      * HolidayHandler algorithm if it falls on a non-working day.
      *
@@ -141,14 +115,6 @@ public interface DateCalculator<E> extends BaseCalculator<E> {
      * @return new current business date if moved.
      */
     E setCurrentBusinessDate(E date);
-
-    /**
-     * Gives a current business date, it will NOT be moved. Do NOT use this in 99.9% cases.
-     *
-     * @param date
-     * @return new current business date if moved.
-     */
-    E forceCurrentDateNoAdjustment(E date);
 
     /**
      * Gives the name of the holiday handler algorithm, see HolidayHandlerType
@@ -169,7 +135,7 @@ public interface DateCalculator<E> extends BaseCalculator<E> {
      * @return the DateCalculator (so one can do
      *         calendar.moveByDays(-2).getCurrentBusinessDate();)
      */
-    DateCalculator<E> moveByDays(int days);
+    CurrencyDateCalculatorOldFashion<E> moveByDays(int days);
 
     /**
      * This changes the current business date held in the calculator, it moves
@@ -187,25 +153,7 @@ public interface DateCalculator<E> extends BaseCalculator<E> {
      *                BACKWARD) and businessDays &gt; 0 or (MODIFIED_FOLLOWING or
      *                FORWARD) and businessDays &lt; 0
      */
-    DateCalculator<E> moveByBusinessDays(int businessDays);
-
-    /**
-     * Allows DateCalculators to be combined into a new one, the startDate and
-     * currentBusinessDate will be the ones from the existing calendar (not the
-     * parameter one). The name will be combined name1+"/"+calendar.getName().
-     * If the Calendars have Early or Late boundaries, the result is the
-     * narrowest interval (e.g. the later Early boundary and the earliest
-     * Late boundary).
-     *
-     * @param calculator
-     *            return the same DateCalculator if calendar is null or the
-     *            original calendar (but why would you want to do that?)
-     * @throws IllegalArgumentException
-     *             if both calendars have different types of HolidayHandlers or
-     *             WorkingWeek; Also, it is required that BOTH calendars either
-     *             have Early/Late Boundaries or none.
-     */
-    DateCalculator<E> combine(DateCalculator<E> calculator);
+    CurrencyDateCalculatorOldFashion<E> moveByBusinessDays(int businessDays);
 
     /**
      * Move the current date by a given tenor, please note that all tenors are
@@ -222,7 +170,7 @@ public interface DateCalculator<E> extends BaseCalculator<E> {
      *            or "offset".
      * @return the current DateCalculator
      */
-    DateCalculator<E> moveByTenor(Tenor tenor, int spotLag);
+    CurrencyDateCalculatorOldFashion<E> moveByTenor(Tenor tenor, int spotLag);
 
     /**
      * Move the current date by a given tenor, please note that all tenors are
@@ -233,33 +181,23 @@ public interface DateCalculator<E> extends BaseCalculator<E> {
      * @return the current DateCalculator
      * @since 1.1.0
      */
-    DateCalculator<E> moveByTenor(Tenor tenor);
-
-    /**
-     * Calculate a series of Tenor codes in one go based on current day,
-     * this does NOT change the current business date.
-     *
-     * @return list of dates in same order as tenors.
-     * @since 1.1.0
-     */
-    List<E> calculateTenorDates(List<Tenor> tenors);
+    CurrencyDateCalculatorOldFashion<E> moveByTenor(Tenor tenor);
 
     /**
      * Calculate a series of Tenor codes in one go based on SPOT day (calculated
      * with the spot lag), this does NOT change the current business date.
      *
      * @return list of dates in same order as tenors.
-     * @since 1.1.0
      */
     List<E> calculateTenorDates(List<Tenor> tenors, int spotLag);
 
-    /**
-     * This would be used by delegate methods to detect if the increment
-     * if positive or negative (this will allow us to define a Handler
-     * that can act as Forward if positive and Backward if negative).
-     * @param increment
-     */
-    DateCalculator<E> setCurrentIncrement(int increment);
+    // -----------------------------------------------------------------------
+    //
+    // ObjectLab, world leaders in the design and development of bespoke
+    // applications for the securities financing markets.
+    // www.ObjectLab.co.uk
+    //
+    // -----------------------------------------------------------------------
 }
 
 /*

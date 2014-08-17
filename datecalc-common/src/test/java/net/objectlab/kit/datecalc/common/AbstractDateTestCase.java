@@ -56,6 +56,10 @@ public abstract class AbstractDateTestCase<E> extends TestCase {
         Assert.assertEquals(string, newDate(string2), calendar.getCurrentBusinessDate());
     }
 
+    protected void checkDate(final String string, final E date, final String string2) {
+        Assert.assertEquals(string, newDate(string2), date);
+    }
+
     protected Set<E> newHolidaysSet() {
         final Set<E> holidays = new HashSet<E>();
         holidays.add(newDate("2006-08-28"));

@@ -34,7 +34,7 @@ package net.objectlab.kit.datecalc.jdk;
 
 import java.util.Calendar;
 
-import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.BaseCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
 /**
@@ -55,8 +55,8 @@ public class CalendarBackwardHandler extends CalendarForwardHandler {
      * @return the date which may have moved.
      */
     @Override
-    public Calendar moveCurrentDate(final DateCalculator<Calendar> calculator) {
-        return move(calculator, -1);
+    public Calendar moveCurrentDate(final BaseCalculator<Calendar> calculator) {
+        return adjustDate(calculator.getCurrentBusinessDate(), -1, calculator);
     }
 
     /**

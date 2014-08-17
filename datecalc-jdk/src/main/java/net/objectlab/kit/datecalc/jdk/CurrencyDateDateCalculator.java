@@ -2,17 +2,17 @@ package net.objectlab.kit.datecalc.jdk;
 
 import java.util.Date;
 
-import net.objectlab.kit.datecalc.common.CurrencyCalculatorConfig;
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.HolidayCalendar;
 import net.objectlab.kit.datecalc.common.TenorCode;
+import net.objectlab.kit.datecalc.common.ccy.CurrencyCalculatorConfig;
 
 public class CurrencyDateDateCalculator extends DateDateCalculator {
-    private final DateDateCurrencyDateCalculator delegate;
+    private final DateDateCurrencyDateCalculatorOldFashion delegate;
 
     public CurrencyDateDateCalculator(final String ccy1, final String ccy2, final CurrencyCalculatorConfig config) {
         setName(ccy1 + "." + ccy2);
-        delegate = new DateDateCurrencyDateCalculator(ccy1, ccy2, this, config);
+        delegate = new DateDateCurrencyDateCalculatorOldFashion(ccy1, ccy2, this, config);
     }
 
     public CurrencyDateDateCalculator setHolidayCalendars(final HolidayCalendar<Date> ccy1HolidayCalendar,

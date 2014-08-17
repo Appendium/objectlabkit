@@ -29,9 +29,11 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
  * License for the specific language governing permissions and limitations under
  * the License.
- */package net.objectlab.kit.datecalc.common;
+ */package net.objectlab.kit.datecalc.common.ccy;
 
  import java.util.Set;
+
+ import net.objectlab.kit.datecalc.common.WorkingWeek;
 
  /**
   * According to http://www.londonfx.co.uk/valdates.html, some currencies should
@@ -45,6 +47,13 @@
       * @return set of currency code subject to USD Holidays for T+1. Typically MXN/CLP/ARS.
       */
      Set<String> getCurrenciesSubjectToUSDForT1();
+
+     /**
+      * Return a default Mon-Fri for most, but some might be Sun-Thu (Arab countries).
+      * @param currency
+      * @return the WorkingWeek registered for this currency other the default Mon-Fri.
+      */
+     WorkingWeek getWorkingWeek(String currency);
 
      boolean isSubjectToUSDForT1(String ccy);
  }

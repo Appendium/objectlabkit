@@ -34,7 +34,7 @@ package net.objectlab.kit.datecalc.jdk8;
 
 import java.time.LocalDate;
 
-import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.BaseCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
 /**
@@ -55,8 +55,8 @@ public class LocalDateBackwardHandler extends LocalDateForwardHandler {
      * @return the date which may have moved.
      */
     @Override
-    public LocalDate moveCurrentDate(final DateCalculator<LocalDate> calculator) {
-        return move(calculator, -1);
+    public LocalDate moveCurrentDate(final BaseCalculator<LocalDate> calculator) {
+        return adjustDate(calculator.getCurrentBusinessDate(), -1, calculator);
     }
 
     // -----------------------------------------------------------------------

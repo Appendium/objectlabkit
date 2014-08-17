@@ -96,6 +96,7 @@ public class WorkingWeek {
      * e.g. if normal and arab calendars are intersected, the week is 3 days: Fri-Sun.
      * @param ww
      * @return a new Working week
+     * @since 1.4.0
      */
     public WorkingWeek intersection(final WorkingWeek ww) {
         final byte combined = (byte) (this.workingDays & ww.workingDays);

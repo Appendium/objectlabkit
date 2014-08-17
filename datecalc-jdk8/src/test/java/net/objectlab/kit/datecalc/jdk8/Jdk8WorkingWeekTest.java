@@ -118,14 +118,14 @@ public class Jdk8WorkingWeekTest extends TestCase {
     }
 
     public void testJdk8ToCalendarDayConstant() {
-            assertEquals("Monday", ww.jdk8ToCalendarDayConstant(DayOfWeek.MONDAY), Calendar.MONDAY);
-            assertEquals("Tuesday", ww.jdk8ToCalendarDayConstant(DayOfWeek.TUESDAY), Calendar.TUESDAY);
-            assertEquals("Wednesday", ww.jdk8ToCalendarDayConstant(DayOfWeek.WEDNESDAY), Calendar.WEDNESDAY);
-            assertEquals("Thursday", ww.jdk8ToCalendarDayConstant(DayOfWeek.THURSDAY), Calendar.THURSDAY);
-            assertEquals("Friday", ww.jdk8ToCalendarDayConstant(DayOfWeek.FRIDAY), Calendar.FRIDAY);
-            assertEquals("Saturday", ww.jdk8ToCalendarDayConstant(DayOfWeek.SATURDAY), Calendar.SATURDAY);
-            assertEquals("Sunday", ww.jdk8ToCalendarDayConstant(DayOfWeek.SUNDAY), Calendar.SUNDAY);
-        }
+        assertEquals("Monday", Jdk8WorkingWeek.jdk8ToCalendarDayConstant(DayOfWeek.MONDAY), Calendar.MONDAY);
+        assertEquals("Tuesday", Jdk8WorkingWeek.jdk8ToCalendarDayConstant(DayOfWeek.TUESDAY), Calendar.TUESDAY);
+        assertEquals("Wednesday", Jdk8WorkingWeek.jdk8ToCalendarDayConstant(DayOfWeek.WEDNESDAY), Calendar.WEDNESDAY);
+        assertEquals("Thursday", Jdk8WorkingWeek.jdk8ToCalendarDayConstant(DayOfWeek.THURSDAY), Calendar.THURSDAY);
+        assertEquals("Friday", Jdk8WorkingWeek.jdk8ToCalendarDayConstant(DayOfWeek.FRIDAY), Calendar.FRIDAY);
+        assertEquals("Saturday", Jdk8WorkingWeek.jdk8ToCalendarDayConstant(DayOfWeek.SATURDAY), Calendar.SATURDAY);
+        assertEquals("Sunday", Jdk8WorkingWeek.jdk8ToCalendarDayConstant(DayOfWeek.SUNDAY), Calendar.SUNDAY);
+    }
 }
 
 /*

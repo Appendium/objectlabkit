@@ -14,7 +14,7 @@
  *
  *                     www.ObjectLab.co.uk
  *
- * $Id$
+ * $Id: DateModifiedPreceedingHandler.java 203 2006-10-11 12:53:07Z benoitx $
  *
  * Copyright 2006 the original author or authors.
  *
@@ -34,7 +34,7 @@ package net.objectlab.kit.datecalc.jdk;
 
 import java.util.Date;
 
-import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.BaseCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 
 /**
@@ -56,8 +56,8 @@ public class DateModifiedPreceedingHandler extends DateModifiedFollowingHandler 
      * @return the date which may have moved.
      */
     @Override
-    public Date moveCurrentDate(final DateCalculator<Date> calculator) {
-        return move(calculator, -1);
+    public Date moveCurrentDate(final BaseCalculator<Date> calculator) {
+        return adjustDate(calculator.getCurrentBusinessDate(), -1, calculator);
     }
 
     // -----------------------------------------------------------------------

@@ -35,8 +35,9 @@ package net.objectlab.kit.datecalc.jdk;
 import java.util.Calendar;
 import java.util.Date;
 
-import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.BaseCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandler;
+import net.objectlab.kit.datecalc.common.NonWorkingDayChecker;
 import net.objectlab.kit.datecalc.common.Utils;
 
 /**
@@ -50,9 +51,9 @@ public class HolidayHandlerDateWrapper implements HolidayHandler<Calendar> {
 
     private final HolidayHandler<Date> delegate;
 
-    private final DateCalculator<Date> calculator;
+    private final BaseCalculator<Date> calculator;
 
-    public HolidayHandlerDateWrapper(final HolidayHandler<Date> holidayHandler, final DateCalculator<Date> dateCalculator) {
+    public HolidayHandlerDateWrapper(final HolidayHandler<Date> holidayHandler, final BaseCalculator<Date> dateCalculator) {
         delegate = holidayHandler;
         calculator = dateCalculator;
     }
@@ -73,8 +74,12 @@ public class HolidayHandlerDateWrapper implements HolidayHandler<Calendar> {
      *            the calculator
      * @return the date which may have moved.
      */
-    public Calendar moveCurrentDate(final DateCalculator<Calendar> calc) {
-        Calendar ret = calc.getCurrentBusinessDate();
+    public Calendar moveCurrentDate(final BaseCalculator<Calendar> calc) {
+        return adjustDate(calc.getCurrentBusinessDate(), 1, calc);
+    }
+
+    public Calendar adjustDate(final Calendar startDate, final int increment, final NonWorkingDayChecker<Calendar> checker) {
+        Calendar ret = startDate;
         if (delegate != null) {
             final Date day = delegate.moveCurrentDate(calculator);
             if (day != null) {

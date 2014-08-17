@@ -34,6 +34,8 @@ package net.objectlab.kit.datecalc.common;
 
 import java.util.Set;
 
+import net.objectlab.kit.datecalc.common.ccy.CurrencyCalculatorConfig;
+
 /**
  * Factory will create new instances of calculators, these are lightweight, each
  * thread should use the factory as a given calculator should NOT be shared
@@ -52,7 +54,7 @@ import java.util.Set;
 public interface KitCalculatorsFactory<E> {
 
     /**
-     * Create a new DateCalculator specialised for 2 currencies, it is a Forward calculator by default.
+     * Create a new CurrencyDateCalculatorBuilder specialised for 2 currencies, including WorkingWeek, calendars registered and CurrencyCalculatorConfig.
      *
      * NOTE that USD currency holiday must also be registered.
      *
@@ -60,11 +62,35 @@ public interface KitCalculatorsFactory<E> {
      *            first currency, will pickup the holiday set for this ccy.
      * @param ccy2
      *            second currency, will pick up the holiday set for this ccy.
-     * @return a new DateCalculator
+     * @param spotLag
+     *            the number of days between tradeDate and spotDate.
+     * @return a new CurrencyDateCalculatorBuilder
      * @exception IllegalArgumentException
      *                if the type is not null or a valid value.
+     * @since 1.4.0
      */
-    DateCalculator<E> getCurrencyDateCalculator(String ccy1, String ccy2);
+    CurrencyDateCalculatorBuilder<E> getDefaultCurrencyDateCalculatorBuilder(String ccy1, String ccy2, SpotLag spotLag);
+
+    CurrencyDateCalculator<E> buildCurrencyDateCalculator(CurrencyDateCalculatorBuilder<E> builder);
+
+    /**
+     * Create a new IMMUTABLE CurrencyDateCalculator specialised for 2 currencies, including WorkingWeek, calendars
+     * registered and CurrencyCalculatorConfig.
+     *
+     * NOTE that USD currency holiday must also be registered.
+     *
+     * @param ccy1
+     *            first currency, will pickup the holiday set for this ccy.
+     * @param ccy2
+     *            second currency, will pick up the holiday set for this ccy.
+     * @param spotLag
+     *            the number of days between tradeDate and spotDate.
+     * @return a new CurrencyDateCalculator
+     * @exception IllegalArgumentException
+     *                if the type is not null or a valid value.
+     * @since 1.4.0
+     */
+    CurrencyDateCalculator<E> getDefaultCurrencyDateCalculator(String ccy1, String ccy2, SpotLag spotLag);
 
     /**
      * Use this method register a specific currency config, if not provided then the DefaultCurrencyCalculatorConfig will be given.

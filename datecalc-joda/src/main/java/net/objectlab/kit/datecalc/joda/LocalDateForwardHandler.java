@@ -32,9 +32,10 @@
  */
 package net.objectlab.kit.datecalc.joda;
 
-import net.objectlab.kit.datecalc.common.DateCalculator;
+import net.objectlab.kit.datecalc.common.BaseCalculator;
 import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
+import net.objectlab.kit.datecalc.common.NonWorkingDayChecker;
 
 import org.joda.time.LocalDate;
 
@@ -55,14 +56,14 @@ public class LocalDateForwardHandler implements HolidayHandler<LocalDate> {
      *            the calculator
      * @return the date which may have moved.
      */
-    public LocalDate moveCurrentDate(final DateCalculator<LocalDate> calculator) {
-        return move(calculator, 1);
+    public LocalDate moveCurrentDate(final BaseCalculator<LocalDate> calculator) {
+        return adjustDate(calculator.getCurrentBusinessDate(), 1, calculator);
     }
 
-    protected LocalDate move(final DateCalculator<LocalDate> calculator, final int step) {
-        LocalDate date = calculator.getCurrentBusinessDate();
-        while (calculator.isNonWorkingDay(date)) {
-            date = date.plusDays(step);
+    public LocalDate adjustDate(final LocalDate startDate, final int increment, final NonWorkingDayChecker<LocalDate> checker) {
+        LocalDate date = startDate;
+        while (checker.isNonWorkingDay(date)) {
+            date = date.plusDays(increment);
         }
         return date;
     }

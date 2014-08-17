@@ -47,6 +47,8 @@ public class JodaWorkingWeek extends WorkingWeek {
 
     public static final JodaWorkingWeek DEFAULT = new JodaWorkingWeek();
 
+    public static final JodaWorkingWeek ARAB_DEFAULT = new JodaWorkingWeek(WorkingWeek.ARAB_WEEK);
+
     public JodaWorkingWeek() {
         super();
     }
@@ -89,7 +91,11 @@ public class JodaWorkingWeek extends WorkingWeek {
         return isWorkingDayFromCalendar(jodaToCalendarDayConstant(dayOfWeek));
     }
 
-    public int jodaToCalendarDayConstant(final int givenDayOfWeek) {
+    public static int jodaToCalendarDayConstant(final LocalDate date) {
+        return jodaToCalendarDayConstant(date.getDayOfWeek());
+    }
+
+    public static int jodaToCalendarDayConstant(final int givenDayOfWeek) {
         final int dayOfWeek = givenDayOfWeek + 1;
         return dayOfWeek <= MAX_WEEKDAY_INDEX ? dayOfWeek : dayOfWeek % MAX_WEEKDAY_INDEX;
     }

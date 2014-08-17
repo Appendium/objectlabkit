@@ -52,7 +52,16 @@ public interface HolidayHandler<E> {
      *            the calculator
      * @return the date which may have moved.
      */
-    E moveCurrentDate(DateCalculator<E> calculator);
+    E moveCurrentDate(BaseCalculator<E> calculator);
+
+    /**
+     * For a given date, adjust it if required but using the logic across Month/etc for calc
+     * @param startDate
+     * @param increment
+     * @param checker
+     * @return
+     */
+    E adjustDate(E startDate, int increment, NonWorkingDayChecker<E> checker);
 
     /**
      * Give the type name for this algorithm.
