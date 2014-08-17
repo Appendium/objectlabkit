@@ -139,6 +139,10 @@ public class CalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calenda
             // fifth jump
             cal = getNextIMMDate(requestNextIMM, cal, QUARTERLY);
             break;
+
+        case QUARTERLY:
+        default:
+            break;
         }
         return cal;
     }

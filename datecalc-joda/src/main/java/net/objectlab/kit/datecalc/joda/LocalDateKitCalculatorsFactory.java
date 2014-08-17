@@ -65,8 +65,7 @@ public class LocalDateKitCalculatorsFactory extends AbstractKitCalculatorsFactor
     }
 
     /**
-     * Return a builder using the registered calendars/working weeks and a Forward Holiday handler for the currency pair; this
-     * does NOT copy the calendars or Currency Config.
+     * Return a builder using the registered calendars/working weeks and a Forward Holiday handler for the currency pair; .
      *
      * If you want to change some of the parameters, simply modify the Builder returned and pass it to the constructor of the
      * calculator you are interested in.

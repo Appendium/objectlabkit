@@ -1,9 +1,7 @@
 package net.objectlab.kit.datecalc.common.ccy;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import net.objectlab.kit.datecalc.common.CurrencyDateCalculator;
 import net.objectlab.kit.datecalc.common.CurrencyDateCalculatorBuilder;
@@ -57,11 +55,13 @@ public abstract class AbstractCurrencyDateCalculator<E> implements CurrencyDateC
     private final WorkingWeek usdWeek;
     // private final CurrencyCalculatorConfig currencyCalculatorConfig;
     private final boolean useUsdOnSpotDate;
+    private final boolean useUsdOnT_1ForCcy1;
+    private final boolean useUsdOnT_1ForCcy2;
     private final boolean adjustStartDateWithCcy1Ccy2;
     private final SpotLag spotLag;
-    private Set<String> currenciesSubjectToUSDForT1;
 
     protected AbstractCurrencyDateCalculator(final CurrencyDateCalculatorBuilder<E> builder) {
+        builder.checkValidity();
         this.ccy1 = builder.getCcy1();
         this.ccy2 = builder.getCcy2();
         this.ccy1HolidayCalendar = new ImmutableHolidayCalendar(builder.getCcy1Calendar() != null ? builder.getCcy1Calendar()
@@ -74,17 +74,21 @@ public abstract class AbstractCurrencyDateCalculator<E> implements CurrencyDateC
         this.ccy1Week = builder.getCcy1Week();
         this.ccy2Week = builder.getCcy2Week();
         this.usdWeek = builder.getUsdWeek();
-        this.useUsdOnSpotDate = builder.isUseUsdOnSpotDate();
+        this.useUsdOnSpotDate = builder.isUseUsdNonWorkingDaysOnSpotDate();
         this.spotLag = builder.getSpotLag();
         this.adjustStartDateWithCcy1Ccy2 = builder.isAdjustStartDateWithCcy1Ccy2();
-        // this.currencyCalculatorConfig = builder.getCurrencyCalculatorConfig();
-        if (builder.isUseDefensiveCopies()) {
-            currenciesSubjectToUSDForT1 = new HashSet<String>();
-            currenciesSubjectToUSDForT1.addAll(builder.getCurrencyCalculatorConfig().getCurrenciesSubjectToUSDForT1());
+        this.useUsdOnT_1ForCcy1 = builder.getCurrencyCalculatorConfig() != null
+                && builder.getCurrencyCalculatorConfig().getCurrenciesSubjectToUSDForT1().contains(ccy1);
+        this.useUsdOnT_1ForCcy2 = builder.getCurrencyCalculatorConfig() != null
+                && builder.getCurrencyCalculatorConfig().getCurrenciesSubjectToUSDForT1().contains(ccy2);
+    }
 
-        } else {
-            currenciesSubjectToUSDForT1 = builder.getCurrencyCalculatorConfig().getCurrenciesSubjectToUSDForT1();
-        }
+    public boolean isUseUsdOnT1ForCcy1() {
+        return useUsdOnT_1ForCcy1;
+    }
+
+    public boolean isUseUsdOnT1ForCcy2() {
+        return useUsdOnT_1ForCcy2;
     }
 
     public SpotLag getSpotLag() {
@@ -97,10 +101,6 @@ public abstract class AbstractCurrencyDateCalculator<E> implements CurrencyDateC
 
     public boolean isUseUsdOnSpotDate() {
         return useUsdOnSpotDate;
-    }
-
-    public Set<String> getCurrenciesSubjectToUSDForT1() {
-        return currenciesSubjectToUSDForT1;
     }
 
     public String getCcy1() {
@@ -146,7 +146,7 @@ public abstract class AbstractCurrencyDateCalculator<E> implements CurrencyDateC
     protected abstract E max(E d1, E d2);
 
     private boolean isNonWorkingDay(final E date, final WorkingWeek ww, final HolidayCalendar<E> calendar) {
-        return !ww.isWorkingDayFromCalendar(calendarWeekDay(date)) || calendar.isHoliday(date);
+        return !ww.isWorkingDayFromCalendar(calendarWeekDay(date)) || calendar != null && calendar.isHoliday(date);
     }
 
     public boolean isNonWorkingDay(final E date) {
@@ -218,9 +218,13 @@ public abstract class AbstractCurrencyDateCalculator<E> implements CurrencyDateC
 
         if (spotLag != SpotLag.T_0) {
             if (spotLag == SpotLag.T_2) {
-                calcSpot = calculateNextWorkingDay(calcSpot, workingWeek, calendar);
+                calcSpot = calculateNextWorkingDay(calcSpot, workingWeek, CurrencyDateCalculator.USD_CODE.equalsIgnoreCase(ccy) ? null : calendar); // USD
+                                                                                                                                                    // does
+                                                                                                                                                    // not
+                                                                                                                                                    // impact
+                                                                                                                                                    // T+1
 
-                if (currenciesSubjectToUSDForT1.contains(ccy)) {
+                if (useUsdOnT_1ForCcy1 && ccy1.equals(ccy) || useUsdOnT_1ForCcy2 && ccy2.equals(ccy)) {
                     // move if USD is holiday
                     calcSpot = calculateNextWorkingDayIfRequired(calcSpot, usdWeek, usdHolidayCalendar);
                     // check that it is still ok for the original ccy

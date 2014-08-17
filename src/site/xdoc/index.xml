@@ -35,9 +35,13 @@
 
 			<p>
 				<b>2014-08-26</b>
-				: version 1.4.0 is out and contains a new Currency Calculator. You should use this for any calculation for a currency pair, do not
-				forget to register the holidays for each currency prior to getting the calculator. Spot rules for Latin American currencies on T+1
-				are handled. More info
+				: version 1.4.0 is out and contains a new Immutable and thread safe Currency Calculator. This uses a Builder pattern. You should use this for any
+				calculation for a currency pair, do not
+				forget to register the holidays for each currency prior to getting the calculator. Spot rules for Latin
+				American currencies on T+1
+				are handled as well as the Arab currencies with different weekends. More info about
+				<a href="currency.html">Currency Date Calculation</a>
+				and
 				on the changes
 				<a href="changes-report.html">here</a>
 				.
@@ -123,44 +127,44 @@
 			<subsection name="Maven">
 				<p>If you're using Maven, setup is easy, as DateCalc is in the Maven Central Repository.</p>
 				<p>To use the JDK Version:</p>
-				<pre class="brush: xml; gutter: false">
-					&lt;dependency>
-					&lt;groupId>net.objectlab.kit&lt;/groupId>
-					&lt;artifactId>datecalc-common&lt;/artifactId>
-					&lt;version>1.4.0&lt;/version>
-					&lt;/dependency>
-					&lt;dependency>
-					&lt;groupId>net.objectlab.kit&lt;/groupId>
-					&lt;artifactId>datecalc-jdk&lt;/artifactId>
-					&lt;version>1.4.0&lt;/version>
-					&lt;/dependency>
+				<pre class="brush: xml; gutter: false" align="">
+&lt;dependency>
+	&lt;groupId>net.objectlab.kit&lt;/groupId>
+	&lt;artifactId>datecalc-common&lt;/artifactId>
+	&lt;version>1.4.0&lt;/version>
+&lt;/dependency>
+&lt;dependency>
+	&lt;groupId>net.objectlab.kit&lt;/groupId>
+	&lt;artifactId>datecalc-jdk&lt;/artifactId>
+	&lt;version>1.4.0&lt;/version>
+&lt;/dependency>
 				</pre>
 
 				<p>To use the JODA Version (recommended):</p>
 				<pre class="brush: xml; gutter: false">
-					&lt;dependency>
-					&lt;groupId>net.objectlab.kit&lt;/groupId>
-					&lt;artifactId>datecalc-common&lt;/artifactId>
-					&lt;version>1.4.0&lt;/version>
-					&lt;/dependency>
-					&lt;dependency>
-					&lt;groupId>net.objectlab.kit&lt;/groupId>
-					&lt;artifactId>datecalc-joda&lt;/artifactId>
-					&lt;version>1.4.0&lt;/version>
-					&lt;/dependency>
+&lt;dependency>
+	&lt;groupId>net.objectlab.kit&lt;/groupId>
+	&lt;artifactId>datecalc-common&lt;/artifactId>
+	&lt;version>1.4.0&lt;/version>
+&lt;/dependency>
+&lt;dependency>
+	&lt;groupId>net.objectlab.kit&lt;/groupId>
+	&lt;artifactId>datecalc-joda&lt;/artifactId>
+	&lt;version>1.4.0&lt;/version>
+&lt;/dependency>
 				</pre>
 				<p>To use the JDK8 Version:</p>
 				<pre class="brush: xml; gutter: false">
-					&lt;dependency>
-					&lt;groupId>net.objectlab.kit&lt;/groupId>
-					&lt;artifactId>datecalc-common&lt;/artifactId>
-					&lt;version>1.4.0&lt;/version>
-					&lt;/dependency>
-					&lt;dependency>
-					&lt;groupId>net.objectlab.kit&lt;/groupId>
-					&lt;artifactId>datecalc-jdk8&lt;/artifactId>
-					&lt;version>1.4.0&lt;/version>
-					&lt;/dependency>
+&lt;dependency>
+	&lt;groupId>net.objectlab.kit&lt;/groupId>
+	&lt;artifactId>datecalc-common&lt;/artifactId>
+	&lt;version>1.4.0&lt;/version>
+&lt;/dependency>
+&lt;dependency>
+	&lt;groupId>net.objectlab.kit&lt;/groupId>
+	&lt;artifactId>datecalc-jdk8&lt;/artifactId>
+	&lt;version>1.4.0&lt;/version>
+&lt;/dependency>
 				</pre>
 			</subsection>
 
@@ -323,8 +327,12 @@
 				<li>when you call moveByDays(..), moveByBusinessDays(..), moveByTenor the currentDate is moved in the Calculator.</li>
 			</ul>
 
-			<subsection name="Using Joda CurencyCalculator">
+			<subsection name="Using Joda CurrencyDateCalculator">
 				<script src="https://gist.github.com/benoitx/7f98237d27b8978ae9d8.js"></script>
+			</subsection>
+
+			<subsection name="Using Joda CurrencyDateCalculator with Builder">
+				<script src="https://gist.github.com/benoitx/ef5a76955fe27cf856ed.js"></script>
 			</subsection>
 
 			<subsection name="Using Joda Time LocalDate">

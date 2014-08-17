@@ -159,8 +159,8 @@ public abstract class AbstractKitCalculatorsFactory<E> implements KitCalculators
                 .ccy1Week(getCurrencyCalculatorConfig().getWorkingWeek(builder.getCcy1())) //
                 .ccy2Calendar(getHolidayCalendar(builder.getCcy2())) //
                 .ccy2Week(getCurrencyCalculatorConfig().getWorkingWeek(builder.getCcy2())) //
-                .usdCalendar(getHolidayCalendar("USD")) //
-                .usdWeek(getCurrencyCalculatorConfig().getWorkingWeek("USD")) //
+                .usdCalendar(getHolidayCalendar(CurrencyDateCalculator.USD_CODE)) //
+                .usdWeek(getCurrencyCalculatorConfig().getWorkingWeek(CurrencyDateCalculator.USD_CODE)) //
                 .currencyCalculatorConfig(getCurrencyCalculatorConfig());
     }
 }

@@ -124,6 +124,10 @@ public class LocalDateIMMDateCalculator extends AbstractIMMDateCalculator<LocalD
             // fifth jump
             imm = getNextIMMDate(requestNextIMM, imm, QUARTERLY);
             break;
+
+        case QUARTERLY:
+        default:
+            break;
         }
 
         return imm;

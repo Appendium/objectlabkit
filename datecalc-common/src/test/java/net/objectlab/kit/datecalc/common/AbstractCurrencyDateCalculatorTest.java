@@ -61,7 +61,7 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
 
     protected CurrencyDateCalculator<E> newCurrencyCalculator(final String ccy1, final String ccy2) {
         getDateCalculatorFactory().registerHolidays("GBP", createUKHolidayCalendar());
-        getDateCalculatorFactory().registerHolidays("USD", createUSHolidayCalendar());
+        getDateCalculatorFactory().registerHolidays(CurrencyDateCalculator.USD_CODE, createUSHolidayCalendar());
         getDateCalculatorFactory().registerHolidays("RUB", createRUHolidayCalendar());
         getDateCalculatorFactory().registerHolidays("EUR", createEUHolidayCalendar());
         return getDateCalculatorFactory().getDefaultCurrencyDateCalculator(ccy1, ccy2, SpotLag.T_2);
@@ -77,7 +77,7 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
      * 27 28 29 30 31
      */
     public void testSimpleSpotUsdEur() {
-        final CurrencyDateCalculator<E> cal = newCurrencyCalculator("USD", "EUR");
+        final CurrencyDateCalculator<E> cal = newCurrencyCalculator(CurrencyDateCalculator.USD_CODE, "EUR");
         Assert.assertEquals("Name", "USD.EUR", cal.getName());
 
         checkDate("Spot", cal.calculateSpotDate(newDate("2006-08-01")), "2006-08-03"); // Tues->Thur
@@ -98,12 +98,12 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
      * 30 31
      */
     public void testSimpleSpotUsdEurWithUSDHoliday() {
-        final CurrencyDateCalculator<E> cal = newCurrencyCalculator("USD", "EUR");
+        final CurrencyDateCalculator<E> cal = newCurrencyCalculator(CurrencyDateCalculator.USD_CODE, "EUR");
         Assert.assertEquals("Name", "USD.EUR", cal.getName());
 
-        checkDate("Spot from " + newDate("2006-06-30"), cal.calculateSpotDate(newDate("2006-06-30")), "2006-07-05"); // Fri->Wed
-        checkDate("Spot from " + newDate("2006-07-01"), cal.calculateSpotDate(newDate("2006-07-01")), "2006-07-06"); // Sat -> Thu
-        checkDate("Spot from " + newDate("2006-07-03"), cal.calculateSpotDate(newDate("2006-07-03")), "2006-07-06"); // Mon -> Thu
+        checkDate("Spot from " + newDate("2006-06-30"), cal.calculateSpotDate(newDate("2006-06-30")), "2006-07-05"); // Fri -> Wed
+        checkDate("Spot from " + newDate("2006-07-01"), cal.calculateSpotDate(newDate("2006-07-01")), "2006-07-05"); // Sat -> Wed
+        checkDate("Spot from " + newDate("2006-07-03"), cal.calculateSpotDate(newDate("2006-07-03")), "2006-07-05"); // Mon -> Wed
         checkDate("Spot from " + newDate("2006-07-04"), cal.calculateSpotDate(newDate("2006-07-04")), "2006-07-07"); // Tue -> Fri
     }
 
@@ -116,7 +116,7 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
 
     public void testCrossEurGbpButDoNotUseUsd() {
         final CurrencyDateCalculator<E> cal = getDateCalculatorFactory().buildCurrencyDateCalculator(
-                getDateCalculatorFactory().getDefaultCurrencyDateCalculatorBuilder("EUR", "GBP", SpotLag.T_2).useUsdOnSpotDate(false));
+                getDateCalculatorFactory().getDefaultCurrencyDateCalculatorBuilder("EUR", "GBP", SpotLag.T_2).useUsdNonWorkingDaysOnSpotDate(false));
         checkDate("Spot from " + newDate("2006-06-30"), cal.calculateSpotDate(newDate("2006-06-30")), "2006-07-04"); // Fri->Tue (do NOT use USD!)
         checkDate("Spot from " + newDate("2006-07-02"), cal.calculateSpotDate(newDate("2006-07-02")), "2006-07-05"); // Sun->Wed
         checkDate("Spot from " + newDate("2006-07-03"), cal.calculateSpotDate(newDate("2006-07-03")), "2006-07-05"); // Mon->Wed
@@ -124,7 +124,8 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
 
     public void testCrossEurGbpButDoNotAdjustStartDate() {
         final CurrencyDateCalculator<E> cal = getDateCalculatorFactory().buildCurrencyDateCalculator(
-                getDateCalculatorFactory().getDefaultCurrencyDateCalculatorBuilder("EUR", "GBP", SpotLag.T_2).adjustStartDateWithCcy1Ccy2(false));
+                getDateCalculatorFactory().getDefaultCurrencyDateCalculatorBuilder("EUR", "GBP", SpotLag.T_2).adjustStartDateWithCcy1Ccy2(false)
+                        .useUsdNonWorkingDaysOnSpotDate(false));
         checkDate("Spot from " + newDate("2006-07-09"), cal.calculateSpotDate(newDate("2006-07-09")), "2006-07-11"); // Sun->Tue
         checkDate("Spot from " + newDate("2006-07-03"), cal.calculateSpotDate(newDate("2006-07-03")), "2006-07-05"); // Mon->Wed
     }
@@ -140,12 +141,12 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
     }
 
     public void testSimpleUsdJod() {
-        final CurrencyDateCalculator<E> cal = newCurrencyCalculator("USD", "JOD"); // 3 day weekend!
+        final CurrencyDateCalculator<E> cal = newCurrencyCalculator(CurrencyDateCalculator.USD_CODE, "JOD"); // 3 day weekend!
         checkDate("Spot from " + cal.getName() + " " + newDate("2006-07-06"), cal.calculateSpotDate(newDate("2006-07-06")), "2006-07-11");
     }
 
     public void testSimpleUsdAed() {
-        final CurrencyDateCalculator<E> cal = newCurrencyCalculator("USD", "AED"); // mix of weeks!
+        final CurrencyDateCalculator<E> cal = newCurrencyCalculator(CurrencyDateCalculator.USD_CODE, "AED"); // mix of weeks!
         checkDate("Spot from " + cal.getName() + " " + newDate("2006-07-06"), cal.calculateSpotDate(newDate("2006-07-06")), "2006-07-10");
     }
 
@@ -170,7 +171,7 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
     /*
 
     public void testSimpleForwardStartDateWithWeekend() {
-        final CurrencyDateCalculator<E> cal = newCurrencyCalculator("USD", "EUR");
+        final CurrencyDateCalculator<E> cal = newCurrencyCalculator(CurrencyDateCalculator.USD_CODE, "EUR");
         Assert.assertEquals("Name", "USD.EUR", cal.getName());
 
         cal.setStartDate(newDate("2006-07-31")); // start date Monday
@@ -196,7 +197,7 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
     }
 
     public void testSimpleForwardStartDateNoWeekend() {
-        final CurrencyDateCalculator<E> cal = newCurrencyCalculator("USD", "EUR");
+        final CurrencyDateCalculator<E> cal = newCurrencyCalculator(CurrencyDateCalculator.USD_CODE, "EUR");
         Assert.assertEquals("Name", "USD.EUR", cal.getName());
         final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(true, Calendar.SATURDAY)
                 .withWorkingDayFromCalendar(true, Calendar.SUNDAY);
@@ -226,7 +227,7 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
     }
 
     public void testSimpleForwardStartDateWhackyWeek() {
-        final CurrencyDateCalculator<E> cal = newCurrencyCalculator("USD", "EUR");
+        final CurrencyDateCalculator<E> cal = newCurrencyCalculator(CurrencyDateCalculator.USD_CODE, "EUR");
         Assert.assertEquals("Name", "USD.EUR", cal.getName());
 
         final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(false, Calendar.MONDAY)
@@ -258,7 +259,7 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
     }
 
     public void testSimpleForwardStartDateIdealWeekend() {
-        final CurrencyDateCalculator<E> cal = newCurrencyCalculator("USD", "EUR");
+        final CurrencyDateCalculator<E> cal = newCurrencyCalculator(CurrencyDateCalculator.USD_CODE, "EUR");
         Assert.assertEquals("Name", "USD.EUR", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getHolidayCalendar().getHolidays().size());
 
@@ -291,7 +292,7 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
     }
 
     public void testSimpleForwardWithHolidays() {
-        final CurrencyDateCalculator<E> cal = newCurrencyCalculator("USD", "GBP");
+        final CurrencyDateCalculator<E> cal = newCurrencyCalculator(CurrencyDateCalculator.USD_CODE, "GBP");
         Assert.assertEquals("Name", "USD.GBP", cal.getName());
 
         cal.setStartDate(newDate("2006-08-28"));
@@ -322,7 +323,7 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
     // -----------------------------------------------------------------------
 
     public void testMoveByBusinessDays() {
-        final CurrencyDateCalculator<E> cal = newCurrencyCalculator("USD", "GBP");
+        final CurrencyDateCalculator<E> cal = newCurrencyCalculator(CurrencyDateCalculator.USD_CODE, "GBP");
         Assert.assertEquals("Name", "USD.GBP", cal.getName());
 
         cal.setStartDate(newDate("2006-08-24"));
@@ -350,11 +351,11 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
     }
 
     public void testMoveByTenorDaysZeroDayToSpot() {
-        checkMoveByTenor("USD", "RUB", "2006-08-08", StandardTenor.SPOT, 0, "2006-08-08");
-        checkMoveByTenor("USD", "RUB", "2006-01-06", StandardTenor.SPOT, 0, "2006-01-09"); // moved to Monday
+        checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "RUB", "2006-08-08", StandardTenor.SPOT, 0, "2006-08-08");
+        checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "RUB", "2006-01-06", StandardTenor.SPOT, 0, "2006-01-09"); // moved to Monday
 
-        checkMoveByTenor("USD", "RUB", "2006-08-08", new Tenor(2, TenorCode.DAY), 0, "2006-08-10");
-        checkMoveByTenor("USD", "RUB", "2006-01-06", new Tenor(2, TenorCode.DAY), 0, "2006-01-11");
+        checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "RUB", "2006-08-08", new Tenor(2, TenorCode.DAY), 0, "2006-08-10");
+        checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "RUB", "2006-01-06", new Tenor(2, TenorCode.DAY), 0, "2006-01-11");
     }
 
     /*
@@ -377,25 +378,25 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
      */
     /*
     public void testMoveByTenorDaysOneDayToSpot() {
-        checkMoveByTenor("USD", "CAD", "2006-07-05", StandardTenor.SPOT, 1, "2006-07-06");
+        checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "CAD", "2006-07-05", StandardTenor.SPOT, 1, "2006-07-06");
         // US holiday on T+1
-        checkMoveByTenor("USD", "CAD", "2006-07-03", StandardTenor.SPOT, 1, "2006-07-05");
+        checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "CAD", "2006-07-03", StandardTenor.SPOT, 1, "2006-07-05");
         // TD on weekend, should be moved first
-        checkMoveByTenor("USD", "CAD", "2006-07-01", StandardTenor.SPOT, 1, "2006-07-05");
-        checkMoveByTenor("USD", "CAD", "2006-07-01", new Tenor(2, TenorCode.DAY), 1, "2006-07-07");
+        checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "CAD", "2006-07-01", StandardTenor.SPOT, 1, "2006-07-05");
+        checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "CAD", "2006-07-01", new Tenor(2, TenorCode.DAY), 1, "2006-07-07");
     }
 
     public void testMoveByTenorDaysTwoDaysToSpot() {
         // US holiday on 4 July!
-        checkMoveByTenor("USD", "EUR", "2006-06-30", StandardTenor.SPOT, 2, "2006-07-05");
-        checkMoveByTenor("EUR", "USD", "2006-06-30", StandardTenor.SPOT, 2, "2006-07-05");
-        checkMoveByTenor("USD", "EUR", "2006-07-03", StandardTenor.SPOT, 2, "2006-07-05");
-        checkMoveByTenor("EUR", "USD", "2006-07-03", StandardTenor.SPOT, 2, "2006-07-05");
-        checkMoveByTenor("USD", "EUR", "2006-07-04", StandardTenor.SPOT, 2, "2006-07-07");
-        checkMoveByTenor("EUR", "USD", "2006-07-04", StandardTenor.SPOT, 2, "2006-07-07");
+        checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "EUR", "2006-06-30", StandardTenor.SPOT, 2, "2006-07-05");
+        checkMoveByTenor("EUR", CurrencyDateCalculator.USD_CODE, "2006-06-30", StandardTenor.SPOT, 2, "2006-07-05");
+        checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "EUR", "2006-07-03", StandardTenor.SPOT, 2, "2006-07-05");
+        checkMoveByTenor("EUR", CurrencyDateCalculator.USD_CODE, "2006-07-03", StandardTenor.SPOT, 2, "2006-07-05");
+        checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "EUR", "2006-07-04", StandardTenor.SPOT, 2, "2006-07-07");
+        checkMoveByTenor("EUR", CurrencyDateCalculator.USD_CODE, "2006-07-04", StandardTenor.SPOT, 2, "2006-07-07");
 
-        checkMoveByTenor("EUR", "USD", "2005-12-30", StandardTenor.SPOT, 2, "2006-01-04");
-        checkMoveByTenor("USD", "EUR", "2005-12-30", StandardTenor.SPOT, 2, "2006-01-04");
+        checkMoveByTenor("EUR", CurrencyDateCalculator.USD_CODE, "2005-12-30", StandardTenor.SPOT, 2, "2006-01-04");
+        checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "EUR", "2005-12-30", StandardTenor.SPOT, 2, "2006-01-04");
 
         // cross Ccy with US Bank holiday on T+1 but it should not impact it
         checkMoveByTenor("GBP", "EUR", "2006-07-03", StandardTenor.SPOT, 2, "2006-07-05");
@@ -409,11 +410,11 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
         checkMoveByTenor("MXN", "EUR", "2006-07-03", StandardTenor.SPOT, 2, "2006-07-07");
         checkMoveByTenor("EUR", "MXN", "2006-07-03", StandardTenor.SPOT, 2, "2006-07-07");
 
-        // checkMoveByTenor("USD", "EUR", "2006-08-08", new Tenor(2, TenorCode.DAY), 2, "2006-08-14");
-        // checkMoveByTenor("USD", "EUR", "2006-08-07", new Tenor(10, TenorCode.DAY), 2, "2006-08-21");
-        // checkMoveByTenor("USD", "EUR", "2006-08-07", new Tenor(11, TenorCode.DAY), 2, "2006-08-21");
-        // checkMoveByTenor("USD", "EUR", "2006-08-07", new Tenor(12, TenorCode.DAY), 2, "2006-08-21");
-        // checkMoveByTenor("USD", "EUR", "2006-08-07", new Tenor(13, TenorCode.DAY), 2, "2006-08-22");
+        // checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "EUR", "2006-08-08", new Tenor(2, TenorCode.DAY), 2, "2006-08-14");
+        // checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "EUR", "2006-08-07", new Tenor(10, TenorCode.DAY), 2, "2006-08-21");
+        // checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "EUR", "2006-08-07", new Tenor(11, TenorCode.DAY), 2, "2006-08-21");
+        // checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "EUR", "2006-08-07", new Tenor(12, TenorCode.DAY), 2, "2006-08-21");
+        // checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "EUR", "2006-08-07", new Tenor(13, TenorCode.DAY), 2, "2006-08-22");
     }
 
     public void testCalculateTenorsZeroDaysToSpot() {
@@ -430,7 +431,7 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
         list.add(StandardTenor.T_9M);
         list.add(StandardTenor.T_1Y);
 
-        final CurrencyDateCalculator<E> cal = newCurrencyCalculator("USD", "GBP");
+        final CurrencyDateCalculator<E> cal = newCurrencyCalculator(CurrencyDateCalculator.USD_CODE, "GBP");
         final String startDate = "2006-08-24";
         cal.setStartDate(newDate(startDate));
         final List<E> expectedResults = new ArrayList<E>();
@@ -469,7 +470,7 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
         list.add(StandardTenor.T_9M);
         list.add(StandardTenor.T_1Y);
 
-        final CurrencyDateCalculator<E> cal = newCurrencyCalculator("USD", "GBP");
+        final CurrencyDateCalculator<E> cal = newCurrencyCalculator(CurrencyDateCalculator.USD_CODE, "GBP");
         final String startDate = "2006-08-24";
         cal.setStartDate(newDate(startDate));
         final List<E> expectedResults = new ArrayList<E>();

@@ -1,7 +1,6 @@
 package net.objectlab.kit.datecalc.common;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * A DateCalculator specialised for a currency pair. Implementations should be thread safe and immutable.
@@ -17,6 +16,8 @@ import java.util.Set;
  * @since 1.4.0
  */
 public interface CurrencyDateCalculator<E> {
+    String USD_CODE = "USD";
+
     E calculateSpotDate(E startDate);
 
     E calculateTenorDate(E startDate, Tenor tenor);
@@ -47,5 +48,7 @@ public interface CurrencyDateCalculator<E> {
 
     boolean isUseUsdOnSpotDate();
 
-    Set<String> getCurrenciesSubjectToUSDForT1();
+    boolean isUseUsdOnT1ForCcy1();
+
+    boolean isUseUsdOnT1ForCcy2();
 }

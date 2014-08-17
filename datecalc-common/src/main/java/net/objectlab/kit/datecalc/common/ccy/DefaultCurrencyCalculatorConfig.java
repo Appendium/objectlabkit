@@ -9,9 +9,9 @@ import java.util.Set;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
 /**
- * Default for MXN, CLP, ARS (Mexican Peso, Chile Pese and Argentina Peso).
- * Arab currencies Sun-Thu: AED, BHD, EGP, KWD, OMR, QAR
- * Arab currencies Mon-Thu: SAR, JOD
+ * Default for currencies subject to USD Holidays for T+1: MXN, CLP, ARS (Mexican Peso, Chile Pese and Argentina Peso).
+ * Arab currencies Sun-Thu: AED, BHD, EGP, KWD, OMR, QAR.
+ * Arab currencies Mon-Thu: SAR, JOD.
  *
  * @author Benoit Xhenseval
  */
