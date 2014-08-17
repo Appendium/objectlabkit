@@ -122,13 +122,6 @@ public class DateKitCalculatorsFactory extends AbstractKitCalculatorsFactory<Dat
     //
     // -----------------------------------------------------------------------
 
-    public DateDateCalculator getCurrencyDateCalculator(final String ccy1, final String ccy2) {
-        final CurrencyDateDateCalculator cal = new CurrencyDateDateCalculator(ccy1, ccy2, getCurrencyCalculatorConfig());
-        cal.setHolidayHandler(new DateForwardHandler());
-        cal.setHolidayCalendars(getHolidayCalendar(ccy1), getHolidayCalendar(ccy2), getHolidayCalendar("USD"));
-        return cal;
-    }
-
     /*
      * (non-Javadoc)
      *

@@ -38,9 +38,9 @@ import net.objectlab.kit.datecalc.common.AbstractCurrencyDateCalculatorTest;
 import net.objectlab.kit.datecalc.common.KitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
-public class LocalDateCurrencyDateCalculatorOldFashionTest extends AbstractCurrencyDateCalculatorTest<LocalDate> {
+public class LocalDateCurrencyDateCalculatorTest extends AbstractCurrencyDateCalculatorTest<LocalDate> {
 
-    public LocalDateCurrencyDateCalculatorOldFashionTest() {
+    public LocalDateCurrencyDateCalculatorTest() {
         super();
     }
 

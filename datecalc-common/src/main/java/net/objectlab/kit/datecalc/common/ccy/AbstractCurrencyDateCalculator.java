@@ -18,6 +18,31 @@ import net.objectlab.kit.datecalc.common.Tenor;
 import net.objectlab.kit.datecalc.common.TenorCode;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
+/**
+ * Abstract Currency calculator implementation in order to encapsulate all the common functionality
+ * between Jdk/Jdk8 and Joda implementations. It is parameterized on &lt;E&gt;
+ * but basically <code>Date</code> and <code>LocalDate</code> are the only
+ * viable values for it for now.
+ *
+ * This follows convention for currency, see http://www.londonfx.co.uk/valdates.html
+ *
+ * <h3>Currency Holiday</h3>
+ * For most T+2 currency pairs (spotLag=2), if T+1 is a USD holiday, then this does not normally affect the spot date,
+ * but if a non-USD currency in the currency pair has a holiday on T+1, then it will make the spot date
+ * become T+3. If USD or either currency of a pair have a holiday on T+2, then the spot date
+ * will be T+3. This means, for example, that crosses such as EUR/GBP can never have a spot date
+ * on 4th July (although such a date could be quoted as an outright).
+ *
+ * <h3>Latin American currencies</h3>
+ * USD holidays normally affect the spot date only if T+2 is a USD holiday.
+ * If T+1 is a USD holiday, this does not normally prevent T+2 from being the spot date.
+ * Certain Latin American currencies (ARS, CLP and MXN) are an exception to this.
+ * If T+1 is a USD holiday, then the spot date for the affected currencies will be T+3.
+ * For example, if the trade date is a Monday and a USD holiday falls on the Tuesday,
+ * then the spot date for EUR/USD will be the Wednesday, but the spot date for USD/MXN will be the Thursday.
+ * 
+ * @since 1.4.0
+ */
 public abstract class AbstractCurrencyDateCalculator<E> implements CurrencyDateCalculator<E>, NonWorkingDayChecker<E> {
     private static final int MONTHS_IN_YEAR = 12;
     private static final int DAYS_IN_WEEK = 7;

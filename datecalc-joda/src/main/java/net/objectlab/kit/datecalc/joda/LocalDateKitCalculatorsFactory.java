@@ -95,11 +95,6 @@ public class LocalDateKitCalculatorsFactory extends AbstractKitCalculatorsFactor
         return new LocalDateCurrencyDateCalculator(builder);
     }
 
-    @Deprecated
-    public static LocalDateCurrencyDateCalculatorOldFashion currencyCalculator(final String ccy1, final String ccy2) {
-        return DEFAULT.getCurrencyDateCalculator(ccy1, ccy2);
-    }
-
     public static LocalDateCalculator forwardCalculator(final String name) {
         return DEFAULT.getDateCalculator(name, HolidayHandlerType.FORWARD);
     }
@@ -127,12 +122,6 @@ public class LocalDateKitCalculatorsFactory extends AbstractKitCalculatorsFactor
     // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
-
-    public LocalDateCurrencyDateCalculatorOldFashion getCurrencyDateCalculator(final String ccy1, final String ccy2) {
-        final LocalDateCurrencyDateCalculatorOldFashion cal = new LocalDateCurrencyDateCalculatorOldFashion(ccy1, ccy2, new LocalDateForwardHandler());
-        configureCurrencyCalculator(ccy1, ccy2, cal);
-        return cal;
-    }
 
     /**
      * Create a new DateCalculator for a given name and type of handling.

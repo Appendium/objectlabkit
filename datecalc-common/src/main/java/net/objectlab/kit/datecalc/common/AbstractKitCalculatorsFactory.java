@@ -153,18 +153,6 @@ public abstract class AbstractKitCalculatorsFactory<E> implements KitCalculators
         return this;
     }
 
-    /**
-     * Provide the default configuration for the currency pair.
-     * @param ccy1
-     * @param ccy2
-     * @param cal
-     */
-    protected void configureCurrencyCalculator(final String ccy1, final String ccy2, final CurrencyDateCalculatorOldFashion<E> cal) {
-        cal.setHolidayCalendars(getHolidayCalendar(ccy1), getHolidayCalendar(ccy2), getHolidayCalendar("USD"));
-        cal.setWorkingWeeks(getCurrencyCalculatorConfig().getWorkingWeek(ccy1), getCurrencyCalculatorConfig().getWorkingWeek(ccy2),
-                getCurrencyCalculatorConfig().getWorkingWeek("USD"));
-    }
-
     protected CurrencyDateCalculatorBuilder<E> configureCurrencyCalculatorBuilder(final CurrencyDateCalculatorBuilder<E> builder) {
         return builder//
                 .ccy1Calendar(getHolidayCalendar(builder.getCcy1())) //
