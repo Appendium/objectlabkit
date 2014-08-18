@@ -42,7 +42,7 @@ public final class ObjectUtil {
      * Return true if i1 equals (according to {@link Integer#equals(Object)}) 12.
      * Also returns true if 11 is null and 12 is null! Is safe on either 11 or 12 being null.
      */
-    public static boolean equals(final Integer i1, final Integer i2) {
+    public static boolean equalsValue(final Integer i1, final Integer i2) {
         if (i1 == null) {
             return i2 == null;
         }
@@ -55,7 +55,7 @@ public final class ObjectUtil {
      * as bd2.
      * Also returns true if bd1 is null and bd2 is null! Is safe on either bd1 or bd2 being null.
      */
-    public static boolean equals(final BigDecimal bd1, final BigDecimal bd2) {
+    public static boolean equalsValue(final BigDecimal bd1, final BigDecimal bd2) {
         if (bd1 == null) {
             return bd2 == null;
         }
@@ -66,7 +66,7 @@ public final class ObjectUtil {
      * Return true if o1 equals (according to {@link Object#equals(Object)}) o2.
      * Also returns true if o1 is null and o2 is null! Is safe on either o1 or o2 being null.
      */
-    public static boolean equals(final Object o1, final Object o2) {
+    public static boolean equalsValue(final Object o1, final Object o2) {
         if (o1 == null) {
             return o2 == null;
         }
