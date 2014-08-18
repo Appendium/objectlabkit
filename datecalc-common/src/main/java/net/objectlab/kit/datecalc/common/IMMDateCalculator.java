@@ -118,6 +118,20 @@ public interface IMMDateCalculator<E> {
     List<E> getIMMDates(final E start, final E end);
 
     /**
+     * Returns a list of N IMM dates from a given date, it will exclude the start
+     * date if it is an IMM date
+     * (same as as calling getIMMDates(start,end,IMMPeriod.QUARTERLY)).
+     *
+     * @param start
+     *            start of the interval, excluded
+     * @param numberOfDates
+     *            number of IMM dates to return.
+     * @return list of IMM dates
+     * @since 1.4.0
+     */
+    List<E> getNextIMMDates(final E start, final int numberOfDates);
+
+    /**
      * Returns a list of IMM dates between 2 dates, it will exclude the start
      * date if it is an IMM date but would include the end date if it is an IMM.
      *

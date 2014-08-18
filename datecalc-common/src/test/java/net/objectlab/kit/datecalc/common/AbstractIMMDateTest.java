@@ -270,6 +270,35 @@ public abstract class AbstractIMMDateTest<E> extends TestCase {
         Assert.assertTrue("empty", imms.isEmpty());
     }
 
+    public void testNext0IMMList() {
+        final E startDate = parseDate("2006-03-16");
+        final List<E> imms = cal.getNextIMMDates(startDate, 0);
+        Assert.assertNotNull(imms);
+        Assert.assertTrue("empty", imms.isEmpty());
+    }
+
+    public void testNext1IMMList() {
+        final E startDate = parseDate("2006-03-16");
+        final List<E> imms = cal.getNextIMMDates(startDate, 1);
+        Assert.assertNotNull(imms);
+        Assert.assertTrue("empty", !imms.isEmpty());
+        Assert.assertEquals("Expected number of imms dates", 1, imms.size());
+        Assert.assertEquals("date 1", parseDate("2006-06-21"), imms.get(0));
+    }
+
+    public void testNext5IMMList() {
+        final E startDate = parseDate("2006-03-16");
+        final List<E> imms = cal.getNextIMMDates(startDate, 5);
+        Assert.assertNotNull(imms);
+        Assert.assertTrue("empty", !imms.isEmpty());
+        Assert.assertEquals("Expected number of imms dates", 5, imms.size());
+        Assert.assertEquals("date 1", parseDate("2006-06-21"), imms.get(0));
+        Assert.assertEquals("date 2", parseDate("2006-09-20"), imms.get(1));
+        Assert.assertEquals("date 3", parseDate("2006-12-20"), imms.get(2));
+        Assert.assertEquals("date 4", parseDate("2007-03-21"), imms.get(3));
+        Assert.assertEquals("date 5", parseDate("2007-06-20"), imms.get(4));
+    }
+
     public void testEndOnIMMDateIMMLists() {
         final E startDate = parseDate("2006-03-16");
         final E endDate = parseDate("2006-06-21");

@@ -32,6 +32,7 @@
  */
 package net.objectlab.kit.datecalc.common;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -114,6 +115,33 @@ public abstract class AbstractIMMDateCalculator<E> implements IMMDateCalculator<
      */
     public List<E> getIMMDates(final E start, final E end) {
         return getIMMDates(start, end, IMMPeriod.QUARTERLY);
+    }
+
+    /**
+     * Returns a list of N IMM dates from a given date, it will exclude the start
+     * date if it is an IMM date
+     * (same as as calling getIMMDates(start,end,IMMPeriod.QUARTERLY)).
+     *
+     * @param start
+     *            start of the interval, excluded
+     * @param numberOfDates
+     *            number of IMM dates to return.
+     * @return list of IMM dates
+     * @since 1.4.0
+     */
+    public List<E> getNextIMMDates(final E start, final int numberOfDates) {
+        if (numberOfDates < 0) {
+            throw new IllegalArgumentException("numberOfDates cannot be < 0 (" + numberOfDates + ")");
+        }
+        final List<E> dates = new ArrayList<E>(numberOfDates);
+
+        E date = start;
+        for (int i = 0; i < numberOfDates; i++) {
+            date = getNextIMMDate(true, date, IMMPeriod.QUARTERLY);
+            dates.add(date);
+        }
+
+        return dates;
     }
 
     protected abstract E getNextIMMDate(final boolean requestNextIMM, final E theStartDate, final IMMPeriod period);
