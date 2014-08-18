@@ -10,6 +10,7 @@
       <action dev="benoitx" type="fix">The JODA YearMonthDay has been deprecated for a while, I removed the calculators, use LocalDate instead.</action>
       <action dev="benoitx" type="add"  issue="2" due-to="celerite">Added new Currency calculator following issue raised by Ben CuthBert and Scott Sue (thanks guys). Thanks to London FX Ltd, Julian and Stephen for guidelines as well, see <a href="currency.html">More info</a>.</action>
       <action dev="benoitx" type="add">Added way to combine WorkingWeeks by intersection of working Days, eg. WesternWeek.intersection(ArabWeek) => 3 day weekend (Fri to Sun).</action>
+      <action dev="benoitx" type="add" issue="3" due-to="ConradMellinNAB">Added new method getNextIMMDates(start, numberOfDays) on IMMDateCalculator.</action>
     </release>
     <release version="1.3.0" date="2014-05-26" description="new JDK8 Module">
       <action dev="benoitx" type="add">Added new JDK8 module, very similar to Joda.  Only this module needs JDK8.</action>
