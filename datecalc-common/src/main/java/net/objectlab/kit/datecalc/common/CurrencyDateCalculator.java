@@ -44,11 +44,11 @@ public interface CurrencyDateCalculator<E> {
 
     SpotLag getSpotLag();
 
-    boolean isAdjustStartDateWithCcy1Ccy2();
+    boolean isAdjustStartDateWithCurrencyPair();
 
-    boolean isUseUsdOnSpotDate();
+    boolean isBrokenDateAllowed();
 
-    boolean isUseUsdOnT1ForCcy1();
+    boolean isUseCrossCcyOnT1ForCcy1();
 
-    boolean isUseUsdOnT1ForCcy2();
+    boolean isUseCrossCcyOnT1ForCcy2();
 }

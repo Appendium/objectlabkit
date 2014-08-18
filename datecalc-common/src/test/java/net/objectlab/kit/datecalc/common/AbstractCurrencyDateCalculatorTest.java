@@ -116,7 +116,7 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
 
     public void testCrossEurGbpButDoNotUseUsd() {
         final CurrencyDateCalculator<E> cal = getDateCalculatorFactory().buildCurrencyDateCalculator(
-                getDateCalculatorFactory().getDefaultCurrencyDateCalculatorBuilder("EUR", "GBP", SpotLag.T_2).useUsdNonWorkingDaysOnSpotDate(false));
+                getDateCalculatorFactory().getDefaultCurrencyDateCalculatorBuilder("EUR", "GBP", SpotLag.T_2).brokenDateAllowed(true));
         checkDate("Spot from " + newDate("2006-06-30"), cal.calculateSpotDate(newDate("2006-06-30")), "2006-07-04"); // Fri->Tue (do NOT use USD!)
         checkDate("Spot from " + newDate("2006-07-02"), cal.calculateSpotDate(newDate("2006-07-02")), "2006-07-05"); // Sun->Wed
         checkDate("Spot from " + newDate("2006-07-03"), cal.calculateSpotDate(newDate("2006-07-03")), "2006-07-05"); // Mon->Wed
@@ -124,8 +124,8 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
 
     public void testCrossEurGbpButDoNotAdjustStartDate() {
         final CurrencyDateCalculator<E> cal = getDateCalculatorFactory().buildCurrencyDateCalculator(
-                getDateCalculatorFactory().getDefaultCurrencyDateCalculatorBuilder("EUR", "GBP", SpotLag.T_2).adjustStartDateWithCcy1Ccy2(false)
-                        .useUsdNonWorkingDaysOnSpotDate(false));
+                getDateCalculatorFactory().getDefaultCurrencyDateCalculatorBuilder("EUR", "GBP", SpotLag.T_2).adjustStartDateWithCurrencyPair(false)
+                        .brokenDateAllowed(true));
         checkDate("Spot from " + newDate("2006-07-09"), cal.calculateSpotDate(newDate("2006-07-09")), "2006-07-11"); // Sun->Tue
         checkDate("Spot from " + newDate("2006-07-03"), cal.calculateSpotDate(newDate("2006-07-03")), "2006-07-05"); // Mon->Wed
     }
@@ -137,7 +137,7 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
         // USD!)
         final E spot = cal.calculateSpotDate(newDate("2006-07-02"));
         checkDate("Spot from " + cal.getName() + " " + newDate("2006-07-02"), spot, "2006-07-06"); // Sun->Wed
-        checkDate("Spot from " + cal.getName() + " " + newDate("2006-07-03"), cal.calculateSpotDate(newDate("2006-07-03")), "2006-07-06"); // Mon->Wed
+        checkDate("Spot from " + cal.getName() + " " + newDate("2006-07-03"), cal.calculateSpotDate(newDate("2006-07-03")), "2006-07-06"); // Mon->Thu
     }
 
     public void testSimpleUsdJod() {

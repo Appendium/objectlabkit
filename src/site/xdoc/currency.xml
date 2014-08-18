@@ -8,9 +8,9 @@
 
 		<meta name="keywords" content="Date calculator, IMM Dates, Period Calculator, Financial Calendar, Business Calendar, java, open source" />
 		<meta name="Subject" content="Date Calculators" />
-		<meta name="Copyright" content="ObjectLab Financial Ltd" />
+		<meta name="Copyright" content="ObjectLab Ltd" />
 		<meta name="Language" content="English" />
-		<meta name="Designer" content="ObjectLab Financial Ltd" />
+		<meta name="Designer" content="ObjectLab Ltd" />
 		<meta name="Distribution" content="Global" />
 		<meta name="robots" content="ALL" />
 		<meta name="Revisit-After" content="20 Days" />
@@ -19,11 +19,12 @@
 		<!-- The body of the document contains a number of sections -->
 		<section name="Currency Date Calculation">
 			<p>This is a subject which is actually more complex than initially thought of. How do you calculate the Spot Date for a given Currency Pair.
-				The new CurrencyDateCalculator does not pretend to be the ultimate calculator but we gave it a good shot.
+				The new
+				<a href="apidocs/net/objectlab/kit/datecalc/common/CurrencyDateCalculator.html">CurrencyDateCalculator</a> does not pretend to be the ultimate calculator but we gave it a good shot.
 			</p>
 			<p>
-				I want to thank LondonFX for their page about
-				<a href="londonfx.co.uk/valdates.html">valid dates</a>
+				I want to thank London FX Ltd for their page about
+				<a href="http://www.londonfx.co.uk/valdates.html">valid dates</a>
 				and for answering my questions.
 			</p>
 
@@ -33,66 +34,151 @@
 				<dl>
 					<dt>Trade Date</dt>
 					<dd>Your start date, the date that you agree a trade with a counterparty. For all intend and purpose, this is the startDate used by our
-						calculator.</dd>
+						calculator.
+					</dd>
 					<dt>Spot Date</dt>
 					<dd>The earliest date that the currencies can be delivered.</dd>
 					<dt>Spot Lag</dt>
 					<dd>The minimum number of days that must elapse for each currency before you can deliver the currencies, usually 2 but it could be 1 (USD/CAD),
-						or even 0 (RUB under
-						some circumtances)
+						or even 0 (e.g. TRY, but RUB under
+						some circumstances can be 0, 1 or 2 so it is up to you to select it)
 					</dd>
 					<dt>Tenor Date</dt>
 					<dd>A period from Spot Date (usually, except for Overnight and TomNext). So a 1M trade is in fact 1 month FROM SPOT DATE.</dd>
+					<dt>Broken Date</dt>
+					<dd>A calculated Date which falls on the cross-currency non-working day (e.g. if the ccy pair goes through USD, a broken date would be July 4). There is a 
+					configuration flag in the calculator builder to enable or disable this (disabled by default, i.e. NO broken date)</dd>
 				</dl>
 			</subsection>
-			
+
 			<subsection name="Spot Date for Most Currencies">
-			<p>The Spot Date for most currencies are using a SpotLag.T_2, meaning 2 clear days <b>for each currency</b> after TradeDate. 
-			By clear days, we mean no weekend and no holiday for the currency in question.  Furthermore, in case of cross currency pair (not involving USD <i>explicitly</i>), the Spot Date cannot
-			be a USD holiday.  So, let's go through the logic for GBP/EUR with Trade Date 2 July 2013.  It is a tad long but will help you to understand our algo.</p>
-			<ol>
-			<li>If calculator is setup so, check that TradeDate July 2 is a working day for GBP and for EUR, if not move forward.  It is ok, T+0 remains July 2.</li>
-			<li>Consider GBP, calculate T+1: July 3 is it a weekend or a GBP holiday? If yes, T+1 should move forward but July 3 is a working day for GBP and so it is T+1</li>
-			<li>Consider GBP, calculate T+2: July 3 plus 1 day => July 4 is it a weekend or a GBP holiday? If yes, T+2 should move forward but July 4 is a working day for GBP and so it is T+2</li>
-			<li>Consider EUR, calculate T+1: July 3 is it a weekend or a EUR holiday? If yes, T+1 should move forward but July 3 is a working day for EUR and so it is T+1</li>
-			<li>Consider EUR, calculate T+2: July 3 plus 1 day => July 4 is it a weekend or a EUR holiday? If yes, T+2 should move forward but July 4 is a working day for EUR and so it is T+2</li>
-			<li>So pickup the MAX date for T+2 for GBP and EUR, in this case July 4</li>
-			<li>Finally check that T+2 is still a working day for EUR, GBP AND USD.  In this case, July 4 is bank holiday for USD and therefore the SpotDay moves forward until
-			it is a working day for all 3 currency calendars and the final result is July 5.</li>
-			</ol>
-			<p>If July 5 had been a weekend or a bank holiday for any currency, the algo would keep moving forward.  The important realisation is that the Spot date for a currency
-			pair requires the calculation of SpotDate for each currency separately.  You cannot combine the calculation as we will see in the case of Latin American and Arab currencies</p>
-			<p>It should also be noted that if one of the currency is USD, the USD holidays do NOT affect T+1, so, for the avoidance of doubt, the algo would be for EUR/USD:</p>
-			<ol>
-			<li>If calculator is setup so, check that TradeDate July 2 is a working day for EUR and for USD, if not move forward.  It is ok, T+0 remains July 2.</li>
-			<li>Consider USD, calculate T+1: July 3, it is not a weekend and USD holidays do not impact T+1, so keep July 3</li>
-			<li>Consider USD, calculate T+2: July 3 plus 1 day => July 4 is it a weekend or a USD holiday? Yes, so move forward to July 5</li>
-			<li>Consider EUR, calculate T+1: July 3 is it a weekend or a EUR holiday? If yes, T+1 should move forward but July 3 is a working day for EUR and so it is T+1</li>
-			<li>Consider EUR, calculate T+2: July 3 plus 1 day => July 4 is it a weekend or a EUR holiday? If yes, T+2 should move forward but July 4 is a working day for EUR and so it is T+2</li>
-			<li>So pickup the MAX date for T+2 for USD and EUR, in this case July 5</li>
-			<li>Finally check that T+2 is still a working day for EUR AND USD.  In this case, July 5 is a working day for EUR and USD and so the final result is July 5.</li>
-			</ol>
-			
+				<p>
+					The Spot Date for most currencies are using a SpotLag.T_2, meaning 2 clear days
+					<b>for each currency</b>
+					after TradeDate.
+					By clear days, we mean no weekend and no holiday for the currency in question. Furthermore, in case of cross currency pair (not involving USD
+					<i>explicitly</i>
+					), the Spot Date cannot
+					be a USD holiday. So, let's go through the logic for GBP/EUR with Trade Date 2 July 2013. It is a tad long but will help you to understand our
+					algo.
+				</p>
+				<ol>
+					<li>If calculator is setup so, check that TradeDate July 2 is a working day for GBP and for EUR, if not move forward. It is ok, T+0 remains July
+						2.</li>
+					<li>Consider GBP, calculate T+1: July 3 is it a weekend or a GBP holiday? If yes, T+1 should move forward but July 3 is a working day for GBP and
+						so it is T+1</li>
+					<li>Consider GBP, calculate T+2: July 3 plus 1 day => July 4 is it a weekend or a GBP holiday? If yes, T+2 should move forward but July 4 is a
+						working day for GBP and so it is T+2</li>
+					<li>Consider EUR, calculate T+1: July 3 is it a weekend or a EUR holiday? If yes, T+1 should move forward but July 3 is a working day for EUR and
+						so it is T+1</li>
+					<li>Consider EUR, calculate T+2: July 3 plus 1 day => July 4 is it a weekend or a EUR holiday? If yes, T+2 should move forward but July 4 is a
+						working day for EUR and so it is T+2</li>
+					<li>So pickup the MAX date for T+2 for GBP and EUR, in this case July 4</li>
+					<li>Finally check that T+2 is still a working day for EUR, GBP AND USD. In this case, July 4 is bank holiday for USD and therefore the SpotDay
+						moves forward until
+						it is a working day for all 3 currency calendars and the final result is July 5.
+					</li>
+				</ol>
+				<p>If July 5 had been a weekend or a bank holiday for any currency, the algo would keep moving forward. The important realisation is that the Spot
+					date for a currency
+					pair requires the calculation of SpotDate for each currency separately. You cannot combine the calculation as we will see in the case of Latin
+					American and Arab currencies
+				</p>
+				<p>It should also be noted that if one of the currency is USD, the USD holidays do NOT affect T+1, so, for the avoidance of doubt, the algo would
+					be for EUR/USD:</p>
+				<ol>
+					<li>
+						If calculator is setup so, check that TradeDate
+						<b>July 3</b>
+						is a working day for EUR and for USD, if not move forward. It is ok, T+0 remains July 3.
+					</li>
+					<li>Consider USD, calculate T+1: July 4, it is not a weekend and USD holidays do not impact T+1, so keep July 3</li>
+					<li>Consider USD, calculate T+2: July 4 plus 1 day => July 5 is it a weekend or a USD holiday? No, so keep July 5</li>
+					<li>Consider EUR, calculate T+1: July 4 is it a weekend or a EUR holiday? If yes, T+1 should move forward but July 4 is a working day for EUR and
+						so it is T+1</li>
+					<li>Consider EUR, calculate T+2: July 4 plus 1 day => July 5 is it a weekend or a EUR holiday? If yes, T+2 should move forward but July 5 is a
+						working day for EUR and so it is T+2</li>
+					<li>So pickup the MAX date for T+2 for USD and EUR, in this case July 5</li>
+					<li>Finally check that T+2 is still a working day for EUR AND USD. In this case, July 5 is a working day for EUR and USD and so the final result
+						is July 5.</li>
+				</ol>
+
 			</subsection>
-			
+
 			<subsection name="Spot Date for some Latin American Currencies">
-			<p>As described above, USD Holidays do not impact the calculation of T+1, unfortunately, this is not the case for ARS, CLP and MXN.  For these currencies, T+1 should
-			take into account the USD holidays. So GBP/MXN with a TradeDate on July 3 2013 is not July 5 2013 but July 6 2013!</p>
+				<p>As described above, USD Holidays do not impact the calculation of T+1; unfortunately, this is not the case for ARS, CLP and MXN.</p>
+				<p>For these currencies, T+1 should
+					take into account the USD holidays. So GBP/MXN with a TradeDate on July 3 2013 is not July 5 2013 but July 6 2013!
+				</p>
 			</subsection>
 			<subsection name="Spot Date for Arab Currencies">
-			<p>Here is the main reason why spot dates must be initially calculated for individual currencies.  The WorkingWeek for some Arab countries (AED, BHD, EGP, KWD, OMR and QAR) would be Sunday
-			 to Thursday.  So assuming a USD/EGP with a trade date of Thursday would have:</p>
-			 <ol>
-			 	<li>USD: T+1 Friday and T+2 Monday</li>
-			 	<li>EGP: T+1 Sunday and T+2 Monday</li>
-			 	<li>Meaning that the common date for Spot is Monday indeed as we have left 2 clear days for each currency</li>
-			 </ol>
-			 <p>But of course there are exceptions, SAR and JOD use a 3-day weekend (Friday -> Sunday; nice!) so USD/JOD would be:</p>
-			 <ol>
-			 	<li>USD: T+1 Friday and T+2 Monday</li>
-			 	<li>JOD: T+1 Monday and T+2 Tuesday</li>
-			 	<li>Meaning that the common date for Spot is Tuesday indeed as we need 2 clear days for each currency</li>
-			 </ol>
+				<p>Here is the main reason why spot dates must be initially calculated for individual currencies. The WorkingWeek for some Arab countries (AED,
+					BHD, EGP, KWD, OMR and QAR) would be Sunday
+					to Thursday. So assuming a USD/EGP with a trade date of Thursday would have:
+				</p>
+				<ol>
+					<li>USD: T+1 Friday and T+2 Monday</li>
+					<li>EGP: T+1 Sunday and T+2 Monday</li>
+					<li>Meaning that the common date for Spot is Monday indeed as we have left 2 clear days for each currency</li>
+				</ol>
+				<p>But of course there are exceptions, SAR and JOD use a 3-day weekend (Friday -> Sunday; nice!) so USD/JOD would be:</p>
+				<ol>
+					<li>USD: T+1 Friday and T+2 Monday</li>
+					<li>JOD: T+1 Monday and T+2 Tuesday</li>
+					<li>Meaning that the common date for Spot is Tuesday indeed as we need 2 clear days for each currency</li>
+				</ol>
+			</subsection>
+
+			<subsection name="Examples">
+				<p>Assuming that USD is the cross currency and that July 4 is a bank holiday for USD; finally, we do not allow 'Broken Date' (configurable).</p>
+				<table>
+					<theader>
+						<tr>
+							<th>Ccy Pair</th>
+							<th>Start/Trade Date</th>
+							<th>Spot Date</th>
+							<th>Details</th>
+						</tr>
+					</theader>
+					<tbody>
+						<tr>
+							<td>EUR/USD</td>
+							<td>Fri Jun 30, 2006</td>
+							<td>Wed July 5, 2006</td>
+							<td>July 4 USD holiday</td>
+						</tr>
+						<tr>
+							<td>EUR/USD</td>
+							<td>Mon July 3, 2006</td>
+							<td>Wed July 5, 2006</td>
+							<td>July 4 has no impact on T+1</td>
+						</tr>
+						<tr>
+							<td>EUR/GBP</td>
+							<td>Fri Jun 30, 2006</td>
+							<td>Wed July 5, 2006</td>
+							<td>No Broken Date by default (Move forward from July 4)</td>
+						</tr>
+						<tr>
+							<td>EUR/MXN</td>
+							<td>Mon July 3, 2006</td>
+							<td>Thu July 6, 2006</td>
+							<td>July 4 USD holiday must be skipped for T+1 for MXN</td>
+						</tr>
+						<tr>
+							<td>USD/EGP</td>
+							<td>Thursday</td>
+							<td>Monday</td>
+							<td>USD 2 Days: Friday &amp; Monday; EGP:Sunday &amp; Monday so Spot=Monday</td>
+						</tr>
+						<tr>
+							<td>USD/SAR</td>
+							<td>Thursday</td>
+							<td>Tuesday</td>
+							<td>SAR weekend Fri to Sun, T+1 = Monday, T+2 = Tuesday</td>
+						</tr>
+					</tbody>
+				</table>
 			</subsection>
 		</section>
 

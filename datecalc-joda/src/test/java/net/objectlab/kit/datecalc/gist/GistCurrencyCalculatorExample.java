@@ -8,8 +8,10 @@ import net.objectlab.kit.datecalc.common.CurrencyDateCalculatorBuilder;
 import net.objectlab.kit.datecalc.common.DefaultHolidayCalendar;
 import net.objectlab.kit.datecalc.common.HolidayCalendar;
 import net.objectlab.kit.datecalc.common.SpotLag;
+import net.objectlab.kit.datecalc.common.StandardTenor;
 import net.objectlab.kit.datecalc.common.ccy.DefaultCurrencyCalculatorConfig;
 import net.objectlab.kit.datecalc.joda.LocalDateCurrencyDateCalculator;
+import net.objectlab.kit.datecalc.joda.LocalDateForwardHandler;
 import net.objectlab.kit.datecalc.joda.LocalDateKitCalculatorsFactory;
 
 import org.joda.time.LocalDate;
@@ -17,6 +19,7 @@ import org.joda.time.LocalDate;
 public class GistCurrencyCalculatorExample {
     public static void main(final String[] args) {
         simpleEurUsd();
+        simpleEurUsd1M();
         crossEurGbp();
         crossGbpJpyWithHolidays();
         crossEurMxn();
@@ -70,7 +73,8 @@ public class GistCurrencyCalculatorExample {
         final CurrencyDateCalculatorBuilder<LocalDate> builder = new CurrencyDateCalculatorBuilder<LocalDate>() //
                 .currencyPair("EUR", "MXN", SpotLag.T_2) //
                 .currencyCalculatorConfig(new DefaultCurrencyCalculatorConfig())//
-                .usdCalendar(usdCalendar); //
+                .crossCcyCalendar(usdCalendar) //
+                .tenorHolidayHandler(new LocalDateForwardHandler());
 
         final LocalDateCurrencyDateCalculator calc = new LocalDateCurrencyDateCalculator(builder);
 
@@ -92,8 +96,9 @@ public class GistCurrencyCalculatorExample {
         final CurrencyDateCalculatorBuilder<LocalDate> builder = new CurrencyDateCalculatorBuilder<LocalDate>() //
                 .currencyPair("EUR", CurrencyDateCalculator.USD_CODE, SpotLag.T_2) //
                 .currencyCalculatorConfig(new DefaultCurrencyCalculatorConfig())//
-                .usdCalendar(usdCalendar) //
-                .ccy2Calendar(usdCalendar);
+                .crossCcyCalendar(usdCalendar) //
+                .ccy2Calendar(usdCalendar)//
+                .tenorHolidayHandler(new LocalDateForwardHandler());
 
         final LocalDateCurrencyDateCalculator calc = new LocalDateCurrencyDateCalculator(builder);
 
@@ -103,6 +108,15 @@ public class GistCurrencyCalculatorExample {
         System.out.println(calc.getName() + " TD: " + startDate + " Spot " + calc.calculateSpotDate(startDate) + " expects 5 Jul");
         startDate = new LocalDate(2006, 7, 3);
         System.out.println(calc.getName() + " TD: " + startDate + " Spot " + calc.calculateSpotDate(startDate) + " expects 5 Jul");
+    }
+
+    private static void simpleEurUsd1M() {
+        final LocalDateCurrencyDateCalculator calc = LocalDateKitCalculatorsFactory.forwardCurrencyDateCalculator("EUR", "USD", SpotLag.T_2);
+
+        LocalDate startDate = new LocalDate(2006, 6, 26);
+        System.out.println(calc.getName() + " TD: " + startDate + " Spot " + calc.calculateSpotDate(startDate) + " expects 30 Jun");
+        System.out.println(calc.getName() + " TD: " + startDate + " 1-M  " + calc.calculateTenorDate(startDate, StandardTenor.T_1M)
+                + " expects 30 Jul");
     }
 
     private static void crossEurGbp() {
@@ -115,7 +129,8 @@ public class GistCurrencyCalculatorExample {
         final CurrencyDateCalculatorBuilder<LocalDate> builder = new CurrencyDateCalculatorBuilder<LocalDate>() //
                 .currencyPair("EUR", "GBP", SpotLag.T_2) //
                 .currencyCalculatorConfig(new DefaultCurrencyCalculatorConfig())//
-                .usdCalendar(usdCalendar);
+                .crossCcyCalendar(usdCalendar) //
+                .tenorHolidayHandler(new LocalDateForwardHandler());
 
         final LocalDateCurrencyDateCalculator calc = new LocalDateCurrencyDateCalculator(builder);
 

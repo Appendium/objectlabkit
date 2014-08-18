@@ -46,17 +46,17 @@ public abstract class AbstractCurrencyDateCalculator<E> implements CurrencyDateC
     private static final int DAYS_IN_WEEK = 7;
     private final String ccy1;
     private final String ccy2;
+    private final String crossCcy;
     private final HolidayCalendar<E> ccy1HolidayCalendar;
     private final HolidayCalendar<E> ccy2HolidayCalendar;
-    private final HolidayCalendar<E> usdHolidayCalendar;
+    private final HolidayCalendar<E> crossCcyHolidayCalendar;
     private final HolidayHandler<E> holidayHandler;
     private final WorkingWeek ccy1Week;
     private final WorkingWeek ccy2Week;
-    private final WorkingWeek usdWeek;
-    // private final CurrencyCalculatorConfig currencyCalculatorConfig;
-    private final boolean useUsdOnSpotDate;
-    private final boolean useUsdOnT_1ForCcy1;
-    private final boolean useUsdOnT_1ForCcy2;
+    private final WorkingWeek crossCcyWeek;
+    private final boolean brokenDateAllowed;
+    private final boolean useCrossCcyOnT_1ForCcy1;
+    private final boolean useCrossCcyOnT_1ForCcy2;
     private final boolean adjustStartDateWithCcy1Ccy2;
     private final SpotLag spotLag;
 
@@ -64,43 +64,48 @@ public abstract class AbstractCurrencyDateCalculator<E> implements CurrencyDateC
         builder.checkValidity();
         this.ccy1 = builder.getCcy1();
         this.ccy2 = builder.getCcy2();
+        this.crossCcy = builder.getCrossCcy();
         this.ccy1HolidayCalendar = new ImmutableHolidayCalendar(builder.getCcy1Calendar() != null ? builder.getCcy1Calendar()
                 : new DefaultHolidayCalendar());
         this.ccy2HolidayCalendar = new ImmutableHolidayCalendar(builder.getCcy2Calendar() != null ? builder.getCcy2Calendar()
                 : new DefaultHolidayCalendar());
-        this.usdHolidayCalendar = new ImmutableHolidayCalendar(builder.getUsdCalendar() != null ? builder.getUsdCalendar()
+        this.crossCcyHolidayCalendar = new ImmutableHolidayCalendar(builder.getCrossCcyCalendar() != null ? builder.getCrossCcyCalendar()
                 : new DefaultHolidayCalendar());
-        this.holidayHandler = builder.getHolidayHandler();
+        this.holidayHandler = builder.getTenorHolidayHandler();
         this.ccy1Week = builder.getCcy1Week();
         this.ccy2Week = builder.getCcy2Week();
-        this.usdWeek = builder.getUsdWeek();
-        this.useUsdOnSpotDate = builder.isUseUsdNonWorkingDaysOnSpotDate();
+        this.crossCcyWeek = builder.getCrossCcyWeek();
+        this.brokenDateAllowed = builder.isBrokenDateAllowed();
         this.spotLag = builder.getSpotLag();
-        this.adjustStartDateWithCcy1Ccy2 = builder.isAdjustStartDateWithCcy1Ccy2();
-        this.useUsdOnT_1ForCcy1 = builder.getCurrencyCalculatorConfig() != null
+        this.adjustStartDateWithCcy1Ccy2 = builder.isAdjustStartDateWithCurrencyPair();
+        this.useCrossCcyOnT_1ForCcy1 = builder.getCurrencyCalculatorConfig() != null
                 && builder.getCurrencyCalculatorConfig().getCurrenciesSubjectToUSDForT1().contains(ccy1);
-        this.useUsdOnT_1ForCcy2 = builder.getCurrencyCalculatorConfig() != null
+        this.useCrossCcyOnT_1ForCcy2 = builder.getCurrencyCalculatorConfig() != null
                 && builder.getCurrencyCalculatorConfig().getCurrenciesSubjectToUSDForT1().contains(ccy2);
     }
 
-    public boolean isUseUsdOnT1ForCcy1() {
-        return useUsdOnT_1ForCcy1;
+    public boolean isUseCrossCcyOnT1ForCcy1() {
+        return useCrossCcyOnT_1ForCcy1;
     }
 
-    public boolean isUseUsdOnT1ForCcy2() {
-        return useUsdOnT_1ForCcy2;
+    public boolean isUseCrossCcyOnT1ForCcy2() {
+        return useCrossCcyOnT_1ForCcy2;
     }
 
     public SpotLag getSpotLag() {
         return spotLag;
     }
 
-    public boolean isAdjustStartDateWithCcy1Ccy2() {
+    public boolean isAdjustStartDateWithCurrencyPair() {
         return adjustStartDateWithCcy1Ccy2;
     }
 
-    public boolean isUseUsdOnSpotDate() {
-        return useUsdOnSpotDate;
+    public boolean isBrokenDateAllowed() {
+        return brokenDateAllowed;
+    }
+
+    public String getCrossCcy() {
+        return crossCcy;
     }
 
     public String getCcy1() {
@@ -124,7 +129,7 @@ public abstract class AbstractCurrencyDateCalculator<E> implements CurrencyDateC
     }
 
     public ReadOnlyHolidayCalendar<E> getUsdCalendar() {
-        return usdHolidayCalendar;
+        return crossCcyHolidayCalendar;
     }
 
     public WorkingWeek getCcy1Week() {
@@ -136,7 +141,7 @@ public abstract class AbstractCurrencyDateCalculator<E> implements CurrencyDateC
     }
 
     public WorkingWeek getUsdWeek() {
-        return usdWeek;
+        return crossCcyWeek;
     }
 
     protected abstract E calculateNextDay(E date);
@@ -150,8 +155,8 @@ public abstract class AbstractCurrencyDateCalculator<E> implements CurrencyDateC
     }
 
     public boolean isNonWorkingDay(final E date) {
-        return isNonWorkingDay(date, ccy1Week, ccy1HolidayCalendar) || isNonWorkingDay(date, ccy2Week, ccy2HolidayCalendar) || useUsdOnSpotDate
-                && isNonWorkingDay(date, usdWeek, usdHolidayCalendar);
+        return isNonWorkingDay(date, ccy1Week, ccy1HolidayCalendar) || isNonWorkingDay(date, ccy2Week, ccy2HolidayCalendar) || !brokenDateAllowed
+                && isNonWorkingDay(date, crossCcyWeek, crossCcyHolidayCalendar);
     }
 
     private E adjustToNextWorkingDateForCcyPairIfRequired(final E startDate) {
@@ -164,7 +169,7 @@ public abstract class AbstractCurrencyDateCalculator<E> implements CurrencyDateC
 
     private E adjustToNextWorkingDateForCcyPairAndUsdIfRequired(final E startDate) {
         E date = startDate;
-        while (isNonWorkingDay(date, usdWeek, usdHolidayCalendar) || isNonWorkingDay(date, ccy1Week, ccy1HolidayCalendar)
+        while (isNonWorkingDay(date, crossCcyWeek, crossCcyHolidayCalendar) || isNonWorkingDay(date, ccy1Week, ccy1HolidayCalendar)
                 || isNonWorkingDay(date, ccy2Week, ccy2HolidayCalendar)) {
             date = calculateNextDay(date);
         }
@@ -203,10 +208,10 @@ public abstract class AbstractCurrencyDateCalculator<E> implements CurrencyDateC
         E spotDate = max(spotCcy1, spotCcy2);
 
         // if not, consider max and adjustToNextWorkingDateForCcyPairIfRequired
-        if (useUsdOnSpotDate) {
-            spotDate = adjustToNextWorkingDateForCcyPairAndUsdIfRequired(spotDate);
-        } else {
+        if (brokenDateAllowed) {
             spotDate = adjustToNextWorkingDateForCcyPairIfRequired(spotDate);
+        } else {
+            spotDate = adjustToNextWorkingDateForCcyPairAndUsdIfRequired(spotDate);
         }
 
         return spotDate;
@@ -218,15 +223,15 @@ public abstract class AbstractCurrencyDateCalculator<E> implements CurrencyDateC
 
         if (spotLag != SpotLag.T_0) {
             if (spotLag == SpotLag.T_2) {
-                calcSpot = calculateNextWorkingDay(calcSpot, workingWeek, CurrencyDateCalculator.USD_CODE.equalsIgnoreCase(ccy) ? null : calendar); // USD
-                                                                                                                                                    // does
-                                                                                                                                                    // not
-                                                                                                                                                    // impact
-                                                                                                                                                    // T+1
+                calcSpot = calculateNextWorkingDay(calcSpot, workingWeek, crossCcy.equalsIgnoreCase(ccy) ? null : calendar); // crossCcy
+                                                                                                                             // does
+                                                                                                                             // not
+                                                                                                                             // impact
+                                                                                                                             // T+1
 
-                if (useUsdOnT_1ForCcy1 && ccy1.equals(ccy) || useUsdOnT_1ForCcy2 && ccy2.equals(ccy)) {
+                if (useCrossCcyOnT_1ForCcy1 && ccy1.equals(ccy) || useCrossCcyOnT_1ForCcy2 && ccy2.equals(ccy)) {
                     // move if USD is holiday
-                    calcSpot = calculateNextWorkingDayIfRequired(calcSpot, usdWeek, usdHolidayCalendar);
+                    calcSpot = calculateNextWorkingDayIfRequired(calcSpot, crossCcyWeek, crossCcyHolidayCalendar);
                     // check that it is still ok for the original ccy
                     calcSpot = calculateNextWorkingDayIfRequired(calcSpot, workingWeek, calendar);
                 }

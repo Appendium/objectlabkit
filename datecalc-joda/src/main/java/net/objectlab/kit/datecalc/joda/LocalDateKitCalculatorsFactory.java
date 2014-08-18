@@ -65,7 +65,7 @@ public class LocalDateKitCalculatorsFactory extends AbstractKitCalculatorsFactor
     }
 
     /**
-     * Return a builder using the registered calendars/working weeks and a Forward Holiday handler for the currency pair; .
+     * Return a builder using the registered calendars/working weeks and a Modified Forward Holiday handler for the currency pair; .
      *
      * If you want to change some of the parameters, simply modify the Builder returned and pass it to the constructor of the
      * calculator you are interested in.
@@ -74,7 +74,7 @@ public class LocalDateKitCalculatorsFactory extends AbstractKitCalculatorsFactor
             final SpotLag spotLag) {
         final CurrencyDateCalculatorBuilder<LocalDate> builder = new CurrencyDateCalculatorBuilder<LocalDate>().currencyPair(ccy1, ccy2, spotLag);
 
-        return configureCurrencyCalculatorBuilder(builder).holidayHandler(new LocalDateForwardHandler());
+        return configureCurrencyCalculatorBuilder(builder).tenorHolidayHandler(new LocalDateModifiedFollowingHandler());
     }
 
     public static CurrencyDateCalculatorBuilder<LocalDate> defaultCurrencyDateCalculatorBuilder(final String ccy1, final String ccy2,

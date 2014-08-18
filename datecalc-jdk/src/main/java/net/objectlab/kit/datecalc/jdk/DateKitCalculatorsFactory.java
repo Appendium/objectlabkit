@@ -66,7 +66,7 @@ public class DateKitCalculatorsFactory extends AbstractKitCalculatorsFactory<Dat
     }
 
     /**
-     * Return a builder using the registered calendars/working weeks and a Forward Holiday handler for the currency pair; this
+     * Return a builder using the registered calendars/working weeks and a Modified Forward Holiday handler for the currency pair; this
      * does NOT copy the calendars or Currency Config.
      *
      * If you want to change some of the parameters, simply modify the Builder returned and pass it to the constructor of the
@@ -75,7 +75,7 @@ public class DateKitCalculatorsFactory extends AbstractKitCalculatorsFactory<Dat
     public CurrencyDateCalculatorBuilder<Date> getDefaultCurrencyDateCalculatorBuilder(final String ccy1, final String ccy2, final SpotLag spotLag) {
         final CurrencyDateCalculatorBuilder<Date> builder = new CurrencyDateCalculatorBuilder<Date>().currencyPair(ccy1, ccy2, spotLag);
 
-        return configureCurrencyCalculatorBuilder(builder).holidayHandler(new DateForwardHandler());
+        return configureCurrencyCalculatorBuilder(builder).tenorHolidayHandler(new DateModifiedFollowingHandler());
     }
 
     public static CurrencyDateCalculatorBuilder<Date> defaultCurrencyDateCalculatorBuilder(final String ccy1, final String ccy2, final SpotLag spotLag) {

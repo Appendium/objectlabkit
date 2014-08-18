@@ -32,11 +32,11 @@ public class GistCurrencyCalculatorWithBuilderExample {
                 .ccy1Week(WorkingWeek.DEFAULT) // Mon-Fri
                 .ccy2Calendar(usdCalendar) //
                 .ccy2Week(WorkingWeek.DEFAULT) // Mon-Fri
-                .usdCalendar(usdCalendar) //
-                .usdWeek(WorkingWeek.DEFAULT) // Mon-Fri;
-                .adjustStartDateWithCcy1Ccy2(true) // default is true, Move the startDate to a working date for ccy1 and ccy2
-                .holidayHandler(new LocalDateForwardHandler()) // Forward
-                .useUsdNonWorkingDaysOnSpotDate(true) // use USD holidays on Spot Date
+                .crossCcyCalendar(usdCalendar) //
+                .crossCcyWeek(WorkingWeek.DEFAULT) // Mon-Fri;
+                .adjustStartDateWithCurrencyPair(true) // default is true, Move the startDate to a working date for ccy1 and ccy2
+                .tenorHolidayHandler(new LocalDateForwardHandler()) // Forward
+                .brokenDateAllowed(true) // use USD holidays on Spot Date
                 .currencyCalculatorConfig(new DefaultCurrencyCalculatorConfig()) // Will be used for finding Working Weeks if not provided and Latin
                                                                                  // American ccy USD handling.
         ;

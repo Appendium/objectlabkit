@@ -59,12 +59,16 @@ public abstract class AbstractKitCalculatorsFactory<E> implements KitCalculators
 
     /**
      * Use this method register a specific currency config, if not provided then the DefaultCurrencyCalculatorConfig will be given.
-     * @param config that specifies the set of currencies subject to USD T+1.
+     * @param config that specifies the set of currencies subject to USD T+1 and the WorkingWeeks per currency.
      */
     public void setCurrencyCalculatorConfig(final CurrencyCalculatorConfig config) {
         currencyCalculatorConfig = config;
     }
 
+    /**
+     * Provides the registered instance of currencyCalculatorConfig or use DefaultCurrencyCalculatorConfig if none registered.
+     * @see DefaultCurrencyCalculatorConfig
+     */
     public CurrencyCalculatorConfig getCurrencyCalculatorConfig() {
         if (currencyCalculatorConfig == null) {
             currencyCalculatorConfig = new DefaultCurrencyCalculatorConfig();
@@ -101,6 +105,7 @@ public abstract class AbstractKitCalculatorsFactory<E> implements KitCalculators
     }
 
     /**
+     * Check if a calendar of a given name is already registered.
      * @return true if the holiday name is registered.
      */
     public boolean isHolidayCalendarRegistered(final String name) {
@@ -108,6 +113,7 @@ public abstract class AbstractKitCalculatorsFactory<E> implements KitCalculators
     }
 
     /**
+     * Provides an immutable Holiday Calendar with that name if registered, null if not registered
      * @return an immutable Holiday Calendar that is registered, null if not registered.
      */
     public HolidayCalendar<E> getHolidayCalendar(final String name) {
@@ -129,7 +135,7 @@ public abstract class AbstractKitCalculatorsFactory<E> implements KitCalculators
     }
 
     /**
-     * @return an immutable set of registered calendar names
+     * Provides the immutable set of registered calendar names
      */
     public Set<String> getRegisteredHolidayCalendarNames() {
         return Collections.unmodifiableSet(holidays.keySet());
@@ -153,14 +159,21 @@ public abstract class AbstractKitCalculatorsFactory<E> implements KitCalculators
         return this;
     }
 
+    /**
+     * Method that may be called by the specialised factory methods and will fetch the registered holidayCalendar for all 3 currencies 
+     * and the working weeks via the currencyCalculatorConfig and assigning currencyCalculatorConfig to the builder, 
+     * using the DefaultCurrencyCalculatorConfig if not modified.
+     * @param builder the original builder
+     * @return same instance of builder but modified
+     */
     protected CurrencyDateCalculatorBuilder<E> configureCurrencyCalculatorBuilder(final CurrencyDateCalculatorBuilder<E> builder) {
         return builder//
                 .ccy1Calendar(getHolidayCalendar(builder.getCcy1())) //
                 .ccy1Week(getCurrencyCalculatorConfig().getWorkingWeek(builder.getCcy1())) //
                 .ccy2Calendar(getHolidayCalendar(builder.getCcy2())) //
                 .ccy2Week(getCurrencyCalculatorConfig().getWorkingWeek(builder.getCcy2())) //
-                .usdCalendar(getHolidayCalendar(CurrencyDateCalculator.USD_CODE)) //
-                .usdWeek(getCurrencyCalculatorConfig().getWorkingWeek(CurrencyDateCalculator.USD_CODE)) //
+                .crossCcyCalendar(getHolidayCalendar(builder.getCrossCcy())) //
+                .crossCcyWeek(getCurrencyCalculatorConfig().getWorkingWeek(builder.getCrossCcy())) //
                 .currencyCalculatorConfig(getCurrencyCalculatorConfig());
     }
 }
