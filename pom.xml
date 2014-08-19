@@ -15,6 +15,7 @@
 
 	<modules>
 		<module>utils</module>
+		<module>utils-osgi</module>
 		<module>datecalc-common</module>
 		<module>datecalc-jdk</module>
 		<module>datecalc-jdk-osgi</module>
@@ -23,6 +24,7 @@
 		<module>datecalc-jdk8</module>
 		<module>datecalc-jdk8-osgi</module>
 		<module>fxcalc</module>
+		<module>fxcalc-osgi</module>
 	</modules>
 
 	<name>ObjectLab Kit</name>
