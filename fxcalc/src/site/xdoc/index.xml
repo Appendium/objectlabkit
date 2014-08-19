@@ -1,0 +1,28 @@
+<document>
+
+  <properties>
+    <author email="kit@objectlab.co.uk">Benoit Xhenseval</author>
+    <title>DateCalc Common</title>
+  </properties>
+  
+  <head>
+    <meta name="description" content="ObjectLab Kit offers free and open source Date calculators, released under the business-friendly Apache 2.0 license."/>
+    <meta name="keywords" content="Date calculator, IMM Dates, Period Calculator, Financial Calendar, Business Calendar, java, open source" />
+    <meta name="Subject" content="Date Calculators" />
+    <meta name="Copyright" content="ObjectLab Financial Ltd" />
+    <meta name="Language" content="English" />
+    <meta name="Designer" content="ObjectLab Financial Ltd" />
+    <meta name="Distribution" content="Global" />
+    <meta name="robots" content="ALL"/>
+    <meta name="Revisit-After" content="20 Days" />
+  </head>
+
+  <body>
+  
+    <section name="FX Calc Introduction">
+      <p>The FX Calc package provides classes for handling Currencies and Rates within the Foreign Exchange business.</p>
+    </section>
+    
+  </body>
+  
+</document>

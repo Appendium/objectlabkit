@@ -22,6 +22,7 @@
 		<module>datecalc-joda-osgi</module>
 		<module>datecalc-jdk8</module>
 		<module>datecalc-jdk8-osgi</module>
+		<module>fxcalc</module>
 	</modules>
 
 	<name>ObjectLab Kit</name>
