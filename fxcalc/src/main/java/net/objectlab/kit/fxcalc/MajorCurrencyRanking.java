@@ -32,4 +32,11 @@ public final class MajorCurrencyRanking {
     public static String findMajorCurrency(final String ccy1, final String ccy2) {
         return RANKS.getOrDefault(ccy1, 99).intValue() <= RANKS.getOrDefault(ccy2, 99).intValue() ? ccy1 : ccy2;
     }
+
+    /**
+     * returns true if the ccy1 is the major one.
+     */
+    public static boolean isMarketConvention(final String ccy1, final String ccy2) {
+        return findMajorCurrency(ccy1, ccy2).equals(ccy1);
+    }
 }
