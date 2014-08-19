@@ -82,7 +82,7 @@
 				<p>If July 5 had been a weekend or a bank holiday for any currency, the algo would keep moving forward. The important realisation is that the Spot
 					date for a currency
 					pair requires the calculation of SpotDate for each currency separately. You cannot combine the calculation as we will see in the case of Latin
-					American and Arab currencies
+					American and Arabic currencies
 				</p>
 				<p>It should also be noted that if one of the currency is USD, the USD holidays do NOT affect T+1, so, for the avoidance of doubt, the algo would
 					be for EUR/USD:</p>
@@ -111,8 +111,8 @@
 					take into account the USD holidays. So GBP/MXN with a TradeDate on July 3 2013 is not July 5 2013 but July 6 2013!
 				</p>
 			</subsection>
-			<subsection name="Spot Date for Arab Currencies">
-				<p>Here is the main reason why spot dates must be initially calculated for individual currencies. The WorkingWeek for some Arab countries (AED,
+			<subsection name="Spot Date for Arabic Currencies">
+				<p>Here is the main reason why spot dates must be initially calculated for individual currencies. The WorkingWeek for some Arabic countries (AED,
 					BHD, EGP, KWD, OMR and QAR) would be Sunday
 					to Thursday. So assuming a USD/EGP with a trade date of Thursday would have:
 				</p>

@@ -58,13 +58,13 @@ public class WorkingWeek {
 
     private static final byte DEFAULT_WORKING_DAYS = (byte) (MONDAY + TUESDAY + WEDNESDAY + THURSDAY + FRIDAY);
 
-    private static final byte ARAB_WORKING_DAYS = (byte) (MONDAY + TUESDAY + WEDNESDAY + THURSDAY + SUNDAY);
+    private static final byte ARABIC_WORKING_DAYS = (byte) (MONDAY + TUESDAY + WEDNESDAY + THURSDAY + SUNDAY);
 
     private static final byte[] WORKING_WEEK_DAYS_OFFSET = new byte[] { SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY };
 
     public static final WorkingWeek DEFAULT = new WorkingWeek();
 
-    public static final WorkingWeek ARAB_WEEK = new WorkingWeek(ARAB_WORKING_DAYS);
+    public static final WorkingWeek ARABIC_WEEK = new WorkingWeek(ARABIC_WORKING_DAYS);
 
     // -----------------------------------------------------------------------
     //
@@ -93,7 +93,7 @@ public class WorkingWeek {
 
     /**
      * Create a new calendar with the intersection of WORKING days.
-     * e.g. if normal and arab calendars are intersected, the week is 3 days: Fri-Sun.
+     * e.g. if normal and arabic calendars are intersected, the week is 3 days: Fri-Sun.
      * @param ww
      * @return a new Working week
      * @since 1.4.0

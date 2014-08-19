@@ -47,7 +47,7 @@ public interface CurrencyCalculatorConfig {
     Set<String> getCurrenciesSubjectToUSDForT1();
 
     /**
-     * Return a default Mon-Fri for most, but some might be Sun-Thu (Arab countries).
+     * Return a default Mon-Fri for most, but some might be Sun-Thu (Arabic countries).
      * @param currency
      * @return the WorkingWeek registered for this currency other the default Mon-Fri.
      */

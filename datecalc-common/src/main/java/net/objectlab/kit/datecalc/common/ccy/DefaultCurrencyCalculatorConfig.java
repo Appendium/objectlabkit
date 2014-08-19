@@ -11,8 +11,8 @@ import net.objectlab.kit.datecalc.common.WorkingWeek;
 /**
  * Default for:
  * <ul><li>currencies subject to USD Holidays for T+1: MXN, CLP, ARS (Mexican Peso, Chile Pese and Argentina Peso).</li>
- * <li>Arab currencies Sun-Thu: AED, BHD, EGP, KWD, OMR, QAR.</li>
- * <li>Arab currencies Mon-Thu: SAR, JOD.</li>
+ * <li>Arabic currencies Sun-Thu: AED, BHD, EGP, KWD, OMR, QAR.</li>
+ * <li>Arabic currencies Mon-Thu: SAR, JOD.</li>
  * </ul>
  * @author Benoit Xhenseval
  */
@@ -25,14 +25,14 @@ public class DefaultCurrencyCalculatorConfig implements CurrencyCalculatorConfig
         currenciesSubjectToUSDForT1.add("MXN");
         currenciesSubjectToUSDForT1.add("CLP");
         currenciesSubjectToUSDForT1.add("ARS");
-        workingWeeks.put("AED", WorkingWeek.ARAB_WEEK);
-        workingWeeks.put("BHD", WorkingWeek.ARAB_WEEK);
-        workingWeeks.put("EGP", WorkingWeek.ARAB_WEEK);
-        workingWeeks.put("KWD", WorkingWeek.ARAB_WEEK);
-        workingWeeks.put("OMR", WorkingWeek.ARAB_WEEK);
-        workingWeeks.put("QAR", WorkingWeek.ARAB_WEEK);
-        workingWeeks.put("SAR", WorkingWeek.ARAB_WEEK.intersection(WorkingWeek.DEFAULT));
-        workingWeeks.put("JOD", WorkingWeek.ARAB_WEEK.intersection(WorkingWeek.DEFAULT));
+        workingWeeks.put("AED", WorkingWeek.ARABIC_WEEK);
+        workingWeeks.put("BHD", WorkingWeek.ARABIC_WEEK);
+        workingWeeks.put("EGP", WorkingWeek.ARABIC_WEEK);
+        workingWeeks.put("KWD", WorkingWeek.ARABIC_WEEK);
+        workingWeeks.put("OMR", WorkingWeek.ARABIC_WEEK);
+        workingWeeks.put("QAR", WorkingWeek.ARABIC_WEEK);
+        workingWeeks.put("SAR", WorkingWeek.ARABIC_WEEK.intersection(WorkingWeek.DEFAULT));
+        workingWeeks.put("JOD", WorkingWeek.ARABIC_WEEK.intersection(WorkingWeek.DEFAULT));
     }
 
     /**
@@ -63,7 +63,7 @@ public class DefaultCurrencyCalculatorConfig implements CurrencyCalculatorConfig
     }
 
     /**
-     * Return a default Mon-Fri for most, but some might be Sun-Thu (Arab countries).
+     * Return a default Mon-Fri for most, but some might be Sun-Thu (Arabic countries).
      * @param currency
      * @return the WorkingWeek registered for this currency other the default Mon-Fri.
      */

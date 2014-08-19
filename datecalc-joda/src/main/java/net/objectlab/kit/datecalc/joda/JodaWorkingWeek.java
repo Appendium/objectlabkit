@@ -47,7 +47,7 @@ public class JodaWorkingWeek extends WorkingWeek {
 
     public static final JodaWorkingWeek DEFAULT = new JodaWorkingWeek();
 
-    public static final JodaWorkingWeek ARAB_DEFAULT = new JodaWorkingWeek(WorkingWeek.ARAB_WEEK);
+    public static final JodaWorkingWeek ARAB_DEFAULT = new JodaWorkingWeek(WorkingWeek.ARABIC_WEEK);
 
     public JodaWorkingWeek() {
         super();

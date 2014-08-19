@@ -119,7 +119,7 @@ public class WorkingWeekTest extends TestCase {
 
     public void testIntersection() {
         final WorkingWeek w1 = WorkingWeek.DEFAULT;
-        final WorkingWeek w2 = WorkingWeek.ARAB_WEEK;
+        final WorkingWeek w2 = WorkingWeek.ARABIC_WEEK;
         final WorkingWeek w3 = w1.intersection(w2);
         // working day
         Assert.assertTrue("Calendar.MONDAY", w3.isWorkingDayFromCalendar(Calendar.MONDAY));
