@@ -1,23 +1,28 @@
 package net.objectlab.kit.fxcalc;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 public interface FxRate {
-    String getFromCcy();
+    CurrencyPair getCurrencyPair();
 
-    String getToCcy();
+    Optional<String> getCrossCcy();
 
-    String getCrossCcy();
+    boolean isMarketConvention();
 
     BigDecimal getBid();
 
     BigDecimal getMid();
 
-    BigDecimal getOffer();
+    BigDecimal getAsk();
 
     BigDecimal getBidInMarketConvention();
 
     BigDecimal getMidInMarketConvention();
 
-    BigDecimal getOfferInMarketConvention();
+    BigDecimal getAskInMarketConvention();
+
+    FxRate createInverse();
+
+    String getDescription();
 }

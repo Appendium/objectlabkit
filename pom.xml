@@ -124,6 +124,11 @@ Why re-invent the wheel?</description>
 		<dependencies>
 			<dependency>
 				<groupId>net.objectlab.kit</groupId>
+				<artifactId>objectlab-utils</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.objectlab.kit</groupId>
 				<artifactId>datecalc-common</artifactId>
 				<version>${project.version}</version>
 			</dependency>

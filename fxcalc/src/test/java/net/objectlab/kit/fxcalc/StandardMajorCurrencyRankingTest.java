@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 
 public class StandardMajorCurrencyRankingTest {
-    private final MajorCurrencyRanking majorCurrencyRanking = new StandardMajorCurrencyRanking();
+    private final MajorCurrencyRanking majorCurrencyRanking = StandardMajorCurrencyRanking.getDefault();
 
     @Test
     public void testSelectMajorCurrency() throws Exception {

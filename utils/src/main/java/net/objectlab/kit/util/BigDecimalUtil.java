@@ -199,7 +199,7 @@ public final class BigDecimalUtil {
     public static BigDecimal divide(final int numeratorScale, final BigDecimal numerator, final BigDecimal denominator, final int rounding) {
         BigDecimal diff = null;
         if (numerator != null && isNotZero(denominator)) {
-            diff = numerator.setScale(numeratorScale).divide(denominator, rounding);
+            diff = numerator.setScale(numeratorScale, rounding).divide(denominator, rounding);
         }
         return diff;
     }
