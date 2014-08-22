@@ -4,7 +4,7 @@ import java.util.Optional;
 
 public interface FxRateCalculator {
     /**
-     * Return an FX which would return a rate 'X' (for 1 fromCcy you would get X toCcy)
+     * Find or calculate the FX Rate for the given pair.
      */
-    Optional<FxRate> findFx(String fromCcy, String toCcy);
+    Optional<FxRate> findFx(CurrencyPair ccyPair);
 }

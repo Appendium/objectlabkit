@@ -1,0 +1,70 @@
+<document>
+	<properties>
+		<author email="Kit@objectlab.co.uk">Benoit Xhenseval</author>
+		<title>Currency Cross Rate Calculation</title>
+	</properties>
+	<head>
+		<meta name="description" content="Each algorithm is explained: forward, backward, etc." />
+
+		<meta name="keywords" content="Date calculator, IMM Dates, Period Calculator, Financial Calendar, Business Calendar, java, open source" />
+		<meta name="Subject" content="Date Calculators" />
+		<meta name="Copyright" content="ObjectLab Ltd" />
+		<meta name="Language" content="English" />
+		<meta name="Designer" content="ObjectLab Ltd" />
+		<meta name="Distribution" content="Global" />
+		<meta name="robots" content="ALL" />
+		<meta name="Revisit-After" content="20 Days" />
+	</head>
+	<body>
+		<section name="FX Rate Calculation">
+			<p>When you see a rate like EUR/USD of 1.6 / 1.61, it means this:</p>
+			<ul>
+				<li>Bid: 1.6;  Quoter buys  EUR and sells USD at 1.6</li>
+				<li>Ask: 1.61; Quoter sells EUR and sells USD at 1.61</li>
+			</ul>
+			<p>If you are on the receiving end, you always end up paying more or getting less!</p>
+			<ul>
+				<li>If you want to sell your 1 EUR, you will get 1.6 USD</li>
+				<li>If you want to sell your USD, you will have to fork 1.61 USD for 1 EUR</li>
+			</ul>
+		</section>
+		<section name="Currency Cross Rate Calculation">
+			<p>A Cross Rate is sometimes calculated based on 2 other FX Rates going through a common currency, referred to as the Cross Currency.
+				Given that the
+				rates are following some market conventions whereby the USD is not always the main currency, the calculation is a bit more
+				complex. Note the
+				differences:
+			</p>
+			<ul>
+				<li>EUR/USD: 1.2; 1 Euro gives you 1.2 USD</li>
+				<li>USD/CAD: 1.1; 1 USD gives you 1.1 CAD</li>
+				<li>GBP/USD: 1.6; 1 GBP gives you 1.6 USD</li>
+			</ul>
+			<p>So what should the calculation be for EUR/GBP? or GBP/CAD? Furthermore the calculation becomes more confusing if you consider Bid and Ask...To
+				put it simply
+				in the words of "Mastering Financial Calculations":
+			</p>
+			<ul>
+				<li>Given two exchange rates A/B and A/C, the cross rate are:</li>
+				<li>B/C = A/C divided by A/B</li>
+				<li>and C/B = A/B divided by A/C</li>
+				<li>But you need to use the opposite side when calculating bid/ask, e.g.</li>
+				<ul>
+					<li>B.C Bid = A.C.bid / A.B.ask</li>
+					<li>B.C Ask = A.C.ask / A.B.bid</li>
+				</ul>
+			</ul>
+			<ul>
+				<li>Given two exchange rates B/A and A/C, the cross rate are:</li>
+				<li>B/C = B/A multiplied by A/C</li>
+				<li>and C/B = 1 divided by (B/A multiplied by A/C)</li>
+				<li>And you need to use the same side when calculating bid/ask, e.g.</li>
+				<ul>
+					<li>B.C Bid = A.C.bid * A.B.bid</li>
+					<li>B.C Ask = A.C.ask * A.B.ask</li>
+				</ul>
+			</ul>
+		</section>
+
+	</body>
+</document>

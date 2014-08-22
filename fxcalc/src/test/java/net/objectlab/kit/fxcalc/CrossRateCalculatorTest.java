@@ -4,12 +4,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 import net.objectlab.kit.util.BigDecimalUtil;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class CrossRateCalculatorTest {
+    private static final Logger LOG = LoggerFactory.getLogger(CrossRateCalculatorTest.class);
 
     @Test(expected = IllegalArgumentException.class)
-    public void testBadCross() {
-        System.out.println("badCross --------------------------------");
+    public void tesCrossWithoutCrossCcy() {
+        LOG.debug("badCross --------------------------------");
         final CurrencyPair tgt = new CurrencyPair("EUR", "CHF");
         final FxRateImpl fx1 = new FxRateImpl(new CurrencyPair("GBP", "CHF"), null, true);
         fx1.setBid(BigDecimalUtil.bd("2.1702"));
@@ -20,9 +23,22 @@ public class CrossRateCalculatorTest {
         CrossRateCalculator.calculateCross(tgt, fx1, fx2, 4, StandardMajorCurrencyRanking.getDefault());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void tesCrossWithCrossInTarget() {
+        LOG.debug("badCross --------------------------------");
+        final CurrencyPair tgt = new CurrencyPair("EUR", "CHF");
+        final FxRateImpl fx1 = new FxRateImpl(new CurrencyPair("EUR", "JPY"), null, true);
+        fx1.setBid(BigDecimalUtil.bd("2.1702"));
+        fx1.setAsk(BigDecimalUtil.bd("2.1707"));
+        final FxRateImpl fx2 = new FxRateImpl(new CurrencyPair("EUR", "AED"), null, true);
+        fx2.setBid(BigDecimalUtil.bd("0.7374"));
+        fx2.setAsk(BigDecimalUtil.bd("0.7379"));
+        CrossRateCalculator.calculateCross(tgt, fx1, fx2, 4, StandardMajorCurrencyRanking.getDefault());
+    }
+
     @Test
     public void crossWithNonUsdCross2() {
-        System.out.println("crossWithNonUsdCross2 --------------------------------");
+        LOG.debug("crossWithNonUsdCross2 --------------------------------");
         final CurrencyPair tgt = new CurrencyPair("EUR", "CHF");
         final FxRateImpl fx1 = new FxRateImpl(new CurrencyPair("GBP", "CHF"), null, true);
         fx1.setBid(BigDecimalUtil.bd("2.1702"));
@@ -51,7 +67,7 @@ public class CrossRateCalculatorTest {
 
     @Test
     public void crossWithNonUsdCross() {
-        System.out.println("crossWithNonUsdCross --------------------------------");
+        LOG.debug("crossWithNonUsdCross --------------------------------");
         final CurrencyPair tgt = new CurrencyPair("CHF", "JPY");
         final FxRateImpl fx1 = new FxRateImpl(new CurrencyPair("GBP", "CHF"), null, true);
         fx1.setBid(BigDecimalUtil.bd("2.1702"));
@@ -80,7 +96,7 @@ public class CrossRateCalculatorTest {
 
     @Test
     public void crossWithMixedUsd() {
-        System.out.println("crossWithMixedUsd --------------------------------");
+        LOG.debug("crossWithMixedUsd --------------------------------");
         final CurrencyPair tgt = new CurrencyPair("EUR", "SGD");
         final FxRateImpl fx1 = new FxRateImpl(new CurrencyPair("EUR", "USD"), null, true);
         fx1.setBid(BigDecimalUtil.bd("1.2166"));
@@ -100,7 +116,7 @@ public class CrossRateCalculatorTest {
 
     @Test
     public void crossWithUsdMinor() {
-        System.out.println("crossWithUsdMinor --------------------------------");
+        LOG.debug("crossWithUsdMinor --------------------------------");
         final CurrencyPair tgt = new CurrencyPair("EUR", "AUD");
         final FxRateImpl fx1 = new FxRateImpl(new CurrencyPair("EUR", "USD"), null, true);
         fx1.setBid(BigDecimalUtil.bd("1.2166"));
@@ -120,7 +136,7 @@ public class CrossRateCalculatorTest {
 
     @Test
     public void crossWithUsdMajorInversed() {
-        System.out.println("crossWithUsdMajorInversed --------------------------------");
+        LOG.debug("crossWithUsdMajorInversed --------------------------------");
         final CurrencyPair tgt = new CurrencyPair("CAD", "SGD");
         final FxRateImpl fx1 = new FxRateImpl(new CurrencyPair("USD", "CAD"), null, true);
         fx1.setBid(BigDecimalUtil.bd("1.4874"));

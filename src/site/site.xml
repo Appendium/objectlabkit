@@ -73,6 +73,7 @@
 		<menu name="Kit">
 			<item name="Introduction" href="index.html" />
 			<item name="Currency Dates" href="currency.html" />
+			<item name="Currency Rates" href="cross-currency.html" />
 			<item name="Holiday Handling" href="algo.html" />
 			<item name="Tenor Handling" href="tenor.html" />
 			<item name="JavaDocs" href="apidocs/index.html" />

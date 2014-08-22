@@ -41,10 +41,8 @@
 				American currencies on T+1
 				are handled as well as the Arabic currencies with different weekends. More info about
 				<a href="currency.html">Currency Date Calculation</a>
-				and
-				on the changes
-				<a href="changes-report.html">here</a>
-				.
+				and	on the changes	<a href="changes-report.html">here</a>.  Finally, we are also introducing a new module the <a href="objectlab-fxcalc.html">ObjectLab Kit FX Calculator</a>
+				 use it for determining Cross Currency Market Conventions and calculating FX Cross Rates. 
 			</p>
 			<p>
 				<b>2014-05-26</b>

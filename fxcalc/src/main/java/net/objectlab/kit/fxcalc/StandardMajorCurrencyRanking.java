@@ -40,10 +40,26 @@ public final class StandardMajorCurrencyRanking implements MajorCurrencyRanking 
     }
 
     /**
+     * Given a CurrencyPair, return the major Currency if there is one, otherwise returns the first currency.
+     */
+    @Override
+    public String selectMajorCurrency(final CurrencyPair pair) {
+        return selectMajorCurrency(pair.getCcy1(), pair.getCcy2());
+    }
+
+    /**
      * returns true if the ccy1 is the major one for the given currency pair.
      */
     @Override
     public boolean isMarketConvention(final String ccy1, final String ccy2) {
         return selectMajorCurrency(ccy1, ccy2).equals(ccy1);
+    }
+
+    /**
+     * returns true if the pair.ccy1 is the major one for the given currency pair.
+     */
+    @Override
+    public boolean isMarketConvention(final CurrencyPair pair) {
+        return isMarketConvention(pair.getCcy1(), pair.getCcy2());
     }
 }
