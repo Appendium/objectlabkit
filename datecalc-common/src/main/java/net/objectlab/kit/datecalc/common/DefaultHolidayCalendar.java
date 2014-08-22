@@ -32,19 +32,14 @@
  */
 package net.objectlab.kit.datecalc.common;
 
-import static java.util.Calendar.DAY_OF_MONTH;
-import static java.util.Calendar.MONTH;
-import static java.util.Calendar.YEAR;
-
-import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
-import java.util.TreeSet;
+import java.util.TreeMap;
 
 /**
  * @author $LastChangedBy: marchy $
@@ -53,33 +48,12 @@ import java.util.TreeSet;
 public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
     private static final long serialVersionUID = -8558686840806739645L;
 
-    private static final class DateComp implements Comparator<Date>, Serializable {
-        private static final long serialVersionUID = 9079672835911375957L;
-
-        public int compare(final Date date1, final Date date2) {
-
-            final Calendar cal1 = Calendar.getInstance();
-            cal1.setTime(date1);
-            final Calendar cal2 = Calendar.getInstance();
-            cal2.setTime(date2);
-
-            return CALENDAR_COMP.compare(cal1, cal2);
-        }
-    }
-
-    private static final class CalendarComp implements Comparator<Calendar>, Serializable {
-        private static final long serialVersionUID = 4783236154150397685L;
-
-        public int compare(final Calendar cal1, final Calendar cal2) {
-            return (cal1.get(YEAR) - cal2.get(YEAR)) * 10000 + (cal1.get(MONTH) - cal2.get(MONTH)) * 100 + cal1.get(DAY_OF_MONTH)
-                    - cal2.get(DAY_OF_MONTH);
-        }
-    }
-
-    private static final CalendarComp CALENDAR_COMP = new CalendarComp();
-    private static final DateComp DATE_COMP = new DateComp();
-
-    private Set<E> holidays;
+    /**
+     * Changed to a Map of String to E, given the JODA issue 
+     * http://joda-interest.219941.n2.nabble.com/LocalDate-equals-method-bug-td7572429.html
+     * @since 1.4.0
+     */
+    private Map<String, E> holidays;
 
     private E earlyBoundary = null;
 
@@ -87,7 +61,7 @@ public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
 
     public DefaultHolidayCalendar() {
         super();
-        holidays = Collections.emptySet();
+        holidays = Collections.emptyMap();
     }
 
     public DefaultHolidayCalendar(final Set<E> holidays, final E earlyBoundary, final E lateBoundary) {
@@ -118,7 +92,7 @@ public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
      * @see net.objectlab.kit.datecalc.common.HolidayCalendar#getHolidays()
      */
     public Set<E> getHolidays() {
-        return holidays;
+        return new HashSet<E>(holidays.values());
     }
 
     /*
@@ -149,31 +123,15 @@ public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
     public final HolidayCalendar<E> setHolidays(final Set<E> holidays) {
 
         if (holidays == null) {
-            this.holidays = Collections.emptySet();
+            this.holidays = Collections.emptyMap();
             return this;
         }
 
-        Set<E> newSet = null;
-
-        // this 'hack' is for Date/Calendar objects to be
-        // 'equal' on the same day even if time fields differ
-        final Iterator<E> it = holidays.iterator();
-        if (it.hasNext()) {
-            final E obj = it.next();
-
-            if (obj instanceof Date) {
-                newSet = new TreeSet(DATE_COMP);
-            } else if (obj instanceof Calendar) {
-                newSet = new TreeSet(CALENDAR_COMP);
-            }
+        final Map<String, E> newSet = new TreeMap<String, E>();
+        for (final E e : holidays) {
+            newSet.put(toString(e), e);
         }
-
-        if (newSet == null) {
-            newSet = new HashSet<E>();
-        }
-
-        newSet.addAll(holidays);
-        this.holidays = Collections.unmodifiableSet(newSet);
+        this.holidays = Collections.unmodifiableMap(newSet);
         return this;
     }
 
@@ -188,6 +146,16 @@ public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
     }
 
     public boolean isHoliday(final E date) {
-        return holidays.contains(date);
+        return holidays.containsKey(toString(date));
+    }
+
+    private String toString(final E date) {
+        if (date instanceof Calendar) {
+            return new SimpleDateFormat("yyyy-MM-dd").format(((Calendar) date).getTime());
+        } else if (date instanceof Date) {
+            return new SimpleDateFormat("yyyy-MM-dd").format(date);
+        }
+
+        return date != null ? date.toString() : "";
     }
 }

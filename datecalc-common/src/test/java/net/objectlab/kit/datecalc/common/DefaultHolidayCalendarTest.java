@@ -11,10 +11,18 @@ import junit.framework.TestCase;
 
 public class DefaultHolidayCalendarTest extends TestCase {
 
-    public void testIsHoliday() {
-
+    public void testGetHolidays() {
         final Set<Calendar> holidays = new HashSet<Calendar>();
-        final Calendar holiday = Utils.getCal("2009-04-22");
+        holidays.add(getCal("2009-04-22"));
+        holidays.add(getCal("2010-04-22"));
+
+        final HolidayCalendar<Calendar> holidayCalendar = new DefaultHolidayCalendar<Calendar>(holidays, getCal("2009-01-01"), getCal("2009-12-01"));
+        assertTrue(holidayCalendar.getHolidays().size() == 2);
+    }
+
+    public void testIsHoliday() {
+        final Set<Calendar> holidays = new HashSet<Calendar>();
+        final Calendar holiday = getCal("2009-04-22");
         holidays.add(holiday);
 
         final HolidayCalendar<Calendar> holidayCalendar = new DefaultHolidayCalendar<Calendar>(holidays, getCal("2009-01-01"), getCal("2009-12-01"));
