@@ -32,7 +32,7 @@ public class FxRateCalculatorImpl implements FxRateCalculator {
         FxRate fxRate = rates.get(ccyPair);
 
         if (fxRate == null && baseFxRateProvider != null) {
-            final Optional<FxRate> latetsRate = baseFxRateProvider.getLatetsRate(ccyPair);
+            final Optional<FxRate> latetsRate = baseFxRateProvider.getLatestRate(ccyPair);
             if (latetsRate.isPresent()) {
                 fxRate = latetsRate.get();
                 if (cacheBaseRates) {

@@ -11,8 +11,9 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
- * @author xhensevalb
- *
+ * A simple class to represent an immutable amount of a given currency.
+ * 
+ * @author Benoit Xhenseval
  */
 public class Money implements MonetaryAmount {
     private final String currency;
@@ -61,10 +62,12 @@ public class Money implements MonetaryAmount {
         return EqualsBuilder.reflectionEquals(this, obj);
     }
 
+    @Override
     public Money negate() {
         return new Money(currency, BigDecimalUtil.negate(amount));
     }
 
+    @Override
     public Money add(final MonetaryAmount money) {
         if (!money.getCurrency().equals(currency)) {
             throw new IllegalArgumentException("You cannot add " + money.getCurrency() + " with " + currency);
@@ -72,6 +75,7 @@ public class Money implements MonetaryAmount {
         return new Money(currency, BigDecimalUtil.add(amount, money.getAmount()));
     }
 
+    @Override
     public Money subtract(final MonetaryAmount money) {
         if (!money.getCurrency().equals(currency)) {
             throw new IllegalArgumentException("You cannot add " + money.getCurrency() + " with " + currency);
