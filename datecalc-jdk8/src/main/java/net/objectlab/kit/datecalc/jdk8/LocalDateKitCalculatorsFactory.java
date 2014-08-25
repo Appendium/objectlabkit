@@ -41,6 +41,7 @@ import java.time.LocalDate;
 
 import net.objectlab.kit.datecalc.common.AbstractKitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.CurrencyDateCalculatorBuilder;
+import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 import net.objectlab.kit.datecalc.common.IMMDateCalculator;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
@@ -144,20 +145,26 @@ public class LocalDateKitCalculatorsFactory extends AbstractKitCalculatorsFactor
         cal.setName(name);
         setHolidays(name, cal);
 
+        cal.setHolidayHandler(getHolidayHandler(holidayHandlerType));
+        return cal;
+    }
+
+    @Override
+    public HolidayHandler<LocalDate> getHolidayHandler(final String holidayHandlerType) {
         if (HolidayHandlerType.FORWARD.equals(holidayHandlerType)) {
-            cal.setHolidayHandler(new LocalDateForwardHandler());
+            return new LocalDateForwardHandler();
         } else if (BACKWARD.equals(holidayHandlerType)) {
-            cal.setHolidayHandler(new LocalDateBackwardHandler());
+            return new LocalDateBackwardHandler();
         } else if (MODIFIED_FOLLOWING.equals(holidayHandlerType)) {
-            cal.setHolidayHandler(new LocalDateModifiedFollowingHandler());
+            return new LocalDateModifiedFollowingHandler();
         } else if (MODIFIED_PRECEDING.equals(holidayHandlerType)) {
-            cal.setHolidayHandler(new LocalDateModifiedPrecedingHandler());
+            return new LocalDateModifiedPrecedingHandler();
         } else if (FORWARD_UNLESS_MOVING_BACK.equals(holidayHandlerType)) {
-            cal.setHolidayHandler(new LocalDateForwardUnlessNegativeHandler());
+            return new LocalDateForwardUnlessNegativeHandler();
         } else if (holidayHandlerType != null) {
             throw new IllegalArgumentException("Unsupported HolidayHandler: " + holidayHandlerType);
         }
-        return cal;
+        return null;
     }
 
     @Override

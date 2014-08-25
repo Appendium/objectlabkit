@@ -173,6 +173,16 @@ public interface KitCalculatorsFactory<E> {
      * @return an IMMDateCalculator
      */
     IMMDateCalculator<E> getIMMDateCalculator();
+
+    /**
+     * Create a new holiday handler of given type
+     * @param holidayHandlerType
+     * @return a new handler
+     * @throws IllegalArgumentException if the holidayHandlerType is unsupported
+     * @since 1.4.0
+     */
+    HolidayHandler<E> getHolidayHandler(String holidayHandlerType);
+
 }
 
 /*

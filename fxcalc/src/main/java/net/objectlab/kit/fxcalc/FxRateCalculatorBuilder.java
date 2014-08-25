@@ -54,7 +54,7 @@ public class FxRateCalculatorBuilder {
 
     /**
      * Check if the builder is valid i.e.
-     * * precisions >=2
+     * * precisions greater than 1
      * * ratesSnapshot not empty or a BaseFxRateProvider was provided
      * @throws IllegalArgumentException if the validation fails.
      */

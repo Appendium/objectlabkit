@@ -168,6 +168,38 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
                 + " expects 6 Aug");
     }
 
+    public void testTenorNoHolidayModifiedFollowing() {
+        final CurrencyDateCalculator<E> cal = getDateCalculatorFactory().buildCurrencyDateCalculator(
+                getDateCalculatorFactory().getDefaultCurrencyDateCalculatorBuilder("EUR", "USD", SpotLag.T_2)//
+                );
+
+        E startDate = newDate("2014-06-26");
+        E spotDate = cal.calculateSpotDate(startDate);
+        checkDate("Spot from 26-Jun-2014", spotDate, "2014-06-30");
+        E t1mDate = cal.calculateTenorDate(startDate, StandardTenor.T_1M);
+        checkDate("1M from 26-Jun-2014", t1mDate, "2014-07-30");
+
+        startDate = newDate("2014-10-28");
+
+        spotDate = cal.calculateSpotDate(startDate);
+        checkDate("Spot from 28-Oct-2014", spotDate, "2014-10-30");
+        t1mDate = cal.calculateTenorDate(startDate, StandardTenor.T_1M);
+        checkDate("1M from 28-Oct-2014", t1mDate, "2014-11-28");
+    }
+
+    public void testTenorNoHolidayForward() {
+        final CurrencyDateCalculator<E> cal = getDateCalculatorFactory().buildCurrencyDateCalculator(
+                getDateCalculatorFactory().getDefaultCurrencyDateCalculatorBuilder("EUR", "USD", SpotLag.T_2)//
+                        .tenorHolidayHandler(getDateCalculatorFactory().getHolidayHandler(HolidayHandlerType.FORWARD)) //
+                );
+
+        E startDate = newDate("2014-10-28");
+
+        E spotDate = cal.calculateSpotDate(startDate);
+        checkDate("Spot from 28-Oct-2014", spotDate, "2014-10-30");
+        E t1mDate = cal.calculateTenorDate(startDate, StandardTenor.T_1M);
+        checkDate("1M from 28-Oct-2014", t1mDate, "2014-12-01"); // ALLOWED to Cross over to next month
+    }
     /*
 
     public void testSimpleForwardStartDateWithWeekend() {

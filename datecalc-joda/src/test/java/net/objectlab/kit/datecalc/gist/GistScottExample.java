@@ -89,7 +89,7 @@ public class GistScottExample {
         System.out.println(calc.getName() + " BX Ex1 No holiday TD: " + startDate + " Calculated Spot " + calc.calculateSpotDate(startDate)
                 + " expects 30 Oct!");
         System.out.println(calc.getName() + " BX Ex1 No holiday TD: " + startDate + " Calculated 1M "
-                + calc.calculateTenorDate(startDate, StandardTenor.T_1M) + " expects 28 Oct");
+                + calc.calculateTenorDate(startDate, StandardTenor.T_1M) + " expects 01-Dec");
     }
 
     private static void example1NoHolidays() {

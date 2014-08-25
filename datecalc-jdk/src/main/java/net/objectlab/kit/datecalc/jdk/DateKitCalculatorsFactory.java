@@ -33,7 +33,6 @@
 package net.objectlab.kit.datecalc.jdk;
 
 import static net.objectlab.kit.datecalc.common.HolidayHandlerType.BACKWARD;
-import static net.objectlab.kit.datecalc.common.HolidayHandlerType.FORWARD;
 import static net.objectlab.kit.datecalc.common.HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK;
 import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_FOLLOWING;
 import static net.objectlab.kit.datecalc.common.HolidayHandlerType.MODIFIED_PRECEDING;
@@ -42,6 +41,7 @@ import java.util.Date;
 
 import net.objectlab.kit.datecalc.common.AbstractKitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.CurrencyDateCalculatorBuilder;
+import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.HolidayHandlerType;
 import net.objectlab.kit.datecalc.common.IMMDateCalculator;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
@@ -133,23 +133,26 @@ public class DateKitCalculatorsFactory extends AbstractKitCalculatorsFactory<Dat
         cal.setName(name);
         setHolidays(name, cal);
 
-        if (holidayHandlerType == null) {
-            return cal;
-        } else if (FORWARD.equals(holidayHandlerType)) {
-            cal.setHolidayHandler(new DateForwardHandler());
-        } else if (BACKWARD.equals(holidayHandlerType)) {
-            cal.setHolidayHandler(new DateBackwardHandler());
-        } else if (MODIFIED_FOLLOWING.equals(holidayHandlerType)) {
-            cal.setHolidayHandler(new DateModifiedFollowingHandler());
-        } else if (MODIFIED_PRECEDING.equals(holidayHandlerType)) {
-            cal.setHolidayHandler(new DateModifiedPreceedingHandler());
-        } else if (FORWARD_UNLESS_MOVING_BACK.equals(holidayHandlerType)) {
-            cal.setHolidayHandler(new DateForwardUnlessNegativeHandler());
-        } else {
-            throw new IllegalArgumentException("Unsupported HolidayHandler: " + holidayHandlerType);
-        }
+        cal.setHolidayHandler(getHolidayHandler(holidayHandlerType));
 
         return cal;
+    }
+
+    public HolidayHandler<Date> getHolidayHandler(final String holidayHandlerType) {
+        if (HolidayHandlerType.FORWARD.equals(holidayHandlerType)) {
+            return new DateForwardHandler();
+        } else if (BACKWARD.equals(holidayHandlerType)) {
+            return new DateBackwardHandler();
+        } else if (MODIFIED_FOLLOWING.equals(holidayHandlerType)) {
+            return new DateModifiedFollowingHandler();
+        } else if (MODIFIED_PRECEDING.equals(holidayHandlerType)) {
+            return new DateModifiedPreceedingHandler();
+        } else if (FORWARD_UNLESS_MOVING_BACK.equals(holidayHandlerType)) {
+            return new DateForwardUnlessNegativeHandler();
+        } else if (holidayHandlerType != null) {
+            throw new IllegalArgumentException("Unsupported HolidayHandler: " + holidayHandlerType);
+        }
+        return null;
     }
 
     /*
