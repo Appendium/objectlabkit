@@ -6,6 +6,11 @@ import java.util.Date;
 import net.objectlab.kit.datecalc.common.CurrencyDateCalculatorBuilder;
 import net.objectlab.kit.datecalc.common.ccy.AbstractCurrencyDateCalculator;
 
+/**
+ * JDK Date implementation for currency date calculator.
+ * @author Benoit Xhenseval
+ * @since 1.4.0
+ */
 public class DateCurrencyDateCalculator extends AbstractCurrencyDateCalculator<Date> {
 
     public DateCurrencyDateCalculator(final CurrencyDateCalculatorBuilder<Date> builder) {

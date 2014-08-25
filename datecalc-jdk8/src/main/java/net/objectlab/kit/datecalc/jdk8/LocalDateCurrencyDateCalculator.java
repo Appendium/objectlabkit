@@ -5,6 +5,11 @@ import java.time.LocalDate;
 import net.objectlab.kit.datecalc.common.CurrencyDateCalculatorBuilder;
 import net.objectlab.kit.datecalc.common.ccy.AbstractCurrencyDateCalculator;
 
+/**
+ * JDK8 Date implementation for currency date calculator.
+ * @author Benoit Xhenseval
+ * @since 1.4.0
+ */
 public class LocalDateCurrencyDateCalculator extends AbstractCurrencyDateCalculator<LocalDate> {
 
     public LocalDateCurrencyDateCalculator(final CurrencyDateCalculatorBuilder<LocalDate> builder) {

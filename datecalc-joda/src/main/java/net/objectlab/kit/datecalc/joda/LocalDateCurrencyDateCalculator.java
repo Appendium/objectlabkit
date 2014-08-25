@@ -5,6 +5,11 @@ import net.objectlab.kit.datecalc.common.ccy.AbstractCurrencyDateCalculator;
 
 import org.joda.time.LocalDate;
 
+/**
+ * Joda LocalDate implementation for currency date calculator.
+ * @author Benoit Xhenseval
+ * @since 1.4.0
+ */
 public class LocalDateCurrencyDateCalculator extends AbstractCurrencyDateCalculator<LocalDate> {
 
     public LocalDateCurrencyDateCalculator(final CurrencyDateCalculatorBuilder<LocalDate> builder) {

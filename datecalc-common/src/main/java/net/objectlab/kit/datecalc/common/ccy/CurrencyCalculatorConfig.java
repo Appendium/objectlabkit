@@ -38,7 +38,7 @@ import net.objectlab.kit.datecalc.common.WorkingWeek;
  * take into account USD holidays for T+1 (whilst calculating the Spot Date).
  *
  * @author Benoit Xhenseval
- *
+ * @since 1.4.0
  */
 public interface CurrencyCalculatorConfig {
     /**

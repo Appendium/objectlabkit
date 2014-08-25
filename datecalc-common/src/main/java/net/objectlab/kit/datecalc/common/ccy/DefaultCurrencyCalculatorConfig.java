@@ -16,6 +16,7 @@ import net.objectlab.kit.datecalc.common.WorkingWeek;
  * <li>Arabic currencies Mon-Thu: SAR, JOD.</li>
  * </ul>
  * @author Benoit Xhenseval
+ * @since 1.4.0
  */
 public class DefaultCurrencyCalculatorConfig implements CurrencyCalculatorConfig {
     private Map<String, Set<String>> currenciesSubjectToCrossCcyForT1 = new HashMap<String, Set<String>>();

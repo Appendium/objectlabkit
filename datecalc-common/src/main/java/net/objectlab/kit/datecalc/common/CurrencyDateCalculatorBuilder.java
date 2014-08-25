@@ -23,6 +23,7 @@ import net.objectlab.kit.datecalc.common.ccy.CurrencyCalculatorConfig;
  * </pre>
  *
  * @param <E> JDK Date/Calendar, JDK8 LocalDate or Joda LocalDate
+ * @since 1.4.0
  */
 public class CurrencyDateCalculatorBuilder<E> {
     private String ccy1;
