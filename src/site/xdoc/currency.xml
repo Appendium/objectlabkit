@@ -63,7 +63,7 @@
 					algo.
 				</p>
 				<ol>
-					<li>If calculator is setup so, check that TradeDate July 2 is a working day for GBP and for EUR, if not move forward. It is ok, T+0 remains July
+					<li>If calculator is setup so, check that TradeDate July 2 is a working day for GBP and for EUR, if not move forward. Since July 2 is a working day, T+0 remains July
 						2.</li>
 					<li>Consider GBP, calculate T+1: July 3 is it a weekend or a GBP holiday? If yes, T+1 should move forward but July 3 is a working day for GBP and
 						so it is T+1</li>

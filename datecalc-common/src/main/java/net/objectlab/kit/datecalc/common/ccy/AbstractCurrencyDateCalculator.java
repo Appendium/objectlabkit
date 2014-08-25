@@ -274,16 +274,16 @@ public abstract class AbstractCurrencyDateCalculator<E> implements CurrencyDateC
         switch (tenorCode) {
         case OVERNIGHT:
             calc = calculateNextDay(calc);
-            calc = adjustForCcyPairIfRequired(date);
+            calc = adjustForCcyPairIfRequired(calc);
             break;
         case TOM_NEXT: // it would have NOT moved by
             calc = calculateNextDay(calc);
             calc = calculateNextDay(calc);
-            calc = adjustForCcyPairIfRequired(date);
+            calc = adjustForCcyPairIfRequired(calc);
             break;
         case SPOT_NEXT:
             calc = calculateNextDay(calc);
-            calc = adjustForCcyPairIfRequired(date);
+            calc = adjustForCcyPairIfRequired(calc);
             break;
         case SPOT:
             calc = date;
@@ -292,11 +292,11 @@ public abstract class AbstractCurrencyDateCalculator<E> implements CurrencyDateC
             for (int i = 0; i < unit; i++) {
                 calc = calculateNextDay(calc);
             }
-            calc = adjustForCcyPairIfRequired(date);
+            calc = adjustForCcyPairIfRequired(calc);
             break;
         case MONTH:
             calc = addMonths(calc, unit);
-            calc = adjustForCcyPairIfRequired(date);
+            calc = adjustForCcyPairIfRequired(calc);
             break;
         default:
             throw new UnsupportedOperationException("Sorry not yet...");
