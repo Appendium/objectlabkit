@@ -16,11 +16,11 @@ import org.assertj.core.util.Lists;
 
 public final class FxRateExample {
     public static void main(final String[] args) {
-        FxRateCalculatorBuilder builder = new FxRateCalculatorBuilder() //
-                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61")))//
-                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("GBP", "CHF"), null, true, BigDecimalUtil.bd("2.1702"), BigDecimalUtil.bd("2.1707")))//
-                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "GBP"), null, true, BigDecimalUtil.bd("0.7374"), BigDecimalUtil.bd("0.7379")))//
-                .orderedCurrenciesForCross(Lists.newArrayList("GBP")) //
+        final FxRateCalculatorBuilder builder = new FxRateCalculatorBuilder() //
+        .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61")))//
+        .addRateSnapshot(new FxRateImpl(CurrencyPair.of("GBP", "CHF"), null, true, BigDecimalUtil.bd("2.1702"), BigDecimalUtil.bd("2.1707")))//
+        .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "GBP"), null, true, BigDecimalUtil.bd("0.7374"), BigDecimalUtil.bd("0.7379")))//
+        .orderedCurrenciesForCross(Lists.newArrayList("GBP")) //
         ;
 
         // immutable, can be re-used, shared etc
@@ -32,7 +32,7 @@ public final class FxRateExample {
 
     private static void calcEurChf(final FxRateCalculator calc) {
         System.out.println("Calc EUR / CHF =========================");
-        CurrencyPair target = CurrencyPair.of("EUR", "CHF");
+        final CurrencyPair target = CurrencyPair.of("EUR", "CHF");
         final Optional<FxRate> fx = calc.findFx(target);
 
         if (fx.isPresent()) {
@@ -46,7 +46,7 @@ public final class FxRateExample {
         }
 
         // order of the Currency Pair does NOT matter for conversions!
-        CurrencyPair inverseTarget = target.createInverse();
+        final CurrencyPair inverseTarget = target.createInverse();
         final Optional<FxRate> fx2 = calc.findFx(inverseTarget);
 
         if (fx2.isPresent()) {
@@ -62,7 +62,7 @@ public final class FxRateExample {
 
     private static void calcEurUsd(final FxRateCalculator calc) {
         System.out.println("Calc EUR / USD =========================");
-        CurrencyPair target = CurrencyPair.of("EUR", "USD");
+        final CurrencyPair target = CurrencyPair.of("EUR", "USD");
         final Optional<FxRate> fx = calc.findFx(target);
 
         if (fx.isPresent()) {
@@ -75,7 +75,7 @@ public final class FxRateExample {
             System.out.println(target + " $1m => " + amountBuyInUSD); // EUR621,118.01
         }
 
-        CurrencyPair invTgt = target.createInverse();
+        final CurrencyPair invTgt = target.createInverse();
         // order of the Currency Pair does NOT matter for conversions!
         final Optional<FxRate> fx2 = calc.findFx(invTgt);
 

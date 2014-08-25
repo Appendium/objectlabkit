@@ -16,7 +16,7 @@ import net.objectlab.kit.datecalc.common.ccy.CurrencyCalculatorConfig;
             .crossCcyCalendar(usdCalendar) //
             .crossCcyWeek(WorkingWeek.DEFAULT) // Mon-Fri;
             .adjustStartDateWithCurrencyPair(true) // default is true, Move the startDate to a working date for ccy1 and ccy2
-            .tenorHolidayHandler(new LocalDateForwardHandler()) // Forward
+            .tenorHolidayHandler(new LocalDateForwardHandler()) // Forward (or equivalent for your implementation)
             .brokenDateAllowed(false) // use the CrossCcy holidays on Spot and Tenor Date
             .currencyCalculatorConfig(new DefaultCurrencyCalculatorConfig()) // Will be used for finding Working Weeks IF NOT PROVIDED and Latin
                                                                              // American ccy USD handling.

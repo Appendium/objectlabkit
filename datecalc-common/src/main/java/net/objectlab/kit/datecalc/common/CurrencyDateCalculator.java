@@ -2,6 +2,8 @@ package net.objectlab.kit.datecalc.common;
 
 import java.util.List;
 
+import net.objectlab.kit.datecalc.common.ccy.CurrencyCalculatorConfig;
+
 /**
  * A DateCalculator specialised for a currency pair. Implementations should be thread safe and immutable.
  *
@@ -29,7 +31,7 @@ public interface CurrencyDateCalculator<E> {
     /**
      * Calculate the Tenor Date from Spot Date taking into account the working weeks, holidays and spot lag (T+1, T+2 etc).
      * @param startDate the start date which may be adjusted for the ccy pair if enabled.
-     * @param tenor
+     * @param tenor e.g. 1M
      * @return the Tenor Date
      */
     E calculateTenorDate(E startDate, Tenor tenor);
@@ -58,7 +60,7 @@ public interface CurrencyDateCalculator<E> {
 
     /**
      * If enabled show the CrossCcy calendar that may be used on Spot or Tenor dates (in some cases, it is required that GBP/EUR AND USD [the
-     * crossCcy] have all a working day in common for the Spot/Tenor date).  This is configurable {@link CurrencyDateCalculatorBuilder#brokenDateAllowed}.
+     * crossCcy] have all a working day in common for the Spot/Tenor date).  This is configurable {@link CurrencyDateCalculatorBuilder#brokenDateAllowed(boolean)}.
      */
     ReadOnlyHolidayCalendar<E> getCrossCcyCalendar();
 
@@ -74,11 +76,27 @@ public interface CurrencyDateCalculator<E> {
      */
     SpotLag getSpotLag();
 
+    /**
+     * @return true if the calculator adjusts the start date based on the working week and holidays for the currency pair (not the crossCcy).
+     * {@link CurrencyDateCalculatorBuilder#adjustStartDateWithCurrencyPair(boolean)}
+     */
     boolean isAdjustStartDateWithCurrencyPair();
 
+    /**
+     * @return true if the calculator allows a broken date (i.e. a Spot or Tenor date that can fall on a weekend or holiday for the crossCcy).
+     * {@link CurrencyDateCalculatorBuilder#brokenDateAllowed(boolean)}
+     */
     boolean isBrokenDateAllowed();
 
+    /**
+     * @return true if the calculator is using the CrossCcy holidays for T+1 for Ccy1.
+     * {@link CurrencyCalculatorConfig#getCurrenciesSubjectToCrossCcyForT1(String)}
+     */
     boolean isUseCrossCcyOnT1ForCcy1();
 
+    /**
+     * @return true if the calculator is using the CrossCcy holidays for T+1 for Ccy2.
+     * {@link CurrencyCalculatorConfig#getCurrenciesSubjectToCrossCcyForT1(String)}
+     */
     boolean isUseCrossCcyOnT1ForCcy2();
 }

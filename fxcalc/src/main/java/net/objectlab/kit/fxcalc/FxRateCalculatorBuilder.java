@@ -10,6 +10,18 @@ import java.util.stream.Collectors;
 
 /**
  * Parameters for an immutable FxRateCalculator.
+ * <pre>
+ * final FxRateCalculatorBuilder builder = new FxRateCalculatorBuilder() //
+        .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61")))//
+        .addRateSnapshot(new FxRateImpl(CurrencyPair.of("GBP", "CHF"), null, true, BigDecimalUtil.bd("2.1702"), BigDecimalUtil.bd("2.1707")))//
+        .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "GBP"), null, true, BigDecimalUtil.bd("0.7374"), BigDecimalUtil.bd("0.7379")))//
+        .orderedCurrenciesForCross(Lists.newArrayList("GBP", "USD")) // Use GBP as the first cross ccy, if that doesn't work use USD
+        .majorCurrencyRanking(StandardMajorCurrencyRanking.getdefault())
+        .precisionForFxRate(6)
+        .precisionForInverseFxRate(12)
+        .cacheResults(true) // only calculate a cross Fx once, cache for subsequent requests
+        .cacheBaseRates(true); // if a BaseFxRateRateProvider is used, cache the rates instead of calling again for same currency pair
+ * </pre>
  * @author Benoit Xhenseval
  */
 public class FxRateCalculatorBuilder {
