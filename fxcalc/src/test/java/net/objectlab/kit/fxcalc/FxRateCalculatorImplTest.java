@@ -1,0 +1,152 @@
+package net.objectlab.kit.fxcalc;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.Optional;
+
+import net.objectlab.kit.util.BigDecimalUtil;
+
+import org.assertj.core.util.Lists;
+import org.junit.Test;
+
+public class FxRateCalculatorImplTest {
+    @Test
+    public void testEurUsd() {
+        FxRateCalculatorBuilder builder = new FxRateCalculatorBuilder() //
+                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61")))//
+                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("GBP", "CHF"), null, true, BigDecimalUtil.bd("2.1702"), BigDecimalUtil.bd("2.1707")))//
+                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "GBP"), null, true, BigDecimalUtil.bd("0.7374"), BigDecimalUtil.bd("0.7379")))//
+                .orderedCurrenciesForCross(Lists.newArrayList("GBP")) //
+        ;
+
+        // immutable, can be re-used, shared etc
+        final FxRateCalculator calc = new FxRateCalculatorImpl(builder);
+
+        CurrencyPair target = CurrencyPair.of("EUR", "USD");
+        final Optional<FxRate> fx = calc.findFx(target);
+
+        assertThat(fx.isPresent()).isTrue();
+        assertThat(fx.get().getCurrencyPair()).isEqualTo(target);
+        assertThat(fx.get().getBid()).isEqualByComparingTo("1.6");
+        assertThat(fx.get().getAsk()).isEqualByComparingTo("1.61");
+        final MonetaryAmount amountInUSD = fx.get().convertAmountUsingBidOrAsk(Money.of("EUR", 1_000_000L));
+        assertThat(amountInUSD.getCurrency()).isEqualTo("USD");
+        assertThat(amountInUSD.getAmount()).isEqualByComparingTo("1600000");
+
+        // I want to BUY 1m USD with Euros
+        final MonetaryAmount amountBuyInUSD = fx.get().convertAmountUsingBidOrAsk(Money.of("USD", 1_000_000L));
+        assertThat(amountBuyInUSD.getCurrency()).isEqualTo("EUR");
+        assertThat(amountBuyInUSD.getAmount()).isEqualByComparingTo("621118.01");
+
+        CurrencyPair invTgt = target.createInverse();
+        // order of the Currency Pair does NOT matter for conversions!
+        final Optional<FxRate> fx2 = calc.findFx(invTgt);
+
+        assertThat(fx2.isPresent()).isTrue();
+        assertThat(fx2.get().getCurrencyPair()).isEqualTo(invTgt);
+        assertThat(fx2.get().getBid()).isEqualByComparingTo("0.62111801242236024845");
+        assertThat(fx2.get().getAsk()).isEqualByComparingTo("0.625");
+        final MonetaryAmount amountInUSD2 = fx2.get().convertAmountUsingBidOrAsk(Money.of("EUR", 1_000_000L));
+        assertThat(amountInUSD2.getCurrency()).isEqualTo("USD");
+        assertThat(amountInUSD2.getAmount()).isEqualByComparingTo("1600000");
+
+        // I want to BUY 1m USD with Euros
+        final MonetaryAmount amountBuyInUSD2 = fx2.get().convertAmountUsingBidOrAsk(Money.of("USD", 1_000_000L));
+        assertThat(amountBuyInUSD2.getCurrency()).isEqualTo("EUR");
+        assertThat(amountBuyInUSD2.getAmount()).isEqualByComparingTo("621118.01");
+    }
+
+    @Test
+    public void testEurChf() {
+        FxRateCalculatorBuilder builder = new FxRateCalculatorBuilder() //
+                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61")))//
+                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("GBP", "CHF"), null, true, BigDecimalUtil.bd("2.1702"), BigDecimalUtil.bd("2.1707")))//
+                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "GBP"), null, true, BigDecimalUtil.bd("0.7374"), BigDecimalUtil.bd("0.7379")))//
+                .orderedCurrenciesForCross(Lists.newArrayList("GBP")) //
+        ;
+
+        // immutable, can be re-used, shared etc
+        final FxRateCalculator calc = new FxRateCalculatorImpl(builder);
+
+        CurrencyPair target = CurrencyPair.of("EUR", "CHF");
+        final Optional<FxRate> fx = calc.findFx(target);
+
+        assertThat(fx.isPresent()).isTrue();
+        assertThat(fx.get().getBid()).isEqualByComparingTo("1.600305");
+        assertThat(fx.get().getAsk()).isEqualByComparingTo("1.601760");
+        final MonetaryAmount amountInCHF = fx.get().convertAmountUsingBidOrAsk(Money.of("EUR", 1_000_000L));
+        assertThat(amountInCHF.getCurrency()).isEqualTo("CHF");
+        assertThat(amountInCHF.getAmount()).isEqualTo("1600305.00");
+        final MonetaryAmount amountBuyInEUR = fx.get().convertAmountUsingBidOrAsk(Money.of("CHF", 1_000_000L));
+        assertThat(amountBuyInEUR.getCurrency()).isEqualTo("EUR");
+        assertThat(amountBuyInEUR.getAmount()).isEqualTo("624313.26");
+
+        // order of the Currency Pair does NOT matter for conversions!
+        CurrencyPair inverseTarget = target.createInverse();
+        final Optional<FxRate> fx2 = calc.findFx(inverseTarget);
+        assertThat(fx2.isPresent()).isTrue();
+        assertThat(fx2.get().getBid()).isEqualByComparingTo("0.62431325541903905704");
+        assertThat(fx2.get().getAsk()).isEqualByComparingTo("0.62488088208185314674");
+        final MonetaryAmount amountInCHF2 = fx2.get().convertAmountUsingBidOrAsk(Money.of("EUR", 1_000_000L));
+        assertThat(amountInCHF2.getCurrency()).isEqualTo("CHF");
+        assertThat(amountInCHF2.getAmount()).isEqualTo("1600305.00");
+        final MonetaryAmount amountBuyInEUR2 = fx2.get().convertAmountUsingBidOrAsk(Money.of("CHF", 1_000_000L));
+        assertThat(amountBuyInEUR2.getCurrency()).isEqualTo("EUR");
+        assertThat(amountBuyInEUR2.getAmount()).isEqualTo("624313.26");
+    }
+
+    @Test
+    public void testNoPossibleCross() {
+        FxRateCalculatorBuilder builder = new FxRateCalculatorBuilder() //
+                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61")))//
+                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("GBP", "CHF"), null, true, BigDecimalUtil.bd("2.1702"), BigDecimalUtil.bd("2.1707")))//
+                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "GBP"), null, true, BigDecimalUtil.bd("0.7374"), BigDecimalUtil.bd("0.7379")))//
+                .orderedCurrenciesForCross(Lists.newArrayList("USD")) // impossible to find EUR/CHF
+        ;
+
+        final FxRateCalculator calc = new FxRateCalculatorImpl(builder);
+
+        CurrencyPair target = CurrencyPair.of("EUR", "CHF");
+        final Optional<FxRate> fx = calc.findFx(target);
+
+        assertThat(fx.isPresent()).isFalse();
+    }
+
+    @Test
+    public void testSecondPossibleCross() {
+        FxRateCalculatorBuilder builder = new FxRateCalculatorBuilder() //
+                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61")))//
+                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("GBP", "CHF"), null, true, BigDecimalUtil.bd("2.1702"), BigDecimalUtil.bd("2.1707")))//
+                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "GBP"), null, true, BigDecimalUtil.bd("0.7374"), BigDecimalUtil.bd("0.7379")))//
+                .orderedCurrenciesForCross(Lists.newArrayList("USD", "GBP")) // impossible to find EUR/CHF
+        ;
+
+        final FxRateCalculator calc = new FxRateCalculatorImpl(builder);
+
+        CurrencyPair target = CurrencyPair.of("EUR", "CHF");
+        final Optional<FxRate> fx = calc.findFx(target);
+
+        assertThat(fx.isPresent()).isTrue();
+        assertThat(fx.get().getBid()).isEqualByComparingTo("1.600305");
+        assertThat(fx.get().getAsk()).isEqualByComparingTo("1.601760");
+        final MonetaryAmount amountInCHF = fx.get().convertAmountUsingBidOrAsk(Money.of("EUR", 1_000_000L));
+        assertThat(amountInCHF.getCurrency()).isEqualTo("CHF");
+        assertThat(amountInCHF.getAmount()).isEqualTo("1600305.00");
+        final MonetaryAmount amountBuyInEUR = fx.get().convertAmountUsingBidOrAsk(Money.of("CHF", 1_000_000L));
+        assertThat(amountBuyInEUR.getCurrency()).isEqualTo("EUR");
+        assertThat(amountBuyInEUR.getAmount()).isEqualTo("624313.26");
+
+        // order of the Currency Pair does NOT matter for conversions!
+        CurrencyPair inverseTarget = target.createInverse();
+        final Optional<FxRate> fx2 = calc.findFx(inverseTarget);
+        assertThat(fx2.isPresent()).isTrue();
+        assertThat(fx2.get().getBid()).isEqualByComparingTo("0.62431325541903905704");
+        assertThat(fx2.get().getAsk()).isEqualByComparingTo("0.62488088208185314674");
+        final MonetaryAmount amountInCHF2 = fx2.get().convertAmountUsingBidOrAsk(Money.of("EUR", 1_000_000L));
+        assertThat(amountInCHF2.getCurrency()).isEqualTo("CHF");
+        assertThat(amountInCHF2.getAmount()).isEqualTo("1600305.00");
+        final MonetaryAmount amountBuyInEUR2 = fx2.get().convertAmountUsingBidOrAsk(Money.of("CHF", 1_000_000L));
+        assertThat(amountBuyInEUR2.getCurrency()).isEqualTo("EUR");
+        assertThat(amountBuyInEUR2.getAmount()).isEqualTo("624313.26");
+    }
+}

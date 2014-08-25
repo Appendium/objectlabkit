@@ -1,61 +1,97 @@
 package net.objectlab.kit.fxcalc;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 public class FxRateCalculatorImpl implements FxRateCalculator {
     private final Map<CurrencyPair, FxRate> rates = new HashMap<>();
+    private final BaseFxRateProvider baseFxRateProvider;
+    private final MajorCurrencyRanking majorCurrencyRanking;
+    private final List<String> orderedCurrenciesForCross;
+    private final int precisionForFxRate;
+    private final int precisionForInverseFxRate;
+    private final boolean cacheResults;
+    private final boolean cacheBaseRates;
 
     public FxRateCalculatorImpl(final FxRateCalculatorBuilder builder) {
-        rates.putAll(builder.getRates());
+        builder.checkValid();
+
+        rates.putAll(builder.getRatesSnapshot());
+        this.baseFxRateProvider = builder.getBaseFxRateProvider();
+        this.majorCurrencyRanking = builder.getMajorCurrencyRanking();
+        this.orderedCurrenciesForCross = builder.getOrderedCurrenciesForCross();
+        this.precisionForFxRate = builder.getPrecisionForFxRate();
+        this.precisionForInverseFxRate = builder.getPrecisionForInverseFxRate();
+        this.cacheBaseRates = builder.isCacheBaseRates();
+        this.cacheResults = builder.isCacheResults();
+    }
+
+    private FxRate getBaseRate(final CurrencyPair ccyPair) {
+        FxRate fxRate = rates.get(ccyPair);
+
+        if (fxRate == null && baseFxRateProvider != null) {
+            final Optional<FxRate> latetsRate = baseFxRateProvider.getLatetsRate(ccyPair);
+            if (latetsRate.isPresent()) {
+                fxRate = latetsRate.get();
+                if (cacheBaseRates) {
+                    rates.put(ccyPair, fxRate);
+                }
+            }
+        }
+        return fxRate;
     }
 
     @Override
     public Optional<FxRate> findFx(final CurrencyPair ccyPair) {
-        FxRate fxRate = rates.get(ccyPair);
+        FxRate fxRate = getBaseRate(ccyPair);
         if (fxRate == null) {
             // try inverse
-            final FxRate inverse = rates.get(ccyPair.createInverse());
+            final FxRate inverse = getBaseRate(ccyPair.createInverse());
 
             if (inverse != null) {
                 fxRate = inverse.createInverse();
-                rates.put(ccyPair, fxRate);
             } else {
-                fxRate = findCrossCcy(ccyPair, "GBP");
+                for (final String crossCcy : orderedCurrenciesForCross) {
+                    fxRate = findViaCrossCcy(ccyPair, crossCcy);
+                    if (fxRate != null) {
+                        if (cacheResults) {
+                            rates.put(ccyPair, fxRate);
+                        }
+                        break;
+                    }
+                }
             }
         }
 
         return Optional.ofNullable(fxRate);
     }
 
-    private FxRate findCrossCcy(CurrencyPair ccyPair, String crossCcy) {
-        CurrencyPair xCcyPair = CurrencyPair.of(crossCcy, ccyPair.getCcy1());
-        FxRate xCcy1 = rates.get(xCcyPair);
-        boolean xCcy1Inverse = false;
+    private FxRate findViaCrossCcy(final CurrencyPair ccyPair, final String crossCcy) {
+        final CurrencyPair xCcyPair = CurrencyPair.of(crossCcy, ccyPair.getCcy1());
+        FxRate xCcy1 = getBaseRate(xCcyPair);
         if (xCcy1 == null) {
             // try inverse
-            final FxRate inverse = rates.get(xCcyPair.createInverse());
+            final FxRate inverse = getBaseRate(xCcyPair.createInverse());
             if (inverse != null) {
                 xCcy1 = inverse.createInverse();
-                xCcy1Inverse = true;
             }
         }
 
         if (xCcy1 != null) {
-            CurrencyPair xCcy2Pair = CurrencyPair.of(ccyPair.getCcy2(), crossCcy);
-            FxRate xCcy2 = rates.get(xCcy2Pair);
-            boolean xCcy2Inverse = false;
+            final CurrencyPair xCcy2Pair = CurrencyPair.of(ccyPair.getCcy2(), crossCcy);
+            FxRate xCcy2 = getBaseRate(xCcy2Pair);
             if (xCcy2 == null) {
                 // try inverse
-                final FxRate inverse = rates.get(xCcy2Pair.createInverse());
+                final FxRate inverse = getBaseRate(xCcy2Pair.createInverse());
                 if (inverse != null) {
                     xCcy2 = inverse.createInverse();
-                    xCcy2Inverse = true;
                 }
             }
-
-            return CrossRateCalculator.calculateCross(ccyPair, xCcy1, xCcy2, 10, StandardMajorCurrencyRanking.getDefault());
+            if (xCcy2 != null) {
+                return CrossRateCalculator.calculateCross(ccyPair, xCcy1, xCcy2, precisionForFxRate, majorCurrencyRanking);
+            }
         }
         return null;
     }

@@ -12,12 +12,15 @@ import net.objectlab.kit.fxcalc.MonetaryAmount;
 import net.objectlab.kit.fxcalc.Money;
 import net.objectlab.kit.util.BigDecimalUtil;
 
+import org.assertj.core.util.Lists;
+
 public final class FxRateExample {
     public static void main(final String[] args) {
         FxRateCalculatorBuilder builder = new FxRateCalculatorBuilder() //
-                .addRate(new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61")))//
-                .addRate(new FxRateImpl(CurrencyPair.of("GBP", "CHF"), null, true, BigDecimalUtil.bd("2.1702"), BigDecimalUtil.bd("2.1707")))//
-                .addRate(new FxRateImpl(CurrencyPair.of("EUR", "GBP"), null, true, BigDecimalUtil.bd("0.7374"), BigDecimalUtil.bd("0.7379")))//
+                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61")))//
+                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("GBP", "CHF"), null, true, BigDecimalUtil.bd("2.1702"), BigDecimalUtil.bd("2.1707")))//
+                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "GBP"), null, true, BigDecimalUtil.bd("0.7374"), BigDecimalUtil.bd("0.7379")))//
+                .orderedCurrenciesForCross(Lists.newArrayList("GBP")) //
         ;
 
         // immutable, can be re-used, shared etc
@@ -35,11 +38,11 @@ public final class FxRateExample {
         if (fx.isPresent()) {
             // I want to sell 1m Euros in CHF
             final MonetaryAmount amountInCHF = fx.get().convertAmountUsingBidOrAsk(Money.of("EUR", 1_000_000L));
-            System.out.println(target + " €1m => " + amountInCHF); // CHF 1600305.48
+            System.out.println(target + " €1m => " + amountInCHF); // CHF 1600305.00
 
             // I want to BUY 1m CHF with Euros
             final MonetaryAmount amountBuyInEUR = fx.get().convertAmountUsingBidOrAsk(Money.of("CHF", 1_000_000L));
-            System.out.println(target + " " + amountBuyInEUR); // EUR 624313.44
+            System.out.println(target + " " + amountBuyInEUR); // EUR 624313.26
         }
 
         // order of the Currency Pair does NOT matter for conversions!
@@ -49,11 +52,11 @@ public final class FxRateExample {
         if (fx2.isPresent()) {
             // I want to sell 1m Euros in USD
             final MonetaryAmount amountInCHF = fx2.get().convertAmountUsingBidOrAsk(Money.of("EUR", 1_000_000L));
-            System.out.println(inverseTarget + " €1m => " + amountInCHF); // CHF 1600305.48
+            System.out.println(inverseTarget + " €1m => " + amountInCHF); // CHF 1600305.00
 
             // I want to BUY 1m USD with Euros
             final MonetaryAmount amountBuyInEUR = fx2.get().convertAmountUsingBidOrAsk(Money.of("CHF", 1_000_000L));
-            System.out.println(inverseTarget + " " + amountBuyInEUR); // EUR 624313.44
+            System.out.println(inverseTarget + " " + amountBuyInEUR); // EUR 624313.26
         }
     }
 

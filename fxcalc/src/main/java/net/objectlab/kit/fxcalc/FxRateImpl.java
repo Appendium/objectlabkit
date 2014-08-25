@@ -37,9 +37,9 @@ public class FxRateImpl implements FxRate {
         final StringBuilder b = new StringBuilder();
         b.append(currencyPair).append(" Mkt Convention:").append(marketConvention).append(System.getProperty("line.separator"));
         b.append("Quoter buys  ").append(currencyPair.getCcy1()).append(" and sells ").append(currencyPair.getCcy2()).append(" at ").append(bid)
-        .append(System.getProperty("line.separator"));
+                .append(System.getProperty("line.separator"));
         b.append("Quoter sells ").append(currencyPair.getCcy1()).append(" and buys  ").append(currencyPair.getCcy2()).append(" at ").append(ask)
-        .append(System.getProperty("line.separator"));
+                .append(System.getProperty("line.separator"));
 
         return b.toString();
     }
@@ -130,10 +130,10 @@ public class FxRateImpl implements FxRate {
             throw new IllegalArgumentException("The original ccy [" + originalAmount.getCurrency() + "] must be one of the pair's " + currencyPair);
         }
         return currencyPair.getCcy1().equals(originalAmount.getCurrency()) ? //
-                new Money(currencyPair.getCcy2(), BigDecimalUtil.setScale(BigDecimalUtil.multiply(originalAmount.getAmount(), getMid()), 2))
-        : new Money(currencyPair.getCcy1(), BigDecimalUtil.setScale(
-                BigDecimalUtil.divide(BigDecimalUtil.setScale(originalAmount.getAmount(), 10), getMid(), BigDecimal.ROUND_HALF_UP), 2)) //
-                ;
+        new Money(currencyPair.getCcy2(), BigDecimalUtil.setScale(BigDecimalUtil.multiply(originalAmount.getAmount(), getMid()), 2))
+                : new Money(currencyPair.getCcy1(), BigDecimalUtil.setScale(
+                        BigDecimalUtil.divide(BigDecimalUtil.setScale(originalAmount.getAmount(), 10), getMid(), BigDecimal.ROUND_HALF_UP), 2)) //
+        ;
     }
 
     @Override
@@ -142,9 +142,9 @@ public class FxRateImpl implements FxRate {
             throw new IllegalArgumentException("The original ccy [" + originalAmount.getCurrency() + "] must be one of the pair's " + currencyPair);
         }
         return currencyPair.getCcy1().equals(originalAmount.getCurrency()) ? //
-                new Money(currencyPair.getCcy2(), BigDecimalUtil.setScale(BigDecimalUtil.multiply(originalAmount.getAmount(), bid), 2))
-        : new Money(currencyPair.getCcy1(), BigDecimalUtil.setScale(
-                BigDecimalUtil.divide(BigDecimalUtil.setScale(originalAmount.getAmount(), 10), ask, BigDecimal.ROUND_HALF_UP), 2)) //
-                ;
+        new Money(currencyPair.getCcy2(), BigDecimalUtil.setScale(BigDecimalUtil.multiply(originalAmount.getAmount(), bid), 2))
+                : new Money(currencyPair.getCcy1(), BigDecimalUtil.setScale(
+                        BigDecimalUtil.divide(BigDecimalUtil.setScale(originalAmount.getAmount(), 10), ask, BigDecimal.ROUND_HALF_UP), 2)) //
+        ;
     }
 }
