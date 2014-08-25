@@ -58,7 +58,7 @@ public interface CurrencyDateCalculator<E> {
 
     /**
      * If enabled show the CrossCcy calendar that may be used on Spot or Tenor dates (in some cases, it is required that GBP/EUR AND USD [the
-     * crossCcy] have all a working day in common for the Spot/Tenor date).  This is configurable {@link CurrencyDateCalculatorBuilder.brokenDateAllowed}.
+     * crossCcy] have all a working day in common for the Spot/Tenor date).  This is configurable {@link CurrencyDateCalculatorBuilder#brokenDateAllowed}.
      */
     ReadOnlyHolidayCalendar<E> getCrossCcyCalendar();
 
