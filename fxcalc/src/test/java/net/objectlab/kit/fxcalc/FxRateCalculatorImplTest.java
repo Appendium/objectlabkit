@@ -27,6 +27,8 @@ public class FxRateCalculatorImplTest {
 
         assertThat(fx.isPresent()).isTrue();
         assertThat(fx.get().getCurrencyPair()).isEqualTo(target);
+        assertThat(fx.get().getCrossCcy().isPresent()).isFalse();
+        assertThat(fx.get().isMarketConvention()).isTrue();
         assertThat(fx.get().getBid()).isEqualByComparingTo("1.6");
         assertThat(fx.get().getAsk()).isEqualByComparingTo("1.61");
         final MonetaryAmount amountInUSD = fx.get().convertAmountUsingBidOrAsk(Money.of("EUR", 1_000_000L));
@@ -44,7 +46,9 @@ public class FxRateCalculatorImplTest {
 
         assertThat(fx2.isPresent()).isTrue();
         assertThat(fx2.get().getCurrencyPair()).isEqualTo(invTgt);
-        assertThat(fx2.get().getBid()).isEqualByComparingTo("0.62111801242236024845");
+        assertThat(fx2.get().getCrossCcy().isPresent()).isFalse();
+        assertThat(fx2.get().isMarketConvention()).isFalse();
+        assertThat(fx2.get().getBid()).isEqualByComparingTo("0.621118012422");
         assertThat(fx2.get().getAsk()).isEqualByComparingTo("0.625");
         final MonetaryAmount amountInUSD2 = fx2.get().convertAmountUsingBidOrAsk(Money.of("EUR", 1_000_000L));
         assertThat(amountInUSD2.getCurrency()).isEqualTo("USD");
@@ -72,6 +76,8 @@ public class FxRateCalculatorImplTest {
         final Optional<FxRate> fx = calc.findFx(target);
 
         assertThat(fx.isPresent()).isTrue();
+        assertThat(fx.get().isMarketConvention()).isTrue();
+        assertThat(fx.get().getCrossCcy().get()).isEqualTo("GBP");
         assertThat(fx.get().getBid()).isEqualByComparingTo("1.600305");
         assertThat(fx.get().getAsk()).isEqualByComparingTo("1.601760");
         final MonetaryAmount amountInCHF = fx.get().convertAmountUsingBidOrAsk(Money.of("EUR", 1_000_000L));
@@ -85,8 +91,10 @@ public class FxRateCalculatorImplTest {
         CurrencyPair inverseTarget = target.createInverse();
         final Optional<FxRate> fx2 = calc.findFx(inverseTarget);
         assertThat(fx2.isPresent()).isTrue();
-        assertThat(fx2.get().getBid()).isEqualByComparingTo("0.62431325541903905704");
-        assertThat(fx2.get().getAsk()).isEqualByComparingTo("0.62488088208185314674");
+        assertThat(fx2.get().getCrossCcy().get()).isEqualTo("GBP");
+        assertThat(fx2.get().isMarketConvention()).isFalse();
+        assertThat(fx2.get().getBid()).isEqualByComparingTo("0.624313255419");
+        assertThat(fx2.get().getAsk()).isEqualByComparingTo("0.624880882082");
         final MonetaryAmount amountInCHF2 = fx2.get().convertAmountUsingBidOrAsk(Money.of("EUR", 1_000_000L));
         assertThat(amountInCHF2.getCurrency()).isEqualTo("CHF");
         assertThat(amountInCHF2.getAmount()).isEqualTo("1600305.00");
@@ -118,7 +126,7 @@ public class FxRateCalculatorImplTest {
                 .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61")))//
                 .addRateSnapshot(new FxRateImpl(CurrencyPair.of("GBP", "CHF"), null, true, BigDecimalUtil.bd("2.1702"), BigDecimalUtil.bd("2.1707")))//
                 .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "GBP"), null, true, BigDecimalUtil.bd("0.7374"), BigDecimalUtil.bd("0.7379")))//
-                .orderedCurrenciesForCross(Lists.newArrayList("USD", "GBP")) // impossible to find EUR/CHF
+                .orderedCurrenciesForCross(Lists.newArrayList("USD", "GBP")) // impossible to find EUR/CHF via USD but ok with GBP
         ;
 
         final FxRateCalculator calc = new FxRateCalculatorImpl(builder);
@@ -127,6 +135,8 @@ public class FxRateCalculatorImplTest {
         final Optional<FxRate> fx = calc.findFx(target);
 
         assertThat(fx.isPresent()).isTrue();
+        assertThat(fx.get().isMarketConvention()).isTrue();
+        assertThat(fx.get().getCrossCcy().get()).isEqualTo("GBP");
         assertThat(fx.get().getBid()).isEqualByComparingTo("1.600305");
         assertThat(fx.get().getAsk()).isEqualByComparingTo("1.601760");
         final MonetaryAmount amountInCHF = fx.get().convertAmountUsingBidOrAsk(Money.of("EUR", 1_000_000L));
@@ -140,8 +150,10 @@ public class FxRateCalculatorImplTest {
         CurrencyPair inverseTarget = target.createInverse();
         final Optional<FxRate> fx2 = calc.findFx(inverseTarget);
         assertThat(fx2.isPresent()).isTrue();
-        assertThat(fx2.get().getBid()).isEqualByComparingTo("0.62431325541903905704");
-        assertThat(fx2.get().getAsk()).isEqualByComparingTo("0.62488088208185314674");
+        assertThat(fx2.get().getCrossCcy().get()).isEqualTo("GBP");
+        assertThat(fx2.get().isMarketConvention()).isFalse();
+        assertThat(fx2.get().getBid()).isEqualByComparingTo("0.624313255419");
+        assertThat(fx2.get().getAsk()).isEqualByComparingTo("0.624880882082");
         final MonetaryAmount amountInCHF2 = fx2.get().convertAmountUsingBidOrAsk(Money.of("EUR", 1_000_000L));
         assertThat(amountInCHF2.getCurrency()).isEqualTo("CHF");
         assertThat(amountInCHF2.getAmount()).isEqualTo("1600305.00");

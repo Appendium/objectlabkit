@@ -5,6 +5,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * Main implementation, uses the ratesSnapshot or BaseFxRateProvider to find the FX Rate, if not present then
+ * try via a cross currency in the order specified in orderedCurrenciesForCross.
+ * 
+ * Uses the {@link CrossRateCalculator}
+ * 
+ * @author Benoit Xhenseval
+ *
+ */
 public class FxRateCalculatorImpl implements FxRateCalculator {
     private final Map<CurrencyPair, FxRate> rates = new HashMap<>();
     private final BaseFxRateProvider baseFxRateProvider;
@@ -51,7 +60,10 @@ public class FxRateCalculatorImpl implements FxRateCalculator {
             final FxRate inverse = getBaseRate(ccyPair.createInverse());
 
             if (inverse != null) {
-                fxRate = inverse.createInverse();
+                fxRate = inverse.createInverse(precisionForInverseFxRate);
+                if (cacheResults) {
+                    rates.put(ccyPair, fxRate);
+                }
             } else {
                 for (final String crossCcy : orderedCurrenciesForCross) {
                     fxRate = findViaCrossCcy(ccyPair, crossCcy);
@@ -75,7 +87,7 @@ public class FxRateCalculatorImpl implements FxRateCalculator {
             // try inverse
             final FxRate inverse = getBaseRate(xCcyPair.createInverse());
             if (inverse != null) {
-                xCcy1 = inverse.createInverse();
+                xCcy1 = inverse.createInverse(precisionForInverseFxRate);
             }
         }
 
@@ -86,7 +98,7 @@ public class FxRateCalculatorImpl implements FxRateCalculator {
                 // try inverse
                 final FxRate inverse = getBaseRate(xCcy2Pair.createInverse());
                 if (inverse != null) {
-                    xCcy2 = inverse.createInverse();
+                    xCcy2 = inverse.createInverse(precisionForInverseFxRate);
                 }
             }
             if (xCcy2 != null) {
@@ -95,5 +107,4 @@ public class FxRateCalculatorImpl implements FxRateCalculator {
         }
         return null;
     }
-
 }

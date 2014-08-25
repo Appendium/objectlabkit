@@ -61,6 +61,11 @@ public interface FxRate {
     FxRate createInverse();
 
     /**
+     * Create the FX Rate for ccy2 / ccy1, return a new FxRate with given precision; the inverse of bid / ask are swapped around.
+     */
+    FxRate createInverse(int precision);
+
+    /**
      * Nice human readable description of the FX Rate, useful reminder.
      */
     String getDescription();

@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import net.objectlab.kit.datecalc.common.CurrencyDateCalculator;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
 /**
@@ -17,14 +18,17 @@ import net.objectlab.kit.datecalc.common.WorkingWeek;
  * @author Benoit Xhenseval
  */
 public class DefaultCurrencyCalculatorConfig implements CurrencyCalculatorConfig {
-    private Set<String> currenciesSubjectToUSDForT1 = new HashSet<String>();
+    private Map<String, Set<String>> currenciesSubjectToCrossCcyForT1 = new HashMap<String, Set<String>>();
     private Map<String, WorkingWeek> workingWeeks = new HashMap<String, WorkingWeek>();
 
     public DefaultCurrencyCalculatorConfig() {
         super();
-        currenciesSubjectToUSDForT1.add("MXN");
-        currenciesSubjectToUSDForT1.add("CLP");
-        currenciesSubjectToUSDForT1.add("ARS");
+        final Set<String> subjectToUsd = new HashSet<String>();
+        subjectToUsd.add("MXN");
+        subjectToUsd.add("CLP");
+        subjectToUsd.add("ARS");
+        currenciesSubjectToCrossCcyForT1.put(CurrencyDateCalculator.USD_CODE, subjectToUsd);
+
         workingWeeks.put("AED", WorkingWeek.ARABIC_WEEK);
         workingWeeks.put("BHD", WorkingWeek.ARABIC_WEEK);
         workingWeeks.put("EGP", WorkingWeek.ARABIC_WEEK);
@@ -38,12 +42,12 @@ public class DefaultCurrencyCalculatorConfig implements CurrencyCalculatorConfig
     /**
      * Will take a copy of a non null set but doing so by replacing the internal one in one go for consistency.
      */
-    public void setCurrenciesSubjectToUSDForT1(final Set<String> currenciesSubjectToUSDForT1) {
-        final Set<String> copy = new HashSet<String>();
-        if (currenciesSubjectToUSDForT1 != null) {
-            copy.addAll(currenciesSubjectToUSDForT1);
+    public void setCurrenciesSubjectToCrossCcyForT1(final Map<String, Set<String>> currenciesSubjectToCrossCcyForT1) {
+        final Map<String, Set<String>> copy = new HashMap<String, Set<String>>();
+        if (currenciesSubjectToCrossCcyForT1 != null) {
+            copy.putAll(currenciesSubjectToCrossCcyForT1);
         }
-        this.currenciesSubjectToUSDForT1 = copy;
+        this.currenciesSubjectToCrossCcyForT1 = copy;
     }
 
     /**
@@ -58,8 +62,9 @@ public class DefaultCurrencyCalculatorConfig implements CurrencyCalculatorConfig
     /**
      * @return an unmodifiable set of currencies.
      */
-    public Set<String> getCurrenciesSubjectToUSDForT1() {
-        return Collections.unmodifiableSet(currenciesSubjectToUSDForT1);
+    public Set<String> getCurrenciesSubjectToCrossCcyForT1(final String crossCcy) {
+        final Set<String> s = currenciesSubjectToCrossCcyForT1.get(crossCcy);
+        return s != null ? Collections.unmodifiableSet(s) : Collections.<String> emptySet();
     }
 
     /**

@@ -19,7 +19,7 @@ public interface BaseFxRateProvider {
     /**
      * Up to the implementer to get the latest FX Rate for the given pair, that could be from your DB, from Reuters or
      * your own market making tools.
-     * @param pair
+     * @param pair the currency pair (typically a base one vs USD or vs EUR)
      * @return optional FxRate
      */
     Optional<FxRate> getLatestRate(CurrencyPair pair);

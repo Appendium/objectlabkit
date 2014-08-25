@@ -42,9 +42,10 @@ import net.objectlab.kit.datecalc.common.WorkingWeek;
  */
 public interface CurrencyCalculatorConfig {
     /**
-     * @return set of currency code subject to USD Holidays for T+1. Typically MXN/CLP/ARS.
+     * @param crossCcy the cross currency used
+     * @return set of currency code subject to CrossCcy Holidays for T+1. (for USD, typically MXN/CLP/ARS).
      */
-    Set<String> getCurrenciesSubjectToUSDForT1();
+    Set<String> getCurrenciesSubjectToCrossCcyForT1(String crossCcy);
 
     /**
      * Return a default Mon-Fri for most, but some might be Sun-Thu (Arabic countries).

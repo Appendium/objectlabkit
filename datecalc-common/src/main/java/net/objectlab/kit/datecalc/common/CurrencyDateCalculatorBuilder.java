@@ -17,7 +17,7 @@ import net.objectlab.kit.datecalc.common.ccy.CurrencyCalculatorConfig;
             .crossCcyWeek(WorkingWeek.DEFAULT) // Mon-Fri;
             .adjustStartDateWithCurrencyPair(true) // default is true, Move the startDate to a working date for ccy1 and ccy2
             .tenorHolidayHandler(new LocalDateForwardHandler()) // Forward
-            .brokenDateAllowed(true) // use USD holidays on Spot Date
+            .brokenDateAllowed(false) // use the CrossCcy holidays on Spot and Tenor Date
             .currencyCalculatorConfig(new DefaultCurrencyCalculatorConfig()) // Will be used for finding Working Weeks IF NOT PROVIDED and Latin
                                                                              // American ccy USD handling.
  * </pre>
@@ -193,7 +193,7 @@ public class CurrencyDateCalculatorBuilder<E> {
     /**
      * If true, then the calculator can return a SpotDate/TenorDate where the cross currency is NOT a trading date (e.g. July 4 for EUR/GBP which
      * usually would be skipped).
-     * @param brokenDateAllowed default true
+     * @param brokenDateAllowed default false
      * @return the builder
      */
     public CurrencyDateCalculatorBuilder<E> brokenDateAllowed(final boolean brokenDateAllowed) {
@@ -201,6 +201,11 @@ public class CurrencyDateCalculatorBuilder<E> {
         return this;
     }
 
+    /**
+     * Provides information about currencies subject to USD on T+1 and WorkingWeeks if not specified individually.
+     * @param currencyCalculatorConfig the config
+     * @return
+     */
     public CurrencyDateCalculatorBuilder<E> currencyCalculatorConfig(final CurrencyCalculatorConfig currencyCalculatorConfig) {
         this.currencyCalculatorConfig = currencyCalculatorConfig;
         return this;

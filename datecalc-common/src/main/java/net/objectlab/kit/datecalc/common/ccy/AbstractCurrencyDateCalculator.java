@@ -38,7 +38,7 @@ import net.objectlab.kit.datecalc.common.WorkingWeek;
  * If T+1 is a USD holiday, then the spot date for the affected currencies will be T+3.
  * For example, if the trade date is a Monday and a USD holiday falls on the Tuesday,
  * then the spot date for EUR/USD will be the Wednesday, but the spot date for USD/MXN will be the Thursday.
- * 
+ *
  * @since 1.4.0
  */
 public abstract class AbstractCurrencyDateCalculator<E> implements CurrencyDateCalculator<E>, NonWorkingDayChecker<E> {
@@ -79,9 +79,9 @@ public abstract class AbstractCurrencyDateCalculator<E> implements CurrencyDateC
         this.spotLag = builder.getSpotLag();
         this.adjustStartDateWithCcy1Ccy2 = builder.isAdjustStartDateWithCurrencyPair();
         this.useCrossCcyOnT_1ForCcy1 = builder.getCurrencyCalculatorConfig() != null
-                && builder.getCurrencyCalculatorConfig().getCurrenciesSubjectToUSDForT1().contains(ccy1);
+                && builder.getCurrencyCalculatorConfig().getCurrenciesSubjectToCrossCcyForT1(crossCcy).contains(ccy1);
         this.useCrossCcyOnT_1ForCcy2 = builder.getCurrencyCalculatorConfig() != null
-                && builder.getCurrencyCalculatorConfig().getCurrenciesSubjectToUSDForT1().contains(ccy2);
+                && builder.getCurrencyCalculatorConfig().getCurrenciesSubjectToCrossCcyForT1(crossCcy).contains(ccy2);
     }
 
     public boolean isUseCrossCcyOnT1ForCcy1() {
@@ -128,7 +128,7 @@ public abstract class AbstractCurrencyDateCalculator<E> implements CurrencyDateC
         return ccy2HolidayCalendar;
     }
 
-    public ReadOnlyHolidayCalendar<E> getUsdCalendar() {
+    public ReadOnlyHolidayCalendar<E> getCrossCcyCalendar() {
         return crossCcyHolidayCalendar;
     }
 
@@ -140,7 +140,7 @@ public abstract class AbstractCurrencyDateCalculator<E> implements CurrencyDateC
         return ccy2Week;
     }
 
-    public WorkingWeek getUsdWeek() {
+    public WorkingWeek getCrossCcyWeek() {
         return crossCcyWeek;
     }
 
@@ -224,10 +224,10 @@ public abstract class AbstractCurrencyDateCalculator<E> implements CurrencyDateC
         if (spotLag != SpotLag.T_0) {
             if (spotLag == SpotLag.T_2) {
                 calcSpot = calculateNextWorkingDay(calcSpot, workingWeek, crossCcy.equalsIgnoreCase(ccy) ? null : calendar); // crossCcy
-                                                                                                                             // does
-                                                                                                                             // not
-                                                                                                                             // impact
-                                                                                                                             // T+1
+                // does
+                // not
+                // impact
+                // T+1
 
                 if (useCrossCcyOnT_1ForCcy1 && ccy1.equals(ccy) || useCrossCcyOnT_1ForCcy2 && ccy2.equals(ccy)) {
                     // move if USD is holiday

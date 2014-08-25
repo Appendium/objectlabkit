@@ -52,6 +52,14 @@ public class FxRateImpl implements FxRate {
         return f;
     }
 
+    @Override
+    public FxRate createInverse(int precision) {
+        final FxRateImpl f = new FxRateImpl(currencyPair.createInverse(), crossCcy.isPresent() ? crossCcy.get() : null, !marketConvention);
+        f.setAsk(BigDecimalUtil.setScale(BigDecimalUtil.inverse(bid), precision));
+        f.setBid(BigDecimalUtil.setScale(BigDecimalUtil.inverse(ask), precision));
+        return f;
+    }
+
     public FxRateImpl(final CurrencyPair currencyPair, final String crossCcy, final boolean marketConvention) {
         super();
         this.currencyPair = currencyPair;
