@@ -6,23 +6,15 @@ import java.util.Optional;
 import net.objectlab.kit.util.BigDecimalUtil;
 
 /**
- * Represents an FxRate.
+ * Represents an immutable FxRate.
  * @author Benoit Xhenseval
  */
 public class FxRateImpl implements FxRate {
     private final CurrencyPair currencyPair;
     private final String crossCcy;
     private final boolean marketConvention;
-    private BigDecimal bid;
-    private BigDecimal ask;
-
-    public void setBid(final BigDecimal bid) {
-        this.bid = bid;
-    }
-
-    public void setAsk(final BigDecimal ask) {
-        this.ask = ask;
-    }
+    private final BigDecimal bid;
+    private final BigDecimal ask;
 
     /**
      * Nice human readable description of the FX Rate, useful reminder.
@@ -49,30 +41,20 @@ public class FxRateImpl implements FxRate {
 
     @Override
     public FxRate createInverse() {
-        final FxRateImpl f = new FxRateImpl(currencyPair.createInverse(), crossCcy, !marketConvention);
-        f.setAsk(BigDecimalUtil.inverse(bid));
-        f.setBid(BigDecimalUtil.inverse(ask));
-        return f;
+        return new FxRateImpl(currencyPair.createInverse(), crossCcy, !marketConvention, BigDecimalUtil.inverse(ask), BigDecimalUtil.inverse(bid));
     }
 
     @Override
     public FxRate createInverse(int precision) {
-        final FxRateImpl f = new FxRateImpl(currencyPair.createInverse(), crossCcy, !marketConvention);
-        f.setAsk(BigDecimalUtil.setScale(BigDecimalUtil.inverse(bid), precision));
-        f.setBid(BigDecimalUtil.setScale(BigDecimalUtil.inverse(ask), precision));
-        return f;
-    }
-
-    public FxRateImpl(final CurrencyPair currencyPair, final String crossCcy, final boolean marketConvention) {
-        super();
-        this.currencyPair = currencyPair;
-        this.crossCcy = crossCcy;
-        this.marketConvention = marketConvention;
+        return new FxRateImpl(currencyPair.createInverse(), crossCcy, !marketConvention, BigDecimalUtil.setScale(BigDecimalUtil.inverse(ask),
+                precision), BigDecimalUtil.setScale(BigDecimalUtil.inverse(bid), precision));
     }
 
     public FxRateImpl(final CurrencyPair currencyPair, final String crossCcy, final boolean marketConvention, final BigDecimal bid,
             final BigDecimal ask) {
-        this(currencyPair, crossCcy, marketConvention);
+        this.currencyPair = currencyPair;
+        this.crossCcy = crossCcy;
+        this.marketConvention = marketConvention;
         this.bid = bid;
         this.ask = ask;
     }

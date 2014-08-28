@@ -19,7 +19,6 @@ public class FxRateCalculatorImplTest {
                 .orderedCurrenciesForCross(Lists.newArrayList("GBP")) //
         ;
 
-        // immutable, can be re-used, shared etc
         final FxRateCalculator calc = new FxRateCalculatorImpl(builder);
 
         CurrencyPair target = CurrencyPair.of("EUR", "USD");
@@ -69,7 +68,6 @@ public class FxRateCalculatorImplTest {
                 .orderedCurrenciesForCross(Lists.newArrayList("GBP")) //
         ;
 
-        // immutable, can be re-used, shared etc
         final FxRateCalculator calc = new FxRateCalculatorImpl(builder);
 
         CurrencyPair target = CurrencyPair.of("EUR", "CHF");

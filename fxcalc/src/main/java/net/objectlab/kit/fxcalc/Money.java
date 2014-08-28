@@ -6,6 +6,7 @@ package net.objectlab.kit.fxcalc;
 import java.math.BigDecimal;
 
 import net.objectlab.kit.util.BigDecimalUtil;
+import net.objectlab.kit.util.StringUtil;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
@@ -21,7 +22,7 @@ public class Money implements MonetaryAmount {
 
     public Money(final String currency, final BigDecimal amount) {
         super();
-        this.currency = currency;
+        this.currency = StringUtil.toUpperCase(currency);
         this.amount = amount;
     }
 

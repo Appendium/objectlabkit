@@ -25,7 +25,7 @@ public final class FxRateExample {
                 .orderedCurrenciesForCross(Lists.newArrayList("GBP", "USD")) //
         ;
 
-        // immutable, can be re-used, shared etc
+        // immutable, can be re-used, shared etc PROVIDED that the FxRate does not change (safe with FxRateImpl)
         final FxRateCalculator calc = new FxRateCalculatorImpl(builder);
 
         calcEurUsd(calc);
