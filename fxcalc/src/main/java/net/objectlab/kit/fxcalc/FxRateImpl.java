@@ -11,7 +11,7 @@ import net.objectlab.kit.util.BigDecimalUtil;
  */
 public class FxRateImpl implements FxRate {
     private final CurrencyPair currencyPair;
-    private final Optional<String> crossCcy;
+    private final String crossCcy;
     private final boolean marketConvention;
     private BigDecimal bid;
     private BigDecimal ask;
@@ -36,7 +36,9 @@ public class FxRateImpl implements FxRate {
     public String getDescription() {
         final StringBuilder b = new StringBuilder();
         b.append(currencyPair).append(" Mkt Convention:").append(marketConvention);
-        crossCcy.ifPresent(t -> b.append(" Cross Ccy:").append(t));
+        if (crossCcy != null) {
+            b.append(" Cross Ccy:").append(crossCcy);
+        }
         b.append(System.getProperty("line.separator"));
         b.append("Quoter buys  ").append(currencyPair.getCcy1()).append(" and sells ").append(currencyPair.getCcy2()).append(" at ").append(bid)
                 .append(System.getProperty("line.separator"));
@@ -47,7 +49,7 @@ public class FxRateImpl implements FxRate {
 
     @Override
     public FxRate createInverse() {
-        final FxRateImpl f = new FxRateImpl(currencyPair.createInverse(), crossCcy.isPresent() ? crossCcy.get() : null, !marketConvention);
+        final FxRateImpl f = new FxRateImpl(currencyPair.createInverse(), crossCcy, !marketConvention);
         f.setAsk(BigDecimalUtil.inverse(bid));
         f.setBid(BigDecimalUtil.inverse(ask));
         return f;
@@ -55,7 +57,7 @@ public class FxRateImpl implements FxRate {
 
     @Override
     public FxRate createInverse(int precision) {
-        final FxRateImpl f = new FxRateImpl(currencyPair.createInverse(), crossCcy.isPresent() ? crossCcy.get() : null, !marketConvention);
+        final FxRateImpl f = new FxRateImpl(currencyPair.createInverse(), crossCcy, !marketConvention);
         f.setAsk(BigDecimalUtil.setScale(BigDecimalUtil.inverse(bid), precision));
         f.setBid(BigDecimalUtil.setScale(BigDecimalUtil.inverse(ask), precision));
         return f;
@@ -64,7 +66,7 @@ public class FxRateImpl implements FxRate {
     public FxRateImpl(final CurrencyPair currencyPair, final String crossCcy, final boolean marketConvention) {
         super();
         this.currencyPair = currencyPair;
-        this.crossCcy = Optional.ofNullable(crossCcy);
+        this.crossCcy = crossCcy;
         this.marketConvention = marketConvention;
     }
 
@@ -92,7 +94,7 @@ public class FxRateImpl implements FxRate {
 
     @Override
     public Optional<String> getCrossCcy() {
-        return crossCcy;
+        return Optional.ofNullable(crossCcy);
     }
 
     @Override
