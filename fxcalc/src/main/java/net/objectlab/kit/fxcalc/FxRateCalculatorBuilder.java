@@ -209,7 +209,7 @@ public class FxRateCalculatorBuilder {
         return this;
     }
 
-    public Map<? extends CurrencyPair, ? extends FxRate> getRatesSnapshot() {
+    public Map<CurrencyPair, FxRate> getRatesSnapshot() {
         return ratesSnapshot;
     }
 }

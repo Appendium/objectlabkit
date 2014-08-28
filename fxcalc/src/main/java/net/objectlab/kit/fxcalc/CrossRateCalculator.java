@@ -14,8 +14,11 @@ import org.slf4j.LoggerFactory;
  * if it is what you might have e.g. GBP/CAD via CAD/USD and EUR/USD.
  * @author Benoit Xhenseval
  */
-public class CrossRateCalculator {
+public final class CrossRateCalculator {
     private static final Logger LOG = LoggerFactory.getLogger(CrossRateCalculator.class);
+
+    private CrossRateCalculator() {
+    }
 
     /**
      * Calculate the cross rate, use this only if required.

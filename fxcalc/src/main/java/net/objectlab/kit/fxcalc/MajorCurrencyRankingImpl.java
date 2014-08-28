@@ -13,6 +13,7 @@ import net.objectlab.kit.util.StringUtil;
  * but the user can provide the ordered list of major currencies.
  */
 public class MajorCurrencyRankingImpl implements MajorCurrencyRanking {
+    private static final int DEFAULT_UNRANKED_VALUE = 99;
     private final Map<String, Integer> ranks;
 
     /**
@@ -36,7 +37,7 @@ public class MajorCurrencyRankingImpl implements MajorCurrencyRanking {
      */
     @Override
     public String selectMajorCurrency(final String ccy1, final String ccy2) {
-        return ranks.getOrDefault(StringUtil.toUpperCase(ccy1), 99).intValue() <= ranks.getOrDefault(StringUtil.toUpperCase(ccy2), 99).intValue() ? ccy1
+        return ranks.getOrDefault(StringUtil.toUpperCase(ccy1), DEFAULT_UNRANKED_VALUE).intValue() <= ranks.getOrDefault(StringUtil.toUpperCase(ccy2), DEFAULT_UNRANKED_VALUE).intValue() ? ccy1
                 : ccy2;
     }
 
