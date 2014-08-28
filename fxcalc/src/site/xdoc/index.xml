@@ -21,7 +21,20 @@
   
     <section name="FX Calc Introduction">
       <p>The FX Calc package provides classes for handling Currencies and Rates within the Foreign Exchange business.</p>
+      <p>The FX Calculator is created via a FxRateCalculatorBuilder so that the FxRateCalculator can be immutable for a given set of parameters and rates (unless you provide a BaseFxRateProvider).</p>
     </section>
+    
+    <section name="Ways to import Base Rates">
+      <p>The FX Calculator requires Base Rates to return rates, inverse rates or cross rates.  There are 3 ways to import rates via the FxRateCalculatorBuilder</p>
+      <ol>
+      <li>addRateSnapshot(FxRate rate): add the rate to an internal map per CurrencyPair, an immutable map will be given to the Calculator so the bases rates will NOT change.</li>
+      <li>ratesSnapshot(Collection&lt;FxRate&gt; rates): add a collection of rates to an internal map per CurrencyPair, an immutable map will be given to the Calculator so the bases rates will NOT change.</li>
+      <li>baseFxRateProvider(BaseFxRateProvider) You then control when the Base Rates change, the Calculator will call the required CurrencyPair you either every time or once (if cacheBaseRates is true).</li>
+      </ol>
+    </section>
+    
+    <section name="Example">
+    <script src="https://gist.github.com/benoitx/6261e7f299dbd62823b9.js"></script></section>
     
   </body>
   

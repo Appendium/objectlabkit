@@ -10,6 +10,12 @@ import java.util.stream.Collectors;
 
 /**
  * Parameters for an immutable FxRateCalculator.
+ * The FX Calculator requires Base Rates to return rates, inverse rates or cross rates.  There are 3 ways to import rates via the FxRateCalculatorBuilder.
+      <ol>
+      <li>addRateSnapshot(FxRate rate): add the rate to an internal map per CurrencyPair, an immutable map will be given to the Calculator so the bases rates will NOT change.</li>
+      <li>ratesSnapshot(Collection&lt;FxRate&gt; rates): add a collection of rates to an internal map per CurrencyPair, an immutable map will be given to the Calculator so the bases rates will NOT change.</li>
+      <li>baseFxRateProvider(BaseFxRateProvider) You then control when the Base Rates change, the Calculator will call the required CurrencyPair you either every time or once (if cacheBaseRates is true).</li>
+      </ol>
  * <pre>
  * final FxRateCalculatorBuilder builder = new FxRateCalculatorBuilder() //
         .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61")))//

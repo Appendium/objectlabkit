@@ -35,11 +35,12 @@ public class FxRateImpl implements FxRate {
     @Override
     public String getDescription() {
         final StringBuilder b = new StringBuilder();
-        b.append(currencyPair).append(" Mkt Convention:").append(marketConvention).append(System.getProperty("line.separator"));
+        b.append(currencyPair).append(" Mkt Convention:").append(marketConvention);
+        crossCcy.ifPresent(t -> b.append(" Cross Ccy:").append(t));
+        b.append(System.getProperty("line.separator"));
         b.append("Quoter buys  ").append(currencyPair.getCcy1()).append(" and sells ").append(currencyPair.getCcy2()).append(" at ").append(bid)
                 .append(System.getProperty("line.separator"));
-        b.append("Quoter sells ").append(currencyPair.getCcy1()).append(" and buys  ").append(currencyPair.getCcy2()).append(" at ").append(ask)
-                .append(System.getProperty("line.separator"));
+        b.append("Quoter sells ").append(currencyPair.getCcy1()).append(" and buys  ").append(currencyPair.getCcy2()).append(" at ").append(ask);
 
         return b.toString();
     }

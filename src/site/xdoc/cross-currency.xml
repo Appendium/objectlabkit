@@ -19,10 +19,14 @@
 		<section name="FX Rate Calculation">
 			<p>When you see a rate like EUR/USD of 1.6 / 1.61, it means this:</p>
 			<ul>
-				<li>Bid: 1.6;  Quoter buys  EUR and sells USD at 1.6</li>
+				<li>Bid: 1.6; Quoter buys EUR and sells USD at 1.6</li>
 				<li>Ask: 1.61; Quoter sells EUR and sells USD at 1.61</li>
 			</ul>
-			<p>If you are on the receiving end, you always end up paying more or getting less!</p>
+			<p>
+				If you are on the receiving end, you always end up paying more or getting less! Note
+				<strong>Bid &lt;= Ask</strong>
+				always.
+			</p>
 			<ul>
 				<li>If you want to sell your 1 EUR, you will get 1.6 USD</li>
 				<li>If you want to sell your USD, you will have to fork 1.61 USD for 1 EUR</li>
@@ -65,6 +69,86 @@
 				</ul>
 			</ul>
 		</section>
-
+		<section name="Examples">
+			<p>The rates may be a bit old but they provide a non trivial set. Assuming, the calculator first checks for GBP cross ccy and then USD and the BASE rates below:</p>
+			<table>
+				<theader>
+					<tr>
+						<th>Currency Pair</th>
+						<th>Bid</th>
+						<th>Ask</th>
+					</tr>
+				</theader>
+				<tbody>
+					<tr>
+						<td>EUR/USD</td>
+						<td>1.30</td>
+						<td>1.11</td>
+					</tr>
+					<tr>
+						<td>GBP/CHF</td>
+						<td>1.51589</td>
+						<td>1.5156</td>
+					</tr>
+					<tr>
+						<td>EUR/GBP</td>
+						<td>0.79</td>
+						<td>0.796</td>
+					</tr>
+					<tr>
+						<td>USD/CAD</td>
+						<td>103.931</td>
+						<td>103.94</td>
+					</tr>
+					<tr>
+						<td>USD/JPY</td>
+						<td>1.089</td>
+						<td>1.090</td>
+					</tr>
+				</tbody>
+			</table>
+			<p>And now the calculation examples</p>
+			<table>
+				<theader>
+					<tr>
+						<th>Currency Pair</th>
+						<th>Cross Ccy</th>
+						<th>Bid</th>
+						<th>Ask</th>
+						<th>Description</th>
+					</tr>
+				</theader>
+				<tbody>
+					<tr>
+						<td>CAD/JPY</td>
+						<td>USD</td>
+						<td>95.349541 [ bid(USD/JPY) / ask(USD/CAD) ]
+						<br/> calc = 103.931 / 1.090 = 95.349541 (rounded)</td>
+						<td>95.445363 [ ask(USD/JPY) x ask(USD/CAD) ]
+						<br/> calc = 103.94 / 1.089 = 95.445363 (rounded)</td>
+						<td><pre>CAD.JPY Mkt Convention:true Cross Ccy:USD
+Quoter buys  CAD and sells JPY at 95.349541
+Quoter sells CAD and buys  JPY at 95.445363</pre></td>
+					</tr>
+					<tr>
+						<td>EUR/CHF</td>
+						<td>GBP</td>
+						<td>1.197553 [ CHF/EUR = bid(GBP/CHF) / ask(GBP/EUR) ]
+						<br/> Note <strong>bid(GBP/CHF) = 1.51589</strong>
+						<br/> Note <strong>ask(GBP/EUR) = 1 / bid(EUR/GBP) = 1 / 0.79 = 1.265822785</strong>
+						<br/> calc = 1.51589 / 1.265822785 = 1.197553
+						</td>
+						<td>1.206418 [ ask(GBP/CHF) / bid(GBP/EUR) ]
+						<br/> calc = 1.5156 / 1.256281407035 = 1.206418 (rounded to 6 dp)
+						</td>
+						<td><pre>EUR.CHF Mkt Convention:true Cross Ccy:GBP
+Quoter buys  EUR and sells CHF at 1.197553
+Quoter sells EUR and buys  CHF at 1.206418</pre></td>
+					</tr>
+				</tbody>
+			</table>
+			<p>The code is available here:</p>
+		<script src="https://gist.github.com/benoitx/6261e7f299dbd62823b9.js"></script>
+		</section>
 	</body>
 </document>

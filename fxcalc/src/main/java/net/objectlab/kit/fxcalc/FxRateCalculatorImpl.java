@@ -92,7 +92,7 @@ public class FxRateCalculatorImpl implements FxRateCalculator {
         }
 
         if (xCcy1 != null) {
-            final CurrencyPair xCcy2Pair = CurrencyPair.of(ccyPair.getCcy2(), crossCcy);
+            final CurrencyPair xCcy2Pair = CurrencyPair.of(crossCcy, ccyPair.getCcy2());
             FxRate xCcy2 = getBaseRate(xCcy2Pair);
             if (xCcy2 == null) {
                 // try inverse
