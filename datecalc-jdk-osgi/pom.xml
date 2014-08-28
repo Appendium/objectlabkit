@@ -10,7 +10,7 @@
 	<artifactId>datecalc-jdk-osgi</artifactId>
 	<packaging>bundle</packaging>
 
-	<name>Date Calculator for JDK OSGI Bundle</name>
+	<name>Date Calc JDK (OSGi)</name>
 	<description>Date Calculator methods for JDK</description>
 
 	<dependencies>

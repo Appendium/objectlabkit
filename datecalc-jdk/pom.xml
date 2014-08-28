@@ -10,7 +10,7 @@
   <artifactId>datecalc-jdk</artifactId>
   <packaging>jar</packaging>
 
-  <name>Date Calculator for JDK</name>
+  <name>Date Calc JDK</name>
   <description>Date Calculator methods for JDK</description>
 
   <dependencies>

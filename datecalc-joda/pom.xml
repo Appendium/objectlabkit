@@ -10,7 +10,7 @@
   <artifactId>datecalc-joda</artifactId>
   <packaging>jar</packaging>
 
-  <name>Date Calculator for Joda</name>
+  <name>Date Calc JODA</name>
   <description>Date Calculator methods for Joda</description>
 
   <dependencies>

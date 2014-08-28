@@ -11,7 +11,7 @@
   <artifactId>objectlab-utils</artifactId>
   <packaging>jar</packaging>
 
-  <name>ObjectLab Kit - Utils</name>
+  <name>Kit Utils</name>
 
   <dependencies>
     <dependency>

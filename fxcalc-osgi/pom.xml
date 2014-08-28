@@ -10,7 +10,7 @@
 	<artifactId>objectlab-fxcalc-osgi</artifactId>
 	<packaging>bundle</packaging>
 
-    <name>ObjectLab Kit - FX Calculator for OSGI Bundle</name>
+    <name>FX Calc (OSGi)</name>
 
 	<dependencies>
 		<dependency>

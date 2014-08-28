@@ -41,8 +41,11 @@
 				American currencies on T+1
 				are handled as well as the Arabic currencies with different weekends. More info about
 				<a href="currency.html">Currency Date Calculation</a>
-				and	on the changes	<a href="changes-report.html">here</a>.  Finally, we are also introducing a new module the <a href="objectlab-fxcalc/index.html">ObjectLab Kit FX Calculator</a>
-				 use it for determining Cross Currency Market Conventions and calculating FX Cross Rates. 
+				and on the changes
+				<a href="changes-report.html">here</a>
+				. Finally, we are also introducing a new module the
+				<a href="objectlab-fxcalc/index.html">ObjectLab Kit FX Calculator</a>
+				use it for determining Cross Currency Market Conventions and calculating FX Cross Rates.
 			</p>
 			<p>
 				<b>2014-05-26</b>
@@ -126,43 +129,43 @@
 				<p>If you're using Maven, setup is easy, as DateCalc is in the Maven Central Repository.</p>
 				<p>To use the JDK Version:</p>
 				<pre class="brush: xml; gutter: false" align="">
-&lt;dependency>
-	&lt;groupId>net.objectlab.kit&lt;/groupId>
-	&lt;artifactId>datecalc-common&lt;/artifactId>
-	&lt;version>1.4.0&lt;/version>
-&lt;/dependency>
-&lt;dependency>
-	&lt;groupId>net.objectlab.kit&lt;/groupId>
-	&lt;artifactId>datecalc-jdk&lt;/artifactId>
-	&lt;version>1.4.0&lt;/version>
-&lt;/dependency>
+					&lt;dependency>
+					&lt;groupId>net.objectlab.kit&lt;/groupId>
+					&lt;artifactId>datecalc-common&lt;/artifactId>
+					&lt;version>1.4.0&lt;/version>
+					&lt;/dependency>
+					&lt;dependency>
+					&lt;groupId>net.objectlab.kit&lt;/groupId>
+					&lt;artifactId>datecalc-jdk&lt;/artifactId>
+					&lt;version>1.4.0&lt;/version>
+					&lt;/dependency>
 				</pre>
 
 				<p>To use the JODA Version (recommended):</p>
 				<pre class="brush: xml; gutter: false">
-&lt;dependency>
-	&lt;groupId>net.objectlab.kit&lt;/groupId>
-	&lt;artifactId>datecalc-common&lt;/artifactId>
-	&lt;version>1.4.0&lt;/version>
-&lt;/dependency>
-&lt;dependency>
-	&lt;groupId>net.objectlab.kit&lt;/groupId>
-	&lt;artifactId>datecalc-joda&lt;/artifactId>
-	&lt;version>1.4.0&lt;/version>
-&lt;/dependency>
+					&lt;dependency>
+					&lt;groupId>net.objectlab.kit&lt;/groupId>
+					&lt;artifactId>datecalc-common&lt;/artifactId>
+					&lt;version>1.4.0&lt;/version>
+					&lt;/dependency>
+					&lt;dependency>
+					&lt;groupId>net.objectlab.kit&lt;/groupId>
+					&lt;artifactId>datecalc-joda&lt;/artifactId>
+					&lt;version>1.4.0&lt;/version>
+					&lt;/dependency>
 				</pre>
 				<p>To use the JDK8 Version:</p>
 				<pre class="brush: xml; gutter: false">
-&lt;dependency>
-	&lt;groupId>net.objectlab.kit&lt;/groupId>
-	&lt;artifactId>datecalc-common&lt;/artifactId>
-	&lt;version>1.4.0&lt;/version>
-&lt;/dependency>
-&lt;dependency>
-	&lt;groupId>net.objectlab.kit&lt;/groupId>
-	&lt;artifactId>datecalc-jdk8&lt;/artifactId>
-	&lt;version>1.4.0&lt;/version>
-&lt;/dependency>
+					&lt;dependency>
+					&lt;groupId>net.objectlab.kit&lt;/groupId>
+					&lt;artifactId>datecalc-common&lt;/artifactId>
+					&lt;version>1.4.0&lt;/version>
+					&lt;/dependency>
+					&lt;dependency>
+					&lt;groupId>net.objectlab.kit&lt;/groupId>
+					&lt;artifactId>datecalc-jdk8&lt;/artifactId>
+					&lt;version>1.4.0&lt;/version>
+					&lt;/dependency>
 				</pre>
 			</subsection>
 
@@ -191,7 +194,12 @@
 					Friday, our library provides
 					you with full flexibility to design a Working Week.
 				</p>
-				<p>As such a Non-working Day can be a holiday or a 'weekend'.  Also note that CurrencyPairs have a specialised calculator as the rules can be 'weird'. See <a href="currency.html">for more info</a>.</p>
+				<p>
+					As such a Non-working Day can be a holiday or a 'weekend'. Also note that CurrencyPairs have a specialised calculator as the rules can be
+					'weird'. See
+					<a href="currency.html">for more info</a>
+					.
+				</p>
 			</subsection>
 
 
@@ -343,6 +351,10 @@
 
 			<subsection name="Using JDK8 LocalDate">
 				<script src="https://gist.github.com/benoitx/4ef7b83eab810d100222.js"></script>
+			</subsection>
+
+			<subsection name="Using Util Total">
+				<script src="https://gist.github.com/benoitx/d0ae6a38789cb5b25c24.js"></script>
 			</subsection>
 
 			<subsection name="Using Util Average">

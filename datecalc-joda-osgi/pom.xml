@@ -10,7 +10,7 @@
 	<artifactId>datecalc-joda-osgi</artifactId>
 	<packaging>bundle</packaging>
 
-	<name>Date Calculator for Joda for OSGI bundle</name>
+	<name>Date Calc JODA (OSGi)</name>
 	<description>Date Calculator methods for Joda</description>
 
 	<dependencies>

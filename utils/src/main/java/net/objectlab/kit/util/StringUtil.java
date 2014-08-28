@@ -324,10 +324,11 @@ public final class StringUtil {
     }
 
     /**
-     * If the string is not blank call the consumer
+     * If the string is not blank call the consumer (depends on JDK8+)
      * @param text
      * @param consumer
      * @return true if consumed
+     * @since 1.4.0
      */
     public static boolean ifNotBlank(final String text, final Consumer<String> consumer) {
         if (StringUtils.isNotBlank(text)) {

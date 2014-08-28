@@ -10,7 +10,7 @@
 	<artifactId>objectlab-utils-osgi</artifactId>
 	<packaging>bundle</packaging>
 
-	<name>ObjectLab Kit - Utils for OSGI Bundle</name>
+	<name>Kit Utils (OSGi)</name>
 	<description>ObjectLab Utils</description>
 
 	<dependencies>

@@ -11,7 +11,7 @@
 	<artifactId>objectlab-fxcalc</artifactId>
 	<packaging>jar</packaging>
 
-	<name>ObjectLab Kit - FX Calculator</name>
+	<name>FX Calc</name>
 
 	<dependencies>
 		<dependency>
