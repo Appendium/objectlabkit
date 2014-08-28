@@ -29,9 +29,9 @@ public class CurrencyDateCalculatorBuilder<E> {
     private String ccy1;
     private String ccy2;
     private String crossCcy = CurrencyDateCalculator.USD_CODE;
-    private HolidayCalendar<E> ccy1Calendar = new DefaultHolidayCalendar();
-    private HolidayCalendar<E> ccy2Calendar = new DefaultHolidayCalendar();
-    private HolidayCalendar<E> crossCcyCalendar = new DefaultHolidayCalendar();
+    private HolidayCalendar<E> ccy1Calendar = new DefaultHolidayCalendar<E>();
+    private HolidayCalendar<E> ccy2Calendar = new DefaultHolidayCalendar<E>();
+    private HolidayCalendar<E> crossCcyCalendar = new DefaultHolidayCalendar<E>();
     private HolidayHandler<E> tenorHolidayHandler;
     private WorkingWeek ccy1Week;
     private WorkingWeek ccy2Week;

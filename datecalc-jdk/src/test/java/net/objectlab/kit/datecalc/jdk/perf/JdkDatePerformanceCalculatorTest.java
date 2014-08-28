@@ -47,7 +47,7 @@ public class JdkDatePerformanceCalculatorTest extends AbstractPerformanceDateCal
     }
 
     @Override
-    protected KitCalculatorsFactory getDateCalculatorFactory() {
+    protected KitCalculatorsFactory<Date> getDateCalculatorFactory() {
         return DateKitCalculatorsFactory.getDefaultInstance();
     }
 }

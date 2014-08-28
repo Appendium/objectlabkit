@@ -94,7 +94,7 @@ public class Triplet<E1, E2, E3> implements Serializable {
         if (!(rhs instanceof Triplet)) {
             return false;
         }
-        final Triplet that = (Triplet) rhs;
+        final Triplet<?, ?, ?> that = (Triplet<?, ?, ?>) rhs;
 
         return new EqualsBuilder().append(element1, that.element1).append(element2, that.element2).append(element3, that.element3).isEquals();
     }

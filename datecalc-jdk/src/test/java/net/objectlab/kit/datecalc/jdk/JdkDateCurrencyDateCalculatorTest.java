@@ -46,7 +46,7 @@ public class JdkDateCurrencyDateCalculatorTest extends AbstractCurrencyDateCalcu
     }
 
     @Override
-    protected KitCalculatorsFactory getDateCalculatorFactory() {
+    protected KitCalculatorsFactory<Date> getDateCalculatorFactory() {
         return DateKitCalculatorsFactory.getDefaultInstance();
     }
 }

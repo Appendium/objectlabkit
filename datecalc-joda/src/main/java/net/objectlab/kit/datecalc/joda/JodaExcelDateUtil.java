@@ -38,7 +38,6 @@ import net.objectlab.kit.datecalc.common.ExcelDateUtil;
 
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
-import org.joda.time.YearMonthDay;
 
 /**
  * Convert Excel Date to LocalDate, YearMonthDay or DateTime.
@@ -68,16 +67,6 @@ public final class JodaExcelDateUtil {
     // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
-
-    public static YearMonthDay getYearMonthDay(final double date, final boolean use1904windowing) {
-        final Calendar c = ExcelDateUtil.getJavaCalendar(date, use1904windowing);
-
-        if (c == null) {
-            return null;
-        }
-
-        return new YearMonthDay(c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1, c.get(Calendar.DAY_OF_MONTH));
-    }
 
     public static DateTime getDateTime(final double date, final boolean use1904windowing) {
         final Calendar c = ExcelDateUtil.getJavaCalendar(date, use1904windowing);

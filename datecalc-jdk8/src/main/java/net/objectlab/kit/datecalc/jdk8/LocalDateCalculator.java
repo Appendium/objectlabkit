@@ -54,7 +54,6 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
 
     private Jdk8WorkingWeek workingWeek = Jdk8WorkingWeek.DEFAULT;
 
-    @SuppressWarnings("unchecked")
     public LocalDateCalculator() {
         this(null, null, new DefaultHolidayCalendar<LocalDate>(Collections.emptySet()), null);
     }

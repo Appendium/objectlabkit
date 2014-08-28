@@ -119,7 +119,6 @@ public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
      *
      * @see net.objectlab.kit.datecalc.common.HolidayCalendar#setHolidays(java.util.Set)
      */
-    @SuppressWarnings("unchecked")
     public final HolidayCalendar<E> setHolidays(final Set<E> holidays) {
 
         if (holidays == null) {

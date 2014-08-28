@@ -122,10 +122,10 @@ public class BigDecimalUtilTest {
     @Test
     public void testAddBigDecimalBigDecimalArray() {
         assertEquals("null", BigDecimal.ZERO, BigDecimalUtil.add(null));
-        assertEquals("null+null", BigDecimal.ZERO, BigDecimalUtil.add(null, null));
+        assertEquals("null+null", BigDecimal.ZERO, BigDecimalUtil.add(null, (BigDecimal) null));
         assertEquals("null+null+0", BigDecimal.ZERO, BigDecimalUtil.add(null, null, BigDecimal.ZERO));
         assertEquals("null+1", BigDecimal.ONE, BigDecimalUtil.add(null, BigDecimal.ONE));
-        assertEquals("1+null", BigDecimal.ONE, BigDecimalUtil.add(BigDecimal.ONE, null));
+        assertEquals("1+null", BigDecimal.ONE, BigDecimalUtil.add(BigDecimal.ONE, (BigDecimal) null));
         assertEquals("1+null+0", BigDecimal.ONE, BigDecimalUtil.add(BigDecimal.ONE, null, BigDecimal.ZERO));
         assertEquals("1+null+1", new BigDecimal(2), BigDecimalUtil.add(BigDecimal.ONE, null, BigDecimal.ONE));
         assertEquals("1+0+1", new BigDecimal(2), BigDecimalUtil.add(BigDecimal.ONE, BigDecimal.ZERO, BigDecimal.ONE));
@@ -141,7 +141,7 @@ public class BigDecimalUtilTest {
         assertEquals("3 null", BigDecimal.ZERO, BigDecimalUtil.subtract(null, null, null));
         assertEquals("0 -null -null", BigDecimal.ZERO, BigDecimalUtil.subtract(BigDecimal.ZERO, null, null));
         assertEquals("null 0 -null", BigDecimal.ZERO, BigDecimalUtil.subtract(null, BigDecimal.ZERO, null));
-        assertEquals("1 -null", BigDecimal.ONE, BigDecimalUtil.subtract(BigDecimal.ONE, null));
+        assertEquals("1 -null", BigDecimal.ONE, BigDecimalUtil.subtract(BigDecimal.ONE, (BigDecimal) null));
         assertEquals("1 -null -0", BigDecimal.ONE, BigDecimalUtil.subtract(BigDecimal.ONE, null, BigDecimal.ZERO));
         assertEquals("1 -0 -null", BigDecimal.ONE, BigDecimalUtil.subtract(BigDecimal.ONE, BigDecimal.ZERO, null));
         assertEquals("1 -0 -1", BigDecimal.ZERO, BigDecimalUtil.subtract(BigDecimal.ONE, BigDecimal.ZERO, BigDecimal.ONE));

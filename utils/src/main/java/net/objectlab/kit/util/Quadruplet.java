@@ -104,7 +104,7 @@ public class Quadruplet<E1, E2, E3, E4> implements Serializable {
         if (!(rhs instanceof Quadruplet)) {
             return false;
         }
-        final Quadruplet that = (Quadruplet) rhs;
+        final Quadruplet<?, ?, ?, ?> that = (Quadruplet<?, ?, ?, ?>) rhs;
 
         return new EqualsBuilder().append(element1, that.element1).append(element2, that.element2).append(element3, that.element3)
                 .append(element4, that.element4).isEquals();

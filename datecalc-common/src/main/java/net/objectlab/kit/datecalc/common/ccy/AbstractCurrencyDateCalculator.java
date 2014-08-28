@@ -65,12 +65,12 @@ public abstract class AbstractCurrencyDateCalculator<E> implements CurrencyDateC
         this.ccy1 = builder.getCcy1();
         this.ccy2 = builder.getCcy2();
         this.crossCcy = builder.getCrossCcy();
-        this.ccy1HolidayCalendar = new ImmutableHolidayCalendar(builder.getCcy1Calendar() != null ? builder.getCcy1Calendar()
-                : new DefaultHolidayCalendar());
-        this.ccy2HolidayCalendar = new ImmutableHolidayCalendar(builder.getCcy2Calendar() != null ? builder.getCcy2Calendar()
-                : new DefaultHolidayCalendar());
-        this.crossCcyHolidayCalendar = new ImmutableHolidayCalendar(builder.getCrossCcyCalendar() != null ? builder.getCrossCcyCalendar()
-                : new DefaultHolidayCalendar());
+        this.ccy1HolidayCalendar = new ImmutableHolidayCalendar<E>(builder.getCcy1Calendar() != null ? builder.getCcy1Calendar()
+                : new DefaultHolidayCalendar<E>());
+        this.ccy2HolidayCalendar = new ImmutableHolidayCalendar<E>(builder.getCcy2Calendar() != null ? builder.getCcy2Calendar()
+                : new DefaultHolidayCalendar<E>());
+        this.crossCcyHolidayCalendar = new ImmutableHolidayCalendar<E>(builder.getCrossCcyCalendar() != null ? builder.getCrossCcyCalendar()
+                : new DefaultHolidayCalendar<E>());
         this.holidayHandler = builder.getTenorHolidayHandler();
         this.ccy1Week = builder.getCcy1Week();
         this.ccy2Week = builder.getCcy2Week();

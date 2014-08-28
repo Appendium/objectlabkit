@@ -54,7 +54,6 @@ public class CalendarDateCalculator extends AbstractDateCalculator<Calendar> {
 
     private WorkingWeek workingWeek = WorkingWeek.DEFAULT;
 
-    @SuppressWarnings("unchecked")
     public CalendarDateCalculator() {
         this(null, null, new DefaultHolidayCalendar<Calendar>(Collections.<Calendar> emptySet()), null);
     }

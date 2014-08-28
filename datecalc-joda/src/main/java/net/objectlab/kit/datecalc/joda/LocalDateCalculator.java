@@ -55,7 +55,6 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
 
     private JodaWorkingWeek workingWeek = JodaWorkingWeek.DEFAULT;
 
-    @SuppressWarnings("unchecked")
     public LocalDateCalculator() {
         this(null, null, new DefaultHolidayCalendar<LocalDate>(Collections.<LocalDate> emptySet()), null);
     }

@@ -55,7 +55,6 @@ public class DateDateCalculator extends AbstractDateCalculator<Date> {
 
     private final CalendarDateCalculator delegate;
 
-    @SuppressWarnings("unchecked")
     public DateDateCalculator() {
         this(null, null, new DefaultHolidayCalendar<Date>(Collections.<Date> emptySet()), null);
     }

@@ -91,7 +91,7 @@ public class Pair<E1, E2> implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Pair other = (Pair) obj;
+        final Pair<?, ?> other = (Pair<?, ?>) obj;
         if (element1 == null) {
             if (other.element1 != null) {
                 return false;

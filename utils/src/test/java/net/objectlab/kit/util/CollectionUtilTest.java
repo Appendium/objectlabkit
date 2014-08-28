@@ -15,7 +15,7 @@ public class CollectionUtilTest {
     @Test
     public void testIsEmpty() {
         assertTrue("null", CollectionUtil.isEmpty(null));
-        final HashSet col = new HashSet();
+        final HashSet<Integer> col = new HashSet<>();
         assertTrue("empty set", CollectionUtil.isEmpty(col));
         col.add(1);
         assertFalse("not empty set", CollectionUtil.isEmpty(col));
@@ -25,8 +25,8 @@ public class CollectionUtilTest {
 
     @Test
     public void testIsNotEmptyCollection() {
-        assertFalse("null", CollectionUtil.isNotEmpty((Collection) null));
-        final HashSet col = new HashSet();
+        assertFalse("null", CollectionUtil.isNotEmpty((Collection<?>) null));
+        final HashSet<Integer> col = new HashSet<>();
         assertFalse("empty set", CollectionUtil.isNotEmpty(col));
         col.add(1);
         assertTrue("not empty set", CollectionUtil.isNotEmpty(col));
@@ -45,8 +45,8 @@ public class CollectionUtilTest {
 
     @Test
     public void testHasOneItem() {
-        assertFalse("null", CollectionUtil.hasOneItem((Collection) null));
-        final HashSet col = new HashSet();
+        assertFalse("null", CollectionUtil.hasOneItem((Collection<?>) null));
+        final HashSet<Integer> col = new HashSet<>();
         assertFalse("empty set", CollectionUtil.hasOneItem(col));
         col.add(1);
         assertTrue("not empty set", CollectionUtil.hasOneItem(col));
@@ -56,8 +56,8 @@ public class CollectionUtilTest {
 
     @Test
     public void testSize() {
-        assertEquals("null", 0, CollectionUtil.size((Collection) null));
-        final HashSet col = new HashSet();
+        assertEquals("null", 0, CollectionUtil.size((Collection<?>) null));
+        final HashSet<Integer> col = new HashSet<>();
         assertEquals("empty ", 0, CollectionUtil.size(col));
         col.add(1);
         assertEquals("1", 1, CollectionUtil.size(col));
@@ -67,8 +67,8 @@ public class CollectionUtilTest {
 
     @Test
     public void testContains() {
-        assertFalse("null", CollectionUtil.contains((Collection) null, "bla"));
-        final HashSet col = new HashSet();
+        assertFalse("null", CollectionUtil.contains((Collection<?>) null, "bla"));
+        final HashSet<Object> col = new HashSet<>();
         assertFalse("empty", CollectionUtil.contains(col, "bla"));
         col.add(1);
         assertFalse("1", CollectionUtil.contains(col, "bla"));
@@ -78,8 +78,8 @@ public class CollectionUtilTest {
 
     @Test
     public void testContainsAny() {
-        assertFalse("null", CollectionUtil.containsAny((Collection) null, "bla", 2));
-        final HashSet col = new HashSet();
+        assertFalse("null", CollectionUtil.containsAny((Collection<?>) null, "bla", 2));
+        final HashSet<Object> col = new HashSet<>();
         assertFalse("empty", CollectionUtil.containsAny(col, "bla", 2));
         col.add(1);
         assertFalse("contains 1", CollectionUtil.containsAny(col, "bla", 2));
@@ -95,15 +95,15 @@ public class CollectionUtilTest {
 
     @Test
     public void testNoneEmpty() {
-        assertFalse("1 null", CollectionUtil.noneEmpty(null));
+        assertFalse("1 null", CollectionUtil.noneEmpty((Collection<?>) null));
         assertFalse("2 null", CollectionUtil.noneEmpty(null, null));
         assertFalse("empty null", CollectionUtil.noneEmpty(Collections.emptyList(), null));
         assertFalse("empty empty", CollectionUtil.noneEmpty(Collections.emptyList(), Collections.emptyList()));
-        final HashSet col = new HashSet();
+        final HashSet<Integer> col = new HashSet<>();
         assertFalse("empty empty", CollectionUtil.noneEmpty(col, col));
         col.add(1);
         assertTrue("1", CollectionUtil.noneEmpty(col));
-        final HashSet col2 = new HashSet();
+        final HashSet<String> col2 = new HashSet<>();
         assertFalse("1 and 2 empty", CollectionUtil.noneEmpty(col, col2));
         assertFalse("1 and null 2 empty", CollectionUtil.noneEmpty(col, null, col2));
         col2.add("bla");
@@ -114,10 +114,10 @@ public class CollectionUtilTest {
     @Test
     public void testSameContent() {
         assertTrue("null null", CollectionUtil.sameContent(null, null));
-        final HashSet col = new HashSet();
+        final HashSet<Integer> col = new HashSet<>();
         assertTrue("empty null", CollectionUtil.sameContent(col, null));
         assertTrue("same", CollectionUtil.sameContent(col, col));
-        final HashSet col1 = new HashSet();
+        final HashSet<Integer> col1 = new HashSet<>();
         col.add(1);
         assertFalse("not same empty 1", CollectionUtil.sameContent(col, col1));
         assertFalse("not same 1 empty", CollectionUtil.sameContent(col1, col));

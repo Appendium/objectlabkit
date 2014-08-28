@@ -32,19 +32,21 @@
  */
 package net.objectlab.kit.datecalc.jdk;
 
+import java.util.Date;
+
 import net.objectlab.kit.datecalc.common.AbstractForwardDateCalculatorTest;
 import net.objectlab.kit.datecalc.common.KitCalculatorsFactory;
 import net.objectlab.kit.datecalc.common.Utils;
 
-public class JdkDateForwardUnlessNegativeDateCalculatorTest extends AbstractForwardDateCalculatorTest {
+public class JdkDateForwardUnlessNegativeDateCalculatorTest extends AbstractForwardDateCalculatorTest<Date> {
 
     @Override
-    protected Object newDate(final String date) {
+    protected Date newDate(final String date) {
         return Utils.createDate(date);
     }
 
     @Override
-    protected KitCalculatorsFactory getDateCalculatorFactory() {
+    protected KitCalculatorsFactory<Date> getDateCalculatorFactory() {
         return DateKitCalculatorsFactory.getDefaultInstance();
     }
 }

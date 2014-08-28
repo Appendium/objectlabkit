@@ -82,7 +82,6 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
         this.holidayHandler = holidayHandler;
     }
 
-    @SuppressWarnings("unchecked")
     public DateCalculator<E> setHolidayCalendar(final HolidayCalendar<E> calendar) {
         if (calendar != null) {
             if (calendar instanceof ImmutableHolidayCalendar) {

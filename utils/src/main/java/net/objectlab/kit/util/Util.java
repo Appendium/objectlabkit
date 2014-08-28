@@ -84,13 +84,13 @@ public final class Util {
      *            list to "print"
      * @return a String comma separated.
      */
-    public static String listToCSVString(final List list) {
+    public static String listToCSVString(final List<?> list) {
         final StringBuilder buf = new StringBuilder();
 
         if (list != null) {
             boolean first = true;
 
-            for (final Iterator it = list.iterator(); it.hasNext(); first = false) {
+            for (final Iterator<?> it = list.iterator(); it.hasNext(); first = false) {
                 if (!first) {
                     buf.append(",");
                 }
