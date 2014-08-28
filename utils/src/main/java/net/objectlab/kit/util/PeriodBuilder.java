@@ -11,6 +11,11 @@ package net.objectlab.kit.util;
  *
  */
 public class PeriodBuilder {
+    private static final long MS_IN_1_SEC = 1_000L;
+    private static final long S_IN_1_MIN = 60L;
+    private static final long M_IN_1_HOUR = 60L;
+    private static final long H_IN_1_DAY = 24L;
+    private static final long D_IN_1_WEEK = 7L;
     private int weeks = 0;
     private int days = 0;
     private int hours = 0;
@@ -20,12 +25,12 @@ public class PeriodBuilder {
 
     public long calculateMilliseconds() {
         return milliseconds //
-                + seconds * 1000L //
-                + minutes * 60L * 1000L //
-                + hours * 60L * 60L * 1000L //
-                + days * 24L * 60L * 60L * 1000L //
-                + weeks * 7L * 24L * 60L * 60L * 1000L //
-                ;
+                + seconds * MS_IN_1_SEC //
+                + minutes * S_IN_1_MIN * MS_IN_1_SEC //
+                + hours * M_IN_1_HOUR * S_IN_1_MIN * MS_IN_1_SEC //
+                + days * H_IN_1_DAY * M_IN_1_HOUR * S_IN_1_MIN * MS_IN_1_SEC //
+                + weeks * D_IN_1_WEEK * H_IN_1_DAY * M_IN_1_HOUR * S_IN_1_MIN * MS_IN_1_SEC //
+        ;
     }
 
     public PeriodBuilder weeks(final int weeks) {
