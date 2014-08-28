@@ -83,14 +83,14 @@ public final class StringUtil {
         return builder.toString();
     }
 
-    public static String defaultFormatDatetime(final Date date) {
+    public static synchronized String defaultFormatDatetime(final Date date) {
         if (date != null) {
             return DATETIME_FORMAT.format(date);
         }
         return null;
     }
 
-    public static String defaultFileFormatTimestamp(final Date date) {
+    public static synchronized String defaultFileFormatTimestamp(final Date date) {
         if (date != null) {
             return FILE_TIMESTAMP_FORMAT.format(date);
         }
