@@ -44,7 +44,7 @@ public class FxRateCalculatorBuilder {
      */
     private MajorCurrencyRanking majorCurrencyRanking = StandardMajorCurrencyRanking.getDefault();
     /**
-     * If the rate required from the calculator is not immediately available, use a cross currency to calculate it; this 
+     * If the rate required from the calculator is not immediately available, use a cross currency to calculate it; this
      * gives you the opportunity to select which currencies to use in which order. Defaulted to USD and then EUR.
      */
     private List<String> orderedCurrenciesForCross = new ArrayList<>();
@@ -77,7 +77,7 @@ public class FxRateCalculatorBuilder {
      * @throws IllegalArgumentException if the validation fails.
      */
     public void checkValid() {
-        StringBuilder b = new StringBuilder();
+        final StringBuilder b = new StringBuilder();
         if (precisionForFxRate < 2) {
             b.append("Precision for FX should be >=2");
         }
@@ -102,7 +102,7 @@ public class FxRateCalculatorBuilder {
     /**
      * If it is important for you to get the latest rates every time, you can provide a rate provider using this interface.
      */
-    public FxRateCalculatorBuilder baseFxRateProvider(BaseFxRateProvider baseFxRateProvider) {
+    public FxRateCalculatorBuilder baseFxRateProvider(final BaseFxRateProvider baseFxRateProvider) {
         this.baseFxRateProvider = baseFxRateProvider;
         return this;
     }
@@ -138,7 +138,7 @@ public class FxRateCalculatorBuilder {
     /**
      * Once a new rate has been calculated, should it be cached for any further request?
      */
-    public FxRateCalculatorBuilder cacheResults(boolean cacheResults) {
+    public FxRateCalculatorBuilder cacheResults(final boolean cacheResults) {
         this.cacheResults = cacheResults;
         return this;
     }
@@ -146,7 +146,7 @@ public class FxRateCalculatorBuilder {
     /**
      * If using the baseFxRateProvider, should the rate be cached in the calculator, defaulted to true.
      */
-    public FxRateCalculatorBuilder cacheBaseRates(boolean cacheBaseRates) {
+    public FxRateCalculatorBuilder cacheBaseRates(final boolean cacheBaseRates) {
         this.cacheBaseRates = cacheBaseRates;
         return this;
     }
@@ -154,7 +154,7 @@ public class FxRateCalculatorBuilder {
     /**
      * Number of decimal places to use on a rate, defaulted to 6.
      */
-    public FxRateCalculatorBuilder precisionForFxRate(int precisionForFxRate) {
+    public FxRateCalculatorBuilder precisionForFxRate(final int precisionForFxRate) {
         this.precisionForFxRate = precisionForFxRate;
         return this;
     }
@@ -162,16 +162,16 @@ public class FxRateCalculatorBuilder {
     /**
      * Number of decimal places to use for a calculation involving an inversed rate, defaulted to 12
      */
-    public FxRateCalculatorBuilder precisionForInverseFxRate(int precisionForInverseFxRate) {
+    public FxRateCalculatorBuilder precisionForInverseFxRate(final int precisionForInverseFxRate) {
         this.precisionForInverseFxRate = precisionForInverseFxRate;
         return this;
     }
 
     /**
-     * If the rate required from the calculator is not immediately available, use a cross currency to calculate it; this 
+     * If the rate required from the calculator is not immediately available, use a cross currency to calculate it; this
      * gives you the opportunity to select which currencies to use in which order. Defaulted to USD and then EUR.
      */
-    public FxRateCalculatorBuilder orderedCurrenciesForCross(List<String> orderedCurrenciesForCross) {
+    public FxRateCalculatorBuilder orderedCurrenciesForCross(final List<String> orderedCurrenciesForCross) {
         if (orderedCurrenciesForCross != null) {
             this.orderedCurrenciesForCross = orderedCurrenciesForCross;
         }
@@ -181,7 +181,7 @@ public class FxRateCalculatorBuilder {
     /**
      * The interface to determine which currency is major, defaults to StandardMajorCurrencyRanking.
      */
-    public FxRateCalculatorBuilder majorCurrencyRanking(MajorCurrencyRanking majorCurrencyRanking) {
+    public FxRateCalculatorBuilder majorCurrencyRanking(final MajorCurrencyRanking majorCurrencyRanking) {
         if (majorCurrencyRanking != null) {
             this.majorCurrencyRanking = majorCurrencyRanking;
         }

@@ -3,10 +3,10 @@ package net.objectlab.kit.fxcalc;
 import java.math.BigDecimal;
 
 /**
- * Read-only representation of a currency and a value. 
- * 
+ * Read-only representation of a currency and a value.
+ *
  * Hesitated creating this but it may be better to be explicit when doing conversions with the FX Rate.
- * 
+ *
  * @author Benoit Xhenseval
  */
 public interface MonetaryAmount {

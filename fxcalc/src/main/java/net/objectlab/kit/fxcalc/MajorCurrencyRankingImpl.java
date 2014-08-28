@@ -1,36 +1,33 @@
 package net.objectlab.kit.fxcalc;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import net.objectlab.kit.util.StringUtil;
 
 /**
  * Utility class to determine the market convention for the FX Rate for a given currency pair.
- * See <a href="https://en.wikipedia.org/wiki/Currency_pair">https://en.wikipedia.org/wiki/Currency_pair</a>, Although there is no standards-setting body or ruling organization,
- * the established priority ranking of the major currencies is  Euro (EUR), Pound sterling (GBP), Australian dollar (AUD),
- * New Zealand dollar (NZD), United States dollar (USD), Canadian dollar (CAD), Swiss franc (CHF), Japanese yen (JPY).
+ * See <a href="https://en.wikipedia.org/wiki/Currency_pair">https://en.wikipedia.org/wiki/Currency_pair</a>, for a conventional list
+ * but the user can provide the ordered list of major currencies.
  */
-public final class StandardMajorCurrencyRanking implements MajorCurrencyRanking {
-    private static final Map<String, Integer> RANKS = new HashMap<String, Integer>();
-    private static final MajorCurrencyRanking DEFAULT = new StandardMajorCurrencyRanking();
-    static {
-        int i = 1;
-        RANKS.put("EUR", i++);
-        RANKS.put("GBP", i++);
-        RANKS.put("AUD", i++);
-        RANKS.put("NZD", i++);
-        RANKS.put("USD", i++);
-        RANKS.put("CAD", i++);
-        RANKS.put("CHF", i++);
-        RANKS.put("JPY", i++);
-    }
+public class MajorCurrencyRankingImpl implements MajorCurrencyRanking {
+    private final Map<String, Integer> ranks;
 
-    public static MajorCurrencyRanking getDefault() {
-        return DEFAULT;
-    }
-
-    public StandardMajorCurrencyRanking() {
+    /**
+     * User can define their own ordered list of major currencies
+     * @param orderedCurrencies must be ordered!
+     */
+    public MajorCurrencyRankingImpl(final List<String> orderedCurrencies) {
+        if (orderedCurrencies == null) {
+            ranks = new HashMap<String, Integer>(0);
+        } else {
+            ranks = new HashMap<String, Integer>(orderedCurrencies.size());
+            int i = 1;
+            for (final String s : orderedCurrencies) {
+                ranks.put(s, i++);
+            }
+        }
     }
 
     /**
@@ -38,7 +35,7 @@ public final class StandardMajorCurrencyRanking implements MajorCurrencyRanking 
      */
     @Override
     public String selectMajorCurrency(final String ccy1, final String ccy2) {
-        return RANKS.getOrDefault(StringUtil.toUpperCase(ccy1), 99).intValue() <= RANKS.getOrDefault(StringUtil.toUpperCase(ccy2), 99).intValue() ? ccy1
+        return ranks.getOrDefault(StringUtil.toUpperCase(ccy1), 99).intValue() <= ranks.getOrDefault(StringUtil.toUpperCase(ccy2), 99).intValue() ? ccy1
                 : ccy2;
     }
 

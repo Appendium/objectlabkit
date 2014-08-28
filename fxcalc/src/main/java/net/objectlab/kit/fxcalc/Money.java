@@ -13,7 +13,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  * A simple class to represent an immutable amount of a given currency.
- * 
+ *
  * @author Benoit Xhenseval
  */
 public class Money implements MonetaryAmount {

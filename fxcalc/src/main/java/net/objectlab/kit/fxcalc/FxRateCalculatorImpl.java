@@ -8,9 +8,9 @@ import java.util.Optional;
 /**
  * Main implementation, uses the ratesSnapshot or BaseFxRateProvider to find the FX Rate, if not present then
  * try via a cross currency in the order specified in orderedCurrenciesForCross.
- * 
+ *
  * Uses the {@link CrossRateCalculator}
- * 
+ *
  * @author Benoit Xhenseval
  *
  */

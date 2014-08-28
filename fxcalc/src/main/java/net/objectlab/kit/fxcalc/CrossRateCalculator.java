@@ -42,7 +42,7 @@ public class CrossRateCalculator {
         final String fx1Ccy2 = fx1.getCurrencyPair().getCcy2();
         final String fx2Ccy2 = fx2.getCurrencyPair().getCcy2();
         final boolean shouldDivide = fx1Ccy1.equals(xCcy) && fx2Ccy1.equals(xCcy) || fx1Ccy2.equals(xCcy) && fx2Ccy2.equals(xCcy); // what if it i
-                                                                                                                                   // both ccy2?
+        // both ccy2?
 
         BigDecimal bid = null;
         BigDecimal ask = null;

@@ -33,7 +33,7 @@ public class FxRateImpl implements FxRate {
         }
         b.append(System.getProperty("line.separator"));
         b.append("Quoter buys  ").append(currencyPair.getCcy1()).append(" and sells ").append(currencyPair.getCcy2()).append(" at ").append(bid)
-                .append(System.getProperty("line.separator"));
+        .append(System.getProperty("line.separator"));
         b.append("Quoter sells ").append(currencyPair.getCcy1()).append(" and buys  ").append(currencyPair.getCcy2()).append(" at ").append(ask);
 
         return b.toString();
@@ -45,7 +45,7 @@ public class FxRateImpl implements FxRate {
     }
 
     @Override
-    public FxRate createInverse(int precision) {
+    public FxRate createInverse(final int precision) {
         return new FxRateImpl(currencyPair.createInverse(), crossCcy, !marketConvention, BigDecimalUtil.setScale(BigDecimalUtil.inverse(ask),
                 precision), BigDecimalUtil.setScale(BigDecimalUtil.inverse(bid), precision));
     }
@@ -123,10 +123,10 @@ public class FxRateImpl implements FxRate {
             throw new IllegalArgumentException("The original ccy [" + originalAmount.getCurrency() + "] must be one of the pair's " + currencyPair);
         }
         return currencyPair.getCcy1().equals(originalAmount.getCurrency()) ? //
-        new Money(currencyPair.getCcy2(), BigDecimalUtil.setScale(BigDecimalUtil.multiply(originalAmount.getAmount(), getMid()), 2))
-                : new Money(currencyPair.getCcy1(), BigDecimalUtil.setScale(
-                        BigDecimalUtil.divide(BigDecimalUtil.setScale(originalAmount.getAmount(), 10), getMid(), BigDecimal.ROUND_HALF_UP), 2)) //
-        ;
+                new Money(currencyPair.getCcy2(), BigDecimalUtil.setScale(BigDecimalUtil.multiply(originalAmount.getAmount(), getMid()), 2))
+        : new Money(currencyPair.getCcy1(), BigDecimalUtil.setScale(
+                BigDecimalUtil.divide(BigDecimalUtil.setScale(originalAmount.getAmount(), 10), getMid(), BigDecimal.ROUND_HALF_UP), 2)) //
+                ;
     }
 
     @Override
@@ -135,9 +135,9 @@ public class FxRateImpl implements FxRate {
             throw new IllegalArgumentException("The original ccy [" + originalAmount.getCurrency() + "] must be one of the pair's " + currencyPair);
         }
         return currencyPair.getCcy1().equals(originalAmount.getCurrency()) ? //
-        new Money(currencyPair.getCcy2(), BigDecimalUtil.setScale(BigDecimalUtil.multiply(originalAmount.getAmount(), bid), 2))
-                : new Money(currencyPair.getCcy1(), BigDecimalUtil.setScale(
-                        BigDecimalUtil.divide(BigDecimalUtil.setScale(originalAmount.getAmount(), 10), ask, BigDecimal.ROUND_HALF_UP), 2)) //
-        ;
+                new Money(currencyPair.getCcy2(), BigDecimalUtil.setScale(BigDecimalUtil.multiply(originalAmount.getAmount(), bid), 2))
+        : new Money(currencyPair.getCcy1(), BigDecimalUtil.setScale(
+                BigDecimalUtil.divide(BigDecimalUtil.setScale(originalAmount.getAmount(), 10), ask, BigDecimal.ROUND_HALF_UP), 2)) //
+                ;
     }
 }
