@@ -12,4 +12,4 @@ ObjectLab Kit
 
 [ObjectLab Kit site](http://objectlabkit.sf.net)
 
-![Brought to you by](http://objectlabkit.sourceforge.net/images/appendium_logo.jpg "Supported by Appendium") and (http://objectlabkit.sourceforge.net/images/objectlab_logo.jpg "Supported by ObjectLab")
+![Brought to you by](http://objectlabkit.sourceforge.net/images/appendium_logo.jpg "Supported by Appendium") and ![Supported by ObjectLab](http://objectlabkit.sourceforge.net/images/objectlab_logo.jpg "Supported by ObjectLab")
