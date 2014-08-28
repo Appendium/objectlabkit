@@ -1,5 +1,6 @@
 package net.objectlab.kit.fxcalc;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,12 +21,12 @@ public class MajorCurrencyRankingImpl implements MajorCurrencyRanking {
      */
     public MajorCurrencyRankingImpl(final List<String> orderedCurrencies) {
         if (orderedCurrencies == null) {
-            ranks = new HashMap<String, Integer>(0);
+            ranks = Collections.emptyMap();
         } else {
-            ranks = new HashMap<String, Integer>(orderedCurrencies.size());
+            ranks = new HashMap<>(orderedCurrencies.size());
             int i = 1;
             for (final String s : orderedCurrencies) {
-                ranks.put(s, i++);
+                ranks.put(StringUtil.toUpperCase(s), i++);
             }
         }
     }
