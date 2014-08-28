@@ -29,7 +29,7 @@ public class MoneyTest {
     public void testNegate() {
         final Money money = Money.of("USD", 1L);
 
-        final Money money3 = money.negate();
+        final MonetaryAmount money3 = money.negate();
         assertThat(money3).isNotSameAs(money);
         assertThat(money3).isEqualTo(Money.of("USD", -1L));
     }
@@ -39,10 +39,10 @@ public class MoneyTest {
         final Money money = Money.of("USD", 1L);
         final Money money2 = Money.of("USD", 10L);
 
-        final Money money3 = money.add(money2);
+        final MonetaryAmount money3 = money.add(money2);
         assertThat(money3).isNotSameAs(money);
         assertThat(money3).isEqualTo(Money.of("USD", 11L));
-        final Money money4 = money2.add(money);
+        final MonetaryAmount money4 = money2.add(money);
         assertThat(money4).isNotSameAs(money);
         assertThat(money4).isEqualTo(Money.of("USD", 11L));
     }
@@ -52,11 +52,11 @@ public class MoneyTest {
         final Money money = Money.of("USD", 1L);
         final Money money2 = Money.of("USD", 10L);
 
-        final Money money3 = money.subtract(money2);
+        final MonetaryAmount money3 = money.subtract(money2);
         assertThat(money3).isNotSameAs(money);
         assertThat(money3).isEqualTo(Money.of("USD", -9L));
 
-        final Money money4 = money2.subtract(money);
+        final MonetaryAmount money4 = money2.subtract(money);
         assertThat(money4).isNotSameAs(money);
         assertThat(money4).isEqualTo(Money.of("USD", 9));
     }

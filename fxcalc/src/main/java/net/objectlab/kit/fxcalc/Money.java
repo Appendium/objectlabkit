@@ -63,12 +63,12 @@ public class Money implements MonetaryAmount {
     }
 
     @Override
-    public Money negate() {
+    public MonetaryAmount negate() {
         return new Money(currency, BigDecimalUtil.negate(amount));
     }
 
     @Override
-    public Money add(final MonetaryAmount money) {
+    public MonetaryAmount add(final MonetaryAmount money) {
         if (!money.getCurrency().equals(currency)) {
             throw new IllegalArgumentException("You cannot add " + money.getCurrency() + " with " + currency);
         }
@@ -76,7 +76,7 @@ public class Money implements MonetaryAmount {
     }
 
     @Override
-    public Money subtract(final MonetaryAmount money) {
+    public MonetaryAmount subtract(final MonetaryAmount money) {
         if (!money.getCurrency().equals(currency)) {
             throw new IllegalArgumentException("You cannot add " + money.getCurrency() + " with " + currency);
         }

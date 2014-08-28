@@ -3,6 +3,8 @@ package net.objectlab.kit.fxcalc;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.objectlab.kit.util.StringUtil;
+
 /**
  * Utility class to determine the market convention for the FX Rate for a given currency pair.
  * See <a href="https://en.wikipedia.org/wiki/Currency_pair">https://en.wikipedia.org/wiki/Currency_pair</a>, Although there is no standards-setting body or ruling organization,
@@ -36,7 +38,8 @@ public final class StandardMajorCurrencyRanking implements MajorCurrencyRanking 
      */
     @Override
     public String selectMajorCurrency(final String ccy1, final String ccy2) {
-        return RANKS.getOrDefault(ccy1, 99).intValue() <= RANKS.getOrDefault(ccy2, 99).intValue() ? ccy1 : ccy2;
+        return RANKS.getOrDefault(StringUtil.toUpperCase(ccy1), 99).intValue() <= RANKS.getOrDefault(StringUtil.toUpperCase(ccy2), 99).intValue() ? ccy1
+                : ccy2;
     }
 
     /**

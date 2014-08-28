@@ -2,11 +2,14 @@ package net.objectlab.kit.fxcalc;
 
 import java.util.Optional;
 
+import net.objectlab.kit.util.StringUtil;
+
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  * Immutable class representing a Currency pair, ccy1/ccy2; thread-safe and able to be used in Collections.
+ * Note that the currencies will be converted to UPPER CASE.
  */
 public class CurrencyPair {
     private final String ccy1;
@@ -14,8 +17,8 @@ public class CurrencyPair {
 
     public CurrencyPair(final String ccy1, final String ccy2) {
         super();
-        this.ccy1 = ccy1;
-        this.ccy2 = ccy2;
+        this.ccy1 = StringUtil.toUpperCase(ccy1);
+        this.ccy2 = StringUtil.toUpperCase(ccy2);
     }
 
     public static CurrencyPair of(final String ccy1, final String ccy2) {
@@ -46,7 +49,7 @@ public class CurrencyPair {
     }
 
     public boolean containsCcy(final String ccy) {
-        return ccy1.equalsIgnoreCase(ccy) || ccy2.equalsIgnoreCase(ccy);
+        return ccy1.equalsIgnoreCase(StringUtil.toUpperCase(ccy)) || ccy2.equalsIgnoreCase(StringUtil.toUpperCase(ccy));
     }
 
     /**
