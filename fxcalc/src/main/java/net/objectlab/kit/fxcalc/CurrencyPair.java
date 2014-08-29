@@ -15,8 +15,14 @@ public class CurrencyPair {
     private final String ccy1;
     private final String ccy2;
 
+    /**
+     * @throws IllegalArgumentException if ccy1 or ccy2 are blank.
+     */
     public CurrencyPair(final String ccy1, final String ccy2) {
         super();
+        if (!StringUtil.noneBlank(ccy1, ccy2)) {
+            throw new IllegalArgumentException("ccy1 and ccy2 cannot be blank");
+        }
         this.ccy1 = StringUtil.toUpperCase(ccy1);
         this.ccy2 = StringUtil.toUpperCase(ccy2);
     }

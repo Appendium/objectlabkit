@@ -49,8 +49,8 @@ Why re-invent the wheel?</description>
 			</roles>
 			<organization>Appendium Ltd</organization>
 			<organizationUrl>http://www.appendium.com/</organizationUrl>
-			<email>kit AT appendium DOT com</email>
-			<timezone>+0</timezone>
+			<email>kit@appendium.com</email>
+			<timezone>Europe/London</timezone>
 		</developer>
 		<developer>
 			<id>marchy</id>
@@ -61,7 +61,17 @@ Why re-invent the wheel?</description>
 			<organization>ObjectLab Ltd</organization>
 			<organizationUrl>http://www.objectlab.co.uk/</organizationUrl>
 			<email>marchy AT users DOT sourceforge DOT net</email>
-			<timezone>+2</timezone>
+			<timezone>Africa/Johannesburg</timezone>
+		</developer>
+		<developer>
+			<id>kennys</id>
+			<name>Kenny Shing</name>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<organization>Appendium Ltd</organization>
+			<organizationUrl>http://www.appendium.com/</organizationUrl>
+			<timezone>Europe/London</timezone>
 		</developer>
 	</developers>
 

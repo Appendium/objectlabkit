@@ -36,7 +36,6 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -44,7 +43,6 @@ import java.util.StringTokenizer;
  * Utility class for list generation and parsing.
  *
  * @author Benoit Xhenseval
- * @version $Revision: 1.3 $
  */
 public final class Util {
     /**
@@ -55,12 +53,14 @@ public final class Util {
 
     /**
      * helper method to convert a 'delimiter' separated string to a list.
-     *
+     * This is a VERY basic parsing/creation of CSV, if you seen anything superior then use <a href="http://flatpack.sf.net">FlatPack</a>.
+     * 
      * @param str
      *            the 'delimiter' separated string
      * @param delimiter
      *            typically a ','
      * @return a list
+     * @see <a href="http://flatpack.sf.net">FlatPack</a> for more comprehensive parser
      */
     public static List<String> listify(final String str, final String delimiter) {
         if (str == null) {
@@ -79,25 +79,23 @@ public final class Util {
 
     /**
      * convert a list to a comma separated string.
-     *
+     * This is a VERY basic parsing/creation of CSV, if you seen anything superior then use <a href="http://flatpack.sf.net">FlatPack</a>.
      * @param list
      *            list to "print"
      * @return a String comma separated.
+     * @see <a href="http://flatpack.sf.net">FlatPack</a> for more comprehensive parser
      */
     public static String listToCSVString(final List<?> list) {
         final StringBuilder buf = new StringBuilder();
 
         if (list != null) {
-            boolean first = true;
-
-            for (final Iterator<?> it = list.iterator(); it.hasNext(); first = false) {
-                if (!first) {
+            boolean needComma = false;
+            for (final Object o : list) {
+                if (needComma) {
                     buf.append(",");
                 }
-                final Object obj = it.next();
-                if (obj != null) {
-                    buf.append(obj.toString());
-                }
+                buf.append(StringUtil.toStringOrEmpty(o));
+                needComma = true;
             }
         }
 

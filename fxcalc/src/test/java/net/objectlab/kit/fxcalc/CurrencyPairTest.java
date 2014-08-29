@@ -6,6 +6,46 @@ import org.junit.Test;
 
 public class CurrencyPairTest {
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testNull1() {
+        new CurrencyPair("", "B");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNull2() {
+        new CurrencyPair(null, "B");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNull3() {
+        new CurrencyPair("A", "");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNull4() {
+        new CurrencyPair("A", null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNull5() {
+        new CurrencyPair("", "");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNull6() {
+        new CurrencyPair(null, "");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNull7() {
+        new CurrencyPair("", null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNull8() {
+        new CurrencyPair(null, null);
+    }
+
     @Test
     public void testEquals() throws Exception {
         final CurrencyPair cp = new CurrencyPair("A", "B");

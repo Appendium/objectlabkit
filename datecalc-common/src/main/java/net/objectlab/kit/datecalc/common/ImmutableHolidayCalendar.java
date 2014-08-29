@@ -24,8 +24,6 @@ import java.util.Set;
  * modified, it will throw {@link UnsupportedOperationException}.
  *
  * @author Benoit Xhenseval
- * @author $LastChangedBy: benoitx $
- * @version $Revision: 200 $ $Date: 2006-10-10 21:15:58 +0100 (Tue, 10 Oct 2006) $
  * @since 1.1.0
  */
 public class ImmutableHolidayCalendar<E> implements HolidayCalendar<E> {

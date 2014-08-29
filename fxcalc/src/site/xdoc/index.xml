@@ -20,7 +20,7 @@
   <body>
   
     <section name="FX Calc Introduction">
-      <p>The FX Calc package provides classes for handling Currencies and Rates within the Foreign Exchange business.</p>
+      <p>The FX Calc package provides classes for handling Currencies and Rates within the Foreign Exchange business.  The package requires JDK8.</p>
       <p>The FX Calculator is created via a FxRateCalculatorBuilder so that the FxRateCalculator can be immutable for a given set of parameters and rates (unless you provide a BaseFxRateProvider).</p>
     </section>
     

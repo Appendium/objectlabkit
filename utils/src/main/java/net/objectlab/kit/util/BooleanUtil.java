@@ -36,6 +36,21 @@ public final class BooleanUtil {
     private BooleanUtil() {
     }
 
+    /**
+     * If the boolean is not null and true, call the runnable/FunctionalInterface (depends on JDK8+)
+     * @param bool
+     * @param runnable
+     * @return true if run
+     * @since 1.4.0
+     */
+    public static boolean ifTrue(final Boolean bool, final Runnable runnable) {
+        if (isTrue(bool)) {
+            runnable.run();
+            return true;
+        }
+        return false;
+    }
+
     public static boolean isTrueOrNull(final Boolean b) {
         return b == null ? true : b;
     }

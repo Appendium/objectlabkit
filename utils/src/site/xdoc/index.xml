@@ -19,7 +19,8 @@
 
 	<body>
 		<section name="Utils Introduction">
-			<p>The Utils package provides classes for BigDecimal, Boolean, Collection, etc mainly dealing with the possibility of Null!.</p>
+			<p>The Utils package provides classes for BigDecimal, Boolean, Collection, etc mainly dealing with the possibility of Null!. The package requires
+				JDK8.</p>
 			<p>It also provides Total, Average and WeightedAverage that handle BigDecimals (including nulls) for you.</p>
 		</section>
 		<section name="Examples">
@@ -37,6 +38,10 @@
 			<subsection name="Using Util Pair">
 				<script src="https://gist.github.com/benoitx/64ded027285cea142402.js"></script>
 				Similar usage for Triplet and Quadruplet (but you would probably better model those as proper domain classes).
+			</subsection>
+
+			<subsection name="Using Utils">
+				<script src="https://gist.github.com/benoitx/4141a4e8a0be18fbfae2.js"></script>
 			</subsection>
 		</section>
 

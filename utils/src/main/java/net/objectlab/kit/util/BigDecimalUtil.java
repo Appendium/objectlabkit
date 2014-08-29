@@ -34,6 +34,7 @@ package net.objectlab.kit.util;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
+import java.util.function.Consumer;
 
 /**
  * @author Benoit Xhenseval
@@ -48,16 +49,34 @@ public final class BigDecimalUtil {
     }
 
     /**
+     * If the BigDecimal is not null call the consumer (depends on JDK8+)
+     * @param bd the BigDecimal
+     * @param consumer of the value, called if not null
+     * @return true if consumed
+     * @since 1.4.0
+     */
+    public static boolean ifNotNull(final BigDecimal bd, final Consumer<BigDecimal> consumer) {
+        if (bd != null) {
+            consumer.accept(bd);
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Convenience method to create a BigDecimal with a String, can be statically imported.
      * @param val a string representing the BigDecimal
-     * @return
+     * @return the new BigDecimal
      */
     public static BigDecimal bd(final String val) {
         return new BigDecimal(val);
     }
 
     /**
-     * Return the inverse of value, using scale
+     * Return the inverse of value if not null or zero, using scale.
+     * @param value the nullable BigDecimal
+     * @param scale scale for the result if value is not null
+     * @return 1 / value (if not null of zero)
      */
     public static BigDecimal inverse(final BigDecimal value, final int scale) {
         if (isNotZero(value)) {
@@ -67,7 +86,9 @@ public final class BigDecimalUtil {
     }
 
     /**
-     * Return the inverse of value
+     * Return the inverse of value if no tnull of zero
+     * @param value the nullable BigDecimal
+     * @return 1 / value (if not null of zero)
      */
     public static BigDecimal inverse(final BigDecimal value) {
         if (isNotZero(value)) {
@@ -77,13 +98,15 @@ public final class BigDecimalUtil {
     }
 
     /**
-     * @return true if value !=null and &lt;gt; 0.
+      * @param value the nullable BigDecimal
+    * @return true if value !=null and &lt;gt; 0.
      */
     public static boolean isNotZero(final BigDecimal value) {
         return value != null && value.signum() != 0;
     }
 
     /**
+     * @param value the nullable BigDecimal
      * @return true if value !=null and 0.
      */
     public static boolean isZero(final BigDecimal value) {
@@ -91,27 +114,32 @@ public final class BigDecimalUtil {
     }
 
     /**
-     * @return true if value !=null and &lt; 0.
+      * @param value the nullable BigDecimal
+    * @return true if value !=null and &lt; 0.
      */
     public static boolean isNegative(final BigDecimal value) {
         return value != null && value.signum() == -1;
     }
 
     /**
-     * @return true if value !=null and &gt;0.
+      * @param value the nullable BigDecimal
+    * @return true if value !=null and &gt;0.
      */
     public static boolean isStrictlyPositive(final BigDecimal value) {
         return value != null && value.signum() == 1;
     }
 
     /**
-     * @return true if value ==null OR 0.
+      * @param value the nullable BigDecimal
+    * @return true if value ==null OR 0.
      */
     public static boolean isNullOrZero(final BigDecimal value) {
         return value == null || value.signum() == 0;
     }
 
     /**
+     * @param val1 the nullable BigDecimal
+     * @param val2 the nullable BigDecimal
      * @return true if val1 == val2 (ignoring scale and null are treated as 0)
      */
     public static boolean isSameValue(final BigDecimal val1, final BigDecimal val2) {
@@ -119,6 +147,8 @@ public final class BigDecimalUtil {
     }
 
     /**
+     * @param val1 the nullable BigDecimal
+     * @param val2 the nullable BigDecimal
      * @return true if val1 == val2 (ignoring scale and null are treated as 0)
      */
     public static boolean isSameValueTreatNullAsZero(final BigDecimal val1, final BigDecimal val2) {
@@ -126,7 +156,10 @@ public final class BigDecimalUtil {
     }
 
     /**
-     * Add 2 BigDecimal safely (i.e. handles nulls)
+     * Add 2 BigDecimal safely (i.e. handles nulls as zeros)
+     * @param v1 the nullable BigDecimal
+     * @param v2 the nullable BigDecimal
+     * @return the sum of the 2 BigDecimal
      */
     private static BigDecimal doAdd(final BigDecimal v1, final BigDecimal v2) {
         BigDecimal total = v1;
@@ -140,6 +173,9 @@ public final class BigDecimalUtil {
 
     /**
      * Add n BigDecimal safely (i.e. handles nulls)
+     * @param start initial BigDecimal
+     * @param values series of BigDecimals can be null/empty
+     * @return the sum of the n non null BigDecimals
      */
     public static BigDecimal add(final BigDecimal start, final BigDecimal... values) {
         BigDecimal total = start != null ? start : BigDecimal.ZERO;
@@ -152,7 +188,10 @@ public final class BigDecimalUtil {
     }
 
     /**
-     * Subtract n BigDecimal safely (i.e. handles nulls), returns 0
+     * Subtract n BigDecimal safely from the start value (i.e. handles nulls as zeros), returns 0
+     * @param start starting point, if null, use 0
+     * @param values series of BigDecimal to subtract from start, can be null / empty
+     * @return start - the series of values
      */
     public static BigDecimal subtract(final BigDecimal start, final BigDecimal... values) {
         BigDecimal total = start != null ? start : BigDecimal.ZERO;
@@ -238,6 +277,8 @@ public final class BigDecimalUtil {
 
     /**
      * Returns the ABS of the value, handles null.
+     * @param value nullable BigDecimal
+     * @return abs(value) or null if null
      */
     public static BigDecimal abs(final BigDecimal value) {
         return value != null ? value.abs() : null;
@@ -245,6 +286,8 @@ public final class BigDecimalUtil {
 
     /**
      * Returns the negate of the value, handles null.
+     * @param value nullable BigDecimal
+     * @return -value or null if null
      */
     public static BigDecimal negate(final BigDecimal value) {
         return value != null ? value.negate() : null;
@@ -252,12 +295,18 @@ public final class BigDecimalUtil {
 
     /**
      * Returns the negate of the value if condition is true, handles null.
+     * @param condition triggers negate
+     * @param value nullable BigDecimal
+     * @return -value if condition==true 
      */
     public static BigDecimal negateIfTrue(final boolean condition, final BigDecimal value) {
         return condition ? negate(value) : value;
     }
 
     /**
+     * Check ABS values of v1 and v2.
+     * @param v1 nullable BigDecimal
+     * @param v2 nullable BigDecimal
      * @return false if the ABS value match!
      */
     public static boolean isNotSameAbsValue(final BigDecimal v1, final BigDecimal v2) {
@@ -265,6 +314,9 @@ public final class BigDecimalUtil {
     }
 
     /**
+     * Check values of v1 and v2.
+     * @param v1 nullable BigDecimal
+     * @param v2 nullable BigDecimal
      * @return false if the value match!
      */
     public static boolean isNotSameValue(final BigDecimal v1, final BigDecimal v2) {
@@ -272,6 +324,9 @@ public final class BigDecimalUtil {
     }
 
     /**
+     * Check ABS values of v1 and v2.
+     * @param v1 nullable BigDecimal
+     * @param v2 nullable BigDecimal
      * @return true if the ABS value match!
      */
     public static boolean isSameAbsValue(final BigDecimal v1, final BigDecimal v2) {

@@ -7,8 +7,8 @@ ObjectLab Kit
   * for JDK < 1.8
   * for JDK 1.8 using LocalDate
   * for JODA using Joda LocalDate
-* FX Rate Calculators (including Cross currencies calculations and MonetaryAmount)
-* Utils: set of utilities like Pair, Triplet, Total and BigDecimal that can handle nulls!
+* FX Rate Calculators (including Cross currencies calculations and MonetaryAmount), requires JDK8
+* Utils: set of utilities like Pair, Triplet, Total and BigDecimal that can handle nulls! requires JDK8
 
 [ObjectLab Kit site](http://objectlabkit.sf.net)
 

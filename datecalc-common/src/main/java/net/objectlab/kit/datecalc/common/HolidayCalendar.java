@@ -41,8 +41,6 @@ import java.util.Set;
  * that 31 Dec is a holiday itself.
  *
  * @author Benoit Xhenseval
- * @author $LastChangedBy: benoitx $
- * @version $Revision: 200 $ $Date: 2006-10-10 21:15:58 +0100 (Tue, 10 Oct 2006) $
  * @since 1.1.0
  *
  * @param <E>

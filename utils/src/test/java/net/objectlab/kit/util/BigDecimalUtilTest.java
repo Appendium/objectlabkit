@@ -3,6 +3,7 @@
  */
 package net.objectlab.kit.util;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
@@ -15,6 +16,12 @@ import org.junit.Test;
  *
  */
 public class BigDecimalUtilTest {
+
+    @Test
+    public void testIfNotNull() {
+        assertThat(BigDecimalUtil.ifNotNull(null, t -> fail("Should not be called"))).isFalse();
+        assertThat(BigDecimalUtil.ifNotNull(BigDecimal.TEN, t -> assertThat(t).isEqualByComparingTo(BigDecimal.TEN))).isTrue();
+    }
 
     /**
      * Test method for {@link net.objectlab.kit.util.BigDecimalUtil#divide(java.math.BigDecimal, java.math.BigDecimal, int, int)}.

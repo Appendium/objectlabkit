@@ -63,11 +63,18 @@ public class Money implements MonetaryAmount {
         return EqualsBuilder.reflectionEquals(this, obj);
     }
 
+    /**
+     * Swap the sign on the amount and return a new immutable Money.
+     */
     @Override
     public MonetaryAmount negate() {
         return new Money(currency, BigDecimalUtil.negate(amount));
     }
 
+    /**
+     * Add the amount with the existing one and return a new immutable Money.
+     * @throws IllegalArgumentException if the money.currency does not match the current one.
+     */
     @Override
     public MonetaryAmount add(final MonetaryAmount money) {
         if (!money.getCurrency().equals(currency)) {
@@ -76,6 +83,10 @@ public class Money implements MonetaryAmount {
         return new Money(currency, BigDecimalUtil.add(amount, money.getAmount()));
     }
 
+    /**
+     * Subtract the amount from the existing one and return a new immutable Money.
+     * @throws IllegalArgumentException if the money.currency does not match the current one.
+     */
     @Override
     public MonetaryAmount subtract(final MonetaryAmount money) {
         if (!money.getCurrency().equals(currency)) {

@@ -6,6 +6,12 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 public class BooleanUtilTest {
+    @Test
+    public void testIfTrue() {
+        assertFalse(BooleanUtil.ifTrue(null, () -> assertTrue(false)));
+        assertFalse(BooleanUtil.ifTrue(Boolean.FALSE, () -> assertTrue(false)));
+        assertTrue(BooleanUtil.ifTrue(Boolean.TRUE, () -> assertTrue(true)));
+    }
 
     @Test
     public void testIsTrueOrNull() {
