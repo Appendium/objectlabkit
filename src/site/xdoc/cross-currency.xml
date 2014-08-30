@@ -147,6 +147,15 @@ Quoter sells EUR and buys  CHF at 1.206418</pre></td>
 					</tr>
 				</tbody>
 			</table>
+			<p>Once you have an <a href="../apidocs/net/objectlab/kit/fxcalc/FxRate.html">FXRate</a>, you can call:</p>
+			<ul>
+			<li>getBid: bid (amount the quoter would buy Ccy1 for a given amount of Ccy2).</li>
+			<li>getAsk: ask (amount the quoter would sell Ccy1 for a given amount of Ccy2).</li>
+			<li>getMid: (bid+ask)/2</li>
+			<li>convertAmountUsingBidOrAsk: Given a monetary amount in the original currency, calculate the resulting amount in the other currency, using BID or ASK.</li>
+			<li>getPaymentAmountForBuying: to get the amount you would get by buying a currency amount.</li>
+			<li>getReceiptAmountForSelling: to get the amount you would get by selling a currency amount.</li>
+			</ul>
 			<p>The code is available here:</p>
 		<script src="https://gist.github.com/benoitx/6261e7f299dbd62823b9.js"></script>
 		</section>
