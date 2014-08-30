@@ -86,4 +86,22 @@ public interface FxRate {
      * @throws IllegalArgumentException if the originalAmount.currency is not one of the currency pair.
      */
     MonetaryAmount convertAmountUsingBidOrAsk(MonetaryAmount originalAmount);
+
+    /**
+     * Calculates the amount to pay given an amount to buy, e.g. how much should you pay in Y if you are buying n X?
+     * More explicitly, how many EURos should you pay to buy 1,000 USD?
+     * Given EUR/USD rate, this would be 1,000 / bid.
+     * @param amountToBuy amount you want to buy.
+     * @return amount you have to pay in the other currency.
+     */
+    MonetaryAmount getPaymentAmountForBuying(MonetaryAmount amountToBuy);
+
+    /**
+     * Calculates the amount the seller would receive given an amount to sell, e.g. how many Y will you get if you are selling n X?
+     * More explicitly, how many EURos should you get to sell 1,000 USD?
+     * Given EUR/USD rate, this would be 1,000 / ask.
+     * @param amountToSell amount you want to sell.
+     * @return amount you will receive in the other currency.
+     */
+    MonetaryAmount getReceiptAmountForSelling(MonetaryAmount amountToSell);
 }

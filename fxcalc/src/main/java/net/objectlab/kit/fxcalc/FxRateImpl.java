@@ -9,6 +9,8 @@ import static net.objectlab.kit.util.BigDecimalUtil.setScale;
 import java.math.BigDecimal;
 import java.util.Optional;
 
+import net.objectlab.kit.util.BigDecimalUtil;
+
 /**
  * Represents an immutable FxRate.
  * @author Benoit Xhenseval
@@ -143,5 +145,40 @@ public class FxRateImpl implements FxRate {
         return currencyPair.getCcy1().equals(originalAmount.getCurrency()) ? new Money(currencyPair.getCcy2(), setScale(
                 multiply(originalAmount.getAmount(), bid), DEC_PLACE_FOR_MONEY)) : new Money(currencyPair.getCcy1(), setScale(
                 divide(setScale(originalAmount.getAmount(), PRECISION_FOR_INVERSE), ask, BigDecimal.ROUND_HALF_UP), DEC_PLACE_FOR_MONEY));
+    }
+
+    /**
+     * Calculates the amount to pay given an amount to buy, e.g. how much should you pay in Y if you are buying n X?
+     * More explicitly, how many EURos should you pay to buy 1,000 USD?
+     * Given EUR/USD rate, this would be 1,000 / bid.
+     * @param amountToBuy amount you want to buy.
+     * @return amount you have to pay in the other ccy.
+     */
+    @Override
+    public MonetaryAmount getPaymentAmountForBuying(final MonetaryAmount amountToBuy) {
+        boolean inverse = amountToBuy.getCurrency().equals(currencyPair.getCcy2());
+        final String targetCcy = inverse ? currencyPair.getCcy1() : currencyPair.getCcy2();
+        return inverse ? new Money(targetCcy, setScale(
+                BigDecimalUtil.divide(PRECISION_FOR_INVERSE, amountToBuy.getAmount(), bid, BigDecimal.ROUND_HALF_UP), DEC_PLACE_FOR_MONEY))
+                : new Money(targetCcy, setScale(amountToBuy.getAmount().multiply(ask), DEC_PLACE_FOR_MONEY));
+    }
+
+    /**
+     * Calculates the amount the seller would receive given an amount to sell, e.g. how many Y will you get if you are selling n X?
+     * More explicitly, how many EURos should you get to sell 1,000 USD?
+     * Given EUR/USD rate, this would be 1,000 / ask.
+     * @param amountToSell amount you want to sell.
+     * @return amount you will receive in the other ccy.
+     */
+    @Override
+    public MonetaryAmount getReceiptAmountForSelling(final MonetaryAmount amountToSell) {
+        boolean inverse = amountToSell.getCurrency().equals(currencyPair.getCcy2());
+        final String targetCcy = inverse ? currencyPair.getCcy1() : currencyPair.getCcy2();
+        return inverse ? //
+        new Money(targetCcy, setScale(BigDecimalUtil.divide(PRECISION_FOR_INVERSE, amountToSell.getAmount(), ask, BigDecimal.ROUND_HALF_UP),
+                DEC_PLACE_FOR_MONEY)) //
+                : //
+                new Money(targetCcy, setScale(amountToSell.getAmount().multiply(bid), DEC_PLACE_FOR_MONEY)) //
+        ;
     }
 }

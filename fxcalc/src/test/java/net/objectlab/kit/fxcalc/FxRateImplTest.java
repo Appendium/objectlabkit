@@ -2,6 +2,7 @@ package net.objectlab.kit.fxcalc;
 
 import static net.objectlab.kit.util.BigDecimalUtil.bd;
 import static org.assertj.core.api.Assertions.assertThat;
+import net.objectlab.kit.util.BigDecimalUtil;
 
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -49,5 +50,46 @@ public class FxRateImplTest {
 
         assertThat(fx.convertAmountUsingBidOrAsk(Money.of("CAD", 1_000)));
     }
+
+    @Test
+    public void testGetPaymentAmountForBuying() {
+        FxRateImpl f = new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61"));
+        final MonetaryAmount paymentAmountForBuying = f.getPaymentAmountForBuying(Money.of("USD", BigDecimalUtil.bd("1000")));
+        assertThat(paymentAmountForBuying.getCurrency()).isEqualTo("EUR");
+        assertThat(paymentAmountForBuying.getAmount()).isEqualByComparingTo("625");
+
+        final MonetaryAmount paymentAmountForBuying2 = f.getPaymentAmountForBuying(Money.of("EUR", BigDecimalUtil.bd("1000")));
+        assertThat(paymentAmountForBuying2.getCurrency()).isEqualTo("USD");
+        assertThat(paymentAmountForBuying2.getAmount()).isEqualByComparingTo("1610");
+    }
+
+    @Test
+    public void testGetReceipAmountForSelling() {
+        FxRateImpl f = new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61"));
+        final MonetaryAmount receipt = f.getReceiptAmountForSelling(Money.of("USD", BigDecimalUtil.bd("1000")));
+        assertThat(receipt.getCurrency()).isEqualTo("EUR");
+        assertThat(receipt.getAmount()).isEqualByComparingTo("621.12");
+
+        final MonetaryAmount receipt2 = f.getReceiptAmountForSelling(Money.of("EUR", BigDecimalUtil.bd("1000")));
+        assertThat(receipt2.getCurrency()).isEqualTo("USD");
+        assertThat(receipt2.getAmount()).isEqualByComparingTo("1600");
+    }
+
+    public static void main(String[] args) {
+        FxRateImpl f = new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61"));
+        System.out.println(f);
+        System.out.println("Buy $1000 for :" + f.getPaymentAmountForBuying(Money.of("USD", BigDecimalUtil.bd("1000"))));
+        System.out.println("Buy €1000 for :" + f.getPaymentAmountForBuying(Money.of("EUR", BigDecimalUtil.bd("1000"))));
+
+        System.out.println("Sell $1000 for:" + f.getReceiptAmountForSelling(Money.of("USD", BigDecimalUtil.bd("1000"))));
+        System.out.println("Sell €1000 for:" + f.getReceiptAmountForSelling(Money.of("EUR", BigDecimalUtil.bd("1000"))));
+    }
+    /* OUTPUT
+     EUR.USD B:1.6 A:1.61
+    Buy $1000 for :EUR 625.00
+    Buy €1000 for :USD 1610.00
+    Sell $1000 for:EUR 621.12
+    Sell €1000 for:USD 1600.00
+     */
 
 }

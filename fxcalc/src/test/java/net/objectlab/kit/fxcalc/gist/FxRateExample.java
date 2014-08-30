@@ -106,6 +106,20 @@ public final class FxRateExample {
             // I want to BUY 1m USD with Euros
             final MonetaryAmount amountBuyInUSD = fx.get().convertAmountUsingBidOrAsk(Money.of("USD", 1_000_000L));
             System.out.println(target + " $1m => " + amountBuyInUSD); // EUR763358.78
+
+            System.out.println("BUY / SELL AMOUNT -------- " + fx.get());
+            System.out.println("Buy $1000 for :" + fx.get().getPaymentAmountForBuying(Money.of("USD", BigDecimalUtil.bd("1000"))));
+            System.out.println("Buy €1000 for :" + fx.get().getPaymentAmountForBuying(Money.of("EUR", BigDecimalUtil.bd("1000"))));
+
+            System.out.println("Sell $1000 for:" + fx.get().getReceiptAmountForSelling(Money.of("USD", BigDecimalUtil.bd("1000"))));
+            System.out.println("Sell €1000 for:" + fx.get().getReceiptAmountForSelling(Money.of("EUR", BigDecimalUtil.bd("1000"))));
+            /* OUTPUT
+            BUY / SELL AMOUNT -------- EUR.USD B:1.3 A:1.31
+            Buy $1000 for :EUR 769.23
+            Buy €1000 for :USD 1310.00
+            Sell $1000 for:EUR 763.36
+            Sell €1000 for:USD 1300.00
+             */
         }
 
         final CurrencyPair invTgt = target.createInverse();
@@ -126,6 +140,12 @@ public final class FxRateExample {
     Calc EUR / USD (Not a Cross) =========================
     EUR.USD €1m => USD 1300000.00
     EUR.USD $1m => EUR 763358.78
+    BUY / SELL AMOUNT -------- EUR.USD B:1.3 A:1.31
+    Buy $1000 for :EUR 769.23
+    Buy €1000 for :USD 1310.00
+    Sell $1000 for:EUR 763.36
+    Sell €1000 for:USD 1300.00
+
     USD.EUR €1m => USD 1300000.00
     USD.EUR $1m +> EUR 763358.78
     
