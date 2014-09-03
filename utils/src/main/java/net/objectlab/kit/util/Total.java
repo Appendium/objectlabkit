@@ -78,12 +78,38 @@ public class Total implements Serializable {
     }
 
     /**
+     * @param condition if true, do the addition.
+     * @param values
+     * @return the total with changed value if condition is true.
+     * @since 1.4.0
+     */
+    public Total addIfTrue(final boolean condition, final BigDecimal... values) {
+        if (condition) {
+            return add(values);
+        }
+        return this;
+    }
+
+    /**
      * @return the current Sum with new total.
      */
     public Total add(final BigDecimal... value) {
         this.value = BigDecimalUtil.add(this.value, value);
         if (value != null) {
             count += value.length;
+        }
+        return this;
+    }
+
+    /**
+     * @param condition if true, do the subtraction.
+     * @param values
+     * @return the total with changed value if condition is true.
+     * @since 1.4.0
+     */
+    public Total subtractIfTrue(final boolean condition, final BigDecimal... values) {
+        if (condition) {
+            return subtract(values);
         }
         return this;
     }
