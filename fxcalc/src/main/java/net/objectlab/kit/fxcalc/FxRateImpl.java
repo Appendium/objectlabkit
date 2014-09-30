@@ -128,22 +128,22 @@ public class FxRateImpl implements FxRate {
     }
 
     @Override
-    public MonetaryAmount convertAmountUsingMid(final MonetaryAmount originalAmount) {
+    public CurrencyAmount convertAmountUsingMid(final CurrencyAmount originalAmount) {
         if (!currencyPair.containsCcy(originalAmount.getCurrency())) {
             throw new IllegalArgumentException("The original ccy [" + originalAmount.getCurrency() + "] must be one of the pair's " + currencyPair);
         }
-        return currencyPair.getCcy1().equals(originalAmount.getCurrency()) ? new Money(currencyPair.getCcy2(), setScale(
-                multiply(originalAmount.getAmount(), getMid()), DEC_PLACE_FOR_MONEY)) : new Money(currencyPair.getCcy1(), setScale(
+        return currencyPair.getCcy1().equals(originalAmount.getCurrency()) ? new Cash(currencyPair.getCcy2(), setScale(
+                multiply(originalAmount.getAmount(), getMid()), DEC_PLACE_FOR_MONEY)) : new Cash(currencyPair.getCcy1(), setScale(
                 divide(setScale(originalAmount.getAmount(), PRECISION_FOR_INVERSE), getMid(), BigDecimal.ROUND_HALF_UP), DEC_PLACE_FOR_MONEY));
     }
 
     @Override
-    public MonetaryAmount convertAmountUsingBidOrAsk(final MonetaryAmount originalAmount) {
+    public CurrencyAmount convertAmountUsingBidOrAsk(final CurrencyAmount originalAmount) {
         if (!currencyPair.containsCcy(originalAmount.getCurrency())) {
             throw new IllegalArgumentException("The original ccy [" + originalAmount.getCurrency() + "] must be one of the pair's " + currencyPair);
         }
-        return currencyPair.getCcy1().equals(originalAmount.getCurrency()) ? new Money(currencyPair.getCcy2(), setScale(
-                multiply(originalAmount.getAmount(), bid), DEC_PLACE_FOR_MONEY)) : new Money(currencyPair.getCcy1(), setScale(
+        return currencyPair.getCcy1().equals(originalAmount.getCurrency()) ? new Cash(currencyPair.getCcy2(), setScale(
+                multiply(originalAmount.getAmount(), bid), DEC_PLACE_FOR_MONEY)) : new Cash(currencyPair.getCcy1(), setScale(
                 divide(setScale(originalAmount.getAmount(), PRECISION_FOR_INVERSE), ask, BigDecimal.ROUND_HALF_UP), DEC_PLACE_FOR_MONEY));
     }
 
@@ -155,12 +155,12 @@ public class FxRateImpl implements FxRate {
      * @return amount you have to pay in the other ccy.
      */
     @Override
-    public MonetaryAmount getPaymentAmountForBuying(final MonetaryAmount amountToBuy) {
+    public CurrencyAmount getPaymentAmountForBuying(final CurrencyAmount amountToBuy) {
         boolean inverse = amountToBuy.getCurrency().equals(currencyPair.getCcy2());
         final String targetCcy = inverse ? currencyPair.getCcy1() : currencyPair.getCcy2();
-        return inverse ? new Money(targetCcy, setScale(
+        return inverse ? new Cash(targetCcy, setScale(
                 BigDecimalUtil.divide(PRECISION_FOR_INVERSE, amountToBuy.getAmount(), bid, BigDecimal.ROUND_HALF_UP), DEC_PLACE_FOR_MONEY))
-                : new Money(targetCcy, setScale(amountToBuy.getAmount().multiply(ask), DEC_PLACE_FOR_MONEY));
+                : new Cash(targetCcy, setScale(amountToBuy.getAmount().multiply(ask), DEC_PLACE_FOR_MONEY));
     }
 
     /**
@@ -171,14 +171,14 @@ public class FxRateImpl implements FxRate {
      * @return amount you will receive in the other ccy.
      */
     @Override
-    public MonetaryAmount getReceiptAmountForSelling(final MonetaryAmount amountToSell) {
+    public CurrencyAmount getReceiptAmountForSelling(final CurrencyAmount amountToSell) {
         boolean inverse = amountToSell.getCurrency().equals(currencyPair.getCcy2());
         final String targetCcy = inverse ? currencyPair.getCcy1() : currencyPair.getCcy2();
         return inverse ? //
-        new Money(targetCcy, setScale(BigDecimalUtil.divide(PRECISION_FOR_INVERSE, amountToSell.getAmount(), ask, BigDecimal.ROUND_HALF_UP),
+        new Cash(targetCcy, setScale(BigDecimalUtil.divide(PRECISION_FOR_INVERSE, amountToSell.getAmount(), ask, BigDecimal.ROUND_HALF_UP),
                 DEC_PLACE_FOR_MONEY)) //
                 : //
-                new Money(targetCcy, setScale(amountToSell.getAmount().multiply(bid), DEC_PLACE_FOR_MONEY)) //
+                new Cash(targetCcy, setScale(amountToSell.getAmount().multiply(bid), DEC_PLACE_FOR_MONEY)) //
         ;
     }
 }

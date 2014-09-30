@@ -8,8 +8,8 @@ import net.objectlab.kit.fxcalc.FxRateCalculator;
 import net.objectlab.kit.fxcalc.FxRateCalculatorBuilder;
 import net.objectlab.kit.fxcalc.FxRateCalculatorImpl;
 import net.objectlab.kit.fxcalc.FxRateImpl;
-import net.objectlab.kit.fxcalc.MonetaryAmount;
-import net.objectlab.kit.fxcalc.Money;
+import net.objectlab.kit.fxcalc.CurrencyAmount;
+import net.objectlab.kit.fxcalc.Cash;
 import net.objectlab.kit.util.BigDecimalUtil;
 
 import org.assertj.core.util.Lists;
@@ -40,11 +40,11 @@ public final class FxRateExample {
 
         if (fx.isPresent()) {
             // I want to sell 1m CAD in JPY
-            final MonetaryAmount amountInJPY = fx.get().convertAmountUsingBidOrAsk(Money.of("CAD", 1_000_000L));
+            final CurrencyAmount amountInJPY = fx.get().convertAmountUsingBidOrAsk(Cash.of("CAD", 1_000_000L));
             System.out.println(target + " CAD 1m => " + amountInJPY); // JPY 95349541.00
 
             // I want to BUY 1m JPY with CAD
-            final MonetaryAmount amountBuyInCAD = fx.get().convertAmountUsingBidOrAsk(Money.of("JPY", 1_000_000L));
+            final CurrencyAmount amountBuyInCAD = fx.get().convertAmountUsingBidOrAsk(Cash.of("JPY", 1_000_000L));
             System.out.println(target + " JPY 1m => " + amountBuyInCAD); // CAD 10477.20
         }
 
@@ -54,11 +54,11 @@ public final class FxRateExample {
 
         if (fx2.isPresent()) {
             // I want to sell 1m Euros in USD
-            final MonetaryAmount amountInJPY = fx2.get().convertAmountUsingBidOrAsk(Money.of("CAD", 1_000_000L));
+            final CurrencyAmount amountInJPY = fx2.get().convertAmountUsingBidOrAsk(Cash.of("CAD", 1_000_000L));
             System.out.println(inverseTarget + " CAD 1m => " + amountInJPY); // JPY 95349541.00
 
             // I want to BUY 1m USD with Euros
-            final MonetaryAmount amountBuyInCAD = fx2.get().convertAmountUsingBidOrAsk(Money.of("JPY", 1_000_000L));
+            final CurrencyAmount amountBuyInCAD = fx2.get().convertAmountUsingBidOrAsk(Cash.of("JPY", 1_000_000L));
             System.out.println(inverseTarget + " JPY 1m => " + amountBuyInCAD); // CAD 10477.20
         }
     }
@@ -70,11 +70,11 @@ public final class FxRateExample {
 
         if (fx.isPresent()) {
             // I want to sell 1m Euros in CHF
-            final MonetaryAmount amountInCHF = fx.get().convertAmountUsingBidOrAsk(Money.of("EUR", 1_000_000L));
+            final CurrencyAmount amountInCHF = fx.get().convertAmountUsingBidOrAsk(Cash.of("EUR", 1_000_000L));
             System.out.println(target + " €1m => " + amountInCHF); // CHF 1197553.00
 
             // I want to BUY 1m CHF with Euros
-            final MonetaryAmount amountBuyInEUR = fx.get().convertAmountUsingBidOrAsk(Money.of("CHF", 1_000_000L));
+            final CurrencyAmount amountBuyInEUR = fx.get().convertAmountUsingBidOrAsk(Cash.of("CHF", 1_000_000L));
             System.out.println(target + " CHF1m: " + amountBuyInEUR); // EUR 828900.10
         }
 
@@ -84,11 +84,11 @@ public final class FxRateExample {
 
         if (fx2.isPresent()) {
             // I want to sell 1m Euros in USD
-            final MonetaryAmount amountInCHF = fx2.get().convertAmountUsingBidOrAsk(Money.of("EUR", 1_000_000L));
+            final CurrencyAmount amountInCHF = fx2.get().convertAmountUsingBidOrAsk(Cash.of("EUR", 1_000_000L));
             System.out.println(inverseTarget + " €1m => " + amountInCHF); // CHF 1197553.00
 
             // I want to BUY 1m USD with Euros
-            final MonetaryAmount amountBuyInEUR = fx2.get().convertAmountUsingBidOrAsk(Money.of("CHF", 1_000_000L));
+            final CurrencyAmount amountBuyInEUR = fx2.get().convertAmountUsingBidOrAsk(Cash.of("CHF", 1_000_000L));
             System.out.println(inverseTarget + " CHF1m: " + amountBuyInEUR); // EUR 828900.10
         }
     }
@@ -100,19 +100,19 @@ public final class FxRateExample {
 
         if (fx.isPresent()) {
             // I want to sell 1m Euros in USD
-            final MonetaryAmount amountInUSD = fx.get().convertAmountUsingBidOrAsk(Money.of("EUR", 1_000_000L));
+            final CurrencyAmount amountInUSD = fx.get().convertAmountUsingBidOrAsk(Cash.of("EUR", 1_000_000L));
             System.out.println(target + " €1m => " + amountInUSD); // $1300000.00
 
             // I want to BUY 1m USD with Euros
-            final MonetaryAmount amountBuyInUSD = fx.get().convertAmountUsingBidOrAsk(Money.of("USD", 1_000_000L));
+            final CurrencyAmount amountBuyInUSD = fx.get().convertAmountUsingBidOrAsk(Cash.of("USD", 1_000_000L));
             System.out.println(target + " $1m => " + amountBuyInUSD); // EUR763358.78
 
             System.out.println("BUY / SELL AMOUNT -------- " + fx.get());
-            System.out.println("Buy $1000 for :" + fx.get().getPaymentAmountForBuying(Money.of("USD", BigDecimalUtil.bd("1000"))));
-            System.out.println("Buy €1000 for :" + fx.get().getPaymentAmountForBuying(Money.of("EUR", BigDecimalUtil.bd("1000"))));
+            System.out.println("Buy $1000 for :" + fx.get().getPaymentAmountForBuying(Cash.of("USD", BigDecimalUtil.bd("1000"))));
+            System.out.println("Buy €1000 for :" + fx.get().getPaymentAmountForBuying(Cash.of("EUR", BigDecimalUtil.bd("1000"))));
 
-            System.out.println("Sell $1000 for:" + fx.get().getReceiptAmountForSelling(Money.of("USD", BigDecimalUtil.bd("1000"))));
-            System.out.println("Sell €1000 for:" + fx.get().getReceiptAmountForSelling(Money.of("EUR", BigDecimalUtil.bd("1000"))));
+            System.out.println("Sell $1000 for:" + fx.get().getReceiptAmountForSelling(Cash.of("USD", BigDecimalUtil.bd("1000"))));
+            System.out.println("Sell €1000 for:" + fx.get().getReceiptAmountForSelling(Cash.of("EUR", BigDecimalUtil.bd("1000"))));
             /* OUTPUT
             BUY / SELL AMOUNT -------- EUR.USD B:1.3 A:1.31
             Buy $1000 for :EUR 769.23
@@ -128,11 +128,11 @@ public final class FxRateExample {
 
         if (fx2.isPresent()) {
             // I want to sell 1m Euros in USD
-            final MonetaryAmount amountInUSD = fx2.get().convertAmountUsingBidOrAsk(Money.of("EUR", 1_000_000L));
+            final CurrencyAmount amountInUSD = fx2.get().convertAmountUsingBidOrAsk(Cash.of("EUR", 1_000_000L));
             System.out.println(invTgt + " €1m => " + amountInUSD); // $1300000.00
 
             // I want to BUY 1m USD with Euros
-            final MonetaryAmount amountBuyInUSD = fx2.get().convertAmountUsingBidOrAsk(Money.of("USD", 1_000_000L));
+            final CurrencyAmount amountBuyInUSD = fx2.get().convertAmountUsingBidOrAsk(Cash.of("USD", 1_000_000L));
             System.out.println(invTgt + " $1m +> " + amountBuyInUSD); // EUR763358.78
         }
     }

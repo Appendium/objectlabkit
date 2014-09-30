@@ -30,12 +30,12 @@ public class FxRateCalculatorImplTest {
         assertThat(fx.get().isMarketConvention()).isTrue();
         assertThat(fx.get().getBid()).isEqualByComparingTo("1.6");
         assertThat(fx.get().getAsk()).isEqualByComparingTo("1.61");
-        final MonetaryAmount amountInUSD = fx.get().convertAmountUsingBidOrAsk(Money.of("EUR", 1_000_000L));
+        final CurrencyAmount amountInUSD = fx.get().convertAmountUsingBidOrAsk(Cash.of("EUR", 1_000_000L));
         assertThat(amountInUSD.getCurrency()).isEqualTo("USD");
         assertThat(amountInUSD.getAmount()).isEqualByComparingTo("1600000");
 
         // I want to BUY 1m USD with Euros
-        final MonetaryAmount amountBuyInUSD = fx.get().convertAmountUsingBidOrAsk(Money.of("USD", 1_000_000L));
+        final CurrencyAmount amountBuyInUSD = fx.get().convertAmountUsingBidOrAsk(Cash.of("USD", 1_000_000L));
         assertThat(amountBuyInUSD.getCurrency()).isEqualTo("EUR");
         assertThat(amountBuyInUSD.getAmount()).isEqualByComparingTo("621118.01");
 
@@ -49,12 +49,12 @@ public class FxRateCalculatorImplTest {
         assertThat(fx2.get().isMarketConvention()).isFalse();
         assertThat(fx2.get().getBid()).isEqualByComparingTo("0.621118012422");
         assertThat(fx2.get().getAsk()).isEqualByComparingTo("0.625");
-        final MonetaryAmount amountInUSD2 = fx2.get().convertAmountUsingBidOrAsk(Money.of("EUR", 1_000_000L));
+        final CurrencyAmount amountInUSD2 = fx2.get().convertAmountUsingBidOrAsk(Cash.of("EUR", 1_000_000L));
         assertThat(amountInUSD2.getCurrency()).isEqualTo("USD");
         assertThat(amountInUSD2.getAmount()).isEqualByComparingTo("1600000");
 
         // I want to BUY 1m USD with Euros
-        final MonetaryAmount amountBuyInUSD2 = fx2.get().convertAmountUsingBidOrAsk(Money.of("USD", 1_000_000L));
+        final CurrencyAmount amountBuyInUSD2 = fx2.get().convertAmountUsingBidOrAsk(Cash.of("USD", 1_000_000L));
         assertThat(amountBuyInUSD2.getCurrency()).isEqualTo("EUR");
         assertThat(amountBuyInUSD2.getAmount()).isEqualByComparingTo("621118.01");
     }
@@ -78,10 +78,10 @@ public class FxRateCalculatorImplTest {
         assertThat(fx.get().getCrossCcy().get()).isEqualTo("GBP");
         assertThat(fx.get().getBid()).isEqualByComparingTo("1.600305");
         assertThat(fx.get().getAsk()).isEqualByComparingTo("1.601760");
-        final MonetaryAmount amountInCHF = fx.get().convertAmountUsingBidOrAsk(Money.of("EUR", 1_000_000L));
+        final CurrencyAmount amountInCHF = fx.get().convertAmountUsingBidOrAsk(Cash.of("EUR", 1_000_000L));
         assertThat(amountInCHF.getCurrency()).isEqualTo("CHF");
         assertThat(amountInCHF.getAmount()).isEqualTo("1600305.00");
-        final MonetaryAmount amountBuyInEUR = fx.get().convertAmountUsingBidOrAsk(Money.of("CHF", 1_000_000L));
+        final CurrencyAmount amountBuyInEUR = fx.get().convertAmountUsingBidOrAsk(Cash.of("CHF", 1_000_000L));
         assertThat(amountBuyInEUR.getCurrency()).isEqualTo("EUR");
         assertThat(amountBuyInEUR.getAmount()).isEqualTo("624313.26");
 
@@ -93,10 +93,10 @@ public class FxRateCalculatorImplTest {
         assertThat(fx2.get().isMarketConvention()).isFalse();
         assertThat(fx2.get().getBid()).isEqualByComparingTo("0.624313255419");
         assertThat(fx2.get().getAsk()).isEqualByComparingTo("0.624880882082");
-        final MonetaryAmount amountInCHF2 = fx2.get().convertAmountUsingBidOrAsk(Money.of("EUR", 1_000_000L));
+        final CurrencyAmount amountInCHF2 = fx2.get().convertAmountUsingBidOrAsk(Cash.of("EUR", 1_000_000L));
         assertThat(amountInCHF2.getCurrency()).isEqualTo("CHF");
         assertThat(amountInCHF2.getAmount()).isEqualTo("1600305.00");
-        final MonetaryAmount amountBuyInEUR2 = fx2.get().convertAmountUsingBidOrAsk(Money.of("CHF", 1_000_000L));
+        final CurrencyAmount amountBuyInEUR2 = fx2.get().convertAmountUsingBidOrAsk(Cash.of("CHF", 1_000_000L));
         assertThat(amountBuyInEUR2.getCurrency()).isEqualTo("EUR");
         assertThat(amountBuyInEUR2.getAmount()).isEqualTo("624313.26");
     }
@@ -137,10 +137,10 @@ public class FxRateCalculatorImplTest {
         assertThat(fx.get().getCrossCcy().get()).isEqualTo("GBP");
         assertThat(fx.get().getBid()).isEqualByComparingTo("1.600305");
         assertThat(fx.get().getAsk()).isEqualByComparingTo("1.601760");
-        final MonetaryAmount amountInCHF = fx.get().convertAmountUsingBidOrAsk(Money.of("EUR", 1_000_000L));
+        final CurrencyAmount amountInCHF = fx.get().convertAmountUsingBidOrAsk(Cash.of("EUR", 1_000_000L));
         assertThat(amountInCHF.getCurrency()).isEqualTo("CHF");
         assertThat(amountInCHF.getAmount()).isEqualTo("1600305.00");
-        final MonetaryAmount amountBuyInEUR = fx.get().convertAmountUsingBidOrAsk(Money.of("CHF", 1_000_000L));
+        final CurrencyAmount amountBuyInEUR = fx.get().convertAmountUsingBidOrAsk(Cash.of("CHF", 1_000_000L));
         assertThat(amountBuyInEUR.getCurrency()).isEqualTo("EUR");
         assertThat(amountBuyInEUR.getAmount()).isEqualTo("624313.26");
 
@@ -152,10 +152,10 @@ public class FxRateCalculatorImplTest {
         assertThat(fx2.get().isMarketConvention()).isFalse();
         assertThat(fx2.get().getBid()).isEqualByComparingTo("0.624313255419");
         assertThat(fx2.get().getAsk()).isEqualByComparingTo("0.624880882082");
-        final MonetaryAmount amountInCHF2 = fx2.get().convertAmountUsingBidOrAsk(Money.of("EUR", 1_000_000L));
+        final CurrencyAmount amountInCHF2 = fx2.get().convertAmountUsingBidOrAsk(Cash.of("EUR", 1_000_000L));
         assertThat(amountInCHF2.getCurrency()).isEqualTo("CHF");
         assertThat(amountInCHF2.getAmount()).isEqualTo("1600305.00");
-        final MonetaryAmount amountBuyInEUR2 = fx2.get().convertAmountUsingBidOrAsk(Money.of("CHF", 1_000_000L));
+        final CurrencyAmount amountBuyInEUR2 = fx2.get().convertAmountUsingBidOrAsk(Cash.of("CHF", 1_000_000L));
         assertThat(amountBuyInEUR2.getCurrency()).isEqualTo("EUR");
         assertThat(amountBuyInEUR2.getAmount()).isEqualTo("624313.26");
     }

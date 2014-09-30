@@ -76,7 +76,7 @@ public interface FxRate {
      * @return depending on the originalAmount.currency, it will be amount / mid or amount * mid, rounded to 2 DP.
      * @throws IllegalArgumentException if the originalAmount.currency is not one of the currency pair.
      */
-    MonetaryAmount convertAmountUsingMid(MonetaryAmount originalAmount);
+    CurrencyAmount convertAmountUsingMid(CurrencyAmount originalAmount);
 
     /**
      * Given a monetary amount in the original currency, calculate the resulting amount in the other currency, using BID or ASK
@@ -85,7 +85,7 @@ public interface FxRate {
      * @return depending on the originalAmount.currency, it will be amount / bid|ask or amount * bid|ask, rounded to 2 DP.
      * @throws IllegalArgumentException if the originalAmount.currency is not one of the currency pair.
      */
-    MonetaryAmount convertAmountUsingBidOrAsk(MonetaryAmount originalAmount);
+    CurrencyAmount convertAmountUsingBidOrAsk(CurrencyAmount originalAmount);
 
     /**
      * Calculates the amount to pay given an amount to buy, e.g. how much should you pay in Y if you are buying n X?
@@ -94,7 +94,7 @@ public interface FxRate {
      * @param amountToBuy amount you want to buy.
      * @return amount you have to pay in the other currency.
      */
-    MonetaryAmount getPaymentAmountForBuying(MonetaryAmount amountToBuy);
+    CurrencyAmount getPaymentAmountForBuying(CurrencyAmount amountToBuy);
 
     /**
      * Calculates the amount the seller would receive given an amount to sell, e.g. how many Y will you get if you are selling n X?
@@ -103,5 +103,5 @@ public interface FxRate {
      * @param amountToSell amount you want to sell.
      * @return amount you will receive in the other currency.
      */
-    MonetaryAmount getReceiptAmountForSelling(MonetaryAmount amountToSell);
+    CurrencyAmount getReceiptAmountForSelling(CurrencyAmount amountToSell);
 }

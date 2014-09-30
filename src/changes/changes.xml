@@ -6,7 +6,7 @@
     <author email="kit@objectlab.co.uk">Benoit Xhenseval</author>
   </properties>
   <body>
-    <release version="1.4.0" date="2014-08-26" description="new Currrency Calculator">
+    <release version="1.4.0" date="2014-10-01" description="new Currrency Calculator and FX Rate">
       <action dev="benoitx" type="fix">The JODA YearMonthDay has been deprecated for a while, I removed the calculators, use LocalDate instead.</action>
       <action dev="benoitx" type="add"  issue="2" due-to="celerite">Added new Currency calculator following issue raised by Ben CuthBert and Scott Sue (thanks guys). Thanks to London FX Ltd, Julian and Stephen for guidelines as well.</action>
       <action dev="benoitx" type="add">Added way to combine WorkingWeeks by intersection of working Days, eg. WesternWeek.intersection(ArabicWeek) => 3 day weekend (Fri to Sun).</action>

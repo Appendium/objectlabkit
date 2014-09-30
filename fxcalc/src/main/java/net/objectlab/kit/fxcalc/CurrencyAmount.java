@@ -9,7 +9,7 @@ import java.math.BigDecimal;
  *
  * @author Benoit Xhenseval
  */
-public interface MonetaryAmount {
+public interface CurrencyAmount {
 
     String getCurrency();
 
@@ -18,17 +18,17 @@ public interface MonetaryAmount {
     /**
      * Swap the sign on the amount and return a MonetaryAmount (implementation could make it immutable and return a new entity)
      */
-    MonetaryAmount negate();
+    CurrencyAmount negate();
 
     /**
      * Add the amount with the existing one and return a MonetaryAmount (implementation could make it immutable and return a new entity)
      * @throws IllegalArgumentException if the money.currency does not match the current one.
      */
-    MonetaryAmount add(MonetaryAmount money);
+    CurrencyAmount add(CurrencyAmount money);
 
     /**
      * Subtract the amount from the existing one and return a MonetaryAmount (implementation could make it immutable and return a new entity)
      * @throws IllegalArgumentException if the money.currency does not match the current one.
      */
-    MonetaryAmount subtract(MonetaryAmount money);
+    CurrencyAmount subtract(CurrencyAmount money);
 }

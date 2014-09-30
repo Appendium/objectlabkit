@@ -16,26 +16,26 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
  *
  * @author Benoit Xhenseval
  */
-public class Money implements MonetaryAmount {
+public class Cash implements CurrencyAmount {
     private final String currency;
     private final BigDecimal amount;
 
-    public Money(final String currency, final BigDecimal amount) {
+    public Cash(final String currency, final BigDecimal amount) {
         super();
         this.currency = StringUtil.toUpperCase(currency);
         this.amount = amount;
     }
 
-    public static Money of(final String currency, final BigDecimal amount) {
-        return new Money(currency, amount);
+    public static Cash of(final String currency, final BigDecimal amount) {
+        return new Cash(currency, amount);
     }
 
-    public static Money of(final String currency, final String amount) {
-        return new Money(currency, BigDecimalUtil.bd(amount));
+    public static Cash of(final String currency, final String amount) {
+        return new Cash(currency, BigDecimalUtil.bd(amount));
     }
 
-    public static Money of(final String currency, final long amount) {
-        return new Money(currency, BigDecimal.valueOf(amount));
+    public static Cash of(final String currency, final long amount) {
+        return new Cash(currency, BigDecimal.valueOf(amount));
     }
 
     @Override
@@ -67,8 +67,8 @@ public class Money implements MonetaryAmount {
      * Swap the sign on the amount and return a new immutable Money.
      */
     @Override
-    public MonetaryAmount negate() {
-        return new Money(currency, BigDecimalUtil.negate(amount));
+    public CurrencyAmount negate() {
+        return new Cash(currency, BigDecimalUtil.negate(amount));
     }
 
     /**
@@ -76,11 +76,11 @@ public class Money implements MonetaryAmount {
      * @throws IllegalArgumentException if the money.currency does not match the current one.
      */
     @Override
-    public MonetaryAmount add(final MonetaryAmount money) {
+    public CurrencyAmount add(final CurrencyAmount money) {
         if (!money.getCurrency().equals(currency)) {
             throw new IllegalArgumentException("You cannot add " + money.getCurrency() + " with " + currency);
         }
-        return new Money(currency, BigDecimalUtil.add(amount, money.getAmount()));
+        return new Cash(currency, BigDecimalUtil.add(amount, money.getAmount()));
     }
 
     /**
@@ -88,11 +88,11 @@ public class Money implements MonetaryAmount {
      * @throws IllegalArgumentException if the money.currency does not match the current one.
      */
     @Override
-    public MonetaryAmount subtract(final MonetaryAmount money) {
+    public CurrencyAmount subtract(final CurrencyAmount money) {
         if (!money.getCurrency().equals(currency)) {
             throw new IllegalArgumentException("You cannot add " + money.getCurrency() + " with " + currency);
         }
-        return new Money(currency, BigDecimalUtil.subtract(amount, money.getAmount()));
+        return new Cash(currency, BigDecimalUtil.subtract(amount, money.getAmount()));
     }
 
 }
