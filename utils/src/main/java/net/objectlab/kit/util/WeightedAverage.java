@@ -45,6 +45,8 @@ public class WeightedAverage implements Serializable {
     private final Total totalExpanded = new Total();
     private int count = 0;
     private final boolean includeZeros;
+    private BigDecimal maximum;
+    private BigDecimal minimum;
 
     public WeightedAverage() {
         this.includeZeros = true;
@@ -58,12 +60,30 @@ public class WeightedAverage implements Serializable {
         return total.getTotal();
     }
 
+    private void determineMinMax(final BigDecimal value) {
+        if (maximum == null || BigDecimalUtil.compareTo(value, maximum) == 1) {
+            maximum = value;
+        }
+        if (minimum == null || BigDecimalUtil.compareTo(value, minimum) == -1) {
+            minimum = value;
+        }
+    }
+
     public void add(final BigDecimal value, final BigDecimal weightAsAValue) {
         if (includeZeros || BigDecimalUtil.isNotZero(value)) {
             count++;
             total.add(weightAsAValue);
             totalExpanded.add(BigDecimalUtil.multiply(value, weightAsAValue));
+            determineMinMax(value);
         }
+    }
+
+    public BigDecimal getMaximum() {
+        return maximum;
+    }
+
+    public BigDecimal getMinimum() {
+        return minimum;
     }
 
     public BigDecimal getWeightedAverage() {

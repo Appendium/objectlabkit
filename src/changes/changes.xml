@@ -13,6 +13,7 @@
       <action dev="benoitx" type="add" issue="3" due-to="ConradMellinNAB">Added new method getNextIMMDates(start, numberOfDays) on IMMDateCalculator.</action>
       <action dev="benoitx" type="add">Added new module for FX Calculations, requires JDK8.</action>
       <action dev="benoitx" type="add">Utils now requires JDK8.</action>
+      <action dev="benoitx" type="add">Average to keep min and max values too.</action>
     </release>
     <release version="1.3.0" date="2014-05-26" description="new JDK8 Module">
       <action dev="benoitx" type="add">Added new JDK8 module, very similar to Joda.  Only this module needs JDK8.</action>

@@ -34,6 +34,7 @@ package net.objectlab.kit.util;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Optional;
 
 /**
  * @author Benoit
@@ -42,6 +43,8 @@ import java.math.BigDecimal;
 public final class Average implements Serializable {
     private static final long serialVersionUID = 4630559777899225672L;
     private Total sum = new Total();
+    private BigDecimal maximum;
+    private BigDecimal minimum;
     private int count = 0;
 
     public Average() {
@@ -49,6 +52,16 @@ public final class Average implements Serializable {
 
     public Average(final BigDecimal start) {
         sum = new Total(start);
+        determineMinMax(start);
+    }
+
+    private void determineMinMax(final BigDecimal value) {
+        if (maximum == null || BigDecimalUtil.compareTo(value, maximum) == 1) {
+            maximum = value;
+        }
+        if (minimum == null || BigDecimalUtil.compareTo(value, minimum) == -1) {
+            minimum = value;
+        }
     }
 
     public Average(final int scale) {
@@ -56,9 +69,14 @@ public final class Average implements Serializable {
         sum = new Total(bd.setScale(scale));
     }
 
-    public void add(final BigDecimal val) {
-        sum.add(val);
-        count++;
+    public void add(final BigDecimal... values) {
+        if (values != null) {
+            for (BigDecimal val : values) {
+                sum.add(val);
+                determineMinMax(val);
+                count++;
+            }
+        }
     }
 
     public BigDecimal getTotal() {
@@ -76,5 +94,13 @@ public final class Average implements Serializable {
     @Override
     public String toString() {
         return StringUtil.concatWithSpaces("Total:", getTotal(), "Points", getDataPoints(), "Avg:", getAverage());
+    }
+
+    public Optional<BigDecimal> getMaximum() {
+        return Optional.ofNullable(maximum);
+    }
+
+    public Optional<BigDecimal> getMinimum() {
+        return Optional.ofNullable(minimum);
     }
 }
