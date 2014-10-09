@@ -6,7 +6,14 @@ mvn clean install site site:stage
 
 HOW to release to OSS Sonatype REPO
 ===================================
-https://docs.sonatype.org/display/Repository/Sonatype+OSS+Maven+Repository+Usage+Guide
+
+========================================================================
+=
+DOING the RELEASE See http://central.sonatype.org/pages/ossrh-guide.html
+=
+========================================================================
+
+
 
 
 SIGN as part of release
