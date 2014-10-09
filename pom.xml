@@ -10,7 +10,7 @@
 
 	<groupId>net.objectlab.kit</groupId>
 	<artifactId>kit-parent</artifactId>
-	<version>1.4.0</version>
+	<version>1.4.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
 		<module>utils</module>
