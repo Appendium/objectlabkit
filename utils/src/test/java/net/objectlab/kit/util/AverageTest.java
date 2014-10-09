@@ -38,10 +38,6 @@ public class AverageTest {
         fail("Not yet implemented");
     }
 
-    /**
-     * Test method for {@link net.objectlab.kit.util.Average#add(java.math.BigDecimal)}.
-     */
-
     public void testAdd() {
         fail("Not yet implemented");
     }
