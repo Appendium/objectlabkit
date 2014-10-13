@@ -25,6 +25,7 @@ public class FxRateCalculatorImpl implements FxRateCalculator {
     private final int askRounding;
     private final boolean cacheResults;
     private final boolean cacheBaseRates;
+    private final CurrencyProvider currencyProvider;
 
     public FxRateCalculatorImpl(final FxRateCalculatorBuilder builder) {
         builder.checkValid();
@@ -39,6 +40,7 @@ public class FxRateCalculatorImpl implements FxRateCalculator {
         this.cacheResults = builder.isCacheResults();
         this.bidRounding = builder.getBidRounding();
         this.askRounding = builder.getAskRounding();
+        this.currencyProvider = builder.getCurrencyProvider();
     }
 
     private FxRate getBaseRate(final CurrencyPair ccyPair) {
@@ -107,7 +109,7 @@ public class FxRateCalculatorImpl implements FxRateCalculator {
             }
             if (xCcy2 != null) {
                 return CrossRateCalculator.calculateCross(ccyPair, xCcy1, xCcy2, precisionForFxRate, precisionForInverseFxRate, majorCurrencyRanking,
-                        bidRounding, askRounding);
+                        bidRounding, askRounding, currencyProvider);
             }
         }
         return null;

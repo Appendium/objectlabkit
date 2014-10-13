@@ -12,10 +12,17 @@ import org.junit.Test;
 public class FxRateCalculatorImplTest {
     @Test
     public void testEurUsd() {
-        FxRateCalculatorBuilder builder = new FxRateCalculatorBuilder() //
-                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61")))//
-                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("GBP", "CHF"), null, true, BigDecimalUtil.bd("2.1702"), BigDecimalUtil.bd("2.1707")))//
-                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "GBP"), null, true, BigDecimalUtil.bd("0.7374"), BigDecimalUtil.bd("0.7379")))//
+        FxRateCalculatorBuilder builder = new FxRateCalculatorBuilder()
+                //
+                .addRateSnapshot(
+                        new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61"),
+                                new JdkCurrencyProvider()))//
+                .addRateSnapshot(
+                        new FxRateImpl(CurrencyPair.of("GBP", "CHF"), null, true, BigDecimalUtil.bd("2.1702"), BigDecimalUtil.bd("2.1707"),
+                                new JdkCurrencyProvider()))//
+                .addRateSnapshot(
+                        new FxRateImpl(CurrencyPair.of("EUR", "GBP"), null, true, BigDecimalUtil.bd("0.7374"), BigDecimalUtil.bd("0.7379"),
+                                new JdkCurrencyProvider()))//
                 .orderedCurrenciesForCross(Lists.newArrayList("GBP")) //
         ;
 
@@ -61,10 +68,17 @@ public class FxRateCalculatorImplTest {
 
     @Test
     public void testEurChf() {
-        FxRateCalculatorBuilder builder = new FxRateCalculatorBuilder() //
-                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61")))//
-                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("GBP", "CHF"), null, true, BigDecimalUtil.bd("2.1702"), BigDecimalUtil.bd("2.1707")))//
-                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "GBP"), null, true, BigDecimalUtil.bd("0.7374"), BigDecimalUtil.bd("0.7379")))//
+        FxRateCalculatorBuilder builder = new FxRateCalculatorBuilder()
+                //
+                .addRateSnapshot(
+                        new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61"),
+                                new JdkCurrencyProvider()))//
+                .addRateSnapshot(
+                        new FxRateImpl(CurrencyPair.of("GBP", "CHF"), null, true, BigDecimalUtil.bd("2.1702"), BigDecimalUtil.bd("2.1707"),
+                                new JdkCurrencyProvider()))//
+                .addRateSnapshot(
+                        new FxRateImpl(CurrencyPair.of("EUR", "GBP"), null, true, BigDecimalUtil.bd("0.7374"), BigDecimalUtil.bd("0.7379"),
+                                new JdkCurrencyProvider()))//
                 .orderedCurrenciesForCross(Lists.newArrayList("GBP")) //
         ;
 
@@ -103,10 +117,17 @@ public class FxRateCalculatorImplTest {
 
     @Test
     public void testNoPossibleCross() {
-        FxRateCalculatorBuilder builder = new FxRateCalculatorBuilder() //
-                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61")))//
-                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("GBP", "CHF"), null, true, BigDecimalUtil.bd("2.1702"), BigDecimalUtil.bd("2.1707")))//
-                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "GBP"), null, true, BigDecimalUtil.bd("0.7374"), BigDecimalUtil.bd("0.7379")))//
+        FxRateCalculatorBuilder builder = new FxRateCalculatorBuilder()
+                //
+                .addRateSnapshot(
+                        new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61"),
+                                new JdkCurrencyProvider()))//
+                .addRateSnapshot(
+                        new FxRateImpl(CurrencyPair.of("GBP", "CHF"), null, true, BigDecimalUtil.bd("2.1702"), BigDecimalUtil.bd("2.1707"),
+                                new JdkCurrencyProvider()))//
+                .addRateSnapshot(
+                        new FxRateImpl(CurrencyPair.of("EUR", "GBP"), null, true, BigDecimalUtil.bd("0.7374"), BigDecimalUtil.bd("0.7379"),
+                                new JdkCurrencyProvider()))//
                 .orderedCurrenciesForCross(Lists.newArrayList("USD")) // impossible to find EUR/CHF
         ;
 
@@ -120,10 +141,17 @@ public class FxRateCalculatorImplTest {
 
     @Test
     public void testSecondPossibleCross() {
-        FxRateCalculatorBuilder builder = new FxRateCalculatorBuilder() //
-                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61")))//
-                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("GBP", "CHF"), null, true, BigDecimalUtil.bd("2.1702"), BigDecimalUtil.bd("2.1707")))//
-                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "GBP"), null, true, BigDecimalUtil.bd("0.7374"), BigDecimalUtil.bd("0.7379")))//
+        FxRateCalculatorBuilder builder = new FxRateCalculatorBuilder()
+                //
+                .addRateSnapshot(
+                        new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61"),
+                                new JdkCurrencyProvider()))//
+                .addRateSnapshot(
+                        new FxRateImpl(CurrencyPair.of("GBP", "CHF"), null, true, BigDecimalUtil.bd("2.1702"), BigDecimalUtil.bd("2.1707"),
+                                new JdkCurrencyProvider()))//
+                .addRateSnapshot(
+                        new FxRateImpl(CurrencyPair.of("EUR", "GBP"), null, true, BigDecimalUtil.bd("0.7374"), BigDecimalUtil.bd("0.7379"),
+                                new JdkCurrencyProvider()))//
                 .orderedCurrenciesForCross(Lists.newArrayList("USD", "GBP")) // impossible to find EUR/CHF via USD but ok with GBP
         ;
 

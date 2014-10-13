@@ -2,26 +2,38 @@ package net.objectlab.kit.fxcalc.gist;
 
 import java.util.Optional;
 
+import net.objectlab.kit.fxcalc.Cash;
+import net.objectlab.kit.fxcalc.CurrencyAmount;
 import net.objectlab.kit.fxcalc.CurrencyPair;
 import net.objectlab.kit.fxcalc.FxRate;
 import net.objectlab.kit.fxcalc.FxRateCalculator;
 import net.objectlab.kit.fxcalc.FxRateCalculatorBuilder;
 import net.objectlab.kit.fxcalc.FxRateCalculatorImpl;
 import net.objectlab.kit.fxcalc.FxRateImpl;
-import net.objectlab.kit.fxcalc.CurrencyAmount;
-import net.objectlab.kit.fxcalc.Cash;
+import net.objectlab.kit.fxcalc.JdkCurrencyProvider;
 import net.objectlab.kit.util.BigDecimalUtil;
 
 import org.assertj.core.util.Lists;
 
 public final class FxRateExample {
     public static void main(final String[] args) {
-        final FxRateCalculatorBuilder builder = new FxRateCalculatorBuilder() //
-                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.3"), BigDecimalUtil.bd("1.31")))//
-                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("GBP", "CHF"), null, true, BigDecimalUtil.bd("1.51589"), BigDecimalUtil.bd("1.5156")))//
-                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("EUR", "GBP"), null, true, BigDecimalUtil.bd("0.79"), BigDecimalUtil.bd("0.796")))//
-                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("USD", "JPY"), null, true, BigDecimalUtil.bd("103.931"), BigDecimalUtil.bd("103.94")))//
-                .addRateSnapshot(new FxRateImpl(CurrencyPair.of("USD", "CAD"), null, true, BigDecimalUtil.bd("1.089"), BigDecimalUtil.bd("1.090")))//
+        final FxRateCalculatorBuilder builder = new FxRateCalculatorBuilder()
+                //
+                .addRateSnapshot(
+                        new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.3"), BigDecimalUtil.bd("1.31"),
+                                new JdkCurrencyProvider()))//
+                .addRateSnapshot(
+                        new FxRateImpl(CurrencyPair.of("GBP", "CHF"), null, true, BigDecimalUtil.bd("1.51589"), BigDecimalUtil.bd("1.5156"),
+                                new JdkCurrencyProvider()))//
+                .addRateSnapshot(
+                        new FxRateImpl(CurrencyPair.of("EUR", "GBP"), null, true, BigDecimalUtil.bd("0.79"), BigDecimalUtil.bd("0.796"),
+                                new JdkCurrencyProvider()))//
+                .addRateSnapshot(
+                        new FxRateImpl(CurrencyPair.of("USD", "JPY"), null, true, BigDecimalUtil.bd("103.931"), BigDecimalUtil.bd("103.94"),
+                                new JdkCurrencyProvider()))//
+                .addRateSnapshot(
+                        new FxRateImpl(CurrencyPair.of("USD", "CAD"), null, true, BigDecimalUtil.bd("1.089"), BigDecimalUtil.bd("1.090"),
+                                new JdkCurrencyProvider()))//
                 .orderedCurrenciesForCross(Lists.newArrayList("GBP", "USD")) //
         ;
 

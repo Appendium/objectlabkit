@@ -13,22 +13,32 @@ public class FxRateImplTest {
 
     @Test
     public void testMid() {
-        FxRateImpl fx = new FxRateImpl(new CurrencyPair("EUR", "USD"), null, true, bd("1.6"), bd("1.61"));
+        FxRateImpl fx = new FxRateImpl(new CurrencyPair("EUR", "USD"), null, true, bd("1.6"), bd("1.61"), new JdkCurrencyProvider());
         assertThat(fx.getMid()).isEqualByComparingTo("1.605");
     }
 
     @Test
     public void testConversionMid() {
-        FxRateImpl fx = new FxRateImpl(new CurrencyPair("EUR", "USD"), null, true, bd("1.6"), bd("1.61"));
+        FxRateImpl fx = new FxRateImpl(new CurrencyPair("EUR", "USD"), null, true, bd("1.6"), bd("1.61"), new JdkCurrencyProvider());
         LOG.debug(fx.getDescription());
 
         assertThat(fx.convertAmountUsingMid(Cash.of("EUR", 1_000))).isEqualTo(Cash.of("USD", "1605"));
         assertThat(fx.convertAmountUsingMid(Cash.of("USD", 1_000))).isEqualTo(Cash.of("EUR", "623.05"));
     }
 
+    @Test
+    public void testConversionMidJpy() {
+        FxRateImpl fx = new FxRateImpl(new CurrencyPair("USD", "JPY"), null, true, bd("133.23"), bd("133.34"), new JdkCurrencyProvider());
+        LOG.debug(fx.getDescription());
+
+        assertThat(fx.getMid()).isEqualByComparingTo(bd("133.285"));
+        assertThat(fx.convertAmountUsingMid(Cash.of("USD", 10))).isEqualTo(Cash.of("JPY", "1332"));
+        assertThat(fx.convertAmountUsingMid(Cash.of("JPY", 1_000))).isEqualTo(Cash.of("USD", "7.50"));
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void testConversionMidWrongPair() {
-        FxRateImpl fx = new FxRateImpl(new CurrencyPair("EUR", "USD"), null, true, bd("1.6"), bd("1.61"));
+        FxRateImpl fx = new FxRateImpl(new CurrencyPair("EUR", "USD"), null, true, bd("1.6"), bd("1.61"), new JdkCurrencyProvider());
         LOG.debug(fx.getDescription());
 
         assertThat(fx.convertAmountUsingMid(Cash.of("CAD", 1_000)));
@@ -36,7 +46,7 @@ public class FxRateImplTest {
 
     @Test
     public void testConversionBidAsk() {
-        FxRateImpl fx = new FxRateImpl(new CurrencyPair("EUR", "USD"), null, true, bd("1.6"), bd("1.61"));
+        FxRateImpl fx = new FxRateImpl(new CurrencyPair("EUR", "USD"), null, true, bd("1.6"), bd("1.61"), new JdkCurrencyProvider());
         LOG.debug(fx.getDescription());
 
         assertThat(fx.convertAmountUsingBidOrAsk(Cash.of("EUR", 1_000))).isEqualTo(Cash.of("USD", "1600"));  // 1000 * 1.6
@@ -45,7 +55,7 @@ public class FxRateImplTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testConversionBidOrAskWrongPair() {
-        FxRateImpl fx = new FxRateImpl(new CurrencyPair("EUR", "USD"), null, true, bd("1.6"), bd("1.61"));
+        FxRateImpl fx = new FxRateImpl(new CurrencyPair("EUR", "USD"), null, true, bd("1.6"), bd("1.61"), new JdkCurrencyProvider());
         LOG.debug(fx.getDescription());
 
         assertThat(fx.convertAmountUsingBidOrAsk(Cash.of("CAD", 1_000)));
@@ -53,7 +63,8 @@ public class FxRateImplTest {
 
     @Test
     public void testGetPaymentAmountForBuying() {
-        FxRateImpl f = new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61"));
+        FxRateImpl f = new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61"),
+                new JdkCurrencyProvider());
         final CurrencyAmount paymentAmountForBuying = f.getPaymentAmountForBuying(Cash.of("USD", BigDecimalUtil.bd("1000")));
         assertThat(paymentAmountForBuying.getCurrency()).isEqualTo("EUR");
         assertThat(paymentAmountForBuying.getAmount()).isEqualByComparingTo("625");
@@ -65,7 +76,8 @@ public class FxRateImplTest {
 
     @Test
     public void testGetReceipAmountForSelling() {
-        FxRateImpl f = new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61"));
+        FxRateImpl f = new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61"),
+                new JdkCurrencyProvider());
         final CurrencyAmount receipt = f.getReceiptAmountForSelling(Cash.of("USD", BigDecimalUtil.bd("1000")));
         assertThat(receipt.getCurrency()).isEqualTo("EUR");
         assertThat(receipt.getAmount()).isEqualByComparingTo("621.12");
@@ -76,7 +88,8 @@ public class FxRateImplTest {
     }
 
     public static void main(String[] args) {
-        FxRateImpl f = new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61"));
+        FxRateImpl f = new FxRateImpl(CurrencyPair.of("EUR", "USD"), null, true, BigDecimalUtil.bd("1.6"), BigDecimalUtil.bd("1.61"),
+                new JdkCurrencyProvider());
         System.out.println(f);
         System.out.println("Buy $1000 for :" + f.getPaymentAmountForBuying(Cash.of("USD", BigDecimalUtil.bd("1000"))));
         System.out.println("Buy €1000 for :" + f.getPaymentAmountForBuying(Cash.of("EUR", BigDecimalUtil.bd("1000"))));

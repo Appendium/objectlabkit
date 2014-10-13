@@ -31,7 +31,8 @@ public final class CrossRateCalculator {
      * @throws IllegalArgumentException if the 2 fx1 and fx2 do not share a common cross currency or either currencies in the targetPair
      */
     public static FxRate calculateCross(final CurrencyPair targetPair, final FxRate fx1, final FxRate fx2, final int precision,
-            final int precisionForInverseFxRate, final MajorCurrencyRanking ranking, final int bidRounding, final int askRounding) {
+            final int precisionForInverseFxRate, final MajorCurrencyRanking ranking, final int bidRounding, final int askRounding,
+            CurrencyProvider currencyProvider) {
         final Optional<String> crossCcy = fx1.getCurrencyPair().findCommonCcy(fx2.getCurrencyPair());
         final String xCcy = crossCcy.orElseThrow(() -> new IllegalArgumentException("The 2 FXRates do not share a ccy " + fx1.getCurrencyPair() + " "
                 + fx2.getCurrencyPair()));
@@ -72,7 +73,7 @@ public final class CrossRateCalculator {
                 ask = BigDecimalUtil.setScale(BigDecimalUtil.multiply(fx1.getAsk(), fx2.getAsk()), precision);
             }
         }
-        final FxRateImpl crossRate = new FxRateImpl(targetPair, xCcy, ranking.isMarketConvention(targetPair), bid, ask);
+        final FxRateImpl crossRate = new FxRateImpl(targetPair, xCcy, ranking.isMarketConvention(targetPair), bid, ask, currencyProvider);
         LOG.debug("X RATE {}", crossRate);
         LOG.debug(crossRate.getDescription());
         return crossRate;

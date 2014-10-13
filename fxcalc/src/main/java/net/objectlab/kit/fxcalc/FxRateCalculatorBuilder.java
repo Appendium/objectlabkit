@@ -26,6 +26,7 @@ import java.util.stream.Collectors;
         .majorCurrencyRanking(StandardMajorCurrencyRanking.getdefault())
         .precisionForFxRate(6)
         .precisionForInverseFxRate(12)
+        .currencyProvider(new JdkCurrencyProvider()) // use the JDK currency
         .cacheResults(true) // only calculate a cross Fx once, cache for subsequent requests
         .cacheBaseRates(true); // if a BaseFxRateRateProvider is used, cache the rates instead of calling again for same currency pair
  * </pre>
@@ -73,6 +74,10 @@ public class FxRateCalculatorBuilder {
      * The Rounding to use for ASK, default HALF_UP
      */
     private int askRounding = BigDecimal.ROUND_HALF_UP;
+    /**
+     * CurrencyProvider the provider for currency details
+     */
+    private CurrencyProvider currencyProvider = new JdkCurrencyProvider();
 
     public FxRateCalculatorBuilder() {
         orderedCurrenciesForCross.add("USD");
@@ -214,6 +219,16 @@ public class FxRateCalculatorBuilder {
     }
 
     /**
+     * The interface to determine Currency details.
+     */
+    public FxRateCalculatorBuilder currencyProvider(final CurrencyProvider currencyProvider) {
+        if (currencyProvider != null) {
+            this.currencyProvider = currencyProvider;
+        }
+        return this;
+    }
+
+    /**
      * Snapshot of FxRate, typically they are the Base FX Rates (e.g. vs USD)
      */
     public FxRateCalculatorBuilder ratesSnapshot(final Collection<FxRate> rates) {
@@ -246,4 +261,7 @@ public class FxRateCalculatorBuilder {
         return askRounding;
     }
 
+    public CurrencyProvider getCurrencyProvider() {
+        return currencyProvider;
+    }
 }
