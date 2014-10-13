@@ -19,5 +19,9 @@ public class StandardMajorCurrencyRankingTest {
         assertThat(majorCurrencyRanking.selectMajorCurrency("JPY", "GBP")).isEqualTo("GBP");
         assertThat(majorCurrencyRanking.selectMajorCurrency("AED", "JOD")).isEqualTo("AED");
         assertThat(majorCurrencyRanking.selectMajorCurrency("JOD", "AED")).isEqualTo("JOD");
+        assertThat(majorCurrencyRanking.selectMajorCurrency("NOK", "SEK")).isEqualTo("NOK");
+        assertThat(majorCurrencyRanking.selectMajorCurrency("SEK", "NOK")).isEqualTo("NOK");
+        assertThat(majorCurrencyRanking.selectMajorCurrency("NOK", "JPY")).isEqualTo("NOK");
+        assertThat(majorCurrencyRanking.selectMajorCurrency("JPY", "SEK")).isEqualTo("SEK");
     }
 }

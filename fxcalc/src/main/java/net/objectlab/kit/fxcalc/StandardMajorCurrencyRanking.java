@@ -14,6 +14,8 @@ import java.util.Arrays;
  * <li>United States dollar (USD)</li>
  * <li>Canadian dollar (CAD)</li>
  * <li>Swiss franc (CHF)</li>
+ * <li>Norvegian Krone (NOK)</li>
+ * <li>Swedish Krone (SEK)</li>
  * <li>Japanese yen (JPY)</li>
  * </ol>
  */
@@ -25,6 +27,6 @@ public final class StandardMajorCurrencyRanking extends MajorCurrencyRankingImpl
     }
 
     private StandardMajorCurrencyRanking() {
-        super(Arrays.asList("EUR", "GBP", "AUD", "NZD", "USD", "CAD", "CHF", "JPY"));
+        super(Arrays.asList("EUR", "GBP", "AUD", "NZD", "USD", "CAD", "CHF", "NOK", "SEK", "JPY"));
     }
 }

@@ -12,6 +12,8 @@ package net.objectlab.kit.fxcalc;
  * <li>United States dollar (USD)</li>
  * <li>Canadian dollar (CAD)</li>
  * <li>Swiss franc (CHF)</li> 
+ * <li>Norvegian Krone (NOK)</li>
+ * <li>Swedish Krone (SEK)</li>
  * <li>Japanese yen (JPY)</li>
  * </ol>
  * @see net.objectlab.kit.fxcalc.StandardMajorCurrencyRanking
