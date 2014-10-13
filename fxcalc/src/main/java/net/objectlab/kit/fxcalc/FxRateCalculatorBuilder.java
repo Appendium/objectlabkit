@@ -1,5 +1,6 @@
 package net.objectlab.kit.fxcalc;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -64,6 +65,14 @@ public class FxRateCalculatorBuilder {
      * If using the baseFxRateProvider, should the rate be cached in the calculator, defaulted to true.
      */
     private boolean cacheBaseRates = true;
+    /**
+     * The Rounding to use for BID, default HALF_UP
+     */
+    private int bidRounding = BigDecimal.ROUND_HALF_UP;
+    /**
+     * The Rounding to use for ASK, default HALF_UP
+     */
+    private int askRounding = BigDecimal.ROUND_HALF_UP;
 
     public FxRateCalculatorBuilder() {
         orderedCurrenciesForCross.add("USD");
@@ -168,6 +177,22 @@ public class FxRateCalculatorBuilder {
     }
 
     /**
+     * Rounding for BID calculations.
+     */
+    public FxRateCalculatorBuilder bidRounding(final int bidRounding) {
+        this.bidRounding = bidRounding;
+        return this;
+    }
+
+    /**
+     * Rounding for BID calculations.
+     */
+    public FxRateCalculatorBuilder askRounding(final int askRounding) {
+        this.askRounding = askRounding;
+        return this;
+    }
+
+    /**
      * If the rate required from the calculator is not immediately available, use a cross currency to calculate it; this
      * gives you the opportunity to select which currencies to use in which order. Defaulted to USD and then EUR.
      */
@@ -212,4 +237,13 @@ public class FxRateCalculatorBuilder {
     public Map<CurrencyPair, FxRate> getRatesSnapshot() {
         return ratesSnapshot;
     }
+
+    public int getBidRounding() {
+        return bidRounding;
+    }
+
+    public int getAskRounding() {
+        return askRounding;
+    }
+
 }

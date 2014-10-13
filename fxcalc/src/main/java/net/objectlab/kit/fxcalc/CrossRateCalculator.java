@@ -31,7 +31,7 @@ public final class CrossRateCalculator {
      * @throws IllegalArgumentException if the 2 fx1 and fx2 do not share a common cross currency or either currencies in the targetPair
      */
     public static FxRate calculateCross(final CurrencyPair targetPair, final FxRate fx1, final FxRate fx2, final int precision,
-            final MajorCurrencyRanking ranking) {
+            final int precisionForInverseFxRate, final MajorCurrencyRanking ranking, final int bidRounding, final int askRounding) {
         final Optional<String> crossCcy = fx1.getCurrencyPair().findCommonCcy(fx2.getCurrencyPair());
         final String xCcy = crossCcy.orElseThrow(() -> new IllegalArgumentException("The 2 FXRates do not share a ccy " + fx1.getCurrencyPair() + " "
                 + fx2.getCurrencyPair()));
@@ -55,14 +55,18 @@ public final class CrossRateCalculator {
             final FxRate denominatorFx = numeratorFx == fx1 ? fx2 : fx1;
             LOG.debug("CALC {} / {}", numeratorFx, denominatorFx);
 
-            bid = BigDecimalUtil.divide(precision, numeratorFx.getBid(), denominatorFx.getAsk(), BigDecimal.ROUND_HALF_UP);
-            ask = BigDecimalUtil.divide(precision, numeratorFx.getAsk(), denominatorFx.getBid(), BigDecimal.ROUND_HALF_UP);
+            bid = BigDecimalUtil.divide(precision, numeratorFx.getBid(), denominatorFx.getAsk(), bidRounding);
+            ask = BigDecimalUtil.divide(precision, numeratorFx.getAsk(), denominatorFx.getBid(), askRounding);
         } else {
             final boolean inverse = targetPair.getCcy1().equals(fx2Ccy2) || targetPair.getCcy1().equals(fx1Ccy2);
             LOG.debug("CALC {} x {}", fx1, fx2);
             if (inverse) {
-                ask = BigDecimalUtil.setScale(BigDecimalUtil.inverse(BigDecimalUtil.multiply(fx1.getBid(), fx2.getBid())), precision);
-                bid = BigDecimalUtil.setScale(BigDecimalUtil.inverse(BigDecimalUtil.multiply(fx1.getAsk(), fx2.getAsk())), precision);
+                ask = BigDecimalUtil.setScale(
+                        BigDecimalUtil.inverse(BigDecimalUtil.multiply(fx1.getBid(), fx2.getBid()), precisionForInverseFxRate, bidRounding),
+                        precision);
+                bid = BigDecimalUtil.setScale(
+                        BigDecimalUtil.inverse(BigDecimalUtil.multiply(fx1.getAsk(), fx2.getAsk()), precisionForInverseFxRate, askRounding),
+                        precision);
             } else {
                 bid = BigDecimalUtil.setScale(BigDecimalUtil.multiply(fx1.getBid(), fx2.getBid()), precision);
                 ask = BigDecimalUtil.setScale(BigDecimalUtil.multiply(fx1.getAsk(), fx2.getAsk()), precision);

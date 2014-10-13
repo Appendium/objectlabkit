@@ -79,8 +79,19 @@ public final class BigDecimalUtil {
      * @return 1 / value (if not null of zero)
      */
     public static BigDecimal inverse(final BigDecimal value, final int scale) {
+        return inverse(value, scale, BigDecimal.ROUND_HALF_UP);
+    }
+
+    /**
+     * Return the inverse of value if not null or zero, using scale.
+     * @param value the nullable BigDecimal
+     * @param scale scale for the result if value is not null
+     * @param rounding the rounding (see BigDecimal)
+     * @return 1 / value (if not null of zero)
+     */
+    public static BigDecimal inverse(final BigDecimal value, final int scale, final int rounding) {
         if (isNotZero(value)) {
-            return BigDecimal.ONE.divide(value, scale, BigDecimal.ROUND_HALF_UP);
+            return BigDecimal.ONE.divide(value, scale, rounding);
         }
         return null;
     }
