@@ -7,6 +7,7 @@ import static net.objectlab.kit.util.BigDecimalUtil.multiply;
 import static net.objectlab.kit.util.BigDecimalUtil.setScale;
 
 import java.math.BigDecimal;
+import java.util.Currency;
 import java.util.Optional;
 
 import net.objectlab.kit.util.BigDecimalUtil;
@@ -132,9 +133,18 @@ public class FxRateImpl implements FxRate {
         if (!currencyPair.containsCcy(originalAmount.getCurrency())) {
             throw new IllegalArgumentException("The original ccy [" + originalAmount.getCurrency() + "] must be one of the pair's " + currencyPair);
         }
-        return currencyPair.getCcy1().equals(originalAmount.getCurrency()) ? new Cash(currencyPair.getCcy2(), setScale(
-                multiply(originalAmount.getAmount(), getMid()), DEC_PLACE_FOR_MONEY)) : new Cash(currencyPair.getCcy1(), setScale(
-                divide(setScale(originalAmount.getAmount(), PRECISION_FOR_INVERSE), getMid(), BigDecimal.ROUND_HALF_UP), DEC_PLACE_FOR_MONEY));
+        final boolean ccy1IsOriginal = currencyPair.getCcy1().equals(originalAmount.getCurrency());
+        int decPlace = DEC_PLACE_FOR_MONEY;
+
+        try {
+            decPlace = Currency.getInstance(ccy1IsOriginal ? currencyPair.getCcy2() : currencyPair.getCcy1()).getDefaultFractionDigits();
+        } catch (IllegalArgumentException iae) {
+            // do nothing
+        }
+
+        return ccy1IsOriginal ? new Cash(currencyPair.getCcy2(), setScale(multiply(originalAmount.getAmount(), getMid()), decPlace)) : new Cash(
+                currencyPair.getCcy1(), setScale(
+                        divide(setScale(originalAmount.getAmount(), PRECISION_FOR_INVERSE), getMid(), BigDecimal.ROUND_HALF_UP), decPlace));
     }
 
     @Override
@@ -142,9 +152,18 @@ public class FxRateImpl implements FxRate {
         if (!currencyPair.containsCcy(originalAmount.getCurrency())) {
             throw new IllegalArgumentException("The original ccy [" + originalAmount.getCurrency() + "] must be one of the pair's " + currencyPair);
         }
-        return currencyPair.getCcy1().equals(originalAmount.getCurrency()) ? new Cash(currencyPair.getCcy2(), setScale(
-                multiply(originalAmount.getAmount(), bid), DEC_PLACE_FOR_MONEY)) : new Cash(currencyPair.getCcy1(), setScale(
-                divide(setScale(originalAmount.getAmount(), PRECISION_FOR_INVERSE), ask, BigDecimal.ROUND_HALF_UP), DEC_PLACE_FOR_MONEY));
+        final boolean ccy1IsOriginal = currencyPair.getCcy1().equals(originalAmount.getCurrency());
+        int decPlace = DEC_PLACE_FOR_MONEY;
+
+        try {
+            decPlace = Currency.getInstance(ccy1IsOriginal ? currencyPair.getCcy2() : currencyPair.getCcy1()).getDefaultFractionDigits();
+        } catch (IllegalArgumentException iae) {
+            // do nothing
+        }
+
+        return ccy1IsOriginal ? new Cash(currencyPair.getCcy2(), setScale(multiply(originalAmount.getAmount(), bid), decPlace)) : new Cash(
+                currencyPair.getCcy1(), setScale(divide(setScale(originalAmount.getAmount(), PRECISION_FOR_INVERSE), ask, BigDecimal.ROUND_HALF_UP),
+                        decPlace));
     }
 
     /**
@@ -158,9 +177,18 @@ public class FxRateImpl implements FxRate {
     public CurrencyAmount getPaymentAmountForBuying(final CurrencyAmount amountToBuy) {
         boolean inverse = amountToBuy.getCurrency().equals(currencyPair.getCcy2());
         final String targetCcy = inverse ? currencyPair.getCcy1() : currencyPair.getCcy2();
+
+        int decPlace = DEC_PLACE_FOR_MONEY;
+
+        try {
+            decPlace = Currency.getInstance(targetCcy).getDefaultFractionDigits();
+        } catch (IllegalArgumentException iae) {
+            // do nothing
+        }
+
         return inverse ? new Cash(targetCcy, setScale(
-                BigDecimalUtil.divide(PRECISION_FOR_INVERSE, amountToBuy.getAmount(), bid, BigDecimal.ROUND_HALF_UP), DEC_PLACE_FOR_MONEY))
-                : new Cash(targetCcy, setScale(amountToBuy.getAmount().multiply(ask), DEC_PLACE_FOR_MONEY));
+                BigDecimalUtil.divide(PRECISION_FOR_INVERSE, amountToBuy.getAmount(), bid, BigDecimal.ROUND_HALF_UP), decPlace)) : new Cash(
+                targetCcy, setScale(amountToBuy.getAmount().multiply(ask), decPlace));
     }
 
     /**
@@ -174,11 +202,17 @@ public class FxRateImpl implements FxRate {
     public CurrencyAmount getReceiptAmountForSelling(final CurrencyAmount amountToSell) {
         boolean inverse = amountToSell.getCurrency().equals(currencyPair.getCcy2());
         final String targetCcy = inverse ? currencyPair.getCcy1() : currencyPair.getCcy2();
+        int decPlace = DEC_PLACE_FOR_MONEY;
+
+        try {
+            decPlace = Currency.getInstance(targetCcy).getDefaultFractionDigits();
+        } catch (IllegalArgumentException iae) {
+            // do nothing
+        }
         return inverse ? //
-        new Cash(targetCcy, setScale(BigDecimalUtil.divide(PRECISION_FOR_INVERSE, amountToSell.getAmount(), ask, BigDecimal.ROUND_HALF_UP),
-                DEC_PLACE_FOR_MONEY)) //
+        new Cash(targetCcy, setScale(BigDecimalUtil.divide(PRECISION_FOR_INVERSE, amountToSell.getAmount(), ask, BigDecimal.ROUND_HALF_UP), decPlace)) //
                 : //
-                new Cash(targetCcy, setScale(amountToSell.getAmount().multiply(bid), DEC_PLACE_FOR_MONEY)) //
+                new Cash(targetCcy, setScale(amountToSell.getAmount().multiply(bid), decPlace)) //
         ;
     }
 }
