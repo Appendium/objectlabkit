@@ -67,9 +67,9 @@ public class FxRateCalculatorBuilder {
      */
     private boolean cacheBaseRates = true;
     /**
-     * The Rounding to use for BID, default HALF_UP
+     * The Rounding to use for BID, default HALF_DOWN
      */
-    private int bidRounding = BigDecimal.ROUND_HALF_UP;
+    private int bidRounding = BigDecimal.ROUND_HALF_DOWN;
     /**
      * The Rounding to use for ASK, default HALF_UP
      */
