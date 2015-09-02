@@ -24,6 +24,7 @@
 		<module>datecalc-jdk8-osgi</module>
 		<module>fxcalc</module>
 		<module>fxcalc-osgi</module>
+        <module>portfolio</module>
 	</modules>
 
 	<name>ObjectLab Kit</name>
