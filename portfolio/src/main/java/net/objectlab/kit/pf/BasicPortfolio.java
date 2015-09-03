@@ -48,6 +48,7 @@ public class BasicPortfolio implements ExistingPortfolio {
         this.portfolioCcy = portfolioCcy;
     }
 
+    @Override
     public BigDecimal getPortfolioValue() {
         return portfolioValue;
     }
