@@ -21,7 +21,7 @@ public class BasicReferenceDataSteps {
         return ELIGIBILITY;
     }
 
-    @Given("^usual reference data")
+    @Given("^basic reference data")
     public void usualRefData() throws Throwable {
         Map<String, AssetDetails> map = new HashMap<>();
         for (int i = 1; i <= 25; i++) {

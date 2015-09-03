@@ -250,7 +250,8 @@ Why re-invent the wheel?</description>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<site.deploy.url>http://objectlabkit.sf.net</site.deploy.url>
 		<version.slf4j>1.7.7</version.slf4j>
-		<cucumber.version>1.2.3</cucumber.version>
+		<version.cucumber>1.2.3</version.cucumber>
+        <version.spring>4.2.0.RELEASE</version.spring>
 	</properties>
 
 	<profiles>

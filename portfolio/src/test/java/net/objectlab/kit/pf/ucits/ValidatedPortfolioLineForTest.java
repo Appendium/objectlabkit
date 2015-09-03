@@ -14,12 +14,25 @@ public class ValidatedPortfolioLineForTest implements ValidatedPortfolioLine {
     private BigDecimal allocationWeight;
     private Validation validation;
 
+    public ValidatedPortfolioLineForTest() {
+    }
+
+    public ValidatedPortfolioLineForTest(final ValidatedPortfolioLine t) {
+        this.assetCode = t.getAssetCode();
+        this.assetName = t.getAssetName();
+        this.quantity = t.getQuantity();
+        this.priceInPortfolioCcy = t.getPriceInPortfolioCcy();
+        this.allocationWeight = t.getAllocationWeight();
+        this.valueInPortfolioCcy = t.getValueInPortfolioCcy();
+        this.validation = t.getValidation();
+    }
+
     @Override
     public String getAssetCode() {
         return assetCode;
     }
 
-    public void setAssetCode(String assetCode) {
+    public void setAssetCode(final String assetCode) {
         this.assetCode = assetCode;
     }
 
@@ -28,7 +41,7 @@ public class ValidatedPortfolioLineForTest implements ValidatedPortfolioLine {
         return assetName;
     }
 
-    public void setAssetName(String assetName) {
+    public void setAssetName(final String assetName) {
         this.assetName = assetName;
     }
 
@@ -37,7 +50,7 @@ public class ValidatedPortfolioLineForTest implements ValidatedPortfolioLine {
         return quantity;
     }
 
-    public void setQuantity(BigDecimal quantity) {
+    public void setQuantity(final BigDecimal quantity) {
         this.quantity = quantity;
     }
 
@@ -46,7 +59,7 @@ public class ValidatedPortfolioLineForTest implements ValidatedPortfolioLine {
         return priceInPortfolioCcy;
     }
 
-    public void setPriceInPortfolioCcy(BigDecimal priceInPortfolioCcy) {
+    public void setPriceInPortfolioCcy(final BigDecimal priceInPortfolioCcy) {
         this.priceInPortfolioCcy = priceInPortfolioCcy;
     }
 
@@ -55,7 +68,7 @@ public class ValidatedPortfolioLineForTest implements ValidatedPortfolioLine {
         return valueInPortfolioCcy;
     }
 
-    public void setValueInPortfolioCcy(BigDecimal valueInPortfolioCcy) {
+    public void setValueInPortfolioCcy(final BigDecimal valueInPortfolioCcy) {
         this.valueInPortfolioCcy = valueInPortfolioCcy;
     }
 
@@ -64,7 +77,7 @@ public class ValidatedPortfolioLineForTest implements ValidatedPortfolioLine {
         return allocationWeight;
     }
 
-    public void setAllocationWeight(BigDecimal allocationWeight) {
+    public void setAllocationWeight(final BigDecimal allocationWeight) {
         this.allocationWeight = allocationWeight;
     }
 
@@ -73,7 +86,7 @@ public class ValidatedPortfolioLineForTest implements ValidatedPortfolioLine {
         return validation;
     }
 
-    public void setValidation(Validation validation) {
+    public void setValidation(final Validation validation) {
         this.validation = validation;
     }
 }
