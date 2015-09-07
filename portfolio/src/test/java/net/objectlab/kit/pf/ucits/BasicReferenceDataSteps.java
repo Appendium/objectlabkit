@@ -28,6 +28,10 @@ public class BasicReferenceDataSteps {
             final String assetCode = "code-" + i;
             map.put(assetCode, new BasicAsset(assetCode, "asset-" + 1, "issuer-" + i));
         }
+        for (int i = 1; i <= 10; i++) {
+            final String assetCode = "code-a" + i;
+            map.put(assetCode, new BasicAsset(assetCode, "asset-a" + 1, "issuer-a"));
+        }
         PROV.setMap(map);
     }
 }

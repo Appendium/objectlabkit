@@ -79,7 +79,7 @@ public class ValidatedPortfolioLineImpl implements ValidatedPortfolioLine {
 
     @Override
     public boolean isValid() {
-        return results.isValid();
+        return !results.getIssues().stream().anyMatch(t -> t.getLine() == this);
     }
 
     @Override

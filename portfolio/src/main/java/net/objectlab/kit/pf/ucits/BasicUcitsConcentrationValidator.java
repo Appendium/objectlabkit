@@ -79,8 +79,17 @@ public class BasicUcitsConcentrationValidator implements ValidationEngine {
     }
 
     private static final class TotalPerIssuer {
+        private final String issuer;
         private final Total total = new Total();
         private final List<ValidatedPortfolioLineImpl> lines = new ArrayList<>();
+
+        public TotalPerIssuer(String issuer) {
+            this.issuer = issuer;
+        }
+
+        public String getIssuer() {
+            return issuer;
+        }
 
         public void add(final ValidatedPortfolioLineImpl l) {
             lines.add(l);
@@ -113,7 +122,7 @@ public class BasicUcitsConcentrationValidator implements ValidationEngine {
             }
             l.setAllocationWeight(BigDecimalUtil.divide(8, l.getValueInPortfolioCcy(), porfolioValue, BigDecimal.ROUND_HALF_UP));
             // calculate the weight for each issuer
-                totalPerIssuer.computeIfAbsent(assetDetailsProvider.getDetails(l.getAssetCode()).getUltimateIssuerCode(), k -> new TotalPerIssuer())
+                totalPerIssuer.computeIfAbsent(assetDetailsProvider.getDetails(l.getAssetCode()).getUltimateIssuerCode(), k -> new TotalPerIssuer(k))
                         .add(l);
 
             });
@@ -124,8 +133,9 @@ public class BasicUcitsConcentrationValidator implements ValidationEngine {
             final BigDecimal totalWeight = issuer.getTotalWeight();
             if (BigDecimalUtil.compareTo(totalWeight, maxConcentrationPerIssuer) > 0) {
                 // if weight > maxConcentrationPerIssuer (e.g. 10%) -> Breach
-                issuer.lines.forEach(line -> line.addIssue(Severity.MANDATORY, RuleNames.ISSUER_MAX_CONCENTRATION, "Concentration above "
-                        + BigDecimalUtil.movePoint(maxConcentrationPerIssuer, 2) + "% [" + BigDecimalUtil.movePoint(totalWeight, 2) + "]"));
+                issuer.lines.forEach(line -> line.addIssue(Severity.MANDATORY, RuleNames.ISSUER_MAX_CONCENTRATION,
+                        "Concentration above " + BigDecimalUtil.movePoint(maxConcentrationPerIssuer, 2) + "% for " + issuer.getIssuer() + " ["
+                                + BigDecimalUtil.movePoint(totalWeight, 2) + "]"));
             } else if (BigDecimalUtil.compareTo(totalWeight, mediumConcentrationPerIssuer) > 0) {
                 // if weight > mediumConcentrationPerIssuer (e.g. 5%) -> sum them
                 totalMediumConcentration.add(totalWeight);
