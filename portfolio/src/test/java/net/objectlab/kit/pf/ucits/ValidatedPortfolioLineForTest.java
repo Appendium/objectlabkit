@@ -35,7 +35,7 @@ public class ValidatedPortfolioLineForTest implements ValidatedPortfolioLine {
         return valid;
     }
 
-    public void setValid(boolean valid) {
+    public void setValid(final boolean valid) {
         this.valid = valid;
     }
 
@@ -44,7 +44,7 @@ public class ValidatedPortfolioLineForTest implements ValidatedPortfolioLine {
         return issues;
     }
 
-    public void setIssues(List<RuleIssue> issues) {
+    public void setIssues(final List<RuleIssue> issues) {
         this.issues = issues;
     }
 

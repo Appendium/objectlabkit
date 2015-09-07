@@ -53,7 +53,7 @@ public class BasicUcitsConcentrationValidatorTest {
         final BasicPortfolio bp = new BasicPortfolio();
         bp.setPortfolioCcy("USD");
         bp.setPortfolioValue(bd("8800"));
-        List<ExistingPortfolioLine> lines = new ArrayList<>();
+        final List<ExistingPortfolioLine> lines = new ArrayList<>();
         lines.add(new BasicLine("IBM", "International Business Machine", bd("88"), bd("100"), bd("8800")));
         bp.setLines(lines);
 

@@ -10,11 +10,11 @@ public class MapAssetDetailsProvider implements AssetDetailsProvider {
     private Map<String, AssetDetails> map = new HashMap<>();
 
     @Override
-    public AssetDetails getDetails(String assetCode) {
+    public AssetDetails getDetails(final String assetCode) {
         return map.get(assetCode);
     }
 
-    public void setMap(Map<String, AssetDetails> map) {
+    public void setMap(final Map<String, AssetDetails> map) {
         this.map = map;
     }
 

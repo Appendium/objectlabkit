@@ -3,6 +3,7 @@ package net.objectlab.kit.pf.validator;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import net.objectlab.kit.pf.ExistingPortfolioLine;
 import net.objectlab.kit.pf.RuleIssue;
@@ -15,11 +16,12 @@ import org.apache.commons.lang.StringUtils;
 
 public class ValidatedPortfolioLineImpl implements ValidatedPortfolioLine {
     private final ExistingPortfolioLine line;
-    private final ValidationImpl validation = new ValidationImpl();
+    private final Results results;
     private BigDecimal allocationWeight;
 
-    public ValidatedPortfolioLineImpl(final ExistingPortfolioLine line) {
+    public ValidatedPortfolioLineImpl(final ExistingPortfolioLine line, final Results results) {
         this.line = line;
+        this.results = results;
     }
 
     @Override
@@ -32,7 +34,7 @@ public class ValidatedPortfolioLineImpl implements ValidatedPortfolioLine {
         b.append(StringUtils.leftPad(StringUtils.abbreviate(BigDecimalUtil.format(getQuantity()), 10), 11));
         b.append(StringUtils.leftPad(StringUtils.abbreviate(BigDecimalUtil.format(getValueInPortfolioCcy()), 10), 11));
         b.append(StringUtils.leftPad(StringUtils.abbreviate(defaultFormat.format(getAllocationWeight()), 10), 11));
-        b.append(StringUtils.leftPad(StringUtils.abbreviate(validation.toString(), 250), 10));
+        // b.append(StringUtils.leftPad(StringUtils.abbreviate(validation.toString(), 250), 10));
         b.append(StringUtil.NEW_LINE);
         return b.toString();
     }
@@ -72,16 +74,16 @@ public class ValidatedPortfolioLineImpl implements ValidatedPortfolioLine {
     }
 
     public void addIssue(final Severity sev, final String ruleName, final String message) {
-        validation.addIssue(sev, ruleName, message, this);
+        results.addIssue(sev, ruleName, message, this);
     }
 
     @Override
     public boolean isValid() {
-        return validation.isValid();
+        return results.isValid();
     }
 
     @Override
     public List<RuleIssue> getIssues() {
-        return validation.getIssues();
+        return results.getIssues().stream().filter(t -> t.getLine() == this).collect(Collectors.toList());
     }
 }

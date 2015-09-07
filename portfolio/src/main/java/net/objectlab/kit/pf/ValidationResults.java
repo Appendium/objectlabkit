@@ -3,7 +3,9 @@ package net.objectlab.kit.pf;
 import java.util.List;
 
 public interface ValidationResults {
-    Validation getPortfolioValidation();
+    boolean isValid();
+
+    List<RuleIssue> getIssues();
 
     List<? extends ValidatedPortfolioLine> getLines();
 }

@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import net.objectlab.kit.pf.BasicLine;
 import net.objectlab.kit.pf.BasicPortfolio;
 import net.objectlab.kit.pf.ExistingPortfolioLine;
+import net.objectlab.kit.pf.RuleIssue;
 import net.objectlab.kit.pf.ValidatedPortfolioLine;
 import net.objectlab.kit.pf.ValidationResults;
 import net.objectlab.kit.pf.cuke.CukeUtils;
@@ -26,12 +27,20 @@ public class BasicUcitsSteps {
     }
 
     @Then("^the UCITS validation lines for \"(.*?)\" look like$")
-    public void ucitsValidationLines(String resultKey, final DataTable table) {
+    public void ucitsValidationLines(final String resultKey, final DataTable table) {
         final ValidationResults results = (ValidationResults) CukeUtils.VALUEHOLDER.get(resultKey);
 
         final List<? extends ValidatedPortfolioLine> lines = results.getLines();
         CukeUtils.compareResults(ValidatedPortfolioLineForTest.class,
                 lines.stream().map(t -> new ValidatedPortfolioLineForTest(t)).collect(Collectors.toList()), table);
+    }
+
+    @Then("^the UCITS validation issues for \"(.*?)\" look like$")
+    public void ucitsValidationIssues(final String resultKey, final DataTable table) {
+        final ValidationResults results = (ValidationResults) CukeUtils.VALUEHOLDER.get(resultKey);
+
+        final List<? extends RuleIssue> issues = results.getIssues();
+        CukeUtils.compareResults(RuleIssueForTest.class, issues.stream().map(t -> new RuleIssueForTest(t)).collect(Collectors.toList()), table);
     }
 
     @Given("^an existing portfolio for affiliate \"(.*?)\" and partyCode \"(.*?)\" and currency \"(.*?)\" like$")
@@ -52,8 +61,8 @@ public class BasicUcitsSteps {
     @When("^I run basic UCITS validation in valueholder \"(.*?)\"$")
     public void calculateValidation(final String key) throws Throwable {
         final Builder builder = new BasicUcitsConcentrationValidator.Builder()
-                .assetDetailsProvider(BasicReferenceDataSteps.getAssetDetailsProvider()).assetEligibilityProvider(
-                        BasicReferenceDataSteps.getAssetEligibilityProvider());
+        .assetDetailsProvider(BasicReferenceDataSteps.getAssetDetailsProvider()).assetEligibilityProvider(
+                BasicReferenceDataSteps.getAssetEligibilityProvider());
         final BasicUcitsConcentrationValidator validator = new BasicUcitsConcentrationValidator(builder);
         final ValidationResults results = validator.validate(portfolio);
         CukeUtils.VALUEHOLDER.put(key, results);

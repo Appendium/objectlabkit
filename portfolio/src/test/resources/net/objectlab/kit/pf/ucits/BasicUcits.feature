@@ -1,6 +1,6 @@
 Feature: Basic UCITs 5-10-40 Compliance
 
-  Background: 
+  Background: reset system
     Given system is clean
     And basic reference data
 
@@ -19,9 +19,26 @@ Feature: Basic UCITs 5-10-40 Compliance
     Then the UCITS validation lines for "val1" look like
       | assetCode | assetName | allocationWeight | valid |
       | code-1    | name-1    | 1                | false |
+    And the UCITS validation issues for "val1" look like
+      | lineAssetCode | severity  | rule                   | msg                                  |
+      | code-1        | MANDATORY | issuerMaxConcentration | Concentration above 10% [100.000000] |
 
-  @current
-  Scenario: run 20 lines valid portfolio
+  Scenario: run 2 line portfolio
+    Given an existing portfolio for affiliate "LONDON" and partyCode "CITI" and currency "USD" like
+      | assetCode | assetName | quantity | priceInPortfolioCcy | valueInPortfolioCcy |
+      | code-1    | name-1    | 100      | 10                  | 1000                |
+      | code-2    | name-2    | 100      | 10                  | 4000                |
+    When I run basic UCITS validation in valueholder "val1"
+    Then the UCITS validation lines for "val1" look like
+      | assetCode | assetName | allocationWeight | valid |
+      | code-1    | name-1    | 0.2              | false |
+      | code-2    | name-2    | 0.8              | false |
+    And the UCITS validation issues for "val1" look like
+      | lineAssetCode | severity  | rule                   | msg                                  |
+      | code-1        | MANDATORY | issuerMaxConcentration | Concentration above 10% [20.000000] |
+      | code-2        | MANDATORY | issuerMaxConcentration | Concentration above 10% [80.000000]  |
+
+  Scenario: run 20 lines valid portfolio diff issuers
     Given an existing portfolio for affiliate "LONDON" and partyCode "CITI" and currency "USD" like
       | assetCode | assetName | quantity | priceInPortfolioCcy | valueInPortfolioCcy |
       | code-1    | name-1    | 100      | 10                  | 1000                |

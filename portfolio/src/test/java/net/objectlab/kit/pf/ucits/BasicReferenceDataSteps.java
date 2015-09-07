@@ -23,7 +23,7 @@ public class BasicReferenceDataSteps {
 
     @Given("^basic reference data")
     public void usualRefData() throws Throwable {
-        Map<String, AssetDetails> map = new HashMap<>();
+        final Map<String, AssetDetails> map = new HashMap<>();
         for (int i = 1; i <= 25; i++) {
             final String assetCode = "code-" + i;
             map.put(assetCode, new BasicAsset(assetCode, "asset-" + 1, "issuer-" + i));

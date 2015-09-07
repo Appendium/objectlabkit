@@ -4,23 +4,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.objectlab.kit.pf.ExistingPortfolio;
-import net.objectlab.kit.pf.Validation;
+import net.objectlab.kit.pf.RuleIssue;
+import net.objectlab.kit.pf.Severity;
 import net.objectlab.kit.pf.ValidationResults;
 import net.objectlab.kit.util.StringUtil;
 
 import org.apache.commons.lang.StringUtils;
 
 public class Results implements ValidationResults {
-    private final ValidationImpl portfolioValidation = new ValidationImpl();
     private final List<ValidatedPortfolioLineImpl> lines = new ArrayList<>();
 
     public Results(final ExistingPortfolio p) {
-        p.getLines().forEach(t -> lines.add(new ValidatedPortfolioLineImpl(t)));
+        p.getLines().forEach(t -> lines.add(new ValidatedPortfolioLineImpl(t, this)));
+    }
+
+    private final List<RuleIssue> issues = new ArrayList<>();
+
+    @Override
+    public boolean isValid() {
+        return issues.isEmpty();
     }
 
     @Override
-    public Validation getPortfolioValidation() {
-        return portfolioValidation;
+    public List<RuleIssue> getIssues() {
+        return issues;
+    }
+
+    public void addIssue(final Severity sev, final String ruleName, final String message, ValidatedPortfolioLineImpl line) {
+        issues.add(new RuleIssueImpl(sev, ruleName, message, line));
     }
 
     @Override
@@ -43,4 +54,19 @@ public class Results implements ValidationResults {
 
         return b.toString();
     }
+
+    // @Override
+    // public String toString() {
+    // final StringBuilder b = new StringBuilder();
+    // boolean first = true;
+    // for (RuleIssue issue : issues) {
+    // if (!first) {
+    // b.append(StringUtil.NEW_LINE).append(StringUtils.repeat(" ", 81));
+    // }
+    // b.append(issue.toString());
+    // first = false;
+    // }
+    // return b.toString();
+    // }
+
 }

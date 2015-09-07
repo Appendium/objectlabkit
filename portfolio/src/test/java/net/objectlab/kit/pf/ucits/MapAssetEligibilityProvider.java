@@ -6,10 +6,10 @@ import java.util.Map;
 import net.objectlab.kit.pf.AssetEligibilityProvider;
 
 public class MapAssetEligibilityProvider implements AssetEligibilityProvider {
-    private Map<String, Boolean> map = new HashMap<>();
+    private final Map<String, Boolean> map = new HashMap<>();
 
     @Override
-    public boolean isEligible(String assetCode) {
+    public boolean isEligible(final String assetCode) {
         return map.getOrDefault(assetCode, true);
     }
 
