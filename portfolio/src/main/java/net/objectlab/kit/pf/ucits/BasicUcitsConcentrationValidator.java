@@ -111,7 +111,7 @@ public class BasicUcitsConcentrationValidator implements ValidationEngine {
             if (!assetEligibilityProvider.isEligible(l.getAssetCode())) {
                 l.addIssue(Severity.MANDATORY, RuleNames.ELIGIBILITY, "Asset not eligible.");
             }
-            l.setAllocationWeight(BigDecimalUtil.divide(porfolioValue, l.getValueInPortfolioCcy(), BigDecimal.ROUND_HALF_UP));
+            l.setAllocationWeight(BigDecimalUtil.divide(8, l.getValueInPortfolioCcy(), porfolioValue, BigDecimal.ROUND_HALF_UP));
             // calculate the weight for each issuer
                 totalPerIssuer.computeIfAbsent(assetDetailsProvider.getDetails(l.getAssetCode()).getUltimateIssuerCode(), k -> new TotalPerIssuer())
                         .add(l);

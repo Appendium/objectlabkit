@@ -28,13 +28,8 @@ public class ValidationImpl implements Validation {
     }
 
     @Override
-    public boolean hasValidationErrors() {
-        return issues.stream().anyMatch(t -> t.getSeverity() == Severity.MANDATORY);
-    }
-
-    @Override
-    public boolean hasValidationWarnings() {
-        return issues.stream().anyMatch(t -> t.getSeverity() == Severity.WARNING);
+    public boolean isValid() {
+        return issues.isEmpty();
     }
 
     @Override
@@ -42,7 +37,7 @@ public class ValidationImpl implements Validation {
         return issues;
     }
 
-    public void addIssue(final Severity sev, final String ruleName, final String message) {
-        issues.add(new RuleIssueImpl(sev, ruleName, message));
+    public void addIssue(final Severity sev, final String ruleName, final String message, ValidatedPortfolioLineImpl line) {
+        issues.add(new RuleIssueImpl(sev, ruleName, message, line));
     }
 }

@@ -1,9 +1,10 @@
 package net.objectlab.kit.pf.ucits;
 
 import java.math.BigDecimal;
+import java.util.List;
 
+import net.objectlab.kit.pf.RuleIssue;
 import net.objectlab.kit.pf.ValidatedPortfolioLine;
-import net.objectlab.kit.pf.Validation;
 
 public class ValidatedPortfolioLineForTest implements ValidatedPortfolioLine {
     private String assetCode;
@@ -12,7 +13,8 @@ public class ValidatedPortfolioLineForTest implements ValidatedPortfolioLine {
     private BigDecimal priceInPortfolioCcy;
     private BigDecimal valueInPortfolioCcy;
     private BigDecimal allocationWeight;
-    private Validation validation;
+    private boolean valid;
+    private List<RuleIssue> issues;
 
     public ValidatedPortfolioLineForTest() {
     }
@@ -24,7 +26,26 @@ public class ValidatedPortfolioLineForTest implements ValidatedPortfolioLine {
         this.priceInPortfolioCcy = t.getPriceInPortfolioCcy();
         this.allocationWeight = t.getAllocationWeight();
         this.valueInPortfolioCcy = t.getValueInPortfolioCcy();
-        this.validation = t.getValidation();
+        this.valid = t.isValid();
+        this.issues = t.getIssues();
+    }
+
+    @Override
+    public boolean isValid() {
+        return valid;
+    }
+
+    public void setValid(boolean valid) {
+        this.valid = valid;
+    }
+
+    @Override
+    public List<RuleIssue> getIssues() {
+        return issues;
+    }
+
+    public void setIssues(List<RuleIssue> issues) {
+        this.issues = issues;
     }
 
     @Override
@@ -79,14 +100,5 @@ public class ValidatedPortfolioLineForTest implements ValidatedPortfolioLine {
 
     public void setAllocationWeight(final BigDecimal allocationWeight) {
         this.allocationWeight = allocationWeight;
-    }
-
-    @Override
-    public Validation getValidation() {
-        return validation;
-    }
-
-    public void setValidation(final Validation validation) {
-        this.validation = validation;
     }
 }

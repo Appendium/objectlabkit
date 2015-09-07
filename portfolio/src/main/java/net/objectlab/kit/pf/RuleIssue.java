@@ -6,4 +6,6 @@ public interface RuleIssue {
     String getRule();
 
     String getMsg();
+
+    ValidatedPortfolioLine getLine();
 }

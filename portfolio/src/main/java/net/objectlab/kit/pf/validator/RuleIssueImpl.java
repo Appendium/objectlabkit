@@ -2,6 +2,7 @@ package net.objectlab.kit.pf.validator;
 
 import net.objectlab.kit.pf.RuleIssue;
 import net.objectlab.kit.pf.Severity;
+import net.objectlab.kit.pf.ValidatedPortfolioLine;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -9,12 +10,14 @@ public class RuleIssueImpl implements RuleIssue {
     private final Severity severity;
     private final String rule;
     private final String msg;
+    private final ValidatedPortfolioLine line;
 
-    public RuleIssueImpl(final Severity severity, final String rule, final String msg) {
+    public RuleIssueImpl(final Severity severity, final String rule, final String msg, ValidatedPortfolioLine line) {
         super();
         this.severity = severity;
         this.rule = rule;
         this.msg = msg;
+        this.line = line;
     }
 
     @Override
@@ -39,6 +42,11 @@ public class RuleIssueImpl implements RuleIssue {
     @Override
     public String getMsg() {
         return msg;
+    }
+
+    @Override
+    public ValidatedPortfolioLine getLine() {
+        return line;
     }
 
 }

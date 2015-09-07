@@ -3,9 +3,7 @@ package net.objectlab.kit.pf;
 import java.util.List;
 
 public interface Validation {
-    boolean hasValidationErrors();
-
-    boolean hasValidationWarnings();
+    boolean isValid();
 
     List<RuleIssue> getIssues();
 }

@@ -2,11 +2,12 @@ package net.objectlab.kit.pf.validator;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
+import java.util.List;
 
 import net.objectlab.kit.pf.ExistingPortfolioLine;
+import net.objectlab.kit.pf.RuleIssue;
 import net.objectlab.kit.pf.Severity;
 import net.objectlab.kit.pf.ValidatedPortfolioLine;
-import net.objectlab.kit.pf.Validation;
 import net.objectlab.kit.util.BigDecimalUtil;
 import net.objectlab.kit.util.StringUtil;
 
@@ -31,7 +32,7 @@ public class ValidatedPortfolioLineImpl implements ValidatedPortfolioLine {
         b.append(StringUtils.leftPad(StringUtils.abbreviate(BigDecimalUtil.format(getQuantity()), 10), 11));
         b.append(StringUtils.leftPad(StringUtils.abbreviate(BigDecimalUtil.format(getValueInPortfolioCcy()), 10), 11));
         b.append(StringUtils.leftPad(StringUtils.abbreviate(defaultFormat.format(getAllocationWeight()), 10), 11));
-        b.append(StringUtils.leftPad(StringUtils.abbreviate(getValidation().toString(), 250), 10));
+        b.append(StringUtils.leftPad(StringUtils.abbreviate(validation.toString(), 250), 10));
         b.append(StringUtil.NEW_LINE);
         return b.toString();
     }
@@ -66,16 +67,21 @@ public class ValidatedPortfolioLineImpl implements ValidatedPortfolioLine {
         return allocationWeight;
     }
 
-    @Override
-    public Validation getValidation() {
-        return validation;
-    }
-
     public void setAllocationWeight(final BigDecimal allocationWeight) {
         this.allocationWeight = allocationWeight;
     }
 
     public void addIssue(final Severity sev, final String ruleName, final String message) {
-        validation.addIssue(sev, ruleName, message);
+        validation.addIssue(sev, ruleName, message, this);
+    }
+
+    @Override
+    public boolean isValid() {
+        return validation.isValid();
+    }
+
+    @Override
+    public List<RuleIssue> getIssues() {
+        return validation.getIssues();
     }
 }
