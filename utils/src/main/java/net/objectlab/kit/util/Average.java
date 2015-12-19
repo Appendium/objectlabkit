@@ -42,7 +42,7 @@ import java.util.Optional;
  */
 public final class Average implements Serializable {
     private static final long serialVersionUID = 4630559777899225672L;
-    private Total sum = new Total();
+    private Total sum = new Total(BigDecimal.ZERO, 8);
     private BigDecimal maximum;
     private BigDecimal minimum;
     private int count = 0;
