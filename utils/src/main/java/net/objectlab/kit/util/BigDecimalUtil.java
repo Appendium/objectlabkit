@@ -33,6 +33,7 @@
 package net.objectlab.kit.util;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.util.function.Consumer;
 
@@ -764,5 +765,39 @@ public final class BigDecimalUtil {
      */
     public static BigDecimal decimalPart(final BigDecimal val) {
         return BigDecimalUtil.subtract(val, val.setScale(0, BigDecimal.ROUND_DOWN));
+    }
+
+    private static final BigDecimal SQRT_DIG = new BigDecimal(8);
+    private static final BigDecimal SQRT_PRE = new BigDecimal(10).pow(SQRT_DIG.intValue());
+
+    /**
+     * Private utility method used to compute the square root of a BigDecimal.
+     * 
+     * @author Luciano Culacciatti 
+     * @see <a href="http://www.codeproject.com/Tips/257031/Implementing-SqrtRoot-in-BigDecimal">http://www.codeproject.com/Tips/257031/Implementing-SqrtRoot-in-BigDecimal</a>
+     */
+    private static BigDecimal sqrtNewtonRaphson(final BigDecimal c, final BigDecimal xn, final BigDecimal precision) {
+        BigDecimal fx = xn.pow(2).add(c.negate());
+        BigDecimal fpx = xn.multiply(new BigDecimal(2));
+        BigDecimal xn1 = fx.divide(fpx, 2 * SQRT_DIG.intValue(), RoundingMode.HALF_DOWN);
+        xn1 = xn.add(xn1.negate());
+        BigDecimal currentSquare = xn1.pow(2);
+        BigDecimal currentPrecision = currentSquare.subtract(c);
+        currentPrecision = currentPrecision.abs();
+        if (currentPrecision.compareTo(precision) <= -1) {
+            return xn1;
+        }
+        return sqrtNewtonRaphson(c, xn1, precision);
+    }
+
+    /**
+     * Uses Newton Raphson to compute the square root of a BigDecimal.
+     * 
+     * @param c the BigDecimal for which we want the SQRT.
+     * @author Luciano Culacciatti 
+     * @see <a href="http://www.codeproject.com/Tips/257031/Implementing-SqrtRoot-in-BigDecimal">http://www.codeproject.com/Tips/257031/Implementing-SqrtRoot-in-BigDecimal</a>
+     */
+    public static BigDecimal bigSqrt(final BigDecimal c) {
+        return c != null ? c.signum() == 0 ? BigDecimal.ZERO : sqrtNewtonRaphson(c, new BigDecimal(1), new BigDecimal(1).divide(SQRT_PRE)) : null;
     }
 }

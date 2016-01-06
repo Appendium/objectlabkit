@@ -25,6 +25,7 @@ public class GistCurrencyCalculatorExample {
         crossEurMxn();
         simpleUsdAed();
         simpleUsdJod();
+        simpleAudUsd();
     }
 
     private static void simpleUsdJod() {
@@ -108,6 +109,24 @@ public class GistCurrencyCalculatorExample {
         System.out.println(calc.getName() + " TD: " + startDate + " Spot " + calc.calculateSpotDate(startDate) + " expects 5 Jul");
         startDate = new LocalDate(2006, 7, 3);
         System.out.println(calc.getName() + " TD: " + startDate + " Spot " + calc.calculateSpotDate(startDate) + " expects 5 Jul");
+    }
+
+    private static void simpleAudUsd() {
+        final Set<LocalDate> holidays = new HashSet<LocalDate>();
+        holidays.add(new LocalDate("2015-01-19"));
+        final HolidayCalendar<LocalDate> usdCalendar = new DefaultHolidayCalendar<LocalDate>(holidays, new LocalDate("2006-01-01"), new LocalDate(
+                "2015-12-31"));
+
+        final CurrencyDateCalculatorBuilder<LocalDate> builder = new CurrencyDateCalculatorBuilder<LocalDate>() //
+                .currencyPair("AUD", CurrencyDateCalculator.USD_CODE, SpotLag.T_2) //
+                .currencyCalculatorConfig(new DefaultCurrencyCalculatorConfig())//
+                .ccy2Calendar(usdCalendar)//
+                .tenorHolidayHandler(new LocalDateForwardHandler());
+
+        final LocalDateCurrencyDateCalculator calc = new LocalDateCurrencyDateCalculator(builder);
+
+        LocalDate startDate = new LocalDate(2015, 1, 16);
+        System.out.println(calc.getName() + " TD: " + startDate + " Spot " + calc.calculateSpotDate(startDate) + " expects 20 Jan");
     }
 
     private static void simpleEurUsd1M() {
