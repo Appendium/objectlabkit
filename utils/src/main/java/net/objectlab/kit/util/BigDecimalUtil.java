@@ -774,7 +774,7 @@ public final class BigDecimalUtil {
      * Private utility method used to compute the square root of a BigDecimal.
      * 
      * @author Luciano Culacciatti 
-     * @url http://www.codeproject.com/Tips/257031/Implementing-SqrtRoot-in-BigDecimal
+     * @see <a href="http://www.codeproject.com/Tips/257031/Implementing-SqrtRoot-in-BigDecimal">http://www.codeproject.com/Tips/257031/Implementing-SqrtRoot-in-BigDecimal</a>
      */
     private static BigDecimal sqrtNewtonRaphson(final BigDecimal c, final BigDecimal xn, final BigDecimal precision) {
         BigDecimal fx = xn.pow(2).add(c.negate());
@@ -793,8 +793,9 @@ public final class BigDecimalUtil {
     /**
      * Uses Newton Raphson to compute the square root of a BigDecimal.
      * 
+     * @param c the BigDecimal for which we want the SQRT.
      * @author Luciano Culacciatti 
-     * @url http://www.codeproject.com/Tips/257031/Implementing-SqrtRoot-in-BigDecimal
+     * @see <a href="http://www.codeproject.com/Tips/257031/Implementing-SqrtRoot-in-BigDecimal">http://www.codeproject.com/Tips/257031/Implementing-SqrtRoot-in-BigDecimal</a>
      */
     public static BigDecimal bigSqrt(final BigDecimal c) {
         return c != null ? c.signum() == 0 ? BigDecimal.ZERO : sqrtNewtonRaphson(c, new BigDecimal(1), new BigDecimal(1).divide(SQRT_PRE)) : null;
