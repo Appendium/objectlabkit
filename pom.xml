@@ -327,6 +327,10 @@ Why re-invent the wheel?</description>
 			<id>objectlabkit.sf.net</id>
 			<url>${site.deploy.url}</url>
 		</site>
+		<snapshotRepository>
+			<id>sonatype-nexus-snapshots</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
 	</distributionManagement>
 
 	<reporting>
