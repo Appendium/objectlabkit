@@ -14,12 +14,12 @@ import org.junit.Test;
  * @author Benoit
  *
  */
-public class StandardDeviationTest {
-    private StandardDeviation stdDev;
+public class SampleStandardDeviationTest {
+    private SampleStandardDeviation stdDev;
 
     @Before
     public void setUp() {
-        stdDev = new StandardDeviation();
+        stdDev = new SampleStandardDeviation();
     }
 
     @Test
@@ -40,7 +40,8 @@ public class StandardDeviationTest {
         assertThat(stdDev.getTotal()).isEqualByComparingTo("0");
         assertThat(stdDev.getMaximum().get()).isEqualByComparingTo("0");
         assertThat(stdDev.getMinimum().get()).isEqualByComparingTo("0");
-        assertThat(stdDev.getStandardDeviation()).isEqualByComparingTo("0");
+        assertThat(stdDev.getStandardDeviation()).isNull();
+        ;
     }
 
     @Test
@@ -51,7 +52,7 @@ public class StandardDeviationTest {
         assertThat(stdDev.getTotal()).isEqualByComparingTo("1");
         assertThat(stdDev.getMaximum().get()).isEqualByComparingTo("1");
         assertThat(stdDev.getMinimum().get()).isEqualByComparingTo("1");
-        assertThat(stdDev.getStandardDeviation()).isEqualByComparingTo("0");
+        assertThat(stdDev.getStandardDeviation()).isNull();
     }
 
     @Test
@@ -62,7 +63,7 @@ public class StandardDeviationTest {
         assertThat(stdDev.getTotal()).isEqualByComparingTo("10");
         assertThat(stdDev.getMaximum().get()).isEqualByComparingTo("10");
         assertThat(stdDev.getMinimum().get()).isEqualByComparingTo("10");
-        assertThat(stdDev.getStandardDeviation()).isEqualByComparingTo("0");
+        assertThat(stdDev.getStandardDeviation()).isNull();
     }
 
     @Test
@@ -74,7 +75,7 @@ public class StandardDeviationTest {
         assertThat(stdDev.getTotal()).isEqualByComparingTo("10");
         assertThat(stdDev.getMaximum().get()).isEqualByComparingTo("10");
         assertThat(stdDev.getMinimum().get()).isEqualByComparingTo("0");
-        assertThat(stdDev.getStandardDeviation()).isEqualByComparingTo("5");
+        assertThat(stdDev.getStandardDeviation()).isEqualByComparingTo("7.07106781");
     }
 
     @Test
@@ -86,7 +87,7 @@ public class StandardDeviationTest {
         assertThat(stdDev.getTotal()).isEqualByComparingTo("9");
         assertThat(stdDev.getMaximum().get()).isEqualByComparingTo("10");
         assertThat(stdDev.getMinimum().get()).isEqualByComparingTo("-1");
-        assertThat(stdDev.getStandardDeviation()).isEqualByComparingTo("5.5");
+        assertThat(stdDev.getStandardDeviation()).isEqualByComparingTo("7.77817459");
     }
 
     @Test
@@ -100,7 +101,7 @@ public class StandardDeviationTest {
         assertThat(stdDev.getTotal()).isEqualByComparingTo("23");
         assertThat(stdDev.getMaximum().get()).isEqualByComparingTo("10");
         assertThat(stdDev.getMinimum().get()).isEqualByComparingTo("-1");
-        assertThat(stdDev.getStandardDeviation()).isEqualByComparingTo("4.60298816");
+        assertThat(stdDev.getStandardDeviation()).isEqualByComparingTo("5.31507291");
     }
 
 }

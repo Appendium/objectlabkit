@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class StandardDeviation {
+public class PopulationStandardDeviation {
     private final Average average = new Average();
     private List<BigDecimal> dataPoints;
 
@@ -48,12 +48,12 @@ public class StandardDeviation {
         final BigDecimal average = getAverage();
         final BigDecimal sumSquaredDifferences = dataPoints.stream().map(dp -> BigDecimalUtil.subtract(dp, average).pow(2))
                 .reduce(BigDecimal.ZERO, (a, b) -> b != null ? a.add(b) : a);
-        return BigDecimalUtil.setScale(
-                BigDecimal.valueOf(Math.sqrt(BigDecimalUtil.divide(8, sumSquaredDifferences, BigDecimal.valueOf(getDataPoints()),
-                        BigDecimal.ROUND_HALF_UP).doubleValue())), 8);
-        //
-        // return BigDecimalUtil.setScale(BigDecimalUtil.bigSqrt(BigDecimalUtil.divide(8, sumSquaredDifferences, BigDecimal.valueOf(getDataPoints()),
-        // BigDecimal.ROUND_HALF_UP)), 8);
+        final BigDecimal variance = BigDecimalUtil.divide(8, sumSquaredDifferences, BigDecimal.valueOf(getDataPointsForCalc()),
+                BigDecimal.ROUND_HALF_UP);
+        return variance == null ? null : BigDecimalUtil.setScale(BigDecimal.valueOf(Math.sqrt(variance.doubleValue())), 8);
     }
 
+    protected long getDataPointsForCalc() {
+        return getDataPoints();
+    }
 }
