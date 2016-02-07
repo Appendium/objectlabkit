@@ -7,6 +7,7 @@
 	</properties>
 	<body>
 		<release version="1.4.0" date="TBD" description="Maintenance">
+			<action dev="benoitx" type="add">Adding FrequencyBucketDistribution a basic bucket distribution.</action>
 			<action dev="benoitx" type="add">
 				Following a thorough review by ST, add rounding for Bid and Offer on the calculator.
 			</action>
