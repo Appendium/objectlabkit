@@ -1,4 +1,6 @@
 [![Build Status](https://secure.travis-ci.org/Appendium/objectlabkit.png?branch=master)](http://travis-ci.org/Appendium/objectlabkit) [![Stories in Ready](https://badge.waffle.io/Appendium/objectlabkit.png?label=ready)](https://waffle.io/Appendium/objectlabkit) 
+[![Maven Central DateCalculator](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/datecalc-common/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/datecalc-common)
+[![Maven Central Utils](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-utils/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-utils)
 
 ObjectLab Kit
 =============
