@@ -180,6 +180,22 @@ Why re-invent the wheel?</description>
 		</pluginManagement>
 		<plugins>
 			<plugin>
+				<groupId>com.srcclr</groupId>
+				<artifactId>srcclr-maven-plugin</artifactId>
+				<version>2.0.4</version>
+				<configuration>
+					<apiToken>eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTg0MSwiZXhwIjoxNDk1MDAzNzczLCJhdXRob3JpdGllcyI6IkFHRU5UIiwianRpIjoiOWViM2NjOTktZDkxNC00OTM2LTg0Y2UtN2JiZWFlMDFmZWViIiwiY2xpZW50X2lkIjoiIiwic2NvcGUiOltdfQ.A2nvf37V1yPdjp9u6s_ZPzOYRc_o9MTWPxxhrTUr8FGUIKyviL9KWP1u94MkkRx7e389L6zsbyJjvByQwIz3abiCI5VkNE_Rbwo8BTlF3YEnjWq5cX3WMihYLw-RYQ8uSMtz_QLTnxALfRuQwzJ7sC8vocv0hdJhb-1jcaLRXxw</apiToken>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>verify</phase>
+						<goals>
+							<goal>scan</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.3</version>
