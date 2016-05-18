@@ -44,16 +44,16 @@ public class Pair<E1, E2> implements Serializable {
     private E1 element1;
     private E2 element2;
 
-    public static <E1, E2> Pair<E1, E2> create(final E1 element1, final E2 element2) {
-        return new Pair<E1, E2>(element1, element2);
-    }
-
     public Pair(final E1 element1, final E2 element2) {
         this.element1 = element1;
         this.element2 = element2;
     }
 
     public Pair() {
+    }
+
+    public static <E1, E2> Pair<E1, E2> create(final E1 element1, final E2 element2) {
+        return new Pair<E1, E2>(element1, element2);
     }
 
     public E1 getElement1() {

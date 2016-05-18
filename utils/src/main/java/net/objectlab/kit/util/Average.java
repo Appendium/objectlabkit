@@ -55,6 +55,11 @@ public final class Average implements Serializable {
         determineMinMax(start);
     }
 
+    public Average(final int scale) {
+        final BigDecimal bd = new BigDecimal(0);
+        sum = new Total(bd.setScale(scale));
+    }
+
     private void determineMinMax(final BigDecimal value) {
         if (maximum == null || BigDecimalUtil.compareTo(value, maximum) == 1) {
             maximum = value;
@@ -62,11 +67,6 @@ public final class Average implements Serializable {
         if (minimum == null || BigDecimalUtil.compareTo(value, minimum) == -1) {
             minimum = value;
         }
-    }
-
-    public Average(final int scale) {
-        final BigDecimal bd = new BigDecimal(0);
-        sum = new Total(bd.setScale(scale));
     }
 
     public void add(final BigDecimal... values) {

@@ -95,6 +95,9 @@ public final class StandardTenor {
 
     public static final Tenor T_50Y = new Tenor(50, TenorCode.YEAR);
 
+    private StandardTenor() {
+    }
+
     public static List<Tenor> getAll() {
         return ALL;
     }
@@ -125,8 +128,6 @@ public final class StandardTenor {
         ALL = Collections.unmodifiableList(list);
     }
 
-    private StandardTenor() {
-    }
 }
 
 /*
