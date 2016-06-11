@@ -16,12 +16,12 @@ public class PeriodBuilder {
     private static final long M_IN_1_HOUR = 60L;
     private static final long H_IN_1_DAY = 24L;
     private static final long D_IN_1_WEEK = 7L;
-    private int weeks = 0;
-    private int days = 0;
-    private int hours = 0;
-    private int minutes = 0;
-    private int seconds = 0;
-    private long milliseconds = 0;
+    private int weeks;
+    private int days;
+    private int hours;
+    private int minutes;
+    private int seconds;
+    private long milliseconds;
 
     public long calculateMilliseconds() {
         return milliseconds //

@@ -70,7 +70,7 @@ public abstract class AbstractDateCalculator<E> implements DateCalculator<E> {
 
     private HolidayHandler<E> holidayHandler;
 
-    private int currentIncrement = 0;
+    private int currentIncrement;
 
     protected AbstractDateCalculator(final String name, final HolidayCalendar<E> holidayCalendar, final HolidayHandler<E> holidayHandler) {
         this.name = name;

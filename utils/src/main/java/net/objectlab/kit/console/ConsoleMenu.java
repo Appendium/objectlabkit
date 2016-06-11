@@ -417,7 +417,7 @@ public class ConsoleMenu {
      * This class attempts to erase characters echoed to the console.
      */
     static class PasswordHidingThread extends Thread {
-        private boolean stop = false;
+        private boolean stop;
 
         private final String prompt;
 
