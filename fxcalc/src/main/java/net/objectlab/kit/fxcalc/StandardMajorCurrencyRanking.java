@@ -22,11 +22,12 @@ import java.util.Arrays;
 public final class StandardMajorCurrencyRanking extends MajorCurrencyRankingImpl {
     private static final MajorCurrencyRanking DEFAULT = new StandardMajorCurrencyRanking();
 
+    private StandardMajorCurrencyRanking() {
+        super(Arrays.asList("EUR", "GBP", "AUD", "NZD", "USD", "CAD", "CHF", "NOK", "SEK", "JPY"));
+    }
+
     public static MajorCurrencyRanking getDefault() {
         return DEFAULT;
     }
 
-    private StandardMajorCurrencyRanking() {
-        super(Arrays.asList("EUR", "GBP", "AUD", "NZD", "USD", "CAD", "CHF", "NOK", "SEK", "JPY"));
-    }
 }

@@ -14,11 +14,11 @@ import org.apache.commons.lang.StringUtils;
 public class Results implements ValidationResults {
     private final List<ValidatedPortfolioLineImpl> lines = new ArrayList<>();
 
+    private final List<RuleIssue> issues = new ArrayList<>();
+
     public Results(final ExistingPortfolio p) {
         p.getLines().forEach(t -> lines.add(new ValidatedPortfolioLineImpl(t, this)));
     }
-
-    private final List<RuleIssue> issues = new ArrayList<>();
 
     @Override
     public boolean isValid() {

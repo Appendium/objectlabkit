@@ -46,6 +46,9 @@ public final class BigDecimalUtil {
     private static final int MAX_SCALE_FOR_INVERSE = 20;
     private static final NumberFormat NUMBER_FORMAT = NumberFormat.getInstance();
 
+    private static final BigDecimal SQRT_DIG = new BigDecimal(8);
+    private static final BigDecimal SQRT_PRE = new BigDecimal(10).pow(SQRT_DIG.intValue());
+
     private BigDecimalUtil() {
     }
 
@@ -766,9 +769,6 @@ public final class BigDecimalUtil {
     public static BigDecimal decimalPart(final BigDecimal val) {
         return BigDecimalUtil.subtract(val, val.setScale(0, BigDecimal.ROUND_DOWN));
     }
-
-    private static final BigDecimal SQRT_DIG = new BigDecimal(8);
-    private static final BigDecimal SQRT_PRE = new BigDecimal(10).pow(SQRT_DIG.intValue());
 
     /**
      * Private utility method used to compute the square root of a BigDecimal.

@@ -52,20 +52,20 @@ public class Quadruplet<E1, E2, E3, E4> implements Serializable {
     private E3 element3;
     private E4 element4;
 
-    public E1 getElement1() {
-        return element1;
-    }
-
-    public static <E1, E2, E3, E4> Quadruplet<E1, E2, E3, E4> create(final E1 element1, final E2 element2, final E3 element3, final E4 element4) {
-        return new Quadruplet<E1, E2, E3, E4>(element1, element2, element3, element4);
-    }
-
     public Quadruplet(final E1 element1, final E2 element2, final E3 element3, final E4 element4) {
         super();
         this.element1 = element1;
         this.element2 = element2;
         this.element3 = element3;
         this.element4 = element4;
+    }
+
+    public E1 getElement1() {
+        return element1;
+    }
+
+    public static <E1, E2, E3, E4> Quadruplet<E1, E2, E3, E4> create(final E1 element1, final E2 element2, final E3 element3, final E4 element4) {
+        return new Quadruplet<E1, E2, E3, E4>(element1, element2, element3, element4);
     }
 
     public void setElement1(final E1 element1) {
