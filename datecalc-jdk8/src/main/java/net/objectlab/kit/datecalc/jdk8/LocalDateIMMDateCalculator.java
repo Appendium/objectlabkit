@@ -175,7 +175,7 @@ public class LocalDateIMMDateCalculator extends AbstractIMMDateCalculator<LocalD
      *            the start date
      * @return the 3rd Wednesday of the month
      */
-    private LocalDate calculate3rdWednesday(final LocalDate original) {
+    private static LocalDate calculate3rdWednesday(final LocalDate original) {
         return original.with(TemporalAdjusters.firstInMonth(DayOfWeek.WEDNESDAY)).plusWeeks(2);
     }
 

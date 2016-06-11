@@ -155,7 +155,7 @@ public class CalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calenda
     //
     // -----------------------------------------------------------------------
 
-    private boolean isIMMMonth(final Calendar cal) {
+    private static boolean isIMMMonth(final Calendar cal) {
         final int month = cal.get(MONTH);
 
         switch (month) {
@@ -174,7 +174,7 @@ public class CalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calenda
      *
      * @param cal
      */
-    private void moveToIMMDay(final Calendar cal) {
+    private static void moveToIMMDay(final Calendar cal) {
         cal.set(DAY_OF_MONTH, 1);
 
         // go to 1st wed

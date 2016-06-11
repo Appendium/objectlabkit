@@ -102,7 +102,7 @@ public class CurrencyDateCalculatorBuilder<E> {
         }
     }
 
-    private void append(StringBuilder b, String string) {
+    private static void append(StringBuilder b, String string) {
         if (b.length() > 0) {
             b.append(",");
         }
