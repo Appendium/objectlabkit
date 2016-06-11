@@ -68,7 +68,7 @@ public final class Util {
         }
 
         final StringTokenizer tok = new StringTokenizer(str, delimiter);
-        final List<String> list = new ArrayList<String>();
+        final List<String> list = new ArrayList<>();
 
         while (tok.hasMoreElements()) {
             list.add(StringUtil.trim(tok.nextToken()));

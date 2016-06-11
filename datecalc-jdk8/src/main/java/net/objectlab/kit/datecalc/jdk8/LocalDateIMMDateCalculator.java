@@ -73,7 +73,7 @@ public class LocalDateIMMDateCalculator extends AbstractIMMDateCalculator<LocalD
      */
     @Override
     public List<LocalDate> getIMMDates(final LocalDate start, final LocalDate end, final IMMPeriod period) {
-        final List<LocalDate> dates = new ArrayList<LocalDate>();
+        final List<LocalDate> dates = new ArrayList<>();
 
         LocalDate date = start;
         while (true) {

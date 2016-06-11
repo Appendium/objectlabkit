@@ -63,7 +63,7 @@ public class Triplet<E1, E2, E3> implements Serializable {
     }
 
     public static <E1, E2, E3> Triplet<E1, E2, E3> create(final E1 element1, final E2 element2, final E3 element3) {
-        return new Triplet<E1, E2, E3>(element1, element2, element3);
+        return new Triplet<>(element1, element2, element3);
     }
 
     public void setElement1(final E1 element1) {

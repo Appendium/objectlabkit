@@ -14,7 +14,7 @@ import java.util.Set;
  */
 public class ReadOnlyExpiringHashSet<T> extends AbstractReadOnlyExpiringCollection implements ReadOnlyExpiringSet<T> {
     private final SetLoader<T> loader;
-    private Set<T> delegate = new HashSet<T>();
+    private Set<T> delegate = new HashSet<>();
 
     public ReadOnlyExpiringHashSet(final ReadOnlyExpiringHashSetBuilder<T> builder) {
         this.loader = builder.getLoader();
@@ -29,7 +29,7 @@ public class ReadOnlyExpiringHashSet<T> extends AbstractReadOnlyExpiringCollecti
 
     @Override
     protected void doLoad() {
-        final DefaultSetBuilder<T> builder = new DefaultSetBuilder<T>(getId());
+        final DefaultSetBuilder<T> builder = new DefaultSetBuilder<>(getId());
         loader.load(builder);
         delegate = builder.build();
     }

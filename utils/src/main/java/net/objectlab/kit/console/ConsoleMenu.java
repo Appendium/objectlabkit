@@ -63,11 +63,11 @@ public class ConsoleMenu {
     // ~ Instance fields
     // ------------------------------------------------------------------------------------------------
 
-    private final List<String> menu = new ArrayList<String>();
+    private final List<String> menu = new ArrayList<>();
 
-    private final List<String> methods = new ArrayList<String>();
+    private final List<String> methods = new ArrayList<>();
 
-    private final List<Boolean> askForRepeat = new ArrayList<Boolean>();
+    private final List<Boolean> askForRepeat = new ArrayList<>();
 
     private final Repeater target;
 

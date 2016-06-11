@@ -55,7 +55,7 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
     private Jdk8WorkingWeek workingWeek = Jdk8WorkingWeek.DEFAULT;
 
     public LocalDateCalculator() {
-        this(null, null, new DefaultHolidayCalendar<LocalDate>(Collections.emptySet()), null);
+        this(null, null, new DefaultHolidayCalendar<>(Collections.emptySet()), null);
     }
 
     public LocalDateCalculator(final String name, final LocalDate startDate, final HolidayCalendar<LocalDate> holidayCalendar,

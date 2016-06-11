@@ -14,7 +14,7 @@ import java.util.Set;
  */
 public class ReadOnlyExpiringHashMap<K, V> extends AbstractReadOnlyExpiringCollection implements ReadOnlyExpiringMap<K, V> {
     private static final String COLLECTION_IS_IMMUTABLE = "Collection is immutable";
-    private Map<K, V> delegate = new HashMap<K, V>();
+    private Map<K, V> delegate = new HashMap<>();
     private final MapLoader<K, V> loader;
 
     public ReadOnlyExpiringHashMap(final ReadOnlyExpiringHashMapBuilder<K, V> builder) {
@@ -30,7 +30,7 @@ public class ReadOnlyExpiringHashMap<K, V> extends AbstractReadOnlyExpiringColle
 
     @Override
     protected void doLoad() {
-        final DefaultMapBuilder<K, V> builder = new DefaultMapBuilder<K, V>(getId());
+        final DefaultMapBuilder<K, V> builder = new DefaultMapBuilder<>(getId());
         loader.load(builder);
         delegate = builder.build();
     }
