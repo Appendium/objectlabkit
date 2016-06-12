@@ -52,12 +52,6 @@ import net.objectlab.kit.datecalc.common.IMMPeriod;
  *
  */
 public class LocalDateIMMDateCalculator extends AbstractIMMDateCalculator<LocalDate> {
-    protected static final int MONTHS_IN_QUARTER = 3;
-
-    protected static final int MONTH_IN_YEAR = 12;
-
-    protected static final int DAYS_IN_WEEK = 7;
-
     /**
      * Returns a list of IMM dates between 2 dates, it will exclude the start
      * date if it is an IMM date but would include the end date if it is an IMM.
