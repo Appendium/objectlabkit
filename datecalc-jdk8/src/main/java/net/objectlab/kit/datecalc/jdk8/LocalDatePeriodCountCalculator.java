@@ -51,7 +51,7 @@ public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<Loc
 
     @Override
     public int dayDiff(final LocalDate start, final LocalDate end, final PeriodCountBasis basis) {
-        int diff = 0;
+        int diff;
 
         switch (basis) {
         case CONV_30_360:

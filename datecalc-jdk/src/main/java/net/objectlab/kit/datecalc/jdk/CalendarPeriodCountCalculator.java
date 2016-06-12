@@ -50,7 +50,7 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
 
     public int dayDiff(final Calendar start, final Calendar end, final PeriodCountBasis basis) {
 
-        int diff = 0;
+        int diff;
 
         switch (basis) {
         case CONV_30_360:
@@ -155,8 +155,8 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
                 final int diff1 = dayDiff(start, endOfStartYear);
                 final int diff2 = dayDiff(startOfEndYear, end);
 
-                diff = (diff1 + 1.0) / start.getActualMaximum(Calendar.DAY_OF_YEAR) + (endYear - startYear - 1.0) + diff2
-                        / (double) end.getActualMaximum(Calendar.DAY_OF_YEAR);
+                diff = (diff1 + 1.0) / start.getActualMaximum(Calendar.DAY_OF_YEAR) + (endYear - startYear - 1.0)
+                        + diff2 / (double) end.getActualMaximum(Calendar.DAY_OF_YEAR);
             }
             break;
 

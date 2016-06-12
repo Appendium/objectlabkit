@@ -140,7 +140,7 @@ public class LocalDateIMMDateCalculator extends AbstractIMMDateCalculator<LocalD
     // -----------------------------------------------------------------------
 
     private LocalDate calculateIMMMonth(final boolean requestNextIMM, final LocalDate startDate, final Month month) {
-        int monthOffset = 0;
+        int monthOffset;
         LocalDate date = startDate;
         switch (month) {
         case MARCH:

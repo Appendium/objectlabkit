@@ -41,10 +41,10 @@ import static org.joda.time.DateTimeConstants.SEPTEMBER;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.joda.time.LocalDate;
+
 import net.objectlab.kit.datecalc.common.AbstractIMMDateCalculator;
 import net.objectlab.kit.datecalc.common.IMMPeriod;
-
-import org.joda.time.LocalDate;
 
 /**
  * Joda <code>LocalDate</code> based implementation of the
@@ -142,7 +142,7 @@ public class LocalDateIMMDateCalculator extends AbstractIMMDateCalculator<LocalD
     // -----------------------------------------------------------------------
 
     private LocalDate calculateIMMMonth(final boolean requestNextIMM, final LocalDate startDate, final int month) {
-        int monthOffset = 0;
+        int monthOffset;
         LocalDate date = startDate;
         switch (month) {
         case MARCH:

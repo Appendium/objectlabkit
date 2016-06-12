@@ -169,7 +169,7 @@ public abstract class AbstractDateCalculator<E extends Serializable> implements 
             calc = moveByDays(1);
             break;
         case TOM_NEXT: // it would have NOT moved by
-            calc = moveByDays(1); // calculate Tomorrow
+            moveByDays(1); // calculate Tomorrow
             calc = moveByDays(1); // then the next!
             break;
         case SPOT_NEXT:

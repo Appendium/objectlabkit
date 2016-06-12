@@ -3,10 +3,10 @@ package net.objectlab.kit.fxcalc;
 import java.math.BigDecimal;
 import java.util.Optional;
 
-import net.objectlab.kit.util.BigDecimalUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import net.objectlab.kit.util.BigDecimalUtil;
 
 /**
  * Calculator responsible for generating a new cross FX Rate based on two relevant (sharing a cross currency) FX Rates; e.g. CHF/JPY based on USD/CHF and USD/JPY.
@@ -34,8 +34,8 @@ public final class CrossRateCalculator {
             final int precisionForInverseFxRate, final MajorCurrencyRanking ranking, final int bidRounding, final int askRounding,
             CurrencyProvider currencyProvider) {
         final Optional<String> crossCcy = fx1.getCurrencyPair().findCommonCcy(fx2.getCurrencyPair());
-        final String xCcy = crossCcy.orElseThrow(() -> new IllegalArgumentException("The 2 FXRates do not share a ccy " + fx1.getCurrencyPair() + " "
-                + fx2.getCurrencyPair()));
+        final String xCcy = crossCcy.orElseThrow(
+                () -> new IllegalArgumentException("The 2 FXRates do not share a ccy " + fx1.getCurrencyPair() + " " + fx2.getCurrencyPair()));
 
         if (targetPair.containsCcy(crossCcy.get())) {
             throw new IllegalArgumentException("The target currency pair " + targetPair + " contains the common ccy " + crossCcy.get());
@@ -48,8 +48,8 @@ public final class CrossRateCalculator {
         final boolean shouldDivide = fx1Ccy1.equals(xCcy) && fx2Ccy1.equals(xCcy) || fx1Ccy2.equals(xCcy) && fx2Ccy2.equals(xCcy); // what if it i
         // both ccy2?
 
-        BigDecimal bid = null;
-        BigDecimal ask = null;
+        BigDecimal bid;
+        BigDecimal ask;
 
         if (shouldDivide) {
             final FxRate numeratorFx = targetPair.getCcy1().equals(fx2Ccy2) || targetPair.getCcy1().equals(fx1Ccy1) ? fx1 : fx2;

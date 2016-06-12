@@ -32,12 +32,12 @@
  */
 package net.objectlab.kit.datecalc.joda;
 
-import net.objectlab.kit.datecalc.common.PeriodCountBasis;
-import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
-
 import org.joda.time.LocalDate;
 import org.joda.time.Period;
 import org.joda.time.PeriodType;
+
+import net.objectlab.kit.datecalc.common.PeriodCountBasis;
+import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
 /**
  * Joda <code>LocalDatePeriod</code> based implementation of the
@@ -49,7 +49,7 @@ import org.joda.time.PeriodType;
 public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<LocalDate> {
 
     public int dayDiff(final LocalDate start, final LocalDate end, final PeriodCountBasis basis) {
-        int diff = 0;
+        int diff;
 
         switch (basis) {
         case CONV_30_360:
@@ -137,8 +137,8 @@ public class LocalDatePeriodCountCalculator implements PeriodCountCalculator<Loc
 
                 final int diff1 = new Period(start, endOfStartYear, PeriodType.days()).getDays();
                 final int diff2 = new Period(startOfEndYear, end, PeriodType.days()).getDays();
-                diff = (diff1 + 1.0) / start.dayOfYear().getMaximumValue() + (endYear - startYear - 1.0) + (double) diff2
-                        / (double) end.dayOfYear().getMaximumValue();
+                diff = (diff1 + 1.0) / start.dayOfYear().getMaximumValue() + (endYear - startYear - 1.0)
+                        + (double) diff2 / (double) end.dayOfYear().getMaximumValue();
             }
             break;
 

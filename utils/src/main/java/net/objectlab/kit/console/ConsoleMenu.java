@@ -121,7 +121,7 @@ public class ConsoleMenu {
 
             displayMenu(size);
 
-            int opt = -1;
+            int opt;
 
             do {
                 opt = ConsoleMenu.getInt("Enter your choice:", -1);
@@ -215,7 +215,7 @@ public class ConsoleMenu {
      * @return int as entered by the user of the console app
      */
     public static int getInt(final String title, final int defaultValue) {
-        int opt = -1;
+        int opt;
 
         do {
             try {
@@ -255,7 +255,7 @@ public class ConsoleMenu {
      * @return int as entered by the user of the console app
      */
     public static BigDecimal getBigDecimal(final String title, final BigDecimal defaultValue) {
-        BigDecimal opt = null;
+        BigDecimal opt;
 
         do {
             try {
@@ -358,7 +358,7 @@ public class ConsoleMenu {
             ConsoleMenu.println(i + 1 + ") " + optionNames[i]);
         }
 
-        int choice = 0;
+        int choice;
 
         do {
             choice = ConsoleMenu.getInt("Your Choice 1-" + optionNames.length + ": ", defaultOption);
