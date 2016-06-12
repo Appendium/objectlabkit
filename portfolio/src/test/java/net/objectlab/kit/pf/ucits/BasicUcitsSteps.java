@@ -52,7 +52,7 @@ public class BasicUcitsSteps {
         portfolio.setPortfolioCcy(ccy);
 
         final List<BasicLine> details = dataTable.asList(BasicLine.class);
-        final List<ExistingPortfolioLine> lines = new ArrayList<ExistingPortfolioLine>();
+        final List<ExistingPortfolioLine> lines = new ArrayList<>();
         lines.addAll(details);
         portfolio.setLines(lines);
         portfolio.setPortfolioValue(lines.stream().map(t -> t.getValueInPortfolioCcy()).reduce(BigDecimal.ZERO, (a, b) -> b != null ? a.add(b) : a));

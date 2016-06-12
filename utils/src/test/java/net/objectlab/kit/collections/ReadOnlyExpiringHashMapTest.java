@@ -28,7 +28,7 @@ public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer>, 
 
     @Test
     public void basicConstructorNoReload() {
-        final ReadOnlyExpiringHashMapBuilder<String, Integer> builder = new ReadOnlyExpiringHashMapBuilder<String, Integer>(this);
+        final ReadOnlyExpiringHashMapBuilder<String, Integer> builder = new ReadOnlyExpiringHashMapBuilder<>(this);
         builder.expiryTimeoutMilliseconds(1000);
         builder.loadOnFirstAccess(true);
         builder.reloadOnExpiry(false);
@@ -36,7 +36,7 @@ public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer>, 
         builder.timeProvider(this);
         builder.id("Greetings");
 
-        final ReadOnlyExpiringMap<String, Integer> ims = new ReadOnlyExpiringHashMap<String, Integer>(builder);
+        final ReadOnlyExpiringMap<String, Integer> ims = new ReadOnlyExpiringHashMap<>(builder);
 
         assertEquals("Should not call load until called", 0, reloadCount);
 
@@ -73,7 +73,7 @@ public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer>, 
 
     @Test
     public void basicConstructorWithReloadWhenCalled() {
-        final ReadOnlyExpiringHashMapBuilder<String, Integer> builder = new ReadOnlyExpiringHashMapBuilder<String, Integer>(this);
+        final ReadOnlyExpiringHashMapBuilder<String, Integer> builder = new ReadOnlyExpiringHashMapBuilder<>(this);
         builder.expiryTimeoutMilliseconds(1000);
         builder.loadOnFirstAccess(true);
         builder.reloadOnExpiry(false);
@@ -81,7 +81,7 @@ public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer>, 
         builder.timeProvider(this);
         builder.id("Greetings");
 
-        final ReadOnlyExpiringMap<String, Integer> ims = new ReadOnlyExpiringHashMap<String, Integer>(builder);
+        final ReadOnlyExpiringMap<String, Integer> ims = new ReadOnlyExpiringHashMap<>(builder);
 
         assertEquals("Should not call load until called", 0, reloadCount);
 
@@ -120,7 +120,7 @@ public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer>, 
 
     @Test
     public void basicConstructorWithImmediateLoadAndWhenExpired() {
-        final ReadOnlyExpiringHashMapBuilder<String, Integer> builder = new ReadOnlyExpiringHashMapBuilder<String, Integer>(this);
+        final ReadOnlyExpiringHashMapBuilder<String, Integer> builder = new ReadOnlyExpiringHashMapBuilder<>(this);
         builder.expiryTimeoutMilliseconds(1000);
         builder.loadOnFirstAccess(false);
         builder.reloadOnExpiry(false);
@@ -128,7 +128,7 @@ public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer>, 
         builder.timeProvider(this);
         builder.id("Greetings");
 
-        final ReadOnlyExpiringMap<String, Integer> ims = new ReadOnlyExpiringHashMap<String, Integer>(builder);
+        final ReadOnlyExpiringMap<String, Integer> ims = new ReadOnlyExpiringHashMap<>(builder);
 
         assertEquals("Should not call load until called", 1, reloadCount);
 
@@ -167,7 +167,7 @@ public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer>, 
 
     @Test
     public void basicConstructorWithReloadOnExpiry() {
-        final ReadOnlyExpiringHashMapBuilder<String, Integer> builder = new ReadOnlyExpiringHashMapBuilder<String, Integer>(this);
+        final ReadOnlyExpiringHashMapBuilder<String, Integer> builder = new ReadOnlyExpiringHashMapBuilder<>(this);
         builder.expiryTimeoutMilliseconds(1000);
         builder.loadOnFirstAccess(false);
         builder.reloadOnExpiry(true);
@@ -175,7 +175,7 @@ public class ReadOnlyExpiringHashMapTest implements MapLoader<String, Integer>, 
         builder.timeProvider(this);
         builder.id("Greetings");
 
-        final ReadOnlyExpiringMap<String, Integer> ims = new ReadOnlyExpiringHashMap<String, Integer>(builder);
+        final ReadOnlyExpiringMap<String, Integer> ims = new ReadOnlyExpiringHashMap<>(builder);
 
         assertEquals("Should not call load until called", 1, reloadCount);
 

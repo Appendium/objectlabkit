@@ -53,7 +53,7 @@ public class Pair<E1, E2> implements Serializable {
     }
 
     public static <E1, E2> Pair<E1, E2> create(final E1 element1, final E2 element2) {
-        return new Pair<E1, E2>(element1, element2);
+        return new Pair<>(element1, element2);
     }
 
     public E1 getElement1() {

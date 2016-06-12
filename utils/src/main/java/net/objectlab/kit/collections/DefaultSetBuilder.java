@@ -12,7 +12,7 @@ import java.util.Set;
  *
  */
 public class DefaultSetBuilder<T> implements SetBuilder<T> {
-    private final Set<T> set = new HashSet<T>();
+    private final Set<T> set = new HashSet<>();
     private final String id;
 
     public DefaultSetBuilder(final String id) {
@@ -36,6 +36,6 @@ public class DefaultSetBuilder<T> implements SetBuilder<T> {
     }
 
     Set<T> build() {
-        return new HashSet<T>(set);
+        return new HashSet<>(set);
     }
 }

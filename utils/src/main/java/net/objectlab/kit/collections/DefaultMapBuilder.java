@@ -18,7 +18,7 @@ import net.objectlab.kit.util.Pair;
  *
  */
 public class DefaultMapBuilder<K, V> implements MapBuilder<K, V> {
-    private final List<Pair<K, V>> entries = new ArrayList<Pair<K, V>>();
+    private final List<Pair<K, V>> entries = new ArrayList<>();
     private final String id;
 
     public DefaultMapBuilder(final String id) {
@@ -35,7 +35,7 @@ public class DefaultMapBuilder<K, V> implements MapBuilder<K, V> {
      */
     @Override
     public DefaultMapBuilder<K, V> put(final K key, final V value) {
-        entries.add(new Pair<K, V>(key, value));
+        entries.add(new Pair<>(key, value));
         return this;
     }
 
@@ -65,9 +65,9 @@ public class DefaultMapBuilder<K, V> implements MapBuilder<K, V> {
     private static <K, V> Map<K, V> fromEntryList(final List<Pair<K, V>> entries) {
         final int size = entries.size();
         if (size == 0) {
-            return new HashMap<K, V>();
+            return new HashMap<>();
         }
-        final Map<K, V> m = new HashMap<K, V>();
+        final Map<K, V> m = new HashMap<>();
         for (final Pair<K, V> entry : entries) {
             m.put(entry.getElement1(), entry.getElement2());
         }

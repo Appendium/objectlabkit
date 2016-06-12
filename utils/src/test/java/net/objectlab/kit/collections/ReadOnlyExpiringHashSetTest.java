@@ -27,7 +27,7 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String>, TimeProvi
 
     @Test
     public void basicConstructorNoReload() {
-        final ReadOnlyExpiringHashSetBuilder<String> builder = new ReadOnlyExpiringHashSetBuilder<String>(this);
+        final ReadOnlyExpiringHashSetBuilder<String> builder = new ReadOnlyExpiringHashSetBuilder<>(this);
         builder.expiryTimeoutMilliseconds(1000);
         builder.loadOnFirstAccess(true);
         builder.reloadOnExpiry(false);
@@ -35,7 +35,7 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String>, TimeProvi
         builder.timeProvider(this);
         builder.id("Greetings");
 
-        final ReadOnlyExpiringSet<String> ims = new ReadOnlyExpiringHashSet<String>(builder);
+        final ReadOnlyExpiringSet<String> ims = new ReadOnlyExpiringHashSet<>(builder);
         assertEquals("Should not call load until called", 0, reloadCount);
 
         assertFalse(ims.isEmpty());
@@ -65,7 +65,7 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String>, TimeProvi
 
     @Test
     public void basicConstructorWithReloadWhenCalled() {
-        final ReadOnlyExpiringHashSetBuilder<String> builder = new ReadOnlyExpiringHashSetBuilder<String>(this);
+        final ReadOnlyExpiringHashSetBuilder<String> builder = new ReadOnlyExpiringHashSetBuilder<>(this);
         builder.expiryTimeoutMilliseconds(1000);
         builder.loadOnFirstAccess(true);
         builder.reloadOnExpiry(false);
@@ -73,7 +73,7 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String>, TimeProvi
         builder.timeProvider(this);
         builder.id("Greetings");
 
-        final ReadOnlyExpiringSet<String> ims = new ReadOnlyExpiringHashSet<String>(builder);
+        final ReadOnlyExpiringSet<String> ims = new ReadOnlyExpiringHashSet<>(builder);
 
         assertEquals("Should not call load until called", 0, reloadCount);
 
@@ -104,7 +104,7 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String>, TimeProvi
 
     @Test
     public void basicConstructorWithImmediateLoadAndWhenExpired() {
-        final ReadOnlyExpiringHashSetBuilder<String> builder = new ReadOnlyExpiringHashSetBuilder<String>(this);
+        final ReadOnlyExpiringHashSetBuilder<String> builder = new ReadOnlyExpiringHashSetBuilder<>(this);
         builder.expiryTimeoutMilliseconds(1000);
         builder.loadOnFirstAccess(false);
         builder.reloadOnExpiry(false);
@@ -112,7 +112,7 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String>, TimeProvi
         builder.timeProvider(this);
         builder.id("Greetings");
 
-        final ReadOnlyExpiringSet<String> ims = new ReadOnlyExpiringHashSet<String>(builder);
+        final ReadOnlyExpiringSet<String> ims = new ReadOnlyExpiringHashSet<>(builder);
 
         assertEquals("Should call load immediately", 1, reloadCount);
 
@@ -144,7 +144,7 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String>, TimeProvi
 
     @Test
     public void basicConstructorWithReloadOnExpiry() {
-        final ReadOnlyExpiringHashSetBuilder<String> builder = new ReadOnlyExpiringHashSetBuilder<String>(this);
+        final ReadOnlyExpiringHashSetBuilder<String> builder = new ReadOnlyExpiringHashSetBuilder<>(this);
         builder.expiryTimeoutMilliseconds(1000);
         builder.loadOnFirstAccess(false);
         builder.reloadOnExpiry(true);
@@ -152,7 +152,7 @@ public class ReadOnlyExpiringHashSetTest implements SetLoader<String>, TimeProvi
         builder.timeProvider(this);
         builder.id("Greetings");
 
-        final ReadOnlyExpiringSet<String> ims = new ReadOnlyExpiringHashSet<String>(builder);
+        final ReadOnlyExpiringSet<String> ims = new ReadOnlyExpiringHashSet<>(builder);
 
         assertEquals("Should have called load immediately", 1, reloadCount);
 
