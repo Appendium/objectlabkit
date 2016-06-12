@@ -15,6 +15,7 @@ import java.util.Optional;
  * @author Benoit Xhenseval
  *
  */
+@FunctionalInterface
 public interface BaseFxRateProvider {
     /**
      * Up to the implementer to get the latest FX Rate for the given pair, that could be from your DB, from Reuters or

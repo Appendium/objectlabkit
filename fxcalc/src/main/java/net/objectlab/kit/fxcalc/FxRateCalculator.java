@@ -8,6 +8,7 @@ import java.util.Optional;
  *
  * @author Benoit Xhenseval
  */
+@FunctionalInterface
 public interface FxRateCalculator {
     /**
      * Find or calculate the FX Rate for the given pair.

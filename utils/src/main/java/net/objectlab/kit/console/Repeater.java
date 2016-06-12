@@ -34,6 +34,7 @@ package net.objectlab.kit.console;
 
 import java.lang.reflect.Method;
 
+@FunctionalInterface
 public interface Repeater {
     void repeat(Method target);
 }
