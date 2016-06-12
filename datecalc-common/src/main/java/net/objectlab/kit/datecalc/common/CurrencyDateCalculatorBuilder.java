@@ -37,7 +37,7 @@ public class CurrencyDateCalculatorBuilder<E> {
     private WorkingWeek ccy2Week;
     private WorkingWeek crossCcyWeek;
     private CurrencyCalculatorConfig currencyCalculatorConfig;
-    private boolean brokenDateAllowed = false;
+    private boolean brokenDateAllowed;
     private boolean adjustStartDateWithCurrencyPair = true;
     private SpotLag spotLag = SpotLag.T_2;
 

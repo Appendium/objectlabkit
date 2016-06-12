@@ -43,7 +43,7 @@ import java.io.Serializable;
  */
 public class Tenor implements Serializable {
     private static final long serialVersionUID = 1L;
-    private int units = 0;
+    private int units;
 
     private final TenorCode code;
 

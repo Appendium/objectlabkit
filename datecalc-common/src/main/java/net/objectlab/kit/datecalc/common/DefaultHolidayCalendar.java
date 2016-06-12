@@ -55,9 +55,9 @@ public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
      */
     private Map<String, E> holidays;
 
-    private E earlyBoundary = null;
+    private E earlyBoundary;
 
-    private E lateBoundary = null;
+    private E lateBoundary;
 
     public DefaultHolidayCalendar() {
         super();
