@@ -74,7 +74,7 @@ public class DateIMMDateCalculator extends AbstractIMMDateCalculator<Date> {
         return DELEGATE.isIMMDate(Utils.getCal(date));
     }
 
-    private List<Date> buildList(final List<Calendar> dates) {
+    private static List<Date> buildList(final List<Calendar> dates) {
         final List<Date> imms = new ArrayList<Date>();
         for (final Calendar date : dates) {
             imms.add(date.getTime());
