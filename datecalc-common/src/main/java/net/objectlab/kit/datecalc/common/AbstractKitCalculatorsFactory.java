@@ -32,6 +32,7 @@
  */
 package net.objectlab.kit.datecalc.common;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -51,7 +52,7 @@ import net.objectlab.kit.datecalc.common.ccy.DefaultCurrencyCalculatorConfig;
  *            Joda:LocalDate, YearMonthDay
  *
  */
-public abstract class AbstractKitCalculatorsFactory<E> implements KitCalculatorsFactory<E> {
+public abstract class AbstractKitCalculatorsFactory<E extends Serializable> implements KitCalculatorsFactory<E> {
 
     private final ConcurrentMap<String, HolidayCalendar<E>> holidays = new ConcurrentHashMap<String, HolidayCalendar<E>>();
 

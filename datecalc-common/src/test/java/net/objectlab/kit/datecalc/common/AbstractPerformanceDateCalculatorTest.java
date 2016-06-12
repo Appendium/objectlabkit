@@ -32,10 +32,11 @@
  */
 package net.objectlab.kit.datecalc.common;
 
+import java.io.Serializable;
 import java.util.Map;
 import java.util.TreeMap;
 
-public abstract class AbstractPerformanceDateCalculatorTest<E> extends AbstractDateTestCase<E> {
+public abstract class AbstractPerformanceDateCalculatorTest<E extends Serializable> extends AbstractDateTestCase<E> {
     private static final int REPEAT = 100000;
     private static final Map<String, String> RESULTS = new TreeMap<String, String>();
 

@@ -32,12 +32,13 @@
  */
 package net.objectlab.kit.datecalc.common;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.Set;
 
 import junit.framework.Assert;
 
-public abstract class AbstractDateCalculatorCombinationTest<E> extends AbstractDateTestCase<E> {
+public abstract class AbstractDateCalculatorCombinationTest<E extends Serializable> extends AbstractDateTestCase<E> {
 
     public void testInvalidCombinationDiffHandler() {
         final DateCalculator<E> cal1 = newDateCalculator("bla", HolidayHandlerType.BACKWARD);

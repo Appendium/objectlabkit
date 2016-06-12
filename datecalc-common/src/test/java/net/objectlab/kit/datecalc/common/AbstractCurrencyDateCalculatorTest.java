@@ -32,12 +32,13 @@
  */
 package net.objectlab.kit.datecalc.common;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 import junit.framework.Assert;
 
-public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDateTestCase<E> {
+public abstract class AbstractCurrencyDateCalculatorTest<E extends Serializable> extends AbstractDateTestCase<E> {
 
     protected HolidayCalendar<E> createRUHolidayCalendar() {
         final Set<E> us = new HashSet<E>();
@@ -123,9 +124,8 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
     }
 
     public void testCrossEurGbpButDoNotAdjustStartDate() {
-        final CurrencyDateCalculator<E> cal = getDateCalculatorFactory().buildCurrencyDateCalculator(
-                getDateCalculatorFactory().getDefaultCurrencyDateCalculatorBuilder("EUR", "GBP", SpotLag.T_2).adjustStartDateWithCurrencyPair(false)
-                        .brokenDateAllowed(true));
+        final CurrencyDateCalculator<E> cal = getDateCalculatorFactory().buildCurrencyDateCalculator(getDateCalculatorFactory()
+                .getDefaultCurrencyDateCalculatorBuilder("EUR", "GBP", SpotLag.T_2).adjustStartDateWithCurrencyPair(false).brokenDateAllowed(true));
         checkDate("Spot from " + newDate("2006-07-09"), cal.calculateSpotDate(newDate("2006-07-09")), "2006-07-11"); // Sun->Tue
         checkDate("Spot from " + newDate("2006-07-03"), cal.calculateSpotDate(newDate("2006-07-03")), "2006-07-05"); // Mon->Wed
     }
@@ -164,14 +164,14 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
         final CurrencyDateCalculator<E> calc = newCurrencyCalculator("XXX", "YYY");
 
         // set startDate, this will also set the current business date.
-        System.out.println(calc.getName() + " TD: " + newDate("2014-08-01") + " Spot " + calc.calculateSpotDate(newDate("2014-08-01"))
-                + " expects 6 Aug");
+        System.out.println(
+                calc.getName() + " TD: " + newDate("2014-08-01") + " Spot " + calc.calculateSpotDate(newDate("2014-08-01")) + " expects 6 Aug");
     }
 
     public void testTenorNoHolidayModifiedFollowing() {
-        final CurrencyDateCalculator<E> cal = getDateCalculatorFactory().buildCurrencyDateCalculator(
-                getDateCalculatorFactory().getDefaultCurrencyDateCalculatorBuilder("EUR", "USD", SpotLag.T_2)//
-                );
+        final CurrencyDateCalculator<E> cal = getDateCalculatorFactory()
+                .buildCurrencyDateCalculator(getDateCalculatorFactory().getDefaultCurrencyDateCalculatorBuilder("EUR", "USD", SpotLag.T_2)//
+        );
 
         E startDate = newDate("2014-06-26");
         E spotDate = cal.calculateSpotDate(startDate);
@@ -188,10 +188,10 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
     }
 
     public void testTenorNoHolidayForward() {
-        final CurrencyDateCalculator<E> cal = getDateCalculatorFactory().buildCurrencyDateCalculator(
-                getDateCalculatorFactory().getDefaultCurrencyDateCalculatorBuilder("EUR", "USD", SpotLag.T_2)//
+        final CurrencyDateCalculator<E> cal = getDateCalculatorFactory()
+                .buildCurrencyDateCalculator(getDateCalculatorFactory().getDefaultCurrencyDateCalculatorBuilder("EUR", "USD", SpotLag.T_2)//
                         .tenorHolidayHandler(getDateCalculatorFactory().getHolidayHandler(HolidayHandlerType.FORWARD)) //
-                );
+        );
 
         E startDate = newDate("2014-10-28");
 
@@ -201,33 +201,33 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
         checkDate("1M from 28-Oct-2014", t1mDate, "2014-12-01"); // ALLOWED to Cross over to next month
     }
     /*
-
+    
     public void testSimpleForwardStartDateWithWeekend() {
         final CurrencyDateCalculator<E> cal = newCurrencyCalculator(CurrencyDateCalculator.USD_CODE, "EUR");
         Assert.assertEquals("Name", "USD.EUR", cal.getName());
-
+    
         cal.setStartDate(newDate("2006-07-31")); // start date Monday
         checkDate("start date Monday", cal, "2006-07-31");
-
+    
         cal.setStartDate(newDate("2006-08-01")); // start date Tuesday
         checkDate("start date Tuesday", cal, "2006-08-01");
-
+    
         cal.setStartDate(newDate("2006-08-02")); // start date Wednesday
         checkDate("start date Wednesday", cal, "2006-08-02");
-
+    
         cal.setStartDate(newDate("2006-08-03")); // start date Thursday
         checkDate("start date Thursday", cal, "2006-08-03");
-
+    
         cal.setStartDate(newDate("2006-08-04")); // set on a Friday
         checkDate("start date friday", cal, "2006-08-04");
-
+    
         cal.setStartDate(newDate("2006-08-05")); // set on a Saturday
         checkDate("start date Saturday", cal, "2006-08-07");
-
+    
         cal.setStartDate(newDate("2006-08-06")); // set on a Sunday
         checkDate("start date Sunday", cal, "2006-08-07");
     }
-
+    
     public void testSimpleForwardStartDateNoWeekend() {
         final CurrencyDateCalculator<E> cal = newCurrencyCalculator(CurrencyDateCalculator.USD_CODE, "EUR");
         Assert.assertEquals("Name", "USD.EUR", cal.getName());
@@ -235,117 +235,117 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
                 .withWorkingDayFromCalendar(true, Calendar.SUNDAY);
         cal.setWorkingWeek(getWorkingWeek(ww));
         Assert.assertEquals("Holidays size", 0, cal.getHolidayCalendar().getHolidays().size());
-
+    
         cal.setStartDate(newDate("2006-07-31")); // start date Monday
         checkDate("start date Monday", cal, "2006-07-31");
-
+    
         cal.setStartDate(newDate("2006-08-01")); // start date Tuesday
         checkDate("start date Tuesday", cal, "2006-08-01");
-
+    
         cal.setStartDate(newDate("2006-08-02")); // start date Wednesday
         checkDate("start date Wednesday", cal, "2006-08-02");
-
+    
         cal.setStartDate(newDate("2006-08-03")); // start date Thursday
         checkDate("start date Thursday", cal, "2006-08-03");
-
+    
         cal.setStartDate(newDate("2006-08-04")); // set on a Friday
         checkDate("start date friday", cal, "2006-08-04");
-
+    
         cal.setStartDate(newDate("2006-08-05")); // set on a Saturday
         checkDate("start date Saturday", cal, "2006-08-05");
-
+    
         cal.setStartDate(newDate("2006-08-06")); // set on a Sunday
         checkDate("start date Sunday", cal, "2006-08-06");
     }
-
+    
     public void testSimpleForwardStartDateWhackyWeek() {
         final CurrencyDateCalculator<E> cal = newCurrencyCalculator(CurrencyDateCalculator.USD_CODE, "EUR");
         Assert.assertEquals("Name", "USD.EUR", cal.getName());
-
+    
         final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(false, Calendar.MONDAY)
                 .withWorkingDayFromCalendar(true, Calendar.TUESDAY).withWorkingDayFromCalendar(false, Calendar.WEDNESDAY)
                 .withWorkingDayFromCalendar(true, Calendar.THURSDAY).withWorkingDayFromCalendar(false, Calendar.FRIDAY)
                 .withWorkingDayFromCalendar(true, Calendar.SATURDAY).withWorkingDayFromCalendar(false, Calendar.SUNDAY);
         cal.setWorkingWeek(getWorkingWeek(ww));
-
+    
         cal.setStartDate(newDate("2006-07-31")); // start date Monday
         checkDate("start date Monday", cal, "2006-08-01");
-
+    
         cal.setStartDate(newDate("2006-08-01")); // start date Tuesday
         checkDate("start date Tuesday", cal, "2006-08-01");
-
+    
         cal.setStartDate(newDate("2006-08-02")); // start date Wednesday
         checkDate("start date Wednesday", cal, "2006-08-03");
-
+    
         cal.setStartDate(newDate("2006-08-03")); // start date Thursday
         checkDate("start date Thursday", cal, "2006-08-03");
-
+    
         cal.setStartDate(newDate("2006-08-04")); // set on a Friday
         checkDate("start date friday", cal, "2006-08-05");
-
+    
         cal.setStartDate(newDate("2006-08-05")); // set on a Saturday
         checkDate("start date Saturday", cal, "2006-08-05");
-
+    
         cal.setStartDate(newDate("2006-08-06")); // set on a Sunday
         checkDate("start date Sunday", cal, "2006-08-08");
     }
-
+    
     public void testSimpleForwardStartDateIdealWeekend() {
         final CurrencyDateCalculator<E> cal = newCurrencyCalculator(CurrencyDateCalculator.USD_CODE, "EUR");
         Assert.assertEquals("Name", "USD.EUR", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getHolidayCalendar().getHolidays().size());
-
+    
         final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(false, Calendar.MONDAY)
                 .withWorkingDayFromCalendar(true, Calendar.TUESDAY).withWorkingDayFromCalendar(true, Calendar.WEDNESDAY)
                 .withWorkingDayFromCalendar(true, Calendar.THURSDAY).withWorkingDayFromCalendar(true, Calendar.FRIDAY)
                 .withWorkingDayFromCalendar(false, Calendar.SATURDAY).withWorkingDayFromCalendar(false, Calendar.SUNDAY);
         cal.setWorkingWeek(getWorkingWeek(ww));
-
+    
         cal.setStartDate(newDate("2006-07-31")); // start date Monday
         checkDate("start date Monday", cal, "2006-08-01");
-
+    
         cal.setStartDate(newDate("2006-08-01")); // start date Tuesday
         checkDate("start date Tuesday", cal, "2006-08-01");
-
+    
         cal.setStartDate(newDate("2006-08-02")); // start date Wednesday
         checkDate("start date Wednesday", cal, "2006-08-02");
-
+    
         cal.setStartDate(newDate("2006-08-03")); // start date Thursday
         checkDate("start date Thursday", cal, "2006-08-03");
-
+    
         cal.setStartDate(newDate("2006-08-04")); // set on a Friday
         checkDate("start date friday", cal, "2006-08-04");
-
+    
         cal.setStartDate(newDate("2006-08-05")); // set on a Saturday
         checkDate("start date Saturday", cal, "2006-08-08");
-
+    
         cal.setStartDate(newDate("2006-08-06")); // set on a Sunday
         checkDate("start date Sunday", cal, "2006-08-08");
     }
-
+    
     public void testSimpleForwardWithHolidays() {
         final CurrencyDateCalculator<E> cal = newCurrencyCalculator(CurrencyDateCalculator.USD_CODE, "GBP");
         Assert.assertEquals("Name", "USD.GBP", cal.getName());
-
+    
         cal.setStartDate(newDate("2006-08-28"));
         checkDate("Move given Bank Holiday", cal, "2006-08-29");
-
+    
         cal.setStartDate(newDate("2006-12-24"));
         checkDate("Xmas Eve", cal, "2006-12-27");
-
+    
         cal.setStartDate(newDate("2006-12-21"));
         checkDate("21/12 + 1", cal.moveByDays(1), "2006-12-22");
-
+    
         cal.setStartDate(newDate("2006-12-21"));
         checkDate("21/12 + 1", cal.moveByDays(2), "2006-12-27");
-
+    
         cal.setStartDate(newDate("2006-12-22"));
         checkDate("22/12 + 1", cal.moveByDays(1), "2006-12-27");
-
+    
         cal.setStartDate(newDate("2006-12-23"));
         checkDate("23/12 + 1", cal.moveByDays(1), "2006-12-28");
     }
-
+    
     // -----------------------------------------------------------------------
     //
     // ObjectLab, world leaders in the design and development of bespoke
@@ -353,43 +353,43 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
     // www.ObjectLab.co.uk
     //
     // -----------------------------------------------------------------------
-
+    
     public void testMoveByBusinessDays() {
         final CurrencyDateCalculator<E> cal = newCurrencyCalculator(CurrencyDateCalculator.USD_CODE, "GBP");
         Assert.assertEquals("Name", "USD.GBP", cal.getName());
-
+    
         cal.setStartDate(newDate("2006-08-24"));
         checkDate("Move 1 BD", cal.moveByBusinessDays(1), "2006-08-25");
-
+    
         cal.setStartDate(newDate("2006-08-24"));
         checkDate("Add 1 week", cal.moveByDays(7), "2006-08-31");
         cal.setStartDate(newDate("2006-08-24"));
         checkDate("Move by 1W with 1 bank holiday", cal.moveByBusinessDays(7), "2006-09-05");
-
+    
     }
-
+    
     protected void checkMoveByTenor(final String ccy1, final String ccy2, final String startDate, final Tenor tenor, final int spotLag,
             final String expectedDate) {
         final CurrencyDateCalculator<E> cal = newCurrencyCalculator(ccy1, ccy2);
         cal.setStartDate(newDate(startDate));
         checkDate("Move start:" + startDate + " tenor:" + tenor + " daysToSpot:" + spotLag, cal.moveByTenor(tenor, spotLag), expectedDate);
     }
-
+    
     protected void checkMoveByTenor(final String ccy1, final String ccy2, final String startDate, final Tenor tenor, final String expectedDate,
             final String holidayHandlerType) {
         final CurrencyDateCalculator<E> cal = newCurrencyCalculator(ccy1, ccy2);
         cal.setStartDate(newDate(startDate));
         checkDate("Move start:" + startDate + " tenor:" + tenor, cal.moveByTenor(tenor), expectedDate);
     }
-
+    
     public void testMoveByTenorDaysZeroDayToSpot() {
         checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "RUB", "2006-08-08", StandardTenor.SPOT, 0, "2006-08-08");
         checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "RUB", "2006-01-06", StandardTenor.SPOT, 0, "2006-01-09"); // moved to Monday
-
+    
         checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "RUB", "2006-08-08", new Tenor(2, TenorCode.DAY), 0, "2006-08-10");
         checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "RUB", "2006-01-06", new Tenor(2, TenorCode.DAY), 0, "2006-01-11");
     }
-
+    
     /*
          July 2006
     Su Mo Tu We Th Fr Sa
@@ -399,7 +399,7 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
     16 17 18 19 20 21 22
     23 24 25 26 27 28 29
     30 31
-
+    
     August 2006
     Su Mo Tu We Th Fr Sa
     ..  .  1  2  3  4  5
@@ -417,7 +417,7 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
         checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "CAD", "2006-07-01", StandardTenor.SPOT, 1, "2006-07-05");
         checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "CAD", "2006-07-01", new Tenor(2, TenorCode.DAY), 1, "2006-07-07");
     }
-
+    
     public void testMoveByTenorDaysTwoDaysToSpot() {
         // US holiday on 4 July!
         checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "EUR", "2006-06-30", StandardTenor.SPOT, 2, "2006-07-05");
@@ -426,29 +426,29 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
         checkMoveByTenor("EUR", CurrencyDateCalculator.USD_CODE, "2006-07-03", StandardTenor.SPOT, 2, "2006-07-05");
         checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "EUR", "2006-07-04", StandardTenor.SPOT, 2, "2006-07-07");
         checkMoveByTenor("EUR", CurrencyDateCalculator.USD_CODE, "2006-07-04", StandardTenor.SPOT, 2, "2006-07-07");
-
+    
         checkMoveByTenor("EUR", CurrencyDateCalculator.USD_CODE, "2005-12-30", StandardTenor.SPOT, 2, "2006-01-04");
         checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "EUR", "2005-12-30", StandardTenor.SPOT, 2, "2006-01-04");
-
+    
         // cross Ccy with US Bank holiday on T+1 but it should not impact it
         checkMoveByTenor("GBP", "EUR", "2006-07-03", StandardTenor.SPOT, 2, "2006-07-05");
         checkMoveByTenor("EUR", "GBP", "2006-07-03", StandardTenor.SPOT, 2, "2006-07-05");
-
+    
         // cross Ccy with US Bank holiday on T+1 BUT ARS!!!
         checkMoveByTenor("ARS", "EUR", "2006-07-03", StandardTenor.SPOT, 2, "2006-07-06");
         checkMoveByTenor("EUR", "ARS", "2006-07-03", StandardTenor.SPOT, 2, "2006-07-06");
-
+    
         // cross Ccy with US Bank holiday on T+1 BUT MXN!!! And MXN is on Holiday on 6 July
         checkMoveByTenor("MXN", "EUR", "2006-07-03", StandardTenor.SPOT, 2, "2006-07-07");
         checkMoveByTenor("EUR", "MXN", "2006-07-03", StandardTenor.SPOT, 2, "2006-07-07");
-
+    
         // checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "EUR", "2006-08-08", new Tenor(2, TenorCode.DAY), 2, "2006-08-14");
         // checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "EUR", "2006-08-07", new Tenor(10, TenorCode.DAY), 2, "2006-08-21");
         // checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "EUR", "2006-08-07", new Tenor(11, TenorCode.DAY), 2, "2006-08-21");
         // checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "EUR", "2006-08-07", new Tenor(12, TenorCode.DAY), 2, "2006-08-21");
         // checkMoveByTenor(CurrencyDateCalculator.USD_CODE, "EUR", "2006-08-07", new Tenor(13, TenorCode.DAY), 2, "2006-08-22");
     }
-
+    
     public void testCalculateTenorsZeroDaysToSpot() {
         final List<Tenor> list = new ArrayList<Tenor>();
         list.add(StandardTenor.OVERNIGHT);
@@ -462,7 +462,7 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
         list.add(StandardTenor.T_6M);
         list.add(StandardTenor.T_9M);
         list.add(StandardTenor.T_1Y);
-
+    
         final CurrencyDateCalculator<E> cal = newCurrencyCalculator(CurrencyDateCalculator.USD_CODE, "GBP");
         final String startDate = "2006-08-24";
         cal.setStartDate(newDate(startDate));
@@ -478,7 +478,7 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
         expectedResults.add(newDate("2007-02-26")); // 6M
         expectedResults.add(newDate("2007-05-24")); // 9M
         expectedResults.add(newDate("2007-08-24")); // 1Y
-
+    
         final List<E> results = cal.calculateTenorDates(list);
         assertEquals("Same size as tenor", list.size(), results.size());
         final Iterator<E> it = results.iterator();
@@ -487,7 +487,7 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
             assertEquals("Move start:" + startDate + " tenor:" + tenor, expected.next(), it.next());
         }
     }
-
+    
     public void testCalculateTenorsTwoDaysToSpot() {
         final List<Tenor> list = new ArrayList<Tenor>();
         list.add(StandardTenor.OVERNIGHT);
@@ -501,7 +501,7 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
         list.add(StandardTenor.T_6M);
         list.add(StandardTenor.T_9M);
         list.add(StandardTenor.T_1Y);
-
+    
         final CurrencyDateCalculator<E> cal = newCurrencyCalculator(CurrencyDateCalculator.USD_CODE, "GBP");
         final String startDate = "2006-08-24";
         cal.setStartDate(newDate(startDate));
@@ -517,7 +517,7 @@ public abstract class AbstractCurrencyDateCalculatorTest<E> extends AbstractDate
         expectedResults.add(newDate("2007-02-28")); // 6M - is this correct?
         expectedResults.add(newDate("2007-05-29")); // 9M
         expectedResults.add(newDate("2007-08-29")); // 1Y
-
+    
         final List<E> results = cal.calculateTenorDates(list, 2);
         assertEquals("Same size as tenor", list.size(), results.size());
         final Iterator<E> it = results.iterator();

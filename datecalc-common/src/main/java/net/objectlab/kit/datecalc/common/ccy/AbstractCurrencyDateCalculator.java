@@ -1,5 +1,6 @@
 package net.objectlab.kit.datecalc.common.ccy;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +42,7 @@ import net.objectlab.kit.datecalc.common.WorkingWeek;
  *
  * @since 1.4.0
  */
-public abstract class AbstractCurrencyDateCalculator<E> implements CurrencyDateCalculator<E>, NonWorkingDayChecker<E> {
+public abstract class AbstractCurrencyDateCalculator<E extends Serializable> implements CurrencyDateCalculator<E>, NonWorkingDayChecker<E> {
     private static final int MONTHS_IN_YEAR = 12;
     private static final int DAYS_IN_WEEK = 7;
     private final String ccy1;
@@ -65,12 +66,12 @@ public abstract class AbstractCurrencyDateCalculator<E> implements CurrencyDateC
         this.ccy1 = builder.getCcy1();
         this.ccy2 = builder.getCcy2();
         this.crossCcy = builder.getCrossCcy();
-        this.ccy1HolidayCalendar = new ImmutableHolidayCalendar<E>(builder.getCcy1Calendar() != null ? builder.getCcy1Calendar()
-                : new DefaultHolidayCalendar<E>());
-        this.ccy2HolidayCalendar = new ImmutableHolidayCalendar<E>(builder.getCcy2Calendar() != null ? builder.getCcy2Calendar()
-                : new DefaultHolidayCalendar<E>());
-        this.crossCcyHolidayCalendar = new ImmutableHolidayCalendar<E>(builder.getCrossCcyCalendar() != null ? builder.getCrossCcyCalendar()
-                : new DefaultHolidayCalendar<E>());
+        this.ccy1HolidayCalendar = new ImmutableHolidayCalendar<E>(
+                builder.getCcy1Calendar() != null ? builder.getCcy1Calendar() : new DefaultHolidayCalendar<E>());
+        this.ccy2HolidayCalendar = new ImmutableHolidayCalendar<E>(
+                builder.getCcy2Calendar() != null ? builder.getCcy2Calendar() : new DefaultHolidayCalendar<E>());
+        this.crossCcyHolidayCalendar = new ImmutableHolidayCalendar<E>(
+                builder.getCrossCcyCalendar() != null ? builder.getCrossCcyCalendar() : new DefaultHolidayCalendar<E>());
         this.holidayHandler = builder.getTenorHolidayHandler();
         this.ccy1Week = builder.getCcy1Week();
         this.ccy2Week = builder.getCcy2Week();
@@ -155,8 +156,8 @@ public abstract class AbstractCurrencyDateCalculator<E> implements CurrencyDateC
     }
 
     public boolean isNonWorkingDay(final E date) {
-        return isNonWorkingDay(date, ccy1Week, ccy1HolidayCalendar) || isNonWorkingDay(date, ccy2Week, ccy2HolidayCalendar) || !brokenDateAllowed
-                && isNonWorkingDay(date, crossCcyWeek, crossCcyHolidayCalendar);
+        return isNonWorkingDay(date, ccy1Week, ccy1HolidayCalendar) || isNonWorkingDay(date, ccy2Week, ccy2HolidayCalendar)
+                || !brokenDateAllowed && isNonWorkingDay(date, crossCcyWeek, crossCcyHolidayCalendar);
     }
 
     private E adjustToNextWorkingDateForCcyPairIfRequired(final E startDate) {

@@ -1,5 +1,7 @@
 package net.objectlab.kit.datecalc.common;
 
+import java.io.Serializable;
+
 import net.objectlab.kit.datecalc.common.ccy.CurrencyCalculatorConfig;
 
 /**
@@ -25,7 +27,7 @@ import net.objectlab.kit.datecalc.common.ccy.CurrencyCalculatorConfig;
  * @param <E> JDK Date/Calendar, JDK8 LocalDate or Joda LocalDate
  * @since 1.4.0
  */
-public class CurrencyDateCalculatorBuilder<E> {
+public class CurrencyDateCalculatorBuilder<E extends Serializable> {
     private String ccy1;
     private String ccy2;
     private String crossCcy = CurrencyDateCalculator.USD_CODE;

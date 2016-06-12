@@ -32,6 +32,7 @@
  */
 package net.objectlab.kit.datecalc.common;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collections;
@@ -45,7 +46,7 @@ import java.util.TreeMap;
  * @author $LastChangedBy: marchy $
  *
  */
-public class DefaultHolidayCalendar<E> implements HolidayCalendar<E> {
+public class DefaultHolidayCalendar<E extends Serializable> implements HolidayCalendar<E> {
     private static final long serialVersionUID = -8558686840806739645L;
 
     /**

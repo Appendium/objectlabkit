@@ -32,6 +32,7 @@
  */
 package net.objectlab.kit.datecalc.common;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
@@ -39,7 +40,7 @@ import java.util.List;
 
 import junit.framework.Assert;
 
-public abstract class AbstractForwardUnlessNegativeCalculatorTest<E> extends AbstractDateTestCase<E> {
+public abstract class AbstractForwardUnlessNegativeCalculatorTest<E extends Serializable> extends AbstractDateTestCase<E> {
 
     public void testType() {
         final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
@@ -91,8 +92,8 @@ public abstract class AbstractForwardUnlessNegativeCalculatorTest<E> extends Abs
 
     public void testSimpleForwardStartDateNoWeekend() {
         final DateCalculator<E> cal = newDateCalculator("bla", HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
-        final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(true, Calendar.SATURDAY)
-                .withWorkingDayFromCalendar(true, Calendar.SUNDAY);
+        final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(true, Calendar.SATURDAY).withWorkingDayFromCalendar(true,
+                Calendar.SUNDAY);
         cal.setWorkingWeek(getWorkingWeek(ww));
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getHolidayCalendar().getHolidays().size());
@@ -124,10 +125,10 @@ public abstract class AbstractForwardUnlessNegativeCalculatorTest<E> extends Abs
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getHolidayCalendar().getHolidays().size());
 
-        final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(false, Calendar.MONDAY)
-                .withWorkingDayFromCalendar(true, Calendar.TUESDAY).withWorkingDayFromCalendar(false, Calendar.WEDNESDAY)
-                .withWorkingDayFromCalendar(true, Calendar.THURSDAY).withWorkingDayFromCalendar(false, Calendar.FRIDAY)
-                .withWorkingDayFromCalendar(true, Calendar.SATURDAY).withWorkingDayFromCalendar(false, Calendar.SUNDAY);
+        final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(false, Calendar.MONDAY).withWorkingDayFromCalendar(true, Calendar.TUESDAY)
+                .withWorkingDayFromCalendar(false, Calendar.WEDNESDAY).withWorkingDayFromCalendar(true, Calendar.THURSDAY)
+                .withWorkingDayFromCalendar(false, Calendar.FRIDAY).withWorkingDayFromCalendar(true, Calendar.SATURDAY)
+                .withWorkingDayFromCalendar(false, Calendar.SUNDAY);
         cal.setWorkingWeek(getWorkingWeek(ww));
 
         cal.setStartDate(newDate("2006-07-31")); // start date Monday
@@ -157,10 +158,10 @@ public abstract class AbstractForwardUnlessNegativeCalculatorTest<E> extends Abs
         Assert.assertEquals("Name", "bla", cal.getName());
         Assert.assertEquals("Holidays size", 0, cal.getHolidayCalendar().getHolidays().size());
 
-        final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(false, Calendar.MONDAY)
-                .withWorkingDayFromCalendar(true, Calendar.TUESDAY).withWorkingDayFromCalendar(true, Calendar.WEDNESDAY)
-                .withWorkingDayFromCalendar(true, Calendar.THURSDAY).withWorkingDayFromCalendar(true, Calendar.FRIDAY)
-                .withWorkingDayFromCalendar(false, Calendar.SATURDAY).withWorkingDayFromCalendar(false, Calendar.SUNDAY);
+        final WorkingWeek ww = new WorkingWeek().withWorkingDayFromCalendar(false, Calendar.MONDAY).withWorkingDayFromCalendar(true, Calendar.TUESDAY)
+                .withWorkingDayFromCalendar(true, Calendar.WEDNESDAY).withWorkingDayFromCalendar(true, Calendar.THURSDAY)
+                .withWorkingDayFromCalendar(true, Calendar.FRIDAY).withWorkingDayFromCalendar(false, Calendar.SATURDAY)
+                .withWorkingDayFromCalendar(false, Calendar.SUNDAY);
         cal.setWorkingWeek(getWorkingWeek(ww));
 
         cal.setStartDate(newDate("2006-07-31")); // start date Monday

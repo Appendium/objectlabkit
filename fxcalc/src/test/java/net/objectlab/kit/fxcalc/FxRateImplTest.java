@@ -2,11 +2,12 @@ package net.objectlab.kit.fxcalc;
 
 import static net.objectlab.kit.util.BigDecimalUtil.bd;
 import static org.assertj.core.api.Assertions.assertThat;
-import net.objectlab.kit.util.BigDecimalUtil;
 
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import net.objectlab.kit.util.BigDecimalUtil;
 
 public class FxRateImplTest {
     private static final Logger LOG = LoggerFactory.getLogger(FxRateImplTest.class);
@@ -22,7 +23,7 @@ public class FxRateImplTest {
         FxRateImpl fx = new FxRateImpl(new CurrencyPair("EUR", "USD"), null, true, bd("1.6"), bd("1.61"), new JdkCurrencyProvider());
         LOG.debug(fx.getDescription());
 
-        assertThat(fx.convertAmountUsingMid(Cash.of("EUR", 1_000))).isEqualTo(Cash.of("USD", "1605"));
+        assertThat(fx.convertAmountUsingMid(Cash.of("EUR", 1_000))).isEqualTo(Cash.of("USD", "1605.00"));
         assertThat(fx.convertAmountUsingMid(Cash.of("USD", 1_000))).isEqualTo(Cash.of("EUR", "623.05"));
     }
 
@@ -49,7 +50,7 @@ public class FxRateImplTest {
         FxRateImpl fx = new FxRateImpl(new CurrencyPair("EUR", "USD"), null, true, bd("1.6"), bd("1.61"), new JdkCurrencyProvider());
         LOG.debug(fx.getDescription());
 
-        assertThat(fx.convertAmountUsingBidOrAsk(Cash.of("EUR", 1_000))).isEqualTo(Cash.of("USD", "1600"));  // 1000 * 1.6
+        assertThat(fx.convertAmountUsingBidOrAsk(Cash.of("EUR", 1_000))).isEqualTo(Cash.of("USD", "1600.00"));  // 1000 * 1.6
         assertThat(fx.convertAmountUsingBidOrAsk(Cash.of("USD", 1_000))).isEqualTo(Cash.of("EUR", "621.12"));  // 1000 * 1.6
     }
 

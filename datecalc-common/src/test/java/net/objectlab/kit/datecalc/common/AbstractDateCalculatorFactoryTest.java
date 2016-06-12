@@ -32,11 +32,12 @@
  */
 package net.objectlab.kit.datecalc.common;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import junit.framework.Assert;
 
-public abstract class AbstractDateCalculatorFactoryTest<E> extends AbstractDateTestCase<E> {
+public abstract class AbstractDateCalculatorFactoryTest<E extends Serializable> extends AbstractDateTestCase<E> {
 
     public void testGetCalendarsNoHoliday() {
         final DateCalculator<E> cal1 = getDateCalculatorFactory().getDateCalculator("bla", null);

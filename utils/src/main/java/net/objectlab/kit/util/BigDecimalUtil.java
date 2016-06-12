@@ -243,8 +243,8 @@ public final class BigDecimalUtil {
     }
 
     public static BigDecimal calculateWeight(final BigDecimal value, final BigDecimal total) {
-        return BigDecimalUtil.setScale(
-                BigDecimalUtil.divide(BigDecimalUtil.setScale(value, 9), BigDecimalUtil.setScale(total, 9), BigDecimal.ROUND_HALF_UP), 9);
+        return BigDecimalUtil
+                .setScale(BigDecimalUtil.divide(BigDecimalUtil.setScale(value, 9), BigDecimalUtil.setScale(total, 9), BigDecimal.ROUND_HALF_UP), 9);
     }
 
     /**
@@ -502,9 +502,9 @@ public final class BigDecimalUtil {
      */
     public static BigDecimal addWeightedConstituent(final BigDecimal runningWeightedVal, final BigDecimal valueToAdd,
             final BigDecimal weightForValueToAdd, final BigDecimal totalWeight) {
-        return BigDecimalUtil.doAdd(runningWeightedVal, BigDecimalUtil.divide(
-                BigDecimalUtil.multiply(valueToAdd, BigDecimalUtil.abs(weightForValueToAdd)), BigDecimalUtil.abs(totalWeight),
-                BigDecimal.ROUND_HALF_UP));
+        return BigDecimalUtil.doAdd(runningWeightedVal,
+                BigDecimalUtil.divide(BigDecimalUtil.multiply(valueToAdd, BigDecimalUtil.abs(weightForValueToAdd)), BigDecimalUtil.abs(totalWeight),
+                        BigDecimal.ROUND_HALF_UP));
     }
 
     /**
@@ -640,7 +640,7 @@ public final class BigDecimalUtil {
             return null;
         }
         final int scale = n.scale();
-        return BigDecimalUtil.setScale(new BigDecimal(roundUp(n.doubleValue(), p)), scale);
+        return BigDecimalUtil.setScale(BigDecimal.valueOf(roundUp(n.doubleValue(), p)), scale);
     }
 
     /**
@@ -664,7 +664,7 @@ public final class BigDecimalUtil {
             return null;
         }
         final int scale = n.scale();
-        return BigDecimalUtil.setScale(new BigDecimal(roundDown(n.doubleValue(), p)), scale);
+        return BigDecimalUtil.setScale(BigDecimal.valueOf(roundDown(n.doubleValue(), p)), scale);
     }
 
     public static BigDecimal roundUpForIncrement(final BigDecimal n, final BigDecimal increment) {
@@ -673,7 +673,7 @@ public final class BigDecimalUtil {
         }
         final int scale = n.scale();
         final int p = (int) (increment != null ? -Math.log10(increment.abs().doubleValue()) : 0);
-        return BigDecimalUtil.setScale(new BigDecimal(roundUp(n.doubleValue(), p)), scale);
+        return BigDecimalUtil.setScale(BigDecimal.valueOf(roundUp(n.doubleValue(), p)), scale);
     }
 
     public static BigDecimal roundDownForIncrement(final BigDecimal n, final BigDecimal increment) {
@@ -682,7 +682,7 @@ public final class BigDecimalUtil {
         }
         final int p = (int) (increment != null ? -Math.log10(increment.abs().doubleValue()) : 0);
         final int scale = n.scale();
-        return BigDecimalUtil.setScale(new BigDecimal(roundDown(n.doubleValue(), p)), scale);
+        return BigDecimalUtil.setScale(BigDecimal.valueOf(roundDown(n.doubleValue(), p)), scale);
     }
 
     /**

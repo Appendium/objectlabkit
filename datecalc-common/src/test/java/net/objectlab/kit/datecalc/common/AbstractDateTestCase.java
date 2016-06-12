@@ -32,13 +32,14 @@
  */
 package net.objectlab.kit.datecalc.common;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;
 
-public abstract class AbstractDateTestCase<E> extends TestCase {
+public abstract class AbstractDateTestCase<E extends Serializable> extends TestCase {
 
     public AbstractDateTestCase() {
         super();

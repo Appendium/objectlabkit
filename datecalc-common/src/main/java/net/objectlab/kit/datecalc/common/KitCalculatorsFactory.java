@@ -32,6 +32,7 @@
  */
 package net.objectlab.kit.datecalc.common;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import net.objectlab.kit.datecalc.common.ccy.CurrencyCalculatorConfig;
@@ -51,7 +52,7 @@ import net.objectlab.kit.datecalc.common.ccy.CurrencyCalculatorConfig;
  *            Joda:LocalDate, YearMonthDay
  *
  */
-public interface KitCalculatorsFactory<E> {
+public interface KitCalculatorsFactory<E extends Serializable> {
 
     /**
      * Create a new CurrencyDateCalculatorBuilder specialised for 2 currencies, including WorkingWeek, calendars registered and CurrencyCalculatorConfig.
