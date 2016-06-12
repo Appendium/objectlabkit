@@ -151,6 +151,7 @@ public class FxRateCalculatorBuilder {
 
     /**
      * Once a new rate has been calculated, should it be cached for any further request?
+     * @return the builder
      */
     public FxRateCalculatorBuilder cacheResults(final boolean cacheResults) {
         this.cacheResults = cacheResults;
@@ -159,6 +160,7 @@ public class FxRateCalculatorBuilder {
 
     /**
      * If using the baseFxRateProvider, should the rate be cached in the calculator, defaulted to true.
+     * @return the builder
      */
     public FxRateCalculatorBuilder cacheBaseRates(final boolean cacheBaseRates) {
         this.cacheBaseRates = cacheBaseRates;
@@ -167,6 +169,7 @@ public class FxRateCalculatorBuilder {
 
     /**
      * Number of decimal places to use on a rate, defaulted to 6.
+     * @return the builder
      */
     public FxRateCalculatorBuilder precisionForFxRate(final int precisionForFxRate) {
         this.precisionForFxRate = precisionForFxRate;
@@ -175,6 +178,7 @@ public class FxRateCalculatorBuilder {
 
     /**
      * Number of decimal places to use for a calculation involving an inversed rate, defaulted to 12
+     * @return the builder
      */
     public FxRateCalculatorBuilder precisionForInverseFxRate(final int precisionForInverseFxRate) {
         this.precisionForInverseFxRate = precisionForInverseFxRate;
@@ -183,6 +187,7 @@ public class FxRateCalculatorBuilder {
 
     /**
      * Rounding for BID calculations.
+     * @return the builder
      */
     public FxRateCalculatorBuilder bidRounding(final int bidRounding) {
         this.bidRounding = bidRounding;
@@ -191,6 +196,7 @@ public class FxRateCalculatorBuilder {
 
     /**
      * Rounding for BID calculations.
+     * @return the builder
      */
     public FxRateCalculatorBuilder askRounding(final int askRounding) {
         this.askRounding = askRounding;
@@ -200,6 +206,7 @@ public class FxRateCalculatorBuilder {
     /**
      * If the rate required from the calculator is not immediately available, use a cross currency to calculate it; this
      * gives you the opportunity to select which currencies to use in which order. Defaulted to USD and then EUR.
+     * @return the builder
      */
     public FxRateCalculatorBuilder orderedCurrenciesForCross(final List<String> orderedCurrenciesForCross) {
         if (orderedCurrenciesForCross != null) {
@@ -210,6 +217,7 @@ public class FxRateCalculatorBuilder {
 
     /**
      * The interface to determine which currency is major, defaults to StandardMajorCurrencyRanking.
+     * @return the builder
      */
     public FxRateCalculatorBuilder majorCurrencyRanking(final MajorCurrencyRanking majorCurrencyRanking) {
         if (majorCurrencyRanking != null) {
@@ -220,6 +228,7 @@ public class FxRateCalculatorBuilder {
 
     /**
      * The interface to determine Currency details.
+     * @return the builder
      */
     public FxRateCalculatorBuilder currencyProvider(final CurrencyProvider currencyProvider) {
         if (currencyProvider != null) {
@@ -230,6 +239,7 @@ public class FxRateCalculatorBuilder {
 
     /**
      * Snapshot of FxRate, typically they are the Base FX Rates (e.g. vs USD)
+     * @return the builder
      */
     public FxRateCalculatorBuilder ratesSnapshot(final Collection<FxRate> rates) {
         if (rates != null) {
@@ -240,7 +250,8 @@ public class FxRateCalculatorBuilder {
     }
 
     /**
-     * Snapshot of FxRate, typically they are the Base FX Rates (e.g. vs USD)
+     * Snapshot of FxRate, typically they are the Base FX Rates (e.g. vs USD).
+     * @return the builder
      */
     public FxRateCalculatorBuilder addRateSnapshot(final FxRate rate) {
         if (rate != null) {

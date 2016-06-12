@@ -20,22 +20,22 @@ package net.objectlab.kit.fxcalc;
  */
 public interface MajorCurrencyRanking {
     /**
-     * Given 2 currencies, return the major one if there is one, otherwise returns the first currency.
+     * @return Given 2 currencies, return the major one if there is one, otherwise returns the first currency.
      */
     String selectMajorCurrency(String ccy1, String ccy2);
 
     /**
-     * Given a CurrencyPair, return the major Currency if there is one, otherwise returns the first currency.
+     * @return Given a CurrencyPair, return the major Currency if there is one, otherwise returns the first currency.
      */
     String selectMajorCurrency(CurrencyPair pair);
 
     /**
-     * returns true if the ccy1 is the major one for the given currency pair.
+     * @return true if the ccy1 is the major one for the given currency pair.
      */
     boolean isMarketConvention(String ccy1, String ccy2);
 
     /**
-     * returns true if the pair.ccy1 is the major one for the given currency pair.
+     * @return true if the pair.ccy1 is the major one for the given currency pair.
      */
     boolean isMarketConvention(CurrencyPair pair);
 }

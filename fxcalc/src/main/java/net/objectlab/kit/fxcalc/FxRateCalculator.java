@@ -12,6 +12,7 @@ import java.util.Optional;
 public interface FxRateCalculator {
     /**
      * Find or calculate the FX Rate for the given pair.
+     * @return the FX rate if it exists or can be calculated
      */
     Optional<FxRate> findFx(CurrencyPair ccyPair);
 }

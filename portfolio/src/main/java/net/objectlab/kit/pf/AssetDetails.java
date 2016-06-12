@@ -5,6 +5,6 @@ public interface AssetDetails {
 
     String getAssetName();
 
-    /** Typically a LEI */
+    /** @return Typically a LEI */
     String getUltimateIssuerCode();
 }
