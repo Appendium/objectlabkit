@@ -91,7 +91,7 @@ public class Triplet<E1, E2, E3> implements Serializable {
         if (rhs == null) {
             return false;
         }
-        if (!(rhs instanceof Triplet)) {
+        if (this.getClass() != rhs.getClass()) {
             return false;
         }
         final Triplet<?, ?, ?> that = (Triplet<?, ?, ?>) rhs;

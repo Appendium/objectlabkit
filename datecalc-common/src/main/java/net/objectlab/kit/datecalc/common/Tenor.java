@@ -43,7 +43,7 @@ import java.io.Serializable;
  */
 public class Tenor implements Serializable {
     private static final long serialVersionUID = 1L;
-    private int units;
+    private final int units;
 
     private final TenorCode code;
 
@@ -66,7 +66,7 @@ public class Tenor implements Serializable {
 
     @Override
     public String toString() {
-        return (units != 0 ? "" + units : "") + code.getCode();
+        return (units != 0 ? String.valueOf(units) : "") + code.getCode();
     }
 
     // -----------------------------------------------------------------------
