@@ -32,7 +32,6 @@
  */
 package net.objectlab.kit.util;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
@@ -42,14 +41,15 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.StandardToStringStyle;
+import org.apache.commons.lang.time.FastDateFormat;
 
 /**
  * @author Benoit Xhenseval
  *
  */
 public final class StringUtil {
-    private static final SimpleDateFormat DATETIME_FORMAT = new SimpleDateFormat("dd-MMM-yyyy hh:mm:ss");
-    private static final SimpleDateFormat FILE_TIMESTAMP_FORMAT = new SimpleDateFormat("yyyyMMdd-HHmmss");
+    private static final FastDateFormat DATETIME_FORMAT = FastDateFormat.getInstance("dd-MMM-yyyy hh:mm:ss");
+    private static final FastDateFormat FILE_TIMESTAMP_FORMAT = FastDateFormat.getInstance("yyyyMMdd-HHmmss");
     private static final String NEWLINE_TOKEN = "%CR%";
     private static final CharSequence TOKEN = "%";
 
