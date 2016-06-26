@@ -56,7 +56,7 @@ public final class Average implements Serializable {
     }
 
     public Average(final int scale) {
-        final BigDecimal bd = new BigDecimal(0);
+        final BigDecimal bd = BigDecimal.ZERO;
         sum = new Total(bd.setScale(scale));
     }
 
