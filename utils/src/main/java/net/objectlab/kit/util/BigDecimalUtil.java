@@ -47,7 +47,7 @@ public final class BigDecimalUtil {
     private static final NumberFormat NUMBER_FORMAT = NumberFormat.getInstance();
 
     private static final BigDecimal SQRT_DIG = new BigDecimal(8);
-    private static final BigDecimal SQRT_PRE = new BigDecimal(10).pow(SQRT_DIG.intValue());
+    private static final BigDecimal SQRT_PRE = BigDecimal.TEN.pow(SQRT_DIG.intValue());
 
     private BigDecimalUtil() {
     }
@@ -798,6 +798,6 @@ public final class BigDecimalUtil {
      * @see <a href="http://www.codeproject.com/Tips/257031/Implementing-SqrtRoot-in-BigDecimal">http://www.codeproject.com/Tips/257031/Implementing-SqrtRoot-in-BigDecimal</a>
      */
     public static BigDecimal bigSqrt(final BigDecimal c) {
-        return c != null ? c.signum() == 0 ? BigDecimal.ZERO : sqrtNewtonRaphson(c, new BigDecimal(1), new BigDecimal(1).divide(SQRT_PRE)) : null;
+        return c != null ? c.signum() == 0 ? BigDecimal.ZERO : sqrtNewtonRaphson(c, BigDecimal.ONE, BigDecimal.ONE.divide(SQRT_PRE)) : null;
     }
 }
