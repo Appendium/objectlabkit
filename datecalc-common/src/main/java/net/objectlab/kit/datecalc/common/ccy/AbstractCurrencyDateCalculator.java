@@ -274,11 +274,9 @@ public abstract class AbstractCurrencyDateCalculator<E extends Serializable> imp
         // move by tenor
         switch (tenorCode) {
         case OVERNIGHT:
-            calc = calculateNextDay(calc);
             calc = adjustForCcyPairIfRequired(calc);
             break;
         case TOM_NEXT: // it would have NOT moved by
-            calc = calculateNextDay(calc);
             calc = calculateNextDay(calc);
             calc = adjustForCcyPairIfRequired(calc);
             break;
