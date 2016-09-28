@@ -101,7 +101,7 @@ public class Quadruplet<E1, E2, E3, E4> implements Serializable {
         if (rhs == null) {
             return false;
         }
-        if (!(rhs instanceof Quadruplet)) {
+        if (this.getClass() != rhs.getClass()) {
             return false;
         }
         final Quadruplet<?, ?, ?, ?> that = (Quadruplet<?, ?, ?, ?>) rhs;
