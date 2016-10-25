@@ -6,7 +6,8 @@
 		<author email="kit@objectlab.co.uk">Benoit Xhenseval</author>
 	</properties>
 	<body>
-		<release version="1.4.0" date="TBD" description="Maintenance">
+		<release version="1.4.1" date="TBD" description="Maintenance">
+			<action dev="benoitx" type="add">Make WeightedAverage, Average, Total, Pair, Triplet and Quadruplet more fluent.</action>
 			<action dev="benoitx" type="add">Adding FrequencyBucketDistribution a basic bucket distribution.</action>
 			<action dev="benoitx" type="add">
 				Following a thorough review by ST, add rounding for Bid and Offer on the calculator.

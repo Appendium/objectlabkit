@@ -66,24 +66,27 @@ public class Triplet<E1, E2, E3> implements Serializable {
         return new Triplet<>(element1, element2, element3);
     }
 
-    public void setElement1(final E1 element1) {
+    public Triplet<E1, E2, E3> setElement1(final E1 element1) {
         this.element1 = element1;
+        return this;
     }
 
     public E2 getElement2() {
         return element2;
     }
 
-    public void setElement2(final E2 element2) {
+    public Triplet<E1, E2, E3> setElement2(final E2 element2) {
         this.element2 = element2;
+        return this;
     }
 
     public E3 getElement3() {
         return element3;
     }
 
-    public void setElement3(final E3 element3) {
+    public Triplet<E1, E2, E3> setElement3(final E3 element3) {
         this.element3 = element3;
+        return this;
     }
 
     @Override

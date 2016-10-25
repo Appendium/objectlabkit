@@ -68,32 +68,36 @@ public class Quadruplet<E1, E2, E3, E4> implements Serializable {
         return new Quadruplet<>(element1, element2, element3, element4);
     }
 
-    public void setElement1(final E1 element1) {
+    public Quadruplet<E1, E2, E3, E4> setElement1(final E1 element1) {
         this.element1 = element1;
+        return this;
     }
 
     public E2 getElement2() {
         return element2;
     }
 
-    public void setElement2(final E2 element2) {
+    public Quadruplet<E1, E2, E3, E4> setElement2(final E2 element2) {
         this.element2 = element2;
+        return this;
     }
 
     public E3 getElement3() {
         return element3;
     }
 
-    public void setElement3(final E3 element3) {
+    public Quadruplet<E1, E2, E3, E4> setElement3(final E3 element3) {
         this.element3 = element3;
+        return this;
     }
 
     public E4 getElement4() {
         return element4;
     }
 
-    public void setElement4(final E4 element4) {
+    public Quadruplet<E1, E2, E3, E4> setElement4(final E4 element4) {
         this.element4 = element4;
+        return this;
     }
 
     @Override

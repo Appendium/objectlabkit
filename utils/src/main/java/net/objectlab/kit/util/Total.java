@@ -71,10 +71,11 @@ public class Total implements Serializable {
         return value;
     }
 
-    public void setTotal(final BigDecimal total) {
+    public Total setTotal(final BigDecimal total) {
         if (total != null) {
             this.value = total;
         }
+        return this;
     }
 
     /**

@@ -297,7 +297,7 @@ public class ConsoleMenu {
     }
 
     /**
-     * Gets a String from the System.in
+     * Gets a String from the System.in.
      *
      * @param msg
      *            for the command line

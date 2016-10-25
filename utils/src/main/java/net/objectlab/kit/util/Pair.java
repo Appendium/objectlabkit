@@ -64,12 +64,14 @@ public class Pair<E1, E2> implements Serializable {
         return element2;
     }
 
-    public void setElement1(final E1 element1) {
+    public Pair<E1, E2> setElement1(final E1 element1) {
         this.element1 = element1;
+        return this;
     }
 
-    public void setElement2(final E2 element2) {
+    public Pair<E1, E2> setElement2(final E2 element2) {
         this.element2 = element2;
+        return this;
     }
 
     @Override

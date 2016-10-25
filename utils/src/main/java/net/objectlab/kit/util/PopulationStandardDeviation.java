@@ -21,7 +21,7 @@ public class PopulationStandardDeviation {
         return average.getMinimum();
     }
 
-    public void add(final BigDecimal... values) {
+    public PopulationStandardDeviation add(final BigDecimal... values) {
         if (values != null) {
             average.add(values);
             if (dataPoints == null) {
@@ -31,6 +31,7 @@ public class PopulationStandardDeviation {
                 dataPoints.add(val);
             }
         }
+        return this;
     }
 
     public BigDecimal getAverage() {
@@ -46,8 +47,8 @@ public class PopulationStandardDeviation {
             return null;
         }
         final BigDecimal average = getAverage();
-        final BigDecimal sumSquaredDifferences = dataPoints.stream().map(dp -> BigDecimalUtil.subtract(dp, average).pow(2))
-                .reduce(BigDecimal.ZERO, (a, b) -> b != null ? a.add(b) : a);
+        final BigDecimal sumSquaredDifferences = dataPoints.stream().map(dp -> BigDecimalUtil.subtract(dp, average).pow(2)).reduce(BigDecimal.ZERO,
+                (a, b) -> b != null ? a.add(b) : a);
         final BigDecimal variance = BigDecimalUtil.divide(8, sumSquaredDifferences, BigDecimal.valueOf(getDataPointsForCalc()),
                 BigDecimal.ROUND_HALF_UP);
         return variance == null ? null : BigDecimalUtil.setScale(BigDecimal.valueOf(Math.sqrt(variance.doubleValue())), 8);

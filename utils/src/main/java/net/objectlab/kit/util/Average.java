@@ -60,16 +60,17 @@ public final class Average implements Serializable {
         sum = new Total(bd.setScale(scale));
     }
 
-    private void determineMinMax(final BigDecimal value) {
+    private Average determineMinMax(final BigDecimal value) {
         if (maximum == null || BigDecimalUtil.compareTo(value, maximum) == 1) {
             maximum = value;
         }
         if (minimum == null || BigDecimalUtil.compareTo(value, minimum) == -1) {
             minimum = value;
         }
+        return this;
     }
 
-    public void add(final BigDecimal... values) {
+    public Average add(final BigDecimal... values) {
         if (values != null) {
             for (BigDecimal val : values) {
                 sum.add(val);
@@ -77,6 +78,7 @@ public final class Average implements Serializable {
                 count++;
             }
         }
+        return this;
     }
 
     public BigDecimal getTotal() {
