@@ -182,7 +182,7 @@ Why re-invent the wheel?</description>
             <plugin>
                 <groupId>com.srcclr</groupId>
                 <artifactId>srcclr-maven-plugin</artifactId>
-                <version>2.0.4</version>
+                <version>2.1.0</version>
                 <configuration>
                     <verbose>true</verbose>
                     <apiToken>eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTg0MSwiZXhwIjoxNDk1MDAzNzczLCJhdXRob3JpdGllcyI6IkFHRU5UIiwianRpIjoiOWViM2NjOTktZDkxNC00OTM2LTg0Y2UtN2JiZWFlMDFmZWViIiwiY2xpZW50X2lkIjoiIiwic2NvcGUiOltdfQ.A2nvf37V1yPdjp9u6s_ZPzOYRc_o9MTWPxxhrTUr8FGUIKyviL9KWP1u94MkkRx7e389L6zsbyJjvByQwIz3abiCI5VkNE_Rbwo8BTlF3YEnjWq5cX3WMihYLw-RYQ8uSMtz_QLTnxALfRuQwzJ7sC8vocv0hdJhb-1jcaLRXxw</apiToken>
@@ -202,7 +202,7 @@ Why re-invent the wheel?</description>
                 <version>3.6.0</version>
                 <configuration>
                     <source>1.6</source>
-                    <target>1.6</target>
+                    <target>1.9</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -273,7 +273,7 @@ Why re-invent the wheel?</description>
         <site.deploy.url>http://objectlabkit.sf.net</site.deploy.url>
         <version.slf4j>1.7.21</version.slf4j>
         <version.logback>1.1.7</version.logback>
-        <version.cucumber>1.2.4</version.cucumber>
+        <version.cucumber>1.2.5</version.cucumber>
         <version.junit>4.12</version.junit>
         <version.spring>4.2.0.RELEASE</version.spring>
     </properties>
