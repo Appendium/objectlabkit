@@ -13,6 +13,7 @@ import java.util.Set;
  *
  */
 public class ReadOnlyExpiringHashSet<T> extends AbstractReadOnlyExpiringCollection implements ReadOnlyExpiringSet<T> {
+    private static final String COLLECTION_IS_IMMUTABLE = "Collection is immutable";
     private final SetLoader<T> loader;
     private Set<T> delegate = new HashSet<>();
 
@@ -42,12 +43,12 @@ public class ReadOnlyExpiringHashSet<T> extends AbstractReadOnlyExpiringCollecti
 
     @Override
     public boolean addAll(final Collection<? extends T> c) {
-        throw new UnsupportedOperationException("Collection is immutable");
+        throw new UnsupportedOperationException(COLLECTION_IS_IMMUTABLE);
     }
 
     @Override
     public void clear() {
-        throw new UnsupportedOperationException("Collection is immutable");
+        throw new UnsupportedOperationException(COLLECTION_IS_IMMUTABLE);
     }
 
     @Override
@@ -76,17 +77,17 @@ public class ReadOnlyExpiringHashSet<T> extends AbstractReadOnlyExpiringCollecti
 
     @Override
     public boolean remove(final Object o) {
-        throw new UnsupportedOperationException("Collection is immutable");
+        throw new UnsupportedOperationException(COLLECTION_IS_IMMUTABLE);
     }
 
     @Override
     public boolean removeAll(final Collection<?> c) {
-        throw new UnsupportedOperationException("Collection is immutable");
+        throw new UnsupportedOperationException(COLLECTION_IS_IMMUTABLE);
     }
 
     @Override
     public boolean retainAll(final Collection<?> c) {
-        throw new UnsupportedOperationException("Collection is immutable");
+        throw new UnsupportedOperationException(COLLECTION_IS_IMMUTABLE);
     }
 
     @Override

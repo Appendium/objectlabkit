@@ -179,6 +179,7 @@ Why re-invent the wheel?</description>
             </plugins>
         </pluginManagement>
         <plugins>
+        <!-- 
             <plugin>
                 <groupId>com.srcclr</groupId>
                 <artifactId>srcclr-maven-plugin</artifactId>
@@ -196,6 +197,7 @@ Why re-invent the wheel?</description>
                     </execution>
                 </executions>
             </plugin>
+         -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
