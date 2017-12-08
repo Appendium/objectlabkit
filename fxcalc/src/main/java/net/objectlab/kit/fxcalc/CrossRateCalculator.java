@@ -37,7 +37,7 @@ public final class CrossRateCalculator {
         final String xCcy = crossCcy.orElseThrow(
                 () -> new IllegalArgumentException("The 2 FXRates do not share a ccy " + fx1.getCurrencyPair() + " " + fx2.getCurrencyPair()));
 
-        if (targetPair.containsCcy(crossCcy.get())) {
+        if (crossCcy.isPresent() && targetPair.containsCcy(crossCcy.get())) {
             throw new IllegalArgumentException("The target currency pair " + targetPair + " contains the common ccy " + crossCcy.get());
         }
 

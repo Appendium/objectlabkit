@@ -32,8 +32,6 @@
  */
 package net.objectlab.kit.util;
 
-import java.io.Serializable;
-
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.StandardToStringStyle;
@@ -43,8 +41,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  * @author Benoit Xhenseval
  *
  */
-public class Quadruplet<E1, E2, E3, E4> implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Quadruplet<E1, E2, E3, E4> {
     private static final int HASH_INITIAL_VAL = 17;
     private static final int MULTIPLIER = 31;
     private E1 element1;

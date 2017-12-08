@@ -51,7 +51,7 @@ public final class ExcelDateUtil {
 
     private static final int EXCEL_BASE_YEAR = 1900;
 
-    private static final long DAY_MILLISECONDS = 24 * 60 * 60 * 1000;
+    private static final long DAY_MILLISECONDS = 24 * 60 * 60 * 1000L;
 
     private ExcelDateUtil() {
     }

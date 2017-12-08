@@ -440,6 +440,7 @@ public class ConsoleMenu {
                     Thread.sleep(1);
                 } catch (final InterruptedException iex) {
                     log(iex);
+                    Thread.currentThread().interrupt();
                 }
 
                 if (!stop) {

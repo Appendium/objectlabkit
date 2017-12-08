@@ -32,15 +32,12 @@
  */
 package net.objectlab.kit.util;
 
-import java.io.Serializable;
-
 import org.apache.commons.lang.builder.StandardToStringStyle;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-public class Pair<E1, E2> implements Serializable {
+public class Pair<E1, E2> {
 
     private static final int MULTIPLIER = 31;
-    private static final long serialVersionUID = 1L;
     private E1 element1;
     private E2 element2;
 
