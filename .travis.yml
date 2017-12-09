@@ -1,10 +1,23 @@
 language: java
+sudo: false
+install: true
+addons:
+  sonarcloud:
+    organization: "your_organization_key"
+    token:
+      secure: "13b70009cbae7646c3458517212a3ba73faff609"
 env:
   global:
     - SONATYPE_USERNAME=benoitx
     - secure: "U772V1+agW49XyvQ9OoSDJdXEqEyS/hJEEkUrwx9gUruMwG8AuzOr2LX1MdgVKeiCtdttQ4MYSHf3dDQVnBCPmn+yHPh0ceRN5MGFkuNj8yKmsqo3bkGd4ihutrBj4zHQOXCodFXGCMAMdWP3SDZsLj7rUiFjIvzyYhaQAwuSfo="
 jdk:
   - oraclejdk8
+script:
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.sonar/cache'
 notifications:
   email:
     recipients:
