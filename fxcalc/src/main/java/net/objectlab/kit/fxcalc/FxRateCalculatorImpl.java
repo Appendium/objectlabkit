@@ -71,19 +71,24 @@ public class FxRateCalculatorImpl implements FxRateCalculator {
                     rates.put(ccyPair, fxRate);
                 }
             } else {
-                for (final String crossCcy : orderedCurrenciesForCross) {
-                    fxRate = findViaCrossCcy(ccyPair, crossCcy);
-                    if (fxRate != null) {
-                        if (cacheResults) {
-                            rates.put(ccyPair, fxRate);
-                        }
-                        break;
-                    }
-                }
+                fxRate = tryFindViaCrossCcy(ccyPair, fxRate);
             }
         }
 
         return Optional.ofNullable(fxRate);
+    }
+
+    private FxRate tryFindViaCrossCcy(final CurrencyPair ccyPair, FxRate fxRate) {
+        for (final String crossCcy : orderedCurrenciesForCross) {
+            fxRate = findViaCrossCcy(ccyPair, crossCcy);
+            if (fxRate != null) {
+                if (cacheResults) {
+                    rates.put(ccyPair, fxRate);
+                }
+                break;
+            }
+        }
+        return fxRate;
     }
 
     private FxRate findViaCrossCcy(final CurrencyPair ccyPair, final String crossCcy) {

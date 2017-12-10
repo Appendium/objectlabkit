@@ -17,11 +17,11 @@ public class FrequencyBucketDistribution {
     private final List<Bucket> orderedBuckets;
 
     public static class Bucket {
-        private final BigDecimal bucket;
+        private final BigDecimal bucketValue;
         private long count;
 
         public Bucket(final BigDecimal bucket) {
-            this.bucket = bucket;
+            this.bucketValue = bucket;
         }
 
         public void incrementCount() {
@@ -29,7 +29,7 @@ public class FrequencyBucketDistribution {
         }
 
         public BigDecimal getBucket() {
-            return bucket;
+            return bucketValue;
         }
 
         public long getCount() {
@@ -37,7 +37,7 @@ public class FrequencyBucketDistribution {
         }
 
         public boolean isUpperLimit() {
-            return bucket == null;
+            return bucketValue == null;
         }
     }
 
@@ -47,7 +47,7 @@ public class FrequencyBucketDistribution {
      */
     public FrequencyBucketDistribution(final List<BigDecimal> buckets) {
         if (buckets != null) {
-            orderedBuckets = buckets.stream().map(t -> new Bucket(t)).sorted((o1, o2) -> o1.bucket.compareTo(o2.bucket)).collect(Collectors.toList());
+            orderedBuckets = buckets.stream().map(t -> new Bucket(t)).sorted((o1, o2) -> o1.bucketValue.compareTo(o2.bucketValue)).collect(Collectors.toList());
             orderedBuckets.add(new Bucket(null)); // upper limit
         } else {
             orderedBuckets = Collections.emptyList();

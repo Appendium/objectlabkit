@@ -130,33 +130,40 @@ public class ConsoleMenu {
             } while ((opt <= 0 || opt > methods.size()) && opt != EXIT_CODE);
 
             if (opt == EXIT_CODE) {
-                ConsoleMenu.println("Exiting menu");
-                try {
-                    final Method meth = target.getClass().getMethod("tearDown", new Class[0]);
-                    if (meth != null) {
-                        meth.invoke(target, new Object());
-                    }
-                } catch (final Exception e) {
-                    log(e);
-                }
-
+                callTearDownIfRequired();
                 return;
             }
 
-            // now call the method
-            final String method = methods.get(opt - 1);
-            final Boolean repeat = askForRepeat.get(opt - 1);
+            callMenuOption(opt);
+        }
+    }
 
-            try {
-                final Method meth = target.getClass().getMethod(method, new Class[0]);
-                if (repeat) {
-                    target.repeat(meth);
-                } else {
-                    meth.invoke(target, new Object[0]);
-                }
-            } catch (final Exception e) {
-                log(e);
+    private void callMenuOption(int opt) {
+        // now call the method
+        final String method = methods.get(opt - 1);
+        final Boolean repeat = askForRepeat.get(opt - 1);
+
+        try {
+            final Method meth = target.getClass().getMethod(method, new Class[0]);
+            if (repeat) {
+                target.repeat(meth);
+            } else {
+                meth.invoke(target, new Object[0]);
             }
+        } catch (final Exception e) {
+            log(e);
+        }
+    }
+
+    private void callTearDownIfRequired() {
+        ConsoleMenu.println("Exiting menu");
+        try {
+            final Method meth = target.getClass().getMethod("tearDown", new Class[0]);
+            if (meth != null) {
+                meth.invoke(target, new Object());
+            }
+        } catch (final Exception e) {
+            log(e);
         }
     }
 
