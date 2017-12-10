@@ -56,6 +56,7 @@ public class CurrencyDateCalculatorBuilder<E extends Serializable> {
      * </ul>
      */
     public CurrencyDateCalculatorBuilder() {
+        // using default values ok
     }
 
     /**
@@ -83,15 +84,7 @@ public class CurrencyDateCalculatorBuilder<E extends Serializable> {
             append(b, "ccy2Week is required");
         }
         if (!brokenDateAllowed) {
-            if (getCrossCcy() == null) {
-                append(b, "crossCcy is required");
-            }
-            if (getCrossCcyWeek() == null) {
-                append(b, "crossCcyWeek is required");
-            }
-            if (getCrossCcyCalendar() == null) {
-                append(b, "crossCcyCalendar is required");
-            }
+            checkBrokenDate(b);
         }
         if (spotLag == null) {
             append(b, "spotLag is required");
@@ -101,6 +94,18 @@ public class CurrencyDateCalculatorBuilder<E extends Serializable> {
         }
         if (b.length() > 0) {
             throw new IllegalArgumentException(b.toString());
+        }
+    }
+
+    private void checkBrokenDate(StringBuilder b) {
+        if (getCrossCcy() == null) {
+            append(b, "crossCcy is required");
+        }
+        if (getCrossCcyWeek() == null) {
+            append(b, "crossCcyWeek is required");
+        }
+        if (getCrossCcyCalendar() == null) {
+            append(b, "crossCcyCalendar is required");
         }
     }
 
@@ -140,15 +145,24 @@ public class CurrencyDateCalculatorBuilder<E extends Serializable> {
     }
 
     public WorkingWeek getCcy1Week() {
-        return ccy1Week != null ? ccy1Week : currencyCalculatorConfig != null ? currencyCalculatorConfig.getWorkingWeek(ccy1) : null;
+        if (ccy1Week != null) {
+            return ccy1Week;
+        }
+        return currencyCalculatorConfig != null ? currencyCalculatorConfig.getWorkingWeek(ccy1) : null;
     }
 
     public WorkingWeek getCcy2Week() {
-        return ccy2Week != null ? ccy2Week : currencyCalculatorConfig != null ? currencyCalculatorConfig.getWorkingWeek(ccy2) : null;
+        if (ccy2Week != null) {
+            return ccy2Week;
+        }
+        return currencyCalculatorConfig != null ? currencyCalculatorConfig.getWorkingWeek(ccy2) : null;
     }
 
     public WorkingWeek getCrossCcyWeek() {
-        return crossCcyWeek != null ? crossCcyWeek : currencyCalculatorConfig != null ? currencyCalculatorConfig.getWorkingWeek(crossCcy) : null;
+        if (crossCcyWeek != null) {
+            return crossCcyWeek;
+        }
+        return currencyCalculatorConfig != null ? currencyCalculatorConfig.getWorkingWeek(crossCcy) : null;
     }
 
     public CurrencyCalculatorConfig getCurrencyCalculatorConfig() {
