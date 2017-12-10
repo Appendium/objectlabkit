@@ -111,7 +111,8 @@ public class Tenor implements Serializable {
         return new Tenor(parsedUnits, parsedCode);
     }
 
-    private static void parseCode(final String tenor, final StringBuilder unitsBuf, final StringBuilder codeBuf, final boolean invalid, final int size) {
+    private static void parseCode(final String tenor, final StringBuilder unitsBuf, final StringBuilder codeBuf, final boolean invalid,
+            final int size) {
         for (int i = 0; i < size && !invalid; i++) {
             final char c = tenor.charAt(i);
 
@@ -155,10 +156,7 @@ public class Tenor implements Serializable {
         } else if (!code.equals(other.code)) {
             return false;
         }
-        if (units != other.units) {
-            return false;
-        }
-        return true;
+        return units != other.units;
     }
 }
 

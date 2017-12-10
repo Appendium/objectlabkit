@@ -46,8 +46,8 @@ public class PopulationStandardDeviation {
         if (dataPoints == null) {
             return null;
         }
-        final BigDecimal average = getAverage();
-        final BigDecimal sumSquaredDifferences = dataPoints.stream().map(dp -> BigDecimalUtil.subtract(dp, average).pow(2)).reduce(BigDecimal.ZERO,
+        final BigDecimal avg = getAverage();
+        final BigDecimal sumSquaredDifferences = dataPoints.stream().map(dp -> BigDecimalUtil.subtract(dp, avg).pow(2)).reduce(BigDecimal.ZERO,
                 (a, b) -> b != null ? a.add(b) : a);
         final BigDecimal variance = BigDecimalUtil.divide(8, sumSquaredDifferences, BigDecimal.valueOf(getDataPointsForCalc()),
                 BigDecimal.ROUND_HALF_UP);

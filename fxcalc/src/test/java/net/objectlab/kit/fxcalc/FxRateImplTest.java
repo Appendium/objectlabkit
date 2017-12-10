@@ -42,7 +42,7 @@ public class FxRateImplTest {
         FxRateImpl fx = new FxRateImpl(new CurrencyPair("EUR", "USD"), null, true, bd("1.6"), bd("1.61"), new JdkCurrencyProvider());
         LOG.debug(fx.getDescription());
 
-        assertThat(fx.convertAmountUsingMid(Cash.of("CAD", 1_000)));
+        assertThat(fx.convertAmountUsingMid(Cash.of("CAD", 1_000))).describedAs("Should not be called!");
     }
 
     @Test
@@ -59,7 +59,7 @@ public class FxRateImplTest {
         FxRateImpl fx = new FxRateImpl(new CurrencyPair("EUR", "USD"), null, true, bd("1.6"), bd("1.61"), new JdkCurrencyProvider());
         LOG.debug(fx.getDescription());
 
-        assertThat(fx.convertAmountUsingBidOrAsk(Cash.of("CAD", 1_000)));
+        assertThat(fx.convertAmountUsingBidOrAsk(Cash.of("CAD", 1_000))).describedAs("Should throw an exception");
     }
 
     @Test

@@ -496,15 +496,17 @@ public final class StringUtil {
      * Handle null.
      */
     public static int compareTo(final String s1, final String s2) {
-        int ret = -2;
+        int ret;
         if (s1 == null && s2 == null) {
             ret = 0;
         } else if (s1 != null && s2 == null) {
             ret = 1;
-        } else { // (s1 == null && s2 != null)
+        } else if (s1 == null && s2 != null) {
             ret = -1;
+        } else {
+            ret = s1.compareTo(s2);
         }
-        return ret == -2 ? s1 != null ? s1.compareTo(s2) : -1 : ret;
+        return ret;
     }
 
     public static String asList(final String[] values, final String separator) {

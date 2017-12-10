@@ -616,7 +616,10 @@ public final class BigDecimalUtil {
     }
 
     private static short sign(final double d) {
-        return (short) (d == 0 ? 0 : d < 0 ? -1 : 1);
+        if (d == 0d) {
+            return 0;
+        }
+        return (short) (d < 0d ? -1 : 1);
     }
 
     /**
@@ -798,6 +801,10 @@ public final class BigDecimalUtil {
      * @see <a href="http://www.codeproject.com/Tips/257031/Implementing-SqrtRoot-in-BigDecimal">http://www.codeproject.com/Tips/257031/Implementing-SqrtRoot-in-BigDecimal</a>
      */
     public static BigDecimal bigSqrt(final BigDecimal c) {
-        return c != null ? c.signum() == 0 ? BigDecimal.ZERO : sqrtNewtonRaphson(c, BigDecimal.ONE, BigDecimal.ONE.divide(SQRT_PRE)) : null;
+        if (c == null) {
+            return null;
+        }
+
+        return c.signum() == 0 ? BigDecimal.ZERO : sqrtNewtonRaphson(c, BigDecimal.ONE, BigDecimal.ONE.divide(SQRT_PRE));
     }
 }

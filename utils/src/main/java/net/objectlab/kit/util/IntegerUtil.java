@@ -90,7 +90,7 @@ public final class IntegerUtil {
 
     public static int safeSignum(final Integer v) {
         if (v != null) {
-            return v.intValue() > 0 ? 1 : v.intValue() < 0 ? -1 : 0;
+            return Integer.signum(v.intValue());
         }
         return 0;
     }

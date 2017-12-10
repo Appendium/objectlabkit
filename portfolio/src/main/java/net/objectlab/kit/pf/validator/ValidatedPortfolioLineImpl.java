@@ -5,14 +5,14 @@ import java.text.NumberFormat;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.commons.lang.StringUtils;
+
 import net.objectlab.kit.pf.ExistingPortfolioLine;
 import net.objectlab.kit.pf.RuleIssue;
 import net.objectlab.kit.pf.Severity;
 import net.objectlab.kit.pf.ValidatedPortfolioLine;
 import net.objectlab.kit.util.BigDecimalUtil;
 import net.objectlab.kit.util.StringUtil;
-
-import org.apache.commons.lang.StringUtils;
 
 public class ValidatedPortfolioLineImpl implements ValidatedPortfolioLine {
     private final ExistingPortfolioLine line;
@@ -34,7 +34,6 @@ public class ValidatedPortfolioLineImpl implements ValidatedPortfolioLine {
         b.append(StringUtils.leftPad(StringUtils.abbreviate(BigDecimalUtil.format(getQuantity()), 10), 11));
         b.append(StringUtils.leftPad(StringUtils.abbreviate(BigDecimalUtil.format(getValueInPortfolioCcy()), 10), 11));
         b.append(StringUtils.leftPad(StringUtils.abbreviate(defaultFormat.format(getAllocationWeight()), 10), 11));
-        // b.append(StringUtils.leftPad(StringUtils.abbreviate(validation.toString(), 250), 10));
         b.append(StringUtil.NEW_LINE);
         return b.toString();
     }

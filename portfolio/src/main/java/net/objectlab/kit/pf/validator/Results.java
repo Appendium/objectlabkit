@@ -3,13 +3,13 @@ package net.objectlab.kit.pf.validator;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
+
 import net.objectlab.kit.pf.ExistingPortfolio;
 import net.objectlab.kit.pf.RuleIssue;
 import net.objectlab.kit.pf.Severity;
 import net.objectlab.kit.pf.ValidationResults;
 import net.objectlab.kit.util.StringUtil;
-
-import org.apache.commons.lang.StringUtils;
 
 public class Results implements ValidationResults {
     private final List<ValidatedPortfolioLineImpl> lines = new ArrayList<>();
@@ -54,19 +54,4 @@ public class Results implements ValidationResults {
 
         return b.toString();
     }
-
-    // @Override
-    // public String toString() {
-    // final StringBuilder b = new StringBuilder();
-    // boolean first = true;
-    // for (RuleIssue issue : issues) {
-    // if (!first) {
-    // b.append(StringUtil.NEW_LINE).append(StringUtils.repeat(" ", 81));
-    // }
-    // b.append(issue.toString());
-    // first = false;
-    // }
-    // return b.toString();
-    // }
-
 }

@@ -159,9 +159,7 @@ public final class Utils {
         for (final Date date : dates.getHolidays()) {
             calendars.add(getCal(date));
         }
-        final HolidayCalendar<Calendar> cal = new DefaultHolidayCalendar<Calendar>(calendars, getCal(dates.getEarlyBoundary()),
-                getCal(dates.getLateBoundary()));
-        return cal;
+        return new DefaultHolidayCalendar<Calendar>(calendars, getCal(dates.getEarlyBoundary()), getCal(dates.getLateBoundary()));
     }
 
     /**

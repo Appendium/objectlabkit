@@ -56,8 +56,8 @@ public abstract class AbstractCurrencyDateCalculator<E extends Serializable> imp
     private final WorkingWeek ccy2Week;
     private final WorkingWeek crossCcyWeek;
     private final boolean brokenDateAllowed;
-    private final boolean useCrossCcyOnT_1ForCcy1;
-    private final boolean useCrossCcyOnT_1ForCcy2;
+    private final boolean useCrossCcyOnT1ForCcy1;
+    private final boolean useCrossCcyOnT1ForCcy2;
     private final boolean adjustStartDateWithCcy1Ccy2;
     private final SpotLag spotLag;
 
@@ -79,20 +79,20 @@ public abstract class AbstractCurrencyDateCalculator<E extends Serializable> imp
         this.brokenDateAllowed = builder.isBrokenDateAllowed();
         this.spotLag = builder.getSpotLag();
         this.adjustStartDateWithCcy1Ccy2 = builder.isAdjustStartDateWithCurrencyPair();
-        this.useCrossCcyOnT_1ForCcy1 = builder.getCurrencyCalculatorConfig() != null
+        this.useCrossCcyOnT1ForCcy1 = builder.getCurrencyCalculatorConfig() != null
                 && builder.getCurrencyCalculatorConfig().getCurrenciesSubjectToCrossCcyForT1(crossCcy).contains(ccy1);
-        this.useCrossCcyOnT_1ForCcy2 = builder.getCurrencyCalculatorConfig() != null
+        this.useCrossCcyOnT1ForCcy2 = builder.getCurrencyCalculatorConfig() != null
                 && builder.getCurrencyCalculatorConfig().getCurrenciesSubjectToCrossCcyForT1(crossCcy).contains(ccy2);
     }
 
     @Override
     public boolean isUseCrossCcyOnT1ForCcy1() {
-        return useCrossCcyOnT_1ForCcy1;
+        return useCrossCcyOnT1ForCcy1;
     }
 
     @Override
     public boolean isUseCrossCcyOnT1ForCcy2() {
-        return useCrossCcyOnT_1ForCcy2;
+        return useCrossCcyOnT1ForCcy2;
     }
 
     @Override
@@ -247,7 +247,7 @@ public abstract class AbstractCurrencyDateCalculator<E extends Serializable> imp
                 // impact
                 // T+1
 
-                if (useCrossCcyOnT_1ForCcy1 && ccy1.equals(ccy) || useCrossCcyOnT_1ForCcy2 && ccy2.equals(ccy)) {
+                if (useCrossCcyOnT1ForCcy1 && ccy1.equals(ccy) || useCrossCcyOnT1ForCcy2 && ccy2.equals(ccy)) {
                     // move if USD is holiday
                     calcSpot = calculateNextWorkingDayIfRequired(calcSpot, crossCcyWeek, crossCcyHolidayCalendar);
                     // check that it is still ok for the original ccy
@@ -295,9 +295,6 @@ public abstract class AbstractCurrencyDateCalculator<E extends Serializable> imp
             calc = adjustForCcyPairIfRequired(calc);
             break;
         case TOM_NEXT: // it would have NOT moved by
-            calc = calculateNextDay(calc);
-            calc = adjustForCcyPairIfRequired(calc);
-            break;
         case SPOT_NEXT:
             calc = calculateNextDay(calc);
             calc = adjustForCcyPairIfRequired(calc);
@@ -321,8 +318,7 @@ public abstract class AbstractCurrencyDateCalculator<E extends Serializable> imp
     }
 
     private E adjustForCcyPairIfRequired(final E startDate) {
-        final E date = holidayHandler.adjustDate(startDate, 1, this);
-        return date;
+        return holidayHandler.adjustDate(startDate, 1, this);
     }
 
     protected abstract E addMonths(E calc, int unit);
