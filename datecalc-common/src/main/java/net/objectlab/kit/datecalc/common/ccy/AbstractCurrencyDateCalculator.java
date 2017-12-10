@@ -85,62 +85,77 @@ public abstract class AbstractCurrencyDateCalculator<E extends Serializable> imp
                 && builder.getCurrencyCalculatorConfig().getCurrenciesSubjectToCrossCcyForT1(crossCcy).contains(ccy2);
     }
 
+    @Override
     public boolean isUseCrossCcyOnT1ForCcy1() {
         return useCrossCcyOnT_1ForCcy1;
     }
 
+    @Override
     public boolean isUseCrossCcyOnT1ForCcy2() {
         return useCrossCcyOnT_1ForCcy2;
     }
 
+    @Override
     public SpotLag getSpotLag() {
         return spotLag;
     }
 
+    @Override
     public boolean isAdjustStartDateWithCurrencyPair() {
         return adjustStartDateWithCcy1Ccy2;
     }
 
+    @Override
     public boolean isBrokenDateAllowed() {
         return brokenDateAllowed;
     }
 
+    @Override
     public String getCrossCcy() {
         return crossCcy;
     }
 
+    @Override
     public String getCcy1() {
         return ccy1;
     }
 
+    @Override
     public String getCcy2() {
         return ccy2;
     }
 
+    @Override
     public String getName() {
         return getCcy1() + "." + getCcy2();
     }
 
+    @Override
     public ReadOnlyHolidayCalendar<E> getCcy1Calendar() {
         return ccy1HolidayCalendar;
     }
 
+    @Override
     public ReadOnlyHolidayCalendar<E> getCcy2Calendar() {
         return ccy2HolidayCalendar;
     }
 
+    @Override
     public ReadOnlyHolidayCalendar<E> getCrossCcyCalendar() {
         return crossCcyHolidayCalendar;
     }
 
+    @Override
     public WorkingWeek getCcy1Week() {
         return ccy1Week;
     }
 
+    @Override
     public WorkingWeek getCcy2Week() {
         return ccy2Week;
     }
 
+    @Override
     public WorkingWeek getCrossCcyWeek() {
         return crossCcyWeek;
     }
@@ -155,6 +170,7 @@ public abstract class AbstractCurrencyDateCalculator<E extends Serializable> imp
         return !ww.isWorkingDayFromCalendar(calendarWeekDay(date)) || calendar != null && calendar.isHoliday(date);
     }
 
+    @Override
     public boolean isNonWorkingDay(final E date) {
         return isNonWorkingDay(date, ccy1Week, ccy1HolidayCalendar) || isNonWorkingDay(date, ccy2Week, ccy2HolidayCalendar)
                 || !brokenDateAllowed && isNonWorkingDay(date, crossCcyWeek, crossCcyHolidayCalendar);
@@ -193,6 +209,7 @@ public abstract class AbstractCurrencyDateCalculator<E extends Serializable> imp
         return date;
     }
 
+    @Override
     public E calculateSpotDate(final E startDate) {
         E date = startDate;
         if (adjustStartDateWithCcy1Ccy2 || spotLag == SpotLag.T_0) {
@@ -244,6 +261,7 @@ public abstract class AbstractCurrencyDateCalculator<E extends Serializable> imp
         return calcSpot;
     }
 
+    @Override
     public E calculateTenorDate(final E startDate, final Tenor tenor) {
         if (tenor == null) {
             throw new IllegalArgumentException("Tenor cannot be null");
@@ -270,7 +288,7 @@ public abstract class AbstractCurrencyDateCalculator<E extends Serializable> imp
     }
 
     private E applyTenor(final E date, final TenorCode tenorCode, final int unit) {
-        E calc = date;
+        E calc = null;
         // move by tenor
         switch (tenorCode) {
         case OVERNIGHT:
@@ -310,6 +328,7 @@ public abstract class AbstractCurrencyDateCalculator<E extends Serializable> imp
 
     protected abstract E addMonths(E calc, int unit);
 
+    @Override
     public List<E> calculateTenorDates(final E startDate, final List<Tenor> tenors) {
         final List<E> results = new ArrayList<E>();
         for (final Tenor tenor : tenors) {

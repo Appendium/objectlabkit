@@ -83,7 +83,8 @@ public final class Utils {
         if (dateStr == null) {
             return createCalendar(null).getTime();
         }
-        return getCal(dateStr).getTime();
+        final Calendar cal = getCal(dateStr);
+        return cal != null ? cal.getTime() : null;
     }
 
     // -----------------------------------------------------------------------
