@@ -497,14 +497,14 @@ public final class StringUtil {
      */
     public static int compareTo(final String s1, final String s2) {
         int ret;
-        if (s1 == null && s2 == null) {
+        if (s1 != null && s2 != null) {
+            ret = s1.compareTo(s2);
+        } else if (s1 == null && s2 == null) {
             ret = 0;
         } else if (s1 != null && s2 == null) {
             ret = 1;
-        } else if (s1 == null && s2 != null) {
-            ret = -1;
         } else {
-            ret = s1.compareTo(s2);
+            ret = -1;
         }
         return ret;
     }
