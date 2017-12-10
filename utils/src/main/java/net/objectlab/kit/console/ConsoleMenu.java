@@ -52,6 +52,8 @@ import org.joda.time.LocalDate;
  *
  */
 public class ConsoleMenu {
+    private static final String DEFAULT_TITLE = " (default:";
+
     private static final int EXIT_CODE = 0;
 
     private static final int SCREEN_COLUMNS = 110;
@@ -132,7 +134,7 @@ public class ConsoleMenu {
                 try {
                     final Method meth = target.getClass().getMethod("tearDown", new Class[0]);
                     if (meth != null) {
-                        meth.invoke(target, new Object[0]);
+                        meth.invoke(target, new Object());
                     }
                 } catch (final Exception e) {
                     log(e);
@@ -219,7 +221,7 @@ public class ConsoleMenu {
 
         do {
             try {
-                final String val = ConsoleMenu.getString(title + " (default:" + defaultValue + ")");
+                final String val = ConsoleMenu.getString(title + DEFAULT_TITLE + defaultValue + ")");
                 if (val.length() == 0) {
                     opt = defaultValue;
                 } else {
@@ -259,7 +261,7 @@ public class ConsoleMenu {
 
         do {
             try {
-                final String val = ConsoleMenu.getString(title + " (default:" + defaultValue + ")");
+                final String val = ConsoleMenu.getString(title + DEFAULT_TITLE + defaultValue + ")");
                 if (val.length() == 0) {
                     opt = defaultValue;
                 } else {
@@ -352,7 +354,7 @@ public class ConsoleMenu {
             throw new IllegalArgumentException("option names and values must have same length");
         }
 
-        ConsoleMenu.println("Please chose " + title + " (default:" + defaultOption + ")");
+        ConsoleMenu.println("Please chose " + title + DEFAULT_TITLE + defaultOption + ")");
 
         for (int i = 0; i < optionNames.length; i++) {
             ConsoleMenu.println(i + 1 + ") " + optionNames[i]);
@@ -416,7 +418,7 @@ public class ConsoleMenu {
     /**
      * This class attempts to erase characters echoed to the console.
      */
-    static class PasswordHidingThread extends Thread {
+    static class PasswordHidingThread implements Runnable {
         private boolean stop;
 
         private final String prompt;

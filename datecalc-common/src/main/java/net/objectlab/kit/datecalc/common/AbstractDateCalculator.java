@@ -83,6 +83,7 @@ public abstract class AbstractDateCalculator<E extends Serializable> implements 
         this.holidayHandler = holidayHandler;
     }
 
+    @Override
     public DateCalculator<E> setHolidayCalendar(final HolidayCalendar<E> calendar) {
         if (calendar != null) {
             if (calendar instanceof ImmutableHolidayCalendar) {
@@ -96,6 +97,7 @@ public abstract class AbstractDateCalculator<E extends Serializable> implements 
         return this;
     }
 
+    @Override
     public String getName() {
         return name;
     }
@@ -104,6 +106,7 @@ public abstract class AbstractDateCalculator<E extends Serializable> implements 
         this.name = name;
     }
 
+    @Override
     public E getStartDate() {
         if (startDate == null) {
             startDate = getToday();
@@ -112,12 +115,14 @@ public abstract class AbstractDateCalculator<E extends Serializable> implements 
     }
 
     /** Set both start date and current date */
+    @Override
     public DateCalculator<E> setStartDate(final E startDate) {
         this.startDate = startDate;
         setCurrentBusinessDate(startDate);
         return this;
     }
 
+    @Override
     public E getCurrentBusinessDate() {
         if (currentBusinessDate == null) {
             currentBusinessDate = getToday();
@@ -137,6 +142,7 @@ public abstract class AbstractDateCalculator<E extends Serializable> implements 
      * @return the current businessCalendar (so one can do
      *         calendar.moveByTenor(StandardTenor.T_2M).getCurrentBusinessDate();)
      */
+    @Override
     public DateCalculator<E> moveByTenor(final Tenor tenor, final int spotLag) {
         if (tenor == null) {
             throw new IllegalArgumentException("Tenor cannot be null");
@@ -199,6 +205,7 @@ public abstract class AbstractDateCalculator<E extends Serializable> implements 
      * @return the current DateCalculator
      * @since 1.1.0
      */
+    @Override
     public DateCalculator<E> moveByTenor(final Tenor tenor) {
         return moveByTenor(tenor, 0);
     }
@@ -210,6 +217,7 @@ public abstract class AbstractDateCalculator<E extends Serializable> implements 
      * @return list of dates in same order as tenors.
      * @since 1.1.0
      */
+    @Override
     public List<E> calculateTenorDates(final List<Tenor> tenors) {
         return calculateTenorDates(tenors, 0);
     }
@@ -221,6 +229,7 @@ public abstract class AbstractDateCalculator<E extends Serializable> implements 
      * @return list of dates in same order as tenors.
      * @since 1.1.0
      */
+    @Override
     public List<E> calculateTenorDates(final List<Tenor> tenors, final int spotLag) {
         final List<E> list = new ArrayList<E>();
 
@@ -251,6 +260,7 @@ public abstract class AbstractDateCalculator<E extends Serializable> implements 
         return this;
     }
 
+    @Override
     public String getHolidayHandlerType() {
         return holidayHandler != null ? holidayHandler.getType() : null;
     }
@@ -258,6 +268,7 @@ public abstract class AbstractDateCalculator<E extends Serializable> implements 
     /**
      * is the given date a non working day?
      */
+    @Override
     public boolean isNonWorkingDay(final E date) {
         if (date != null && (holidayCalendar.getEarlyBoundary() != null || holidayCalendar.getLateBoundary() != null)) {
             checkBoundary(date);
@@ -272,6 +283,7 @@ public abstract class AbstractDateCalculator<E extends Serializable> implements 
      */
     protected abstract void checkBoundary(E date);
 
+    @Override
     public boolean isCurrentDateNonWorking() {
         if (currentBusinessDate == null) {
             currentBusinessDate = getToday();
@@ -279,11 +291,13 @@ public abstract class AbstractDateCalculator<E extends Serializable> implements 
         return isNonWorkingDay(currentBusinessDate);
     }
 
+    @Override
     public E forceCurrentDateNoAdjustment(final E date) {
         currentBusinessDate = date;
         return currentBusinessDate;
     }
 
+    @Override
     public E setCurrentBusinessDate(final E date) {
         currentBusinessDate = date;
         if (holidayHandler != null && date != null) {
@@ -303,6 +317,7 @@ public abstract class AbstractDateCalculator<E extends Serializable> implements 
         moveByBusinessDays(spotLag);
     }
 
+    @Override
     public DateCalculator<E> moveByBusinessDays(final int businessDays) {
         checkHolidayValidity(businessDays);
 
@@ -340,6 +355,7 @@ public abstract class AbstractDateCalculator<E extends Serializable> implements 
      *             if both calendars have different types of HolidayHandlers or
      *             WorkingWeek;
      */
+    @Override
     public DateCalculator<E> combine(final DateCalculator<E> calculator) {
         if (calculator == null || calculator == this) {
             return this;
@@ -363,9 +379,7 @@ public abstract class AbstractDateCalculator<E extends Serializable> implements 
                 compareDate(holidayCalendar.getEarlyBoundary(), calendarToCombine.getEarlyBoundary(), false),
                 compareDate(holidayCalendar.getLateBoundary(), calendarToCombine.getLateBoundary(), true));
 
-        final DateCalculator<E> cal = createNewCalculator(getName() + "/" + calculator.getName(), getStartDate(), newCal, holidayHandler);
-
-        return cal;
+        return createNewCalculator(getName() + "/" + calculator.getName(), getStartDate(), newCal, holidayHandler);
     }
 
     private void checkHolidayHandlerValidity(final DateCalculator<E> calculator) {
@@ -396,6 +410,7 @@ public abstract class AbstractDateCalculator<E extends Serializable> implements 
     /**
      * @return Returns the currentIncrement.
      */
+    @Override
     public int getCurrentIncrement() {
         return currentIncrement;
     }
@@ -403,6 +418,7 @@ public abstract class AbstractDateCalculator<E extends Serializable> implements 
     /**
      * @param currentIncrement The currentIncrement to set.
      */
+    @Override
     public DateCalculator<E> setCurrentIncrement(final int currentIncrement) {
         this.currentIncrement = currentIncrement;
         return this;
@@ -411,6 +427,7 @@ public abstract class AbstractDateCalculator<E extends Serializable> implements 
     /**
      * @return Returns the holidayCalendar.
      */
+    @Override
     public HolidayCalendar<E> getHolidayCalendar() {
         return holidayCalendar;
     }

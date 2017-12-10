@@ -31,7 +31,6 @@ public class ReadOnlyExpiringCollectionBuilder {
     }
 
     public ReadOnlyExpiringCollectionBuilder expiryTimeout(final PeriodBuilder expiryTimeout) {
-        assert expiryTimeout != null;
         if (expiryTimeout != null) {
             this.expiryTimeoutMilliseconds = expiryTimeout.calculateMilliseconds();
         }
