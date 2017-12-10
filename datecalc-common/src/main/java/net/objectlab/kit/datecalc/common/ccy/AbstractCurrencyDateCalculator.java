@@ -288,7 +288,7 @@ public abstract class AbstractCurrencyDateCalculator<E extends Serializable> imp
     }
 
     private E applyTenor(final E date, final TenorCode tenorCode, final int unit) {
-        E calc = null;
+        E calc = date;
         // move by tenor
         switch (tenorCode) {
         case OVERNIGHT:
@@ -302,8 +302,7 @@ public abstract class AbstractCurrencyDateCalculator<E extends Serializable> imp
             calc = calculateNextDay(calc);
             calc = adjustForCcyPairIfRequired(calc);
             break;
-        case SPOT:
-            calc = date;
+        case SPOT: // good as-is
             break;
         case DAY:
             for (int i = 0; i < unit; i++) {
