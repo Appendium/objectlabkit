@@ -2,7 +2,7 @@
 Date Calc: [![Maven Central DateCalculator](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/datecalc-common/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/datecalc-common)
 Utils: [![Maven Central Utils](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-utils/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-utils)
 ![GitHub license](https://img.shields.io/github/license/appendium/objectlabkit.svg?style=flat-square)
-
+[![Quality Gate](https://sonarcloud.io/api/badges/gate?key=net.objectlab.kit:kit-parent)](https://sonarcloud.io/dashboard/index/net.objectlab.kit:kit-parent)    
 ObjectLab Kit
 =============
 
