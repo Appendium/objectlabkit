@@ -35,7 +35,6 @@ package net.objectlab.kit.datecalc.common;
 import java.util.HashSet;
 import java.util.Set;
 
-import junit.framework.Assert;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -99,24 +98,24 @@ public class TenorTest extends TestCase {
         set.add(StandardTenor.OVERNIGHT);
         set.add(StandardTenor.T_1D);
         set.add(StandardTenor.T_15Y);
-        Assert.assertEquals("size", 3, set.size());
-        Assert.assertTrue("Contains " + StandardTenor.T_1D, set.contains(StandardTenor.T_1D));
-        Assert.assertTrue("Contains " + StandardTenor.OVERNIGHT, set.contains(StandardTenor.OVERNIGHT));
-        Assert.assertTrue("Contains " + StandardTenor.T_15Y, set.contains(StandardTenor.T_15Y));
-        Assert.assertEquals("Equals ", StandardTenor.T_15Y, StandardTenor.T_15Y);
+        assertEquals("size", 3, set.size());
+        assertTrue("Contains " + StandardTenor.T_1D, set.contains(StandardTenor.T_1D));
+        assertTrue("Contains " + StandardTenor.OVERNIGHT, set.contains(StandardTenor.OVERNIGHT));
+        assertTrue("Contains " + StandardTenor.T_15Y, set.contains(StandardTenor.T_15Y));
+        assertEquals("Equals ", StandardTenor.T_15Y, StandardTenor.T_15Y);
     }
 
     public void testEquals() {
-        Assert.assertEquals("Equals ", StandardTenor.T_15Y, StandardTenor.T_15Y);
-        Assert.assertTrue("same", StandardTenor.OVERNIGHT.equals(StandardTenor.OVERNIGHT));
-        Assert.assertFalse("not same", StandardTenor.OVERNIGHT.equals(StandardTenor.SPOT));
-        Assert.assertFalse("Different class", StandardTenor.OVERNIGHT.equals("Hello"));
-        Assert.assertFalse("Null", StandardTenor.OVERNIGHT.equals(null));
-        Assert.assertTrue("same", StandardTenor.T_10Y.equals(StandardTenor.T_10Y));
-        Assert.assertFalse("diff unit", StandardTenor.T_10Y.equals(StandardTenor.T_15Y));
-        Assert.assertTrue("same", StandardTenor.T_10Y.equals(new Tenor(10, TenorCode.YEAR)));
-        Assert.assertFalse("same", new Tenor(10, null).equals(new Tenor(10, TenorCode.YEAR)));
-        Assert.assertTrue("same", new Tenor(10, null).equals(new Tenor(10, null)));
+        assertEquals("Equals ", StandardTenor.T_15Y, StandardTenor.T_15Y);
+        assertTrue("same", StandardTenor.OVERNIGHT.equals(StandardTenor.OVERNIGHT));
+        assertFalse("not same", StandardTenor.OVERNIGHT.equals(StandardTenor.SPOT));
+        assertFalse("Different class", StandardTenor.OVERNIGHT.equals("Hello"));
+        assertFalse("Null", StandardTenor.OVERNIGHT.equals(null));
+        assertTrue("same", StandardTenor.T_10Y.equals(StandardTenor.T_10Y));
+        assertFalse("diff unit", StandardTenor.T_10Y.equals(StandardTenor.T_15Y));
+        assertTrue("same", StandardTenor.T_10Y.equals(new Tenor(10, TenorCode.YEAR)));
+        assertFalse("same", new Tenor(10, null).equals(new Tenor(10, TenorCode.YEAR)));
+        assertTrue("same", new Tenor(10, null).equals(new Tenor(10, null)));
     }
 
     // -----------------------------------------------------------------------
@@ -147,18 +146,18 @@ public class TenorTest extends TestCase {
     private void checkToString(final String string) {
         try {
             final Tenor t = Tenor.valueOf(string);
-            Assert.assertEquals(string, t.toString());
+            assertEquals(string, t.toString());
         } catch (final IllegalArgumentException e) {
-            Assert.fail(e.toString());
+            fail(e.toString());
         }
     }
 
     private void checkInvalidTenor(final String str) {
         try {
             Tenor.valueOf(str);
-            Assert.fail(str + " is invalid and should have thrown an exception!");
+            fail(str + " is invalid and should have thrown an exception!");
         } catch (final IllegalArgumentException e) {
-            Assert.assertTrue(true);
+            assertTrue(true);
         }
     }
 
@@ -166,13 +165,13 @@ public class TenorTest extends TestCase {
         Tenor tenor = null;
         try {
             tenor = Tenor.valueOf(str);
-            Assert.assertEquals(str + " Accept Units", acceptUnits, tenor.getCode().acceptUnits());
-            Assert.assertEquals(str + " Accept Units", acceptUnits, tenor.hasUnits());
-            Assert.assertSame(str + " right tenor ", tenorCode, tenor.getCode());
-            Assert.assertEquals(str + " Units", units, tenor.getUnits());
+            assertEquals(str + " Accept Units", acceptUnits, tenor.getCode().acceptUnits());
+            assertEquals(str + " Accept Units", acceptUnits, tenor.hasUnits());
+            assertSame(str + " right tenor ", tenorCode, tenor.getCode());
+            assertEquals(str + " Units", units, tenor.getUnits());
         } catch (final IllegalArgumentException e) {
             e.printStackTrace();
-            Assert.fail("[" + str + "] should be valid!");
+            fail("[" + str + "] should be valid!");
         }
         return tenor;
     }

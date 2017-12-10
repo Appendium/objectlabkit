@@ -156,7 +156,7 @@ public class Tenor implements Serializable {
         } else if (!code.equals(other.code)) {
             return false;
         }
-        return units != other.units;
+        return units == other.units;
     }
 }
 
