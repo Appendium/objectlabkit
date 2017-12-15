@@ -1,101 +1,112 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>net.objectlab.kit</groupId>
-    <artifactId>kit-parent</artifactId>
-  <version>1.4.1-SNAPSHOT</version>
-  </parent>
+    <parent>
+        <groupId>net.objectlab.kit</groupId>
+        <artifactId>kit-parent</artifactId>
+        <version>1.4.1-SNAPSHOT</version>
+    </parent>
 
-  <artifactId>datecalc-jdk8</artifactId>
-  <packaging>jar</packaging>
+    <artifactId>datecalc-jdk8</artifactId>
+    <packaging>jar</packaging>
 
-  <name>Date Calc JDK8</name>
-  <description>Date Calculator methods for JDK8</description>
+    <name>Date Calc JDK8</name>
+    <description>Date Calculator methods for JDK8</description>
 
-  <dependencies>
-    <dependency>
-      <groupId>net.objectlab.kit</groupId>
-      <artifactId>datecalc-common</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>net.objectlab.kit</groupId>
-      <artifactId>datecalc-common</artifactId>
-      <scope>test</scope>
-      <classifier>tests</classifier>
-    </dependency>
-  </dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>net.objectlab.kit</groupId>
+            <artifactId>datecalc-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.objectlab.kit</groupId>
+            <artifactId>datecalc-common</artifactId>
+            <scope>test</scope>
+            <classifier>tests</classifier>
+        </dependency>
+    </dependencies>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
-      <!-- UNIT tests -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.19.1</version>
-        <configuration>
-          <skip>true</skip>
-        </configuration>
-        <executions>
-          <execution>
-            <id>surefire-test</id>
-            <phase>test</phase>
-            <goals>
-              <goal>test</goal>
-            </goals>
-            <configuration>
-              <skip>false</skip>
-              <excludes>
-                <exclude>**/perf/**</exclude>
-              </excludes>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
-
-  <profiles>
-    <profile>
-      <id>perf-testing</id>
-      <build>
+    <build>
         <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>2.19.1</version>
-            <configuration>
-              <skip>true</skip>
-            </configuration>
-            <executions>
-              <execution>
-                <id>surefire-perf</id>
-                <!-- use it mvn test -P perf-testing -->
-                <phase>test</phase>
-                <goals>
-                  <goal>test</goal>
-                </goals>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                  <argLine>-Xms256m -Xmx1024m</argLine>
-                  <skip>false</skip>
-                  <includes>
-                    <include>**/perf/*Test.java</include>
-                  </includes>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
-              </execution>
-            </executions>
-          </plugin>
+            </plugin>
+            <!-- UNIT tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>surefire-test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <skip>false</skip>
+                            <excludes>
+                                <exclude>**/perf/**</exclude>
+                            </excludes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Automatic-Module-Name>net.objectlab.kit.datecalc.jdk8</Automatic-Module-Name>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
         </plugins>
-      </build>
-    </profile>
-  </profiles>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>perf-testing</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.19.1</version>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>surefire-perf</id>
+                                <!-- use it mvn test -P perf-testing -->
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                                <configuration>
+                                    <argLine>-Xms256m -Xmx1024m</argLine>
+                                    <skip>false</skip>
+                                    <includes>
+                                        <include>**/perf/*Test.java</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>

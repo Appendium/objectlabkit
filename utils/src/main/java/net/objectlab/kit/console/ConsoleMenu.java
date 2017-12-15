@@ -53,26 +53,18 @@ import org.joda.time.LocalDate;
  */
 public class ConsoleMenu {
     private static final String DEFAULT_TITLE = " (default:";
-
     private static final int EXIT_CODE = 0;
-
     private static final int SCREEN_COLUMNS = 110;
-
     private static final int COL = 10;
-
     private static final PrintStream OUT = System.out;
 
     // ~ Instance fields
     // ------------------------------------------------------------------------------------------------
 
     private final List<String> menu = new ArrayList<>();
-
     private final List<String> methods = new ArrayList<>();
-
     private final List<Boolean> askForRepeat = new ArrayList<>();
-
     private final Repeater target;
-
     private int screenColumns = SCREEN_COLUMNS;
 
     // ~ Constructors
