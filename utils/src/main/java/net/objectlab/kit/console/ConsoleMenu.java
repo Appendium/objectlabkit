@@ -136,11 +136,11 @@ public class ConsoleMenu {
         final Boolean repeat = askForRepeat.get(opt - 1);
 
         try {
-            final Method meth = target.getClass().getMethod(method, new Class[0]);
+            final Method meth = target.getClass().getMethod(method);
             if (repeat) {
                 target.repeat(meth);
             } else {
-                meth.invoke(target, new Object[0]);
+                meth.invoke(target);
             }
         } catch (final Exception e) {
             log(e);
@@ -150,9 +150,9 @@ public class ConsoleMenu {
     private void callTearDownIfRequired() {
         ConsoleMenu.println("Exiting menu");
         try {
-            final Method meth = target.getClass().getMethod("tearDown", new Class[0]);
+            final Method meth = target.getClass().getMethod("tearDown");
             if (meth != null) {
-                meth.invoke(target, new Object());
+                meth.invoke(target);
             }
         } catch (final Exception e) {
             log(e);
@@ -389,11 +389,11 @@ public class ConsoleMenu {
                 maskingthread.stopMasking();
 
                 if (c == '\r') {
-                    c = (char) System.in.read();
-
-                    if (c == '\n') {
-                        break;
-                    }
+                    // c = (char) System.in.read();
+                    //
+                    // if (c == '\n') {
+                    // break;
+                    // }
                     continue;
                 } else if (c == '\n') {
                     break;
