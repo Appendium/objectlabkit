@@ -3,6 +3,8 @@ package net.objectlab.kit.util;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.fail;
 
+import java.math.BigDecimal;
+
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -18,9 +20,39 @@ public class StringUtilTest {
         assertThat(StringUtil.compareTo("XA", "XA")).isEqualTo(0);
     }
 
-    @Ignore
+    @Test
     public void testRemoveTrailingChar() {
-        fail("Not yet implemented");
+        assertThat(StringUtil.removeTrailingChar(null, ' ')).isNull();
+        assertThat(StringUtil.removeTrailingChar("Hello ", ' ')).isEqualToIgnoringCase("Hello");
+        assertThat(StringUtil.removeTrailingChar("Hello     ", ' ')).isEqualToIgnoringCase("Hello");
+        assertThat(StringUtil.removeTrailingChar(" Hello  ", ' ')).isEqualToIgnoringCase(" Hello");
+        assertThat(StringUtil.removeTrailingChar(" Hellooo", 'o')).isEqualToIgnoringCase(" Hell");
+        assertThat(StringUtil.removeTrailingChar(" Hollooo", 'o')).isEqualToIgnoringCase(" Holl");
+    }
+
+    @Test
+    public void testReplaceCRToken() {
+        assertThat(StringUtil.replaceCRToken(null)).isNull();
+        assertThat(StringUtil.replaceCRToken("Hello")).isEqualTo("Hello");
+        assertThat(StringUtil.replaceCRToken("Hello%CR%")).isEqualTo("Hello" + System.getProperty("line.separator"));
+        assertThat(StringUtil.replaceCRToken("Hel%CR%lo")).isEqualTo("Hel" + System.getProperty("line.separator") + "lo");
+    }
+
+    @Test
+    public void testToUpperCase() {
+        assertThat(StringUtil.toUpperCase(null)).isNull();
+        assertThat(StringUtil.toUpperCase("Hi")).isEqualTo("HI");
+        assertThat(StringUtil.toUpperCase("HeLLo")).isEqualTo("HELLO");
+    }
+
+    @Test
+    public void testIsNotBlank() {
+        assertThat(StringUtil.isNotBlank(null)).isFalse();
+        assertThat(StringUtil.isNotBlank("")).isFalse();
+        assertThat(StringUtil.isNotBlank(" ")).isFalse();
+        assertThat(StringUtil.isNotBlank(" X")).isTrue();
+        assertThat(StringUtil.isNotBlank(new Object())).isFalse();
+        assertThat(StringUtil.isNotBlank(BigDecimal.ONE)).isFalse();
     }
 
     @Ignore
@@ -49,11 +81,6 @@ public class StringUtilTest {
     }
 
     @Ignore
-    public void testReplaceCRToken() {
-        fail("Not yet implemented");
-    }
-
-    @Ignore
     public void testWrapText() {
         fail("Not yet implemented");
     }
@@ -74,11 +101,6 @@ public class StringUtilTest {
     }
 
     @Ignore
-    public void testToUpperCase() {
-        fail("Not yet implemented");
-    }
-
-    @Ignore
     public void testProcessCaseTreatment() {
         fail("Not yet implemented");
     }
@@ -95,11 +117,6 @@ public class StringUtilTest {
 
     @Ignore
     public void testSingleQuote() {
-        fail("Not yet implemented");
-    }
-
-    @Ignore
-    public void testIsNotBlank() {
         fail("Not yet implemented");
     }
 

@@ -76,11 +76,14 @@ public final class StringUtil {
     }
 
     public static String removeTrailingChar(final String original, final char charToRemove) {
-        final StringBuilder builder = new StringBuilder(original);
-        while (builder.length() > 0 && builder.charAt(builder.length() - 1) == charToRemove) {
-            builder.deleteCharAt(builder.length() - 1);
+        if (original != null) {
+            final StringBuilder builder = new StringBuilder(original);
+            while (builder.length() > 0 && builder.charAt(builder.length() - 1) == charToRemove) {
+                builder.deleteCharAt(builder.length() - 1);
+            }
+            return builder.toString();
         }
-        return builder.toString();
+        return null;
     }
 
     public static synchronized String defaultFormatDatetime(final Date date) {
