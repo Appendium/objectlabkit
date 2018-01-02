@@ -17,5 +17,6 @@ ObjectLab Kit
 
 [SonarQube](http://nemo.sonarsource.org/project/index/net.objectlab.kit:kit-parent)
 [Metrics at OpenHub](https://www.openhub.net/p/objectlabkit)
+[![Maven Central] (https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/kit-parent/badge.svg?style=flat-square)](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/kit-parent/badge.svg?style=flat-square)
 
 ![Brought to you by](http://objectlabkit.sourceforge.net/images/appendium_logo.jpg "Supported by Appendium") and ![Supported by ObjectLab](http://objectlabkit.sourceforge.net/images/objectlab_logo.jpg "Supported by ObjectLab")
