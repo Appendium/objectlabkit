@@ -290,7 +290,7 @@ public class ConsoleMenu {
     }
 
     public static LocalDate getYMD(final String title, final LocalDate defaultValue) {
-        final Date dateStr = ConsoleMenu.getDate(title, defaultValue != null ? defaultValue.toDateMidnight().toDate() : null);
+        final Date dateStr = ConsoleMenu.getDate(title, defaultValue != null ? defaultValue.toDateTimeAtStartOfDay().toDate() : null);
         if (dateStr != null) {
             return new LocalDate(dateStr);
         }
@@ -388,16 +388,9 @@ public class ConsoleMenu {
                 // assume enter pressed, stop masking
                 maskingthread.stopMasking();
 
-                if (c == '\r') {
-                    // c = (char) System.in.read();
-                    //
-                    // if (c == '\n') {
-                    // break;
-                    // }
-                    continue;
-                } else if (c == '\n') {
+                if (c == '\n') {
                     break;
-                } else {
+                } else if (c != '\r') {
                     // store the password
                     password.append(c);
                 }

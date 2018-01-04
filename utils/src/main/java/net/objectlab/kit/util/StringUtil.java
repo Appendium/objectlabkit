@@ -504,7 +504,7 @@ public final class StringUtil {
             ret = s1.compareTo(s2);
         } else if (s1 == null && s2 == null) {
             ret = 0;
-        } else if (s1 != null && s2 == null) {
+        } else if (s2 == null) {
             ret = 1;
         } else {
             ret = -1;
