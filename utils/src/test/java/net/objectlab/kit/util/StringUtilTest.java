@@ -5,11 +5,26 @@ import static org.junit.Assert.fail;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.TimeZone;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
 public class StringUtilTest {
+    private TimeZone tzBefore;
+
+    @Before
+    public void setUp() {
+        tzBefore = TimeZone.getDefault();
+        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+    }
+
+    @After
+    public void tearDown() {
+        TimeZone.setDefault(tzBefore);
+    }
 
     @Test
     public void testCompareTo() {
@@ -58,12 +73,12 @@ public class StringUtilTest {
 
     @Test
     public void testDefaultFormatDatetime() {
-        assertThat(StringUtil.defaultFormatDatetime(new Date(1531603574189L))).isEqualToIgnoringCase("14-Jul-2018 22:26:14");
+        assertThat(StringUtil.defaultFormatDatetime(new Date(1531603574189L))).isEqualToIgnoringCase("14-Jul-2018 21:26:14");
     }
 
     @Test
     public void testDefaultFileFormatTimestamp() {
-        assertThat(StringUtil.defaultFileFormatTimestamp(new Date(1531603574189L))).isEqualToIgnoringCase("20180714-222614");
+        assertThat(StringUtil.defaultFileFormatTimestamp(new Date(1531603574189L))).isEqualToIgnoringCase("20180714-212614");
     }
 
     @Ignore
