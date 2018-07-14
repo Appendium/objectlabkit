@@ -53,7 +53,7 @@ public final class StringUtil {
     private static final String NEWLINE_TOKEN = "%CR%";
     private static final CharSequence TOKEN = "%";
 
-    public static final String NEW_LINE = System.getProperty("line.separator");
+    public static final String NEW_LINE = System.lineSeparator();
     public static final String SINGLE_QUOTE = "'";
     public static final String SLASH = "/";
     public static final String NULL_COL = "null";
@@ -265,17 +265,20 @@ public final class StringUtil {
         return str != null ? str.toLowerCase() : null;
     }
 
+    /*
     public static String toLowerCase(final String... str) {
         final StringBuilder b = new StringBuilder();
         if (str == null) {
             return null;
         }
         for (final String s : str) {
-            b.append(s.toLowerCase());
+            if (s != null) {
+                b.append(s.toLowerCase());
+            }
         }
         return b.toString();
     }
-
+    */
     public static String toUpperCase(final String str) {
         return str != null ? str.toUpperCase() : null;
     }
@@ -358,10 +361,14 @@ public final class StringUtil {
      * Return true if all strings are the same.
      */
     public static boolean allEquals(final String value, final String... strings) {
-        for (final String s : strings) {
-            if (s == null && value != null || s != null && value != null && !s.equals(value)) {
-                return false;
+        if (strings != null) {
+            for (final String s : strings) {
+                if (s == null && value != null || s != null && !s.equals(value)) {
+                    return false;
+                }
             }
+        } else {
+            return value == null;
         }
         return true;
 
@@ -388,6 +395,8 @@ public final class StringUtil {
                     return true;
                 }
             }
+        } else if (val == null) {
+            return true;
         }
         return false;
 
@@ -417,8 +426,10 @@ public final class StringUtil {
      */
     public static String concat(final Object... osToString) {
         final StringBuilder b = new StringBuilder();
-        for (final Object o : osToString) {
-            b.append(o != null ? o.toString() : "null");
+        if (osToString != null) {
+            for (final Object o : osToString) {
+                b.append(o != null ? o.toString() : "null");
+            }
         }
         return b.toString();
     }
@@ -431,13 +442,15 @@ public final class StringUtil {
     public static String concatWithSpaces(final Object... osToString) {
         final StringBuilder b = new StringBuilder();
         boolean notFirst = false;
-        for (final Object o : osToString) {
-            if (notFirst) {
-                b.append(" ");
-            } else {
-                notFirst = true;
+        if (osToString != null) {
+            for (final Object o : osToString) {
+                if (notFirst) {
+                    b.append(" ");
+                } else {
+                    notFirst = true;
+                }
+                b.append(o != null ? o.toString() : "null");
             }
-            b.append(o != null ? o.toString() : "null");
         }
         return b.toString();
     }
@@ -445,9 +458,11 @@ public final class StringUtil {
     /**
      * Returns "" if obj is null, obj.toString() otherwise.
      * @param obj
+     * @deprecated use toStringOrEmpty
      */
+    @Deprecated
     public static String emptyIfNull(final Object obj) {
-        return obj != null ? obj.toString() : EMPTY;
+        return toStringOrEmpty(obj);
     }
 
     public static boolean isWildcardOrNull(final String txt) {
