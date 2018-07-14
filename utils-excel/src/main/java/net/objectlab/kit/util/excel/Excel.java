@@ -1,23 +1,32 @@
 package net.objectlab.kit.util.excel;
 
-import org.apache.poi.ss.usermodel.*;
+import java.io.InputStream;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Name;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.ss.util.AreaReference;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.ss.util.CellReference;
-
-import java.io.InputStream;
-import java.math.BigDecimal;
-import java.util.*;
 
 public class Excel {
 
     private Workbook workbook;
 
-    public Excel(InputStream in) {
+    public Excel(final InputStream in) {
         init(in);
     }
 
-    private void init(InputStream inputStream) throws RuntimeException {
+    private void init(final InputStream inputStream) throws RuntimeException {
 
         if (inputStream == null) {
             throw new NullPointerException("inputStream cannot be null");
@@ -25,41 +34,38 @@ public class Excel {
 
         try {
             workbook = WorkbookFactory.create(inputStream);
-        } catch (Exception e) {
+        } catch (final Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    public <E> E readValueAt(String cellAddress, Class<E> type) {
+    public <E> E readValueAt(final String cellAddress, final Class<E> type) {
         return readCell(cellAt(cellAddress), type);
     }
 
-    public <E> List<E> readColumn(String rangeOrStartAddress, Class<E> type) {
+    public <E> List<E> readColumn(final String rangeOrStartAddress, final Class<E> type) {
 
-        Object[][] arr = readBlock(rangeOrStartAddress, type);
+        final Object[][] arr = readBlock(rangeOrStartAddress, type);
 
-        List<E> result = new LinkedList<E>();
-        for (int i = 0; i < arr.length; i++) {
-            result.add((E)arr[i][0]);
+        final List<E> result = new LinkedList<E>();
+        for (final Object[] element : arr) {
+            result.add((E) element[0]);
         }
 
         return result;
     }
 
-    public String namedRangeToRangeAddress(String namedRange) {
-        int namedCellIndex = getWorkbook().getNameIndex(namedRange);
-        Name namedCell = getWorkbook().getNameAt(namedCellIndex);
+    public String namedRangeToRangeAddress(final String namedRange) {
+        final int namedCellIndex = getWorkbook().getNameIndex(namedRange);
+        final Name namedCell = getWorkbook().getNameAt(namedCellIndex);
 
         return namedCell.getRefersToFormula();
     }
 
-    public Cell cellAt(String cellAddr) {
-        CellReference cr = new CellReference(cellAddr);
+    public Cell cellAt(final String cellAddr) {
+        final CellReference cr = new CellReference(cellAddr);
 
-        return workbook
-                .getSheet(cr.getSheetName())
-                .getRow(cr.getRow())
-                .getCell((int) cr.getCol());
+        return workbook.getSheet(cr.getSheetName()).getRow(cr.getRow()).getCell(cr.getCol());
     }
 
     /**
@@ -71,21 +77,21 @@ public class Excel {
      *                 data type is used until the end. So if only one value is given,
      *                 then that is used for the entire block.
      */
-    public Object[][] readBlock(String range, Class... columnTypes) {
+    public Object[][] readBlock(final String range, final Class... columnTypes) {
 
         if (columnTypes == null || columnTypes.length == 0) {
             throw new RuntimeException("columnTypes cannot be null / empty");
         }
 
-        CellRangeAddress cra = CellRangeAddress.valueOf(range);
-        AreaReference ar = new AreaReference(range);
-        Sheet sheet = workbook.getSheet(ar.getFirstCell().getSheetName());
+        final CellRangeAddress cra = CellRangeAddress.valueOf(range);
+        final AreaReference ar = new AreaReference(range);
+        final Sheet sheet = workbook.getSheet(ar.getFirstCell().getSheetName());
 
-        int firstColumn = cra.getFirstColumn();
-        int firstRow = cra.getFirstRow();
-        int lastRow = cra.getLastRow();
-        int height = lastRow - firstRow + 1;
-        int width = cra.getLastColumn() - firstColumn + 1;
+        final int firstColumn = cra.getFirstColumn();
+        final int firstRow = cra.getFirstRow();
+        final int lastRow = cra.getLastRow();
+        final int height = lastRow - firstRow + 1;
+        final int width = cra.getLastColumn() - firstColumn + 1;
 
         List<Object> result;
         if (height == 1) {
@@ -95,8 +101,8 @@ public class Excel {
         }
 
         for (int rowNum = 0; moreDataToRead(sheet, firstColumn, firstRow, lastRow, rowNum); rowNum++) {
-            Row row = sheet.getRow(firstRow + rowNum);
-            Object[] resultRow = new Object[width];
+            final Row row = sheet.getRow(firstRow + rowNum);
+            final Object[] resultRow = new Object[width];
             result.add(resultRow);
             for (int colNum = 0; colNum < width; colNum++) {
 
@@ -107,7 +113,7 @@ public class Excel {
                     colType = columnTypes[columnTypes.length - 1];
                 }
 
-                Cell cell = row.getCell(firstColumn + colNum);
+                final Cell cell = row.getCell(firstColumn + colNum);
                 resultRow[colNum] = readCell(cell, colType);
             }
 
@@ -116,16 +122,16 @@ public class Excel {
         return result.toArray(new Object[][] {});
     }
 
-    private <E> E readCell(Cell cell, Class<E> colType) {
+    private <E> E readCell(final Cell cell, final Class<E> colType) {
 
         if (colType == Date.class) {
             return (E) cell.getDateCellValue();
         } else if (colType == Calendar.class) {
-            Calendar cal = Calendar.getInstance();
+            final Calendar cal = Calendar.getInstance();
             cal.setTime(cell.getDateCellValue());
             return (E) cal;
         } else if (colType == Integer.class) {
-            return (E) ((Integer) ((Double) cell.getNumericCellValue()).intValue());
+            return (E) (Integer) ((Double) cell.getNumericCellValue()).intValue();
         } else if (colType == Double.class) {
             return (E) (Double) cell.getNumericCellValue();
         } else if (colType == BigDecimal.class) {
@@ -138,24 +144,24 @@ public class Excel {
 
     }
 
-    private boolean moreDataToRead(Sheet sheet, int firstColumn, int firstRow, int lastRow, int rowNum) {
+    private boolean moreDataToRead(final Sheet sheet, final int firstColumn, final int firstRow, final int lastRow, final int rowNum) {
 
-        int height = lastRow - firstRow + 1;
+        final int height = lastRow - firstRow + 1;
         if (height > 1 && firstRow + rowNum > lastRow) {
             return false;
         }
 
         // check if the cell is empty
-        Row row = sheet.getRow(firstRow + rowNum);
+        final Row row = sheet.getRow(firstRow + rowNum);
         if (row == null) {
             return false;
         }
 
-        Cell cell = row.getCell(firstColumn);
+        final Cell cell = row.getCell(firstColumn);
         if (cell == null) {
             return false;
         }
-        String str = cell.toString();
+        final String str = cell.toString();
         return !(str == null || "".equals(str));
     }
 

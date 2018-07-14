@@ -25,6 +25,7 @@
         <module>fxcalc</module>
         <module>fxcalc-osgi</module>
         <module>portfolio</module>
+        <module>utils-excel</module>
     </modules>
 
     <name>ObjectLab Kit</name>

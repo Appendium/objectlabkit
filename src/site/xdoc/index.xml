@@ -1,375 +1,389 @@
 <document>
 
-	<properties>
-		<author email="kit@objectlab.co.uk">Benoit Xhenseval</author>
-		<title>Introduction</title>
-	</properties>
+    <properties>
+        <author email="kit@objectlab.co.uk">Benoit Xhenseval</author>
+        <title>Introduction</title>
+    </properties>
 
-	<head>
-		<meta name="description" content="ObjectLab Kit offers free and open source Date calculators, released under the business-friendly Apache 2.0 license." />
-		<meta name="keywords" content="Date calculator, IMM Dates, Period Calculator, Financial Calendar, Business Calendar, java, open source" />
-		<meta name="Subject" content="Date Calculators" />
-		<meta name="Copyright" content="ObjectLab Financial Ltd" />
-		<meta name="Language" content="English" />
-		<meta name="Designer" content="ObjectLab Financial Ltd" />
-		<meta name="Distribution" content="Global" />
-		<meta name="robots" content="ALL" />
-		<meta name="Revisit-After" content="20 Days" />
-	</head>
+    <head>
+        <meta name="description"
+            content="ObjectLab Kit offers free and open source Date calculators, released under the business-friendly Apache 2.0 license." />
+        <meta name="keywords" content="Date calculator, IMM Dates, Period Calculator, Financial Calendar, Business Calendar, java, open source" />
+        <meta name="Subject" content="Date Calculators" />
+        <meta name="Copyright" content="ObjectLab Financial Ltd" />
+        <meta name="Language" content="English" />
+        <meta name="Designer" content="ObjectLab Financial Ltd" />
+        <meta name="Distribution" content="Global" />
+        <meta name="robots" content="ALL" />
+        <meta name="Revisit-After" content="20 Days" />
+    </head>
 
-	<body>
+    <body>
 
-		<section name="Quick News">
+        <section name="Quick News">
 
-			<p style="margin-top:10px; margin-bottom:0; padding-bottom:0; text-align:center; line-height:0">
-				<a href="http://feeds.feedburner.com/~r/ObjectlabOpenSourceNews/~6/1">
-					<img src="http://feeds.feedburner.com/ObjectlabOpenSourceNews.1.gif" alt="ObjectLab Open Source News" style="border:0" />
-				</a>
-			</p>
+            <p style="margin-top:10px; margin-bottom:0; padding-bottom:0; text-align:center; line-height:0">
+                <a href="http://feeds.feedburner.com/~r/ObjectlabOpenSourceNews/~6/1">
+                    <img src="http://feeds.feedburner.com/ObjectlabOpenSourceNews.1.gif" alt="ObjectLab Open Source News" style="border:0" />
+                </a>
+            </p>
 
-			<p>
-				Reminder: we have moved to
-				<a href="http://www.github.com/appendium/objectlabkit">GitHub</a>
-				.
-			</p>
+            <p>
+                Reminder: we have moved to
+                <a href="http://www.github.com/appendium/objectlabkit">GitHub</a>
+                .
+            </p>
 
-			<p>
-				<b>2014-08-26</b>
-				: version 1.4.0 is out and contains a new Immutable and thread safe Currency Calculator. This uses a Builder pattern. You should use this for any
-				calculation for a currency pair, do not
-				forget to register the holidays for each currency prior to getting the calculator. Spot rules for Latin
-				American currencies on T+1
-				are handled as well as the Arabic currencies with different weekends. More info about
-				<a href="currency.html">Currency Date Calculation</a>
-				and on the changes
-				<a href="changes-report.html">here</a>
-				. Finally, we are also introducing a new module the
-				<a href="objectlab-fxcalc/index.html">ObjectLab Kit FX Calculator</a>
-				use it for determining Cross Currency Market Conventions and calculating FX Cross Rates.
-			</p>
-			<p>
-				<b>2014-05-26</b>
-				: version 1.3.0 is out and contains a couple of changes to make the usage of the interfaces more fluent but mainly
-				include a NEW MODULE FOR JDK8.
-				We also officially release the objectlab-utils module for the first time, if you deal with BigDecimal, Collections etc and
-				are fed
-				up with nulls,
-				this is for you! More info on the changes
-				<a href="changes-report.html">here</a>
-				.
-			</p>
+            <p>
+                <b>2014-08-26</b>
+                : version 1.4.0 is out and contains a new Immutable and thread safe Currency Calculator. This uses a Builder pattern. You should use
+                this for any
+                calculation for a currency pair, do not
+                forget to register the holidays for each currency prior to getting the calculator. Spot rules for Latin
+                American currencies on T+1
+                are handled as well as the Arabic currencies with different weekends. More info about
+                <a href="currency.html">Currency Date Calculation</a>
+                and on the changes
+                <a href="changes-report.html">here</a>
+                . Finally, we are also introducing a new module the
+                <a href="objectlab-fxcalc/index.html">ObjectLab Kit FX Calculator</a>
+                use it for determining Cross Currency Market Conventions and calculating FX Cross Rates.
+            </p>
+            <p>
+                <b>2014-05-26</b>
+                : version 1.3.0 is out and contains a couple of changes to make the usage of the interfaces more fluent but mainly
+                include a NEW MODULE FOR JDK8.
+                We also officially release the objectlab-utils module for the first time, if you deal with BigDecimal, Collections etc and
+                are fed
+                up with nulls,
+                this is for you! More info on the changes
+                <a href="changes-report.html">here</a>
+                .
+            </p>
 
-			<p>
-				<b>2010-05-10</b>
-				: version 1.2.0 is out and contains a couple of changes, including the ability to see the registered calendar and unregistering calendars (useful
-				if calendars are dynamic).
-				More info on the changes
-				<a href="changes-report.html">here</a>
-				. Also, one of the authors is on Twitter, follow your favorite Belgian at
-				<a href="http://twitter.com/benoitx">http://twitter.com/benoitx</a>
-				.
-			</p>
+            <p>
+                <b>2010-05-10</b>
+                : version 1.2.0 is out and contains a couple of changes, including the ability to see the registered calendar and unregistering
+                calendars (useful
+                if calendars are dynamic).
+                More info on the changes
+                <a href="changes-report.html">here</a>
+                . Also, one of the authors is on Twitter, follow your favorite Belgian at
+                <a href="http://twitter.com/benoitx">http://twitter.com/benoitx</a>
+                .
+            </p>
 
-			<p>
-				<b>2007-03-25</b>:
-				version 1.1.0 is out and contains a couple of changes, a new HolidayHandler and the ability to define a valid range for the holiday (and
-				if the
-				calculation is beyond that range, an exception is thrown). This is done via HolidayCalendar which should replace the simple Set&lt;E&gt; for
-				holidays.
-				More info on the changes
-				<a href="changes-report.html">here</a>
-				.
-			</p>
+            <p>
+                <b>2007-03-25</b>:
+                version 1.1.0 is out and contains a couple of changes, a new HolidayHandler and the ability to define a valid range for the holiday
+                (and
+                if the
+                calculation is beyond that range, an exception is thrown). This is done via HolidayCalendar which should replace the simple Set&lt;E&gt; for
+                holidays.
+                More info on the changes
+                <a href="changes-report.html">here</a>
+                .
+            </p>
 
-		</section>
+        </section>
 
-		<section name="ObjectLab Kit Introduction">
+        <section name="ObjectLab Kit Introduction">
 
-			<p>
-				ObjectLab Kit came out of our frustration to have to re-do the same kind of code over and over each time we
-				joined a new company and Bank. Most
-				banks will require basic Date calculation, we did spot another open source
-				project for this but their licence forbids most financial institution
-				from using it. This one is released under
-				the business-friendly Apache 2.0 license.
-				<a
-					href="http://digg.com/submit?phase=2&amp;url=objectlabkit.sourceforge.net&amp;title=ObjectLab%20Kit%3A%20Open%20Source%20Date%20Calculators%20for%20Business%20and%20Finance&amp;bodytext=ObjectLab%20released%20version%201%2E2%2E0%20of%20ObjectLab%20Kit%20for%20Java%201%2E5,%20available%20for%20download%20via%20SourceForge%20or%20the%20Maven%20Central%20Repository%2E%20The%20Kit%20provides%20a%20Date%20Calculator%20that%20handle%20holidays,%20a%20IMM%20Date%20and%20Period%20Count%20Calculator%20and%20comes%20in%20two%20versions%3A%20one%20based%20on%20pure%20JDK%20(1%2E5)%20and%20one%20based%20on%20the%20Joda-time%20library%20(1%2E3%2B,%20JDK%201%2E5)%2E&amp;topic=programming">
-					<img src="http://digg.com/img/badges/91x17-digg-button.png" width="91" height="17" alt="Digg!" style="vertical-align:middle" />
-				</a>
-			</p>
+            <p>
+                ObjectLab Kit came out of our frustration to have to re-do the same kind of code over and over each time we
+                joined a new company and Bank. Most banks will require basic Date calculation, we did spot another open source
+                project for this but their licence forbids most financial institution
+                from using it. This one is released under the business-friendly Apache 2.0 license.
+            </p>
 
-			<subsection name="Getting Started">
-				<p>
-					DateCalc comes in 3 different implementations, both run on
-					<strong>JDK 1.5 or higher</strong>
-					:
-					<ul>
-						<li>
-							The vanilla
-							<a href="datecalc-jdk/index.html">JDK implementation</a>
-							has no external dependencies.
-						</li>
-						<li>
-							The
-							<a href="datecalc-jdk/index.html">Joda Time implementation</a>
-							, which depends on the
-							<a href="http://joda-time.sourceforge.net">Joda Time library</a>
-							(we recommend using this one).
-						</li>
-						<li>
-							The
-							<a href="datecalc-jdk8/index.html">JDK8 implementation</a>
-							, which obviously is compiled with JDK8 and makes use of the new LocalDate.
-						</li>
-					</ul>
-				</p>
-			</subsection>
+            <subsection name="The KIT">
+                <p>
+                <ul>
+                <li>Date Calculators: <a href="datecalc-jdk/index.html">JDK implementation</a>, 
+                <a href="datecalc-jdk/index.html">Joda Time implementation</a>, <a href="datecalc-jdk8/index.html">JDK8 implementation</a></li>
+                <li>The <a href="fxcalc/index.html" >FX Calc</a> for handling Currencies and Rates within the Foreign Exchange business</li>
+                <li>The Utils package for a bunch of very useful classes for Pair, Triplet, BigDecimal, Average, Standard Deviations, Console Menu, 
+                Self Caching Collections, etc see <a href="utils/index.html"> implementation</a></li>
+                <li>The Utils Excel package for read and creating simple Excel spreadsheet with Apache POI, see <a href="utils-excel/index.html">here</a></li>
+                </ul>
+                </p>
+            </subsection>
 
-			<subsection name="Maven">
-				<p>If you're using Maven, setup is easy, as DateCalc is in the Maven Central Repository.</p>
-				<p>To use the JDK Version:</p>
-				<pre class="brush: xml; gutter: false" align="">
-					&lt;dependency>
-					&lt;groupId>net.objectlab.kit&lt;/groupId>
-					&lt;artifactId>datecalc-common&lt;/artifactId>
-					&lt;version>1.4.0&lt;/version>
-					&lt;/dependency>
-					&lt;dependency>
-					&lt;groupId>net.objectlab.kit&lt;/groupId>
-					&lt;artifactId>datecalc-jdk&lt;/artifactId>
-					&lt;version>1.4.0&lt;/version>
-					&lt;/dependency>
-				</pre>
+            <subsection name="Getting Started">
+                <p>
+                    DateCalc comes in 3 different implementations, both run on
+                    <strong>JDK 1.5 or higher</strong>
+                    :
+                    <ul>
+                        <li>
+                            The vanilla
+                            <a href="datecalc-jdk/index.html">JDK implementation</a>
+                            has no external dependencies.
+                        </li>
+                        <li>
+                            The
+                            <a href="datecalc-jdk/index.html">Joda Time implementation</a>
+                            , which depends on the
+                            <a href="http://joda-time.sourceforge.net">Joda Time library</a>
+                            (we recommend using this one).
+                        </li>
+                        <li>
+                            The
+                            <a href="datecalc-jdk8/index.html">JDK8 implementation</a>
+                            , which obviously is compiled with JDK8 and makes use of the new LocalDate.
+                        </li>
+                    </ul>
+                </p>
+            </subsection>
 
-				<p>To use the JODA Version (recommended):</p>
-				<pre class="brush: xml; gutter: false">
-					&lt;dependency>
-					&lt;groupId>net.objectlab.kit&lt;/groupId>
-					&lt;artifactId>datecalc-common&lt;/artifactId>
-					&lt;version>1.4.0&lt;/version>
-					&lt;/dependency>
-					&lt;dependency>
-					&lt;groupId>net.objectlab.kit&lt;/groupId>
-					&lt;artifactId>datecalc-joda&lt;/artifactId>
-					&lt;version>1.4.0&lt;/version>
-					&lt;/dependency>
-				</pre>
-				<p>To use the JDK8 Version:</p>
-				<pre class="brush: xml; gutter: false">
-					&lt;dependency>
-					&lt;groupId>net.objectlab.kit&lt;/groupId>
-					&lt;artifactId>datecalc-common&lt;/artifactId>
-					&lt;version>1.4.0&lt;/version>
-					&lt;/dependency>
-					&lt;dependency>
-					&lt;groupId>net.objectlab.kit&lt;/groupId>
-					&lt;artifactId>datecalc-jdk8&lt;/artifactId>
-					&lt;version>1.4.0&lt;/version>
-					&lt;/dependency>
-				</pre>
-			</subsection>
+            <subsection name="Maven">
+                <p>If you're using Maven, setup is easy, as DateCalc is in the Maven Central Repository.</p>
+                <p>To use the JDK Version:</p>
+                <pre class="brush: xml; gutter: false" align="">
+                    &lt;dependency>
+                    &lt;groupId>net.objectlab.kit&lt;/groupId>
+                    &lt;artifactId>datecalc-common&lt;/artifactId>
+                    &lt;version>1.4.0&lt;/version>
+                    &lt;/dependency>
+                    &lt;dependency>
+                    &lt;groupId>net.objectlab.kit&lt;/groupId>
+                    &lt;artifactId>datecalc-jdk&lt;/artifactId>
+                    &lt;version>1.4.0&lt;/version>
+                    &lt;/dependency>
+                </pre>
 
-			<subsection name="Download the Jars">
-				<p>
-					If you are not using Maven, you can
-					<a href="https://sourceforge.net/projects/objectlabkit/files/">download the jars here</a>
-					.
-				</p>
-			</subsection>
+                <p>To use the JODA Version (recommended):</p>
+                <pre class="brush: xml; gutter: false">
+                    &lt;dependency>
+                    &lt;groupId>net.objectlab.kit&lt;/groupId>
+                    &lt;artifactId>datecalc-common&lt;/artifactId>
+                    &lt;version>1.4.0&lt;/version>
+                    &lt;/dependency>
+                    &lt;dependency>
+                    &lt;groupId>net.objectlab.kit&lt;/groupId>
+                    &lt;artifactId>datecalc-joda&lt;/artifactId>
+                    &lt;version>1.4.0&lt;/version>
+                    &lt;/dependency>
+                </pre>
+                <p>To use the JDK8 Version:</p>
+                <pre class="brush: xml; gutter: false">
+                    &lt;dependency>
+                    &lt;groupId>net.objectlab.kit&lt;/groupId>
+                    &lt;artifactId>datecalc-common&lt;/artifactId>
+                    &lt;version>1.4.0&lt;/version>
+                    &lt;/dependency>
+                    &lt;dependency>
+                    &lt;groupId>net.objectlab.kit&lt;/groupId>
+                    &lt;artifactId>datecalc-jdk8&lt;/artifactId>
+                    &lt;version>1.4.0&lt;/version>
+                    &lt;/dependency>
+                </pre>
+            </subsection>
 
-			<subsection name="Date Calculations? What is that?">
-				<p>
-					Apart from the very basic "add days" features, most business have to
-					<strong>deal with Holidays</strong>
-					and what to do when a
-					<strong>calculated day falls on a holiday</strong>
-					. This library does
-					<strong>not</strong>
-					attempt to create or guess the holidays, we
-					all know that some bank holidays can be decided at a moment's notice in some markets. All financial
-					institutions or
-					big business will have their own official list of 'holidays' anyway.
-				</p>
-				<p>Furthermore, "weekends" also need to be handled and some market have a different week to the conventional Monday ->
-					Friday, our library provides
-					you with full flexibility to design a Working Week.
-				</p>
-				<p>
-					As such a Non-working Day can be a holiday or a 'weekend'. Also note that CurrencyPairs have a specialised calculator as the rules can be
-					'weird'. See
-					<a href="currency.html">for more info</a>
-					.
-				</p>
-			</subsection>
+            <subsection name="Download the Jars">
+                <p>
+                    If you are not using Maven, you can
+                    <a href="https://sourceforge.net/projects/objectlabkit/files/">download the jars here</a>
+                    .
+                </p>
+            </subsection>
 
-
-			<subsection name="Ok, what algorithm for handling a holiday do you support?">
-				<p>At the moment, we support the following 6 algorithms:</p>
-				<ol>
-					<li>
-						<strong>Do Nothing</strong>
-						, i.e. leave the date as-is, even if it is a non-working day.
-					</li>
-					<li>
-						<strong>Forward</strong>
-						, if the date is a non-working day, move forward to the next working day.
-					</li>
-					<li>
-						<strong>Backward</strong>
-						, if the date is a non-working day, move backward to the previous working day.
-					</li>
-					<li>
-						<strong>Modified Following</strong>
-						, if the date is a non-working day, move forward to the next working day,
-						UNLESS it crosses over a new month, in which case we revert to find the
-						last working day of the current month.
-					</li>
-					<li>
-						<strong>Modified Preceeding</strong>
-						, if the date is a non-working day, move backward to the previous working day,
-						UNLESS it crosses over a new month, in which case we revert to
-						find the next working day of the current month.
-					</li>
-					<li>
-						<strong>ForwardUnlessNegative</strong>
-						(new with v1.1.0), acts like a Forward algo unless the increment is negative, in which case it behaves like Backward.
-					</li>
-				</ol>
-				<p>
-					See this page for some
-					<a href="algo.html">examples</a>
-					.
-				</p>
-			</subsection>
-
-			<subsection name="Main interfaces">
-				<p>The main interfaces are:</p>
-				<ul>
-					<li>
-						<a href="apidocs/index.html?net/objectlab/kit/datecalc/common/DateCalculator.html">DateCalculator</a>
-						for all Date calculations.
-					</li>
-					<li>
-						<a href="apidocs/index.html?net/objectlab/kit/datecalc/common/PeriodCountCalculator.html">PeriodCountCalculator</a>
-						for all day, month and year diff calculations.
-					</li>
-					<li>
-						<a href="apidocs/index.html?net/objectlab/kit/datecalc/common/IMMDateCalculator.html">IMMDateCalculator</a>
-						for all IMM calculations (International Money Market).
-					</li>
-				</ul>
-
-				<p>Here are the examples of how to get a DateCalculator "forward" for the "UK" holidays (if you have registered the holidays). The WorkingWeek is
-					Mon-Fri by default.
-				</p>
-				<h4>JDK</h4>
-				<p>2 implementations for Pure 'old' JDK have been released</p>
-				<ol>
-					<li>
-						<strong>
-							<code>Calendar</code>
-						</strong>
-						:
-						<script src="https://gist.github.com/benoitx/8e735d9ede49a9858c60.js"></script>
-					</li>
-					<li>
-						<strong>
-							<code>Date</code>
-						</strong>
-						:
-						<script src="https://gist.github.com/benoitx/066b425fe9f63971387c.js"></script>
-					</li>
-				</ol>
-
-				<h4>JODA</h4>
-				<p>2 implementations for Joda have been released</p>
-				<ol>
-					<li>
-						<strong>
-							<code>LocalDate</code>
-						</strong>
-						(recommended):
-						<script src="https://gist.github.com/benoitx/2b820881b500a8c6c0d2.js"></script>
-					</li>
-					<li>
-						<strong>
-							<code>YearMonthDay</code>
-						</strong>
-						:
-						<script src="https://gist.github.com/benoitx/7e5cf0bb1db54aad6832.js"></script>
-					</li>
-				</ol>
+            <subsection name="Date Calculations? What is that?">
+                <p>
+                    Apart from the very basic "add days" features, most business have to
+                    <strong>deal with Holidays</strong>
+                    and what to do when a
+                    <strong>calculated day falls on a holiday</strong>
+                    . This library does
+                    <strong>not</strong>
+                    attempt to create or guess the holidays, we
+                    all know that some bank holidays can be decided at a moment's notice in some markets. All financial
+                    institutions or
+                    big business will have their own official list of 'holidays' anyway.
+                </p>
+                <p>Furthermore, "weekends" also need to be handled and some market have a different week to the conventional Monday ->
+                    Friday, our library provides
+                    you with full flexibility to design a Working Week.
+                </p>
+                <p>
+                    As such a Non-working Day can be a holiday or a 'weekend'. Also note that CurrencyPairs have a specialised calculator as the rules
+                    can be
+                    'weird'. See
+                    <a href="currency.html">for more info</a>
+                    .
+                </p>
+            </subsection>
 
 
+            <subsection name="Ok, what algorithm for handling a holiday do you support?">
+                <p>At the moment, we support the following 6 algorithms:</p>
+                <ol>
+                    <li>
+                        <strong>Do Nothing</strong>
+                        , i.e. leave the date as-is, even if it is a non-working day.
+                    </li>
+                    <li>
+                        <strong>Forward</strong>
+                        , if the date is a non-working day, move forward to the next working day.
+                    </li>
+                    <li>
+                        <strong>Backward</strong>
+                        , if the date is a non-working day, move backward to the previous working day.
+                    </li>
+                    <li>
+                        <strong>Modified Following</strong>
+                        , if the date is a non-working day, move forward to the next working day,
+                        UNLESS it crosses over a new month, in which case we revert to find the
+                        last working day of the current month.
+                    </li>
+                    <li>
+                        <strong>Modified Preceeding</strong>
+                        , if the date is a non-working day, move backward to the previous working day,
+                        UNLESS it crosses over a new month, in which case we revert to
+                        find the next working day of the current month.
+                    </li>
+                    <li>
+                        <strong>ForwardUnlessNegative</strong>
+                        (new with v1.1.0), acts like a Forward algo unless the increment is negative, in which case it behaves like Backward.
+                    </li>
+                </ol>
+                <p>
+                    See this page for some
+                    <a href="algo.html">examples</a>
+                    .
+                </p>
+            </subsection>
 
-				<h4>JDK8</h4>
-				<p>1 implementations for JDK8 has been released</p>
-				<ol>
-					<li>
-						<strong>
-							<code>LocalDate</code>
-						</strong>
-						:
-						<script src="https://gist.github.com/benoitx/571316d6a0c5bbcddf14.js"></script>
-					</li>
-				</ol>
+            <subsection name="Main interfaces">
+                <p>The main interfaces are:</p>
+                <ul>
+                    <li>
+                        <a href="apidocs/index.html?net/objectlab/kit/datecalc/common/DateCalculator.html">DateCalculator</a>
+                        for all Date calculations.
+                    </li>
+                    <li>
+                        <a href="apidocs/index.html?net/objectlab/kit/datecalc/common/PeriodCountCalculator.html">PeriodCountCalculator</a>
+                        for all day, month and year diff calculations.
+                    </li>
+                    <li>
+                        <a href="apidocs/index.html?net/objectlab/kit/datecalc/common/IMMDateCalculator.html">IMMDateCalculator</a>
+                        for all IMM calculations (International Money Market).
+                    </li>
+                </ul>
+
+                <p>Here are the examples of how to get a DateCalculator "forward" for the "UK" holidays (if you have registered the holidays). The
+                    WorkingWeek is
+                    Mon-Fri by default.
+                </p>
+                <h4>JDK</h4>
+                <p>2 implementations for Pure 'old' JDK have been released</p>
+                <ol>
+                    <li>
+                        <strong>
+                            <code>Calendar</code>
+                        </strong>
+                        :
+                        <script src="https://gist.github.com/benoitx/8e735d9ede49a9858c60.js"></script>
+                    </li>
+                    <li>
+                        <strong>
+                            <code>Date</code>
+                        </strong>
+                        :
+                        <script src="https://gist.github.com/benoitx/066b425fe9f63971387c.js"></script>
+                    </li>
+                </ol>
+
+                <h4>JODA</h4>
+                <p>2 implementations for Joda have been released</p>
+                <ol>
+                    <li>
+                        <strong>
+                            <code>LocalDate</code>
+                        </strong>
+                        (recommended):
+                        <script src="https://gist.github.com/benoitx/2b820881b500a8c6c0d2.js"></script>
+                    </li>
+                    <li>
+                        <strong>
+                            <code>YearMonthDay</code>
+                        </strong>
+                        :
+                        <script src="https://gist.github.com/benoitx/7e5cf0bb1db54aad6832.js"></script>
+                    </li>
+                </ol>
 
 
-			</subsection>
-		</section>
 
-		<section name="How do I use it?">
-			<p>There are several steps</p>
-			<ul>
-				<li>Register holidays in the factory by calling registerHolidays(final String name, HolidayCalendar&lt;Date> holidays)</li>
-				<li>
-					Use the factory to get a DateCalculator with a given Handler (forward/backward etc), it is a disposable object that should
-					<strong>not</strong>
-					be shared accross threads, each thread should get its own!
-				</li>
-				<li>when you get a DateCalculator, you can set the startDate, this sets the currentDate too. The startDate does not move. The current date is the
-					result of your calculations. If the startDate is a non-working day, it may be moved automatically according to the HolidayHandler.
-				</li>
-				<li>when you call moveByDays(..), moveByBusinessDays(..), moveByTenor the currentDate is moved in the Calculator.</li>
-			</ul>
+                <h4>JDK8</h4>
+                <p>1 implementations for JDK8 has been released</p>
+                <ol>
+                    <li>
+                        <strong>
+                            <code>LocalDate</code>
+                        </strong>
+                        :
+                        <script src="https://gist.github.com/benoitx/571316d6a0c5bbcddf14.js"></script>
+                    </li>
+                </ol>
 
-			<subsection name="Using Joda CurrencyDateCalculator">
-				<script src="https://gist.github.com/benoitx/7f98237d27b8978ae9d8.js"></script>
-			</subsection>
 
-			<subsection name="Using Joda CurrencyDateCalculator with Builder">
-				<script src="https://gist.github.com/benoitx/ef5a76955fe27cf856ed.js"></script>
-			</subsection>
+            </subsection>
+        </section>
 
-			<subsection name="Using Joda Time LocalDate">
-				<script src="https://gist.github.com/benoitx/0b05de796fe94ebc04c2.js"></script>
-			</subsection>
+        <section name="How do I use it?">
+            <p>There are several steps</p>
+            <ul>
+                <li>Register holidays in the factory by calling registerHolidays(final String name, HolidayCalendar&lt;Date> holidays)</li>
+                <li>
+                    Use the factory to get a DateCalculator with a given Handler (forward/backward etc), it is a disposable object that should
+                    <strong>not</strong>
+                    be shared accross threads, each thread should get its own!
+                </li>
+                <li>when you get a DateCalculator, you can set the startDate, this sets the currentDate too. The startDate does not move. The current
+                    date is the
+                    result of your calculations. If the startDate is a non-working day, it may be moved automatically according to the HolidayHandler.
+                </li>
+                <li>when you call moveByDays(..), moveByBusinessDays(..), moveByTenor the currentDate is moved in the Calculator.</li>
+            </ul>
 
-			<subsection name="Using JDK Calendar">
-				<script src="https://gist.github.com/benoitx/968197fea6531fe4278f.js"></script>
-			</subsection>
+            <subsection name="Using Joda CurrencyDateCalculator">
+                <script src="https://gist.github.com/benoitx/7f98237d27b8978ae9d8.js"></script>
+            </subsection>
 
-			<subsection name="Using JDK8 LocalDate">
-				<script src="https://gist.github.com/benoitx/4ef7b83eab810d100222.js"></script>
-			</subsection>
+            <subsection name="Using Joda CurrencyDateCalculator with Builder">
+                <script src="https://gist.github.com/benoitx/ef5a76955fe27cf856ed.js"></script>
+            </subsection>
 
-			<subsection name="Using Util Total">
-				<script src="https://gist.github.com/benoitx/d0ae6a38789cb5b25c24.js"></script>
-			</subsection>
+            <subsection name="Using Joda Time LocalDate">
+                <script src="https://gist.github.com/benoitx/0b05de796fe94ebc04c2.js"></script>
+            </subsection>
 
-			<subsection name="Using Util Average">
-				<script src="https://gist.github.com/benoitx/c5ff5d0822ff149432cd.js"></script>
-			</subsection>
+            <subsection name="Using JDK Calendar">
+                <script src="https://gist.github.com/benoitx/968197fea6531fe4278f.js"></script>
+            </subsection>
 
-			<subsection name="Using Util WeightedAverage">
-				<script src="https://gist.github.com/benoitx/1f8c8e3059bc755822f6.js"></script>
-			</subsection>
+            <subsection name="Using JDK8 LocalDate">
+                <script src="https://gist.github.com/benoitx/4ef7b83eab810d100222.js"></script>
+            </subsection>
 
-			<subsection name="Using Util Pair">
-				<script src="https://gist.github.com/benoitx/64ded027285cea142402.js"></script>
-				Similar usage for Triplet and Quadruplet (but you would probably better model those as proper domain classes).
-			</subsection>
-		</section>
+            <subsection name="Using Util Total">
+                <script src="https://gist.github.com/benoitx/d0ae6a38789cb5b25c24.js"></script>
+            </subsection>
 
-	</body>
+            <subsection name="Using Util Average">
+                <script src="https://gist.github.com/benoitx/c5ff5d0822ff149432cd.js"></script>
+            </subsection>
+
+            <subsection name="Using Util WeightedAverage">
+                <script src="https://gist.github.com/benoitx/1f8c8e3059bc755822f6.js"></script>
+            </subsection>
+
+            <subsection name="Using Util Pair">
+                <script src="https://gist.github.com/benoitx/64ded027285cea142402.js"></script>
+                Similar usage for Triplet and Quadruplet (but you would probably better model those as proper domain classes).
+            </subsection>
+        </section>
+
+    </body>
 </document>

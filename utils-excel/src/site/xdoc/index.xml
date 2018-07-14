@@ -1,0 +1,48 @@
+<document>
+
+	<properties>
+		<author email="kit@objectlab.co.uk">Benoit Xhenseval</author>
+		<title>Utils Excel</title>
+	</properties>
+
+	<head>
+		<meta name="description" content="ObjectLab Kit offers free and open source Date calculators, released under the business-friendly Apache 2.0 license." />
+		<meta name="keywords" content="Date calculator, IMM Dates, Period Calculator, Financial Calendar, Business Calendar, java, open source" />
+		<meta name="Subject" content="Date Calculators" />
+		<meta name="Copyright" content="ObjectLab Financial Ltd" />
+		<meta name="Language" content="English" />
+		<meta name="Designer" content="ObjectLab Financial Ltd" />
+		<meta name="Distribution" content="Global" />
+		<meta name="robots" content="ALL" />
+		<meta name="Revisit-After" content="20 Days" />
+	</head>
+
+	<body>
+		<section name="Utils Excel Introduction">
+			<p>Small package to help with Excel spreadsheet manipulation via Apache POI.</p>
+		</section>
+		<section name="Examples">
+			<subsection name="Using Util Total">
+				<script src="https://gist.github.com/benoitx/d0ae6a38789cb5b25c24.js"></script>
+			</subsection>
+			<subsection name="Using Util Average">
+				<script src="https://gist.github.com/benoitx/c5ff5d0822ff149432cd.js"></script>
+			</subsection>
+
+			<subsection name="Using Util WeightedAverage">
+				<script src="https://gist.github.com/benoitx/1f8c8e3059bc755822f6.js"></script>
+			</subsection>
+
+			<subsection name="Using Util Pair">
+				<script src="https://gist.github.com/benoitx/64ded027285cea142402.js"></script>
+				Similar usage for Triplet and Quadruplet (but you would probably better model those as proper domain classes).
+			</subsection>
+
+			<subsection name="Using Utils">
+				<script src="https://gist.github.com/benoitx/4141a4e8a0be18fbfae2.js"></script>
+			</subsection>
+		</section>
+
+	</body>
+
+</document>
