@@ -48,7 +48,7 @@ import org.apache.commons.lang.time.FastDateFormat;
  *
  */
 public final class StringUtil {
-    private static final FastDateFormat DATETIME_FORMAT = FastDateFormat.getInstance("dd-MMM-yyyy hh:mm:ss");
+    private static final FastDateFormat DATETIME_FORMAT = FastDateFormat.getInstance("dd-MMM-yyyy HH:mm:ss");
     private static final FastDateFormat FILE_TIMESTAMP_FORMAT = FastDateFormat.getInstance("yyyyMMdd-HHmmss");
     private static final String NEWLINE_TOKEN = "%CR%";
     private static final CharSequence TOKEN = "%";
@@ -342,10 +342,14 @@ public final class StringUtil {
     }
 
     public static boolean noneBlank(final String... text) {
-        for (final String txt : text) {
-            if (StringUtils.isBlank(txt)) {
-                return false;
+        if (text != null) {
+            for (final String txt : text) {
+                if (StringUtils.isBlank(txt)) {
+                    return false;
+                }
             }
+        } else {
+            return false;
         }
         return true;
     }

@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.fail;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -55,14 +56,14 @@ public class StringUtilTest {
         assertThat(StringUtil.isNotBlank(BigDecimal.ONE)).isFalse();
     }
 
-    @Ignore
+    @Test
     public void testDefaultFormatDatetime() {
-        fail("Not yet implemented");
+        assertThat(StringUtil.defaultFormatDatetime(new Date(1531603574189L))).isEqualToIgnoringCase("14-Jul-2018 22:26:14");
     }
 
-    @Ignore
+    @Test
     public void testDefaultFileFormatTimestamp() {
-        fail("Not yet implemented");
+        assertThat(StringUtil.defaultFileFormatTimestamp(new Date(1531603574189L))).isEqualToIgnoringCase("20180714-222614");
     }
 
     @Ignore
@@ -70,9 +71,18 @@ public class StringUtilTest {
         fail("Not yet implemented");
     }
 
-    @Ignore
+    @Test
     public void testReplace() {
-        fail("Not yet implemented");
+        assertThat(StringUtil.replace(null, null, null)).isNull();
+        assertThat(StringUtil.replace("hi", null, null)).isNull();
+        assertThat(StringUtil.replace("hi", "ho", null)).isNull();
+        assertThat(StringUtil.replace("hi", "Ho", "")).isEmpty();
+        assertThat(StringUtil.replace(null, null, "Hello")).isEqualTo("Hello");
+        assertThat(StringUtil.replace("H", "Ti", "Hello")).isEqualTo("Tiello");
+        assertThat(StringUtil.replace("WW", "Ti", "Hello")).isEqualTo("Hello");
+        assertThat(StringUtil.replace("l", "Ti", "Hello")).isEqualTo("HeTiTio");
+        assertThat(StringUtil.replace("l", null, "Hello")).isEqualTo("Henullnullo");
+        assertThat(StringUtil.replace(null, "@@", "Hello")).isEqualTo("Hello");
     }
 
     @Ignore
@@ -85,14 +95,50 @@ public class StringUtilTest {
         fail("Not yet implemented");
     }
 
-    @Ignore
+    @Test
     public void testTrimAndUpperCase() {
-        fail("Not yet implemented");
+        assertThat(StringUtil.trimAndUpperCase(null)).isNull();
+        assertThat(StringUtil.trimAndUpperCase("")).isEmpty();
+        assertThat(StringUtil.trimAndUpperCase("hi")).isEqualTo("HI");
+        assertThat(StringUtil.trimAndUpperCase("  hi")).isEqualTo("HI");
+        assertThat(StringUtil.trimAndUpperCase("  hi  ")).isEqualTo("HI");
+        assertThat(StringUtil.trimAndUpperCase(" hi      ")).isEqualTo("HI");
     }
 
-    @Ignore
+    @Test
     public void testToLowerCaseString() {
-        fail("Not yet implemented");
+        assertThat(StringUtil.toLowerCase((String) null)).isNull();
+        assertThat(StringUtil.toLowerCase("")).isEmpty();
+        assertThat(StringUtil.toLowerCase("hi")).isEqualTo("hi");
+        assertThat(StringUtil.toLowerCase("  hI")).isEqualTo("  hi");
+        assertThat(StringUtil.toLowerCase("  Hi HO  ")).isEqualTo("  hi ho  ");
+        assertThat(StringUtil.toLowerCase(" hi      ")).isEqualTo(" hi      ");
+    }
+
+    @Test
+    public void testSingleQuote() {
+        assertThat(StringUtil.singleQuote("")).isEqualTo("''");
+        assertThat(StringUtil.singleQuote(null)).isEqualTo("''");
+        assertThat(StringUtil.singleQuote("Hi World")).isEqualTo("'Hi World'");
+        assertThat(StringUtil.singleQuote(" Hi World")).isEqualTo("' Hi World'");
+    }
+
+    @Test
+    public void testNoneBlank() {
+        assertThat(StringUtil.noneBlank("hi")).isTrue();
+        assertThat(StringUtil.noneBlank("hi", "ho", "World")).isTrue();
+        assertThat(StringUtil.noneBlank("hi", "ho", null, "World")).isFalse();
+        assertThat(StringUtil.noneBlank("hi", "ho", "", "World")).isFalse();
+        assertThat(StringUtil.noneBlank(null)).isFalse();
+        assertThat(StringUtil.noneBlank("")).isFalse();
+    }
+
+    @Test
+    public void testTrim() {
+        assertThat(StringUtil.trim(null)).isNull();
+        assertThat(StringUtil.trim("")).isEmpty();
+        assertThat(StringUtil.trim("     ")).isEmpty();
+        assertThat(StringUtil.trim("   hi  ")).isEqualTo("hi");
     }
 
     @Ignore
@@ -112,16 +158,6 @@ public class StringUtilTest {
 
     @Ignore
     public void testToStringOrEmpty() {
-        fail("Not yet implemented");
-    }
-
-    @Ignore
-    public void testSingleQuote() {
-        fail("Not yet implemented");
-    }
-
-    @Ignore
-    public void testNoneBlank() {
         fail("Not yet implemented");
     }
 
@@ -167,11 +203,6 @@ public class StringUtilTest {
 
     @Ignore
     public void testFirstCharToUpper() {
-        fail("Not yet implemented");
-    }
-
-    @Ignore
-    public void testTrim() {
         fail("Not yet implemented");
     }
 
