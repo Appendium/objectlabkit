@@ -1,6 +1,7 @@
 [![Build Status](https://secure.travis-ci.org/Appendium/objectlabkit.png?branch=master)](http://travis-ci.org/Appendium/objectlabkit) [![Stories in Ready](https://badge.waffle.io/Appendium/objectlabkit.png?label=ready)](https://waffle.io/Appendium/objectlabkit) 
 Date Calc: [![Maven Central DateCalculator](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/datecalc-common/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/datecalc-common)
 Utils: [![Maven Central Utils](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-utils/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-utils)
+Utils Excel: [![Maven Central Utils](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-utils-excel/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-utils-excel)
 ![GitHub license](https://img.shields.io/github/license/appendium/objectlabkit.svg?style=flat-square)
 [![Quality Gate](https://sonarcloud.io/api/badges/gate?key=net.objectlab.kit:kit-parent)](https://sonarcloud.io/dashboard/index/net.objectlab.kit:kit-parent)    
 ObjectLab Kit
@@ -12,6 +13,7 @@ ObjectLab Kit
   * for JODA using Joda LocalDate
 * FX Rate Calculators (including Cross currencies calculations and MonetaryAmount), requires JDK8
 * Utils: set of utilities like Pair, Triplet, Total and BigDecimal that can handle nulls! requires JDK8
+* Utils Excel: set of convenient classes to create an Excel Spreadsheet via POI easily.
 
 [ObjectLab Kit site](http://objectlabkit.sf.net)
 
