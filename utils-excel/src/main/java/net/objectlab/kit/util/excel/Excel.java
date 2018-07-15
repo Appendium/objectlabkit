@@ -26,7 +26,7 @@ public class Excel {
         init(in);
     }
 
-    private void init(final InputStream inputStream) throws RuntimeException {
+    private void init(final InputStream inputStream) {
 
         if (inputStream == null) {
             throw new NullPointerException("inputStream cannot be null");
@@ -35,7 +35,7 @@ public class Excel {
         try {
             workbook = WorkbookFactory.create(inputStream);
         } catch (final Exception e) {
-            throw new RuntimeException(e);
+            throw new ExcelException(e);
         }
     }
 
@@ -139,7 +139,7 @@ public class Excel {
         } else if (colType == String.class) {
             return (E) cell.getRichStringCellValue().getString();
         } else {
-            throw new RuntimeException("Column type not supported: " + colType);
+            throw new ExcelException("Column type not supported: " + colType);
         }
 
     }
