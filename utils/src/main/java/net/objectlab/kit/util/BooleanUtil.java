@@ -52,15 +52,19 @@ public final class BooleanUtil {
     }
 
     public static boolean isTrueOrNull(final Boolean b) {
-        return b == null ? true : b;
+        return b == null || b;
     }
 
     public static boolean isFalseOrNull(final Boolean b) {
-        return b == null ? true : !b;
+        return b == null || !b;
     }
 
     public static boolean isTrue(final Boolean b) {
-        return b == null ? false : b;
+        return b != null && b;
+    }
+
+    public static boolean isFalse(final Boolean b) {
+        return b != null && !b;
     }
 
     /**
@@ -68,9 +72,5 @@ public final class BooleanUtil {
      */
     public static boolean isTrue(final String str) {
         return str == null ? false : StringUtil.equalsAnyIgnoreCase(StringUtil.trim(str), "yes", "y", "TRUE", "t");
-    }
-
-    public static boolean isFalse(final Boolean b) {
-        return b == null ? false : !b;
     }
 }
