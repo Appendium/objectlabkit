@@ -8,11 +8,12 @@ import org.apache.commons.lang.StringUtils;
 import net.objectlab.kit.pf.ExistingPortfolio;
 import net.objectlab.kit.pf.RuleIssue;
 import net.objectlab.kit.pf.Severity;
+import net.objectlab.kit.pf.ValidatedPortfolioLine;
 import net.objectlab.kit.pf.ValidationResults;
 import net.objectlab.kit.util.StringUtil;
 
 public class Results implements ValidationResults {
-    private final List<ValidatedPortfolioLineImpl> lines = new ArrayList<>();
+    private final List<ValidatedPortfolioLine> lines = new ArrayList<>();
 
     private final List<RuleIssue> issues = new ArrayList<>();
 
@@ -35,7 +36,7 @@ public class Results implements ValidationResults {
     }
 
     @Override
-    public List<ValidatedPortfolioLineImpl> getLines() {
+    public List<ValidatedPortfolioLine> getLines() {
         return lines;
     }
 

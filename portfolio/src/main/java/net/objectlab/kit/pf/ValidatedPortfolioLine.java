@@ -9,4 +9,8 @@ public interface ValidatedPortfolioLine extends ExistingPortfolioLine {
     boolean isValid();
 
     List<RuleIssue> getIssues();
+
+    void addIssue(Severity sev, String ruleName, String message);
+
+    void setAllocationWeight(BigDecimal allocationWeight);
 }

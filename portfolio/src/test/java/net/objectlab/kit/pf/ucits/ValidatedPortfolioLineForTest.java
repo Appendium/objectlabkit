@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import net.objectlab.kit.pf.RuleIssue;
+import net.objectlab.kit.pf.Severity;
 import net.objectlab.kit.pf.ValidatedPortfolioLine;
 
 public class ValidatedPortfolioLineForTest implements ValidatedPortfolioLine {
@@ -98,7 +99,14 @@ public class ValidatedPortfolioLineForTest implements ValidatedPortfolioLine {
         return allocationWeight;
     }
 
+    @Override
     public void setAllocationWeight(final BigDecimal allocationWeight) {
         this.allocationWeight = allocationWeight;
+    }
+
+    @Override
+    public void addIssue(Severity sev, String ruleName, String message) {
+        // TODO Auto-generated method stub
+
     }
 }

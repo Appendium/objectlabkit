@@ -7,5 +7,5 @@ public interface ValidationResults {
 
     List<RuleIssue> getIssues();
 
-    List<? extends ValidatedPortfolioLine> getLines();
+    List<ValidatedPortfolioLine> getLines();
 }

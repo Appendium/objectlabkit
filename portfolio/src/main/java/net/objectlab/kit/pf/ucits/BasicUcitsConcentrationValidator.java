@@ -11,10 +11,10 @@ import net.objectlab.kit.pf.AssetEligibilityProvider;
 import net.objectlab.kit.pf.ExistingPortfolio;
 import net.objectlab.kit.pf.RuleNames;
 import net.objectlab.kit.pf.Severity;
+import net.objectlab.kit.pf.ValidatedPortfolioLine;
 import net.objectlab.kit.pf.ValidationEngine;
 import net.objectlab.kit.pf.ValidationResults;
 import net.objectlab.kit.pf.validator.Results;
-import net.objectlab.kit.pf.validator.ValidatedPortfolioLineImpl;
 import net.objectlab.kit.util.BigDecimalUtil;
 import net.objectlab.kit.util.Total;
 
@@ -81,7 +81,7 @@ public class BasicUcitsConcentrationValidator implements ValidationEngine {
     private static final class TotalPerIssuer {
         private final String issuer;
         private final Total total = new Total();
-        private final List<ValidatedPortfolioLineImpl> lines = new ArrayList<>();
+        private final List<ValidatedPortfolioLine> lines = new ArrayList<>();
 
         public TotalPerIssuer(String issuer) {
             this.issuer = issuer;
@@ -91,7 +91,7 @@ public class BasicUcitsConcentrationValidator implements ValidationEngine {
             return issuer;
         }
 
-        public void add(final ValidatedPortfolioLineImpl l) {
+        public void add(final ValidatedPortfolioLine l) {
             lines.add(l);
             total.add(l.getAllocationWeight());
         }
@@ -100,7 +100,7 @@ public class BasicUcitsConcentrationValidator implements ValidationEngine {
             return total.getTotal();
         }
 
-        public List<ValidatedPortfolioLineImpl> getLines() {
+        public List<ValidatedPortfolioLine> getLines() {
             return lines;
         }
     }
@@ -122,13 +122,13 @@ public class BasicUcitsConcentrationValidator implements ValidationEngine {
             }
             l.setAllocationWeight(BigDecimalUtil.divide(8, l.getValueInPortfolioCcy(), porfolioValue, BigDecimal.ROUND_HALF_UP));
             // calculate the weight for each issuer
-                totalPerIssuer.computeIfAbsent(assetDetailsProvider.getDetails(l.getAssetCode()).getUltimateIssuerCode(), k -> new TotalPerIssuer(k))
-                        .add(l);
+            totalPerIssuer.computeIfAbsent(assetDetailsProvider.getDetails(l.getAssetCode()).getUltimateIssuerCode(), k -> new TotalPerIssuer(k))
+                    .add(l);
 
-            });
+        });
 
         final Total totalMediumConcentration = new Total();
-        final List<ValidatedPortfolioLineImpl> mediumLines = new ArrayList<>();
+        final List<ValidatedPortfolioLine> mediumLines = new ArrayList<>();
         totalPerIssuer.values().forEach(issuer -> {
             final BigDecimal totalWeight = issuer.getTotalWeight();
             if (BigDecimalUtil.compareTo(totalWeight, maxConcentrationPerIssuer) > 0) {
@@ -145,9 +145,7 @@ public class BasicUcitsConcentrationValidator implements ValidationEngine {
 
         // if sum of those > maxForMediumConcentration -> Breach
         if (BigDecimalUtil.compareTo(totalMediumConcentration.getTotal(), maxForMediumConcentration) > 0) {
-            mediumLines.forEach(line -> line.addIssue(
-                    Severity.MANDATORY,
-                    RuleNames.ISSUER_MEDIUM_CONCENTRATION,
+            mediumLines.forEach(line -> line.addIssue(Severity.MANDATORY, RuleNames.ISSUER_MEDIUM_CONCENTRATION,
                     "Total medium concentration is above " + BigDecimalUtil.movePoint(maxForMediumConcentration, 2) + "% ["
                             + BigDecimalUtil.movePoint(totalMediumConcentration.getTotal(), 2) + "]"));
 
