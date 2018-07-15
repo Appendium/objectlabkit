@@ -34,6 +34,7 @@ package net.objectlab.kit.datecalc.jdk;
 
 import java.util.Calendar;
 
+import net.objectlab.kit.datecalc.common.CalculatorConstants;
 import net.objectlab.kit.datecalc.common.PeriodCountBasis;
 import net.objectlab.kit.datecalc.common.PeriodCountCalculator;
 
@@ -76,13 +77,13 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
         int diff;
         int dayStart = start.get(Calendar.DAY_OF_MONTH);
         int dayEnd = end.get(Calendar.DAY_OF_MONTH);
-        if (dayEnd == MONTH_31_DAYS) {
-            dayEnd = MONTH_30_DAYS;
+        if (dayEnd == CalculatorConstants.MONTH_31_DAYS) {
+            dayEnd = CalculatorConstants.MONTH_30_DAYS;
         }
-        if (dayStart == MONTH_31_DAYS) {
-            dayStart = MONTH_30_DAYS;
+        if (dayStart == CalculatorConstants.MONTH_31_DAYS) {
+            dayStart = CalculatorConstants.MONTH_30_DAYS;
         }
-        diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * YEAR_360 + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * MONTH_30_DAYS
+        diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * CalculatorConstants.YEAR_360 + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * CalculatorConstants.MONTH_30_DAYS
                 + dayEnd - dayStart;
         return diff;
     }
@@ -95,13 +96,13 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
         int dayStart = start.get(Calendar.DAY_OF_MONTH);
         int dayEnd = end.get(Calendar.DAY_OF_MONTH);
         if (start.getActualMaximum(Calendar.DAY_OF_MONTH) == dayStart) {
-            dayStart = MONTH_30_DAYS;
+            dayStart = CalculatorConstants.MONTH_30_DAYS;
         }
         if (end.get(Calendar.MONTH) != Calendar.FEBRUARY && end.getActualMaximum(Calendar.DAY_OF_MONTH) == dayEnd) {
-            dayEnd = MONTH_30_DAYS;
+            dayEnd = CalculatorConstants.MONTH_30_DAYS;
         }
 
-        diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * YEAR_360 + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * MONTH_30_DAYS
+        diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * CalculatorConstants.YEAR_360 + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * CalculatorConstants.MONTH_30_DAYS
                 + dayEnd - dayStart;
         return diff;
     }
@@ -110,13 +111,13 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
         int diff;
         int dayStart = start.get(Calendar.DAY_OF_MONTH);
         int dayEnd = end.get(Calendar.DAY_OF_MONTH);
-        if (dayEnd == MONTH_31_DAYS && dayStart >= MONTH_30_DAYS) {
-            dayEnd = MONTH_30_DAYS;
+        if (dayEnd == CalculatorConstants.MONTH_31_DAYS && dayStart >= CalculatorConstants.MONTH_30_DAYS) {
+            dayEnd = CalculatorConstants.MONTH_30_DAYS;
         }
-        if (dayStart == MONTH_31_DAYS) {
-            dayStart = MONTH_30_DAYS;
+        if (dayStart == CalculatorConstants.MONTH_31_DAYS) {
+            dayStart = CalculatorConstants.MONTH_30_DAYS;
         }
-        diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * YEAR_360 + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * MONTH_30_DAYS
+        diff = (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * CalculatorConstants.YEAR_360 + (end.get(Calendar.MONTH) - start.get(Calendar.MONTH)) * CalculatorConstants.MONTH_30_DAYS
                 + dayEnd - dayStart;
         return diff;
     }
@@ -136,7 +137,7 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
     }
 
     public double monthDiff(final Calendar start, final Calendar end, final PeriodCountBasis basis) {
-        return yearDiff(start, end, basis) * MONTHS_IN_YEAR;
+        return yearDiff(start, end, basis) * CalculatorConstants.MONTHS_IN_YEAR;
     }
 
     public double yearDiff(final Calendar start, final Calendar end, final PeriodCountBasis basis) {
@@ -164,11 +165,11 @@ public class CalendarPeriodCountCalculator implements PeriodCountCalculator<Cale
         case CONV_360E_ISDA:
         case CONV_360E_ISMA:
         case ACT_360:
-            diff = dayDiff(start, end, basis) / YEAR_360_0;
+            diff = dayDiff(start, end, basis) / CalculatorConstants.YEAR_360_0;
             break;
 
         case ACT_365:
-            diff = dayDiff(start, end, basis) / YEAR_365_0;
+            diff = dayDiff(start, end, basis) / CalculatorConstants.YEAR_365_0;
             break;
 
         default:

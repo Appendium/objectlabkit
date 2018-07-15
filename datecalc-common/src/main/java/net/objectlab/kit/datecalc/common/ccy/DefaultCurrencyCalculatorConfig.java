@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import net.objectlab.kit.datecalc.common.CurrencyDateCalculator;
+import net.objectlab.kit.datecalc.common.CalculatorConstants;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
 
 /**
@@ -28,7 +28,7 @@ public class DefaultCurrencyCalculatorConfig implements CurrencyCalculatorConfig
         subjectToUsd.add("MXN");
         subjectToUsd.add("CLP");
         subjectToUsd.add("ARS");
-        currenciesSubjectToCrossCcyForT1.put(CurrencyDateCalculator.USD_CODE, subjectToUsd);
+        currenciesSubjectToCrossCcyForT1.put(CalculatorConstants.USD_CODE, subjectToUsd);
 
         workingWeeks.put("AED", WorkingWeek.ARABIC_WEEK);
         workingWeeks.put("BHD", WorkingWeek.ARABIC_WEEK);
@@ -63,6 +63,7 @@ public class DefaultCurrencyCalculatorConfig implements CurrencyCalculatorConfig
     /**
      * @return an unmodifiable set of currencies.
      */
+    @Override
     public Set<String> getCurrenciesSubjectToCrossCcyForT1(final String crossCcy) {
         final Set<String> s = currenciesSubjectToCrossCcyForT1.get(crossCcy);
         return s != null ? Collections.unmodifiableSet(s) : Collections.<String> emptySet();
@@ -73,6 +74,7 @@ public class DefaultCurrencyCalculatorConfig implements CurrencyCalculatorConfig
      * @param currency
      * @return the WorkingWeek registered for this currency other the default Mon-Fri.
      */
+    @Override
     public WorkingWeek getWorkingWeek(final String currency) {
         final WorkingWeek workingWeek = workingWeeks.get(currency);
         return workingWeek != null ? workingWeek : WorkingWeek.DEFAULT;

@@ -77,10 +77,10 @@ public class Excel {
      *                 data type is used until the end. So if only one value is given,
      *                 then that is used for the entire block.
      */
-    public Object[][] readBlock(final String range, final Class... columnTypes) {
+    public Object[][] readBlock(final String range, final Class<?>... columnTypes) {
 
         if (columnTypes == null || columnTypes.length == 0) {
-            throw new RuntimeException("columnTypes cannot be null / empty");
+            throw new ExcelException("columnTypes cannot be null / empty");
         }
 
         final CellRangeAddress cra = CellRangeAddress.valueOf(range);
@@ -106,7 +106,7 @@ public class Excel {
             result.add(resultRow);
             for (int colNum = 0; colNum < width; colNum++) {
 
-                Class colType;
+                Class<?> colType;
                 if (colNum < columnTypes.length - 1) {
                     colType = columnTypes[colNum];
                 } else {

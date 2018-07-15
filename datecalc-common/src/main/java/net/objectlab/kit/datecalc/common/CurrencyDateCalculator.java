@@ -18,8 +18,6 @@ import net.objectlab.kit.datecalc.common.ccy.CurrencyCalculatorConfig;
  * @since 1.4.0
  */
 public interface CurrencyDateCalculator<E> {
-    String USD_CODE = "USD";
-
     /**
      * Calculate the Spot Date taking into account the working weeks, holidays and spot lag (T+1, T+2 etc), the 
      * calculator also takes into account special rules for Latin American Currencies or Arabic currencies.

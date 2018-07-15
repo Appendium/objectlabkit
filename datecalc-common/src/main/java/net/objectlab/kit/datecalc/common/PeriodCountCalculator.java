@@ -44,18 +44,6 @@ package net.objectlab.kit.datecalc.common;
  *
  */
 public interface PeriodCountCalculator<E> {
-    int YEAR_360 = 360;
-
-    int MONTHS_IN_YEAR = 12;
-
-    double YEAR_365_0 = 365.0;
-
-    double YEAR_360_0 = 360.0;
-
-    int MONTH_31_DAYS = 31;
-
-    int MONTH_30_DAYS = 30;
-
     /**
      * This calculates the number of days between 2 dates, it follows the given
      * basis which means that the result could vary between the same 2 dates if

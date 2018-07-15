@@ -30,7 +30,7 @@ import net.objectlab.kit.datecalc.common.ccy.CurrencyCalculatorConfig;
 public class CurrencyDateCalculatorBuilder<E extends Serializable> {
     private String ccy1;
     private String ccy2;
-    private String crossCcy = CurrencyDateCalculator.USD_CODE;
+    private String crossCcy = CalculatorConstants.USD_CODE;
     private HolidayCalendar<E> ccy1Calendar = new DefaultHolidayCalendar<E>();
     private HolidayCalendar<E> ccy2Calendar = new DefaultHolidayCalendar<E>();
     private HolidayCalendar<E> crossCcyCalendar = new DefaultHolidayCalendar<E>();

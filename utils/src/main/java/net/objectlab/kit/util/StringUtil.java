@@ -265,20 +265,6 @@ public final class StringUtil {
         return str != null ? str.toLowerCase() : null;
     }
 
-    /*
-    public static String toLowerCase(final String... str) {
-        final StringBuilder b = new StringBuilder();
-        if (str == null) {
-            return null;
-        }
-        for (final String s : str) {
-            if (s != null) {
-                b.append(s.toLowerCase());
-            }
-        }
-        return b.toString();
-    }
-    */
     public static String toUpperCase(final String str) {
         return str != null ? str.toUpperCase() : null;
     }
@@ -580,7 +566,7 @@ public final class StringUtil {
                     return true;
                 }
             }
-            return strings.length == 0 ? true : false;
+            return strings.length == 0;
         }
         return true;
     }
