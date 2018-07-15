@@ -68,17 +68,19 @@ public class ValidatedPortfolioLineImpl implements ValidatedPortfolioLine {
         return allocationWeight;
     }
 
+    @Override
     public void setAllocationWeight(final BigDecimal allocationWeight) {
         this.allocationWeight = allocationWeight;
     }
 
+    @Override
     public void addIssue(final Severity sev, final String ruleName, final String message) {
         results.addIssue(sev, ruleName, message, this);
     }
 
     @Override
     public boolean isValid() {
-        return !results.getIssues().stream().anyMatch(t -> t.getLine() == this);
+        return results.getIssues().stream().noneMatch(t -> t.getLine() == this);
     }
 
     @Override

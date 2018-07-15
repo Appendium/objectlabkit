@@ -95,7 +95,8 @@ public class CollectionUtilTest {
 
     @Test
     public void testNoneEmpty() {
-        assertFalse("1 null", CollectionUtil.noneEmpty((Collection<?>) null));
+        assertFalse("1a null", CollectionUtil.noneEmpty());
+        assertFalse("1b null", CollectionUtil.noneEmpty((Collection<?>) null));
         assertFalse("2 null", CollectionUtil.noneEmpty(null, null));
         assertFalse("empty null", CollectionUtil.noneEmpty(Collections.emptyList(), null));
         assertFalse("empty empty", CollectionUtil.noneEmpty(Collections.emptyList(), Collections.emptyList()));
@@ -116,6 +117,7 @@ public class CollectionUtilTest {
         assertTrue("null null", CollectionUtil.sameContent(null, null));
         final HashSet<Integer> col = new HashSet<>();
         assertTrue("empty null", CollectionUtil.sameContent(col, null));
+        assertTrue("null empty", CollectionUtil.sameContent(null, col));
         assertTrue("same", CollectionUtil.sameContent(col, col));
         final HashSet<Integer> col1 = new HashSet<>();
         col.add(1);
@@ -125,6 +127,8 @@ public class CollectionUtilTest {
         assertTrue("same 1 1", CollectionUtil.sameContent(col1, col));
         col1.add(2);
         assertFalse("same 1 2", CollectionUtil.sameContent(col1, col));
+        assertFalse("same 1 2", CollectionUtil.sameContent(null, col));
+        assertFalse("same 1 2", CollectionUtil.sameContent(col1, null));
     }
 
 }

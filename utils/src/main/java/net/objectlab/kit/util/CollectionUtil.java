@@ -81,7 +81,7 @@ public final class CollectionUtil {
      * @return true if collection is not null and contains the items
      */
     public static boolean contains(final Collection<?> collection, final Object item) {
-        return collection != null && collection.contains(item) ? true : false;
+        return collection != null && collection.contains(item);
     }
 
     /**
@@ -103,7 +103,7 @@ public final class CollectionUtil {
      * @return true if none of the collections are empty or null
      */
     public static boolean noneEmpty(final Collection<?>... collections) {
-        if (collections == null) {
+        if (collections.length == 0) {
             return false;
         }
         for (final Collection<?> col : collections) {
