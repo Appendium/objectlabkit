@@ -27,7 +27,6 @@ public class Excel {
     }
 
     private void init(final InputStream inputStream) {
-
         if (inputStream == null) {
             throw new NullPointerException("inputStream cannot be null");
         }
@@ -84,7 +83,7 @@ public class Excel {
         }
 
         final CellRangeAddress cra = CellRangeAddress.valueOf(range);
-        final AreaReference ar = new AreaReference(range);
+        final AreaReference ar = new AreaReference(range, null);
         final Sheet sheet = workbook.getSheet(ar.getFirstCell().getSheetName());
 
         final int firstColumn = cra.getFirstColumn();

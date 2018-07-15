@@ -50,3 +50,5 @@ Thumbs.db
 *.pid
 *.lck
 *.swp
+utils-excel/test.xlsx
+utils-excel/~$test.xlsx
