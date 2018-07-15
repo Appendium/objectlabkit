@@ -10,7 +10,6 @@ import java.util.function.Consumer;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class StringUtilTest {
@@ -221,6 +220,8 @@ public class StringUtilTest {
         assertThat(StringUtil.boxify('+', "X")).isEqualTo(System.lineSeparator() + "+++++" + System.lineSeparator() //
                 + "+ X +" + System.lineSeparator() //
                 + "+++++" + System.lineSeparator());
+
+        assertThat(StringUtil.boxify((char) 0, "Hi")).isEmpty();
     }
 
     @Test
@@ -277,49 +278,135 @@ public class StringUtilTest {
         assertThat(StringUtil.equalsAnyIgnoreCase("Hi", (String) null)).isFalse();
     }
 
-    @Ignore
+    @Test
     public void testReplaceTokenStringStringString() {
-        fail("Not yet implemented");
+        assertThat(StringUtil.replaceToken(null, null, null)).isNull();
+        assertThat(StringUtil.replaceToken("", null, null)).isEmpty();
+        assertThat(StringUtil.replaceToken("", "", null)).isEmpty();
+        assertThat(StringUtil.replaceToken("", "", "")).isEmpty();
+        assertThat(StringUtil.replaceToken("Hello", "YO", "!")).isEqualTo("Hello");
+        assertThat(StringUtil.replaceToken("Hello %YO%", "YO", "you")).isEqualTo("Hello you");
+        assertThat(StringUtil.replaceToken("Hello %YO%", "YI", "you")).isEqualTo("Hello %YO%");
+        assertThat(StringUtil.replaceToken("Hello %YO%", "YO", "")).isEqualTo("Hello ");
+        assertThat(StringUtil.replaceToken("Hello %YO%", "YO", null)).isEqualTo("Hello null");
     }
 
-    @Ignore
-    public void testWrapText() {
-        fail("Not yet implemented");
-    }
-
-    @Ignore
+    @Test
     public void testReplaceTokenStringStringObject() {
-        fail("Not yet implemented");
+        assertThat(StringUtil.replaceToken(null, null, null)).isNull();
+        assertThat(StringUtil.replaceToken("", null, null)).isEmpty();
+        assertThat(StringUtil.replaceToken("", "", null)).isEmpty();
+        assertThat(StringUtil.replaceToken(null, "", "")).isNull();
+        assertThat(StringUtil.replaceToken(null, "A", "BC")).isNull();
+        assertThat(StringUtil.replaceToken("Hello %YO%", "YO", Long.valueOf(1234))).isEqualTo("Hello 1234");
+        assertThat(StringUtil.replaceToken("Hello %YO%", "YO", (Object) null)).isEqualTo("Hello null");
+        assertThat(StringUtil.replaceToken("Hello %YO%", "YU", (Object) null)).isEqualTo("Hello %YO%");
     }
 
-    @Ignore
+    @Test
+    public void testEqualsIgnoreCaseOrValueIsWildcard() {
+        assertThat(StringUtil.equalsIgnoreCaseOrValueIsWildcard(null, null)).isTrue();
+        assertThat(StringUtil.equalsIgnoreCaseOrValueIsWildcard("", "")).isTrue();
+        assertThat(StringUtil.equalsIgnoreCaseOrValueIsWildcard("", "A")).isFalse();
+        assertThat(StringUtil.equalsIgnoreCaseOrValueIsWildcard(null, "A")).isFalse();
+        assertThat(StringUtil.equalsIgnoreCaseOrValueIsWildcard("", null)).isFalse();
+        assertThat(StringUtil.equalsIgnoreCaseOrValueIsWildcard("A", null)).isFalse();
+        assertThat(StringUtil.equalsIgnoreCaseOrValueIsWildcard("*", null)).isTrue();
+        assertThat(StringUtil.equalsIgnoreCaseOrValueIsWildcard("*", "")).isTrue();
+        assertThat(StringUtil.equalsIgnoreCaseOrValueIsWildcard("ABC", "*")).isFalse();
+        assertThat(StringUtil.equalsIgnoreCaseOrValueIsWildcard("aBC", "ABC")).isTrue();
+        assertThat(StringUtil.equalsIgnoreCaseOrValueIsWildcard("*", "ABC")).isTrue();
+        assertThat(StringUtil.equalsIgnoreCaseOrValueIsWildcard("**", "ABC")).isFalse();
+        assertThat(StringUtil.equalsIgnoreCaseOrValueIsWildcard("AB C", "ab c")).isTrue();
+    }
+
+    @Test
+    public void testWrapText() {
+        assertThat(StringUtil.wrapText(null, "#", 5)).isNull();
+        assertThat(StringUtil.wrapText("", "#", 5)).isEmpty();
+        assertThat(StringUtil.wrapText("1234", "#", 5)).isEqualTo("1234");
+        assertThat(StringUtil.wrapText("12345 6789", "#", 5)).isEqualTo("12345#6789");
+        assertThat(StringUtil.wrapText("123456 789", "#", 5)).isEqualTo("123456#789");
+        assertThat(StringUtil.wrapText("12345 789101 1213", "#", 5)).isEqualTo("12345#789101#1213");
+        assertThat(StringUtil.wrapText("12345 789101 12134", "#", 5)).isEqualTo("12345#789101#12134");
+        assertThat(StringUtil.wrapText("12345 789101 12134 ", "#", 5)).isEqualTo("12345#789101#12134#");
+        assertThat(StringUtil.wrapText(" 12345 789101 12134 ", "#", 5)).isEqualTo("#12345#789101#12134#");
+        assertThat(StringUtil.wrapText(" 12345 789101  12134 ", "#", 5)).isEqualTo("#12345#789101##12134#");
+        assertThat(StringUtil.wrapText("123345#6789", "#", 5)).isEqualTo("123345#6789");
+    }
+
+    @Test
     public void testProcessCaseTreatment() {
-        fail("Not yet implemented");
+        assertThat(StringUtil.processCaseTreatment(null, CaseTreatment.LOWER_CASE)).isNull();
+        assertThat(StringUtil.processCaseTreatment(null, CaseTreatment.UNCHANGED)).isNull();
+        assertThat(StringUtil.processCaseTreatment(null, CaseTreatment.UPPER_CASE)).isNull();
+
+        assertThat(StringUtil.processCaseTreatment(" Hello World ", CaseTreatment.LOWER_CASE)).isEqualTo(" hello world ");
+        assertThat(StringUtil.processCaseTreatment(" Hello World ", CaseTreatment.UNCHANGED)).isEqualTo(" Hello World ");
+        assertThat(StringUtil.processCaseTreatment(" Hello World ", CaseTreatment.UPPER_CASE)).isEqualTo(" HELLO WORLD ");
+
+        assertThat(StringUtil.processCaseTreatment("", CaseTreatment.LOWER_CASE)).isEmpty();
+        assertThat(StringUtil.processCaseTreatment("", CaseTreatment.UNCHANGED)).isEmpty();
+        assertThat(StringUtil.processCaseTreatment("", CaseTreatment.UPPER_CASE)).isEmpty();
     }
 
-    @Ignore
+    @Test
+    public void testAnyEmpty() {
+        assertThat(StringUtil.anyEmpty()).isTrue();
+        assertThat(StringUtil.anyEmpty(null)).isTrue();
+        assertThat(StringUtil.anyEmpty(null, null)).isTrue();
+        assertThat(StringUtil.anyEmpty("", null)).isTrue();
+        assertThat(StringUtil.anyEmpty("", "")).isTrue();
+        assertThat(StringUtil.anyEmpty("X", "X")).isFalse();
+        assertThat(StringUtil.anyEmpty("X", "X", null)).isTrue();
+        assertThat(StringUtil.anyEmpty("X", "X", "")).isTrue();
+    }
+
+    @Test
     public void testReturnIfNotNull() {
-        fail("Not yet implemented");
+        assertThat(StringUtil.returnIfNotNull(null, null)).isNull();
+        assertThat(StringUtil.returnIfNotNull(null, "")).isEmpty();
+        assertThat(StringUtil.returnIfNotNull(null, "ABC")).isEqualTo("ABC");
+        assertThat(StringUtil.returnIfNotNull("", "ABC")).isEqualTo("");
+        assertThat(StringUtil.returnIfNotNull("DEF", "ABC")).isEqualTo("DEF");
+        assertThat(StringUtil.returnIfNotNull("DEF", null)).isEqualTo("DEF");
     }
 
-    @Ignore
+    @Test
     public void testFirstCharToUpper() {
-        fail("Not yet implemented");
+        assertThat(StringUtil.firstCharToUpper(null)).isNull();
+        assertThat(StringUtil.firstCharToUpper("")).isEmpty();
+        assertThat(StringUtil.firstCharToUpper("A")).isEqualTo("A");
+        assertThat(StringUtil.firstCharToUpper("a")).isEqualTo("A");
+        assertThat(StringUtil.firstCharToUpper("belgium")).isEqualTo("Belgium");
+        assertThat(StringUtil.firstCharToUpper("belgium brussels")).isEqualTo("Belgium brussels");
+        assertThat(StringUtil.firstCharToUpper(" belgium brussels")).isEqualTo(" belgium brussels");
     }
 
-    @Ignore
+    @Test
     public void testPrepareForNumericParsing() {
-        fail("Not yet implemented");
+        assertThat(StringUtil.prepareForNumericParsing(null)).isEmpty();
+        assertThat(StringUtil.prepareForNumericParsing("")).isEmpty();
+        assertThat(StringUtil.prepareForNumericParsing("1234")).isEqualTo("1234");
+        assertThat(StringUtil.prepareForNumericParsing(" 1,234 ")).isEqualTo("1234");
+        assertThat(StringUtil.prepareForNumericParsing(" 1,234.00 ")).isEqualTo("1234.00");
+        assertThat(StringUtil.prepareForNumericParsing(" \"1,234.00\" ")).isEqualTo("1234.00");
     }
 
-    @Ignore
+    @Test
     public void testNullIfEmpty() {
-        fail("Not yet implemented");
+        assertThat(StringUtil.nullIfEmpty(null)).isNull();
+        assertThat(StringUtil.nullIfEmpty("")).isNull();
+        assertThat(StringUtil.nullIfEmpty("AB")).isEqualTo("AB");
     }
 
-    @Ignore
+    @Test
     public void testAsList() {
-        fail("Not yet implemented");
+        assertThat(StringUtil.asList(null, "||")).isEmpty();
+        assertThat(StringUtil.asList(new String[] { "A", "B" }, "||")).isEqualTo("A||B");
+        assertThat(StringUtil.asList(new String[] { "A", "B", "C" }, "||")).isEqualTo("A||B||C");
+        assertThat(StringUtil.asList(new String[] { "A", "", "C" }, "||")).isEqualTo("A||||C");
+        assertThat(StringUtil.asList(new String[] { "A", null, "C" }, "||")).isEqualTo("A||null||C");
     }
 
 }

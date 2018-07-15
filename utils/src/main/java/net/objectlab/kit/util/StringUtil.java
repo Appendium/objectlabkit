@@ -482,6 +482,8 @@ public final class StringUtil {
                 b.append(txt.substring(1));
             }
             val = b.toString();
+        } else {
+            return txt;
         }
         return val;
     }
@@ -499,9 +501,12 @@ public final class StringUtil {
     /**
      * Remove " and spaces from the input string.
      * @param inputStr
-     * @return
+     * @return if null, return empty
      */
     public static String prepareForNumericParsing(final String inputStr) {
+        if (inputStr == null) {
+            return EMPTY;
+        }
         final Matcher matcher = PATTERN_FOR_NUM_PARSING_PREP.matcher(inputStr);
         return matcher.replaceAll("");
     }
