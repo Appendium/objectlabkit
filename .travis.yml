@@ -3,25 +3,28 @@ sudo: false
 install: true
 addons:
   sonarcloud:
-    organization: "benoitx-github"
+    organization: benoitx-github
     token:
-      secure: "13b70009cbae7646c3458517212a3ba73faff609"
+      secure: 13b70009cbae7646c3458517212a3ba73faff609
 env:
   global:
-    - SONATYPE_USERNAME=benoitx
-    - secure: "U772V1+agW49XyvQ9OoSDJdXEqEyS/hJEEkUrwx9gUruMwG8AuzOr2LX1MdgVKeiCtdttQ4MYSHf3dDQVnBCPmn+yHPh0ceRN5MGFkuNj8yKmsqo3bkGd4ihutrBj4zHQOXCodFXGCMAMdWP3SDZsLj7rUiFjIvzyYhaQAwuSfo="
+  - SONATYPE_USERNAME=benoitx
+  - secure: U772V1+agW49XyvQ9OoSDJdXEqEyS/hJEEkUrwx9gUruMwG8AuzOr2LX1MdgVKeiCtdttQ4MYSHf3dDQVnBCPmn+yHPh0ceRN5MGFkuNj8yKmsqo3bkGd4ihutrBj4zHQOXCodFXGCMAMdWP3SDZsLj7rUiFjIvzyYhaQAwuSfo=
 jdk:
-  - oraclejdk8
+- oraclejdk8
 script:
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar 
+- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
 cache:
   directories:
-    - '$HOME/.m2/repository'
-    - '$HOME/.sonar/cache'
+  - "$HOME/.m2/repository"
+  - "$HOME/.sonar/cache"
 notifications:
   email:
     recipients:
-      - opensource@appendium.com
+    - opensource@appendium.com
     on_success: always
+  slack:
+    secure: pjvrkusCLgLDkrYTKZc5NbJ/cK3QuyKp0yZ4IDnN83nG47eIfs2gXX+iCo0BKo4aU5dTdURei3rxZ6dFuIE/2+dgXMUYx62ZtlbWDM8L06XjY6TLHgoqq6KGpo0cgRsVQECoCVotG2cReHyhGgeWOePDP079RqTD5UM6zFQLIqI=
 after_success:
-  - "[[ $TRAVIS_BRANCH == \"master\" ]] && { python travis/addServer.py; mvn clean deploy --settings ~/.m2/mySettings.xml; };"
+- '[[ $TRAVIS_BRANCH == "master" ]] && { python travis/addServer.py; mvn clean deploy
+  --settings ~/.m2/mySettings.xml; };'

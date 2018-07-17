@@ -1,0 +1,32 @@
+<document>
+
+	<properties>
+		<author email="kit@objectlab.co.uk">Benoit Xhenseval</author>
+		<title>Report</title>
+	</properties>
+
+	<head>
+		<meta name="description" content="ObjectLab Kit offers free and open source Date calculators, released under the business-friendly Apache 2.0 license." />
+		<meta name="keywords" content="Date calculator, IMM Dates, Period Calculator, Financial Calendar, Business Calendar, java, open source" />
+		<meta name="Subject" content="Date Calculators" />
+		<meta name="Copyright" content="ObjectLab Financial Ltd" />
+		<meta name="Language" content="English" />
+		<meta name="Designer" content="ObjectLab Financial Ltd" />
+		<meta name="Distribution" content="Global" />
+		<meta name="robots" content="ALL" />
+		<meta name="Revisit-After" content="20 Days" />
+	</head>
+
+	<body>
+		<section name="Report Introduction">
+			<p>Small package to create tabular reports for Objects and export them as Text, CSV, Zipped Csv and Excel.</p>
+		</section>
+		<section name="Examples">
+			<subsection name="Using Util Total">
+				<script src="https://gist.github.com/benoitx/d0ae6a38789cb5b25c24.js"></script>
+			</subsection>
+		</section>
+
+	</body>
+
+</document>

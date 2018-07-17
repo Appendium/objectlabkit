@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>net.objectlab.kit</groupId>
+        <artifactId>kit-parent</artifactId>
+        <version>1.4.1-SNAPSHOT</version>
+    </parent>
+
+    <groupId>net.objectlab.kit</groupId>
+    <artifactId>report</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>ObjectLab Kit - Report</name>
+    <description>
+    Utility classes to create tabular reports easily from Objects and export as Text, CSV, HTML or Excel.
+  </description>
+    <url>http://objectlabkit.sourceforge.net/</url>
+
+    <dependencies>
+        <dependency>
+            <groupId>net.objectlab.kit</groupId>
+            <artifactId>objectlab-utils</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>5.0.7.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>3.17</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${version.junit}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>25.0-jre</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!--
+        <scm>
+        <connection>scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk/utils-excel/</connection>
+        <developerConnection>scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk/utils-excel/</developerConnection>
+        <url>https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk/utils-excel/</url>
+        </scm>
+
+        <issueManagement>
+        <system>sourceforge</system>
+        <url>https://sourceforge.net/tracker/?group_id=175139</url>
+        </issueManagement>
+
+    -->
+</project>
