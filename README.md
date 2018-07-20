@@ -28,5 +28,7 @@ LINKS
 * [ObjectLab Kit site](http://objectlabkit.sf.net)
 * [SonarQube](http://nemo.sonarsource.org/project/index/net.objectlab.kit:kit-parent)
 * [Metrics at OpenHub](https://www.openhub.net/p/objectlabkit)
+* Thank you to [YourKit](http://www.yourkit.com) for the OSS Licence
+
 
 ![Brought to you by](http://objectlabkit.sourceforge.net/images/appendium_logo.jpg "Supported by Appendium") and ![Supported by ObjectLab](http://objectlabkit.sourceforge.net/images/objectlab_logo.jpg "Supported by ObjectLab")
