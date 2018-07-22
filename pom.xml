@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -11,6 +12,7 @@
     <groupId>net.objectlab.kit</groupId>
     <artifactId>kit-parent</artifactId>
     <version>1.4.1-SNAPSHOT</version>
+    <url>https://github.com/Appendium/objectlabkit</url>
     <packaging>pom</packaging>
     <modules>
         <module>utils</module>
@@ -34,8 +36,20 @@
     <description>ObjectLab Kit provides a generic Business Calendar for calculating dates given set(s) of holidays.
 Why re-invent the wheel?</description>
 
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <site.deploy.url>http://objectlabkit.sf.net</site.deploy.url>
+        <github.global.server>github</github.global.server>
+        <github.global.oauth2Token>${env.GITHUB_OAUTH_TOKEN}</github.global.oauth2Token>
+        <version.slf4j>1.7.21</version.slf4j>
+        <version.logback>1.1.7</version.logback>
+        <version.cucumber>1.2.5</version.cucumber>
+        <version.junit>4.12</version.junit>
+        <version.spring>4.2.0.RELEASE</version.spring>
+    </properties>
+
     <inceptionYear>2006</inceptionYear>
-    <url>http://objectlabkit.sourceforge.net/</url>
 
     <organization>
         <name>Appendium - Portfolio Financing Platform</name>
@@ -85,6 +99,23 @@ Why re-invent the wheel?</description>
             <distribution>repo</distribution>
         </license>
     </licenses>
+
+
+    <distributionManagement>
+        <site>
+            <id>objectlabkit.sf.net</id>
+            <url>${site.deploy.url}</url>
+        </site>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+
 
     <mailingLists>
         <mailingList>
@@ -173,33 +204,14 @@ Why re-invent the wheel?</description>
                     <version>2.5.3</version>
                     <configuration>
                         <autoVersionSubmodules>true</autoVersionSubmodules>
-                        <mavenExecutorId>forked-path</mavenExecutorId>
                         <useReleaseProfile>false</useReleaseProfile>
-                        <arguments>${arguments} -Psonatype-oss-release</arguments>
+                        <releaseProfiles>release</releaseProfiles>
+                        <goals>deploy</goals>
                     </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
-            <!--
-                <plugin>
-                <groupId>com.srcclr</groupId>
-                <artifactId>srcclr-maven-plugin</artifactId>
-                <version>2.1.0</version>
-                <configuration>
-                <verbose>true</verbose>
-                <apiToken>eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTg0MSwiZXhwIjoxNDk1MDAzNzczLCJhdXRob3JpdGllcyI6IkFHRU5UIiwianRpIjoiOWViM2NjOTktZDkxNC00OTM2LTg0Y2UtN2JiZWFlMDFmZWViIiwiY2xpZW50X2lkIjoiIiwic2NvcGUiOltdfQ.A2nvf37V1yPdjp9u6s_ZPzOYRc_o9MTWPxxhrTUr8FGUIKyviL9KWP1u94MkkRx7e389L6zsbyJjvByQwIz3abiCI5VkNE_Rbwo8BTlF3YEnjWq5cX3WMihYLw-RYQ8uSMtz_QLTnxALfRuQwzJ7sC8vocv0hdJhb-1jcaLRXxw</apiToken>
-                </configuration>
-                <executions>
-                <execution>
-                <phase>verify</phase>
-                <goals>
-                <goal>scan</goal>
-                </goals>
-                </execution>
-                </executions>
-                </plugin>
-            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -243,44 +255,21 @@ Why re-invent the wheel?</description>
                     </execution>
                 </executions>
             </plugin>
-            <!-- <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <configuration>
-                <source>1.5</source>
-                <doclet>gr.spinellis.umlgraph.doclet.UmlGraphDoc</doclet>
-                <docletArtifact>
-                <groupId>gr.spinellis</groupId>
-                <artifactId>UmlGraph</artifactId>
-                <version>4.6</version>
-                </docletArtifact>
-                <additionalparam>
-                -inferrel -inferdep -quiet -constructors
-                -visibility -types -postfixpackage
-                -nodefontsize 9
-                -nodefontpackagesize 7 -hide java.* -collpackages
-                java.util.*
-                -link
-                http://java.sun.com/j2se/1.5.0/docs/api/ -link
-                http://joda-time.sourceforge.net/api-release/
-                </additionalparam>
-                </configuration>
-                <executions>
 
-                </executions>
-                </plugin> -->
+            <!-- see https://central.sonatype.org/pages/apache-maven.html -->
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.7</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <site.deploy.url>http://objectlabkit.sf.net</site.deploy.url>
-        <version.slf4j>1.7.21</version.slf4j>
-        <version.logback>1.1.7</version.logback>
-        <version.cucumber>1.2.5</version.cucumber>
-        <version.junit>4.12</version.junit>
-        <version.spring>4.2.0.RELEASE</version.spring>
-    </properties>
 
     <profiles>
         <profile>
@@ -310,26 +299,6 @@ Why re-invent the wheel?</description>
                 </plugins>
             </build>
         </profile>
-        <!--
-            <profile>
-            <id>deploy-site</id>
-            <activation>
-            <property>
-            <name>performRelease</name>
-            <value>true</value>
-            </property>
-            </activation>
-            <properties>
-            <site.deploy.url>scp://shell.sourceforge.net/home/groups/o/ob/objectlabkit/htdocs</site.deploy.url>
-            </properties>
-            </profile>
-            <profile>
-            <id>stage-site</id>
-            <properties>
-            <site.deploy.url>scp://shell.sourceforge.net/home/groups/o/ob/objectlabkit/htdocs/test</site.deploy.url>
-            </properties>
-            </profile>
-        -->
     </profiles>
 
     <scm>
@@ -342,17 +311,6 @@ Why re-invent the wheel?</description>
         <system>GitHub</system>
         <url>https://github.com/appendium/objectlabkit/issues</url>
     </issueManagement>
-
-    <distributionManagement>
-        <site>
-            <id>objectlabkit.sf.net</id>
-            <url>${site.deploy.url}</url>
-        </site>
-        <snapshotRepository>
-            <id>sonatype-nexus-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
 
     <reporting>
         <plugins>
@@ -417,54 +375,6 @@ Why re-invent the wheel?</description>
                     </reportSet>
                 </reportSets>
             </plugin>
-
-            <!--
-                <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-report-plugin</artifactId>
-                <inherited>false</inherited>
-                <configuration>
-                <aggregate>true</aggregate>
-                </configuration>
-                </plugin>
-                <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-pmd-plugin</artifactId>
-                <configuration>
-                <targetJdk>1.5</targetJdk>
-                <rulesets>
-                <ruleset>/rulesets/basic.xml</ruleset>
-                </rulesets>
-                <minimumTokens>100</minimumTokens>
-                <linkXref>true</linkXref>
-                <xrefLocation>${project.reporting.outputDirectory}/../xref</xrefLocation>
-                </configuration>
-                </plugin>
-                <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-                <version>2.5.3</version>
-                <configuration>
-                <effort>Max</effort>
-                <threshold>Low</threshold>
-                <includeFilterFile>${project.basedir}/../src/source-checks/findbugs-filter.xml</includeFilterFile>
-                <xrefLocation>${project.reporting.outputDirectory}/../xref</xrefLocation>
-                </configuration>
-                </plugin>
-                <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <configuration>
-                <! - - these do not currently work as they are in the old format <configLocation>${project.basedir}/../src/source-checks/checkstyle-checks.xml</configLocation>
-                <configLocation>${project.basedir}/../src/source-checks/objectlab-checks.xml</configLocation> - ->
-                <xrefLocation>${project.reporting.outputDirectory}/../xref</xrefLocation>
-                </configuration>
-                </plugin>
-                <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>dashboard-maven-plugin</artifactId>
-                </plugin>
-            -->
         </plugins>
     </reporting>
 
