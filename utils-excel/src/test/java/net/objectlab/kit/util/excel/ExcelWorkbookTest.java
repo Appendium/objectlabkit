@@ -8,11 +8,12 @@ import org.junit.Test;
 public class ExcelWorkbookTest {
     /**
      * 
-     * <table> 
+     * 
+    <table summary="Quick Example to generate this"> 
     <tr><th>Country</th><th>Population 2018</th><th>Percentage</th></tr>
     <tr><td>Belgium</td><td>11,000,000</td><td>15.28%</td></tr>
     <tr><td>UK</td><td>62,000,000</td><td>86.11%</td></tr>
-    <tr><td><b>Total</b></td><td><b>72,000,000</b></td><td></td></tr>
+    <tr><td><b>Total</b></td><td><b>72,000,000</b></td><td> </td></tr>
     </table>
      */
     @Test
