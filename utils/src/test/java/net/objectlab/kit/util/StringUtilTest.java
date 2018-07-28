@@ -8,25 +8,24 @@ import java.util.Date;
 import java.util.TimeZone;
 import java.util.function.Consumer;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 public class StringUtilTest {
     private TimeZone tzBefore;
-
+    /*
     @Before
     public void setUp() {
         tzBefore = TimeZone.getDefault();
-        System.err.println("setup " + tzBefore);
+        // System.err.println("setup " + tzBefore);
         TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
     }
-
+    
     @After
     public void tearDown() {
-        System.err.println("tearDown " + tzBefore);
+        // System.err.println("tearDown " + tzBefore);
         TimeZone.setDefault(tzBefore);
     }
+    */
 
     @Test
     public void testCompareTo() {
@@ -77,7 +76,6 @@ public class StringUtilTest {
     @Test
     public void testDefaultFormatDatetime() {
         assertThat(StringUtil.defaultFormatDatetime(null)).isNull();
-        System.err.println("TEST " + TimeZone.getDefault());
         assertThat(StringUtil.defaultFormatDatetime(new Date(1531603574189L))).isEqualToIgnoringCase("14-Jul-2018 22:26:14");
     }
 
