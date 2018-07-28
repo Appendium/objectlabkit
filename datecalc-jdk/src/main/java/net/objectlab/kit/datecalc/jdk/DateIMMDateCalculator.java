@@ -32,10 +32,10 @@
  */
 package net.objectlab.kit.datecalc.jdk;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import net.objectlab.kit.datecalc.common.AbstractIMMDateCalculator;
 import net.objectlab.kit.datecalc.common.IMMPeriod;
@@ -66,20 +66,18 @@ public class DateIMMDateCalculator extends AbstractIMMDateCalculator<Date> {
     //
     // -----------------------------------------------------------------------
 
+    @Override
     public List<Date> getIMMDates(final Date start, final Date end, final IMMPeriod period) {
         return buildList(DELEGATE.getIMMDates(Utils.getCal(start), Utils.getCal(end), period));
     }
 
+    @Override
     public boolean isIMMDate(final Date date) {
         return DELEGATE.isIMMDate(Utils.getCal(date));
     }
 
     private static List<Date> buildList(final List<Calendar> dates) {
-        final List<Date> imms = new ArrayList<Date>();
-        for (final Calendar date : dates) {
-            imms.add(date.getTime());
-        }
-        return imms;
+        return dates.stream().map(d -> d.getTime()).collect(Collectors.toList());
     }
 }
 

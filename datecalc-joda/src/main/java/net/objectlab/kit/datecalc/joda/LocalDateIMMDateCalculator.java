@@ -67,8 +67,9 @@ public class LocalDateIMMDateCalculator extends AbstractIMMDateCalculator<LocalD
      *            conventional algorithm.
      * @return list of IMM dates
      */
+    @Override
     public List<LocalDate> getIMMDates(final LocalDate start, final LocalDate end, final IMMPeriod period) {
-        final List<LocalDate> dates = new ArrayList<LocalDate>();
+        final List<LocalDate> dates = new ArrayList<>();
 
         LocalDate date = start;
         while (true) {
@@ -187,6 +188,7 @@ public class LocalDateIMMDateCalculator extends AbstractIMMDateCalculator<LocalD
      * @param date
      * @return true if that date is an IMM date.
      */
+    @Override
     public boolean isIMMDate(final LocalDate date) {
         boolean same = false;
 
