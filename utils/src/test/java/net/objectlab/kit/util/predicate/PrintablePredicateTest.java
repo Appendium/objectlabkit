@@ -6,32 +6,17 @@ import java.util.function.Predicate;
 
 import org.junit.Test;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import net.objectlab.kit.util.StringUtil;
 
 public class PrintablePredicateTest {
-    private static class Asset {
+    @Data
+    @AllArgsConstructor
+    private static class Asset { // Using Lombok
         private String assetClass;
         private String assetType;
         private String state;
-
-        public Asset(String assetClass, String assetType, String state) {
-            super();
-            this.assetClass = assetClass;
-            this.assetType = assetType;
-            this.state = state;
-        }
-
-        public String getAssetClass() {
-            return assetClass;
-        }
-
-        public String getAssetType() {
-            return assetType;
-        }
-
-        public String getState() {
-            return state;
-        }
     }
 
     public static Predicate<Asset> hasAssetClass(String... assetClass) {
@@ -77,4 +62,15 @@ public class PrintablePredicateTest {
         assertThat(notEquityNorGovB.toString()).isEqualToIgnoringCase("NOT ((AssetClass=Equity OR AssetType=Government Bond) AND State=Active)");
     }
 
+    @Test
+    public void testComplexNot() {
+        // now Combine them:
+        final Predicate<Asset> equityOrGovB = hasAssetClass("Equity").or(hasAssetType("Government Bond").negate()).and(hasState("Active"));
+        assertThat(equityOrGovB.toString()).isEqualToIgnoringCase("(AssetClass=Equity OR NOT (AssetType=Government Bond)) AND State=Active");
+        // does it work?
+        assertThat(equityOrGovB.test(new Asset("Equity", "Stock", "Active"))).isTrue();
+        assertThat(equityOrGovB.test(new Asset("Bond", "Government Bond", "Active"))).isFalse();
+        assertThat(equityOrGovB.test(new Asset("Bond", "Government Bond", "Matured"))).isFalse();
+        assertThat(equityOrGovB.test(new Asset("Bond", "Corporate Bond", "Active"))).isTrue();
+    }
 }
