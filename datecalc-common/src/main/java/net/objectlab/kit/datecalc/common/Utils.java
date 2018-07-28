@@ -141,7 +141,7 @@ public final class Utils {
      * @return the converted Set&lt;Calendar&gt;
      */
     public static Set<Calendar> toCalendarSet(final Set<Date> dates) {
-        return dates.stream().map(date -> getCal(date)).collect(Collectors.toSet());
+        return dates.stream().map(Utils::getCal).collect(Collectors.toSet());
     }
 
     /**
@@ -155,7 +155,7 @@ public final class Utils {
         for (final Date date : dates.getHolidays()) {
             calendars.add(getCal(date));
         }
-        return new DefaultHolidayCalendar<Calendar>(calendars, getCal(dates.getEarlyBoundary()), getCal(dates.getLateBoundary()));
+        return new DefaultHolidayCalendar<>(calendars, getCal(dates.getEarlyBoundary()), getCal(dates.getLateBoundary()));
     }
 
     /**
@@ -165,7 +165,7 @@ public final class Utils {
      * @return the converset Set&lt;Date&gt;
      */
     public static Set<Date> toDateSet(final Set<Calendar> calendars) {
-        return calendars.stream().map(calendar -> calendar.getTime()).collect(Collectors.toSet());
+        return calendars.stream().map(Calendar::getTime).collect(Collectors.toSet());
     }
 
     /**
@@ -176,7 +176,7 @@ public final class Utils {
      * @return the converted List&lt;Date&gt;
      */
     public static List<Date> toDateList(final List<Calendar> dates) {
-        return dates.stream().map(date -> date.getTime()).collect(Collectors.toList());
+        return dates.stream().map(Calendar::getTime).collect(Collectors.toList());
     }
 }
 

@@ -14,16 +14,17 @@ import java.util.function.Predicate;
  * </pre>
  * 
  * This achieved easily, assume Asset has assetClass and State, you can write 2 flexible predicates:
- * <pre>
+ * <pre>{@code
  * public static Predicate&lt;Asset&gt; hasAssetClass(String... assetClass) {
- *  return new PrintablePredicat&lt;&gt;("AssetClass",  t -&gt; StringUtil.equalsAnyIgnoreCase(t.getAssetClass(), assetClass), assetClass);
+ *  return new PrintablePredicate&lt;&gt;("AssetClass",  t -&gt; StringUtil.equalsAnyIgnoreCase(t.getAssetClass(), assetClass), assetClass);
  * }
  * public static Predicate&lt;Asset&gt; hasState(String... state) {
- *  return new PrintablePredicate("State",  t -&gt; StringUtil.equalsAnyIgnoreCase(t.getState(), state), state);
+ *  return new PrintablePredicate&gt;&lt;("State",  t -&gt; StringUtil.equalsAnyIgnoreCase(t.getState(), state), state);
  * }
  * // now Combine them:
  * Predicate&lt;Asset&gt; predicate = hasAssetClass("Equity","Bond").and(hasState("Active"));
  * System.out.println(predicate); // AssetClass in (Equity, Bond) and State=Active
+ * }
  * </pre>
  *
  * @author Benoit Xhenseval
