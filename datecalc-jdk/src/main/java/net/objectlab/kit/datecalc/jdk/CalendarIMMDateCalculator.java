@@ -71,9 +71,10 @@ public class CalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calenda
      *            conventional algorithm.
      * @return list of IMM dates
      */
+    @Override
     public List<Calendar> getIMMDates(final Calendar start, final Calendar end, final IMMPeriod period) {
 
-        final List<Calendar> dates = new ArrayList<Calendar>();
+        final List<Calendar> dates = new ArrayList<>();
         Calendar cal = (Calendar) start.clone();
         while (true) {
             cal = getNextIMMDate(true, cal, period);
@@ -189,6 +190,7 @@ public class CalendarIMMDateCalculator extends AbstractIMMDateCalculator<Calenda
         cal.add(DAY_OF_MONTH, NUMBER_DAYS_IN_WEEK * 2);
     }
 
+    @Override
     public boolean isIMMDate(final Calendar date) {
         // TODO a slightly crude implementation - revisit
         final Calendar cal = (Calendar) date.clone();

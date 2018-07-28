@@ -76,9 +76,9 @@ public abstract class AbstractDateCalculator<E extends Serializable> implements 
     protected AbstractDateCalculator(final String name, final HolidayCalendar<E> holidayCalendar, final HolidayHandler<E> holidayHandler) {
         this.name = name;
         if (holidayCalendar != null) {
-            this.holidayCalendar = new ImmutableHolidayCalendar<E>(holidayCalendar);
+            this.holidayCalendar = new ImmutableHolidayCalendar<>(holidayCalendar);
         } else {
-            this.holidayCalendar = new ImmutableHolidayCalendar<E>(new DefaultHolidayCalendar<E>());
+            this.holidayCalendar = new ImmutableHolidayCalendar<>(new DefaultHolidayCalendar<E>());
         }
         this.holidayHandler = holidayHandler;
     }
@@ -89,10 +89,10 @@ public abstract class AbstractDateCalculator<E extends Serializable> implements 
             if (calendar instanceof ImmutableHolidayCalendar) {
                 holidayCalendar = calendar;
             } else {
-                holidayCalendar = new ImmutableHolidayCalendar<E>(calendar);
+                holidayCalendar = new ImmutableHolidayCalendar<>(calendar);
             }
         } else {
-            holidayCalendar = new ImmutableHolidayCalendar<E>(new DefaultHolidayCalendar<E>());
+            holidayCalendar = new ImmutableHolidayCalendar<>(new DefaultHolidayCalendar<E>());
         }
         return this;
     }
@@ -231,7 +231,7 @@ public abstract class AbstractDateCalculator<E extends Serializable> implements 
      */
     @Override
     public List<E> calculateTenorDates(final List<Tenor> tenors, final int spotLag) {
-        final List<E> list = new ArrayList<E>();
+        final List<E> list = new ArrayList<>();
 
         if (tenors != null) {
             final E originalDate = clone(getCurrentBusinessDate());
@@ -363,7 +363,7 @@ public abstract class AbstractDateCalculator<E extends Serializable> implements 
 
         checkHolidayHandlerValidity(calculator);
 
-        final Set<E> newSet = new HashSet<E>();
+        final Set<E> newSet = new HashSet<>();
         if (holidayCalendar != null) {
             newSet.addAll(holidayCalendar.getHolidays());
         }
@@ -375,7 +375,7 @@ public abstract class AbstractDateCalculator<E extends Serializable> implements 
             newSet.addAll(calendarToCombine.getHolidays());
         }
 
-        final HolidayCalendar<E> newCal = new DefaultHolidayCalendar<E>(newSet,
+        final HolidayCalendar<E> newCal = new DefaultHolidayCalendar<>(newSet,
                 compareDate(holidayCalendar.getEarlyBoundary(), calendarToCombine.getEarlyBoundary(), false),
                 compareDate(holidayCalendar.getLateBoundary(), calendarToCombine.getLateBoundary(), true));
 

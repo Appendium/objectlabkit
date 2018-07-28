@@ -103,7 +103,7 @@ public final class StandardTenor {
     }
 
     static {
-        final List<Tenor> list = new ArrayList<Tenor>();
+        final List<Tenor> list = new ArrayList<>();
         list.add(OVERNIGHT);
         list.add(SPOT);
         list.add(T_1D);

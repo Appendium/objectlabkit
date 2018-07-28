@@ -83,6 +83,7 @@ public class DefaultHolidayCalendar<E extends Serializable> implements HolidayCa
      *
      * @see net.objectlab.kit.datecalc.common.HolidayCalendar#getEarlyBoundary()
      */
+    @Override
     public E getEarlyBoundary() {
         return earlyBoundary;
     }
@@ -92,8 +93,9 @@ public class DefaultHolidayCalendar<E extends Serializable> implements HolidayCa
      *
      * @see net.objectlab.kit.datecalc.common.HolidayCalendar#getHolidays()
      */
+    @Override
     public Set<E> getHolidays() {
-        return new HashSet<E>(holidays.values());
+        return new HashSet<>(holidays.values());
     }
 
     /*
@@ -101,6 +103,7 @@ public class DefaultHolidayCalendar<E extends Serializable> implements HolidayCa
      *
      * @see net.objectlab.kit.datecalc.common.HolidayCalendar#getLateBoundary()
      */
+    @Override
     public E getLateBoundary() {
         return lateBoundary;
     }
@@ -110,6 +113,7 @@ public class DefaultHolidayCalendar<E extends Serializable> implements HolidayCa
      *
      * @see net.objectlab.kit.datecalc.common.HolidayCalendar#setEarlyBoundary(java.lang.Object)
      */
+    @Override
     public HolidayCalendar<E> setEarlyBoundary(final E earlyBoundary) {
         this.earlyBoundary = earlyBoundary;
         return this;
@@ -120,6 +124,7 @@ public class DefaultHolidayCalendar<E extends Serializable> implements HolidayCa
      *
      * @see net.objectlab.kit.datecalc.common.HolidayCalendar#setHolidays(java.util.Set)
      */
+    @Override
     public final HolidayCalendar<E> setHolidays(final Set<E> holidays) {
 
         if (holidays == null) {
@@ -127,7 +132,7 @@ public class DefaultHolidayCalendar<E extends Serializable> implements HolidayCa
             return this;
         }
 
-        final Map<String, E> newSet = new TreeMap<String, E>();
+        final Map<String, E> newSet = new TreeMap<>();
         for (final E e : holidays) {
             newSet.put(toString(e), e);
         }
@@ -140,11 +145,13 @@ public class DefaultHolidayCalendar<E extends Serializable> implements HolidayCa
      *
      * @see net.objectlab.kit.datecalc.common.HolidayCalendar#setLateBoundary(java.lang.Object)
      */
+    @Override
     public HolidayCalendar<E> setLateBoundary(final E lateBoundary) {
         this.lateBoundary = lateBoundary;
         return this;
     }
 
+    @Override
     public boolean isHoliday(final E date) {
         return holidays.containsKey(toString(date));
     }

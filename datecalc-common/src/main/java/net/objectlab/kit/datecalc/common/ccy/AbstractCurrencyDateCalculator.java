@@ -1,8 +1,8 @@
 package net.objectlab.kit.datecalc.common.ccy;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import net.objectlab.kit.datecalc.common.CurrencyDateCalculator;
 import net.objectlab.kit.datecalc.common.CurrencyDateCalculatorBuilder;
@@ -66,11 +66,11 @@ public abstract class AbstractCurrencyDateCalculator<E extends Serializable> imp
         this.ccy1 = builder.getCcy1();
         this.ccy2 = builder.getCcy2();
         this.crossCcy = builder.getCrossCcy();
-        this.ccy1HolidayCalendar = new ImmutableHolidayCalendar<E>(
+        this.ccy1HolidayCalendar = new ImmutableHolidayCalendar<>(
                 builder.getCcy1Calendar() != null ? builder.getCcy1Calendar() : new DefaultHolidayCalendar<E>());
-        this.ccy2HolidayCalendar = new ImmutableHolidayCalendar<E>(
+        this.ccy2HolidayCalendar = new ImmutableHolidayCalendar<>(
                 builder.getCcy2Calendar() != null ? builder.getCcy2Calendar() : new DefaultHolidayCalendar<E>());
-        this.crossCcyHolidayCalendar = new ImmutableHolidayCalendar<E>(
+        this.crossCcyHolidayCalendar = new ImmutableHolidayCalendar<>(
                 builder.getCrossCcyCalendar() != null ? builder.getCrossCcyCalendar() : new DefaultHolidayCalendar<E>());
         this.holidayHandler = builder.getTenorHolidayHandler();
         this.ccy1Week = builder.getCcy1Week();
@@ -325,10 +325,6 @@ public abstract class AbstractCurrencyDateCalculator<E extends Serializable> imp
 
     @Override
     public List<E> calculateTenorDates(final E startDate, final List<Tenor> tenors) {
-        final List<E> results = new ArrayList<E>();
-        for (final Tenor tenor : tenors) {
-            results.add(calculateTenorDate(startDate, tenor));
-        }
-        return results;
+        return tenors.stream().map(tenor -> calculateTenorDate(startDate, tenor)).collect(Collectors.toList());
     }
 }

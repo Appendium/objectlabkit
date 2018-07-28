@@ -54,7 +54,7 @@ import net.objectlab.kit.datecalc.common.ccy.DefaultCurrencyCalculatorConfig;
  */
 public abstract class AbstractKitCalculatorsFactory<E extends Serializable> implements KitCalculatorsFactory<E> {
 
-    private final ConcurrentMap<String, HolidayCalendar<E>> holidays = new ConcurrentHashMap<String, HolidayCalendar<E>>();
+    private final ConcurrentMap<String, HolidayCalendar<E>> holidays = new ConcurrentHashMap<>();
 
     private CurrencyCalculatorConfig currencyCalculatorConfig = new DefaultCurrencyCalculatorConfig();
 
@@ -62,6 +62,7 @@ public abstract class AbstractKitCalculatorsFactory<E extends Serializable> impl
      * Use this method register a specific currency config, if not provided then the DefaultCurrencyCalculatorConfig will be given.
      * @param config that specifies the set of currencies subject to USD T+1 and the WorkingWeeks per currency.
      */
+    @Override
     public void setCurrencyCalculatorConfig(final CurrencyCalculatorConfig config) {
         currencyCalculatorConfig = config;
     }
@@ -70,6 +71,7 @@ public abstract class AbstractKitCalculatorsFactory<E extends Serializable> impl
      * Provides the registered instance of currencyCalculatorConfig or use DefaultCurrencyCalculatorConfig if none registered.
      * @see DefaultCurrencyCalculatorConfig
      */
+    @Override
     public CurrencyCalculatorConfig getCurrencyCalculatorConfig() {
         if (currencyCalculatorConfig == null) {
             currencyCalculatorConfig = new DefaultCurrencyCalculatorConfig();
@@ -89,13 +91,14 @@ public abstract class AbstractKitCalculatorsFactory<E extends Serializable> impl
      * @param holidaysCalendar
      *            a calendar containing a set of holidays (non-working days).
      */
+    @Override
     public KitCalculatorsFactory<E> registerHolidays(final String name, final HolidayCalendar<E> holidaysCalendar) {
         if (name != null) {
-            final Set<E> hol = new HashSet<E>();
+            final Set<E> hol = new HashSet<>();
             if (holidaysCalendar != null && holidaysCalendar.getHolidays() != null) {
                 hol.addAll(holidaysCalendar.getHolidays());
             }
-            final DefaultHolidayCalendar<E> defaultHolidayCalendar = new DefaultHolidayCalendar<E>(hol);
+            final DefaultHolidayCalendar<E> defaultHolidayCalendar = new DefaultHolidayCalendar<>(hol);
             if (holidaysCalendar != null) {
                 defaultHolidayCalendar.setEarlyBoundary(holidaysCalendar.getEarlyBoundary());
                 defaultHolidayCalendar.setLateBoundary(holidaysCalendar.getLateBoundary());
@@ -109,6 +112,7 @@ public abstract class AbstractKitCalculatorsFactory<E extends Serializable> impl
      * Check if a calendar of a given name is already registered.
      * @return true if the holiday name is registered.
      */
+    @Override
     public boolean isHolidayCalendarRegistered(final String name) {
         return name != null && this.holidays.containsKey(name);
     }
@@ -117,6 +121,7 @@ public abstract class AbstractKitCalculatorsFactory<E extends Serializable> impl
      * Provides an immutable Holiday Calendar with that name if registered, null if not registered
      * @return an immutable Holiday Calendar that is registered, null if not registered.
      */
+    @Override
     public HolidayCalendar<E> getHolidayCalendar(final String name) {
         return holidays.get(name);
     }
@@ -138,6 +143,7 @@ public abstract class AbstractKitCalculatorsFactory<E extends Serializable> impl
     /**
      * Provides the immutable set of registered calendar names
      */
+    @Override
     public Set<String> getRegisteredHolidayCalendarNames() {
         return Collections.unmodifiableSet(holidays.keySet());
     }
@@ -147,6 +153,7 @@ public abstract class AbstractKitCalculatorsFactory<E extends Serializable> impl
      * @param calendarName
      *          the calendar name to unregister.
      */
+    @Override
     public KitCalculatorsFactory<E> unregisterHolidayCalendar(final String calendarName) {
         holidays.remove(calendarName);
         return this;
@@ -155,6 +162,7 @@ public abstract class AbstractKitCalculatorsFactory<E extends Serializable> impl
     /**
      * unregister all holiday calendars;
      */
+    @Override
     public KitCalculatorsFactory<E> unregisterAllHolidayCalendars() {
         holidays.clear();
         return this;

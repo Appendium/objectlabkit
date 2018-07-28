@@ -34,12 +34,12 @@ package net.objectlab.kit.datecalc.common;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Utilities class for <code>Date/Calendar</code> conversions
@@ -141,11 +141,7 @@ public final class Utils {
      * @return the converted Set&lt;Calendar&gt;
      */
     public static Set<Calendar> toCalendarSet(final Set<Date> dates) {
-        final Set<Calendar> calendars = new HashSet<Calendar>();
-        for (final Date date : dates) {
-            calendars.add(getCal(date));
-        }
-        return calendars;
+        return dates.stream().map(date -> getCal(date)).collect(Collectors.toSet());
     }
 
     /**
@@ -155,7 +151,7 @@ public final class Utils {
      * @return the converted Set&lt;Calendar&gt;
      */
     public static HolidayCalendar<Calendar> toHolidayCalendarSet(final HolidayCalendar<Date> dates) {
-        final Set<Calendar> calendars = new HashSet<Calendar>();
+        final Set<Calendar> calendars = new HashSet<>();
         for (final Date date : dates.getHolidays()) {
             calendars.add(getCal(date));
         }
@@ -169,12 +165,7 @@ public final class Utils {
      * @return the converset Set&lt;Date&gt;
      */
     public static Set<Date> toDateSet(final Set<Calendar> calendars) {
-
-        final Set<Date> dates = new HashSet<Date>();
-        for (final Calendar calendar : calendars) {
-            dates.add(calendar.getTime());
-        }
-        return dates;
+        return calendars.stream().map(calendar -> calendar.getTime()).collect(Collectors.toSet());
     }
 
     /**
@@ -185,13 +176,7 @@ public final class Utils {
      * @return the converted List&lt;Date&gt;
      */
     public static List<Date> toDateList(final List<Calendar> dates) {
-
-        final List<Date> dateList = new ArrayList<Date>();
-        for (final Calendar calendar : dates) {
-            dateList.add(calendar.getTime());
-        }
-
-        return dateList;
+        return dates.stream().map(date -> date.getTime()).collect(Collectors.toList());
     }
 }
 

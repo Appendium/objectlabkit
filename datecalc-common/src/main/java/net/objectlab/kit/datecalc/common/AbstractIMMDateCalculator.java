@@ -60,6 +60,7 @@ public abstract class AbstractIMMDateCalculator<E> implements IMMDateCalculator<
      * @param startDate
      * @return the next IMMDate based on current date.
      */
+    @Override
     public E getNextIMMDate(final E startDate) {
         return getNextIMMDate(true, startDate, IMMPeriod.QUARTERLY);
     }
@@ -71,6 +72,7 @@ public abstract class AbstractIMMDateCalculator<E> implements IMMDateCalculator<
      *            conventional algorithm.
      * @return the next IMMDate based on current date.
      */
+    @Override
     public E getNextIMMDate(final E startDate, final IMMPeriod period) {
         return getNextIMMDate(true, startDate, period);
     }
@@ -87,6 +89,7 @@ public abstract class AbstractIMMDateCalculator<E> implements IMMDateCalculator<
      * @param startDate
      * @return the previous IMMDate based on current date.
      */
+    @Override
     public E getPreviousIMMDate(final E startDate) {
         return getNextIMMDate(false, startDate, IMMPeriod.QUARTERLY);
     }
@@ -98,6 +101,7 @@ public abstract class AbstractIMMDateCalculator<E> implements IMMDateCalculator<
      *            the conventional algorithm.
      * @return the previous IMMDate based on current date.
      */
+    @Override
     public E getPreviousIMMDate(final E startDate, final IMMPeriod period) {
         return getNextIMMDate(false, startDate, period);
     }
@@ -113,6 +117,7 @@ public abstract class AbstractIMMDateCalculator<E> implements IMMDateCalculator<
      *            end of the interval, may be included.
      * @return list of IMM dates
      */
+    @Override
     public List<E> getIMMDates(final E start, final E end) {
         return getIMMDates(start, end, IMMPeriod.QUARTERLY);
     }
@@ -129,11 +134,12 @@ public abstract class AbstractIMMDateCalculator<E> implements IMMDateCalculator<
      * @return list of IMM dates
      * @since 1.4.0
      */
+    @Override
     public List<E> getNextIMMDates(final E start, final int numberOfDates) {
         if (numberOfDates < 0) {
             throw new IllegalArgumentException("numberOfDates cannot be < 0 (" + numberOfDates + ")");
         }
-        final List<E> dates = new ArrayList<E>(numberOfDates);
+        final List<E> dates = new ArrayList<>(numberOfDates);
 
         E date = start;
         for (int i = 0; i < numberOfDates; i++) {

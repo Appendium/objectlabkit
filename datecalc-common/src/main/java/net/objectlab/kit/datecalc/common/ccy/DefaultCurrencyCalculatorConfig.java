@@ -19,12 +19,12 @@ import net.objectlab.kit.datecalc.common.WorkingWeek;
  * @since 1.4.0
  */
 public class DefaultCurrencyCalculatorConfig implements CurrencyCalculatorConfig {
-    private Map<String, Set<String>> currenciesSubjectToCrossCcyForT1 = new HashMap<String, Set<String>>();
-    private Map<String, WorkingWeek> workingWeeks = new HashMap<String, WorkingWeek>();
+    private Map<String, Set<String>> currenciesSubjectToCrossCcyForT1 = new HashMap<>();
+    private Map<String, WorkingWeek> workingWeeks = new HashMap<>();
 
     public DefaultCurrencyCalculatorConfig() {
         super();
-        final Set<String> subjectToUsd = new HashSet<String>();
+        final Set<String> subjectToUsd = new HashSet<>();
         subjectToUsd.add("MXN");
         subjectToUsd.add("CLP");
         subjectToUsd.add("ARS");
@@ -44,7 +44,7 @@ public class DefaultCurrencyCalculatorConfig implements CurrencyCalculatorConfig
      * Will take a copy of a non null set but doing so by replacing the internal one in one go for consistency.
      */
     public void setCurrenciesSubjectToCrossCcyForT1(final Map<String, Set<String>> currenciesSubjectToCrossCcyForT1) {
-        final Map<String, Set<String>> copy = new HashMap<String, Set<String>>();
+        final Map<String, Set<String>> copy = new HashMap<>();
         if (currenciesSubjectToCrossCcyForT1 != null) {
             copy.putAll(currenciesSubjectToCrossCcyForT1);
         }
@@ -55,7 +55,7 @@ public class DefaultCurrencyCalculatorConfig implements CurrencyCalculatorConfig
      * Will take a copy of a non null map but doing so by replacing the internal one in one go for consistency.
      */
     public void setWorkingWeeks(final Map<String, WorkingWeek> workingWeeks) {
-        final Map<String, WorkingWeek> ww = new HashMap<String, WorkingWeek>();
+        final Map<String, WorkingWeek> ww = new HashMap<>();
         ww.putAll(workingWeeks);
         this.workingWeeks = ww;
     }
