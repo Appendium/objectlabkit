@@ -13,6 +13,7 @@
 				Following a thorough review by ST, add rounding for Bid and Offer on the calculator.
 			</action>
 			<action dev="benoitx" type="fix" issue="6" due-to="stephen">NOK and SEK to be added to the Currency order list.</action>
+			<action dev="benoitx" type="add">Added a PrintablePredicate for humans!</action>
 		</release>
 		<release version="1.4.0" date="2014-10-01" description="new Currrency Calculator and FX Rate">
 			<action dev="benoitx" type="fix">The JODA YearMonthDay has been deprecated for a while, I removed the calculators, use LocalDate instead.</action>
