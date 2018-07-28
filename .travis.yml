@@ -23,6 +23,7 @@ notifications:
     recipients:
     - opensource@appendium.com
     on_success: always
+    on_failure: always
   slack:
     secure: pjvrkusCLgLDkrYTKZc5NbJ/cK3QuyKp0yZ4IDnN83nG47eIfs2gXX+iCo0BKo4aU5dTdURei3rxZ6dFuIE/2+dgXMUYx62ZtlbWDM8L06XjY6TLHgoqq6KGpo0cgRsVQECoCVotG2cReHyhGgeWOePDP079RqTD5UM6zFQLIqI=
 after_success:

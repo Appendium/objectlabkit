@@ -78,17 +78,21 @@ public final class ObjectUtil {
      * Also returns true if o1 is null and any of the given objects is null as well!
      */
     public static boolean equalsAny(final Object o1, final Object... o2s) {
-        for (final Object o2 : o2s) {
-            if (o1 == null) {
-                if (o2 == null) {
+        if (o2s != null) {
+            for (final Object o2 : o2s) {
+                if (o1 == null) {
+                    if (o2 == null) {
+                        return true;
+                    }
+                    continue;
+                }
+                // o1 != null
+                if (o1.equals(o2)) {
                     return true;
                 }
-                continue;
             }
-            // o1 != null
-            if (o1.equals(o2)) {
-                return true;
-            }
+        } else {
+            return o1 == null;
         }
         return false;
     }
@@ -97,17 +101,21 @@ public final class ObjectUtil {
      * Return true if o1 equals (according to {@link Object#equals(Object)} ALL of the given objects.
      */
     public static boolean equalsAll(final Object o1, final Object... o2s) {
-        for (final Object o2 : o2s) {
-            if (o1 == null) {
-                if (o2 != null) {
+        if (o2s != null) {
+            for (final Object o2 : o2s) {
+                if (o1 == null) {
+                    if (o2 != null) {
+                        return false;
+                    }
+                    continue;
+                }
+                // o1 != null
+                if (!o1.equals(o2)) {
                     return false;
                 }
-                continue;
             }
-            // o1 != null
-            if (!o1.equals(o2)) {
-                return false;
-            }
+        } else {
+            return o1 == null;
         }
         return true;
     }
@@ -124,10 +132,14 @@ public final class ObjectUtil {
      * Return true if any of the given objects are null.
      */
     public static boolean anyNull(final Object... o1s) {
-        for (final Object o1 : o1s) {
-            if (o1 == null) {
-                return true;
+        if (o1s != null && o1s.length > 0) {
+            for (final Object o1 : o1s) {
+                if (o1 == null) {
+                    return true;
+                }
             }
+        } else {
+            return true;
         }
         return false;
     }
@@ -136,9 +148,11 @@ public final class ObjectUtil {
      * Return true if ALL of the given objects are null.
      */
     public static boolean allNull(final Object... o1s) {
-        for (final Object o1 : o1s) {
-            if (o1 != null) {
-                return false;
+        if (o1s != null && o1s.length > 0) {
+            for (final Object o1 : o1s) {
+                if (o1 != null) {
+                    return false;
+                }
             }
         }
         return true;
@@ -148,9 +162,11 @@ public final class ObjectUtil {
      * Return true if at least one of the given objects is not null.
      */
     public static boolean atLeastOneNotNull(final Object... o1s) {
-        for (final Object o1 : o1s) {
-            if (o1 != null) {
-                return true;
+        if (o1s != null && o1s.length > 0) {
+            for (final Object o1 : o1s) {
+                if (o1 != null) {
+                    return true;
+                }
             }
         }
         return false;
