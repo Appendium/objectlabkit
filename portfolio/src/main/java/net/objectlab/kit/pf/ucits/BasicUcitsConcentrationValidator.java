@@ -122,8 +122,7 @@ public class BasicUcitsConcentrationValidator implements ValidationEngine {
             }
             l.setAllocationWeight(BigDecimalUtil.divide(8, l.getValueInPortfolioCcy(), porfolioValue, BigDecimal.ROUND_HALF_UP));
             // calculate the weight for each issuer
-            totalPerIssuer.computeIfAbsent(assetDetailsProvider.getDetails(l.getAssetCode()).getUltimateIssuerCode(), k -> new TotalPerIssuer(k))
-                    .add(l);
+            totalPerIssuer.computeIfAbsent(assetDetailsProvider.getDetails(l.getAssetCode()).getUltimateIssuerCode(), TotalPerIssuer::new).add(l);
 
         });
 

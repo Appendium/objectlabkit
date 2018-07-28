@@ -46,7 +46,7 @@ public class Excel {
 
         final Object[][] arr = readBlock(rangeOrStartAddress, type);
 
-        final List<E> result = new LinkedList<E>();
+        final List<E> result = new LinkedList<>();
         for (final Object[] element : arr) {
             result.add((E) element[0]);
         }
@@ -94,9 +94,9 @@ public class Excel {
 
         List<Object> result;
         if (height == 1) {
-            result = new LinkedList<Object>();
+            result = new LinkedList<>();
         } else {
-            result = new ArrayList<Object>(height);
+            result = new ArrayList<>(height);
         }
 
         for (int rowNum = 0; moreDataToRead(sheet, firstColumn, firstRow, lastRow, rowNum); rowNum++) {

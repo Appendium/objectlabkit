@@ -244,7 +244,7 @@ public class FxRateCalculatorBuilder {
     public FxRateCalculatorBuilder ratesSnapshot(final Collection<FxRate> rates) {
         if (rates != null) {
             this.ratesSnapshot.clear();
-            this.ratesSnapshot = rates.stream().collect(Collectors.toMap(t -> t.getCurrencyPair(), t -> t));
+            this.ratesSnapshot = rates.stream().collect(Collectors.toMap(FxRate::getCurrencyPair, t -> t));
         }
         return this;
     }

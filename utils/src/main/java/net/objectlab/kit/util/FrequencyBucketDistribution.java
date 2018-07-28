@@ -47,7 +47,8 @@ public class FrequencyBucketDistribution {
      */
     public FrequencyBucketDistribution(final List<BigDecimal> buckets) {
         if (buckets != null) {
-            orderedBuckets = buckets.stream().map(t -> new Bucket(t)).sorted((o1, o2) -> o1.bucketValue.compareTo(o2.bucketValue)).collect(Collectors.toList());
+            orderedBuckets = buckets.stream().map(Bucket::new).sorted((o1, o2) -> o1.bucketValue.compareTo(o2.bucketValue))
+                    .collect(Collectors.toList());
             orderedBuckets.add(new Bucket(null)); // upper limit
         } else {
             orderedBuckets = Collections.emptyList();
