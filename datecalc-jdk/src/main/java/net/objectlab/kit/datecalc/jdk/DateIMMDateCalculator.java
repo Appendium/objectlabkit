@@ -77,7 +77,7 @@ public class DateIMMDateCalculator extends AbstractIMMDateCalculator<Date> {
     }
 
     private static List<Date> buildList(final List<Calendar> dates) {
-        return dates.stream().map(d -> d.getTime()).collect(Collectors.toList());
+        return dates.stream().map(Calendar::getTime).collect(Collectors.toList());
     }
 }
 

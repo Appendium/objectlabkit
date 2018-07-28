@@ -228,7 +228,6 @@ Why re-invent the wheel?</description>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.0</version>
                 <configuration>
-                    <argLine>-Duser.timezone=GMT</argLine>
                     <skipTests>${skip.acceptance.test}</skipTests>
                     <excludes>
                         <excludes>**/RunSingleTest.java</excludes>
