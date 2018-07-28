@@ -18,11 +18,13 @@ public class StringUtilTest {
     @Before
     public void setUp() {
         tzBefore = TimeZone.getDefault();
+        System.err.println("setup " + tzBefore);
         TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
     }
 
     @After
     public void tearDown() {
+        System.err.println("tearDown " + tzBefore);
         TimeZone.setDefault(tzBefore);
     }
 
@@ -75,13 +77,14 @@ public class StringUtilTest {
     @Test
     public void testDefaultFormatDatetime() {
         assertThat(StringUtil.defaultFormatDatetime(null)).isNull();
-        assertThat(StringUtil.defaultFormatDatetime(new Date(1531603574189L))).isEqualToIgnoringCase("14-Jul-2018 21:26:14");
+        System.err.println("TEST " + TimeZone.getDefault());
+        assertThat(StringUtil.defaultFormatDatetime(new Date(1531603574189L))).isEqualToIgnoringCase("14-Jul-2018 22:26:14");
     }
 
     @Test
     public void testDefaultFileFormatTimestamp() {
         assertThat(StringUtil.defaultFileFormatTimestamp(null)).isNull();
-        assertThat(StringUtil.defaultFileFormatTimestamp(new Date(1531603574189L))).isEqualToIgnoringCase("20180714-212614");
+        assertThat(StringUtil.defaultFileFormatTimestamp(new Date(1531603574189L))).isEqualToIgnoringCase("20180714-222614");
     }
 
     @Test

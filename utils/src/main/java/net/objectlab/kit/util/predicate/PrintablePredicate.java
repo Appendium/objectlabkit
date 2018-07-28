@@ -82,39 +82,47 @@ public class PrintablePredicate<T> implements Predicate<T> {
         } else if (operand == PrintablePredicateOperand.AND) {
             b.append(left.toString()).append(" AND ").append(right.toString());
         } else {
-            if (operand == PrintablePredicateOperand.NOT) {
-                b.append("NOT ");
-            } else {
-                b.append(name);
-            }
-            if (predicate instanceof PrintablePredicate) {
-                if (operand == PrintablePredicateOperand.NOT) {
-                    b.append("(");
-                }
-                b.append(predicate.toString());
-                if (operand == PrintablePredicateOperand.NOT) {
-                    b.append(")");
-                }
-            }
-            if (values != null && values.length > 0) {
-                if (values.length == 1) {
-                    b.append("=");
-                } else {
-                    b.append(" in (");
-                }
-                for (int i = 0; i < values.length; i++) {
-                    if (i > 0) {
-                        b.append(", ");
-                    }
-                    b.append(values[i]);
-                }
-                if (values.length > 1) {
-                    b.append(")");
-                }
-            }
+            printPredicate(b);
+            printValues(b);
         }
 
         return b.toString();
+    }
+
+    private void printPredicate(final StringBuilder b) {
+        if (operand == PrintablePredicateOperand.NOT) {
+            b.append("NOT ");
+        } else {
+            b.append(name);
+        }
+        if (predicate instanceof PrintablePredicate) {
+            if (operand == PrintablePredicateOperand.NOT) {
+                b.append("(");
+            }
+            b.append(predicate.toString());
+            if (operand == PrintablePredicateOperand.NOT) {
+                b.append(")");
+            }
+        }
+    }
+
+    private void printValues(final StringBuilder b) {
+        if (values != null && values.length > 0) {
+            if (values.length == 1) {
+                b.append("=");
+            } else {
+                b.append(" in (");
+            }
+            for (int i = 0; i < values.length; i++) {
+                if (i > 0) {
+                    b.append(", ");
+                }
+                b.append(values[i]);
+            }
+            if (values.length > 1) {
+                b.append(")");
+            }
+        }
     }
 
     @Override
