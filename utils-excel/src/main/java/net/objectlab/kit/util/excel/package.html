@@ -1,0 +1,24 @@
+<!-- Copyright ObjectLab Kit: http://objectlabkit.sf.net -->
+<!DOCTYPE html>
+<html>
+<head><title>Excel Wrappers</title></head>
+<body>
+<p>This package provides a series of fluent classes that enable EASY creation of Excel Spreadsheets.</p>
+ <pre>
+       ExcelWorkbook.newBook().newSheet("Countries").newRow() // HEADER
+                .newCell("Country").header().newCell("Population 2018").header().newCell("Percentage").header() //
+                .newRow() // FIRST ROW
+                .newCell("Belgium").newCell(11_000_000L).numericFormat()//
+                .newCell(BigDecimal.valueOf(11_000_000d / 72_000_000d)).percentFormat() //
+
+                .newRow() // SECOND ROW
+                .newCell("UK").newCell(62_000_000L).numericFormat() //
+                .newCell(BigDecimal.valueOf(62_000_000d / 72_000_000d)).percentFormat() //
+
+                .newRow() // TOTAL
+                .newCell("Total").bold().newCell(72_000_000L).numericFormat().bold() //
+                .autoSizeColumn(0, 1) //
+                .save("test.xlsx"); // Save it
+</pre>
+</body>
+</html>

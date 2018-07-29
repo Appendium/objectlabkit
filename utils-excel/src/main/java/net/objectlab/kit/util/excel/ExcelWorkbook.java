@@ -16,7 +16,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * 
  * The default format is opinionated.
  * 
- * <pre>
+ * <pre>{@code
        ExcelWorkbook.newBook().newSheet("Countries").newRow() // HEADER
                 .newCell("Country").header().newCell("Population 2018").header().newCell("Percentage").header() //
                 .newRow() // FIRST ROW
@@ -31,7 +31,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
                 .newCell("Total").bold().newCell(72_000_000L).numericFormat().bold() //
                 .autoSizeColumn(0, 1) //
                 .save("test.xlsx"); // Save it
- * </pre>
+ * }</pre>
  * @author Benoit Xhenseval
  */
 public class ExcelWorkbook {

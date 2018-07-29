@@ -73,7 +73,7 @@ public final class BigDecimalUtil {
      * @return the new BigDecimal
      */
     public static BigDecimal bd(final String val) {
-        return new BigDecimal(val);
+        return val != null && val.length() > 0 ? new BigDecimal(val) : null;
     }
 
     /**

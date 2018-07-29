@@ -54,73 +54,156 @@ public class BigDecimalUtilTest {
     /**
      * Test method for {@link net.objectlab.kit.util.BigDecimalUtil#inverse(java.math.BigDecimal, int)}.
      */
-
+    @Test
     public void testInverseBigDecimalInt() {
-        fail("Not yet implemented");
+        assertThat(BigDecimalUtil.inverse(null, 0)).isNull();
+        assertThat(BigDecimalUtil.inverse(BigDecimal.ONE, 0)).isEqualByComparingTo(BigDecimal.ONE);
+        assertThat(BigDecimalUtil.inverse(BigDecimal.TEN, 0)).isEqualByComparingTo(new BigDecimal("0"));
+        assertThat(BigDecimalUtil.inverse(BigDecimal.TEN, 2)).isEqualByComparingTo(new BigDecimal("0.1"));
+        assertThat(BigDecimalUtil.inverse(BigDecimal.valueOf(3), 4)).isEqualByComparingTo(new BigDecimal("0.3333"));
+        assertThat(BigDecimalUtil.inverse(BigDecimal.valueOf(3), 5)).isEqualByComparingTo(new BigDecimal("0.33333"));
+        assertThat(BigDecimalUtil.inverse(BigDecimal.valueOf(16), 5)).isEqualByComparingTo(new BigDecimal("0.06250"));
+        assertThat(BigDecimalUtil.inverse(BigDecimal.valueOf(16), 3)).isEqualByComparingTo(new BigDecimal("0.0630"));
+        assertThat(BigDecimalUtil.inverse(BigDecimal.valueOf(16), 1)).isEqualByComparingTo(new BigDecimal("0.1"));
+        assertThat(BigDecimalUtil.inverse(BigDecimal.ZERO, 10)).isNull();
+    }
+
+    /**
+     * Test method for {@link net.objectlab.kit.util.BigDecimalUtil#inverse(java.math.BigDecimal, int, int)}.
+     */
+    @Test
+    public void testInverseBigDecimalIntInt() {
+        assertThat(BigDecimalUtil.inverse(null, 0, 0)).isNull();
+        assertThat(BigDecimalUtil.inverse(BigDecimal.ONE, 0, BigDecimal.ROUND_DOWN)).isEqualByComparingTo(BigDecimal.ONE);
+        assertThat(BigDecimalUtil.inverse(BigDecimal.TEN, 0, BigDecimal.ROUND_DOWN)).isEqualByComparingTo(new BigDecimal("0"));
+        assertThat(BigDecimalUtil.inverse(BigDecimal.TEN, 2, BigDecimal.ROUND_DOWN)).isEqualByComparingTo(new BigDecimal("0.1"));
+        assertThat(BigDecimalUtil.inverse(BigDecimal.valueOf(3), 4, BigDecimal.ROUND_DOWN)).isEqualByComparingTo(new BigDecimal("0.3333"));
+        assertThat(BigDecimalUtil.inverse(BigDecimal.valueOf(3), 5, BigDecimal.ROUND_DOWN)).isEqualByComparingTo(new BigDecimal("0.33333"));
+        assertThat(BigDecimalUtil.inverse(BigDecimal.valueOf(16), 5, BigDecimal.ROUND_DOWN)).isEqualByComparingTo(new BigDecimal("0.06250"));
+        assertThat(BigDecimalUtil.inverse(BigDecimal.valueOf(16), 3, BigDecimal.ROUND_DOWN)).isEqualByComparingTo(new BigDecimal("0.0620"));
+        assertThat(BigDecimalUtil.inverse(BigDecimal.valueOf(16), 1, BigDecimal.ROUND_DOWN)).isEqualByComparingTo(new BigDecimal("0"));
+        assertThat(BigDecimalUtil.inverse(BigDecimal.ZERO, 10, BigDecimal.ROUND_DOWN)).isNull();
     }
 
     /**
      * Test method for {@link net.objectlab.kit.util.BigDecimalUtil#inverse(java.math.BigDecimal)}.
      */
-
+    @Test
     public void testInverseBigDecimal() {
-        fail("Not yet implemented");
+        assertThat(BigDecimalUtil.inverse(null)).isNull();
+        assertThat(BigDecimalUtil.inverse(BigDecimal.ONE)).isEqualByComparingTo(BigDecimal.ONE);
+        assertThat(BigDecimalUtil.inverse(BigDecimal.TEN)).isEqualByComparingTo(new BigDecimal("0.1"));
+        assertThat(BigDecimalUtil.inverse(BigDecimal.valueOf(3))).isEqualByComparingTo(new BigDecimal("0.33333333333333333333"));
+        assertThat(BigDecimalUtil.inverse(BigDecimal.ZERO)).isNull();
+    }
+
+    @Test
+    public void testBd() {
+        assertThat(BigDecimalUtil.bd(null)).isNull();
+        assertThat(BigDecimalUtil.bd("")).isNull();
+        assertThat(BigDecimalUtil.bd("0")).isEqualByComparingTo(BigDecimal.ZERO);
+        assertThat(BigDecimalUtil.bd("10.12345678")).isEqualByComparingTo(new BigDecimal("10.12345678"));
     }
 
     /**
      * Test method for {@link net.objectlab.kit.util.BigDecimalUtil#isNotZero(java.math.BigDecimal)}.
      */
-
+    @Test
     public void testIsNotZero() {
-        fail("Not yet implemented");
+        assertThat(BigDecimalUtil.isNotZero(null)).isFalse();
+        assertThat(BigDecimalUtil.isNotZero(BigDecimal.ZERO)).isFalse();
+        assertThat(BigDecimalUtil.isNotZero(BigDecimal.TEN)).isTrue();
     }
 
     /**
      * Test method for {@link net.objectlab.kit.util.BigDecimalUtil#isZero(java.math.BigDecimal)}.
      */
-
+    @Test
     public void testIsZero() {
-        fail("Not yet implemented");
+        assertThat(BigDecimalUtil.isZero(null)).isFalse();
+        assertThat(BigDecimalUtil.isZero(BigDecimal.ZERO)).isTrue();
+        assertThat(BigDecimalUtil.isZero(BigDecimal.TEN)).isFalse();
     }
 
     /**
      * Test method for {@link net.objectlab.kit.util.BigDecimalUtil#isNegative(java.math.BigDecimal)}.
      */
-
+    @Test
     public void testIsNegative() {
-        fail("Not yet implemented");
+        assertThat(BigDecimalUtil.isNegative(null)).isFalse();
+        assertThat(BigDecimalUtil.isNegative(BigDecimal.ZERO)).isFalse();
+        assertThat(BigDecimalUtil.isNegative(BigDecimal.TEN)).isFalse();
+        assertThat(BigDecimalUtil.isNegative(new BigDecimal("-0.0001"))).isTrue();
     }
 
     /**
      * Test method for {@link net.objectlab.kit.util.BigDecimalUtil#isStrictlyPositive(java.math.BigDecimal)}.
      */
-
+    @Test
     public void testIsStrictlyPositive() {
-        fail("Not yet implemented");
+        assertThat(BigDecimalUtil.isStrictlyPositive(null)).isFalse();
+        assertThat(BigDecimalUtil.isStrictlyPositive(BigDecimal.ZERO)).isFalse();
+        assertThat(BigDecimalUtil.isStrictlyPositive(BigDecimal.TEN)).isTrue();
+        assertThat(BigDecimalUtil.isStrictlyPositive(new BigDecimal("-0.0001"))).isFalse();
     }
 
     /**
      * Test method for {@link net.objectlab.kit.util.BigDecimalUtil#isNullOrZero(java.math.BigDecimal)}.
      */
-
+    @Test
     public void testIsNullOrZero() {
-        fail("Not yet implemented");
+        assertThat(BigDecimalUtil.isNullOrZero(null)).isTrue();
+        assertThat(BigDecimalUtil.isNullOrZero(BigDecimal.ZERO)).isTrue();
+        assertThat(BigDecimalUtil.isNullOrZero(BigDecimal.TEN)).isFalse();
+        assertThat(BigDecimalUtil.isNullOrZero(new BigDecimal("-0.0001"))).isFalse();
     }
 
     /**
      * Test method for {@link net.objectlab.kit.util.BigDecimalUtil#isSameValue(java.math.BigDecimal, java.math.BigDecimal)}.
      */
-
+    @Test
     public void testIsSameValue() {
-        fail("Not yet implemented");
+        assertThat(BigDecimalUtil.isSameValue(null, null)).isTrue();
+        assertThat(BigDecimalUtil.isSameValue(null, BigDecimal.ZERO)).isFalse();
+        assertThat(BigDecimalUtil.isSameValue(BigDecimal.ZERO, null)).isFalse();
+        assertThat(BigDecimalUtil.isSameValue(BigDecimal.ZERO, new BigDecimal("0.00000"))).isTrue();
+        assertThat(BigDecimalUtil.isSameValue(BigDecimal.ZERO, new BigDecimal("0.000001"))).isFalse();
+        assertThat(BigDecimalUtil.isSameValue(new BigDecimal("-11.234"), new BigDecimal("-11.234"))).isTrue();
+        assertThat(BigDecimalUtil.isSameValue(new BigDecimal("-11.234"), new BigDecimal("11.234"))).isFalse();
+    }
+
+    /**
+     * Test method for {@link net.objectlab.kit.util.BigDecimalUtil#isSameAbsValue(java.math.BigDecimal, java.math.BigDecimal)}.
+     */
+    @Test
+    public void testIsSameAbsValue() {
+        assertThat(BigDecimalUtil.isSameAbsValue(null, null)).isTrue();
+        assertThat(BigDecimalUtil.isSameAbsValue(null, BigDecimal.ZERO)).isFalse();
+        assertThat(BigDecimalUtil.isSameAbsValue(BigDecimal.ZERO, null)).isFalse();
+        assertThat(BigDecimalUtil.isSameAbsValue(BigDecimal.ZERO, new BigDecimal("0.00000"))).isTrue();
+        assertThat(BigDecimalUtil.isSameAbsValue(BigDecimal.ZERO, new BigDecimal("0.000001"))).isFalse();
+        assertThat(BigDecimalUtil.isSameAbsValue(new BigDecimal("-11.234"), new BigDecimal("-11.234"))).isTrue();
+        assertThat(BigDecimalUtil.isSameAbsValue(new BigDecimal("-11.234"), new BigDecimal("11.234"))).isTrue();
     }
 
     /**
      * Test method for {@link net.objectlab.kit.util.BigDecimalUtil#isSameValueTreatNullAsZero(java.math.BigDecimal, java.math.BigDecimal)}.
      */
-
+    @Test
     public void testIsSameValueTreatNullAsZero() {
-        fail("Not yet implemented");
+        assertThat(BigDecimalUtil.isSameValueTreatNullAsZero(null, null)).isTrue();
+        assertThat(BigDecimalUtil.isSameValueTreatNullAsZero(null, BigDecimal.ZERO)).isTrue();
+        assertThat(BigDecimalUtil.isSameValueTreatNullAsZero(null, BigDecimal.TEN)).isFalse();
+        assertThat(BigDecimalUtil.isSameValueTreatNullAsZero(BigDecimal.ZERO, null)).isTrue();
+        assertThat(BigDecimalUtil.isSameValueTreatNullAsZero(BigDecimal.TEN, null)).isFalse();
+        assertThat(BigDecimalUtil.isSameValueTreatNullAsZero(BigDecimal.ZERO, BigDecimal.ZERO)).isTrue();
+        assertThat(BigDecimalUtil.isSameValueTreatNullAsZero(BigDecimal.TEN, BigDecimal.ZERO)).isFalse();
+        assertThat(BigDecimalUtil.isSameValueTreatNullAsZero(BigDecimal.ZERO, BigDecimal.TEN)).isFalse();
+        assertThat(BigDecimalUtil.isSameValueTreatNullAsZero(BigDecimal.TEN, BigDecimal.TEN)).isTrue();
+        assertThat(BigDecimalUtil.isSameValueTreatNullAsZero(BigDecimal.ZERO, new BigDecimal("0.00000"))).isTrue();
+        assertThat(BigDecimalUtil.isSameValueTreatNullAsZero(BigDecimal.ZERO, new BigDecimal("0.000001"))).isFalse();
+        assertThat(BigDecimalUtil.isSameValueTreatNullAsZero(new BigDecimal("-11.234"), new BigDecimal("-11.234"))).isTrue();
+        assertThat(BigDecimalUtil.isSameValueTreatNullAsZero(new BigDecimal("-11.234"), new BigDecimal("11.234"))).isFalse();
     }
 
     /**
@@ -153,30 +236,61 @@ public class BigDecimalUtilTest {
         assertEquals("1 -0 -null", BigDecimal.ONE, BigDecimalUtil.subtract(BigDecimal.ONE, BigDecimal.ZERO, null));
         assertEquals("1 -0 -1", BigDecimal.ZERO, BigDecimalUtil.subtract(BigDecimal.ONE, BigDecimal.ZERO, BigDecimal.ONE));
         assertEquals("1 -null -1", BigDecimal.ZERO, BigDecimalUtil.subtract(BigDecimal.ONE, null, BigDecimal.ONE));
+        assertEquals("null -null -1", BigDecimal.ONE.negate(), BigDecimalUtil.subtract(null, null, BigDecimal.ONE));
     }
 
     /**
      * Test method for {@link net.objectlab.kit.util.BigDecimalUtil#divide(java.math.BigDecimal, java.math.BigDecimal, int)}.
      */
-
+    @Test
     public void testDivideBigDecimalBigDecimalInt() {
-        fail("Not yet implemented");
-    }
-
-    /**
-     * Test method for {@link net.objectlab.kit.util.BigDecimalUtil#calculateWeight(java.math.BigDecimal, java.math.BigDecimal)}.
-     */
-
-    public void testCalculateWeight() {
-        fail("Not yet implemented");
+        assertThat(BigDecimalUtil.divide(null, null, BigDecimal.ROUND_HALF_UP)).isNull();
+        assertThat(BigDecimalUtil.divide(BigDecimal.ONE, null, BigDecimal.ROUND_HALF_UP)).isNull();
+        assertThat(BigDecimalUtil.divide(BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ROUND_HALF_UP)).isEqualByComparingTo(BigDecimal.ONE);
+        assertThat(BigDecimalUtil.divide(BigDecimal.ONE, BigDecimal.ZERO, BigDecimal.ROUND_HALF_UP)).isNull();
+        assertThat(BigDecimalUtil.divide(BigDecimal.ONE, BigDecimal.TEN, BigDecimal.ROUND_HALF_UP)).isEqualByComparingTo(BigDecimal.ZERO);
+        assertThat(BigDecimalUtil.divide(new BigDecimal("1.0"), BigDecimal.TEN, BigDecimal.ROUND_HALF_UP))
+                .isEqualByComparingTo(new BigDecimal("0.1"));
+        assertThat(BigDecimalUtil.divide(new BigDecimal("1.00000"), new BigDecimal("46"), BigDecimal.ROUND_HALF_UP))
+                .isEqualByComparingTo(new BigDecimal("0.02174"));
+        assertThat(BigDecimalUtil.divide(new BigDecimal("1.000"), new BigDecimal("46"), BigDecimal.ROUND_DOWN))
+                .isEqualByComparingTo(new BigDecimal("0.021"));
+        assertThat(BigDecimalUtil.divide(new BigDecimal("1.000"), new BigDecimal("46"), BigDecimal.ROUND_HALF_UP))
+                .isEqualByComparingTo(new BigDecimal("0.022"));
     }
 
     /**
      * Test method for {@link net.objectlab.kit.util.BigDecimalUtil#divide(int, java.math.BigDecimal, java.math.BigDecimal, int)}.
      */
-
+    @Test
     public void testDivideIntBigDecimalBigDecimalInt() {
-        fail("Not yet implemented");
+        assertThat(BigDecimalUtil.divide(0, null, null, BigDecimal.ROUND_HALF_UP)).isNull();
+        assertThat(BigDecimalUtil.divide(0, BigDecimal.ONE, null, BigDecimal.ROUND_HALF_UP)).isNull();
+        assertThat(BigDecimalUtil.divide(0, BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ROUND_HALF_UP)).isEqualByComparingTo(BigDecimal.ONE);
+        assertThat(BigDecimalUtil.divide(0, BigDecimal.ONE, BigDecimal.ZERO, BigDecimal.ROUND_HALF_UP)).isNull();
+        assertThat(BigDecimalUtil.divide(0, BigDecimal.ONE, BigDecimal.TEN, BigDecimal.ROUND_HALF_UP)).isEqualByComparingTo(BigDecimal.ZERO);
+        assertThat(BigDecimalUtil.divide(0, new BigDecimal("1.0"), BigDecimal.TEN, BigDecimal.ROUND_HALF_UP))
+                .isEqualByComparingTo(new BigDecimal("0"));
+        assertThat(BigDecimalUtil.divide(5, new BigDecimal("1.0"), BigDecimal.TEN, BigDecimal.ROUND_HALF_UP))
+                .isEqualByComparingTo(new BigDecimal("0.1"));
+        assertThat(BigDecimalUtil.divide(8, new BigDecimal("1.00000"), new BigDecimal("46"), BigDecimal.ROUND_HALF_UP))
+                .isEqualByComparingTo(new BigDecimal("0.02173913"));
+        assertThat(BigDecimalUtil.divide(3, new BigDecimal("1.00000000"), new BigDecimal("46"), BigDecimal.ROUND_DOWN))
+                .isEqualByComparingTo(new BigDecimal("0.021"));
+        assertThat(BigDecimalUtil.divide(3, new BigDecimal("1"), new BigDecimal("46"), BigDecimal.ROUND_HALF_UP))
+                .isEqualByComparingTo(new BigDecimal("0.022"));
+    }
+
+    /**
+     * Test method for {@link net.objectlab.kit.util.BigDecimalUtil#calculateWeight(java.math.BigDecimal, java.math.BigDecimal)}.
+     */
+    @Test
+    public void testCalculateWeight() {
+        assertThat(BigDecimalUtil.calculateWeight(null, null)).isNull();
+        assertThat(BigDecimalUtil.calculateWeight(null, BigDecimal.TEN)).isNull();
+        assertThat(BigDecimalUtil.calculateWeight(BigDecimal.TEN, BigDecimal.TEN)).isEqualByComparingTo(BigDecimal.ONE);
+        assertThat(BigDecimalUtil.calculateWeight(new BigDecimal("2345"), new BigDecimal("123456789")))
+                .isEqualByComparingTo(new BigDecimal("0.000018995"));
     }
 
     /**
@@ -232,14 +346,6 @@ public class BigDecimalUtilTest {
      */
 
     public void testIsNotSameValue() {
-        fail("Not yet implemented");
-    }
-
-    /**
-     * Test method for {@link net.objectlab.kit.util.BigDecimalUtil#isSameAbsValue(java.math.BigDecimal, java.math.BigDecimal)}.
-     */
-
-    public void testIsSameAbsValue() {
         fail("Not yet implemented");
     }
 
