@@ -2,6 +2,7 @@ package net.objectlab.kit.util.excel;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.function.Predicate;
 
 import org.junit.Test;
 
@@ -11,6 +12,11 @@ public class ExcelWorkbookTest {
     public static final ExcelStyle BOLD_NUMERIC_STYLE = ExcelStyle.builder().numericFormat().bold().build();
     public static final ExcelStyle PERCENT_STYLE = ExcelStyle.builder().percentFormat().bold().build();
 
+    public static void main(String[] args) {
+        Predicate<String> p = (s) -> true;
+        System.out.println(p.toString());
+    }
+
     /**
      * 
      * 
@@ -19,6 +25,8 @@ public class ExcelWorkbookTest {
     <tr><td>Belgium</td><td>11,000,000</td><td><b>15.28%</b></td></tr>
     <tr><td>UK</td><td>62,000,000</td><td><b>86.11%</b></td></tr>
     <tr><td><b><i>Total</i></b></td><td><b>72,000,000</b></td><td> </td></tr>
+    <tr><td></td></tr>
+    <tr><td>Nice</td></tr>
     </table>
      */
     @Test
@@ -36,6 +44,7 @@ public class ExcelWorkbookTest {
                 .newRow() // TOTAL
                 .newCell("Total").style(ExcelStyle.builder().bold().italic().build()).newCell(72_000_000L).style(BOLD_NUMERIC_STYLE) //
                 .autoSizeColumn(0, 1) //
+                .row().sheet().skipRow().newRow().newCell("Nice")//
                 .save("test.xlsx"); // Save it
 
     }

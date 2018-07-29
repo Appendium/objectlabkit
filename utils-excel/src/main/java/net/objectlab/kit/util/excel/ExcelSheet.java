@@ -24,6 +24,11 @@ public class ExcelSheet {
         return new ExcelRow(currentSheet.createRow(currentRow++), this);
     }
 
+    public ExcelSheet skipRow() {
+        currentRow++;
+        return this;
+    }
+
     public int rowIndex() {
         return currentRow;
     }

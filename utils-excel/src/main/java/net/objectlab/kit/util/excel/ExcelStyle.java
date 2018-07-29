@@ -55,7 +55,7 @@ public class ExcelStyle {
         CellStyle cellStyle = cell.cloneStyle(hashCode());
         if (bold || italic || underline || header) {
             Font f = cell.workbook().createFont();
-            f.setBold(bold | header);
+            f.setBold(bold || header);
             if (underline) {
                 f.setUnderline(Font.U_SINGLE);
             }
