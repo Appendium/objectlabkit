@@ -3,12 +3,14 @@ package net.objectlab.kit.util.excel;
 import java.io.IOException;
 
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 
 public class ExcelRow {
     private ExcelSheet sheet;
     private XSSFRow currentRow;
     private int currentCol;
+    private ExcelStyle style;
 
     public ExcelRow(XSSFRow row, ExcelSheet sheet) {
         this.sheet = sheet;
@@ -16,19 +18,24 @@ public class ExcelRow {
     }
 
     public ExcelCell newCell() {
-        return new ExcelCell(currentRow.createCell(currentCol++), this);
+        return new ExcelCell(currentRow.createCell(currentCol++), this).style(style);
     }
 
     public ExcelCell newCell(String value) {
-        return new ExcelCell(currentRow.createCell(currentCol++), this).value(value);
+        return new ExcelCell(currentRow.createCell(currentCol++), this).value(value).style(style);
     }
 
     public ExcelCell newCell(long value) {
-        return new ExcelCell(currentRow.createCell(currentCol++), this).value(value);
+        return new ExcelCell(currentRow.createCell(currentCol++), this).value(value).style(style);
     }
 
     public ExcelCell newCell(Number value) {
-        return new ExcelCell(currentRow.createCell(currentCol++), this).value(value);
+        return new ExcelCell(currentRow.createCell(currentCol++), this).value(value).style(style);
+    }
+
+    public ExcelRow skipCol() {
+        currentCol++;
+        return this;
     }
 
     public ExcelRow newRow() {
@@ -63,6 +70,10 @@ public class ExcelRow {
         return sheet.workbook();
     }
 
+    public Workbook poiWorkbook() {
+        return sheet.workbook().poiWorkbook();
+    }
+
     public ExcelRow save(String fileName) throws IOException {
         sheet.save(fileName);
         return this;
@@ -70,6 +81,11 @@ public class ExcelRow {
 
     public ExcelRow autoSizeColumn(int startCol, int endCol) {
         sheet.autoSizeColumn(startCol, endCol);
+        return this;
+    }
+
+    public ExcelRow style(ExcelStyle style) {
+        this.style = style;
         return this;
     }
 }

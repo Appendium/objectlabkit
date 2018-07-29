@@ -2,13 +2,14 @@ package net.objectlab.kit.util.excel;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
-import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.Font;
-import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
@@ -36,28 +37,10 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  */
 public class ExcelWorkbook {
     private XSSFWorkbook workbook;
-    private CellStyle wrapStyle;
-    private CellStyle headerStyle;
-    private CellStyle boldStyle;
+    private Map<Integer, CellStyle> existingStyles = new HashMap<>();
 
     public ExcelWorkbook() {
         workbook = new XSSFWorkbook();
-        wrapStyle = workbook.createCellStyle();
-        wrapStyle.setWrapText(true);
-
-        boldStyle = workbook.createCellStyle();
-        Font boldFont = workbook.createFont();
-        boldFont.setBold(true);
-        boldStyle.setFont(boldFont);
-
-        Font fontHeader = workbook.createFont();
-        fontHeader.setBold(true);
-        headerStyle = workbook.createCellStyle();
-        headerStyle.setFont(fontHeader);
-        headerStyle.setBorderBottom(BorderStyle.THIN);
-        headerStyle.setBottomBorderColor(IndexedColors.BLACK.getIndex());
-        headerStyle.setFillForegroundColor(IndexedColors.PALE_BLUE.getIndex());
-        headerStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
     }
 
     public static ExcelWorkbook newBook() {
@@ -66,18 +49,6 @@ public class ExcelWorkbook {
 
     public ExcelSheet newSheet(String name) {
         return new ExcelSheet(workbook.createSheet(name), this);
-    }
-
-    public CellStyle wrapStyle() {
-        return wrapStyle;
-    }
-
-    public CellStyle headerStyle() {
-        return headerStyle;
-    }
-
-    public CellStyle boldStyle() {
-        return boldStyle;
     }
 
     public Workbook poiWorkbook() {
@@ -93,6 +64,16 @@ public class ExcelWorkbook {
 
     public Font createFont() {
         return workbook.createFont();
+    }
+
+    public Optional<CellStyle> findStyle(int styleHashCode) {
+        return Optional.ofNullable(existingStyles.get(styleHashCode));
+    }
+
+    public CellStyle cloneStyle(int styleHashCode) {
+        final XSSFCellStyle cellStyle = workbook.createCellStyle();
+        existingStyles.put(styleHashCode, cellStyle);
+        return cellStyle;
     }
 
 }

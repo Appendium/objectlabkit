@@ -1,12 +1,13 @@
 package net.objectlab.kit.util.excel;
 
 import java.io.IOException;
+import java.util.Optional;
 
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.ss.usermodel.DataFormat;
-import org.apache.poi.ss.usermodel.Font;
-import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 
 public class ExcelCell {
@@ -63,58 +64,30 @@ public class ExcelCell {
         return this;
     }
 
-    public CellStyle newStyle() {
-        return row().sheet().workbook().poiWorkbook().createCellStyle();
-    }
-
-    public DataFormat newDataFormat() {
-        return workbook().poiWorkbook().createDataFormat();
-    }
-
-    public ExcelCell percentFormat() {
-        CellStyle cellStyle = newStyle();
+    public CellStyle cloneStyle() {
+        final CellStyle cellStyle = poiWorkbook().createCellStyle();
         cellStyle.cloneStyleFrom(currentCell.getCellStyle());
-        DataFormat format = newDataFormat();
-        cellStyle.setDataFormat(format.getFormat("#,###,###,##0.00%"));
-        currentCell.setCellStyle(cellStyle);
+        return cellStyle;
+    }
+
+    public ExcelCell setStyle(CellStyle style) {
+        currentCell.setCellStyle(style);
         return this;
     }
 
-    public ExcelCell numericFormat() {
-        CellStyle cellStyle = newStyle();
-        cellStyle.cloneStyleFrom(currentCell.getCellStyle());
-        DataFormat format = newDataFormat();
-        cellStyle.setDataFormat(format.getFormat("#,###,###,###"));
-        currentCell.setCellStyle(cellStyle);
+    public ExcelCell style(ExcelStyle style) {
+        if (style != null) {
+            currentCell.setCellStyle(style.build(this));
+        }
         return this;
     }
 
-    public ExcelCell bold() {
-        CellStyle cellStyle = newStyle();
-        cellStyle.cloneStyleFrom(currentCell.getCellStyle());
-        Font boldFont = workbook().createFont();
-        boldFont.setBold(true);
-        cellStyle.setFont(boldFont);
-        currentCell.setCellStyle(cellStyle);
-        return this;
+    public Optional<CellStyle> findStyle(int styleHashcode) {
+        return row.sheet().workbook().findStyle(styleHashcode);
     }
 
-    public ExcelCell background(IndexedColors color) {
-        CellStyle cellStyle = newStyle();
-        cellStyle.cloneStyleFrom(currentCell.getCellStyle());
-        cellStyle.setFillBackgroundColor(color.getIndex());
-        currentCell.setCellStyle(cellStyle);
-        return this;
-    }
-
-    public ExcelCell wrap() {
-        currentCell.setCellStyle(workbook().wrapStyle());
-        return this;
-    }
-
-    public ExcelCell header() {
-        currentCell.setCellStyle(workbook().headerStyle());
-        return this;
+    public CellStyle cloneStyle(int styleHashcode) {
+        return row.sheet().workbook().cloneStyle(styleHashcode);
     }
 
     public ExcelRow newRow(int rowIdx) {
@@ -133,5 +106,17 @@ public class ExcelCell {
     public ExcelCell autoSizeColumn(int startCol, int endCol) {
         row.autoSizeColumn(startCol, endCol);
         return this;
+    }
+
+    public Cell poiCell() {
+        return currentCell;
+    }
+
+    public Row poiRow() {
+        return currentCell.getRow();
+    }
+
+    public Workbook poiWorkbook() {
+        return row.poiWorkbook();
     }
 }

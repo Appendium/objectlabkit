@@ -28,10 +28,6 @@ public class ExcelSheet {
         return currentRow;
     }
 
-    public ExcelWorkbook book() {
-        return workbook;
-    }
-
     public ExcelSheet newSheet(String title) {
         return workbook.newSheet(title);
     }
@@ -48,5 +44,9 @@ public class ExcelSheet {
     public ExcelSheet save(String fileName) throws IOException {
         workbook.save(fileName);
         return this;
+    }
+
+    public XSSFSheet poiSheet() {
+        return currentSheet;
     }
 }
