@@ -26,7 +26,9 @@ public class ExcelWorkbookTest {
     <tr><td>UK</td><td>62,000,000</td><td><b>86.11%</b></td></tr>
     <tr><td><b><i>Total</i></b></td><td><b>72,000,000</b></td><td> </td></tr>
     <tr><td></td></tr>
-    <tr><td>Nice</td></tr>
+    <tr><td></td><td><center>Nice</center></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td><td align="right"><u>Test</u></td></tr>
     </table>
      */
     @Test
@@ -44,7 +46,8 @@ public class ExcelWorkbookTest {
                 .newRow() // TOTAL
                 .newCell("Total").style(ExcelStyle.builder().bold().italic().build()).newCell(72_000_000L).style(BOLD_NUMERIC_STYLE) //
                 .autoSizeColumn(0, 1) //
-                .row().sheet().skipRow().newRow().newCell("Nice")//
+                .row().sheet().skipRow().newRow().skipCol().newCell("Nice").style(ExcelStyle.builder().center().build())//
+                .newRow(7).newCell().newCell("Test").style(ExcelStyle.builder().underline().right().build())//
                 .save("test.xlsx"); // Save it
 
     }

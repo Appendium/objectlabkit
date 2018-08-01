@@ -27,4 +27,11 @@ public class ExcelStyleTest {
         assertThat(build.isRight()).isTrue();
         assertThat(build.getDataFormat()).isEqualTo("0.000%");
     }
+
+    @Test
+    public void testLeft() {
+        final ExcelStyle build = ExcelStyle.builder().left().percentFormat().build();
+        assertThat(build.isLeft()).isTrue();
+        assertThat(build.isPercentFormat()).isTrue();
+    }
 }

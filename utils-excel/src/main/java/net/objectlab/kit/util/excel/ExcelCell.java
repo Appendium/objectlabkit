@@ -77,7 +77,7 @@ public class ExcelCell {
 
     public ExcelCell style(ExcelStyle style) {
         if (style != null) {
-            currentCell.setCellStyle(style.build(this));
+            setStyle(style.build(this));
         }
         return this;
     }
