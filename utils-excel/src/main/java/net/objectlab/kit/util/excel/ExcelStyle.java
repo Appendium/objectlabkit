@@ -55,6 +55,22 @@ public class ExcelStyle {
         }
 
         CellStyle cellStyle = cell.cloneStyle(hashCode());
+        addFontFormat(cell, cellStyle);
+
+        if (header) {
+            cellStyle.setBorderBottom(BorderStyle.THIN);
+            cellStyle.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+            cellStyle.setFillForegroundColor(IndexedColors.PALE_BLUE.getIndex());
+            cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        }
+
+        addFormat(cell, cellStyle);
+
+        addAlignment(cellStyle);
+        return cellStyle;
+    }
+
+    private void addFontFormat(ExcelCell cell, CellStyle cellStyle) {
         if (bold || italic || underline || header || fontColour != null) {
             Font f = cell.workbook().createFont();
             f.setBold(bold || header);
@@ -67,14 +83,9 @@ public class ExcelStyle {
             f.setItalic(italic);
             cellStyle.setFont(f);
         }
+    }
 
-        if (header) {
-            cellStyle.setBorderBottom(BorderStyle.THIN);
-            cellStyle.setBottomBorderColor(IndexedColors.BLACK.getIndex());
-            cellStyle.setFillForegroundColor(IndexedColors.PALE_BLUE.getIndex());
-            cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
-        }
-
+    private void addFormat(ExcelCell cell, CellStyle cellStyle) {
         if (dataFormat != null && dataFormat.length() > 0) {
             DataFormat format = cell.poiWorkbook().createDataFormat();
             cellStyle.setDataFormat(format.getFormat(dataFormat));
@@ -85,7 +96,9 @@ public class ExcelStyle {
             DataFormat format = cell.poiWorkbook().createDataFormat();
             cellStyle.setDataFormat(format.getFormat("#,###,###,##0.00%"));
         }
+    }
 
+    private void addAlignment(CellStyle cellStyle) {
         if (center) {
             cellStyle.setAlignment(HorizontalAlignment.CENTER);
         } else if (right) {
@@ -93,7 +106,6 @@ public class ExcelStyle {
         } else if (left) {
             cellStyle.setAlignment(HorizontalAlignment.LEFT);
         }
-        return cellStyle;
     }
 
     public static class Builder {
