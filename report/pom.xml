@@ -67,18 +67,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <!--
-        <scm>
-        <connection>scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk/utils-excel/</connection>
-        <developerConnection>scm:svn:https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk/utils-excel/</developerConnection>
-        <url>https://objectlabkit.svn.sourceforge.net/svnroot/objectlabkit/trunk/utils-excel/</url>
-        </scm>
-
-        <issueManagement>
-        <system>sourceforge</system>
-        <url>https://sourceforge.net/tracker/?group_id=175139</url>
-        </issueManagement>
-
-    -->
 </project>

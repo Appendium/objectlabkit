@@ -27,6 +27,7 @@ public class ExcelStyle {
     private final boolean wrap;
     private final boolean header;
     private final String dataFormat;
+    private final IndexedColors fontColour;
 
     public static Builder builder() {
         return new Builder();
@@ -44,6 +45,7 @@ public class ExcelStyle {
         wrap = b.wrap;
         header = b.header;
         dataFormat = b.dataFormat;
+        fontColour = b.fontColour;
     }
 
     public CellStyle build(ExcelCell cell) {
@@ -53,11 +55,14 @@ public class ExcelStyle {
         }
 
         CellStyle cellStyle = cell.cloneStyle(hashCode());
-        if (bold || italic || underline || header) {
+        if (bold || italic || underline || header || fontColour != null) {
             Font f = cell.workbook().createFont();
             f.setBold(bold || header);
             if (underline) {
                 f.setUnderline(Font.U_SINGLE);
+            }
+            if (fontColour != null) {
+                f.setColor(fontColour.getIndex());
             }
             f.setItalic(italic);
             cellStyle.setFont(f);
@@ -103,6 +108,12 @@ public class ExcelStyle {
         private boolean wrap;
         private boolean header;
         private String dataFormat;
+        private IndexedColors fontColour;
+
+        public Builder fontColour(IndexedColors fontColour) {
+            this.fontColour = fontColour;
+            return this;
+        }
 
         public Builder center() {
             center = true;
