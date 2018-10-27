@@ -29,31 +29,33 @@
 
 	<body>
 		<head>
-			<!-- BEGIN: Google Analytics -->
-			<script type="text/javascript">
-				var _gaq = _gaq || [];
-				_gaq.push(['_setAccount', 'UA-615747-1']);
-				_gaq.push(['_setDetectFlash', false]);
-				_gaq.push(['_trackPageview()']);
-				(function() {
-				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-				})();
-			</script>
-			<!-- END: Google Analytics -->
+      <![CDATA[
+        <!-- BEGIN: Google Analytics -->
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-615747-1']);
+          _gaq.push(['_setDetectFlash', false]);
+          _gaq.push(['_trackPageview()']);
+          (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        </script>
+        <!-- END: Google Analytics -->
 
-			<!-- BEGIN: Syntax Highlighting -->
-			<script type="text/javascript" src="js/shCore.js"></script>
-			<script type="text/javascript" src="js/shBrushJava.js"></script>
-			<script type="text/javascript" src="js/shBrushXml.js"></script>
+        <!-- BEGIN: Syntax Highlighting -->
+        <script type="text/javascript" src="js/shCore.js"></script>
+        <script type="text/javascript" src="js/shBrushJava.js"></script>
+        <script type="text/javascript" src="js/shBrushXml.js"></script>
 
-			<link href="css/shCore.css" rel="stylesheet" type="text/css" />
-			<link href="css/shThemeDefault.css" rel="stylesheet" type="text/css" />
-			<script type="text/javascript">
-				SyntaxHighlighter.all()
-			</script>
-			<!-- END: Syntax Highlighting -->
+        <link href="css/shCore.css" rel="stylesheet" type="text/css" />
+        <link href="css/shThemeDefault.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript">
+          SyntaxHighlighter.all()
+        </script>
+        <!-- END: Syntax Highlighting -->
+      ]]>
 		</head>
 
 		<links>
