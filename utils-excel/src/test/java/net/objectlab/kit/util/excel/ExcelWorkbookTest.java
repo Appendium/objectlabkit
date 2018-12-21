@@ -33,7 +33,7 @@ public class ExcelWorkbookTest {
      */
     @Test
     public void testSimple() throws IOException {
-        ExcelWorkbook.newBook().newSheet("Countries").newRow().style(HEADER_STYLE) // HEADER style for entire row
+        ExcelWorkbook.newInMemoryWorkbook().newSheet("Countries").newRow().style(HEADER_STYLE) // HEADER style for entire row
                 .newCell("Country").newCell("Population 2018").newCell("Percentage") //
                 .newRow() // FIRST ROW
                 .newCell("Belgium").newCell(11_000_000L).style(NUMERIC_STYLE)//

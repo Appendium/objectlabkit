@@ -11,8 +11,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import net.objectlab.kit.util.StringUtil;
-
 import org.apache.commons.lang.builder.CompareToBuilder;
 import org.junit.ComparisonFailure;
 import org.springframework.beans.BeanWrapper;
@@ -20,6 +18,7 @@ import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.beans.NullValueInNestedPathException;
 
 import cucumber.api.DataTable;
+import net.objectlab.kit.util.StringUtil;
 
 public class CukeUtils {
     public static final Map<String, Object> VALUEHOLDER = new HashMap<>();
@@ -51,8 +50,8 @@ public class CukeUtils {
         final List<T> actualEntities = actual.stream().map(sea -> copyFieldValues(fieldsToCompare, sea, classType)).collect(Collectors.toList());
 
         try {
-            assertThat(actualEntities).usingElementComparator(comparator(buildExclusionFields(classType, fieldsToCompare))).containsOnly(
-                    expectedEntities);
+            assertThat(actualEntities).usingElementComparator(comparator(buildExclusionFields(classType, fieldsToCompare)))
+                    .containsOnly(expectedEntities);
         } catch (final java.lang.AssertionError e) {
             final String actualDataAsStr = convertToString(actual, fieldsToCompare);
             throw new ComparisonFailure("Table comparison for " + classType.getSimpleName() + " does not match\n", expected.toString(),
@@ -80,7 +79,8 @@ public class CukeUtils {
     }
 
     @SuppressWarnings("unchecked")
-    private static <T> T[] convertDataTableToExpected(final Class<T> typeOfT, final DataTable expectedValues, final List<String> propertiesToCompare) {
+    private static <T> T[] convertDataTableToExpected(final Class<T> typeOfT, final DataTable expectedValues,
+            final List<String> propertiesToCompare) {
         return (T[]) convertDataTable(expectedValues, typeOfT, propertiesToCompare).toArray();
     }
 
@@ -93,15 +93,15 @@ public class CukeUtils {
         try {
             final BeanWrapper src = new BeanWrapperImpl(source);
             final BeanWrapper target = new BeanWrapperImpl(typeOfT.newInstance());
-            Arrays.stream(src.getPropertyDescriptors()).forEach(
-                    property -> {
-                        final String propertyName = property.getName();
-                        if (propertiesToCopy.contains(propertyName)) {
-                            final Object propertyValue = String.class.isAssignableFrom(property.getPropertyType()) ? StringUtil
-                                    .nullIfEmpty((String) src.getPropertyValue(propertyName)) : src.getPropertyValue(propertyName);
-                            target.setPropertyValue(propertyName, propertyValue);
-                        }
-                    });
+            Arrays.stream(src.getPropertyDescriptors()).forEach(property -> {
+                final String propertyName = property.getName();
+                if (propertiesToCopy.contains(propertyName)) {
+                    final Object propertyValue = String.class.isAssignableFrom(property.getPropertyType())
+                            ? StringUtil.nullIfEmpty((String) src.getPropertyValue(propertyName))
+                            : src.getPropertyValue(propertyName);
+                    target.setPropertyValue(propertyName, propertyValue);
+                }
+            });
             return (T) target.getWrappedInstance();
         } catch (InstantiationException | IllegalAccessException e) {
             return null;

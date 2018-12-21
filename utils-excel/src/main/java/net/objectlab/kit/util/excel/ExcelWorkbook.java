@@ -9,7 +9,7 @@ import java.util.Optional;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
@@ -36,34 +36,56 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * @author Benoit Xhenseval
  */
 public class ExcelWorkbook {
-    private XSSFWorkbook workbook;
+    private XSSFWorkbook xssfWorkbook;
+    private SXSSFWorkbook sxssfWorkbook;
     private Map<Integer, CellStyle> existingStyles = new HashMap<>();
 
-    public ExcelWorkbook() {
-        workbook = new XSSFWorkbook();
+    public ExcelWorkbook(boolean streaming) {
+        if (streaming) {
+            sxssfWorkbook = new SXSSFWorkbook(100);
+            sxssfWorkbook.setCompressTempFiles(true);
+
+        } else {
+            xssfWorkbook = new XSSFWorkbook();
+        }
     }
 
-    public static ExcelWorkbook newBook() {
-        return new ExcelWorkbook();
+    public static ExcelWorkbook newStreamingWorkbook() {
+        return new ExcelWorkbook(true);
+    }
+
+    public static ExcelWorkbook newInMemoryWorkbook() {
+        return new ExcelWorkbook(false);
     }
 
     public ExcelSheet newSheet(String name) {
-        return new ExcelSheet(workbook.createSheet(name), this);
+        return sxssfWorkbook != null ? new ExcelSheet(sxssfWorkbook.createSheet(name), this) : new ExcelSheet(xssfWorkbook.createSheet(name), this);
     }
 
     public Workbook poiWorkbook() {
-        return workbook;
+        return sxssfWorkbook != null ? sxssfWorkbook : xssfWorkbook;
+    }
+
+    public ExcelWorkbook dispose() {
+        if (sxssfWorkbook != null) {
+            sxssfWorkbook.dispose();
+        }
+        return this;
     }
 
     public ExcelWorkbook save(String fileName) throws IOException {
         try (FileOutputStream out = new FileOutputStream(fileName)) {
-            workbook.write(out);
+            if (sxssfWorkbook != null) {
+                sxssfWorkbook.write(out);
+            } else {
+                xssfWorkbook.write(out);
+            }
         }
         return this;
     }
 
     public Font createFont() {
-        return workbook.createFont();
+        return sxssfWorkbook != null ? sxssfWorkbook.createFont() : xssfWorkbook.createFont();
     }
 
     public Optional<CellStyle> findStyle(int styleHashCode) {
@@ -71,7 +93,7 @@ public class ExcelWorkbook {
     }
 
     public CellStyle cloneStyle(int styleHashCode) {
-        final XSSFCellStyle cellStyle = workbook.createCellStyle();
+        final CellStyle cellStyle = sxssfWorkbook != null ? sxssfWorkbook.createCellStyle() : xssfWorkbook.createCellStyle();
         existingStyles.put(styleHashCode, cellStyle);
         return cellStyle;
     }

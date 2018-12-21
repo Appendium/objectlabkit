@@ -1,18 +1,18 @@
 package net.objectlab.kit.util.excel;
 
 import java.io.IOException;
+import java.time.temporal.Temporal;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFRow;
 
 public class ExcelRow {
     private ExcelSheet sheet;
-    private XSSFRow currentRow;
+    private Row currentRow;
     private int currentCol;
     private ExcelStyle style;
 
-    public ExcelRow(XSSFRow row, ExcelSheet sheet) {
+    public ExcelRow(Row row, ExcelSheet sheet) {
         this.sheet = sheet;
         currentRow = row;
     }
@@ -23,6 +23,14 @@ public class ExcelRow {
 
     public ExcelCell newCell(String value) {
         return new ExcelCell(currentRow.createCell(currentCol++), this).value(value).style(style);
+    }
+
+    public ExcelCell newCell(Temporal value) {
+        return new ExcelCell(currentRow.createCell(currentCol++), this).value(value).style(style);
+    }
+
+    public ExcelCell newCellFormula(String formula) {
+        return new ExcelCell(currentRow.createCell(currentCol++), this).formula(formula).style(style);
     }
 
     public ExcelCell newCell(long value) {

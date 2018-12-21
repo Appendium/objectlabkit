@@ -1,9 +1,14 @@
 package net.objectlab.kit.util;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 /**
  * Simple counter of any type with total and percentage.  It is thread-safe.
@@ -12,7 +17,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @param <T> will be used as the key.
  */
 public class Counter<T> {
-    private Map<T, AtomicInteger> map = new HashMap<>();
+    private Map<T, AtomicInteger> map = new ConcurrentHashMap<>();
     private AtomicInteger total = new AtomicInteger();
 
     public Counter<T> add(T t) {
@@ -40,5 +45,18 @@ public class Counter<T> {
         int to = getTotal();
         return to != 0 ? BigDecimalUtil.divide(8, BigDecimal.valueOf(getCount(t)), BigDecimal.valueOf(getTotal()), BigDecimal.ROUND_HALF_UP)
                 : BigDecimal.ZERO;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    public static class Stats<T> {
+        private T key;
+        private int count;
+        private BigDecimal percentage;
+    }
+
+    public List<Stats> getOrderedDecStats() {
+        return map.entrySet().stream().map(e -> new Stats(e.getKey(), e.getValue().get(), getPercentage(e.getKey())))
+                .sorted((o1, o2) -> Integer.compare(o2.getCount(), o1.getCount())).collect(Collectors.toList());
     }
 }
