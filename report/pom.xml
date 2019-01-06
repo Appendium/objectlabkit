@@ -15,7 +15,7 @@
     <name>ObjectLab Kit - Report</name>
     <description>
     Utility classes to create tabular reports easily from Objects and export as Text, CSV, HTML or Excel.
-  </description>
+    </description>
     <url>http://objectlabkit.sourceforge.net/</url>
 
     <dependencies>
@@ -53,9 +53,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-        </plugins>
-    </build>
 </project>
