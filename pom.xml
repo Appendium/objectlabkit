@@ -11,7 +11,7 @@
 
     <groupId>net.objectlab.kit</groupId>
     <artifactId>kit-parent</artifactId>
-    <version>1.4.1-SNAPSHOT</version>
+    <version>1.4.1</version>
     <url>https://github.com/Appendium/objectlabkit</url>
     <packaging>pom</packaging>
     <modules>
@@ -301,7 +301,9 @@ Why re-invent the wheel?</description>
                     </links>
                     <linksource>true</linksource>
                     <show>private</show>
-                    <additionalparam>${javadoc.opts}</additionalparam>
+                    <additionalOptions>
+                        <additionalOption>-Xdoclint:none</additionalOption>
+                    </additionalOptions>
                 </configuration>
             </plugin>
 
@@ -354,6 +356,7 @@ Why re-invent the wheel?</description>
         <connection>scm:git:git@github.com:appendium/objectlabkit.git</connection>
         <url>git://github.com:appendium/objectlabkit.git</url>
         <developerConnection>scm:git:git@github.com:appendium/objectlabkit.git</developerConnection>
+        <tag>kit-parent-1.4.1</tag>
     </scm>
 
     <issueManagement>
