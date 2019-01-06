@@ -62,8 +62,8 @@
 			<item name="datecalc-joda" href="datecalc-joda/index.html" />
 			<item name="utils" href="objectlab-utils/index.html" />
 			<item name="fxcalc" href="objectlab-fxcalc/index.html" />
-			<item name="report" href="report/index.html" />
-			<item name="excel" href="utils-excel/index.html" />
+			<item name="report" href="objectlab-utils-report/index.html" />
+			<item name="excel" href="objectlab-utils-excel/index.html" />
 			<item name="GitHub" href="http://www.github.com/appendium/objectlabkit" />
 			<item name="sf.net/projects/objectlabkit" href="https://sourceforge.net/projects/objectlabkit/" />
 		</links>

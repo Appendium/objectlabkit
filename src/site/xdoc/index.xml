@@ -108,8 +108,8 @@
                 <li>The <a href="fxcalc/index.html" >FX Calc</a> for handling Currencies and Rates within the Foreign Exchange business</li>
                 <li>The Utils package for a bunch of very useful classes for Pair, Triplet, BigDecimal, Average, Standard Deviations, Console Menu, 
                 Self Caching Collections, etc see <a href="utils/index.html"> implementation</a></li>
-                <li>The Utils Report package for creating simple ASCII Tabular reports, see <a href="utils-report/index.html">here</a></li>
-                <li>The Utils Excel package for reading and creating simple Excel spreadsheet with Apache POI, see <a href="utils-excel/index.html">here</a></li>
+                <li>The Utils Report package for creating simple ASCII Tabular reports, see <a href="objectlab-utils-report/index.html">here</a></li>
+                <li>The Utils Excel package for reading and creating simple Excel spreadsheet with Apache POI, see <a href="objectlab-utils-excel/index.html">here</a></li>
                 </ul>
                 </p>
             </subsection>
