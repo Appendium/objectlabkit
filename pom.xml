@@ -257,6 +257,7 @@ Why re-invent the wheel?</description>
                     <skipTests>${skip.acceptance.test}</skipTests>
                     <excludes>
                         <excludes>**/RunSingleTest.java</excludes>
+                        <excludes>**/perf/**</excludes>
                     </excludes>
                 </configuration>
             </plugin>
