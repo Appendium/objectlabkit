@@ -45,6 +45,7 @@ Why re-invent the wheel?</description>
         <version.slf4j>1.7.21</version.slf4j>
         <version.logback>1.1.7</version.logback>
         <version.cucumber>1.2.5</version.cucumber>
+        <version.lombok>1.18.4</version.lombok>
         <version.junit>4.12</version.junit>
         <version.spring>4.2.0.RELEASE</version.spring>
         <javadoc.opts>-Xdoclint:none</javadoc.opts>
@@ -216,8 +217,13 @@ Why re-invent the wheel?</description>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.8</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
+                <version>3.8.0</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -226,7 +232,7 @@ Why re-invent the wheel?</description>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.0</version>
+                <version>3.0.0-M3</version>
                 <configuration>
                     <skipTests>${skip.acceptance.test}</skipTests>
                     <excludes>

@@ -25,7 +25,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.4</version>
+            <version>${version.lombok}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -36,7 +36,6 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>${version.junit}</version>
             <scope>test</scope>
         </dependency>
           <dependency>
@@ -46,7 +45,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
+<!-- 
     <build>
         <plugins>
             <plugin>
@@ -59,4 +58,5 @@
             </plugin>
         </plugins>
     </build>
+ -->
 </project>
