@@ -9,8 +9,7 @@
         <version>1.4.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>net.objectlab.kit</groupId>
-    <artifactId>report</artifactId>
+    <artifactId>objectlab-utils-report</artifactId>
     <packaging>jar</packaging>
 
     <name>ObjectLab Kit - Report</name>
