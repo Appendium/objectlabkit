@@ -7,6 +7,8 @@
 	</properties>
 	<body>
 		<release version="1.4.1" date="TBD" description="Maintenance">
+			<action dev="benoitx" type="add">objectlab-utils-report Module for tabular reports.</action>
+			<action dev="benoitx" type="add">objectlab-utils-Excel Module for quick fluent mechanism to create excel spreadsheets.</action>
 			<action dev="benoitx" type="add">Make WeightedAverage, Average, Total, Pair, Triplet and Quadruplet more fluent.</action>
 			<action dev="benoitx" type="add">Adding FrequencyBucketDistribution a basic bucket distribution.</action>
 			<action dev="benoitx" type="add">
@@ -14,6 +16,7 @@
 			</action>
 			<action dev="benoitx" type="fix" issue="6" due-to="stephen">NOK and SEK to be added to the Currency order list.</action>
 			<action dev="benoitx" type="add">Added a PrintablePredicate for humans!</action>
+			<action dev="benoitx" type="fix">Review POMs</action>
 		</release>
 		<release version="1.4.0" date="2014-10-01" description="new Currrency Calculator and FX Rate">
 			<action dev="benoitx" type="fix">The JODA YearMonthDay has been deprecated for a while, I removed the calculators, use LocalDate instead.</action>

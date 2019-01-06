@@ -35,6 +35,10 @@
             </p>
 
             <p>
+                <b>2019-01-06</b>
+                : version 1.4.1 is out and contains new Report and Excel libraries to create simple tabular reports and Excel spreadsheets.
+            </p>
+            <p>
                 <b>2014-08-26</b>
                 : version 1.4.0 is out and contains a new Immutable and thread safe Currency Calculator. This uses a Builder pattern. You should use
                 this for any
@@ -104,7 +108,8 @@
                 <li>The <a href="fxcalc/index.html" >FX Calc</a> for handling Currencies and Rates within the Foreign Exchange business</li>
                 <li>The Utils package for a bunch of very useful classes for Pair, Triplet, BigDecimal, Average, Standard Deviations, Console Menu, 
                 Self Caching Collections, etc see <a href="utils/index.html"> implementation</a></li>
-                <li>The Utils Excel package for read and creating simple Excel spreadsheet with Apache POI, see <a href="utils-excel/index.html">here</a></li>
+                <li>The Utils Report package for creating simple ASCII Tabular reports, see <a href="utils-report/index.html">here</a></li>
+                <li>The Utils Excel package for reading and creating simple Excel spreadsheet with Apache POI, see <a href="utils-excel/index.html">here</a></li>
                 </ul>
                 </p>
             </subsection>
@@ -112,7 +117,7 @@
             <subsection name="Getting Started">
                 <p>
                     DateCalc comes in 3 different implementations, both run on
-                    <strong>JDK 1.5 or higher</strong>
+                    <strong>JDK 1.8 or higher</strong>
                     :
                     <ul>
                         <li>
@@ -143,12 +148,12 @@
                     &lt;dependency>
                     &lt;groupId>net.objectlab.kit&lt;/groupId>
                     &lt;artifactId>datecalc-common&lt;/artifactId>
-                    &lt;version>1.4.0&lt;/version>
+                    &lt;version>1.4.1&lt;/version>
                     &lt;/dependency>
                     &lt;dependency>
                     &lt;groupId>net.objectlab.kit&lt;/groupId>
                     &lt;artifactId>datecalc-jdk&lt;/artifactId>
-                    &lt;version>1.4.0&lt;/version>
+                    &lt;version>1.4.1&lt;/version>
                     &lt;/dependency>
                 </pre>
 
@@ -157,12 +162,12 @@
                     &lt;dependency>
                     &lt;groupId>net.objectlab.kit&lt;/groupId>
                     &lt;artifactId>datecalc-common&lt;/artifactId>
-                    &lt;version>1.4.0&lt;/version>
+                    &lt;version>1.4.1&lt;/version>
                     &lt;/dependency>
                     &lt;dependency>
                     &lt;groupId>net.objectlab.kit&lt;/groupId>
                     &lt;artifactId>datecalc-joda&lt;/artifactId>
-                    &lt;version>1.4.0&lt;/version>
+                    &lt;version>1.4.1&lt;/version>
                     &lt;/dependency>
                 </pre>
                 <p>To use the JDK8 Version:</p>
@@ -170,12 +175,12 @@
                     &lt;dependency>
                     &lt;groupId>net.objectlab.kit&lt;/groupId>
                     &lt;artifactId>datecalc-common&lt;/artifactId>
-                    &lt;version>1.4.0&lt;/version>
+                    &lt;version>1.4.1&lt;/version>
                     &lt;/dependency>
                     &lt;dependency>
                     &lt;groupId>net.objectlab.kit&lt;/groupId>
                     &lt;artifactId>datecalc-jdk8&lt;/artifactId>
-                    &lt;version>1.4.0&lt;/version>
+                    &lt;version>1.4.1&lt;/version>
                     &lt;/dependency>
                 </pre>
             </subsection>
