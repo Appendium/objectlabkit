@@ -16,16 +16,21 @@
     <packaging>pom</packaging>
     <modules>
         <module>utils</module>
-        <module>utils-osgi</module>
+        <!-- <module>utils-osgi</module>
+        -->
         <module>datecalc-common</module>
         <module>datecalc-jdk</module>
-        <module>datecalc-jdk-osgi</module>
+        <!-- <module>datecalc-jdk-osgi</module>
+        -->
         <module>datecalc-joda</module>
-        <module>datecalc-joda-osgi</module>
+        <!-- <module>datecalc-joda-osgi</module>
+        -->
         <module>datecalc-jdk8</module>
-        <module>datecalc-jdk8-osgi</module>
+        <!-- <module>datecalc-jdk8-osgi</module>
+        -->
         <module>fxcalc</module>
-        <module>fxcalc-osgi</module>
+        <!-- <module>fxcalc-osgi</module>
+        -->
         <module>portfolio</module>
         <module>utils-excel</module>
         <module>report</module>

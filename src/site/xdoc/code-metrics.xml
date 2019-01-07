@@ -33,16 +33,16 @@
             </div>
         </subsection>
 
-        <subsection name="Ohloh Stats">
-            <div id="ohloh">
+        <subsection name="OpenHub Stats">
+            <div id="OpenHub">
                 <div id="cocomo">
-                    <script type="text/javascript" src="http://www.ohloh.net/p/4682/widgets/project_cocomo.js"></script>
+                    <script type="text/javascript" src="http://www.openhub.net/p/4682/widgets/project_cocomo.js"></script>
                 </div>
                 <div id="factoids">
-                    <script type="text/javascript" src="http://www.ohloh.net/p/4682/widgets/project_factoids_stats.js"></script>
+                    <script type="text/javascript" src="http://www.openhub.net/p/4682/widgets/project_factoids_stats.js"></script>
                 </div>
                 <div id="iuseit">
-                    <script type="text/javascript" src="http://www.ohloh.net/p/4682/widgets/project_users.js?style=green"></script>
+                    <script type="text/javascript" src="http://www.openhub.net/p/4682/widgets/project_users.js?style=green"></script>
                 </div>
             </div>
         </subsection>
