@@ -16,21 +16,11 @@
     <packaging>pom</packaging>
     <modules>
         <module>utils</module>
-        <!-- <module>utils-osgi</module>
-        -->
         <module>datecalc-common</module>
         <module>datecalc-jdk</module>
-        <!-- <module>datecalc-jdk-osgi</module>
-        -->
         <module>datecalc-joda</module>
-        <!-- <module>datecalc-joda-osgi</module>
-        -->
         <module>datecalc-jdk8</module>
-        <!-- <module>datecalc-jdk8-osgi</module>
-        -->
         <module>fxcalc</module>
-        <!-- <module>fxcalc-osgi</module>
-        -->
         <module>portfolio</module>
         <module>utils-excel</module>
         <module>report</module>
@@ -47,8 +37,8 @@ Why re-invent the wheel?</description>
         <site.deploy.url>http://objectlabkit.sf.net</site.deploy.url>
         <github.global.server>github</github.global.server>
         <github.global.oauth2Token>${env.GITHUB_OAUTH_TOKEN}</github.global.oauth2Token>
-        <version.slf4j>1.7.21</version.slf4j>
-        <version.logback>1.1.7</version.logback>
+        <version.slf4j>1.7.25</version.slf4j>
+        <version.logback>1.2.3</version.logback>
         <version.cucumber>1.2.5</version.cucumber>
         <version.lombok>1.18.4</version.lombok>
         <version.junit>4.12</version.junit>
@@ -444,6 +434,25 @@ Why re-invent the wheel?</description>
                         </reports>
                     </reportSet>
                 </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.7</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>dependency-updates-report</report>
+                            <report>plugin-updates-report</report>
+                            <report>property-updates-report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>taglist-maven-plugin</artifactId>
+                <version>2.4</version>
             </plugin>
         </plugins>
     </reporting>

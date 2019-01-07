@@ -8,6 +8,8 @@ Date Calc: [![Maven Central DateCalculator](https://maven-badges.herokuapp.com/m
 FX Calc: [![Maven Central DateCalculator](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-fxcalc/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-fxcalc)
 Utils: [![Maven Central Utils](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-utils/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-utils)
 Utils Excel: [![Maven Central Utils](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-utils-excel/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-utils-excel)
+Utils Report: [![Maven Central Utils](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-utils-report/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-utils-report)
+UCITS Portfolio: [![Maven Central Utils](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-portfolio/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-portfolio)
 
  [![Quality Gate](https://sonarcloud.io/api/project_badges/quality_gate?project=net.objectlab.kit:kit-parent)](https://sonarcloud.io/dashboard/index/net.objectlab.kit:kit-parent) 
 

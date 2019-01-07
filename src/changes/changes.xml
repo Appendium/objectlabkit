@@ -1,87 +1,114 @@
 <?xml version="1.0"?>
 
 <document>
-	<properties>
-		<title>Changes</title>
-		<author email="kit@objectlab.co.uk">Benoit Xhenseval</author>
-	</properties>
-	<body>
-		<release version="1.4.1" date="TBD" description="Maintenance">
-			<action dev="benoitx" type="add">objectlab-utils-report Module for tabular reports.</action>
-			<action dev="benoitx" type="add">objectlab-utils-Excel Module for quick fluent mechanism to create excel spreadsheets.</action>
-			<action dev="benoitx" type="add">Make WeightedAverage, Average, Total, Pair, Triplet and Quadruplet more fluent.</action>
-			<action dev="benoitx" type="add">Adding FrequencyBucketDistribution a basic bucket distribution.</action>
-			<action dev="benoitx" type="add">
-				Following a thorough review by ST, add rounding for Bid and Offer on the calculator.
-			</action>
-			<action dev="benoitx" type="fix" issue="6" due-to="stephen">NOK and SEK to be added to the Currency order list.</action>
-			<action dev="benoitx" type="add">Added a PrintablePredicate for humans!</action>
-			<action dev="benoitx" type="fix">Review POMs</action>
-		</release>
-		<release version="1.4.0" date="2014-10-01" description="new Currrency Calculator and FX Rate">
-			<action dev="benoitx" type="fix">The JODA YearMonthDay has been deprecated for a while, I removed the calculators, use LocalDate instead.</action>
-			<action dev="benoitx" type="add" issue="2" due-to="celerite">Added new Currency calculator following issue raised by Ben CuthBert and Scott Sue (thanks
-				guys). Thanks to London FX Ltd, Julian and Stephen for guidelines as well.</action>
-			<action dev="benoitx" type="add">Added way to combine WorkingWeeks by intersection of working Days, eg. WesternWeek.intersection(ArabicWeek) => 3
-				day weekend (Fri to Sun).</action>
-			<action dev="benoitx" type="add" issue="3" due-to="ConradMellinNAB">Added new method getNextIMMDates(start, numberOfDays) on IMMDateCalculator.</action>
-			<action dev="benoitx" type="add">Added new module for FX Calculations, requires JDK8.</action>
-			<action dev="benoitx" type="add">Utils now requires JDK8.</action>
-			<action dev="benoitx" type="add">Average to keep min and max values too.</action>
-		</release>
-		<release version="1.3.0" date="2014-05-26" description="new JDK8 Module">
-			<action dev="benoitx" type="add">Added new JDK8 module, very similar to Joda. Only this module needs JDK8.</action>
-			<action dev="benoitx" type="add">Releasing objectlab-utils module, BigDecimalUtil, Pair, Triplet, BooleanUtil etc.</action>
-			<action dev="benoitx" type="add">Releasing OSGi-friendly modules for DateCalculators.</action>
-			<action dev="benoitx" type="add">Change interfaces to be more fluent.</action>
-			<action dev="benoitx" type="fix">Fix bug for convention CONV_360E_ISDA.</action>
-		</release>
-		<release version="1.2.0" date="2010-05-10" description="Maintenance">
-			<action dev="marchy" type="add" issue="atid=872036&amp;aid=2853974" due-to="insumo">Changed the visibility on JodaWorkingWeek(final byte workingDays)
-				constructor from private to protected.</action>
-			<action dev="marchy" type="fix" issue="atid=872033&amp;aid=2963607" due-to="Aldo Tamburini">Fixed DefaultHolidayCalendar when used with java.util.Date /
-				java.util.Calendar holidays.</action>
-			<action dev="benoitx" type="fix">Removed the deprecated constructors that used to take Set of "Date", use the HolidayCalendar.</action>
-			<action dev="benoitx" type="fix">Removed the deprecated method DateCalculator.setNonWorkingDays and getNonWorkingDays.</action>
-			<action dev="benoitx" type="add" due-to="Neil Bartlett">The ObjectLab Kit is now an OSGi Bundle!</action>
-			<action dev="benoitx" type="fix" issue="atid=872033&amp;aid=1929838" due-to="Anthony Whitford">Spelling for "PRECEEDING" corrected to PRECEDING, deprecated the
-				mispelt name.</action>
-			<action dev="benoitx" type="add">Enhanced the KitCalculatorsFactory to be able to get the holidayCalendar names and unregister calendars.</action>
-			<action dev="benoitx" type="fix">Removed the deprecated method KitCalculatorsFactory.registerHolidays(Set holidays).</action>
-			<action dev="marchy" type="fix" issue="atid=872033&amp;aid=2389053" due-to="Didier L.">Fixed negative moves with Forward Unless Moving Back Handler.
-			</action>
-			<action dev="marchy" type="fix">Removed the deprecated constant MODIFIED_PRECEEDING, and related classes.</action>
-		</release>
-		<release version="1.1.0" date="2008-03-25" description="Maintenance">
-			<action dev="benoitx" type="add">Changed JODA dependency to 1.5</action>
-			<action dev="benoitx" type="fix">fix NPE issue if the calendar name is null.</action>
-			<action dev="benoitx" type="add" issue="atid=872036&amp;aid=1832345" due-to="Kieron Wilkinson">Feature Requests item #1832345, make the Tenor Serializable
-			</action>
-			<action dev="benoitx" type="add">Added 2 methods on factory to check if a calendar is registered.</action>
-			<action dev="marchy" type="fix">Deprecated ACT/UST and END/365 Day Count Conventions, which weren't very common. Also added a link to some
-				documentation.</action>
-			<action dev="benoitx" type="add">Added method calculateTenorDates with/without a spot lag to enable calculation of a series of Tenor dates without
-				changing the current business date in the calculator.</action>
-			<action dev="benoitx" type="add">Added method moveByTenor without a spot lag to allow tenor calculation based on the CURRENT date and not the spot
-				lag.</action>
-			<action dev="benoitx" type="add" issue="atid=872036&amp;aid=1575498" due-to="Paul Hill">Valid Range via HolidayCalendar. HolidayCalendar should replace
-				the simple Set&lt;E&gt; of dates
-				for holidays. A HolidayCalendar MAY contain an eraly and late boundary, if the calculation break a boundary, an exception is thrown, if there are no
-				boundaries no exception would be thrown. This would ensure that calculations are not going outside the valid set of holidays.
-			</action>
-			<action dev="benoitx" type="fix" due-to="David Owen">The calculation of Spot date should take into account holidays BETWEEN now and spot (aka
-				moveByBusinessDay).</action>
-			<action dev="benoitx" type="add" issue="atid=872036&amp;aid=1601540" due-to="Anthony Whitford">Added a standard Tenor 2D.</action>
-			<action dev="benoitx" type="fix" issue="atid=872033&amp;aid=1601542" due-to="Anthony Whitford">Spelling mistake in the code,
-				sorry for breaking your code with this release.
-			</action>
-			<action dev="benoitx" type="add">Added new handler type ForwardUnlessNegative: a handler that acts like a Forward handler
-				if the increment is positive otherwise acts like a Backward handler.
-			</action>
-		</release>
-		<release version="1.0.1" date="2006-09-25" description="First release">
-			<action dev="benoitx" type="add">First official release.</action>
-			<action dev="marchy" type="add">First official release.</action>
-		</release>
-	</body>
+    <properties>
+        <title>Changes</title>
+        <author email="kit@objectlab.co.uk">Benoit Xhenseval</author>
+    </properties>
+    <body>
+        <release version="1.4.2" date="2019-01-07" description="Maintenance">
+            <action dev="benoitx" issue="20" type="add">Expanded the ExcelStyle.</action>
+            <action dev="benoitx" type="fix">Merged the OSGi module information in each jar file. Do NOT use the "...-osgi.jar" libraries anymore!</action>
+        </release>
+        <release version="1.4.1" date="2019-01-06" description="Maintenance">
+            <action dev="benoitx" type="add">objectlab-utils-report Module for tabular reports.</action>
+            <action dev="benoitx" type="add">objectlab-utils-Excel Module for quick fluent mechanism to create excel spreadsheets.</action>
+            <action dev="benoitx" type="add">Make WeightedAverage, Average, Total, Pair, Triplet and Quadruplet more fluent.</action>
+            <action dev="benoitx" type="add">Adding FrequencyBucketDistribution a basic bucket distribution.</action>
+            <action dev="benoitx" type="add">
+                Following a thorough review by ST, add rounding for Bid and Offer on the calculator.
+            </action>
+            <action dev="benoitx" type="fix" issue="6" due-to="stephen">NOK and SEK to be added to the Currency order list.</action>
+            <action dev="benoitx" type="add">Added a PrintablePredicate for humans!</action>
+            <action dev="benoitx" type="fix">Review POMs</action>
+        </release>
+        <release version="1.4.0" date="2014-10-01" description="new Currrency Calculator and FX Rate">
+            <action dev="benoitx" type="fix">The JODA YearMonthDay has been deprecated for a while, I removed the calculators, use LocalDate instead.
+            </action>
+            <action dev="benoitx" type="add" issue="2" due-to="celerite">Added new Currency calculator following issue raised by Ben CuthBert and Scott
+                Sue (thanks
+                guys). Thanks to London FX Ltd, Julian and Stephen for guidelines as well.
+            </action>
+            <action dev="benoitx" type="add">Added way to combine WorkingWeeks by intersection of working Days, eg.
+                WesternWeek.intersection(ArabicWeek) => 3
+                day weekend (Fri to Sun).
+            </action>
+            <action dev="benoitx" type="add" issue="3" due-to="ConradMellinNAB">Added new method getNextIMMDates(start, numberOfDays) on IMMDateCalculator.
+            </action>
+            <action dev="benoitx" type="add">Added new module for FX Calculations, requires JDK8.</action>
+            <action dev="benoitx" type="add">Utils now requires JDK8.</action>
+            <action dev="benoitx" type="add">Average to keep min and max values too.</action>
+        </release>
+        <release version="1.3.0" date="2014-05-26" description="new JDK8 Module">
+            <action dev="benoitx" type="add">Added new JDK8 module, very similar to Joda. Only this module needs JDK8.</action>
+            <action dev="benoitx" type="add">Releasing objectlab-utils module, BigDecimalUtil, Pair, Triplet, BooleanUtil etc.</action>
+            <action dev="benoitx" type="add">Releasing OSGi-friendly modules for DateCalculators.</action>
+            <action dev="benoitx" type="add">Change interfaces to be more fluent.</action>
+            <action dev="benoitx" type="fix">Fix bug for convention CONV_360E_ISDA.</action>
+        </release>
+        <release version="1.2.0" date="2010-05-10" description="Maintenance">
+            <action dev="marchy" type="add" issue="atid=872036&amp;aid=2853974" due-to="insumo">Changed the visibility on JodaWorkingWeek(final byte
+                workingDays)
+                constructor from private to protected.
+            </action>
+            <action dev="marchy" type="fix" issue="atid=872033&amp;aid=2963607" due-to="Aldo Tamburini">Fixed DefaultHolidayCalendar when used with
+                java.util.Date /
+                java.util.Calendar holidays.
+            </action>
+            <action dev="benoitx" type="fix">Removed the deprecated constructors that used to take Set of "Date", use the HolidayCalendar.</action>
+            <action dev="benoitx" type="fix">Removed the deprecated method DateCalculator.setNonWorkingDays and getNonWorkingDays.</action>
+            <action dev="benoitx" type="add" due-to="Neil Bartlett">The ObjectLab Kit is now an OSGi Bundle!</action>
+            <action dev="benoitx" type="fix" issue="atid=872033&amp;aid=1929838" due-to="Anthony Whitford">Spelling for "PRECEEDING" corrected to PRECEDING,
+                deprecated the
+                mispelt name.
+            </action>
+            <action dev="benoitx" type="add">Enhanced the KitCalculatorsFactory to be able to get the holidayCalendar names and unregister calendars.
+            </action>
+            <action dev="benoitx" type="fix">Removed the deprecated method KitCalculatorsFactory.registerHolidays(Set holidays).</action>
+            <action dev="marchy" type="fix" issue="atid=872033&amp;aid=2389053" due-to="Didier L.">Fixed negative moves with Forward Unless Moving Back
+                Handler.
+            </action>
+            <action dev="marchy" type="fix">Removed the deprecated constant MODIFIED_PRECEEDING, and related classes.</action>
+        </release>
+        <release version="1.1.0" date="2008-03-25" description="Maintenance">
+            <action dev="benoitx" type="add">Changed JODA dependency to 1.5</action>
+            <action dev="benoitx" type="fix">fix NPE issue if the calendar name is null.</action>
+            <action dev="benoitx" type="add" issue="atid=872036&amp;aid=1832345" due-to="Kieron Wilkinson">Feature Requests item #1832345, make the Tenor
+                Serializable
+            </action>
+            <action dev="benoitx" type="add">Added 2 methods on factory to check if a calendar is registered.</action>
+            <action dev="marchy" type="fix">Deprecated ACT/UST and END/365 Day Count Conventions, which weren't very common. Also added a link to
+                some
+                documentation.
+            </action>
+            <action dev="benoitx" type="add">Added method calculateTenorDates with/without a spot lag to enable calculation of a series of Tenor
+                dates without
+                changing the current business date in the calculator.
+            </action>
+            <action dev="benoitx" type="add">Added method moveByTenor without a spot lag to allow tenor calculation based on the CURRENT date and not
+                the spot
+                lag.
+            </action>
+            <action dev="benoitx" type="add" issue="atid=872036&amp;aid=1575498" due-to="Paul Hill">Valid Range via HolidayCalendar. HolidayCalendar should
+                replace
+                the simple Set&lt;E&gt; of dates
+                for holidays. A HolidayCalendar MAY contain an eraly and late boundary, if the calculation break a boundary, an exception is thrown, if there are no
+                boundaries no exception would be thrown. This would ensure that calculations are not going outside the valid set of holidays.
+            </action>
+            <action dev="benoitx" type="fix" due-to="David Owen">The calculation of Spot date should take into account holidays BETWEEN now and spot (aka
+                moveByBusinessDay).
+            </action>
+            <action dev="benoitx" type="add" issue="atid=872036&amp;aid=1601540" due-to="Anthony Whitford">Added a standard Tenor 2D.</action>
+            <action dev="benoitx" type="fix" issue="atid=872033&amp;aid=1601542" due-to="Anthony Whitford">Spelling mistake in the code,
+                sorry for breaking your code with this release.
+            </action>
+            <action dev="benoitx" type="add">Added new handler type ForwardUnlessNegative: a handler that acts like a Forward handler
+                if the increment is positive otherwise acts like a Backward handler.
+            </action>
+        </release>
+        <release version="1.0.1" date="2006-09-25" description="First release">
+            <action dev="benoitx" type="add">First official release.</action>
+            <action dev="marchy" type="add">First official release.</action>
+        </release>
+    </body>
 </document>
