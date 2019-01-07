@@ -3,6 +3,9 @@ package net.objectlab.kit.util.excel.gist;
 import java.io.IOException;
 import java.math.BigDecimal;
 
+import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.IndexedColors;
+
 import net.objectlab.kit.util.excel.ExcelStyle;
 import net.objectlab.kit.util.excel.ExcelWorkbook;
 
@@ -27,8 +30,12 @@ public class ExcelInMemoryExample {
                 .newRow() // TOTAL
                 .newCell("Total").style(ExcelStyle.builder().bold().italic().build()).newCell(72_000_000L).style(BOLD_NUMERIC_STYLE) //
                 .autoSizeColumn(0, 1) //
-                .row().sheet().skipRow().newRow().skipCol().newCell("Nice").style(ExcelStyle.builder().center().build())//
+
+                .row().sheet().skipRow().newRow().skipCol().newCell("Nice").style(ExcelStyle.builder().center()//
+                        .backgroundColour(IndexedColors.ROSE)//
+                        .backgroundFillPatternType(FillPatternType.BIG_SPOTS).build())//
                 .newRow(7).newCell().newCell("Test").style(ExcelStyle.builder().underline().right().build())//
+                .newRow(8).newCell().newCell("STRIKE").style(ExcelStyle.builder().strikeout().right().build())//
                 .save("test.xlsx"); // Save it
     }
 }

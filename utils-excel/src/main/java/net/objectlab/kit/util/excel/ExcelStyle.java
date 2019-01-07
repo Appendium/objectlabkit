@@ -26,8 +26,11 @@ public class ExcelStyle {
     private final boolean percentFormat;
     private final boolean wrap;
     private final boolean header;
+    private final boolean strikeout;
     private final String dataFormat;
     private final IndexedColors fontColour;
+    private final IndexedColors backgroundColour;
+    private final FillPatternType backgroundFillPatternType;
 
     public static Builder builder() {
         return new Builder();
@@ -44,8 +47,11 @@ public class ExcelStyle {
         percentFormat = b.percentFormat;
         wrap = b.wrap;
         header = b.header;
+        strikeout = b.strikeout;
         dataFormat = b.dataFormat;
         fontColour = b.fontColour;
+        backgroundColour = b.backgroundColour;
+        backgroundFillPatternType = b.backgroundFillPatternType;
     }
 
     public CellStyle build(ExcelCell cell) {
@@ -66,12 +72,17 @@ public class ExcelStyle {
 
         addFormat(cell, cellStyle);
 
+        if (backgroundColour != null) {
+            cellStyle.setFillForegroundColor(backgroundColour.getIndex());
+            cellStyle.setFillPattern(backgroundFillPatternType != null ? backgroundFillPatternType : FillPatternType.SOLID_FOREGROUND);
+        }
+
         addAlignment(cellStyle);
         return cellStyle;
     }
 
     private void addFontFormat(ExcelCell cell, CellStyle cellStyle) {
-        if (bold || italic || underline || header || fontColour != null) {
+        if (bold || italic || underline || header || fontColour != null || strikeout) {
             Font f = cell.workbook().createFont();
             f.setBold(bold || header);
             if (underline) {
@@ -81,6 +92,7 @@ public class ExcelStyle {
                 f.setColor(fontColour.getIndex());
             }
             f.setItalic(italic);
+            f.setStrikeout(strikeout);
             cellStyle.setFont(f);
         }
     }
@@ -119,11 +131,29 @@ public class ExcelStyle {
         private boolean percentFormat;
         private boolean wrap;
         private boolean header;
+        private boolean strikeout;
         private String dataFormat;
         private IndexedColors fontColour;
+        private IndexedColors backgroundColour;
+        private FillPatternType backgroundFillPatternType = FillPatternType.SOLID_FOREGROUND;
+
+        public Builder backgroundFillPatternType(FillPatternType backgroundFillPatternType) {
+            this.backgroundFillPatternType = backgroundFillPatternType;
+            return this;
+        }
+
+        public Builder backgroundColour(IndexedColors backgroundColour) {
+            this.backgroundColour = backgroundColour;
+            return this;
+        }
 
         public Builder fontColour(IndexedColors fontColour) {
             this.fontColour = fontColour;
+            return this;
+        }
+
+        public Builder strikeout() {
+            strikeout = true;
             return this;
         }
 
