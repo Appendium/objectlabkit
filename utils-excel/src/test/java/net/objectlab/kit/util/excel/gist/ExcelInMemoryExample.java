@@ -36,7 +36,9 @@ public class ExcelInMemoryExample {
                         .backgroundColour(IndexedColors.ROSE)//
                         .backgroundFillPatternType(FillPatternType.BIG_SPOTS).build())//
                 .newRow(7).newCell().newCell("Test").style(ExcelStyle.builder().underline().right().build())//
-                .newRow(8).newCell().newCell("STRIKE").style(ExcelStyle.builder().strikeout().right().build())//
+                .newRow(8).newCell().newCell("STRIKE").style(ExcelStyle.builder().strikeout()//
+                        .backgroundColour(IndexedColors.ROSE)//
+                        .right().build())//
                 .save("test.xlsx"); // Save it
     }
 }
