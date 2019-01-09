@@ -28,7 +28,8 @@ public class ExcelInMemoryExample {
                 .newCell(BigDecimal.valueOf(62_000_000d / 72_000_000d)).style(PERCENT_STYLE) //
 
                 .newRow() // TOTAL
-                .newCell("Total").style(ExcelStyle.builder().bold().italic().build()).newCell(72_000_000L).style(BOLD_NUMERIC_STYLE) //
+                .newCell("Total").style(ExcelStyle.builder().bold().italic().build())//
+                .newCell(72_000_000L).style(BOLD_NUMERIC_STYLE) //
                 .autoSizeColumn(0, 1) //
 
                 .row().sheet().skipRow().newRow().skipCol().newCell("Nice").style(ExcelStyle.builder().center()//
