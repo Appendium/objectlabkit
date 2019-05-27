@@ -34,14 +34,14 @@ package net.objectlab.kit.datecalc.joda;
 
 import java.util.Collections;
 
+import org.joda.time.LocalDate;
+
 import net.objectlab.kit.datecalc.common.AbstractDateCalculator;
 import net.objectlab.kit.datecalc.common.DateCalculator;
 import net.objectlab.kit.datecalc.common.DefaultHolidayCalendar;
 import net.objectlab.kit.datecalc.common.HolidayCalendar;
 import net.objectlab.kit.datecalc.common.HolidayHandler;
 import net.objectlab.kit.datecalc.common.WorkingWeek;
-
-import org.joda.time.LocalDate;
 
 /**
  * This class is used via the DateCalculator interface, it enables the handling
@@ -72,6 +72,7 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
      * @param week the JodaWorkingWeek
      * @throws IllegalArgumentException if the week is not a JodaWorkingWeek.
      */
+    @Override
     public DateCalculator<LocalDate> setWorkingWeek(final WorkingWeek week) {
         if (week instanceof JodaWorkingWeek) {
             workingWeek = (JodaWorkingWeek) week;
@@ -83,6 +84,7 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
     /**
      * is the date a non-working day according to the WorkingWeek?
      */
+    @Override
     public boolean isWeekend(final LocalDate date) {
         assert workingWeek != null;
         return !workingWeek.isWorkingDay(date);
@@ -96,6 +98,7 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
     //
     // -----------------------------------------------------------------------
 
+    @Override
     public DateCalculator<LocalDate> moveByDays(final int days) {
         setCurrentIncrement(days);
 
@@ -160,6 +163,29 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
     @Override
     protected LocalDate clone(final LocalDate date) {
         return date;
+    }
+
+    @Override
+    public int getNumberOfBusinessDaysBetween(final LocalDate d1, final LocalDate d2) {
+        if (d1 == null || d2 == null) {
+            return 0;
+        }
+        final boolean d1B4d2 = !d1.isAfter(d2);
+        LocalDate start = d1B4d2 ? d1 : d2;
+        LocalDate end = d1B4d2 ? d2 : d1;
+        if (getHolidayHandler() != null) {
+            start = getHolidayHandler().adjustDate(start, 1, this);
+        }
+
+        int count = 0;
+        // start = start.plusDays(1);
+        while (start.isBefore(end)) {
+            if (!isNonWorkingDay(start)) {
+                count++;
+            }
+            start = start.plusDays(1);
+        }
+        return d1B4d2 ? count : -count;
     }
 }
 

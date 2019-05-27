@@ -260,6 +260,18 @@ public interface DateCalculator<E> extends BaseCalculator<E> {
      * @param increment
      */
     DateCalculator<E> setCurrentIncrement(int increment);
+
+    /**
+     * Number of non weekend, non holidays days between d1 and d2, using the Holiday Handler type to match
+     * what the method moveByBusinessDays requires.
+     * Note that moveByBusinessDays could give the same answer with some holiday handlers like modified forward or modified preceding;
+     * this getNumberOfBusinessDaysBetween should give the first (smallest) answer.
+     * @param d1 start date
+     * @param d2 end date
+     * @return d2 - d1 -numberOfWeekendDays - numberOfHolidays (matching what moveByBusinessDays requires)
+     * @since 1.4.3
+     */
+    int getNumberOfBusinessDaysBetween(E d1, E d2);
 }
 
 /*

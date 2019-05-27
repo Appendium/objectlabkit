@@ -383,6 +383,11 @@ public abstract class AbstractBackwardDateCalculatorTest<E extends Serializable>
             checkMoveByTenor("2006-08-28", StandardTenor.OVERNIGHT, 2, "2006-08-25", HolidayHandlerType.BACKWARD);
         }
      */
+
+    public void testBusinessDaysCalc() {
+        super.testBusinessDaysCalcBack(HolidayHandlerType.BACKWARD);
+    }
+
 }
 
 /*

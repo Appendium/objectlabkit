@@ -476,6 +476,11 @@ public abstract class AbstractModifiedFollowingDateCalculatorTest<E extends Seri
             assertEquals("Move start:" + startDate + " tenor:" + tenor, expected.next(), it.next());
         }
     }
+
+    public void testBusinessDaysCalc() {
+        super.testBusinessDaysCalc(HolidayHandlerType.MODIFIED_FOLLOWING);
+    }
+
 }
 
 /*

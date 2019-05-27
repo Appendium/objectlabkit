@@ -157,6 +157,97 @@ public abstract class AbstractDateTestCase<E extends Serializable> extends TestC
         cal.setStartDate(newDate(startDate));
         checkDate("Move start:" + startDate + " tenor:" + tenor, cal.moveByTenor(tenor), expectedDate);
     }
+
+    /** 
+     * Checks that the calendar moveByBusinessDays works but also that the 
+     * getNumberOfBusinessDays matches the calculation.
+     * @param holidayHandlerType holiday handler e.g. Forward.
+     */
+    protected void testBusinessDaysCalcBack(String holidayHandlerType) {
+        // with weekend
+        checkMoveAndNumberOfBusinessDays("2006-01-02", 0, "2006-01-02", holidayHandlerType);
+        checkMoveAndNumberOfBusinessDays("2006-01-02", -1, "2005-12-30", holidayHandlerType);
+        checkMoveAndNumberOfBusinessDays("2006-01-02", -4, "2005-12-27", holidayHandlerType);
+        checkMoveAndNumberOfBusinessDays("2006-01-02", -5, "2005-12-26", holidayHandlerType);
+        // with holidays
+        checkMoveAndNumberOfBusinessDays("2006-08-24", -1, "2006-08-23", holidayHandlerType);
+        checkMoveAndNumberOfBusinessDays("2006-08-24", -2, "2006-08-22", holidayHandlerType);
+        checkMoveAndNumberOfBusinessDays("2006-08-24", -5, "2006-08-17", holidayHandlerType);
+        checkMoveAndNumberOfBusinessDays("2006-08-28", 0, -1, "2006-08-25", holidayHandlerType); // holiday
+        checkMoveAndNumberOfBusinessDays("2006-08-28", -1, -2, "2006-08-24", holidayHandlerType);
+    }
+
+    /** 
+     * Checks that the calendar moveByBusinessDays works but also that the 
+     * getNumberOfBusinessDays matches the calculation.
+     * @param holidayHandlerType holiday handler e.g. Forward.
+     */
+    protected void testBusinessDaysCalcBackModif(String holidayHandlerType) {
+        // with weekend
+        checkMoveAndNumberOfBusinessDays("2006-01-02", 0, "2006-01-02", holidayHandlerType);
+        checkMoveAndNumberOfBusinessDays("2006-01-02", -1, 0, "2006-01-02", holidayHandlerType);
+        checkMoveAndNumberOfBusinessDays("2006-01-02", -4, 0, "2006-01-02", holidayHandlerType);
+        checkMoveAndNumberOfBusinessDays("2006-01-02", -5, 0, "2006-01-02", holidayHandlerType);
+        // with holidays
+        checkMoveAndNumberOfBusinessDays("2006-08-24", -1, "2006-08-23", holidayHandlerType);
+        checkMoveAndNumberOfBusinessDays("2006-08-24", -2, "2006-08-22", holidayHandlerType);
+        checkMoveAndNumberOfBusinessDays("2006-08-24", -5, "2006-08-17", holidayHandlerType);
+        checkMoveAndNumberOfBusinessDays("2006-08-28", 0, -1, "2006-08-25", holidayHandlerType); // holiday
+        checkMoveAndNumberOfBusinessDays("2006-08-28", -1, -2, "2006-08-24", holidayHandlerType);
+    }
+
+    /** 
+     * Checks that the calendar moveByBusinessDays works but also that the 
+     * getNumberOfBusinessDays matches the calculation.
+     * @param holidayHandlerType holiday handler e.g. Forward.
+     */
+    protected void testBusinessDaysCalc(String holidayHandlerType) {
+        // with weekend
+        checkMoveAndNumberOfBusinessDays("2006-01-02", 0, "2006-01-02", holidayHandlerType);
+        checkMoveAndNumberOfBusinessDays("2006-01-02", 1, "2006-01-03", holidayHandlerType);
+        checkMoveAndNumberOfBusinessDays("2006-01-02", 4, "2006-01-06", holidayHandlerType);
+        checkMoveAndNumberOfBusinessDays("2006-01-02", 5, "2006-01-09", holidayHandlerType);
+        // with holidays
+        checkMoveAndNumberOfBusinessDays("2006-08-24", 1, "2006-08-25", holidayHandlerType);
+        checkMoveAndNumberOfBusinessDays("2006-08-24", 2, "2006-08-29", holidayHandlerType);
+        checkMoveAndNumberOfBusinessDays("2006-08-24", 5, "2006-09-01", holidayHandlerType);
+        checkMoveAndNumberOfBusinessDays("2006-08-28", 0, "2006-08-29", holidayHandlerType); // holiday
+        checkMoveAndNumberOfBusinessDays("2006-08-28", 1, "2006-08-30", holidayHandlerType);
+    }
+
+    private void checkMoveAndNumberOfBusinessDays(String start, int days, String expectedDate, final String holidayHandlerType) {
+        final DateCalculator<E> cal = newDateCalculator("bla", holidayHandlerType);
+        final HolidayCalendar<E> holidays = newHolidaysCalendar();
+        Assert.assertEquals("Name", "bla", cal.getName());
+        cal.setHolidayCalendar(holidays);
+        Assert.assertEquals("Holidays", holidays.getHolidays(), cal.getHolidayCalendar().getHolidays());
+        Assert.assertEquals("Holidays size", 3, cal.getHolidayCalendar().getHolidays().size());
+
+        E startDate = newDate(start);
+        cal.setCurrentBusinessDate(startDate);
+        // E calc = cal.moveByBusinessDays(days).getCurrentBusinessDate();
+        checkDate("Move " + days + " BD", cal.moveByBusinessDays(days), expectedDate);
+
+        Assert.assertEquals(days, cal.getNumberOfBusinessDaysBetween(startDate, newDate(expectedDate)));
+        Assert.assertEquals(-days, cal.getNumberOfBusinessDaysBetween(newDate(expectedDate), startDate));
+    }
+
+    private void checkMoveAndNumberOfBusinessDays(String start, int days, int expectedDays, String expectedDate, final String holidayHandlerType) {
+        final DateCalculator<E> cal = newDateCalculator("bla", holidayHandlerType);
+        final HolidayCalendar<E> holidays = newHolidaysCalendar();
+        Assert.assertEquals("Name", "bla", cal.getName());
+        cal.setHolidayCalendar(holidays);
+        Assert.assertEquals("Holidays", holidays.getHolidays(), cal.getHolidayCalendar().getHolidays());
+        Assert.assertEquals("Holidays size", 3, cal.getHolidayCalendar().getHolidays().size());
+
+        E startDate = newDate(start);
+        cal.setCurrentBusinessDate(startDate);
+        // E calc = cal.moveByBusinessDays(days).getCurrentBusinessDate();
+        checkDate("Move " + days + " BD", cal.moveByBusinessDays(days), expectedDate);
+
+        Assert.assertEquals(expectedDays, cal.getNumberOfBusinessDaysBetween(startDate, newDate(expectedDate)));
+        Assert.assertEquals(-expectedDays, cal.getNumberOfBusinessDaysBetween(newDate(expectedDate), startDate));
+    }
 }
 
 /*

@@ -86,6 +86,7 @@ public class DateDateCalculator extends AbstractDateCalculator<Date> {
     // -----------------------------------------------------------------------
 
     // TODO throw an exception if the type is incorrect
+    @Override
     public DateCalculator<Date> setWorkingWeek(final WorkingWeek week) {
         delegate.setWorkingWeek(week);
         return this;
@@ -94,6 +95,7 @@ public class DateDateCalculator extends AbstractDateCalculator<Date> {
     /**
      * is the date a non-working day according to the WorkingWeek?
      */
+    @Override
     public boolean isWeekend(final Date date) {
         if (date != null && delegate != null) {
             return delegate.isWeekend(Utils.getCal(date));
@@ -101,6 +103,7 @@ public class DateDateCalculator extends AbstractDateCalculator<Date> {
         return false;
     }
 
+    @Override
     public DateCalculator<Date> moveByDays(final int days) {
         setCurrentIncrement(days);
         delegate.setCurrentIncrement(days);
@@ -166,6 +169,29 @@ public class DateDateCalculator extends AbstractDateCalculator<Date> {
     @Override
     protected Date clone(final Date date) {
         return new Date(date.getTime());
+    }
+
+    @Override
+    public int getNumberOfBusinessDaysBetween(final Date d1, final Date d2) {
+        if (d1 == null || d2 == null) {
+            return 0;
+        }
+        final boolean d1B4d2 = !d1.after(d2);
+        Calendar start = Utils.getCal(d1B4d2 ? d1 : d2);
+        final Calendar end = Utils.getCal(d1B4d2 ? d2 : d1);
+        if (getHolidayHandler() != null) {
+            start = Utils.getCal(getHolidayHandler().adjustDate(start.getTime(), 1, this));
+        }
+
+        int count = 0;
+
+        while (start.before(end)) {
+            if (!isNonWorkingDay(start.getTime())) {
+                count++;
+            }
+            start.add(Calendar.DATE, 1);
+        }
+        return d1B4d2 ? count : -count;
     }
 }
 

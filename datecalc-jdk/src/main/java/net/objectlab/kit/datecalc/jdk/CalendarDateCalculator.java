@@ -69,6 +69,7 @@ public class CalendarDateCalculator extends AbstractDateCalculator<Calendar> {
         }
     }
 
+    @Override
     public DateCalculator<Calendar> setWorkingWeek(final WorkingWeek week) {
         workingWeek = week;
         return this;
@@ -77,6 +78,7 @@ public class CalendarDateCalculator extends AbstractDateCalculator<Calendar> {
     /**
      * is the date a non-working day according to the WorkingWeek?
      */
+    @Override
     public boolean isWeekend(final Calendar date) {
         assert workingWeek != null;
         return !workingWeek.isWorkingDay(date);
@@ -90,6 +92,7 @@ public class CalendarDateCalculator extends AbstractDateCalculator<Calendar> {
     //
     // -----------------------------------------------------------------------
 
+    @Override
     public CalendarDateCalculator moveByDays(final int days) {
         setCurrentIncrement(days);
         getCurrentBusinessDate().add(Calendar.DAY_OF_MONTH, days);
@@ -158,6 +161,30 @@ public class CalendarDateCalculator extends AbstractDateCalculator<Calendar> {
         cal.setTime(date.getTime());
         return cal;
     }
+
+    @Override
+    public int getNumberOfBusinessDaysBetween(final Calendar d1, final Calendar d2) {
+        if (d1 == null || d2 == null) {
+            return 0;
+        }
+        final boolean d1B4d2 = !d1.after(d2);
+        Calendar start = d1B4d2 ? d1 : d2;
+        final Calendar end = d1B4d2 ? d2 : d1;
+        if (getHolidayHandler() != null) {
+            start = getHolidayHandler().adjustDate(start, 1, this);
+        }
+
+        int count = 0;
+
+        while (start.before(end)) {
+            if (!isNonWorkingDay(start)) {
+                count++;
+            }
+            start.add(Calendar.DATE, 1);
+        }
+        return d1B4d2 ? count : -count;
+    }
+
 }
 
 /*

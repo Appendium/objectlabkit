@@ -406,6 +406,10 @@ public abstract class AbstractModifiedPreceedingDateCalculatorTest<E extends Ser
             checkMoveByTenor("2006-08-28", StandardTenor.OVERNIGHT, 2, "2006-08-25", HolidayHandlerType.MODIFIED_PRECEDING);
         }
      */
+
+    public void testBusinessDaysCalc() {
+        super.testBusinessDaysCalcBackModif(HolidayHandlerType.MODIFIED_PRECEDING);
+    }
 }
 
 /*

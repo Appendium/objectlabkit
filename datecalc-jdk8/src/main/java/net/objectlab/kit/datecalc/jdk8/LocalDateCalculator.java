@@ -163,6 +163,29 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
     protected LocalDate clone(final LocalDate date) {
         return date;
     }
+
+    @Override
+    public int getNumberOfBusinessDaysBetween(final LocalDate d1, final LocalDate d2) {
+        if (d1 == null || d2 == null) {
+            return 0;
+        }
+        final boolean d1B4d2 = !d1.isAfter(d2);
+        LocalDate start = d1B4d2 ? d1 : d2;
+        LocalDate end = d1B4d2 ? d2 : d1;
+        if (getHolidayHandler() != null) {
+            start = getHolidayHandler().adjustDate(start, 1, this);
+        }
+
+        int count = 0;
+        // start = start.plusDays(1);
+        while (start.isBefore(end)) {
+            if (!isNonWorkingDay(start)) {
+                count++;
+            }
+            start = start.plusDays(1);
+        }
+        return d1B4d2 ? count : -count;
+    }
 }
 
 /*

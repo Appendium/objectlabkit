@@ -471,6 +471,10 @@ public abstract class AbstractForwardUnlessNegativeCalculatorTest<E extends Seri
             assertEquals("Move start:" + startDate + " tenor:" + tenor, expected.next(), it.next());
         }
     }
+
+    public void testBusinessDaysCalc() {
+        super.testBusinessDaysCalc(HolidayHandlerType.FORWARD_UNLESS_MOVING_BACK);
+    }
 }
 
 /*

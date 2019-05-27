@@ -226,10 +226,14 @@ public abstract class AbstractForwardDateCalculatorTest<E extends Serializable> 
         Assert.assertEquals("Holidays size", 3, cal.getHolidayCalendar().getHolidays().size());
 
         cal.setStartDate(newDate("2006-08-24"));
+        checkDate("Move 0 BD", cal.moveByBusinessDays(0), "2006-08-24");
+
+        cal.setStartDate(newDate("2006-08-24"));
         checkDate("Move 1 BD", cal.moveByBusinessDays(1), "2006-08-25");
 
         cal.setStartDate(newDate("2006-08-24"));
         checkDate("Add 1 week", cal.moveByDays(7), "2006-08-31");
+
         cal.setStartDate(newDate("2006-08-24"));
         checkDate("Move by 1W with 1 bank holiday", cal.moveByBusinessDays(7), "2006-09-05");
 
@@ -486,6 +490,10 @@ public abstract class AbstractForwardDateCalculatorTest<E extends Serializable> 
         for (final Tenor tenor : list) {
             assertEquals("Move start:" + startDate + " tenor:" + tenor, expected.next(), it.next());
         }
+    }
+
+    public void testBusinessDaysCalc() {
+        super.testBusinessDaysCalc(HolidayHandlerType.FORWARD);
     }
 }
 
