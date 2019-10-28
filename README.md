@@ -1,4 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/Appendium/objectlabkit.png?branch=master)](http://travis-ci.org/Appendium/objectlabkit) [![Stories in Ready](https://badge.waffle.io/Appendium/objectlabkit.png?label=ready)](https://waffle.io/Appendium/objectlabkit) 
+[![Build Status](https://secure.travis-ci.org/Appendium/objectlabkit.png?branch=master)](http://travis-ci.org/Appendium/objectlabkit) 
 [![SonarQube](https://sonarcloud.io/api/project_badges/measure?project=net.objectlab.kit:kit-parent&metric=bugs)](https://sonarcloud.io/dashboard/index/net.objectlab.kit:kit-parent) 
 [![SonarQube Reliability](https://sonarcloud.io/api/project_badges/measure?project=net.objectlab.kit:kit-parent&metric=reliability_rating)](https://sonarcloud.io/dashboard/index/net.objectlab.kit:kit-parent) 
 [![SonarQube Security](https://sonarcloud.io/api/project_badges/measure?project=net.objectlab.kit:kit-parent&metric=security_rating)](https://sonarcloud.io/dashboard/index/net.objectlab.kit:kit-parent) 
