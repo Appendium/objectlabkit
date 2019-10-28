@@ -133,7 +133,7 @@ public class ConsoleMenu {
     private void callMenuOption(int opt) {
         // now call the method
         final String method = methods.get(opt - 1);
-        final Boolean repeat = askForRepeat.get(opt - 1);
+        final boolean repeat = askForRepeat.get(opt - 1);
 
         try {
             final Method meth = target.getClass().getMethod(method);

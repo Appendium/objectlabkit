@@ -2,6 +2,7 @@ package net.objectlab.kit.util;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,9 +28,7 @@ public class PopulationStandardDeviation {
             if (dataPoints == null) {
                 dataPoints = new ArrayList<>(values.length);
             }
-            for (final BigDecimal val : values) {
-                dataPoints.add(val);
-            }
+            dataPoints.addAll(Arrays.asList(values));
         }
         return this;
     }

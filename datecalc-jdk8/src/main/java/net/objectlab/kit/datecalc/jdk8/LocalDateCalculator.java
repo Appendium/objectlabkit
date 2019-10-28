@@ -177,7 +177,6 @@ public class LocalDateCalculator extends AbstractDateCalculator<LocalDate> {
         }
 
         int count = 0;
-        // start = start.plusDays(1);
         while (start.isBefore(end)) {
             if (!isNonWorkingDay(start)) {
                 count++;
