@@ -132,7 +132,7 @@ public abstract class AbstractDateCalculator<E extends Serializable> implements 
 
     /**
      * move the current date by a given tenor, this means that if a date is
-     * either a 'weekend' or holiday, it will be skipped acording to the holiday
+     * either a 'weekend' or holiday, it will be skipped according to the holiday
      * handler and not count towards the number of days to move.
      *
      * @param tenor the tenor.
