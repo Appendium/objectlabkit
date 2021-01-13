@@ -78,6 +78,9 @@ public class ExcelStyle {
         }
 
         addAlignment(cellStyle);
+
+        cellStyle.setWrapText(wrap);
+
         return cellStyle;
     }
 
