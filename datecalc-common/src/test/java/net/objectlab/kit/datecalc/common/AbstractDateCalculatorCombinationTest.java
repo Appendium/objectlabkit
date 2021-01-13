@@ -90,7 +90,7 @@ public abstract class AbstractDateCalculatorCombinationTest<E extends Serializab
 
         // we MUST provide a set with boundaries.
         final Set<E> emptySet = Collections.emptySet();
-        final HolidayCalendar<E> hol = new DefaultHolidayCalendar<E>(emptySet, newDate("2006-01-01"), newDate("2020-12-31"));
+        final HolidayCalendar<E> hol = new DefaultHolidayCalendar<E>(emptySet, newDate("2006-01-01"), newDate("2099-12-31"));
         cal1.setHolidayCalendar(hol);
 
         final E localDate = newDate("2006-08-08");
@@ -120,7 +120,7 @@ public abstract class AbstractDateCalculatorCombinationTest<E extends Serializab
         Assert.assertEquals("currentDate", localDate, combo.getCurrentBusinessDate());
         Assert.assertEquals("Holidays", 4, combo.getHolidayCalendar().getHolidays().size());
         Assert.assertEquals("Early Boundary", newDate("2006-01-01"), combo.getHolidayCalendar().getEarlyBoundary());
-        Assert.assertEquals("Late Boundary", newDate("2020-12-31"), combo.getHolidayCalendar().getLateBoundary());
+        Assert.assertEquals("Late Boundary", newDate("2099-12-31"), combo.getHolidayCalendar().getLateBoundary());
     }
 
     public void testValidCombination2Sets() {
@@ -138,7 +138,7 @@ public abstract class AbstractDateCalculatorCombinationTest<E extends Serializab
         Assert.assertEquals("currentDate", localDate, combo.getCurrentBusinessDate());
         Assert.assertEquals("Holidays", 6, combo.getHolidayCalendar().getHolidays().size());
         Assert.assertEquals("Early Boundary", newDate("2006-01-01"), combo.getHolidayCalendar().getEarlyBoundary());
-        Assert.assertEquals("Late Boundary", newDate("2020-12-31"), combo.getHolidayCalendar().getLateBoundary());
+        Assert.assertEquals("Late Boundary", newDate("2099-12-31"), combo.getHolidayCalendar().getLateBoundary());
     }
 
     public void testNullCombination() {
@@ -170,7 +170,7 @@ public abstract class AbstractDateCalculatorCombinationTest<E extends Serializab
         Assert.assertEquals("currentDate", localDate, combo.getCurrentBusinessDate());
         Assert.assertEquals("Holidays", 3, combo.getHolidayCalendar().getHolidays().size());
         Assert.assertEquals("Early Boundary", newDate("2005-01-01"), combo.getHolidayCalendar().getEarlyBoundary());
-        Assert.assertEquals("Late Boundary", newDate("2021-12-31"), combo.getHolidayCalendar().getLateBoundary());
+        Assert.assertEquals("Late Boundary", newDate("2100-12-31"), combo.getHolidayCalendar().getLateBoundary());
     }
 
     public void testInvalidEarlyBoundary() {
