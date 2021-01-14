@@ -44,7 +44,7 @@ public abstract class AbstractCurrencyDateCalculatorTest<E extends Serializable>
         final Set<E> us = new HashSet<E>();
         us.add(newDate("2006-01-06"));
 
-        return new DefaultHolidayCalendar<E>(us, newDate("2005-01-01"), newDate("2021-12-31"));
+        return new DefaultHolidayCalendar<E>(us, newDate("2005-01-01"), newDate("2100-12-31"));
     }
 
     protected HolidayCalendar<E> createEUHolidayCalendar() {
@@ -52,7 +52,7 @@ public abstract class AbstractCurrencyDateCalculatorTest<E extends Serializable>
         us.add(newDate("2006-01-02"));
         us.add(newDate("2006-12-26"));
 
-        return new DefaultHolidayCalendar<E>(us, newDate("2005-01-01"), newDate("2021-12-31"));
+        return new DefaultHolidayCalendar<E>(us, newDate("2005-01-01"), newDate("2100-12-31"));
     }
 
     @Override
@@ -188,7 +188,7 @@ public abstract class AbstractCurrencyDateCalculatorTest<E extends Serializable>
     public void testTenorNoHolidayModifiedFollowing() {
         final CurrencyDateCalculator<E> cal = getDateCalculatorFactory()
                 .buildCurrencyDateCalculator(getDateCalculatorFactory().getDefaultCurrencyDateCalculatorBuilder("EUR", "USD", SpotLag.T_2)//
-        );
+                );
 
         E startDate = newDate("2014-06-26");
         E spotDate = cal.calculateSpotDate(startDate);
@@ -208,7 +208,7 @@ public abstract class AbstractCurrencyDateCalculatorTest<E extends Serializable>
         final CurrencyDateCalculator<E> cal = getDateCalculatorFactory()
                 .buildCurrencyDateCalculator(getDateCalculatorFactory().getDefaultCurrencyDateCalculatorBuilder("EUR", "USD", SpotLag.T_2)//
                         .tenorHolidayHandler(getDateCalculatorFactory().getHolidayHandler(HolidayHandlerType.FORWARD)) //
-        );
+                );
 
         E startDate = newDate("2014-10-28");
 
