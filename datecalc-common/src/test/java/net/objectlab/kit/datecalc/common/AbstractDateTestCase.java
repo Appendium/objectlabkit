@@ -87,7 +87,7 @@ public abstract class AbstractDateTestCase<E extends Serializable> extends TestC
      * @return
      */
     protected HolidayCalendar<E> createUKHolidayCalendar() {
-        return new DefaultHolidayCalendar<E>(createUKHolidays(), newDate("2006-01-01"), newDate("2020-12-31"));
+        return new DefaultHolidayCalendar<E>(createUKHolidays(), newDate("2006-01-01"), newDate("2099-12-31"));
     }
 
     /**
@@ -95,7 +95,7 @@ public abstract class AbstractDateTestCase<E extends Serializable> extends TestC
      * @return
      */
     protected HolidayCalendar<E> createUSHolidayCalendar() {
-        return new DefaultHolidayCalendar<E>(createUSHolidays(), newDate("2005-01-01"), newDate("2021-12-31"));
+        return new DefaultHolidayCalendar<E>(createUSHolidays(), newDate("2005-01-01"), newDate("2099-12-31"));
     }
 
     // -----------------------------------------------------------------------

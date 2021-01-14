@@ -170,7 +170,7 @@ public abstract class AbstractDateCalculatorCombinationTest<E extends Serializab
         Assert.assertEquals("currentDate", localDate, combo.getCurrentBusinessDate());
         Assert.assertEquals("Holidays", 3, combo.getHolidayCalendar().getHolidays().size());
         Assert.assertEquals("Early Boundary", newDate("2005-01-01"), combo.getHolidayCalendar().getEarlyBoundary());
-        Assert.assertEquals("Late Boundary", newDate("2100-12-31"), combo.getHolidayCalendar().getLateBoundary());
+        Assert.assertEquals("Late Boundary", newDate("2099-12-31"), combo.getHolidayCalendar().getLateBoundary());
     }
 
     public void testInvalidEarlyBoundary() {
