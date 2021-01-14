@@ -83,7 +83,7 @@ public class UtilsTest extends TestCase {
     public void testCreateDate() throws Exception {
 
         assertEquals(getCal(1970, 1, 1).getTime(), Utils.createDate("1970-01-01"));
-        assertEquals(getCal(2020, 12, 31).getTime(), Utils.createDate("2099-12-31"));
+        assertEquals(getCal(2020, 12, 31).getTime(), Utils.createDate("2020-12-31"));
 
         assertEquals(getCal(2006, 8, 8).getTime(), Utils.createDate("2006-08-08"));
         assertEquals(getCal(2004, 9, 12).getTime(), Utils.createDate("2004-09-12"));
