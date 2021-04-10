@@ -64,7 +64,7 @@ public interface DateCalculator<E> extends BaseCalculator<E> {
     /**
      * Setting the start date also sets the current business date (and if this
      * is a non-working day, the current business date will be moved to the next
-     * business day acording to the HolidayHandler algorithm given).
+     * business day according to the HolidayHandler algorithm given).
      *
      * @param startDate
      *            the reference date for this calculator, the current business
@@ -175,7 +175,7 @@ public interface DateCalculator<E> extends BaseCalculator<E> {
      * This changes the current business date held in the calculator, it moves
      * the current date by a number of business days, this means that if a date
      * is either a 'weekend' or holiday along the way, it will be skipped
-     * acording to the holiday handler and not count towards the number of days
+     * according to the holiday handler and not count towards the number of days
      * to move.
      *
      * @param businessDays

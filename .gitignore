@@ -5,6 +5,12 @@ test-output/
 logs
 .springBeans
 
+### IntelliJ IDEA/development ###
+.idea
+*.iws
+*.iml
+*.ipr
+
 # Compiled source #
 ###################
 *.com
