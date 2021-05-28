@@ -6,7 +6,10 @@
         <author email="kit@objectlab.co.uk">Benoit Xhenseval</author>
     </properties>
     <body>
-        <release version="1.4.3" date="2021-05-31" description="Maintenance">
+        <release version="1.4.5" date="TBC" description="Maintenance">
+            <action dev="benoitx" type="fix">Upgrade Lombok to work with Java 16.</action>
+        </release>
+        <release version="1.4.4" date="2021-05-25" description="Maintenance">
             <action dev="benoitx" issue="29" type="add">Upgrade to Apache Commons Lang3.</action>
             <action dev="benoitx" issue="8" type="add">Add getNumberOfBusinessDaysBetween given 2 dates, depends on the Holiday Handler type.</action>
             <action dev="benoitx" type="add">Work on Excel</action>
