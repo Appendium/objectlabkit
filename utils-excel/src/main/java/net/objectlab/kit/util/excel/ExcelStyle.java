@@ -27,6 +27,10 @@ public class ExcelStyle {
     private final boolean wrap;
     private final boolean header;
     private final boolean strikeout;
+    private final BorderStyle borderTop;
+    private final BorderStyle borderBottom;
+    private final BorderStyle borderLeft;
+    private final BorderStyle borderRight;
     private final String dataFormat;
     private final IndexedColors fontColour;
     private final IndexedColors backgroundColour;
@@ -52,6 +56,10 @@ public class ExcelStyle {
         fontColour = b.fontColour;
         backgroundColour = b.backgroundColour;
         backgroundFillPatternType = b.backgroundFillPatternType;
+        borderRight = b.borderRight;
+        borderLeft = b.borderLeft;
+        borderTop = b.borderTop;
+        borderBottom = b.borderBottom;
     }
 
     public CellStyle build(ExcelCell cell) {
@@ -68,6 +76,26 @@ public class ExcelStyle {
             cellStyle.setBottomBorderColor(IndexedColors.BLACK.getIndex());
             cellStyle.setFillForegroundColor(IndexedColors.PALE_BLUE.getIndex());
             cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        }
+
+        if (borderTop != null) {
+            cellStyle.setBorderTop(borderTop);
+            cellStyle.setTopBorderColor(IndexedColors.BLACK.getIndex());
+        }
+
+        if (borderBottom != null) {
+            cellStyle.setBorderBottom(borderBottom);
+            cellStyle.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+        }
+
+        if (borderRight != null) {
+            cellStyle.setBorderRight(borderRight);
+            cellStyle.setRightBorderColor(IndexedColors.BLACK.getIndex());
+        }
+
+        if (borderLeft != null) {
+            cellStyle.setBorderLeft(borderLeft);
+            cellStyle.setLeftBorderColor(IndexedColors.BLACK.getIndex());
         }
 
         addFormat(cell, cellStyle);
@@ -139,9 +167,33 @@ public class ExcelStyle {
         private IndexedColors fontColour;
         private IndexedColors backgroundColour;
         private FillPatternType backgroundFillPatternType = FillPatternType.SOLID_FOREGROUND;
+        private BorderStyle borderTop;
+        private BorderStyle borderBottom;
+        private BorderStyle borderLeft;
+        private BorderStyle borderRight;
 
         public Builder backgroundFillPatternType(FillPatternType backgroundFillPatternType) {
             this.backgroundFillPatternType = backgroundFillPatternType;
+            return this;
+        }
+
+        public Builder borderTop(BorderStyle borderTop) {
+            this.borderTop = borderTop;
+            return this;
+        }
+
+        public Builder borderBottom(BorderStyle borderBottom) {
+            this.borderBottom = borderBottom;
+            return this;
+        }
+
+        public Builder borderLeft(BorderStyle borderLeft) {
+            this.borderLeft = borderLeft;
+            return this;
+        }
+
+        public Builder borderRight(BorderStyle borderRight) {
+            this.borderRight = borderRight;
             return this;
         }
 
