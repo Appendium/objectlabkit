@@ -5,7 +5,7 @@ import java.text.NumberFormat;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import net.objectlab.kit.pf.ExistingPortfolioLine;
 import net.objectlab.kit.pf.RuleIssue;

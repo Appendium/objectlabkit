@@ -39,9 +39,9 @@ import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.builder.StandardToStringStyle;
-import org.apache.commons.lang.time.FastDateFormat;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.builder.StandardToStringStyle;
+import org.apache.commons.lang3.time.FastDateFormat;
 
 /**
  * @author Benoit Xhenseval

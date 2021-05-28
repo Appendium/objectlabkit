@@ -1,10 +1,10 @@
 package net.objectlab.kit.pf.validator;
 
+import org.apache.commons.lang3.StringUtils;
+
 import net.objectlab.kit.pf.RuleIssue;
 import net.objectlab.kit.pf.Severity;
 import net.objectlab.kit.pf.ValidatedPortfolioLine;
-
-import org.apache.commons.lang.StringUtils;
 
 public class RuleIssueImpl implements RuleIssue {
     private final Severity severity;

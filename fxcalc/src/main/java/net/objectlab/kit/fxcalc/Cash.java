@@ -5,11 +5,11 @@ package net.objectlab.kit.fxcalc;
 
 import java.math.BigDecimal;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import net.objectlab.kit.util.BigDecimalUtil;
 import net.objectlab.kit.util.StringUtil;
-
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  * A simple class to represent an immutable amount of a given currency.

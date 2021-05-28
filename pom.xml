@@ -10,7 +10,7 @@
 
     <groupId>net.objectlab.kit</groupId>
     <artifactId>kit-parent</artifactId>
-    <version>1.4.3</version>
+    <version>1.4.3-SNAPSHOT</version>
     <url>https://github.com/Appendium/objectlabkit</url>
     <packaging>pom</packaging>
     <modules>

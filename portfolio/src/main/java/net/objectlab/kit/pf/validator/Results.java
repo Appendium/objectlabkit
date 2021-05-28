@@ -3,7 +3,7 @@ package net.objectlab.kit.pf.validator;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import net.objectlab.kit.pf.ExistingPortfolio;
 import net.objectlab.kit.pf.RuleIssue;

@@ -2,10 +2,10 @@ package net.objectlab.kit.fxcalc;
 
 import java.util.Optional;
 
-import net.objectlab.kit.util.StringUtil;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
+import net.objectlab.kit.util.StringUtil;
 
 /**
  * Immutable class representing a Currency pair, ccy1/ccy2; thread-safe and able to be used in Collections.
