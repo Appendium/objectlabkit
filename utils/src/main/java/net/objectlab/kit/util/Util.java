@@ -125,9 +125,10 @@ public final class Util {
     public static String dumpThreads() {
         final StringWriter sout = new StringWriter(); // Capture listing in a
         // string
-        final PrintWriter out = new PrintWriter(sout);
-        Util.listAllThreads(out);
-        out.flush();
+        try (final PrintWriter out = new PrintWriter(sout)) {
+            Util.listAllThreads(out);
+            out.flush();
+        }
         return sout.toString();
     }
 

@@ -307,11 +307,9 @@ public class ConsoleMenu {
     public static String getString(final String msg) {
         ConsoleMenu.print(msg);
 
-        BufferedReader bufReader = null;
         String opt = null;
 
-        try {
-            bufReader = new BufferedReader(new InputStreamReader(System.in));
+        try (BufferedReader bufReader = new BufferedReader(new InputStreamReader(System.in))) {
             opt = bufReader.readLine();
         } catch (final IOException ex) {
             log(ex);

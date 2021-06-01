@@ -113,7 +113,7 @@ public class WorkingWeek {
     }
 
     public boolean isWorkingDay(final Calendar cal) {
-        return isWorkingDayFromCalendar(cal.get(Calendar.DAY_OF_WEEK));
+        return cal != null ? isWorkingDayFromCalendar(cal.get(Calendar.DAY_OF_WEEK)) : false;
     }
 
     protected int adjustDay(final int dayOfWeek) {
