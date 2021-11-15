@@ -259,6 +259,7 @@ Why re-invent the wheel?</description>
                         <excludes>**/RunSingleTest.java</excludes>
                         <excludes>**/perf/**</excludes>
                     </excludes>
+                	<forkCount>1.5C</forkCount>
                 </configuration>
             </plugin>
 
