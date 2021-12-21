@@ -6,9 +6,9 @@
         <author email="kit@objectlab.co.uk">Benoit Xhenseval</author>
     </properties>
     <body>
-        <release version="1.4.5" date="TBC" description="Maintenance">
+        <release version="1.4.5" date="2021-12-21" description="Maintenance">
             <action dev="benoitx" type="fix">Upgrade Lombok to work with Java 16.</action>
-            <action dev="benoitx" type="fix">Upgrade Logabck to 1.2.9 following security alert.</action>
+            <action dev="benoitx" type="fix">Upgrade Logback to 1.2.9 following security alert.</action>
         </release>
         <release version="1.4.4" date="2021-05-25" description="Maintenance">
             <action dev="benoitx" issue="29" type="add">Upgrade to Apache Commons Lang3.</action>
