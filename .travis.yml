@@ -7,7 +7,7 @@ addons:
     token:
       secure: 13b70009cbae7646c3458517212a3ba73faff609
 git:
-  depth: false
+  depth: 3
 env:
   global:
   - SONATYPE_USERNAME=benoitx
