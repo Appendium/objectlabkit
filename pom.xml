@@ -37,8 +37,8 @@ Why re-invent the wheel?</description>
         <github.global.server>github</github.global.server>
         <github.global.oauth2Token>${env.GITHUB_OAUTH_TOKEN}</github.global.oauth2Token>
         <version.slf4j>1.7.25</version.slf4j>
-        <version.logback>1.2.3</version.logback>
-        <version.cucumber>1.2.6</version.cucumber>
+        <version.logback>1.2.9</version.logback>
+        <version.cucumber>1.2.5</version.cucumber>
         <version.lombok>1.18.20</version.lombok>
         <version.junit>4.13.1</version.junit>
         <version.spring>5.3.7</version.spring>

@@ -2,11 +2,17 @@ package net.objectlab.kit.pf.ucits;
 
 import static net.objectlab.kit.util.BigDecimalUtil.bd;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.StrictAssertions.assertThat;
+//import static org.assertj.core.api.StrictAssertions.assertThat;
 import static org.mockito.BDDMockito.given;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Matchers;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import net.objectlab.kit.pf.AssetDetailsProvider;
 import net.objectlab.kit.pf.AssetEligibilityProvider;
@@ -16,12 +22,6 @@ import net.objectlab.kit.pf.BasicPortfolio;
 import net.objectlab.kit.pf.ExistingPortfolioLine;
 import net.objectlab.kit.pf.ValidationResults;
 import net.objectlab.kit.pf.ucits.BasicUcitsConcentrationValidator.Builder;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.Matchers;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
 public class BasicUcitsConcentrationValidatorTest {
     private BasicUcitsConcentrationValidator validator;
@@ -33,8 +33,8 @@ public class BasicUcitsConcentrationValidatorTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final Builder builder = new BasicUcitsConcentrationValidator.Builder().assetDetailsProvider(assetDetailsProvider).assetEligibilityProvider(
-                assetEligibilityProvider);
+        final Builder builder = new BasicUcitsConcentrationValidator.Builder().assetDetailsProvider(assetDetailsProvider)
+                .assetEligibilityProvider(assetEligibilityProvider);
         validator = new BasicUcitsConcentrationValidator(builder);
         given(assetEligibilityProvider.isEligible(Matchers.anyString())).willReturn(true);
         given(assetDetailsProvider.getDetails(Matchers.eq("IBM"))).willReturn(new BasicAsset("IBM", "IBM", "VGRQXHF3J8VDLUA7XE92"));
