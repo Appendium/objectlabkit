@@ -9,7 +9,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Name;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -53,13 +52,13 @@ public class Excel {
 
         return result;
     }
-
+    /* can't find how to support this in POI version 5.1.0
     public String namedRangeToRangeAddress(final String namedRange) {
         final int namedCellIndex = getWorkbook().getNameIndex(namedRange);
         final Name namedCell = getWorkbook().getNameAt(namedCellIndex);
-
+    
         return namedCell.getRefersToFormula();
-    }
+    }*/
 
     public Cell cellAt(final String cellAddr) {
         final CellReference cr = new CellReference(cellAddr);
