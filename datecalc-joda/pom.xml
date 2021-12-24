@@ -21,7 +21,7 @@
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
-            <version>2.10.1</version>
+            <version>2.10.13</version>
         </dependency>
         <dependency>
             <groupId>net.objectlab.kit</groupId>
@@ -41,7 +41,7 @@
                 <configuration>
                     <instructions>
                         <Export-Package>net.objectlab.kit.*;version="${project.version}"</Export-Package>
-                        <Private-Package />
+                        <Private-Package/>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Version>${project.version}</Bundle-Version>
                         <Bundle-RequiredExecutionEnvironment>JavaSE-1.8</Bundle-RequiredExecutionEnvironment>
