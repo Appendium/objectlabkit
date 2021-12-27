@@ -5,7 +5,7 @@
     <parent>
         <groupId>net.objectlab.kit</groupId>
         <artifactId>kit-parent</artifactId>
-        <version>1.4.7-SNAPSHOT</version>
+        <version>1.4.7</version>
     </parent>
 
     <artifactId>objectlab-utils</artifactId>
@@ -44,7 +44,7 @@
                 <configuration>
                     <instructions>
                         <Export-Package>net.objectlab.kit.*;version="${project.version}"</Export-Package>
-                        <Private-Package/>
+                        <Private-Package />
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Version>${project.version}</Bundle-Version>
                         <Bundle-RequiredExecutionEnvironment>JavaSE-1.8</Bundle-RequiredExecutionEnvironment>
