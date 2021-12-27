@@ -40,12 +40,13 @@ import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
-import org.joda.time.LocalDate;
 
 /**
  * @author Benoit Xhenseval
@@ -290,9 +291,10 @@ public class ConsoleMenu {
     }
 
     public static LocalDate getYMD(final String title, final LocalDate defaultValue) {
-        final Date dateStr = ConsoleMenu.getDate(title, defaultValue != null ? defaultValue.toDateTimeAtStartOfDay().toDate() : null);
+        final Date dateStr = ConsoleMenu.getDate(title,
+                defaultValue != null ? java.util.Date.from(defaultValue.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()) : null);
         if (dateStr != null) {
-            return new LocalDate(dateStr);
+            return dateStr.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         }
         return null;
     }

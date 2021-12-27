@@ -6,6 +6,10 @@
         <author email="kit@objectlab.co.uk">Benoit Xhenseval</author>
     </properties>
     <body>
+        <release version="1.4.7" date="2021-12-27" description="Maintenance">
+            <action dev="benoitx" type="fix">Remove JODA Time Dependency for Utils (ConsoleMenu)</action>
+            <action dev="benoitx" type="fix">Upgrade other libraries.</action>
+        </release>
         <release version="1.4.6" date="2021-12-21" description="Maintenance">
             <action dev="benoitx" type="fix">Upgrade Spring given CVE-2021-22096.</action>
             <action dev="benoitx" type="fix">Upgrade Apache POI to 5.1.0 given CVE-2019-12415.</action>
