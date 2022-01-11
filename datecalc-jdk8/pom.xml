@@ -4,7 +4,7 @@
     <parent>
         <groupId>net.objectlab.kit</groupId>
         <artifactId>kit-parent</artifactId>
-        <version>1.4.8-SNAPSHOT</version>
+        <version>1.4.8</version>
     </parent>
 
     <artifactId>datecalc-jdk8</artifactId>
