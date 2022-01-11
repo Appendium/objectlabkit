@@ -309,16 +309,25 @@ public class ConsoleMenu {
     public static String getString(final String msg) {
         ConsoleMenu.print(msg);
 
-        String opt = null;
+        BufferedReader bufReader = null;
 
-        try (BufferedReader bufReader = new BufferedReader(new InputStreamReader(System.in))) {
-            opt = bufReader.readLine();
+        try {
+            bufReader = new BufferedReader(new InputStreamReader(System.in));
+            return bufReader.readLine();
         } catch (final IOException ex) {
             log(ex);
             System.exit(1);
+        } finally {
+            if (bufReader != null) {
+                try {
+                    bufReader.close();
+                } catch (IOException e) {
+                    log(e);
+                    System.exit(1);
+                }
+            }
         }
-
-        return opt;
+        return null;
     }
 
     /**
