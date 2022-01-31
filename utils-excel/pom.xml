@@ -30,7 +30,7 @@
             <artifactId>poi-ooxml</artifactId>
 <!--             <version>3.17</version>
  -->
-             <version>5.1.0</version>
+             <version>5.2.0</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -55,7 +55,7 @@
                 <configuration>
                     <instructions>
                         <Export-Package>net.objectlab.kit.*;version="${project.version}"</Export-Package>
-                        <Private-Package />
+                        <Private-Package/>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Version>${project.version}</Bundle-Version>
                         <Bundle-RequiredExecutionEnvironment>JavaSE-1.8</Bundle-RequiredExecutionEnvironment>
