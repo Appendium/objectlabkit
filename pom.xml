@@ -42,7 +42,7 @@ Why re-invent the wheel?</description>
         <version.cucumber>1.2.5</version.cucumber>
         <version.lombok>1.18.22</version.lombok>
         <version.junit>4.13.1</version.junit>
-        <version.spring>5.3.14</version.spring>
+        <version.spring>5.3.15</version.spring>
         <javadoc.opts>-Xdoclint:none</javadoc.opts>
     </properties>
 
@@ -119,14 +119,14 @@ Why re-invent the wheel?</description>
             <name>News about ObjectLab's projects (Alerts online)</name>
             <subscribe>http://lists.sourceforge.net/lists/listinfo/objectlabkit-news</subscribe>
             <unsubscribe>http://lists.sourceforge.net/lists/listinfo/objectlabkit-news</unsubscribe>
-            <post />
+            <post/>
             <archive>http://sourceforge.net/mailarchive/forum.php?forum=objectlabkit-news</archive>
         </mailingList>
         <mailingList>
             <name>Kit Announcements</name>
             <subscribe>http://lists.sourceforge.net/lists/listinfo/objectlabkit-announce</subscribe>
             <unsubscribe>http://lists.sourceforge.net/lists/listinfo/objectlabkit-announce</unsubscribe>
-            <post />
+            <post/>
             <archive>http://sourceforge.net/mailarchive/forum.php?forum=objectlabkit-announce</archive>
         </mailingList>
         <mailingList>
@@ -140,7 +140,7 @@ Why re-invent the wheel?</description>
             <name>Kit Developers (SVN checkins)</name>
             <subscribe>http://lists.sourceforge.net/lists/listinfo/objectlabkit-svn</subscribe>
             <unsubscribe>http://lists.sourceforge.net/lists/listinfo/objectlabkit-svn</unsubscribe>
-            <post />
+            <post/>
             <archive>http://sourceforge.net/mailarchive/forum.php?forum=objectlabkit-svn</archive>
         </mailingList>
     </mailingLists>
