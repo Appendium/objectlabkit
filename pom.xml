@@ -36,7 +36,7 @@ Why re-invent the wheel?</description>
         <site.deploy.url>http://objectlabkit.sf.net</site.deploy.url>
         <github.global.server>github</github.global.server>
         <github.global.oauth2Token>${env.GITHUB_OAUTH_TOKEN}</github.global.oauth2Token>
-        <version.slf4j>1.7.33</version.slf4j>
+        <version.slf4j>1.7.35</version.slf4j>
         <version.logback>1.2.9</version.logback>
         <version.jodatime>2.10.13</version.jodatime>
         <version.cucumber>1.2.5</version.cucumber>
