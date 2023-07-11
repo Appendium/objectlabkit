@@ -40,7 +40,7 @@ Why re-invent the wheel?</description>
         <version.logback>1.2.9</version.logback>
         <version.jodatime>2.12.5</version.jodatime>
         <version.cucumber>1.2.5</version.cucumber>
-        <version.lombok>1.18.26</version.lombok>
+        <version.lombok>1.18.28</version.lombok>
         <version.junit>4.13.1</version.junit>
         <version.spring>5.3.27</version.spring>
         <javadoc.opts>-Xdoclint:none</javadoc.opts>
