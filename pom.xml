@@ -42,7 +42,7 @@ Why re-invent the wheel?</description>
         <version.cucumber>1.2.5</version.cucumber>
         <version.lombok>1.18.30</version.lombok>
         <version.junit>4.13.1</version.junit>
-        <version.spring>5.3.31</version.spring>
+        <version.spring>6.1.14</version.spring>
         <javadoc.opts>-Xdoclint:none</javadoc.opts>
     </properties>
 
