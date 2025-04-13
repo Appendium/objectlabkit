@@ -20,7 +20,7 @@
         <module>datecalc-joda</module>
         <module>datecalc-jdk8</module>
         <module>fxcalc</module>
-        <module>portfolio</module>
+         <module>portfolio</module>
         <module>utils-excel</module>
         <module>report</module>
     </modules>
@@ -42,7 +42,8 @@ Why re-invent the wheel?</description>
         <version.cucumber>1.2.5</version.cucumber>
         <version.lombok>1.18.32</version.lombok>
         <version.junit>4.13.1</version.junit>
-        <version.spring>6.1.14</version.spring>
+<!--         <version.spring>6.1.14</version.spring>
+ -->        <version.spring>5.3.39</version.spring>
         <javadoc.opts>-Xdoclint:none</javadoc.opts>
     </properties>
 
