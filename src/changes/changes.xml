@@ -6,6 +6,9 @@
         <author email="kit@objectlab.co.uk">Benoit Xhenseval</author>
     </properties>
     <body>
+        <release version="1.4.9" date="2025-04-13" description="Maintenance">
+            <action dev="benoitx" type="fix">Update some dependencies to remove vulnerabilities.</action>
+        </release>
         <release version="1.4.8" date="2022-01-11" description="Maintenance">
             <action dev="benoitx" type="fix">Fix Issue with ConsoleMenu.getString (stream closed if in a try-catch)</action>
         </release>
